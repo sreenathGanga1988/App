@@ -11,6 +11,7 @@
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -23,7 +24,6 @@
     <MapFileExtensions>true</MapFileExtensions>
     <ApplicationRevision>0</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
-    <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
@@ -70,12 +70,26 @@
   <ItemGroup>
     <Compile Include="Context\DbContext.cs" />
     <Compile Include="Extensions\Extesions.cs" />
+    <Compile Include="LIMSDBDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>LIMSDBDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201708171254495_InitialCreate.cs" />
+    <Compile Include="Migrations\201708171254495_InitialCreate.Designer.cs">
+      <DependentUpon>201708171254495_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201708171336349_AddUserNameMig.cs" />
+    <Compile Include="Migrations\201708171336349_AddUserNameMig.Designer.cs">
+      <DependentUpon>201708171336349_AddUserNameMig.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Model\Product.cs" />
     <Compile Include="ObservableListSource.cs" />
     <Compile Include="Program.cs" />
@@ -88,6 +102,12 @@
     </Compile>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201708171254495_InitialCreate.resx">
+      <DependentUpon>201708171254495_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201708171336349_AddUserNameMig.resx">
+      <DependentUpon>201708171336349_AddUserNameMig.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -102,6 +122,17 @@
     <EmbeddedResource Include="UI\Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="LIMSDBDataSet.xsc">
+      <DependentUpon>LIMSDBDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="LIMSDBDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>LIMSDBDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="LIMSDBDataSet.xss">
+      <DependentUpon>LIMSDBDataSet.xsd</DependentUpon>
+    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

@@ -1,4 +1,6 @@
-﻿using System;
+﻿using App.Context;
+using App.Model;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -16,6 +18,15 @@ namespace App.UI
         {
 
             InitializeComponent();
+
+            Company objCompany = new Company();
+            objCompany.CompanyId = "3434";
+            objCompany.Name = "Sree";
+
+            // Create context object and then save company data.  
+            POSDataContext objContext = new POSDataContext();
+            objContext.Companies.Add(objCompany);
+            objContext.SaveChanges();
 
 
         }

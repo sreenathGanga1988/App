@@ -33,5 +33,16 @@ namespace App.Properties {
                 return ((string)(this["AppConnectionString"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=.\\sqlexpress;Initial Catalog=LIMSDB;Persist Security Info=True;User I" +
+            "D=sa;Password=sreenath")]
+        public string LIMSDBConnectionString {
+            get {
+                return ((string)(this["LIMSDBConnectionString"]));
+            }
+        }
     }
 }

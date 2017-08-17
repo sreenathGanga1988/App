@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,18 +10,65 @@ namespace App.Model
 {
     public class Product
     {
-        public int ProductId { get; set; }
-        public string Name { get; set; }
+       
 
+        [Key]
+        public int Id { get; set; }
+
+        public int ProductName { get; set; }
         public int CategoryId { get; set; }
-        public virtual Category Category { get; set; }
+
     }
     public class Category
     {
-        private readonly ObservableListSource<Product> _products =  new ObservableListSource<Product>();
+      
 
-        public int CategoryId { get; set; }
-        public string Name { get; set; }
-        public virtual ObservableListSource<Product> Products { get { return _products; } }
+        [Key]
+        public int Id { get; set; }
+
+        public String CategoryName { get; set; }
+
+
     }
+
+
+    public class User
+    {
+
+        [Key]
+        public int UserID { get; set; }
+
+        public int PassCode { get; set; }
+
+        public int StoreID { get; set; }
+
+        public String UserName { get; set; }
+    }
+
+
+    public class Company
+    {
+        public String CompanyId
+        {
+            get;
+            set;
+        }
+        public String Name
+        {
+            get;
+            set;
+        }
+    }
+
+
+
+
+
+
+
+
+
+
+
+
 }

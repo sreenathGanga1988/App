@@ -10,7 +10,15 @@ namespace App.Context
 {
     public class POSDataContext : DbContext
     {
-        public DbSet<Category> Categories { get; set; }
+        public POSDataContext() : base("LIMSDB")
+        {
+            Database.SetInitializer<POSDataContext>(null);
+            //  Database.SetInitializer(new DropCreateDatabaseAlways<POSDataContext>());
+        }
+
+        public DbSet<Company> Companies { get; set; }
         public DbSet<Product> Products { get; set; }
+        public DbSet<Category> Categorys { get; set; }
+        public DbSet<User> MyProperty { get; set; }
     }
 }
