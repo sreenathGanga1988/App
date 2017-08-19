@@ -69,11 +69,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Context\DbContext.cs" />
+    <Compile Include="Extensions\Controls.cs" />
     <Compile Include="Extensions\Extesions.cs" />
-    <Compile Include="LIMSDBDataSet.Designer.cs">
+    <Compile Include="LimsDBDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>LIMSDBDataSet.xsd</DependentUpon>
+      <DependentUpon>LimsDBDataSet.xsd</DependentUpon>
     </Compile>
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
@@ -89,17 +90,86 @@
     <Compile Include="Migrations\201708171336349_AddUserNameMig.Designer.cs">
       <DependentUpon>201708171336349_AddUserNameMig.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201708181017321_addstoremodel.cs" />
+    <Compile Include="Migrations\201708181017321_addstoremodel.Designer.cs">
+      <DependentUpon>201708181017321_addstoremodel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201708181021068_add relationof store.cs" />
+    <Compile Include="Migrations\201708181021068_add relationof store.Designer.cs">
+      <DependentUpon>201708181021068_add relationof store.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201708181322505_addcontroldiemension.cs" />
+    <Compile Include="Migrations\201708181322505_addcontroldiemension.Designer.cs">
+      <DependentUpon>201708181322505_addcontroldiemension.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201708181329413_added table.cs" />
+    <Compile Include="Migrations\201708181329413_added table.Designer.cs">
+      <DependentUpon>201708181329413_added table.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201708181355585_added color for table.cs" />
+    <Compile Include="Migrations\201708181355585_added color for table.Designer.cs">
+      <DependentUpon>201708181355585_added color for table.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201708181423515_addedfeilds.cs" />
+    <Compile Include="Migrations\201708181423515_addedfeilds.Designer.cs">
+      <DependentUpon>201708181423515_addedfeilds.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201708181520584_product.cs" />
+    <Compile Include="Migrations\201708181520584_product.Designer.cs">
+      <DependentUpon>201708181520584_product.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201708181539009_addedpricetoproduct.cs" />
+    <Compile Include="Migrations\201708181539009_addedpricetoproduct.Designer.cs">
+      <DependentUpon>201708181539009_addedpricetoproduct.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201708181540333_addedisavailable.cs" />
+    <Compile Include="Migrations\201708181540333_addedisavailable.Designer.cs">
+      <DependentUpon>201708181540333_addedisavailable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201708181543484_changed nullable.cs" />
+    <Compile Include="Migrations\201708181543484_changed nullable.Designer.cs">
+      <DependentUpon>201708181543484_changed nullable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201708181606372_isratechangable.cs" />
+    <Compile Include="Migrations\201708181606372_isratechangable.Designer.cs">
+      <DependentUpon>201708181606372_isratechangable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201708191312494_added customer.cs" />
+    <Compile Include="Migrations\201708191312494_added customer.Designer.cs">
+      <DependentUpon>201708191312494_added customer.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Model\Product.cs" />
+    <Compile Include="Model\UIModel.cs" />
     <Compile Include="ObservableListSource.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repository\DbRepositories.cs" />
     <Compile Include="UI\Login.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="UI\Login.Designer.cs">
       <DependentUpon>Login.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\SalesForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\SalesForm.Designer.cs">
+      <DependentUpon>SalesForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\StartForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\StartForm.Designer.cs">
+      <DependentUpon>StartForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\test.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\test.Designer.cs">
+      <DependentUpon>test.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModal\Class1.cs" />
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -108,6 +178,42 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201708171336349_AddUserNameMig.resx">
       <DependentUpon>201708171336349_AddUserNameMig.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201708181017321_addstoremodel.resx">
+      <DependentUpon>201708181017321_addstoremodel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201708181021068_add relationof store.resx">
+      <DependentUpon>201708181021068_add relationof store.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201708181322505_addcontroldiemension.resx">
+      <DependentUpon>201708181322505_addcontroldiemension.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201708181329413_added table.resx">
+      <DependentUpon>201708181329413_added table.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201708181355585_added color for table.resx">
+      <DependentUpon>201708181355585_added color for table.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201708181423515_addedfeilds.resx">
+      <DependentUpon>201708181423515_addedfeilds.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201708181520584_product.resx">
+      <DependentUpon>201708181520584_product.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201708181539009_addedpricetoproduct.resx">
+      <DependentUpon>201708181539009_addedpricetoproduct.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201708181540333_addedisavailable.resx">
+      <DependentUpon>201708181540333_addedisavailable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201708181543484_changed nullable.resx">
+      <DependentUpon>201708181543484_changed nullable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201708181606372_isratechangable.resx">
+      <DependentUpon>201708181606372_isratechangable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201708191312494_added customer.resx">
+      <DependentUpon>201708191312494_added customer.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -122,16 +228,25 @@
     <EmbeddedResource Include="UI\Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
     </EmbeddedResource>
-    <None Include="LIMSDBDataSet.xsc">
-      <DependentUpon>LIMSDBDataSet.xsd</DependentUpon>
+    <EmbeddedResource Include="UI\SalesForm.resx">
+      <DependentUpon>SalesForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\StartForm.resx">
+      <DependentUpon>StartForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\test.resx">
+      <DependentUpon>test.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="LimsDBDataSet.xsc">
+      <DependentUpon>LimsDBDataSet.xsd</DependentUpon>
     </None>
-    <None Include="LIMSDBDataSet.xsd">
+    <None Include="LimsDBDataSet.xsd">
       <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>LIMSDBDataSet.Designer.cs</LastGenOutput>
+      <LastGenOutput>LimsDBDataSet.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </None>
-    <None Include="LIMSDBDataSet.xss">
-      <DependentUpon>LIMSDBDataSet.xsd</DependentUpon>
+    <None Include="LimsDBDataSet.xss">
+      <DependentUpon>LimsDBDataSet.xsd</DependentUpon>
     </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -145,7 +260,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.5.2">

@@ -1,15 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<xs:schema id="LIMSDBDataSet" targetNamespace="http://tempuri.org/LIMSDBDataSet.xsd" xmlns:mstns="http://tempuri.org/LIMSDBDataSet.xsd" xmlns="http://tempuri.org/LIMSDBDataSet.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+<xs:schema id="LimsDBDataSet" targetNamespace="http://tempuri.org/LimsDBDataSet.xsd" xmlns:mstns="http://tempuri.org/LimsDBDataSet.xsd" xmlns="http://tempuri.org/LimsDBDataSet.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
   <xs:annotation>
     <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
       <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
         <Connections>
-          <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="LIMSDBConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="LIMSDBConnectionString (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.App.Properties.Settings.GlobalReference.Default.LIMSDBConnectionString" Provider="System.Data.SqlClient" />
+          <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="LimsDBConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="LimsDBConnectionString (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.App.Properties.Settings.GlobalReference.Default.LimsDBConnectionString" Provider="System.Data.SqlClient" />
         </Connections>
         <Tables>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="__MigrationHistoryTableAdapter" GeneratorDataComponentClassName="__MigrationHistoryTableAdapter" Name="__MigrationHistory" UserDataComponentName="__MigrationHistoryTableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="LIMSDBConnectionString (Settings)" DbObjectName="LIMSDB.dbo.__MigrationHistory" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+              <DbSource ConnectionRef="LimsDBConnectionString (Settings)" DbObjectName="LimsDB.dbo.__MigrationHistory" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
                 <DeleteCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="false">
                     <CommandText>DELETE FROM [dbo].[__MigrationHistory] WHERE (([MigrationId] = @Original_MigrationId) AND ([ContextKey] = @Original_ContextKey) AND ([ProductVersion] = @Original_ProductVersion))</CommandText>
@@ -65,38 +65,44 @@ SELECT MigrationId, ContextKey, Model, ProductVersion FROM __MigrationHistory WH
           </TableAdapter>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="CategoriesTableAdapter" GeneratorDataComponentClassName="CategoriesTableAdapter" Name="Categories" UserDataComponentName="CategoriesTableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="LIMSDBConnectionString (Settings)" DbObjectName="LIMSDB.dbo.Categories" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+              <DbSource ConnectionRef="LimsDBConnectionString (Settings)" DbObjectName="LimsDB.dbo.Categories" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
                 <DeleteCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="false">
-                    <CommandText>DELETE FROM [dbo].[Categories] WHERE (([Id] = @Original_Id))</CommandText>
+                    <CommandText>DELETE FROM [dbo].[Categories] WHERE (([Id] = @Original_Id) AND ((@IsNull_Color = 1 AND [Color] IS NULL) OR ([Color] = @Original_Color)))</CommandText>
                     <Parameters>
                       <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@Original_Id" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Id" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Color" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Color" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@Original_Color" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="Color" SourceColumnNullMapping="false" SourceVersion="Original" />
                     </Parameters>
                   </DbCommand>
                 </DeleteCommand>
                 <InsertCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="false">
-                    <CommandText>INSERT INTO [dbo].[Categories] ([CategoryName]) VALUES (@CategoryName);
-SELECT Id, CategoryName FROM Categories WHERE (Id = SCOPE_IDENTITY())</CommandText>
+                    <CommandText>INSERT INTO [dbo].[Categories] ([CategoryName], [Color]) VALUES (@CategoryName, @Color);
+SELECT Id, CategoryName, Color FROM Categories WHERE (Id = SCOPE_IDENTITY())</CommandText>
                     <Parameters>
                       <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@CategoryName" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="CategoryName" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@Color" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="Color" SourceColumnNullMapping="false" SourceVersion="Current" />
                     </Parameters>
                   </DbCommand>
                 </InsertCommand>
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="false">
-                    <CommandText>SELECT Id, CategoryName FROM dbo.Categories</CommandText>
+                    <CommandText>SELECT Id, CategoryName, Color FROM dbo.Categories</CommandText>
                     <Parameters />
                   </DbCommand>
                 </SelectCommand>
                 <UpdateCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="false">
-                    <CommandText>UPDATE [dbo].[Categories] SET [CategoryName] = @CategoryName WHERE (([Id] = @Original_Id));
-SELECT Id, CategoryName FROM Categories WHERE (Id = @Id)</CommandText>
+                    <CommandText>UPDATE [dbo].[Categories] SET [CategoryName] = @CategoryName, [Color] = @Color WHERE (([Id] = @Original_Id) AND ((@IsNull_Color = 1 AND [Color] IS NULL) OR ([Color] = @Original_Color)));
+SELECT Id, CategoryName, Color FROM Categories WHERE (Id = @Id)</CommandText>
                     <Parameters>
                       <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@CategoryName" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="CategoryName" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@Color" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="Color" SourceColumnNullMapping="false" SourceVersion="Current" />
                       <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@Original_Id" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Id" SourceColumnNullMapping="false" SourceVersion="Original" />
-                      <Parameter AllowDbNull="false" AutogeneratedName="Id" ColumnName="Id" DataSourceName="LIMSDB.dbo.Categories" DataTypeServer="int" DbType="Int32" Direction="Input" ParameterName="@Id" Precision="0" ProviderType="Int" Scale="0" Size="4" SourceColumn="Id" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Color" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Color" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@Original_Color" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="Color" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="Id" ColumnName="Id" DataSourceName="LimsDB.dbo.Categories" DataTypeServer="int" DbType="Int32" Direction="Input" ParameterName="@Id" Precision="0" ProviderType="Int" Scale="0" Size="4" SourceColumn="Id" SourceColumnNullMapping="false" SourceVersion="Current" />
                     </Parameters>
                   </DbCommand>
                 </UpdateCommand>
@@ -105,12 +111,13 @@ SELECT Id, CategoryName FROM Categories WHERE (Id = @Id)</CommandText>
             <Mappings>
               <Mapping SourceColumn="Id" DataSetColumn="Id" />
               <Mapping SourceColumn="CategoryName" DataSetColumn="CategoryName" />
+              <Mapping SourceColumn="Color" DataSetColumn="Color" />
             </Mappings>
             <Sources />
           </TableAdapter>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="CompaniesTableAdapter" GeneratorDataComponentClassName="CompaniesTableAdapter" Name="Companies" UserDataComponentName="CompaniesTableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="LIMSDBConnectionString (Settings)" DbObjectName="LIMSDB.dbo.Companies" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+              <DbSource ConnectionRef="LimsDBConnectionString (Settings)" DbObjectName="LimsDB.dbo.Companies" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
                 <DeleteCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="false">
                     <CommandText>DELETE FROM [dbo].[Companies] WHERE (([CompanyId] = @Original_CompanyId))</CommandText>
@@ -154,15 +161,85 @@ SELECT CompanyId, Name FROM Companies WHERE (CompanyId = @CompanyId)</CommandTex
             </Mappings>
             <Sources />
           </TableAdapter>
-          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="ProductsTableAdapter" GeneratorDataComponentClassName="ProductsTableAdapter" Name="Products" UserDataComponentName="ProductsTableAdapter">
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="ControlDiemensionsTableAdapter" GeneratorDataComponentClassName="ControlDiemensionsTableAdapter" Name="ControlDiemensions" UserDataComponentName="ControlDiemensionsTableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="LIMSDBConnectionString (Settings)" DbObjectName="LIMSDB.dbo.Products" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+              <DbSource ConnectionRef="LimsDBConnectionString (Settings)" DbObjectName="LimsDB.dbo.ControlDiemensions" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
                 <DeleteCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="false">
-                    <CommandText>DELETE FROM [dbo].[Products] WHERE (([Id] = @Original_Id) AND ([ProductName] = @Original_ProductName) AND ([CategoryId] = @Original_CategoryId))</CommandText>
+                    <CommandText>DELETE FROM [dbo].[ControlDiemensions] WHERE (([ControlDiemensionID] = @Original_ControlDiemensionID) AND ((@IsNull_ControlName = 1 AND [ControlName] IS NULL) OR ([ControlName] = @Original_ControlName)) AND ((@IsNull_ControlWidth = 1 AND [ControlWidth] IS NULL) OR ([ControlWidth] = @Original_ControlWidth)) AND ((@IsNull_ControlHeight = 1 AND [ControlHeight] IS NULL) OR ([ControlHeight] = @Original_ControlHeight)) AND ([StoreID] = @Original_StoreID))</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@Original_ControlDiemensionID" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="ControlDiemensionID" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_ControlName" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="ControlName" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@Original_ControlName" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="ControlName" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_ControlWidth" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="ControlWidth" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@Original_ControlWidth" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="ControlWidth" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_ControlHeight" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="ControlHeight" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@Original_ControlHeight" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="ControlHeight" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@Original_StoreID" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="StoreID" SourceColumnNullMapping="false" SourceVersion="Original" />
+                    </Parameters>
+                  </DbCommand>
+                </DeleteCommand>
+                <InsertCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>INSERT INTO [dbo].[ControlDiemensions] ([ControlName], [ControlDescription], [ControlWidth], [ControlHeight], [StoreID]) VALUES (@ControlName, @ControlDescription, @ControlWidth, @ControlHeight, @StoreID);
+SELECT ControlDiemensionID, ControlName, ControlDescription, ControlWidth, ControlHeight, StoreID FROM ControlDiemensions WHERE (ControlDiemensionID = SCOPE_IDENTITY())</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@ControlName" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="ControlName" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@ControlDescription" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="ControlDescription" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@ControlWidth" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="ControlWidth" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@ControlHeight" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="ControlHeight" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@StoreID" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="StoreID" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </InsertCommand>
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT ControlDiemensionID, ControlName, ControlDescription, ControlWidth, ControlHeight, StoreID FROM dbo.ControlDiemensions</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+                <UpdateCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>UPDATE [dbo].[ControlDiemensions] SET [ControlName] = @ControlName, [ControlDescription] = @ControlDescription, [ControlWidth] = @ControlWidth, [ControlHeight] = @ControlHeight, [StoreID] = @StoreID WHERE (([ControlDiemensionID] = @Original_ControlDiemensionID) AND ((@IsNull_ControlName = 1 AND [ControlName] IS NULL) OR ([ControlName] = @Original_ControlName)) AND ((@IsNull_ControlWidth = 1 AND [ControlWidth] IS NULL) OR ([ControlWidth] = @Original_ControlWidth)) AND ((@IsNull_ControlHeight = 1 AND [ControlHeight] IS NULL) OR ([ControlHeight] = @Original_ControlHeight)) AND ([StoreID] = @Original_StoreID));
+SELECT ControlDiemensionID, ControlName, ControlDescription, ControlWidth, ControlHeight, StoreID FROM ControlDiemensions WHERE (ControlDiemensionID = @ControlDiemensionID)</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@ControlName" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="ControlName" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@ControlDescription" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="ControlDescription" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@ControlWidth" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="ControlWidth" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@ControlHeight" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="ControlHeight" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@StoreID" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="StoreID" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@Original_ControlDiemensionID" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="ControlDiemensionID" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_ControlName" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="ControlName" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@Original_ControlName" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="ControlName" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_ControlWidth" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="ControlWidth" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@Original_ControlWidth" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="ControlWidth" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_ControlHeight" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="ControlHeight" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@Original_ControlHeight" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="ControlHeight" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@Original_StoreID" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="StoreID" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="ControlDiemensionID" ColumnName="ControlDiemensionID" DataSourceName="LimsDB.dbo.ControlDiemensions" DataTypeServer="int" DbType="Int32" Direction="Input" ParameterName="@ControlDiemensionID" Precision="0" ProviderType="Int" Scale="0" Size="4" SourceColumn="ControlDiemensionID" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </UpdateCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="ControlDiemensionID" DataSetColumn="ControlDiemensionID" />
+              <Mapping SourceColumn="ControlName" DataSetColumn="ControlName" />
+              <Mapping SourceColumn="ControlDescription" DataSetColumn="ControlDescription" />
+              <Mapping SourceColumn="ControlWidth" DataSetColumn="ControlWidth" />
+              <Mapping SourceColumn="ControlHeight" DataSetColumn="ControlHeight" />
+              <Mapping SourceColumn="StoreID" DataSetColumn="StoreID" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="ProductsTableAdapter" GeneratorDataComponentClassName="ProductsTableAdapter" Name="Products" UserDataComponentName="ProductsTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="LimsDBConnectionString (Settings)" DbObjectName="LimsDB.dbo.Products" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <DeleteCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>DELETE FROM [dbo].[Products] WHERE (([Id] = @Original_Id) AND ([CategoryId] = @Original_CategoryId))</CommandText>
                     <Parameters>
                       <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@Original_Id" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Id" SourceColumnNullMapping="false" SourceVersion="Original" />
-                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@Original_ProductName" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="ProductName" SourceColumnNullMapping="false" SourceVersion="Original" />
                       <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@Original_CategoryId" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="CategoryId" SourceColumnNullMapping="false" SourceVersion="Original" />
                     </Parameters>
                   </DbCommand>
@@ -172,28 +249,27 @@ SELECT CompanyId, Name FROM Companies WHERE (CompanyId = @CompanyId)</CommandTex
                     <CommandText>INSERT INTO [dbo].[Products] ([ProductName], [CategoryId]) VALUES (@ProductName, @CategoryId);
 SELECT Id, ProductName, CategoryId FROM Products WHERE (Id = SCOPE_IDENTITY())</CommandText>
                     <Parameters>
-                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@ProductName" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="ProductName" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@ProductName" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="ProductName" SourceColumnNullMapping="false" SourceVersion="Current" />
                       <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@CategoryId" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="CategoryId" SourceColumnNullMapping="false" SourceVersion="Current" />
                     </Parameters>
                   </DbCommand>
                 </InsertCommand>
                 <SelectCommand>
-                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>SELECT Id, ProductName, CategoryId FROM dbo.Products</CommandText>
                     <Parameters />
                   </DbCommand>
                 </SelectCommand>
                 <UpdateCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="false">
-                    <CommandText>UPDATE [dbo].[Products] SET [ProductName] = @ProductName, [CategoryId] = @CategoryId WHERE (([Id] = @Original_Id) AND ([ProductName] = @Original_ProductName) AND ([CategoryId] = @Original_CategoryId));
+                    <CommandText>UPDATE [dbo].[Products] SET [ProductName] = @ProductName, [CategoryId] = @CategoryId WHERE (([Id] = @Original_Id) AND ([CategoryId] = @Original_CategoryId));
 SELECT Id, ProductName, CategoryId FROM Products WHERE (Id = @Id)</CommandText>
                     <Parameters>
-                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@ProductName" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="ProductName" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@ProductName" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="ProductName" SourceColumnNullMapping="false" SourceVersion="Current" />
                       <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@CategoryId" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="CategoryId" SourceColumnNullMapping="false" SourceVersion="Current" />
                       <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@Original_Id" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Id" SourceColumnNullMapping="false" SourceVersion="Original" />
-                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@Original_ProductName" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="ProductName" SourceColumnNullMapping="false" SourceVersion="Original" />
                       <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@Original_CategoryId" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="CategoryId" SourceColumnNullMapping="false" SourceVersion="Original" />
-                      <Parameter AllowDbNull="false" AutogeneratedName="Id" ColumnName="Id" DataSourceName="LIMSDB.dbo.Products" DataTypeServer="int" DbType="Int32" Direction="Input" ParameterName="@Id" Precision="0" ProviderType="Int" Scale="0" Size="4" SourceColumn="Id" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="Id" ColumnName="Id" DataSourceName="LimsDB.dbo.Products" DataTypeServer="int" DbType="Int32" Direction="Input" ParameterName="@Id" Precision="0" ProviderType="Int" Scale="0" Size="4" SourceColumn="Id" SourceColumnNullMapping="false" SourceVersion="Current" />
                     </Parameters>
                   </DbCommand>
                 </UpdateCommand>
@@ -206,9 +282,110 @@ SELECT Id, ProductName, CategoryId FROM Products WHERE (Id = @Id)</CommandText>
             </Mappings>
             <Sources />
           </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="StoresTableAdapter" GeneratorDataComponentClassName="StoresTableAdapter" Name="Stores" UserDataComponentName="StoresTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="LimsDBConnectionString (Settings)" DbObjectName="LimsDB.dbo.Stores" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <DeleteCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>DELETE FROM [dbo].[Stores] WHERE (([StoreID] = @Original_StoreID))</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@Original_StoreID" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="StoreID" SourceColumnNullMapping="false" SourceVersion="Original" />
+                    </Parameters>
+                  </DbCommand>
+                </DeleteCommand>
+                <InsertCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>INSERT INTO [dbo].[Stores] ([StoreName], [StoreAddress]) VALUES (@StoreName, @StoreAddress);
+SELECT StoreID, StoreName, StoreAddress FROM Stores WHERE (StoreID = SCOPE_IDENTITY())</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@StoreName" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="StoreName" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@StoreAddress" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="StoreAddress" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </InsertCommand>
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT StoreID, StoreName, StoreAddress FROM dbo.Stores</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+                <UpdateCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>UPDATE [dbo].[Stores] SET [StoreName] = @StoreName, [StoreAddress] = @StoreAddress WHERE (([StoreID] = @Original_StoreID));
+SELECT StoreID, StoreName, StoreAddress FROM Stores WHERE (StoreID = @StoreID)</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@StoreName" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="StoreName" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@StoreAddress" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="StoreAddress" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@Original_StoreID" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="StoreID" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="StoreID" ColumnName="StoreID" DataSourceName="LimsDB.dbo.Stores" DataTypeServer="int" DbType="Int32" Direction="Input" ParameterName="@StoreID" Precision="0" ProviderType="Int" Scale="0" Size="4" SourceColumn="StoreID" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </UpdateCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="StoreID" DataSetColumn="StoreID" />
+              <Mapping SourceColumn="StoreName" DataSetColumn="StoreName" />
+              <Mapping SourceColumn="StoreAddress" DataSetColumn="StoreAddress" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="TablesTableAdapter" GeneratorDataComponentClassName="TablesTableAdapter" Name="Tables" UserDataComponentName="TablesTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="LimsDBConnectionString (Settings)" DbObjectName="LimsDB.dbo.Tables" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <DeleteCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>DELETE FROM [dbo].[Tables] WHERE (([TableID] = @Original_TableID) AND ([StoreID] = @Original_StoreID))</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@Original_TableID" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="TableID" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@Original_StoreID" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="StoreID" SourceColumnNullMapping="false" SourceVersion="Original" />
+                    </Parameters>
+                  </DbCommand>
+                </DeleteCommand>
+                <InsertCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>INSERT INTO [dbo].[Tables] ([StoreID], [TableName], [Color]) VALUES (@StoreID, @TableName, @Color);
+SELECT TableID, StoreID, TableName, Color FROM Tables WHERE (TableID = SCOPE_IDENTITY())</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@StoreID" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="StoreID" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@TableName" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="TableName" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@Color" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="Color" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </InsertCommand>
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT TableID, StoreID, TableName, Color FROM dbo.Tables</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+                <UpdateCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>UPDATE [dbo].[Tables] SET [StoreID] = @StoreID, [TableName] = @TableName, [Color] = @Color WHERE (([TableID] = @Original_TableID) AND ([StoreID] = @Original_StoreID));
+SELECT TableID, StoreID, TableName, Color FROM Tables WHERE (TableID = @TableID)</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@StoreID" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="StoreID" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@TableName" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="TableName" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@Color" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="Color" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@Original_TableID" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="TableID" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@Original_StoreID" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="StoreID" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="TableID" ColumnName="TableID" DataSourceName="LimsDB.dbo.Tables" DataTypeServer="int" DbType="Int32" Direction="Input" ParameterName="@TableID" Precision="0" ProviderType="Int" Scale="0" Size="4" SourceColumn="TableID" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </UpdateCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="TableID" DataSetColumn="TableID" />
+              <Mapping SourceColumn="StoreID" DataSetColumn="StoreID" />
+              <Mapping SourceColumn="TableName" DataSetColumn="TableName" />
+              <Mapping SourceColumn="Color" DataSetColumn="Color" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="UsersTableAdapter" GeneratorDataComponentClassName="UsersTableAdapter" Name="Users" UserDataComponentName="UsersTableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="LIMSDBConnectionString (Settings)" DbObjectName="LIMSDB.dbo.Users" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+              <DbSource ConnectionRef="LimsDBConnectionString (Settings)" DbObjectName="LimsDB.dbo.Users" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
                 <DeleteCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="false">
                     <CommandText>DELETE FROM [dbo].[Users] WHERE (([UserID] = @Original_UserID) AND ([PassCode] = @Original_PassCode) AND ([StoreID] = @Original_StoreID))</CommandText>
@@ -221,31 +398,33 @@ SELECT Id, ProductName, CategoryId FROM Products WHERE (Id = @Id)</CommandText>
                 </DeleteCommand>
                 <InsertCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="false">
-                    <CommandText>INSERT INTO [dbo].[Users] ([PassCode], [StoreID]) VALUES (@PassCode, @StoreID);
-SELECT UserID, PassCode, StoreID FROM Users WHERE (UserID = SCOPE_IDENTITY())</CommandText>
+                    <CommandText>INSERT INTO [dbo].[Users] ([PassCode], [StoreID], [UserName]) VALUES (@PassCode, @StoreID, @UserName);
+SELECT UserID, PassCode, StoreID, UserName FROM Users WHERE (UserID = SCOPE_IDENTITY())</CommandText>
                     <Parameters>
                       <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@PassCode" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="PassCode" SourceColumnNullMapping="false" SourceVersion="Current" />
                       <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@StoreID" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="StoreID" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@UserName" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="UserName" SourceColumnNullMapping="false" SourceVersion="Current" />
                     </Parameters>
                   </DbCommand>
                 </InsertCommand>
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="false">
-                    <CommandText>SELECT UserID, PassCode, StoreID FROM dbo.Users</CommandText>
+                    <CommandText>SELECT UserID, PassCode, StoreID, UserName FROM dbo.Users</CommandText>
                     <Parameters />
                   </DbCommand>
                 </SelectCommand>
                 <UpdateCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="false">
-                    <CommandText>UPDATE [dbo].[Users] SET [PassCode] = @PassCode, [StoreID] = @StoreID WHERE (([UserID] = @Original_UserID) AND ([PassCode] = @Original_PassCode) AND ([StoreID] = @Original_StoreID));
-SELECT UserID, PassCode, StoreID FROM Users WHERE (UserID = @UserID)</CommandText>
+                    <CommandText>UPDATE [dbo].[Users] SET [PassCode] = @PassCode, [StoreID] = @StoreID, [UserName] = @UserName WHERE (([UserID] = @Original_UserID) AND ([PassCode] = @Original_PassCode) AND ([StoreID] = @Original_StoreID));
+SELECT UserID, PassCode, StoreID, UserName FROM Users WHERE (UserID = @UserID)</CommandText>
                     <Parameters>
                       <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@PassCode" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="PassCode" SourceColumnNullMapping="false" SourceVersion="Current" />
                       <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@StoreID" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="StoreID" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@UserName" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="UserName" SourceColumnNullMapping="false" SourceVersion="Current" />
                       <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@Original_UserID" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="UserID" SourceColumnNullMapping="false" SourceVersion="Original" />
                       <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@Original_PassCode" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="PassCode" SourceColumnNullMapping="false" SourceVersion="Original" />
                       <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@Original_StoreID" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="StoreID" SourceColumnNullMapping="false" SourceVersion="Original" />
-                      <Parameter AllowDbNull="false" AutogeneratedName="UserID" ColumnName="UserID" DataSourceName="LIMSDB.dbo.Users" DataTypeServer="int" DbType="Int32" Direction="Input" ParameterName="@UserID" Precision="0" ProviderType="Int" Scale="0" Size="4" SourceColumn="UserID" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="UserID" ColumnName="UserID" DataSourceName="LimsDB.dbo.Users" DataTypeServer="int" DbType="Int32" Direction="Input" ParameterName="@UserID" Precision="0" ProviderType="Int" Scale="0" Size="4" SourceColumn="UserID" SourceColumnNullMapping="false" SourceVersion="Current" />
                     </Parameters>
                   </DbCommand>
                 </UpdateCommand>
@@ -255,6 +434,7 @@ SELECT UserID, PassCode, StoreID FROM Users WHERE (UserID = @UserID)</CommandTex
               <Mapping SourceColumn="UserID" DataSetColumn="UserID" />
               <Mapping SourceColumn="PassCode" DataSetColumn="PassCode" />
               <Mapping SourceColumn="StoreID" DataSetColumn="StoreID" />
+              <Mapping SourceColumn="UserName" DataSetColumn="UserName" />
             </Mappings>
             <Sources />
           </TableAdapter>
@@ -263,10 +443,10 @@ SELECT UserID, PassCode, StoreID FROM Users WHERE (UserID = @UserID)</CommandTex
       </DataSource>
     </xs:appinfo>
   </xs:annotation>
-  <xs:element name="LIMSDBDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="True" msprop:Generator_DataSetName="LIMSDBDataSet" msprop:Generator_UserDSName="LIMSDBDataSet">
+  <xs:element name="LimsDBDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="True" msprop:Generator_DataSetName="LimsDBDataSet" msprop:Generator_UserDSName="LimsDBDataSet">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="__MigrationHistory" msprop:Generator_TableClassName="__MigrationHistoryDataTable" msprop:Generator_TableVarName="table__MigrationHistory" msprop:Generator_TablePropName="__MigrationHistory" msprop:Generator_RowDeletingName="__MigrationHistoryRowDeleting" msprop:Generator_RowChangingName="__MigrationHistoryRowChanging" msprop:Generator_RowEvHandlerName="__MigrationHistoryRowChangeEventHandler" msprop:Generator_RowDeletedName="__MigrationHistoryRowDeleted" msprop:Generator_UserTableName="__MigrationHistory" msprop:Generator_RowChangedName="__MigrationHistoryRowChanged" msprop:Generator_RowEvArgName="__MigrationHistoryRowChangeEvent" msprop:Generator_RowClassName="__MigrationHistoryRow">
+        <xs:element name="__MigrationHistory" msprop:Generator_TableClassName="__MigrationHistoryDataTable" msprop:Generator_TableVarName="table__MigrationHistory" msprop:Generator_RowChangedName="__MigrationHistoryRowChanged" msprop:Generator_TablePropName="__MigrationHistory" msprop:Generator_RowDeletingName="__MigrationHistoryRowDeleting" msprop:Generator_RowChangingName="__MigrationHistoryRowChanging" msprop:Generator_RowEvHandlerName="__MigrationHistoryRowChangeEventHandler" msprop:Generator_RowDeletedName="__MigrationHistoryRowDeleted" msprop:Generator_RowClassName="__MigrationHistoryRow" msprop:Generator_UserTableName="__MigrationHistory" msprop:Generator_RowEvArgName="__MigrationHistoryRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="MigrationId" msprop:Generator_ColumnVarNameInTable="columnMigrationId" msprop:Generator_ColumnPropNameInRow="MigrationId" msprop:Generator_ColumnPropNameInTable="MigrationIdColumn" msprop:Generator_UserColumnName="MigrationId">
@@ -294,7 +474,7 @@ SELECT UserID, PassCode, StoreID FROM Users WHERE (UserID = @UserID)</CommandTex
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="Categories" msprop:Generator_TableClassName="CategoriesDataTable" msprop:Generator_TableVarName="tableCategories" msprop:Generator_TablePropName="Categories" msprop:Generator_RowDeletingName="CategoriesRowDeleting" msprop:Generator_RowChangingName="CategoriesRowChanging" msprop:Generator_RowEvHandlerName="CategoriesRowChangeEventHandler" msprop:Generator_RowDeletedName="CategoriesRowDeleted" msprop:Generator_UserTableName="Categories" msprop:Generator_RowChangedName="CategoriesRowChanged" msprop:Generator_RowEvArgName="CategoriesRowChangeEvent" msprop:Generator_RowClassName="CategoriesRow">
+        <xs:element name="Categories" msprop:Generator_TableClassName="CategoriesDataTable" msprop:Generator_TableVarName="tableCategories" msprop:Generator_RowChangedName="CategoriesRowChanged" msprop:Generator_TablePropName="Categories" msprop:Generator_RowDeletingName="CategoriesRowDeleting" msprop:Generator_RowChangingName="CategoriesRowChanging" msprop:Generator_RowEvHandlerName="CategoriesRowChangeEventHandler" msprop:Generator_RowDeletedName="CategoriesRowDeleted" msprop:Generator_RowClassName="CategoriesRow" msprop:Generator_UserTableName="Categories" msprop:Generator_RowEvArgName="CategoriesRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Id" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnId" msprop:Generator_ColumnPropNameInRow="Id" msprop:Generator_ColumnPropNameInTable="IdColumn" msprop:Generator_UserColumnName="Id" type="xs:int" />
@@ -305,10 +485,17 @@ SELECT UserID, PassCode, StoreID FROM Users WHERE (UserID = @UserID)</CommandTex
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
+              <xs:element name="Color" msprop:Generator_ColumnVarNameInTable="columnColor" msprop:Generator_ColumnPropNameInRow="Color" msprop:Generator_ColumnPropNameInTable="ColorColumn" msprop:Generator_UserColumnName="Color" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="Companies" msprop:Generator_TableClassName="CompaniesDataTable" msprop:Generator_TableVarName="tableCompanies" msprop:Generator_TablePropName="Companies" msprop:Generator_RowDeletingName="CompaniesRowDeleting" msprop:Generator_RowChangingName="CompaniesRowChanging" msprop:Generator_RowEvHandlerName="CompaniesRowChangeEventHandler" msprop:Generator_RowDeletedName="CompaniesRowDeleted" msprop:Generator_UserTableName="Companies" msprop:Generator_RowChangedName="CompaniesRowChanged" msprop:Generator_RowEvArgName="CompaniesRowChangeEvent" msprop:Generator_RowClassName="CompaniesRow">
+        <xs:element name="Companies" msprop:Generator_TableClassName="CompaniesDataTable" msprop:Generator_TableVarName="tableCompanies" msprop:Generator_RowChangedName="CompaniesRowChanged" msprop:Generator_TablePropName="Companies" msprop:Generator_RowDeletingName="CompaniesRowDeleting" msprop:Generator_RowChangingName="CompaniesRowChanging" msprop:Generator_RowEvHandlerName="CompaniesRowChangeEventHandler" msprop:Generator_RowDeletedName="CompaniesRowDeleted" msprop:Generator_RowClassName="CompaniesRow" msprop:Generator_UserTableName="Companies" msprop:Generator_RowEvArgName="CompaniesRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="CompanyId" msprop:Generator_ColumnVarNameInTable="columnCompanyId" msprop:Generator_ColumnPropNameInRow="CompanyId" msprop:Generator_ColumnPropNameInTable="CompanyIdColumn" msprop:Generator_UserColumnName="CompanyId">
@@ -328,21 +515,101 @@ SELECT UserID, PassCode, StoreID FROM Users WHERE (UserID = @UserID)</CommandTex
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="Products" msprop:Generator_TableClassName="ProductsDataTable" msprop:Generator_TableVarName="tableProducts" msprop:Generator_TablePropName="Products" msprop:Generator_RowDeletingName="ProductsRowDeleting" msprop:Generator_RowChangingName="ProductsRowChanging" msprop:Generator_RowEvHandlerName="ProductsRowChangeEventHandler" msprop:Generator_RowDeletedName="ProductsRowDeleted" msprop:Generator_UserTableName="Products" msprop:Generator_RowChangedName="ProductsRowChanged" msprop:Generator_RowEvArgName="ProductsRowChangeEvent" msprop:Generator_RowClassName="ProductsRow">
+        <xs:element name="ControlDiemensions" msprop:Generator_TableClassName="ControlDiemensionsDataTable" msprop:Generator_TableVarName="tableControlDiemensions" msprop:Generator_RowChangedName="ControlDiemensionsRowChanged" msprop:Generator_TablePropName="ControlDiemensions" msprop:Generator_RowDeletingName="ControlDiemensionsRowDeleting" msprop:Generator_RowChangingName="ControlDiemensionsRowChanging" msprop:Generator_RowEvHandlerName="ControlDiemensionsRowChangeEventHandler" msprop:Generator_RowDeletedName="ControlDiemensionsRowDeleted" msprop:Generator_RowClassName="ControlDiemensionsRow" msprop:Generator_UserTableName="ControlDiemensions" msprop:Generator_RowEvArgName="ControlDiemensionsRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ControlDiemensionID" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnControlDiemensionID" msprop:Generator_ColumnPropNameInRow="ControlDiemensionID" msprop:Generator_ColumnPropNameInTable="ControlDiemensionIDColumn" msprop:Generator_UserColumnName="ControlDiemensionID" type="xs:int" />
+              <xs:element name="ControlName" msprop:Generator_ColumnVarNameInTable="columnControlName" msprop:Generator_ColumnPropNameInRow="ControlName" msprop:Generator_ColumnPropNameInTable="ControlNameColumn" msprop:Generator_UserColumnName="ControlName" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="20" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="ControlDescription" msprop:Generator_ColumnVarNameInTable="columnControlDescription" msprop:Generator_ColumnPropNameInRow="ControlDescription" msprop:Generator_ColumnPropNameInTable="ControlDescriptionColumn" msprop:Generator_UserColumnName="ControlDescription" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="ControlWidth" msprop:Generator_ColumnVarNameInTable="columnControlWidth" msprop:Generator_ColumnPropNameInRow="ControlWidth" msprop:Generator_ColumnPropNameInTable="ControlWidthColumn" msprop:Generator_UserColumnName="ControlWidth" type="xs:int" minOccurs="0" />
+              <xs:element name="ControlHeight" msprop:Generator_ColumnVarNameInTable="columnControlHeight" msprop:Generator_ColumnPropNameInRow="ControlHeight" msprop:Generator_ColumnPropNameInTable="ControlHeightColumn" msprop:Generator_UserColumnName="ControlHeight" type="xs:int" minOccurs="0" />
+              <xs:element name="StoreID" msprop:Generator_ColumnVarNameInTable="columnStoreID" msprop:Generator_ColumnPropNameInRow="StoreID" msprop:Generator_ColumnPropNameInTable="StoreIDColumn" msprop:Generator_UserColumnName="StoreID" type="xs:int" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Products" msprop:Generator_TableClassName="ProductsDataTable" msprop:Generator_TableVarName="tableProducts" msprop:Generator_RowChangedName="ProductsRowChanged" msprop:Generator_TablePropName="Products" msprop:Generator_RowDeletingName="ProductsRowDeleting" msprop:Generator_RowChangingName="ProductsRowChanging" msprop:Generator_RowEvHandlerName="ProductsRowChangeEventHandler" msprop:Generator_RowDeletedName="ProductsRowDeleted" msprop:Generator_RowClassName="ProductsRow" msprop:Generator_UserTableName="Products" msprop:Generator_RowEvArgName="ProductsRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Id" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnId" msprop:Generator_ColumnPropNameInRow="Id" msprop:Generator_ColumnPropNameInTable="IdColumn" msprop:Generator_UserColumnName="Id" type="xs:int" />
-              <xs:element name="ProductName" msprop:Generator_ColumnVarNameInTable="columnProductName" msprop:Generator_ColumnPropNameInRow="ProductName" msprop:Generator_ColumnPropNameInTable="ProductNameColumn" msprop:Generator_UserColumnName="ProductName" type="xs:int" />
+              <xs:element name="ProductName" msprop:Generator_ColumnVarNameInTable="columnProductName" msprop:Generator_ColumnPropNameInRow="ProductName" msprop:Generator_ColumnPropNameInTable="ProductNameColumn" msprop:Generator_UserColumnName="ProductName" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
               <xs:element name="CategoryId" msprop:Generator_ColumnVarNameInTable="columnCategoryId" msprop:Generator_ColumnPropNameInRow="CategoryId" msprop:Generator_ColumnPropNameInTable="CategoryIdColumn" msprop:Generator_UserColumnName="CategoryId" type="xs:int" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="Users" msprop:Generator_TableClassName="UsersDataTable" msprop:Generator_TableVarName="tableUsers" msprop:Generator_TablePropName="Users" msprop:Generator_RowDeletingName="UsersRowDeleting" msprop:Generator_RowChangingName="UsersRowChanging" msprop:Generator_RowEvHandlerName="UsersRowChangeEventHandler" msprop:Generator_RowDeletedName="UsersRowDeleted" msprop:Generator_UserTableName="Users" msprop:Generator_RowChangedName="UsersRowChanged" msprop:Generator_RowEvArgName="UsersRowChangeEvent" msprop:Generator_RowClassName="UsersRow">
+        <xs:element name="Stores" msprop:Generator_TableClassName="StoresDataTable" msprop:Generator_TableVarName="tableStores" msprop:Generator_RowChangedName="StoresRowChanged" msprop:Generator_TablePropName="Stores" msprop:Generator_RowDeletingName="StoresRowDeleting" msprop:Generator_RowChangingName="StoresRowChanging" msprop:Generator_RowEvHandlerName="StoresRowChangeEventHandler" msprop:Generator_RowDeletedName="StoresRowDeleted" msprop:Generator_RowClassName="StoresRow" msprop:Generator_UserTableName="Stores" msprop:Generator_RowEvArgName="StoresRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="StoreID" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnStoreID" msprop:Generator_ColumnPropNameInRow="StoreID" msprop:Generator_ColumnPropNameInTable="StoreIDColumn" msprop:Generator_UserColumnName="StoreID" type="xs:int" />
+              <xs:element name="StoreName" msprop:Generator_ColumnVarNameInTable="columnStoreName" msprop:Generator_ColumnPropNameInRow="StoreName" msprop:Generator_ColumnPropNameInTable="StoreNameColumn" msprop:Generator_UserColumnName="StoreName" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="StoreAddress" msprop:Generator_ColumnVarNameInTable="columnStoreAddress" msprop:Generator_ColumnPropNameInRow="StoreAddress" msprop:Generator_ColumnPropNameInTable="StoreAddressColumn" msprop:Generator_UserColumnName="StoreAddress" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Tables" msprop:Generator_TableClassName="TablesDataTable" msprop:Generator_TableVarName="tableTables" msprop:Generator_RowChangedName="TablesRowChanged" msprop:Generator_TablePropName="_Tables" msprop:Generator_RowDeletingName="TablesRowDeleting" msprop:Generator_RowChangingName="TablesRowChanging" msprop:Generator_RowEvHandlerName="TablesRowChangeEventHandler" msprop:Generator_RowDeletedName="TablesRowDeleted" msprop:Generator_RowClassName="TablesRow" msprop:Generator_UserTableName="Tables" msprop:Generator_RowEvArgName="TablesRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="TableID" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnTableID" msprop:Generator_ColumnPropNameInRow="TableID" msprop:Generator_ColumnPropNameInTable="TableIDColumn" msprop:Generator_UserColumnName="TableID" type="xs:int" />
+              <xs:element name="StoreID" msprop:Generator_ColumnVarNameInTable="columnStoreID" msprop:Generator_ColumnPropNameInRow="StoreID" msprop:Generator_ColumnPropNameInTable="StoreIDColumn" msprop:Generator_UserColumnName="StoreID" type="xs:int" />
+              <xs:element name="TableName" msprop:Generator_ColumnVarNameInTable="columnTableName" msprop:Generator_ColumnPropNameInRow="TableName" msprop:Generator_ColumnPropNameInTable="TableNameColumn" msprop:Generator_UserColumnName="TableName" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Color" msprop:Generator_ColumnVarNameInTable="columnColor" msprop:Generator_ColumnPropNameInRow="Color" msprop:Generator_ColumnPropNameInTable="ColorColumn" msprop:Generator_UserColumnName="Color" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Users" msprop:Generator_TableClassName="UsersDataTable" msprop:Generator_TableVarName="tableUsers" msprop:Generator_RowChangedName="UsersRowChanged" msprop:Generator_TablePropName="Users" msprop:Generator_RowDeletingName="UsersRowDeleting" msprop:Generator_RowChangingName="UsersRowChanging" msprop:Generator_RowEvHandlerName="UsersRowChangeEventHandler" msprop:Generator_RowDeletedName="UsersRowDeleted" msprop:Generator_RowClassName="UsersRow" msprop:Generator_UserTableName="Users" msprop:Generator_RowEvArgName="UsersRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="UserID" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnUserID" msprop:Generator_ColumnPropNameInRow="UserID" msprop:Generator_ColumnPropNameInTable="UserIDColumn" msprop:Generator_UserColumnName="UserID" type="xs:int" />
               <xs:element name="PassCode" msprop:Generator_ColumnVarNameInTable="columnPassCode" msprop:Generator_ColumnPropNameInRow="PassCode" msprop:Generator_ColumnPropNameInTable="PassCodeColumn" msprop:Generator_UserColumnName="PassCode" type="xs:int" />
               <xs:element name="StoreID" msprop:Generator_ColumnVarNameInTable="columnStoreID" msprop:Generator_ColumnPropNameInRow="StoreID" msprop:Generator_ColumnPropNameInTable="StoreIDColumn" msprop:Generator_UserColumnName="StoreID" type="xs:int" />
+              <xs:element name="UserName" msprop:Generator_ColumnVarNameInTable="columnUserName" msprop:Generator_ColumnPropNameInRow="UserName" msprop:Generator_ColumnPropNameInTable="UserNameColumn" msprop:Generator_UserColumnName="UserName" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
@@ -361,13 +628,33 @@ SELECT UserID, PassCode, StoreID FROM Users WHERE (UserID = @UserID)</CommandTex
       <xs:selector xpath=".//mstns:Companies" />
       <xs:field xpath="mstns:CompanyId" />
     </xs:unique>
+    <xs:unique name="ControlDiemensions_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:ControlDiemensions" />
+      <xs:field xpath="mstns:ControlDiemensionID" />
+    </xs:unique>
     <xs:unique name="Products_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
       <xs:selector xpath=".//mstns:Products" />
       <xs:field xpath="mstns:Id" />
+    </xs:unique>
+    <xs:unique name="Stores_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:Stores" />
+      <xs:field xpath="mstns:StoreID" />
+    </xs:unique>
+    <xs:unique name="Tables_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:Tables" />
+      <xs:field xpath="mstns:TableID" />
     </xs:unique>
     <xs:unique name="Users_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
       <xs:selector xpath=".//mstns:Users" />
       <xs:field xpath="mstns:UserID" />
     </xs:unique>
   </xs:element>
+  <xs:annotation>
+    <xs:appinfo>
+      <msdata:Relationship name="FK_dbo.ControlDiemensions_dbo.Stores_StoreID" msdata:parent="Stores" msdata:child="ControlDiemensions" msdata:parentkey="StoreID" msdata:childkey="StoreID" msprop:Generator_UserChildTable="ControlDiemensions" msprop:Generator_ChildPropName="GetControlDiemensionsRows" msprop:Generator_UserRelationName="FK_dbo.ControlDiemensions_dbo.Stores_StoreID" msprop:Generator_ParentPropName="StoresRow" msprop:Generator_RelationVarName="_relationFK_dbo_ControlDiemensions_dbo_Stores_StoreID" msprop:Generator_UserParentTable="Stores" />
+      <msdata:Relationship name="FK_dbo.Products_dbo.Categories_CategoryId" msdata:parent="Categories" msdata:child="Products" msdata:parentkey="Id" msdata:childkey="CategoryId" msprop:Generator_UserChildTable="Products" msprop:Generator_ChildPropName="GetProductsRows" msprop:Generator_UserRelationName="FK_dbo.Products_dbo.Categories_CategoryId" msprop:Generator_RelationVarName="_relationFK_dbo_Products_dbo_Categories_CategoryId" msprop:Generator_UserParentTable="Categories" msprop:Generator_ParentPropName="CategoriesRow" />
+      <msdata:Relationship name="FK_dbo.Tables_dbo.Stores_StoreID" msdata:parent="Stores" msdata:child="Tables" msdata:parentkey="StoreID" msdata:childkey="StoreID" msprop:Generator_UserChildTable="Tables" msprop:Generator_ChildPropName="GetTablesRows" msprop:Generator_UserRelationName="FK_dbo.Tables_dbo.Stores_StoreID" msprop:Generator_RelationVarName="_relationFK_dbo_Tables_dbo_Stores_StoreID" msprop:Generator_UserParentTable="Stores" msprop:Generator_ParentPropName="StoresRow" />
+      <msdata:Relationship name="FK_dbo.Users_dbo.Stores_StoreID" msdata:parent="Stores" msdata:child="Users" msdata:parentkey="StoreID" msdata:childkey="StoreID" msprop:Generator_UserChildTable="Users" msprop:Generator_ChildPropName="GetUsersRows" msprop:Generator_UserRelationName="FK_dbo.Users_dbo.Stores_StoreID" msprop:Generator_RelationVarName="_relationFK_dbo_Users_dbo_Stores_StoreID" msprop:Generator_UserParentTable="Stores" msprop:Generator_ParentPropName="StoresRow" />
+    </xs:appinfo>
+  </xs:annotation>
 </xs:schema>

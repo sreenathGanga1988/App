@@ -26,22 +26,10 @@ namespace App.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\\App.mdf;Integ" +
-            "rated Security=True;Connect Timeout=30")]
-        public string AppConnectionString {
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=.;Initial Catalog=LimsDB;Integrated Security=True")]
+        public string LimsDBConnectionString {
             get {
-                return ((string)(this["AppConnectionString"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=.\\sqlexpress;Initial Catalog=LIMSDB;Persist Security Info=True;User I" +
-            "D=sa;Password=sreenath")]
-        public string LIMSDBConnectionString {
-            get {
-                return ((string)(this["LIMSDBConnectionString"]));
+                return ((string)(this["LimsDBConnectionString"]));
             }
         }
     }

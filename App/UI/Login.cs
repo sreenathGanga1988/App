@@ -20,13 +20,13 @@ namespace App.UI
             InitializeComponent();
 
             Company objCompany = new Company();
-            objCompany.CompanyId = "3434";
+            objCompany.CompanyId = DateTime.Now.ToString();
             objCompany.Name = "Sree";
 
-            // Create context object and then save company data.  
+          //  Create context object and then save company data.  
             POSDataContext objContext = new POSDataContext();
             objContext.Companies.Add(objCompany);
-            objContext.SaveChanges();
+           objContext.SaveChanges();
 
 
         }
@@ -37,8 +37,29 @@ namespace App.UI
 
             if(btn.Text=="OK")
             {
-                MainForm frm = new MainForm();
-                frm.Show();
+
+                try
+                {
+                    Repository.UserRepository usrrep = new Repository.UserRepository();
+
+                    if (usrrep.IsuserValid(int.Parse(txt_PasscodeDisplay.Text)))
+                    {
+                        StartForm frm = new StartForm();
+                        frm.Show();
+
+                    }
+                    else
+                    {
+
+                        MessageBox.Show("Passcode not Valid");
+                    }
+                }
+                catch (Exception)
+                {
+
+                    MessageBox.Show("Hi Dude You lost connection to DB");
+                }
+               
             }
             else if(btn.Text == "Back")
             {
