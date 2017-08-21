@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Npgsql;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -40,13 +41,27 @@ namespace App.UI
         private void button2_Click(object sender, EventArgs e)
         {
             SalesForm frm = new SalesForm();
+          
+            frm.StartPosition = FormStartPosition.CenterScreen;
             frm.Show();
+           
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
             test tst = new test();
             tst.Show();
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            Setting.oodoSetting odoosetting = new Setting.oodoSetting();
+            odoosetting.Show();
+
+
+
+
+
         }
     }
 }

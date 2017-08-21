@@ -403,11 +403,48 @@ namespace App.UI
                 }
                 CalculateTotal();
             }
+            else if (btn.Text.Trim() == "Cash")
+            {
+
+                txt_cash.Text = txt_cash.Text.Trim() + txt_producrtcode.Text.Trim();
+            }
             else
             {
-                txt_producrtcode.Text = txt_producrtcode.Text.Trim() + btn.Text.Trim();
+                txt_producrtcode.Text = txt_producrtcode.Text+btn.Text.Trim() ;
             }
 
+        }
+
+
+
+
+        public void fillchange()
+        {
+
+            if (calculateChange() > 0) { txt_change.Text = calculateChange().ToString(); } else { txt_change.Text = "0"; };
+            
+        }
+        public Decimal calculateChange()
+        {
+            Decimal Total = Decimal.Parse(txt_total.Text);
+            Decimal cash = Decimal.Parse(txt_cash.Text);
+            Decimal change = cash - Total;
+            return change;
+        }
+
+        private void txt_total_TextChanged(object sender, EventArgs e)
+        {
+            fillchange();
+        }
+
+        private void txt_change_TextChanged(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void txt_cash_TextChanged(object sender, EventArgs e)
+        {
+            fillchange();
         }
     }
 }

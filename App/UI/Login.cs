@@ -44,6 +44,7 @@ namespace App.UI
 
                     if (usrrep.IsuserValid(int.Parse(txt_PasscodeDisplay.Text)))
                     {
+                        this.Hide();
                         StartForm frm = new StartForm();
                         frm.Show();
 

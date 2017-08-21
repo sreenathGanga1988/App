@@ -26,6 +26,7 @@ namespace App.Model
         public String Image { get; set; }
         public Boolean IsAvailable { get; set; }
         public Boolean? IsRateChangable { get; set; }
+        public virtual List<InvoiceDetail> InvoiceDetails { get; set; }
     }
     public class Category
     {
@@ -70,8 +71,8 @@ namespace App.Model
 
         public virtual List<User> Users { get; set; }
         public virtual List<ControlDiemension> ControlDiemensions { get; set; }
-        
-
+        public virtual List<Table> Tables { get; set; }
+        public virtual List<Invoicemaster> Invoicemasters { get; set; }
     }
 
     public class Company
@@ -128,6 +129,7 @@ namespace App.Model
         public virtual Store Store { get; set; }
 
         public String Color { get; set; }
+        public virtual List<Invoicemaster> Invoicemasters { get; set; }
     }
 
 
@@ -141,17 +143,69 @@ namespace App.Model
         public int StoreID { get; set; }
         public int UserID { get; set; }
 
+        public int CustomerID { get; set; }
+        public DateTime InvoiceDate { get; set; }
 
-        public String CustomerName { get; set; }
-
-        public string PhoneNumber { get; set; }
-
-        public string CustomerDetails { get; set; }
-
+        public Decimal TotalPaid { get; set; }
+        public Decimal RoundOffAmount { get; set; }
         public virtual Store Store { get; set; }
         public virtual User User { get; set; }
-
+        public virtual Customer Customer { get; set; }
+        public virtual List<InvoiceDetail> InvoiceDetails { get; set; }
         public String Color { get; set; }
     }
+
+    public class InvoiceDetail
+    {
+
+        [Key]
+        public int InvoiceDetailID { get; set; }
+        public int InvoicemasterID { get; set; }
+
+        public int ProductId { get; set; }
+        public Decimal UnitPrice { get; set; }
+        public Decimal Qty { get; set; }
+        public Decimal DiscountPerUOM { get; set; }
+        public Decimal Total { get; set; }
+        public Boolean IsUploaded { get; set; }
+        public virtual Product Product { get; set; }
+        public virtual Invoicemaster Invoicemaster { get; set; }
+      
+        
+    }
+
+  
+    public class OdooDetail
+    {
+
+        [Key]
+        public int OdooDetailID { get; set; }
+        public String Server { get; set; }
+        public int PortNum { get; set; }
+        public String UserId { get; set; }
+        public String Password { get; set; }
+        public String DataBasename { get; set; }
+        public Boolean IsActive { get; set; }
+        public int StoreID { get; set; }
+        public virtual Store Store { get; set; }
+    }
+
+
+
+    public class AppSetting
+    {
+        [Key]
+        public int AppSettingID { get; set; }
+        public int StoreID { get; set; }
+
+        public Boolean RealtimeInvoiceUpdate { get; set; }
+
+        public Boolean FastLoadingofProduct { get; set; }
+        public int NoofproductonRow { get; set; }
+        public virtual Store Store { get; set; }
+    }
+
+
+
 
 }

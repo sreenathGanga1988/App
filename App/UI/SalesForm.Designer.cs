@@ -29,6 +29,9 @@
         private void InitializeComponent()
         {
             this.grp_bottompanel = new System.Windows.Forms.GroupBox();
+            this.lbl_custid = new System.Windows.Forms.Label();
+            this.lbl_customer = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.grp_Category = new System.Windows.Forms.GroupBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -41,6 +44,8 @@
             this.Total = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.grp_btn = new System.Windows.Forms.GroupBox();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.button14 = new System.Windows.Forms.Button();
+            this.button13 = new System.Windows.Forms.Button();
             this.button15 = new System.Windows.Forms.Button();
             this.btn_addItembyCode = new System.Windows.Forms.Button();
             this.btn_changeQty = new System.Windows.Forms.Button();
@@ -58,15 +63,16 @@
             this.button3 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.pnl_product = new System.Windows.Forms.Panel();
-            this.lbl_table = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.txt_total = new System.Windows.Forms.TextBox();
-            this.button13 = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.lbl_table = new System.Windows.Forms.TextBox();
+            this.pnl_product = new System.Windows.Forms.Panel();
             this.grp_table = new System.Windows.Forms.GroupBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.lbl_customer = new System.Windows.Forms.Label();
-            this.lbl_custid = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.txt_cash = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.txt_change = new System.Windows.Forms.TextBox();
+            this.button16 = new System.Windows.Forms.Button();
             this.grp_bottompanel.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -88,6 +94,38 @@
             this.grp_bottompanel.TabIndex = 1;
             this.grp_bottompanel.TabStop = false;
             this.grp_bottompanel.Text = "Bottom";
+            // 
+            // lbl_custid
+            // 
+            this.lbl_custid.AutoSize = true;
+            this.lbl_custid.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_custid.Location = new System.Drawing.Point(176, 14);
+            this.lbl_custid.Name = "lbl_custid";
+            this.lbl_custid.Size = new System.Drawing.Size(16, 16);
+            this.lbl_custid.TabIndex = 2;
+            this.lbl_custid.Text = "1";
+            this.lbl_custid.Visible = false;
+            // 
+            // lbl_customer
+            // 
+            this.lbl_customer.AutoSize = true;
+            this.lbl_customer.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_customer.ForeColor = System.Drawing.Color.DarkRed;
+            this.lbl_customer.Location = new System.Drawing.Point(104, 15);
+            this.lbl_customer.Name = "lbl_customer";
+            this.lbl_customer.Size = new System.Drawing.Size(38, 16);
+            this.lbl_customer.TabIndex = 1;
+            this.lbl_customer.Text = "New";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(13, 15);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(85, 16);
+            this.label2.TabIndex = 0;
+            this.label2.Text = "Customer : ";
             // 
             // grp_Category
             // 
@@ -181,11 +219,13 @@
             this.grp_btn.Size = new System.Drawing.Size(363, 230);
             this.grp_btn.TabIndex = 0;
             this.grp_btn.TabStop = false;
-            this.grp_btn.Text = "groupBox2";
+            this.grp_btn.Text = "keyPad";
             // 
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.SystemColors.Info;
+            this.panel2.Controls.Add(this.button16);
+            this.panel2.Controls.Add(this.button14);
             this.panel2.Controls.Add(this.button13);
             this.panel2.Controls.Add(this.button15);
             this.panel2.Controls.Add(this.btn_addItembyCode);
@@ -208,6 +248,26 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(357, 211);
             this.panel2.TabIndex = 1;
+            // 
+            // button14
+            // 
+            this.button14.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button14.Location = new System.Drawing.Point(133, 165);
+            this.button14.Name = "button14";
+            this.button14.Size = new System.Drawing.Size(107, 41);
+            this.button14.TabIndex = 19;
+            this.button14.Text = "CheckOut";
+            this.button14.UseVisualStyleBackColor = true;
+            // 
+            // button13
+            // 
+            this.button13.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button13.Location = new System.Drawing.Point(125, 111);
+            this.button13.Name = "button13";
+            this.button13.Size = new System.Drawing.Size(56, 50);
+            this.button13.TabIndex = 18;
+            this.button13.Text = "0";
+            this.button13.UseVisualStyleBackColor = true;
             // 
             // button15
             // 
@@ -252,16 +312,17 @@
             this.txt_producrtcode.Name = "txt_producrtcode";
             this.txt_producrtcode.Size = new System.Drawing.Size(100, 29);
             this.txt_producrtcode.TabIndex = 14;
+            this.txt_producrtcode.Text = "0";
             this.txt_producrtcode.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textBox1_KeyUp);
             // 
             // button11
             // 
             this.button11.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button11.Location = new System.Drawing.Point(1, 167);
+            this.button11.Location = new System.Drawing.Point(4, 165);
             this.button11.Name = "button11";
-            this.button11.Size = new System.Drawing.Size(353, 41);
+            this.button11.Size = new System.Drawing.Size(125, 41);
             this.button11.TabIndex = 13;
-            this.button11.Text = "CheckOut";
+            this.button11.Text = "KOT";
             this.button11.UseVisualStyleBackColor = true;
             this.button11.Click += new System.EventHandler(this.numericbuttonclicked_Click);
             // 
@@ -389,6 +450,10 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.txt_change);
+            this.groupBox2.Controls.Add(this.label4);
+            this.groupBox2.Controls.Add(this.txt_cash);
+            this.groupBox2.Controls.Add(this.label3);
             this.groupBox2.Controls.Add(this.txt_total);
             this.groupBox2.Controls.Add(this.label1);
             this.groupBox2.Controls.Add(this.lbl_table);
@@ -400,23 +465,17 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Summary";
             // 
-            // pnl_product
+            // txt_total
             // 
-            this.pnl_product.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnl_product.Location = new System.Drawing.Point(544, 50);
-            this.pnl_product.Name = "pnl_product";
-            this.pnl_product.Size = new System.Drawing.Size(321, 461);
-            this.pnl_product.TabIndex = 7;
-            // 
-            // lbl_table
-            // 
-            this.lbl_table.Dock = System.Windows.Forms.DockStyle.Top;
-            this.lbl_table.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_table.Location = new System.Drawing.Point(3, 16);
-            this.lbl_table.Name = "lbl_table";
-            this.lbl_table.ReadOnly = true;
-            this.lbl_table.Size = new System.Drawing.Size(81, 29);
-            this.lbl_table.TabIndex = 0;
+            this.txt_total.Dock = System.Windows.Forms.DockStyle.Top;
+            this.txt_total.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold);
+            this.txt_total.Location = new System.Drawing.Point(3, 69);
+            this.txt_total.Name = "txt_total";
+            this.txt_total.ReadOnly = true;
+            this.txt_total.Size = new System.Drawing.Size(81, 29);
+            this.txt_total.TabIndex = 2;
+            this.txt_total.Text = "0";
+            this.txt_total.TextChanged += new System.EventHandler(this.txt_total_TextChanged);
             // 
             // label1
             // 
@@ -429,24 +488,23 @@
             this.label1.TabIndex = 1;
             this.label1.Text = "Total";
             // 
-            // txt_total
+            // lbl_table
             // 
-            this.txt_total.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold);
-            this.txt_total.Location = new System.Drawing.Point(4, 73);
-            this.txt_total.Name = "txt_total";
-            this.txt_total.ReadOnly = true;
-            this.txt_total.Size = new System.Drawing.Size(83, 29);
-            this.txt_total.TabIndex = 2;
+            this.lbl_table.Dock = System.Windows.Forms.DockStyle.Top;
+            this.lbl_table.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_table.Location = new System.Drawing.Point(3, 16);
+            this.lbl_table.Name = "lbl_table";
+            this.lbl_table.ReadOnly = true;
+            this.lbl_table.Size = new System.Drawing.Size(81, 29);
+            this.lbl_table.TabIndex = 0;
             // 
-            // button13
+            // pnl_product
             // 
-            this.button13.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button13.Location = new System.Drawing.Point(125, 111);
-            this.button13.Name = "button13";
-            this.button13.Size = new System.Drawing.Size(56, 50);
-            this.button13.TabIndex = 18;
-            this.button13.Text = "0";
-            this.button13.UseVisualStyleBackColor = true;
+            this.pnl_product.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnl_product.Location = new System.Drawing.Point(544, 50);
+            this.pnl_product.Name = "pnl_product";
+            this.pnl_product.Size = new System.Drawing.Size(321, 461);
+            this.pnl_product.TabIndex = 7;
             // 
             // grp_table
             // 
@@ -458,37 +516,62 @@
             this.grp_table.TabStop = false;
             this.grp_table.Text = "Tables";
             // 
-            // label2
+            // label3
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(13, 15);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(85, 16);
-            this.label2.TabIndex = 0;
-            this.label2.Text = "Customer : ";
+            this.label3.AutoSize = true;
+            this.label3.Dock = System.Windows.Forms.DockStyle.Top;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold);
+            this.label3.Location = new System.Drawing.Point(3, 98);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(57, 24);
+            this.label3.TabIndex = 3;
+            this.label3.Text = "Cash";
             // 
-            // lbl_customer
+            // txt_cash
             // 
-            this.lbl_customer.AutoSize = true;
-            this.lbl_customer.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_customer.ForeColor = System.Drawing.Color.DarkRed;
-            this.lbl_customer.Location = new System.Drawing.Point(104, 15);
-            this.lbl_customer.Name = "lbl_customer";
-            this.lbl_customer.Size = new System.Drawing.Size(38, 16);
-            this.lbl_customer.TabIndex = 1;
-            this.lbl_customer.Text = "New";
+            this.txt_cash.Dock = System.Windows.Forms.DockStyle.Top;
+            this.txt_cash.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold);
+            this.txt_cash.Location = new System.Drawing.Point(3, 122);
+            this.txt_cash.Name = "txt_cash";
+            this.txt_cash.Size = new System.Drawing.Size(81, 29);
+            this.txt_cash.TabIndex = 4;
+            this.txt_cash.Text = "0";
+            this.txt_cash.TextChanged += new System.EventHandler(this.txt_cash_TextChanged);
             // 
-            // lbl_custid
+            // label4
             // 
-            this.lbl_custid.AutoSize = true;
-            this.lbl_custid.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_custid.Location = new System.Drawing.Point(176, 14);
-            this.lbl_custid.Name = "lbl_custid";
-            this.lbl_custid.Size = new System.Drawing.Size(16, 16);
-            this.lbl_custid.TabIndex = 2;
-            this.lbl_custid.Text = "1";
-            this.lbl_custid.Visible = false;
+            this.label4.AutoSize = true;
+            this.label4.Dock = System.Windows.Forms.DockStyle.Top;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold);
+            this.label4.Location = new System.Drawing.Point(3, 151);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(83, 24);
+            this.label4.TabIndex = 5;
+            this.label4.Text = "Change";
+            // 
+            // txt_change
+            // 
+            this.txt_change.Dock = System.Windows.Forms.DockStyle.Top;
+            this.txt_change.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold);
+            this.txt_change.Location = new System.Drawing.Point(3, 175);
+            this.txt_change.Name = "txt_change";
+            this.txt_change.ReadOnly = true;
+            this.txt_change.Size = new System.Drawing.Size(81, 29);
+            this.txt_change.TabIndex = 6;
+            this.txt_change.Text = "0";
+            this.txt_change.TextChanged += new System.EventHandler(this.txt_change_TextChanged);
+            // 
+            // button16
+            // 
+            this.button16.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button16.Location = new System.Drawing.Point(244, 165);
+            this.button16.Name = "button16";
+            this.button16.Size = new System.Drawing.Size(110, 39);
+            this.button16.TabIndex = 20;
+            this.button16.TabStop = false;
+            this.button16.Text = "Cash";
+            this.button16.UseVisualStyleBackColor = true;
+            this.button16.Click += new System.EventHandler(this.numericbuttonclicked_Click);
             // 
             // SalesForm
             // 
@@ -561,5 +644,11 @@
         private System.Windows.Forms.Label lbl_custid;
         private System.Windows.Forms.Label lbl_customer;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button button14;
+        private System.Windows.Forms.TextBox txt_cash;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox txt_change;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Button button16;
     }
 }

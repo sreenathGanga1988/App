@@ -14,7 +14,7 @@ namespace App.Repository
         POSDataContext cntxt = new POSDataContext();
         public List<ProductlistViewModal> GetProductList(int? categoryID = 0)
         {
-            
+
             if (categoryID != 0)
             {
                 var q = (cntxt.Products.Where(u => u.CategoryId == categoryID).
@@ -29,15 +29,15 @@ namespace App.Repository
                 return q;
             }
 
-           
+
         }
 
         public Product GetProduct(int Id)
         {
-            
-                var q = cntxt.Products.Where(u => u.Id == Id).First();
-                return q;
-            
+
+            var q = cntxt.Products.Where(u => u.Id == Id).First();
+            return q;
+
         }
 
 
@@ -140,7 +140,7 @@ namespace App.Repository
     public class CategoryRepository
     {
         POSDataContext cntxt = new POSDataContext();
-        public List<Category> GetCategoryList(int? LocationID=0)
+        public List<Category> GetCategoryList(int? LocationID = 0)
         {
 
             var q = cntxt.Categorys.ToList();
@@ -148,7 +148,7 @@ namespace App.Repository
             return q;
         }
 
-       
+
 
     }
 
@@ -158,10 +158,50 @@ namespace App.Repository
         public List<Table> GetTableList(int? LocationID = 0)
         {
 
-            var q = cntxt.Tables.Where(u=>u.StoreID==LocationID).ToList();
+            var q = cntxt.Tables.Where(u => u.StoreID == LocationID).ToList();
 
             return q;
         }
 
     }
+
+
+    public class SettingRepository
+   {
+        POSDataContext cntxt = new POSDataContext();
+        public void UpdateOdooReopository(OdooDetail odetails)
+        {
+            if (MarkOdoddetailsObsolute(odetails))
+            {
+                cntxt.OdooDetails.Add(odetails);
+                cntxt.SaveChanges();
+            }   
+           
+        }
+
+
+        public Boolean MarkOdoddetailsObsolute(OdooDetail odetails)
+        {
+            Boolean issucess = false;
+            var q = from ododet in cntxt.OdooDetails
+                    where ododet.StoreID == odetails.StoreID
+                    select ododet;
+            foreach (var element in q)
+            {
+                element.IsActive = false;
+
+            }
+
+            cntxt.SaveChanges();
+            issucess = true;
+
+            return issucess;
+        }
+
+
+    }
+
+
+
+
 }
