@@ -201,7 +201,16 @@ namespace App.Repository
 
     }
 
+    public class KotRepository
+    {
+        POSDataContext cntxt = new POSDataContext();
 
+        public void InsertKOT(KotMaster kotmaster)
+        {
+            cntxt.KotMasters.Add(kotmaster);
+            cntxt.SaveChanges();
+        }
+    }
 
 
 }

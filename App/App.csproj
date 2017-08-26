@@ -156,6 +156,18 @@
     <Compile Include="Migrations\201708201354223_addmig.Designer.cs">
       <DependentUpon>201708201354223_addmig.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201708261715572_new migr.cs" />
+    <Compile Include="Migrations\201708261715572_new migr.Designer.cs">
+      <DependentUpon>201708261715572_new migr.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201708261722049_new migration.cs" />
+    <Compile Include="Migrations\201708261722049_new migration.Designer.cs">
+      <DependentUpon>201708261722049_new migration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201708261828138_ADASDA.cs" />
+    <Compile Include="Migrations\201708261828138_ADASDA.Designer.cs">
+      <DependentUpon>201708261828138_ADASDA.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Model\Product.cs" />
     <Compile Include="Model\UIModel.cs" />
@@ -254,7 +266,15 @@
     <EmbeddedResource Include="Migrations\201708201354223_addmig.resx">
       <DependentUpon>201708201354223_addmig.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Properties\licenses.licx" />
+    <EmbeddedResource Include="Migrations\201708261715572_new migr.resx">
+      <DependentUpon>201708261715572_new migr.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201708261722049_new migration.resx">
+      <DependentUpon>201708261722049_new migration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201708261828138_ADASDA.resx">
+      <DependentUpon>201708261828138_ADASDA.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>

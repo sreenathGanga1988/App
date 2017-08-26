@@ -44,6 +44,7 @@
             this.Total = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.grp_btn = new System.Windows.Forms.GroupBox();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.button16 = new System.Windows.Forms.Button();
             this.button14 = new System.Windows.Forms.Button();
             this.button13 = new System.Windows.Forms.Button();
             this.button15 = new System.Windows.Forms.Button();
@@ -63,16 +64,16 @@
             this.button3 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.txt_change = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.txt_cash = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.txt_total = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.lbl_table = new System.Windows.Forms.TextBox();
-            this.pnl_product = new System.Windows.Forms.Panel();
             this.grp_table = new System.Windows.Forms.GroupBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.txt_cash = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.txt_change = new System.Windows.Forms.TextBox();
-            this.button16 = new System.Windows.Forms.Button();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.pnl_product = new System.Windows.Forms.Panel();
             this.grp_bottompanel.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -156,7 +157,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(3, 16);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(363, 212);
+            this.panel1.Size = new System.Drawing.Size(363, 218);
             this.panel1.TabIndex = 1;
             // 
             // grd_ProductDetails
@@ -177,7 +178,7 @@
             this.grd_ProductDetails.Name = "grd_ProductDetails";
             this.grd_ProductDetails.RowHeadersVisible = false;
             this.grd_ProductDetails.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.grd_ProductDetails.Size = new System.Drawing.Size(363, 212);
+            this.grd_ProductDetails.Size = new System.Drawing.Size(363, 218);
             this.grd_ProductDetails.TabIndex = 0;
             // 
             // ID
@@ -214,9 +215,9 @@
             // 
             this.grp_btn.Controls.Add(this.panel2);
             this.grp_btn.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.grp_btn.Location = new System.Drawing.Point(3, 228);
+            this.grp_btn.Location = new System.Drawing.Point(3, 234);
             this.grp_btn.Name = "grp_btn";
-            this.grp_btn.Size = new System.Drawing.Size(363, 230);
+            this.grp_btn.Size = new System.Drawing.Size(363, 224);
             this.grp_btn.TabIndex = 0;
             this.grp_btn.TabStop = false;
             this.grp_btn.Text = "keyPad";
@@ -246,8 +247,20 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(3, 16);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(357, 211);
+            this.panel2.Size = new System.Drawing.Size(357, 205);
             this.panel2.TabIndex = 1;
+            // 
+            // button16
+            // 
+            this.button16.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button16.Location = new System.Drawing.Point(244, 165);
+            this.button16.Name = "button16";
+            this.button16.Size = new System.Drawing.Size(110, 39);
+            this.button16.TabIndex = 20;
+            this.button16.TabStop = false;
+            this.button16.Text = "Cash";
+            this.button16.UseVisualStyleBackColor = true;
+            this.button16.Click += new System.EventHandler(this.numericbuttonclicked_Click);
             // 
             // button14
             // 
@@ -465,6 +478,51 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Summary";
             // 
+            // txt_change
+            // 
+            this.txt_change.Dock = System.Windows.Forms.DockStyle.Top;
+            this.txt_change.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold);
+            this.txt_change.Location = new System.Drawing.Point(3, 175);
+            this.txt_change.Name = "txt_change";
+            this.txt_change.ReadOnly = true;
+            this.txt_change.Size = new System.Drawing.Size(81, 29);
+            this.txt_change.TabIndex = 6;
+            this.txt_change.Text = "0";
+            this.txt_change.TextChanged += new System.EventHandler(this.txt_change_TextChanged);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Dock = System.Windows.Forms.DockStyle.Top;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold);
+            this.label4.Location = new System.Drawing.Point(3, 151);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(83, 24);
+            this.label4.TabIndex = 5;
+            this.label4.Text = "Change";
+            // 
+            // txt_cash
+            // 
+            this.txt_cash.Dock = System.Windows.Forms.DockStyle.Top;
+            this.txt_cash.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold);
+            this.txt_cash.Location = new System.Drawing.Point(3, 122);
+            this.txt_cash.Name = "txt_cash";
+            this.txt_cash.Size = new System.Drawing.Size(81, 29);
+            this.txt_cash.TabIndex = 4;
+            this.txt_cash.Text = "0";
+            this.txt_cash.TextChanged += new System.EventHandler(this.txt_cash_TextChanged);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Dock = System.Windows.Forms.DockStyle.Top;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold);
+            this.label3.Location = new System.Drawing.Point(3, 98);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(57, 24);
+            this.label3.TabIndex = 3;
+            this.label3.Text = "Cash";
+            // 
             // txt_total
             // 
             this.txt_total.Dock = System.Windows.Forms.DockStyle.Top;
@@ -498,14 +556,6 @@
             this.lbl_table.Size = new System.Drawing.Size(81, 29);
             this.lbl_table.TabIndex = 0;
             // 
-            // pnl_product
-            // 
-            this.pnl_product.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnl_product.Location = new System.Drawing.Point(544, 50);
-            this.pnl_product.Name = "pnl_product";
-            this.pnl_product.Size = new System.Drawing.Size(321, 461);
-            this.pnl_product.TabIndex = 7;
-            // 
             // grp_table
             // 
             this.grp_table.Dock = System.Windows.Forms.DockStyle.Top;
@@ -516,62 +566,21 @@
             this.grp_table.TabStop = false;
             this.grp_table.Text = "Tables";
             // 
-            // label3
+            // panel3
             // 
-            this.label3.AutoSize = true;
-            this.label3.Dock = System.Windows.Forms.DockStyle.Top;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold);
-            this.label3.Location = new System.Drawing.Point(3, 98);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(57, 24);
-            this.label3.TabIndex = 3;
-            this.label3.Text = "Cash";
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Right;
+            this.panel3.Location = new System.Drawing.Point(782, 50);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(83, 461);
+            this.panel3.TabIndex = 7;
             // 
-            // txt_cash
+            // pnl_product
             // 
-            this.txt_cash.Dock = System.Windows.Forms.DockStyle.Top;
-            this.txt_cash.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold);
-            this.txt_cash.Location = new System.Drawing.Point(3, 122);
-            this.txt_cash.Name = "txt_cash";
-            this.txt_cash.Size = new System.Drawing.Size(81, 29);
-            this.txt_cash.TabIndex = 4;
-            this.txt_cash.Text = "0";
-            this.txt_cash.TextChanged += new System.EventHandler(this.txt_cash_TextChanged);
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Dock = System.Windows.Forms.DockStyle.Top;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold);
-            this.label4.Location = new System.Drawing.Point(3, 151);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(83, 24);
-            this.label4.TabIndex = 5;
-            this.label4.Text = "Change";
-            // 
-            // txt_change
-            // 
-            this.txt_change.Dock = System.Windows.Forms.DockStyle.Top;
-            this.txt_change.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold);
-            this.txt_change.Location = new System.Drawing.Point(3, 175);
-            this.txt_change.Name = "txt_change";
-            this.txt_change.ReadOnly = true;
-            this.txt_change.Size = new System.Drawing.Size(81, 29);
-            this.txt_change.TabIndex = 6;
-            this.txt_change.Text = "0";
-            this.txt_change.TextChanged += new System.EventHandler(this.txt_change_TextChanged);
-            // 
-            // button16
-            // 
-            this.button16.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button16.Location = new System.Drawing.Point(244, 165);
-            this.button16.Name = "button16";
-            this.button16.Size = new System.Drawing.Size(110, 39);
-            this.button16.TabIndex = 20;
-            this.button16.TabStop = false;
-            this.button16.Text = "Cash";
-            this.button16.UseVisualStyleBackColor = true;
-            this.button16.Click += new System.EventHandler(this.numericbuttonclicked_Click);
+            this.pnl_product.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnl_product.Location = new System.Drawing.Point(544, 50);
+            this.pnl_product.Name = "pnl_product";
+            this.pnl_product.Size = new System.Drawing.Size(238, 461);
+            this.pnl_product.TabIndex = 8;
             // 
             // SalesForm
             // 
@@ -580,6 +589,7 @@
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(865, 544);
             this.Controls.Add(this.pnl_product);
+            this.Controls.Add(this.panel3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.grp_Category);
@@ -637,7 +647,6 @@
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox lbl_table;
-        private System.Windows.Forms.Panel pnl_product;
         private System.Windows.Forms.TextBox txt_total;
         private System.Windows.Forms.Button button13;
         private System.Windows.Forms.GroupBox grp_table;
@@ -650,5 +659,7 @@
         private System.Windows.Forms.TextBox txt_change;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button button16;
+        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Panel pnl_product;
     }
 }

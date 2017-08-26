@@ -104,8 +104,10 @@ namespace App.Model
         public String TableName { get; set; }
 
         public virtual Store Store { get; set; }
-
+        
         public String Color { get; set; }
+
+        public virtual List<KotMaster> KotMasters { get; set; }
     }
 
 
@@ -142,7 +144,7 @@ namespace App.Model
 
         public int StoreID { get; set; }
         public int UserID { get; set; }
-
+        public int? KotMasterID { get; set; }
         public int CustomerID { get; set; }
         public DateTime InvoiceDate { get; set; }
 
@@ -205,7 +207,43 @@ namespace App.Model
         public virtual Store Store { get; set; }
     }
 
+    public class KotMaster
+    {
+        [Key]
+        public int KotMasterID { get; set; }
+        public int StoreID { get; set; }
+        public int UserID { get; set; }
+       
+        public int CustomerID { get; set; }
+        public DateTime InvoiceDate { get; set; }
+        public int TableID { get; set; }
+        public Decimal TotalPaid { get; set; }
+        public Decimal RoundOffAmount { get; set; }
+        public virtual Store Store { get; set; }
+        public virtual User User { get; set; }
+        public virtual Table Table { get; set; }
+        public virtual Customer Customer { get; set; }
+        public virtual List<KotDetail> KotDetails { get; set; }
+        public String Color { get; set; }
+
+    }
+    public class KotDetail
+    {
+
+        [Key]
+        public int KotDetailID { get; set; }
+        public int KotMasterID { get; set; }
+        public String ProductName { get; set; }
+        public int ProductId { get; set; }
+        public Decimal UnitPrice { get; set; }
+        public Decimal Qty { get; set; }
+        public Decimal DiscountPerUOM { get; set; }
+        public Decimal Total { get; set; }
+        public Boolean IsUploaded { get; set; }
+        public virtual Product Product { get; set; }
+       public virtual KotMaster KotMasters { get; set; }
 
 
+    }
 
 }

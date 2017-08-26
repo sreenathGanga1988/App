@@ -408,6 +408,11 @@ namespace App.UI
 
                 txt_cash.Text = txt_cash.Text.Trim() + txt_producrtcode.Text.Trim();
             }
+            else if (btn.Text.Trim() == "KOT")
+            {
+
+                AddKoT();
+            }
             else
             {
                 txt_producrtcode.Text = txt_producrtcode.Text+btn.Text.Trim() ;
@@ -445,6 +450,30 @@ namespace App.UI
         private void txt_cash_TextChanged(object sender, EventArgs e)
         {
             fillchange();
+        }
+
+        public void AddKoT()
+        {
+            KotMaster komstr = new KotMaster();
+            komstr.StoreID = Program.LocationID;
+            komstr.UserID = Program.UserID;
+            komstr.InvoiceDate = DateTime.Now;
+            komstr.CustomerID = int.Parse(lbl_custid.Text);
+            List<KotDetail> KotDetails = new List<KotDetail> { };
+            foreach (DataGridViewRow row in grd_ProductDetails.Rows)
+            {
+                KotDetail kotdetail = new KotDetail();
+                kotdetail.ProductId = int.Parse( row.Cells["ID"].Value.ToString());
+                kotdetail.ProductName = row.Cells["Item"].Value.ToString();
+                kotdetail.UnitPrice = Decimal.Parse(row.Cells["Price"].Value.ToString());
+                kotdetail.Qty = Decimal.Parse(row.Cells["Qty"].Value.ToString());
+                kotdetail.DiscountPerUOM = Decimal.Parse(row.Cells["Discount"].Value.ToString());
+
+                KotDetails.Add(kotdetail);
+            }
+            komstr.KotDetails = KotDetails;
+            KotRepository kotrepo = new KotRepository();
+            kotrepo.InsertKOT(komstr);
         }
     }
 }
