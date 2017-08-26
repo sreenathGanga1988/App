@@ -27,6 +27,7 @@ namespace App.Model
         public Boolean IsAvailable { get; set; }
         public Boolean? IsRateChangable { get; set; }
         public virtual List<InvoiceDetail> InvoiceDetails { get; set; }
+        public virtual List<KotDetail> KotDetails { get; set; }
     }
     public class Category
     {
@@ -73,6 +74,7 @@ namespace App.Model
         public virtual List<ControlDiemension> ControlDiemensions { get; set; }
         public virtual List<Table> Tables { get; set; }
         public virtual List<Invoicemaster> Invoicemasters { get; set; }
+        public virtual List<KotMaster> KotMasters { get; set; }
     }
 
     public class Company
@@ -108,6 +110,7 @@ namespace App.Model
         public String Color { get; set; }
 
         public virtual List<KotMaster> KotMasters { get; set; }
+        public virtual List<Invoicemaster> Invoicemasters { get; set; }
     }
 
 
@@ -132,6 +135,7 @@ namespace App.Model
 
         public String Color { get; set; }
         public virtual List<Invoicemaster> Invoicemasters { get; set; }
+        public virtual List<KotMaster> KotMasters { get; set; }
     }
 
 
@@ -146,8 +150,9 @@ namespace App.Model
         public int UserID { get; set; }
         public int? KotMasterID { get; set; }
         public int CustomerID { get; set; }
+        public int TableID { get; set; }
         public DateTime InvoiceDate { get; set; }
-
+        public virtual Table Table { get; set; }
         public Decimal TotalPaid { get; set; }
         public Decimal RoundOffAmount { get; set; }
         public virtual Store Store { get; set; }
