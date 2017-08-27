@@ -1,5 +1,6 @@
 ﻿using App.Model;
 using App.Repository;
+using App.ApplicationSettingRepository;
 using Npgsql;
 using System;
 using System.Collections.Generic;
@@ -111,5 +112,23 @@ namespace App.UI.Setting
 
         }
 
+        private void button3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button3_Click_1(object sender, EventArgs e)
+        {
+            AppUserSetting appUserSetting = new AppUserSetting();
+            appUserSetting.ProductperRow = int.Parse(txt_noofproductonrow.Text);
+            appUserSetting.InvoicePrefix = txt_invoiceprefix.Text.Trim();
+            appUserSetting.PaddingNumber = int.Parse(txt_padding.Text);
+            appUserSetting.ProductButtonWidth = Decimal.Parse(txt_buttonwidth.Text);
+            appUserSetting.ProductButtonHeigth = Decimal.Parse(txt_buttonHeight.Text);
+            appUserSetting.StoreID = Program.LocationID;
+            appUserSetting.RealtimeInvoiceUpdate = (chk_realtime.Checked) ? true : false;
+            appUserSetting.FastLoading = (chk_fastloading.Checked) ? true : false;
+            appUserSetting.AutoSizebutton = (chk_autosizeproduct.Checked) ? true : false;
+        }
     }
 }

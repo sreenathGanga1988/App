@@ -1,4 +1,5 @@
-﻿using System;
+﻿using App.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -13,6 +14,9 @@ namespace App
         public static int UserID;
         public static int LocationID;
         public static String Location;
+
+        public static OdooDetail MyOoodoDetasils { get; set; }
+
         /// <summary>
         /// The main entry point for the application.
         /// </summary>

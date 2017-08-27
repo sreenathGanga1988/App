@@ -158,6 +158,7 @@ namespace App.Model
         public virtual Store Store { get; set; }
         public virtual User User { get; set; }
         public virtual Customer Customer { get; set; }
+        public Boolean IsUploaded { get; set; }
         public virtual List<InvoiceDetail> InvoiceDetails { get; set; }
         public String Color { get; set; }
     }
@@ -198,20 +199,29 @@ namespace App.Model
     }
 
 
-
-    public class AppSetting
+    public  class AppUserSetting
     {
         [Key]
-        public int AppSettingID { get; set; }
-        public int StoreID { get; set; }
+        public int AppUserSettingID { get; set; }
+        public  int ProductperRow { get; set; }
 
-        public Boolean RealtimeInvoiceUpdate { get; set; }
+        public  String InvoicePrefix { get; set; }
 
-        public Boolean FastLoadingofProduct { get; set; }
-        public int NoofproductonRow { get; set; }
+        public  int PaddingNumber { get; set; }
+
+        public  Decimal ProductButtonWidth { get; set; }
+        public  Decimal ProductButtonHeigth { get; set; }
+
+        public  int StoreID { get; set; }
+
+        public  Boolean RealtimeInvoiceUpdate { get; set; }
+
+        public  Boolean FastLoading { get; set; }
+
+        public  Boolean AutoSizebutton { get; set; }
         public virtual Store Store { get; set; }
     }
-
+   
     public class KotMaster
     {
         [Key]

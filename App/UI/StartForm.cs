@@ -63,5 +63,11 @@ namespace App.UI
 
 
         }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            Repository.OdooUpdator odoupd = new Repository.OdooUpdator();
+            odoupd.uploadInvoiceMaster();
+        }
     }
 }

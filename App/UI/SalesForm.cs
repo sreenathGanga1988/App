@@ -148,6 +148,7 @@ namespace App.UI
         private void OnTableButtonClick(object sender, EventArgs e)
         {
             lbl_table.Text = ((ValueButton)sender).Text;
+            lbl_tableID.Text = ((ValueButton)sender)._value.ToString();
             //your code for the event.
         }
 
@@ -286,9 +287,13 @@ namespace App.UI
                 temp.Name = "button" + product.ProductID.ToString();
                 temp.Text = product.ProductName;
                 temp._value = product.ProductID.ToString();
-                // temp.AutoSize = true;
+                temp.AutoSize = true;
                 temp.Width = buttonwidth;
                 temp.Height = buttonheight;
+                temp.Font = new Font(temp.Font, FontStyle.Bold);
+
+                //temp.Width = 200;
+                //temp.Height = 150;
                 try
                 {
                     if (product.Color != null && product.Color.Trim() != "")
@@ -410,9 +415,22 @@ namespace App.UI
             }
             else if (btn.Text.Trim() == "KOT")
             {
-
-                AddKoT();
+                if (ValidateforKot())
+                {
+                    AddKoT();
+                }
+               
             }
+            else if (btn.Text.Trim() == "CheckOut")
+            {
+                if (ValidateforCheckOut())
+                {
+                    AddInvoice();
+                }
+              
+            }
+
+
             else
             {
                 txt_producrtcode.Text = txt_producrtcode.Text+btn.Text.Trim() ;
@@ -439,7 +457,15 @@ namespace App.UI
 
         private void txt_total_TextChanged(object sender, EventArgs e)
         {
-            fillchange();
+            try
+            {
+                fillchange();
+            }
+            catch (Exception)
+            {
+
+               
+            }
         }
 
         private void txt_change_TextChanged(object sender, EventArgs e)
@@ -449,7 +475,15 @@ namespace App.UI
 
         private void txt_cash_TextChanged(object sender, EventArgs e)
         {
-            fillchange();
+            try
+            {
+                fillchange();
+            }
+            catch (Exception)
+            {
+
+                
+            }
         }
 
         public void AddKoT()
@@ -459,6 +493,7 @@ namespace App.UI
             komstr.UserID = Program.UserID;
             komstr.InvoiceDate = DateTime.Now;
             komstr.CustomerID = int.Parse(lbl_custid.Text);
+            komstr.TableID = int.Parse(lbl_tableID.Text);
             List<KotDetail> KotDetails = new List<KotDetail> { };
             foreach (DataGridViewRow row in grd_ProductDetails.Rows)
             {
@@ -475,5 +510,113 @@ namespace App.UI
             KotRepository kotrepo = new KotRepository();
             kotrepo.InsertKOT(komstr);
         }
+
+
+        public void AddInvoice()
+        {
+            Invoicemaster invoicemaster = new Invoicemaster();
+            invoicemaster.StoreID = Program.LocationID;
+            invoicemaster.UserID = Program.UserID;
+            invoicemaster.InvoiceDate = DateTime.Now;
+            invoicemaster.CustomerID = int.Parse(lbl_custid.Text);
+            invoicemaster.TableID = int.Parse(lbl_tableID.Text);
+            invoicemaster.IsUploaded = false;
+            List<InvoiceDetail> invoicedetails = new List<InvoiceDetail> { };
+            foreach (DataGridViewRow row in grd_ProductDetails.Rows)
+            {
+                InvoiceDetail invoicedetail = new InvoiceDetail();
+                invoicedetail.ProductId = int.Parse(row.Cells["ID"].Value.ToString());
+              
+                invoicedetail.UnitPrice = Decimal.Parse(row.Cells["Price"].Value.ToString());
+                invoicedetail.Qty = Decimal.Parse(row.Cells["Qty"].Value.ToString());
+                invoicedetail.DiscountPerUOM = Decimal.Parse(row.Cells["Discount"].Value.ToString());
+                invoicedetail.IsUploaded = false;
+                invoicedetails.Add(invoicedetail);
+            }
+            invoicemaster.InvoiceDetails = invoicedetails;
+            InvoiceRepository invrrepo = new InvoiceRepository();
+            invrrepo.InsertInvoiceLocal(invoicemaster);
+        }
+
+
+        public Boolean ValidateforKot()
+        {
+            Boolean isvalidforKot = false;
+
+            if (lbl_custid.Text.Trim() == "")
+            {
+                MessageBox.Show("Enter Customer ID");
+            }
+            else if (lbl_tableID.Text.Trim() == "")
+            {
+
+                MessageBox.Show("Select A Table");
+            }
+            else if (grd_ProductDetails.Rows.Count <= 0)
+            {
+
+                MessageBox.Show("No Item Selected");
+            }
+
+            else if (!MyExtensions.CheckifNumeric(lbl_custid.Text.Trim()))
+            {
+
+                MessageBox.Show("Enter Valid Customer ID");
+            }
+            else if (!MyExtensions.CheckifNumeric(lbl_tableID.Text.Trim()))
+            {
+
+                MessageBox.Show("Select A  Valid Table");
+            }
+            else
+            {
+                isvalidforKot = true;
+            }
+
+            return isvalidforKot;
+        }
+
+
+
+        public Boolean ValidateforCheckOut()
+        {
+            Boolean isvalidforInvoice = false;
+            if (!ValidateforKot())
+            {
+
+            }
+            else if (txt_cash.Text.Trim()==""||txt_cash.Text==null)
+            {
+                MessageBox.Show("Enter Cash");
+            }
+            else if (txt_total.Text.Trim() == "" || txt_total.Text == null)
+            {
+                MessageBox.Show("Wrong total Select one more item ");
+            }
+            else if(!MyExtensions.CheckifDecimal(txt_cash.Text.Trim())){
+                MessageBox.Show("Enter Cash Correctly");
+            }
+            else if (!MyExtensions.CheckifDecimal(txt_total.Text.Trim()))
+            {
+                MessageBox.Show("Wrong total");
+            }
+            else if (Decimal.Parse (txt_total.Text.Trim())> Decimal.Parse(txt_cash.Text.Trim()))
+            {
+                MessageBox.Show("Insufficeint cash..");
+
+            }
+            else
+            {
+                isvalidforInvoice = true;
+            }
+
+            return isvalidforInvoice;
+        }
+        
+
+
+
+
+
     }
 }

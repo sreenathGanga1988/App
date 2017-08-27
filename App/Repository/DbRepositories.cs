@@ -1,4 +1,5 @@
-﻿using App.Context;
+﻿using App.ApplicationSettingRepository;
+using App.Context;
 using App.Model;
 using App.ViewModal;
 using System;
@@ -99,6 +100,11 @@ namespace App.Repository
                 Program.Username = usr.UserName;
                 Program.LocationID = usr.StoreID;
                 Program.Location = usr.Store.StoreName;
+                SettingRepository sysrepo = new SettingRepository();
+
+                Program.MyOoodoDetasils = sysrepo.LoadOdooDetails(Program.LocationID);
+
+
             }
         }
 
@@ -166,8 +172,38 @@ namespace App.Repository
     }
 
 
+
+    public class KotRepository
+    {
+        POSDataContext cntxt = new POSDataContext();
+
+        public void InsertKOT(KotMaster kotmaster)
+        {
+            cntxt.KotMasters.Add(kotmaster);
+            cntxt.SaveChanges();
+        }
+    }
+
+
+
+    public class InvoiceRepository
+    {
+        POSDataContext cntxt = new POSDataContext();
+
+        public void InsertInvoiceLocal(Invoicemaster invoicemaster)
+        {
+            cntxt.Invoicemasters.Add(invoicemaster);
+            cntxt.SaveChanges();
+        }
+    }
+
+
+}
+namespace App.ApplicationSettingRepository
+{
+
     public class SettingRepository
-   {
+    {
         POSDataContext cntxt = new POSDataContext();
         public void UpdateOdooReopository(OdooDetail odetails)
         {
@@ -175,8 +211,8 @@ namespace App.Repository
             {
                 cntxt.OdooDetails.Add(odetails);
                 cntxt.SaveChanges();
-            }   
-           
+            }
+
         }
 
 
@@ -199,17 +235,52 @@ namespace App.Repository
         }
 
 
-    }
 
-    public class KotRepository
+        public OdooDetail LoadOdooDetails(int storeid)
+        {
+            var q = cntxt.OdooDetails.Where(u => u.StoreID == storeid&& u.IsActive==true).FirstOrDefault();
+            return q;
+        }
+
+
+
+
+    }
+    public class AppuserSettingRepository
     {
         POSDataContext cntxt = new POSDataContext();
 
-        public void InsertKOT(KotMaster kotmaster)
+        public void UpdateAppusersettingReopository(AppUserSetting appusersetting)
         {
-            cntxt.KotMasters.Add(kotmaster);
-            cntxt.SaveChanges();
+            if (cntxt.AppUserSettings.Any(o => o.StoreID == appusersetting.StoreID))
+            {
+                cntxt.AppUserSettings.Add(appusersetting);
+                cntxt.SaveChanges();
+            }
+            else
+            {
+                var q = from app in cntxt.AppUserSettings
+                        where app.StoreID == appusersetting.StoreID
+                        select app;
+
+                foreach(var element in q)
+                {
+
+                    element.ProductperRow = appusersetting.ProductperRow;
+                    element.InvoicePrefix = appusersetting.InvoicePrefix;
+                    element.PaddingNumber = appusersetting.PaddingNumber;
+                    element.ProductButtonWidth = appusersetting.ProductButtonWidth;
+                    element.ProductButtonHeigth = appusersetting.ProductButtonHeigth;
+
+                    element.RealtimeInvoiceUpdate = appusersetting.RealtimeInvoiceUpdate;
+                    element.FastLoading = appusersetting.FastLoading;
+                    element.AutoSizebutton = appusersetting.AutoSizebutton;
+                    cntxt.SaveChanges();
+                }
+            }
+
         }
+
     }
 
 

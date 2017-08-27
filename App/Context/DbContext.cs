@@ -33,7 +33,7 @@ namespace App.Context
         public DbSet<InvoiceDetail> InvoiceDetails { get; set; }
         public DbSet<KotMaster> KotMasters { get; set; }
         public DbSet<KotDetail> KotDetails { get; set; }
-        public DbSet<AppSetting> AppSettings { get; set; }
+        public DbSet<AppUserSetting> AppUserSettings { get; set; }
         public DbSet<OdooDetail> OdooDetails { get; set; }
         
       
