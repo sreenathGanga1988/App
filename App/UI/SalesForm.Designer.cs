@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.grp_bottompanel = new System.Windows.Forms.GroupBox();
+            this.lbl_tableID = new System.Windows.Forms.Label();
             this.lbl_custid = new System.Windows.Forms.Label();
             this.lbl_customer = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -75,7 +76,6 @@
             this.panel3 = new System.Windows.Forms.Panel();
             this.button17 = new System.Windows.Forms.Button();
             this.pnl_product = new System.Windows.Forms.Panel();
-            this.lbl_tableID = new System.Windows.Forms.Label();
             this.grp_bottompanel.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -99,6 +99,17 @@
             this.grp_bottompanel.TabIndex = 1;
             this.grp_bottompanel.TabStop = false;
             this.grp_bottompanel.Text = "Bottom";
+            // 
+            // lbl_tableID
+            // 
+            this.lbl_tableID.AutoSize = true;
+            this.lbl_tableID.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_tableID.Location = new System.Drawing.Point(213, 14);
+            this.lbl_tableID.Name = "lbl_tableID";
+            this.lbl_tableID.Size = new System.Drawing.Size(16, 16);
+            this.lbl_tableID.TabIndex = 3;
+            this.lbl_tableID.Text = "1";
+            this.lbl_tableID.Visible = false;
             // 
             // lbl_custid
             // 
@@ -599,17 +610,6 @@
             this.pnl_product.Name = "pnl_product";
             this.pnl_product.Size = new System.Drawing.Size(163, 461);
             this.pnl_product.TabIndex = 8;
-            // 
-            // lbl_tableID
-            // 
-            this.lbl_tableID.AutoSize = true;
-            this.lbl_tableID.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_tableID.Location = new System.Drawing.Point(213, 14);
-            this.lbl_tableID.Name = "lbl_tableID";
-            this.lbl_tableID.Size = new System.Drawing.Size(16, 16);
-            this.lbl_tableID.TabIndex = 3;
-            this.lbl_tableID.Text = "1";
-            this.lbl_tableID.Visible = false;
             // 
             // SalesForm
             // 

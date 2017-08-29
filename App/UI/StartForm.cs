@@ -1,4 +1,5 @@
-﻿using Npgsql;
+﻿using App.Extensions;
+using Npgsql;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -55,7 +56,7 @@ namespace App.UI
 
         private void button5_Click(object sender, EventArgs e)
         {
-            Setting.oodoSetting odoosetting = new Setting.oodoSetting();
+            Setting.oodoSetting odoosetting = new Setting.oodoSetting(int.Parse(Program.LocationID.ToString()));
             odoosetting.Show();
 
 
@@ -68,6 +69,12 @@ namespace App.UI
         {
             Repository.OdooUpdator odoupd = new Repository.OdooUpdator();
             odoupd.uploadInvoiceMaster();
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            PrintReceipt prnt = new PrintReceipt();
+            prnt.printreport();
         }
     }
 }

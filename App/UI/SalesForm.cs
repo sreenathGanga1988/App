@@ -520,6 +520,9 @@ namespace App.UI
             invoicemaster.InvoiceDate = DateTime.Now;
             invoicemaster.CustomerID = int.Parse(lbl_custid.Text);
             invoicemaster.TableID = int.Parse(lbl_tableID.Text);
+            invoicemaster.TotalPaid = Decimal.Parse(txt_total.Text);
+            invoicemaster.TotalBill = Decimal.Parse(txt_total.Text);
+            
             invoicemaster.IsUploaded = false;
             List<InvoiceDetail> invoicedetails = new List<InvoiceDetail> { };
             foreach (DataGridViewRow row in grd_ProductDetails.Rows)

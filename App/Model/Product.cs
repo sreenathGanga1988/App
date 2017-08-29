@@ -154,6 +154,8 @@ namespace App.Model
         public DateTime InvoiceDate { get; set; }
         public virtual Table Table { get; set; }
         public Decimal TotalPaid { get; set; }
+        public Decimal TotalBill { get; set; }
+        public Decimal TotalDiscount { get; set; }
         public Decimal RoundOffAmount { get; set; }
         public virtual Store Store { get; set; }
         public virtual User User { get; set; }

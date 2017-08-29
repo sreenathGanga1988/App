@@ -20,6 +20,32 @@ namespace App.UI.Setting
         {
             InitializeComponent();
         }
+        public oodoSetting(int storid)
+        {
+            InitializeComponent();
+            try
+            {
+                showOdoodetails();
+            }
+            catch (Exception)
+            {
+
+              
+            }
+        }
+
+
+        public void showOdoodetails()
+        {
+           tbHost.Text = Program.MyOoodoDetasils.Server;
+            tbPort.Text = Program.MyOoodoDetasils.PortNum.ToString();
+            tbUser.Text = Program.MyOoodoDetasils.UserId.ToString();
+          tbPass.Text = Program.MyOoodoDetasils.Password.ToString();
+            tbDataBaseName.Text = Program.MyOoodoDetasils.DataBasename.ToString();
+
+
+
+        }
 
         private void button2_Click(object sender, EventArgs e)
         {

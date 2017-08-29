@@ -56,7 +56,11 @@
     <Reference Include="Npgsql, Version=3.2.5.0, Culture=neutral, PublicKeyToken=5d8b90d52f46fda7, processorArchitecture=MSIL">
       <HintPath>..\packages\Npgsql.3.2.5\lib\net451\Npgsql.dll</HintPath>
     </Reference>
+    <Reference Include="PrinterUtility, Version=1.0.1.1, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\PrinterUtility.1.1.2\lib\PrinterUtility.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Runtime.Serialization.Formatters.Soap" />
@@ -77,6 +81,8 @@
     <Compile Include="Context\DbContext.cs" />
     <Compile Include="Extensions\Controls.cs" />
     <Compile Include="Extensions\Extesions.cs" />
+    <Compile Include="Extensions\PrintReceipt.cs" />
+    <Compile Include="Extensions\RawPrinterHelper.cs" />
     <Compile Include="LimsDBDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -179,6 +185,14 @@
     <Compile Include="Migrations\201708271358471_edcsadasd.cs" />
     <Compile Include="Migrations\201708271358471_edcsadasd.Designer.cs">
       <DependentUpon>201708271358471_edcsadasd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201708281245378_dsadasfdsd.cs" />
+    <Compile Include="Migrations\201708281245378_dsadasfdsd.Designer.cs">
+      <DependentUpon>201708281245378_dsadasfdsd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201708281356034_weqweqew.cs" />
+    <Compile Include="Migrations\201708281356034_weqweqew.Designer.cs">
+      <DependentUpon>201708281356034_weqweqew.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Model\Product.cs" />
@@ -297,6 +311,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201708271358471_edcsadasd.resx">
       <DependentUpon>201708271358471_edcsadasd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201708281245378_dsadasfdsd.resx">
+      <DependentUpon>201708281245378_dsadasfdsd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201708281356034_weqweqew.resx">
+      <DependentUpon>201708281356034_weqweqew.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

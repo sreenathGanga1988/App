@@ -75,7 +75,7 @@ namespace App.Repository
                     if (usr.UserID.ToString().Trim() != "")
                     {
                         isvalid = true;
-
+                        
                         SetUserDetails(usr);
                     }
                 }
