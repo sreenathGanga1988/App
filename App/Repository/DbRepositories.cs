@@ -99,7 +99,8 @@ namespace App.Repository
                 Program.UserID = usr.UserID;
                 Program.Username = usr.UserName;
                 Program.LocationID = usr.StoreID;
-                Program.Location = usr.Store.StoreName;
+                Program.StoreName = usr.Store.StoreName;
+                Program.StoreAddress = usr.Store.StoreAddress;
                 SettingRepository sysrepo = new SettingRepository();
 
                 Program.MyOoodoDetasils = sysrepo.LoadOdooDetails(Program.LocationID);
@@ -192,8 +193,11 @@ namespace App.Repository
 
         public void InsertInvoiceLocal(Invoicemaster invoicemaster)
         {
+        
             cntxt.Invoicemasters.Add(invoicemaster);
             cntxt.SaveChanges();
+
+            
         }
     }
 

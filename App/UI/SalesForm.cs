@@ -411,7 +411,15 @@ namespace App.UI
             else if (btn.Text.Trim() == "Cash")
             {
 
-                txt_cash.Text = txt_cash.Text.Trim() + txt_producrtcode.Text.Trim();
+                try
+                {
+                    txt_cash.Text = Decimal.Parse(txt_producrtcode.Text.Trim()).ToString(); ;
+                }
+                catch (Exception)
+                {
+
+                    MessageBox.Show("Wrong Cash Entered");
+                }
             }
             else if (btn.Text.Trim() == "KOT")
             {
@@ -419,7 +427,12 @@ namespace App.UI
                 {
                     AddKoT();
                 }
-               
+
+            }
+            else if (btn.Text.Trim() == "Clear")
+            {
+                txt_producrtcode.Text = "";
+
             }
             else if (btn.Text.Trim() == "CheckOut")
             {
@@ -522,23 +535,31 @@ namespace App.UI
             invoicemaster.TableID = int.Parse(lbl_tableID.Text);
             invoicemaster.TotalPaid = Decimal.Parse(txt_total.Text);
             invoicemaster.TotalBill = Decimal.Parse(txt_total.Text);
-            
+            invoicemaster.StoreName = Program.StoreName;
+            invoicemaster.StoreAddress = Program.StoreAddress;
+            invoicemaster.Cashier = Program.Username;
+            invoicemaster.CustomerName = lbl_customer.Text;
             invoicemaster.IsUploaded = false;
             List<InvoiceDetail> invoicedetails = new List<InvoiceDetail> { };
             foreach (DataGridViewRow row in grd_ProductDetails.Rows)
             {
                 InvoiceDetail invoicedetail = new InvoiceDetail();
                 invoicedetail.ProductId = int.Parse(row.Cells["ID"].Value.ToString());
-              
+                invoicedetail.ProductName = row.Cells["Item"].Value.ToString().Trim();
+                
                 invoicedetail.UnitPrice = Decimal.Parse(row.Cells["Price"].Value.ToString());
                 invoicedetail.Qty = Decimal.Parse(row.Cells["Qty"].Value.ToString());
                 invoicedetail.DiscountPerUOM = Decimal.Parse(row.Cells["Discount"].Value.ToString());
+                invoicedetail.Total = Decimal.Parse(row.Cells["Total"].Value.ToString());
                 invoicedetail.IsUploaded = false;
                 invoicedetails.Add(invoicedetail);
             }
             invoicemaster.InvoiceDetails = invoicedetails;
             InvoiceRepository invrrepo = new InvoiceRepository();
+          
             invrrepo.InsertInvoiceLocal(invoicemaster);
+            PrintReceipt prnt = new PrintReceipt();
+            prnt.printInvoicereport(invoicemaster);
         }
 
 
@@ -615,11 +636,13 @@ namespace App.UI
 
             return isvalidforInvoice;
         }
-        
 
-
-
-
-
+        private void btn_printCheckOut_Click(object sender, EventArgs e)
+        {
+            if (ValidateforCheckOut())
+            {
+                AddInvoice();
+            }
+        }
     }
 }

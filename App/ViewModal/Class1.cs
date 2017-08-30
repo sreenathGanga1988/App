@@ -29,4 +29,7 @@ namespace App.ViewModal
         public List<Table> TableList { get => tablerepo.GetTableList(Program.LocationID); set => TableList = value; }
 
     }
+
+
+   
 }

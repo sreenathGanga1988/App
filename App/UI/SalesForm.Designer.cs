@@ -76,6 +76,7 @@
             this.panel3 = new System.Windows.Forms.Panel();
             this.button17 = new System.Windows.Forms.Button();
             this.pnl_product = new System.Windows.Forms.Panel();
+            this.btn_printCheckOut = new System.Windows.Forms.Button();
             this.grp_bottompanel.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -284,7 +285,7 @@
             this.button14.Name = "button14";
             this.button14.Size = new System.Drawing.Size(154, 41);
             this.button14.TabIndex = 19;
-            this.button14.Text = "CheckOut";
+            this.button14.Text = "Clear";
             this.button14.UseVisualStyleBackColor = true;
             this.button14.Click += new System.EventHandler(this.numericbuttonclicked_Click);
             // 
@@ -479,6 +480,7 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.btn_printCheckOut);
             this.groupBox2.Controls.Add(this.txt_change);
             this.groupBox2.Controls.Add(this.label4);
             this.groupBox2.Controls.Add(this.txt_cash);
@@ -611,6 +613,19 @@
             this.pnl_product.Size = new System.Drawing.Size(163, 461);
             this.pnl_product.TabIndex = 8;
             // 
+            // btn_printCheckOut
+            // 
+            this.btn_printCheckOut.BackColor = System.Drawing.Color.DarkSeaGreen;
+            this.btn_printCheckOut.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btn_printCheckOut.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_printCheckOut.Location = new System.Drawing.Point(3, 204);
+            this.btn_printCheckOut.Name = "btn_printCheckOut";
+            this.btn_printCheckOut.Size = new System.Drawing.Size(81, 80);
+            this.btn_printCheckOut.TabIndex = 7;
+            this.btn_printCheckOut.Text = "Check Out (Bill)";
+            this.btn_printCheckOut.UseVisualStyleBackColor = false;
+            this.btn_printCheckOut.Click += new System.EventHandler(this.btn_printCheckOut_Click);
+            // 
             // SalesForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -693,5 +708,6 @@
         private System.Windows.Forms.Panel pnl_product;
         private System.Windows.Forms.Button button17;
         private System.Windows.Forms.Label lbl_tableID;
+        private System.Windows.Forms.Button btn_printCheckOut;
     }
 }

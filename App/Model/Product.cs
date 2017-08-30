@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity;
 using System.Linq;
 using System.Text;
@@ -14,7 +15,7 @@ namespace App.Model
 
         [Key]
         public int Id { get; set; }
-
+        public int? OdooProductId { get; set; }
         public string ProductName { get; set; }
         public int CategoryId { get; set; }
        
@@ -35,7 +36,7 @@ namespace App.Model
 
         [Key]
         public int Id { get; set; }
-
+        public int? OdooCategoryId { get; set; }
         public String CategoryName { get; set; }
         public String Color { get; set; }
         
@@ -163,6 +164,15 @@ namespace App.Model
         public Boolean IsUploaded { get; set; }
         public virtual List<InvoiceDetail> InvoiceDetails { get; set; }
         public String Color { get; set; }
+
+        [NotMapped]
+        public string StoreName { get; set; }
+        [NotMapped]
+        public string StoreAddress { get; set; }
+        [NotMapped]
+        public string Cashier { get; set; }
+        [NotMapped]
+        public string CustomerName { get; set; }
     }
 
     public class InvoiceDetail
@@ -180,8 +190,9 @@ namespace App.Model
         public Boolean IsUploaded { get; set; }
         public virtual Product Product { get; set; }
         public virtual Invoicemaster Invoicemaster { get; set; }
-      
-        
+        [NotMapped]
+        public string ProductName { get; set; }
+
     }
 
   

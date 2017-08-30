@@ -194,6 +194,10 @@
     <Compile Include="Migrations\201708281356034_weqweqew.Designer.cs">
       <DependentUpon>201708281356034_weqweqew.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201708300952114_sadasdsasdq.cs" />
+    <Compile Include="Migrations\201708300952114_sadasdsasdq.Designer.cs">
+      <DependentUpon>201708300952114_sadasdsasdq.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Model\Product.cs" />
     <Compile Include="Model\UIModel.cs" />
@@ -317,6 +321,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201708281356034_weqweqew.resx">
       <DependentUpon>201708281356034_weqweqew.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201708300952114_sadasdsasdq.resx">
+      <DependentUpon>201708300952114_sadasdsasdq.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

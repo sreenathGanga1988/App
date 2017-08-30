@@ -20,7 +20,7 @@ namespace App.UI
 
             lbl_welcome.Text = "Welcome " + Program.Username.Trim();
 
-            lbl_Location.Text = Program.Location.Trim();
+            lbl_Location.Text = Program.StoreName.Trim();
 
             MdiClient ctlMDI;
             foreach (Control ctl in this.Controls)
