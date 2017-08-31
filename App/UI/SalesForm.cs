@@ -507,6 +507,10 @@ namespace App.UI
             komstr.InvoiceDate = DateTime.Now;
             komstr.CustomerID = int.Parse(lbl_custid.Text);
             komstr.TableID = int.Parse(lbl_tableID.Text);
+            komstr.StoreName = Program.StoreName;
+            komstr.StoreAddress = Program.StoreAddress;
+            komstr.Cashier = Program.Username;
+            komstr.CustomerName = lbl_customer.Text;
             List<KotDetail> KotDetails = new List<KotDetail> { };
             foreach (DataGridViewRow row in grd_ProductDetails.Rows)
             {
@@ -522,6 +526,8 @@ namespace App.UI
             komstr.KotDetails = KotDetails;
             KotRepository kotrepo = new KotRepository();
             kotrepo.InsertKOT(komstr);
+            PrintReceipt prnt = new PrintReceipt();
+            prnt.printKOTreport(komstr);
         }
 
 

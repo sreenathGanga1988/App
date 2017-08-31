@@ -15,7 +15,8 @@ namespace App
         public static int LocationID;
         public static String StoreName;
         public static String StoreAddress;
-
+        public static String KotPrinter;
+        public static String Invoiceprinter;
         public static OdooDetail MyOoodoDetasils { get; set; }
 
         /// <summary>

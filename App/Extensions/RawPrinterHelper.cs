@@ -110,7 +110,9 @@ DOCINFOA di);
 			bSuccess = SendBytesToPrinter(szPrinterName, pUnmanagedBytes, nLength);
 			// Free the unmanaged memory that you allocated earlier.
 			Marshal.FreeCoTaskMem(pUnmanagedBytes);
-			return bSuccess;
+            fs.Close();
+
+            return bSuccess;
 		}
 		public static bool SendStringToPrinter(string szPrinterName, string szString)
 		{

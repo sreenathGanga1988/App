@@ -254,6 +254,15 @@ namespace App.Model
         public virtual List<KotDetail> KotDetails { get; set; }
         public String Color { get; set; }
 
+        [NotMapped]
+        public string StoreName { get; set; }
+        [NotMapped]
+        public string StoreAddress { get; set; }
+        [NotMapped]
+        public string Cashier { get; set; }
+        [NotMapped]
+        public string CustomerName { get; set; }
+
     }
     public class KotDetail
     {

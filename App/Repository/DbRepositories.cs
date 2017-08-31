@@ -105,7 +105,8 @@ namespace App.Repository
 
                 Program.MyOoodoDetasils = sysrepo.LoadOdooDetails(Program.LocationID);
 
-
+                Program.KotPrinter = "KOT1";
+                Program.Invoiceprinter = "POS1";
             }
         }
 
