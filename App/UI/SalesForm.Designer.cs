@@ -65,6 +65,7 @@
             this.button3 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.btn_printCheckOut = new System.Windows.Forms.Button();
             this.txt_change = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.txt_cash = new System.Windows.Forms.TextBox();
@@ -76,7 +77,6 @@
             this.panel3 = new System.Windows.Forms.Panel();
             this.button17 = new System.Windows.Forms.Button();
             this.pnl_product = new System.Windows.Forms.Panel();
-            this.btn_printCheckOut = new System.Windows.Forms.Button();
             this.grp_bottompanel.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -296,7 +296,7 @@
             this.button13.Name = "button13";
             this.button13.Size = new System.Drawing.Size(75, 56);
             this.button13.TabIndex = 18;
-            this.button13.Text = "0";
+            this.button13.Text = ".";
             this.button13.UseVisualStyleBackColor = true;
             // 
             // button15
@@ -496,6 +496,19 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Summary";
             // 
+            // btn_printCheckOut
+            // 
+            this.btn_printCheckOut.BackColor = System.Drawing.Color.DarkSeaGreen;
+            this.btn_printCheckOut.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btn_printCheckOut.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_printCheckOut.Location = new System.Drawing.Point(3, 204);
+            this.btn_printCheckOut.Name = "btn_printCheckOut";
+            this.btn_printCheckOut.Size = new System.Drawing.Size(81, 80);
+            this.btn_printCheckOut.TabIndex = 7;
+            this.btn_printCheckOut.Text = "Check Out (Bill)";
+            this.btn_printCheckOut.UseVisualStyleBackColor = false;
+            this.btn_printCheckOut.Click += new System.EventHandler(this.btn_printCheckOut_Click);
+            // 
             // txt_change
             // 
             this.txt_change.Dock = System.Windows.Forms.DockStyle.Top;
@@ -612,19 +625,6 @@
             this.pnl_product.Name = "pnl_product";
             this.pnl_product.Size = new System.Drawing.Size(163, 461);
             this.pnl_product.TabIndex = 8;
-            // 
-            // btn_printCheckOut
-            // 
-            this.btn_printCheckOut.BackColor = System.Drawing.Color.DarkSeaGreen;
-            this.btn_printCheckOut.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btn_printCheckOut.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_printCheckOut.Location = new System.Drawing.Point(3, 204);
-            this.btn_printCheckOut.Name = "btn_printCheckOut";
-            this.btn_printCheckOut.Size = new System.Drawing.Size(81, 80);
-            this.btn_printCheckOut.TabIndex = 7;
-            this.btn_printCheckOut.Text = "Check Out (Bill)";
-            this.btn_printCheckOut.UseVisualStyleBackColor = false;
-            this.btn_printCheckOut.Click += new System.EventHandler(this.btn_printCheckOut_Click);
             // 
             // SalesForm
             // 
