@@ -103,7 +103,11 @@ namespace App.Repository
                 Program.StoreAddress = usr.Store.StoreAddress;
                 SettingRepository sysrepo = new SettingRepository();
 
-                Program.MyOoodoDetasils = sysrepo.LoadOdooDetails(Program.LocationID);
+               // OdooDetail odoDetails = sysrepo.LoadOdooDetails(Program.LocationID);
+                SettingViewModal myset = new SettingViewModal();
+                myset.MyOoodoDetasils =sysrepo.LoadOdooDetails(Program.LocationID);
+                myset.MyPrinterDetails = sysrepo.LoadtPrinterDetails(Program.LocationID);
+                Program.MySettingViewModal = myset;
 
 
             }
@@ -191,13 +195,15 @@ namespace App.Repository
     {
         POSDataContext cntxt = new POSDataContext();
 
-        public void InsertInvoiceLocal(Invoicemaster invoicemaster)
+        public Invoicemaster InsertInvoiceLocal(Invoicemaster invoicemaster)
         {
         
             cntxt.Invoicemasters.Add(invoicemaster);
             cntxt.SaveChanges();
+            invoicemaster.InvoiceNum = "" + invoicemaster.InvoicemasterID;
+            cntxt.SaveChanges();
+            return invoicemaster;
 
-            
         }
     }
 
@@ -238,6 +244,68 @@ namespace App.ApplicationSettingRepository
             return issucess;
         }
 
+        public void UpdatePrinterReopository(PrinterDetail printerDetail)
+        {
+            if (MarkPrinterDetailsObsolute(printerDetail))
+            {
+                cntxt.PrinterDetails.Add(printerDetail);
+                cntxt.SaveChanges();
+            }
+
+        }
+
+        public Boolean MarkPrinterDetailsObsolute(PrinterDetail printerDetail)
+        {
+            Boolean issucess = false;
+            var q = from printdet in cntxt.PrinterDetails
+                    where printdet.StoreID == printerDetail.StoreID
+                    select printdet;
+            foreach (var element in q)
+            {
+                element.IsActive = false;
+
+            }
+
+            cntxt.SaveChanges();
+            issucess = true;
+
+            return issucess;
+        }
+
+
+
+
+        public void UpdateUsersettingReopository(AppUserSetting appusersetting)
+        {
+            if (MarkUserSettingDetailsObsolute(appusersetting))
+            {
+                cntxt.AppUserSettings.Add(appusersetting);
+                cntxt.SaveChanges();
+            }
+
+        }
+
+        public Boolean MarkUserSettingDetailsObsolute(AppUserSetting printerDetail)
+        {
+            Boolean issucess = false;
+            var q = from ppusersetting in cntxt.AppUserSettings
+                    where ppusersetting.StoreID == printerDetail.StoreID
+                    select ppusersetting;
+            foreach (var element in q)
+            {
+                element.IsActive = false;
+
+            }
+
+            cntxt.SaveChanges();
+            issucess = true;
+
+            return issucess;
+        }
+
+
+
+
 
 
         public OdooDetail LoadOdooDetails(int storeid)
@@ -246,6 +314,11 @@ namespace App.ApplicationSettingRepository
             return q;
         }
 
+        public PrinterDetail LoadtPrinterDetails(int storeid)
+        {
+            var q = cntxt.PrinterDetails.Where(u => u.StoreID == storeid && u.IsActive == true).FirstOrDefault();
+            return q;
+        }
 
 
 

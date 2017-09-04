@@ -74,9 +74,8 @@
             this.label1 = new System.Windows.Forms.Label();
             this.lbl_table = new System.Windows.Forms.TextBox();
             this.grp_table = new System.Windows.Forms.GroupBox();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.button17 = new System.Windows.Forms.Button();
             this.pnl_product = new System.Windows.Forms.Panel();
+            this.button17 = new System.Windows.Forms.Button();
             this.grp_bottompanel.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -84,7 +83,6 @@
             this.grp_btn.SuspendLayout();
             this.panel2.SuspendLayout();
             this.groupBox2.SuspendLayout();
-            this.panel3.SuspendLayout();
             this.SuspendLayout();
             // 
             // grp_bottompanel
@@ -96,7 +94,7 @@
             this.grp_bottompanel.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.grp_bottompanel.Location = new System.Drawing.Point(0, 511);
             this.grp_bottompanel.Name = "grp_bottompanel";
-            this.grp_bottompanel.Size = new System.Drawing.Size(865, 33);
+            this.grp_bottompanel.Size = new System.Drawing.Size(809, 33);
             this.grp_bottompanel.TabIndex = 1;
             this.grp_bottompanel.TabStop = false;
             this.grp_bottompanel.Text = "Bottom";
@@ -173,7 +171,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(3, 16);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(438, 193);
+            this.panel1.Size = new System.Drawing.Size(438, 159);
             this.panel1.TabIndex = 1;
             // 
             // grd_ProductDetails
@@ -194,7 +192,7 @@
             this.grd_ProductDetails.Name = "grd_ProductDetails";
             this.grd_ProductDetails.RowHeadersVisible = false;
             this.grd_ProductDetails.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.grd_ProductDetails.Size = new System.Drawing.Size(438, 193);
+            this.grd_ProductDetails.Size = new System.Drawing.Size(438, 159);
             this.grd_ProductDetails.TabIndex = 0;
             // 
             // ID
@@ -231,9 +229,9 @@
             // 
             this.grp_btn.Controls.Add(this.panel2);
             this.grp_btn.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.grp_btn.Location = new System.Drawing.Point(3, 209);
+            this.grp_btn.Location = new System.Drawing.Point(3, 175);
             this.grp_btn.Name = "grp_btn";
-            this.grp_btn.Size = new System.Drawing.Size(438, 249);
+            this.grp_btn.Size = new System.Drawing.Size(438, 283);
             this.grp_btn.TabIndex = 0;
             this.grp_btn.TabStop = false;
             this.grp_btn.Text = "keyPad";
@@ -263,7 +261,7 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(3, 16);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(432, 230);
+            this.panel2.Size = new System.Drawing.Size(432, 264);
             this.panel2.TabIndex = 1;
             // 
             // button16
@@ -298,6 +296,7 @@
             this.button13.TabIndex = 18;
             this.button13.Text = ".";
             this.button13.UseVisualStyleBackColor = true;
+            this.button13.Click += new System.EventHandler(this.numericbuttonclicked_Click);
             // 
             // button15
             // 
@@ -404,7 +403,7 @@
             // button9
             // 
             this.button9.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button9.Location = new System.Drawing.Point(160, 62);
+            this.button9.Location = new System.Drawing.Point(160, 61);
             this.button9.Name = "button9";
             this.button9.Size = new System.Drawing.Size(75, 56);
             this.button9.TabIndex = 7;
@@ -448,7 +447,7 @@
             // button4
             // 
             this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button4.Location = new System.Drawing.Point(82, 0);
+            this.button4.Location = new System.Drawing.Point(82, 3);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(75, 56);
             this.button4.TabIndex = 3;
@@ -480,6 +479,7 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.button17);
             this.groupBox2.Controls.Add(this.btn_printCheckOut);
             this.groupBox2.Controls.Add(this.txt_change);
             this.groupBox2.Controls.Add(this.label4);
@@ -592,48 +592,38 @@
             this.grp_table.Dock = System.Windows.Forms.DockStyle.Top;
             this.grp_table.Location = new System.Drawing.Point(0, 0);
             this.grp_table.Name = "grp_table";
-            this.grp_table.Size = new System.Drawing.Size(865, 50);
+            this.grp_table.Size = new System.Drawing.Size(809, 50);
             this.grp_table.TabIndex = 0;
             this.grp_table.TabStop = false;
             this.grp_table.Text = "Tables";
-            // 
-            // panel3
-            // 
-            this.panel3.BackColor = System.Drawing.Color.SandyBrown;
-            this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel3.Controls.Add(this.button17);
-            this.panel3.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel3.Location = new System.Drawing.Point(782, 50);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(83, 461);
-            this.panel3.TabIndex = 7;
-            // 
-            // button17
-            // 
-            this.button17.Dock = System.Windows.Forms.DockStyle.Top;
-            this.button17.Location = new System.Drawing.Point(0, 0);
-            this.button17.Name = "button17";
-            this.button17.Size = new System.Drawing.Size(81, 52);
-            this.button17.TabIndex = 0;
-            this.button17.Text = "Close";
-            this.button17.UseVisualStyleBackColor = true;
             // 
             // pnl_product
             // 
             this.pnl_product.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnl_product.Location = new System.Drawing.Point(619, 50);
             this.pnl_product.Name = "pnl_product";
-            this.pnl_product.Size = new System.Drawing.Size(163, 461);
+            this.pnl_product.Size = new System.Drawing.Size(190, 461);
             this.pnl_product.TabIndex = 8;
+            // 
+            // button17
+            // 
+            this.button17.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.button17.Dock = System.Windows.Forms.DockStyle.Top;
+            this.button17.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold);
+            this.button17.Location = new System.Drawing.Point(3, 284);
+            this.button17.Name = "button17";
+            this.button17.Size = new System.Drawing.Size(81, 80);
+            this.button17.TabIndex = 8;
+            this.button17.Text = "Check Out ";
+            this.button17.UseVisualStyleBackColor = false;
             // 
             // SalesForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(865, 544);
+            this.ClientSize = new System.Drawing.Size(809, 544);
             this.Controls.Add(this.pnl_product);
-            this.Controls.Add(this.panel3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.grp_Category);
@@ -654,7 +644,6 @@
             this.panel2.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
-            this.panel3.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -704,10 +693,9 @@
         private System.Windows.Forms.TextBox txt_change;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button button16;
-        private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Panel pnl_product;
-        private System.Windows.Forms.Button button17;
         private System.Windows.Forms.Label lbl_tableID;
         private System.Windows.Forms.Button btn_printCheckOut;
+        private System.Windows.Forms.Button button17;
     }
 }

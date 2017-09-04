@@ -16,8 +16,8 @@ namespace App
         public static String StoreName;
         public static String StoreAddress;
 
-        public static OdooDetail MyOoodoDetasils { get; set; }
-
+        //public static OdooDetail MyOoodoDetasils { get; set; }
+        public static ViewModal.SettingViewModal MySettingViewModal { get; set; }
         /// <summary>
         /// The main entry point for the application.
         /// </summary>

@@ -11,6 +11,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Drawing.Printing;
 
 namespace App.UI.Setting
 {
@@ -26,6 +27,8 @@ namespace App.UI.Setting
             try
             {
                 showOdoodetails();
+                PopulateInstalledPrintersCombo();
+                showPrinterDetails();
             }
             catch (Exception)
             {
@@ -37,16 +40,24 @@ namespace App.UI.Setting
 
         public void showOdoodetails()
         {
-           tbHost.Text = Program.MyOoodoDetasils.Server;
-            tbPort.Text = Program.MyOoodoDetasils.PortNum.ToString();
-            tbUser.Text = Program.MyOoodoDetasils.UserId.ToString();
-          tbPass.Text = Program.MyOoodoDetasils.Password.ToString();
-            tbDataBaseName.Text = Program.MyOoodoDetasils.DataBasename.ToString();
+           tbHost.Text = Program.MySettingViewModal.MyOoodoDetasils.Server;
+            tbPort.Text = Program.MySettingViewModal.MyOoodoDetasils.PortNum.ToString();
+            tbUser.Text = Program.MySettingViewModal.MyOoodoDetasils.UserId.ToString();
+          tbPass.Text = Program.MySettingViewModal.MyOoodoDetasils.Password.ToString();
+            tbDataBaseName.Text = Program.MySettingViewModal.MyOoodoDetasils.DataBasename.ToString();
 
 
 
         }
+        public void showPrinterDetails()
+        {
+            cmb_pos.Text = Program.MySettingViewModal.MyPrinterDetails.PosPrinter;
+            cmb_kot.Text = Program.MySettingViewModal.MyPrinterDetails.KotPrinter.ToString();
+            cmb_juice.Text = Program.MySettingViewModal.MyPrinterDetails.JuicePrinter.ToString();
+          
 
+
+        }
         private void button2_Click(object sender, EventArgs e)
         {
 
@@ -152,9 +163,57 @@ namespace App.UI.Setting
             appUserSetting.ProductButtonWidth = Decimal.Parse(txt_buttonwidth.Text);
             appUserSetting.ProductButtonHeigth = Decimal.Parse(txt_buttonHeight.Text);
             appUserSetting.StoreID = Program.LocationID;
+            appUserSetting.IsActive = true;
             appUserSetting.RealtimeInvoiceUpdate = (chk_realtime.Checked) ? true : false;
             appUserSetting.FastLoading = (chk_fastloading.Checked) ? true : false;
             appUserSetting.AutoSizebutton = (chk_autosizeproduct.Checked) ? true : false;
+            SettingRepository sysrepo = new SettingRepository();
+            sysrepo.UpdateUsersettingReopository(appUserSetting);
+            MessageBox.Show("App Store settings Updated Correctly. Please Logout the App and login");
+
+        }
+
+
+
+
+
+
+
+        private void PopulateInstalledPrintersCombo()
+        {
+            // Add list of installed printers found to the combo box.
+            // The pkInstalledPrinters string will be used to provide the display string.
+            String pkInstalledPrinters;
+            for (int i = 0; i < PrinterSettings.InstalledPrinters.Count; i++)
+            {
+                pkInstalledPrinters = PrinterSettings.InstalledPrinters[i];
+                cmb_pos.Items.Add(pkInstalledPrinters);
+                cmb_kot.Items.Add(pkInstalledPrinters);
+                cmb_juice.Items.Add(pkInstalledPrinters);
+            }
+        }
+
+        private void comboInstalledPrinters_SelectionChanged(object sender, System.EventArgs e)
+        {
+
+            //// Set the printer to a printer in the combo box when the selection changes.
+
+            //if (comboInstalledPrinters.SelectedIndex != -1)
+            //{
+            //    // The combo box's Text property returns the selected item's text, which is the printer name.
+            //    printDoc.PrinterSettings.PrinterName = comboInstalledPrinters.Text;
+            //}
+
+        }
+
+        private void button2_Click_1(object sender, EventArgs e)
+        {
+            SettingRepository sysrepo = new SettingRepository();
+            PrinterDetail printerDetails = new PrinterDetail { PosPrinter = cmb_pos.Text.Trim(),
+                KotPrinter = cmb_kot.Text.Trim(), JuicePrinter = cmb_juice.Text.Trim(),
+               IsActive = true, StoreID = Program.LocationID };
+            sysrepo.UpdatePrinterReopository(printerDetails);
+            MessageBox.Show("Printer settings Updated Correctly. Please Logout the App and login");
         }
     }
 }
