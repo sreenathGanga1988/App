@@ -35,7 +35,7 @@ namespace App.Context
         public DbSet<KotDetail> KotDetails { get; set; }
         public DbSet<AppUserSetting> AppUserSettings { get; set; }
         public DbSet<OdooDetail> OdooDetails { get; set; }
+        public DbSet<PrinterDetail> PrinterDetails { get; set; }
         
-      
     }
 }

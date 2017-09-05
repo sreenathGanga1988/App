@@ -251,6 +251,20 @@ namespace App.UI
         }
 
 
+        public void AddFloatPoint()
+        {
+            try
+            {
+                float k = float.Parse(txt_producrtcode.Text);
+                k = float.Parse(txt_producrtcode.Text.Trim() + ".");
+                txt_producrtcode.Text = txt_producrtcode.Text.Trim() + ".";
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Error");
+
+            };
+        }
 
 
         public void LoadProducts(List<ProductlistViewModal> Productlist)
@@ -287,7 +301,7 @@ namespace App.UI
                 temp.Name = "button" + product.ProductID.ToString();
                 temp.Text = product.ProductName;
                 temp._value = product.ProductID.ToString();
-                temp.AutoSize = true;
+               // temp.AutoSize = true;
                 temp.Width = buttonwidth;
                 temp.Height = buttonheight;
                 temp.Font = new Font(temp.Font, FontStyle.Bold);
@@ -442,6 +456,15 @@ namespace App.UI
                 }
               
             }
+            else if (btn.Text.Trim() == ".")
+            {
+
+                AddFloatPoint();
+
+
+            }
+
+
 
 
             else
@@ -562,10 +585,18 @@ namespace App.UI
             }
             invoicemaster.InvoiceDetails = invoicedetails;
             InvoiceRepository invrrepo = new InvoiceRepository();
-          
-            invrrepo.InsertInvoiceLocal(invoicemaster);
-            PrintReceipt prnt = new PrintReceipt();
-            prnt.printInvoicereport(invoicemaster);
+
+            invoicemaster= invrrepo.InsertInvoiceLocal(invoicemaster);
+            try
+            {
+                PrintReceipt prnt = new PrintReceipt();
+                prnt.printInvoicereport(invoicemaster);
+            }
+            catch (Exception ex)
+            {
+
+               MessageBox.Show("Printer Malfunction.But Invoice Done");
+            }
         }
 
 

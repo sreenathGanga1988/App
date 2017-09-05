@@ -76,6 +76,9 @@ namespace App.Model
         public virtual List<Table> Tables { get; set; }
         public virtual List<Invoicemaster> Invoicemasters { get; set; }
         public virtual List<KotMaster> KotMasters { get; set; }
+        public virtual List<PrinterDetail> PrinterDetails { get; set; }
+
+        
     }
 
     public class Company
@@ -145,7 +148,7 @@ namespace App.Model
 
         [Key]
         public int InvoicemasterID { get; set; }
-
+        public string InvoiceNum { get; set; }
 
         public int StoreID { get; set; }
         public int UserID { get; set; }
@@ -233,12 +236,34 @@ namespace App.Model
 
         public  Boolean AutoSizebutton { get; set; }
         public virtual Store Store { get; set; }
+        public Boolean IsActive { get; set; }
     }
-   
+
+
+    public class PrinterDetail
+    {
+
+        [Key]
+        public int PrinterDetailId { get; set; }
+        public String PosPrinter { get; set; }
+    
+        public String KotPrinter { get; set; }
+      
+        public String JuicePrinter { get; set; }
+      
+        public int StoreID { get; set; }
+        public virtual Store Store { get; set; }
+        public Boolean IsActive { get; set; }
+    }
+
+
+
+
     public class KotMaster
     {
         [Key]
         public int KotMasterID { get; set; }
+        public string KotNum { get; set; }
         public int StoreID { get; set; }
         public int UserID { get; set; }
        

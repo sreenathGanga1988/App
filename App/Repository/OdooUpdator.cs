@@ -53,8 +53,8 @@ namespace App.Repository
                 //string connstring = String.Format("Server=192.168.1.73;Port=5432;User Id=odoo;Password=at123;Database=ken-aug20;");
                 string connstring = String.Format("Server={0};Port={1};" +
                         "User Id={2};Password={3};Database={4};",
-                        Program.MyOoodoDetasils.Server.Trim(), Program.MyOoodoDetasils.PortNum.ToString().Trim(), Program.MyOoodoDetasils.UserId.ToString().Trim(),
-                       Program.MyOoodoDetasils.Password.ToString().Trim(), Program.MyOoodoDetasils.DataBasename.ToString().Trim());
+                        Program.MySettingViewModal.MyOoodoDetasils.Server.Trim(), Program.MySettingViewModal.MyOoodoDetasils.PortNum.ToString().Trim(), Program.MySettingViewModal.MyOoodoDetasils.UserId.ToString().Trim(),
+                       Program.MySettingViewModal.MyOoodoDetasils.Password.ToString().Trim(), Program.MySettingViewModal.MyOoodoDetasils.DataBasename.ToString().Trim());
                 NpgsqlConnection conn = new NpgsqlConnection(connstring);
                 conn.Open();
                NpgsqlCommand cmd = new NpgsqlCommand(@"insert into pos_order_invoice
@@ -139,8 +139,8 @@ values(:create_uid,:user_id, :store_id,:write_uid ,:create_date,:write_date,:tab
 //                //string connstring = String.Format("Server=192.168.1.73;Port=5432;User Id=odoo;Password=at123;Database=ken-aug20;");
 //                string connstring = String.Format("Server={0};Port={1};" +
 //                        "User Id={2};Password={3};Database={4};",
-//                        Program.MyOoodoDetasils.Server.Trim(), Program.MyOoodoDetasils.PortNum.ToString().Trim(), Program.MyOoodoDetasils.UserId.ToString().Trim(),
-//                       Program.MyOoodoDetasils.Password.ToString().Trim(), Program.MyOoodoDetasils.DataBasename.ToString().Trim());
+//                        Program.MySettingViewModal.MyOoodoDetasils.Server.Trim(), Program.MySettingViewModal.MyOoodoDetasils.PortNum.ToString().Trim(), Program.MySettingViewModal.MyOoodoDetasils.UserId.ToString().Trim(),
+//                       Program.MySettingViewModal.MyOoodoDetasils.Password.ToString().Trim(), Program.MySettingViewModal.MyOoodoDetasils.DataBasename.ToString().Trim());
 //                NpgsqlConnection conn = new NpgsqlConnection(connstring);
 //                conn.Open();
 //                NpgsqlCommand cmd = new NpgsqlCommand(@"insert into pos_order_invoice_details 
