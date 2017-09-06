@@ -30,6 +30,17 @@ namespace App.ViewModal
 
     }
 
+    public class InvoiceviewModal
+    {
+        public int InvoicemasterID { get; set; }
+        public DateTime InvoiceDate { get; set; }
+        public String InvoiceNum { get; set; }
+        public String TableName { get; set; }
+        public String StoreName { get; set; }
+        public String CustomerName { get; set; }
+        public Decimal TotalBill { get; set; }
+        public Decimal TotalPaid { get; set; }
 
+    }
    
 }

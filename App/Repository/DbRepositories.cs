@@ -109,8 +109,7 @@ namespace App.Repository
                 myset.MyPrinterDetails = sysrepo.LoadtPrinterDetails(Program.LocationID);
                 Program.MySettingViewModal = myset;
 
-                Program.KotPrinter = "KOT1";
-                Program.Invoiceprinter = "POS1";
+              
             }
         }
 
@@ -188,6 +187,23 @@ namespace App.Repository
             cntxt.KotMasters.Add(kotmaster);
             cntxt.SaveChanges();
         }
+
+
+        public List <KotMaster> GetKotPending(int storeid)
+        {
+            var q = (cntxt.KotMasters.Where(u => u.StoreID == storeid)).ToList();
+
+            return q;
+        }
+
+        public KotMaster GetKOT(int kotmasterId)
+        {
+
+
+            var q = cntxt.KotMasters.Where(u => u.KotMasterID == kotmasterId).FirstOrDefault();
+
+            return q;
+        }
     }
 
 
@@ -205,6 +221,31 @@ namespace App.Repository
             cntxt.SaveChanges();
             return invoicemaster;
 
+        }
+        public List <InvoiceviewModal> GetInvoicePending(int storeid)
+        {
+            var q = (from invoicemstr in cntxt.Invoicemasters
+                    where invoicemstr.IsUploaded == false && invoicemstr.StoreID==storeid
+                     select new InvoiceviewModal { InvoicemasterID= invoicemstr.InvoicemasterID, InvoiceDate= invoicemstr.InvoiceDate,InvoiceNum= invoicemstr.InvoiceNum, TableName= invoicemstr.Table.TableName, StoreName= invoicemstr.Store.StoreName,  CustomerName=invoicemstr.Customer.CustomerName,TotalBill= invoicemstr.TotalBill, TotalPaid=invoicemstr.TotalPaid }).ToList();
+            //foreach (var element in q)
+            //{
+
+            //    var total = (cntxt.InvoiceDetails.Where(u => u.InvoicemasterID == element.InvoicemasterID).Sum(u => u.Total));
+
+            //    element.TotalBill=cntxt.
+            //}
+
+            return q;
+        }
+
+
+        public Invoicemaster GetInvoice(int invoicemasterid)
+        {
+
+
+            var q = cntxt.Invoicemasters.Where(u => u.InvoicemasterID == invoicemasterid).FirstOrDefault();
+
+            return q;
         }
     }
 

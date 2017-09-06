@@ -57,7 +57,7 @@ namespace App.Extensions
             if (File.Exists(".\\tmpPrint.print"))
                 File.Delete(".\\tmpPrint.print");
             File.WriteAllBytes(".\\tmpPrint.print", BytesValue);
-            RawPrinterHelper.SendFileToPrinter(Program.Invoiceprinter, ".\\tmpPrint.print");
+            RawPrinterHelper.SendFileToPrinter(Program.MySettingViewModal.MyPrinterDetails.PosPrinter, ".\\tmpPrint.print");
             try
             {
                 File.Delete(".\\tmpPrint.print");
@@ -230,7 +230,7 @@ namespace App.Extensions
             BytesValue = PrintExtensions.AddBytes(BytesValue, obj.Separator());
             foreach (InvoiceDetail invoicedet in invoicemaster.InvoiceDetails)
             {
-                BytesValue = PrintExtensions.AddBytes(BytesValue, string.Format("{0,-25}{1,6}{2,8}{3,8}{4,6:N2}\n", invoicedet.ProductName, invoicedet.Qty, invoicedet.UnitPrice, invoicedet.DiscountPerUOM, invoicedet.Total));
+                BytesValue = PrintExtensions.AddBytes(BytesValue, string.Format("{0,-25}{1,6}{2,8}{3,8}{4,6:N2}\n", invoicedet.Product.ProductName, invoicedet.Qty, invoicedet.UnitPrice, invoicedet.DiscountPerUOM, invoicedet.Total));
             }
 
            
@@ -252,7 +252,10 @@ namespace App.Extensions
             if (File.Exists(".\\tmpPrint.print"))
                 File.Delete(".\\tmpPrint.print");
             File.WriteAllBytes(".\\tmpPrint.print", BytesValue);
-            RawPrinterHelper.SendFileToPrinter(Program.Invoiceprinter, ".\\tmpPrint.print");
+
+           
+
+            RawPrinterHelper.SendFileToPrinter(Program.MySettingViewModal.MyPrinterDetails.PosPrinter, ".\\tmpPrint.print");
             try
             {
                 File.Delete(".\\tmpPrint.print");
@@ -312,7 +315,7 @@ namespace App.Extensions
             if (File.Exists(".\\tmpPrint.print"))
                 File.Delete(".\\tmpPrint.print");
             File.WriteAllBytes(".\\tmpPrint.print", BytesValue);
-            RawPrinterHelper.SendFileToPrinter(Program.KotPrinter, ".\\tmpPrint.print");
+            RawPrinterHelper.SendFileToPrinter(Program.MySettingViewModal.MyPrinterDetails.KotPrinter, ".\\tmpPrint.print");
             try
             {
                 File.Delete(".\\tmpPrint.print");

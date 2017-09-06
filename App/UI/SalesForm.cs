@@ -674,9 +674,49 @@ namespace App.UI
             return isvalidforInvoice;
         }
 
+
+
+        public Boolean ValidateforTableBill()
+        {
+            Boolean isvalidforInvoice = false;
+            if (!ValidateforKot())
+            {
+
+            }
+          
+            else if (txt_total.Text.Trim() == "" || txt_total.Text == null)
+            {
+                MessageBox.Show("Wrong total Select one more item ");
+            }
+            else if (!MyExtensions.CheckifDecimal(txt_cash.Text.Trim()))
+            {
+                MessageBox.Show("Enter Cash Correctly");
+            }
+            else if (!MyExtensions.CheckifDecimal(txt_total.Text.Trim()))
+            {
+                MessageBox.Show("Wrong total");
+            }
+          
+            else
+            {
+                isvalidforInvoice = true;
+            }
+
+            return isvalidforInvoice;
+        }
+
+
         private void btn_printCheckOut_Click(object sender, EventArgs e)
         {
             if (ValidateforCheckOut())
+            {
+                AddInvoice();
+            }
+        }
+
+        private void button18_Click(object sender, EventArgs e)
+        {
+            if (ValidateforTableBill())
             {
                 AddInvoice();
             }

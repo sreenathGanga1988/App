@@ -50,8 +50,7 @@ namespace App.UI
 
         private void button1_Click(object sender, EventArgs e)
         {
-            test tst = new test();
-            tst.Show();
+           
         }
 
         private void button5_Click(object sender, EventArgs e)
@@ -60,21 +59,34 @@ namespace App.UI
             odoosetting.Show();
 
 
-
-
+           
 
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
-            Repository.OdooUpdator odoupd = new Repository.OdooUpdator();
-            odoupd.uploadInvoiceMaster();
+
+            EndOfDay frm = new EndOfDay();
+
+            frm.StartPosition = FormStartPosition.CenterScreen;
+            frm.Show();
+
+           
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
-            PrintReceipt prnt = new PrintReceipt();
-            prnt.printreport();
+
+
+            KOT frm = new KOT();
+
+            frm.StartPosition = FormStartPosition.CenterScreen;
+            frm.Show();
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
