@@ -102,11 +102,12 @@ namespace App.Repository
                 Program.StoreName = usr.Store.StoreName;
                 Program.StoreAddress = usr.Store.StoreAddress;
                 SettingRepository sysrepo = new SettingRepository();
-
-               // OdooDetail odoDetails = sysrepo.LoadOdooDetails(Program.LocationID);
+                AppuserSettingRepository appuserrepo = new AppuserSettingRepository();
+                // OdooDetail odoDetails = sysrepo.LoadOdooDetails(Program.LocationID);
                 SettingViewModal myset = new SettingViewModal();
                 myset.MyOoodoDetasils =sysrepo.LoadOdooDetails(Program.LocationID);
                 myset.MyPrinterDetails = sysrepo.LoadtPrinterDetails(Program.LocationID);
+                myset.AppUserSettings = appuserrepo.LoadAppUserSetting(Program.LocationID);
                 Program.MySettingViewModal = myset;
 
               
@@ -249,6 +250,21 @@ namespace App.Repository
         }
     }
 
+
+    public class RefundRepository
+    {
+        POSDataContext cntxt = new POSDataContext();
+
+        public RefundMaster InsertRefund(RefundMaster refundmaster)
+        {
+
+            cntxt.RefundMasters.Add(refundmaster);
+            cntxt.SaveChanges();
+         
+            return refundmaster;
+
+        }
+    }
 
 }
 namespace App.ApplicationSettingRepository
@@ -400,7 +416,14 @@ namespace App.ApplicationSettingRepository
 
         }
 
+        public AppUserSetting LoadAppUserSetting(int storeid)
+        {
+            var q = cntxt.AppUserSettings.Where(u => u.StoreID == storeid && u.IsActive == true).FirstOrDefault();
+            return q;
+        }
+
     }
 
 
 }
+

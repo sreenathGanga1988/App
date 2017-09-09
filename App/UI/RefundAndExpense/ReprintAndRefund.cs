@@ -1,6 +1,7 @@
 ﻿using App.Extensions;
 using App.Model;
 using App.Repository;
+using App.UI.RefundAndExpense;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -15,7 +16,7 @@ namespace App.UI
 {
     public partial class ReprintAndRefund : Form
     {
-
+        int invoiceid = 0;
         public Invoicemaster invmstr = new Invoicemaster();
         public ReprintAndRefund()
         {
@@ -31,7 +32,7 @@ namespace App.UI
             invmstr.StoreAddress = invmstr.Store.StoreAddress;
             invmstr.Cashier = invmstr.User.UserName;
             invmstr.CustomerName = invmstr.Customer.CustomerName;
-
+            invoiceid = invoicemasterID;
             try
             {
                 lbl_invoice.Text = invmstr.InvoiceNum.ToString();
@@ -57,6 +58,12 @@ namespace App.UI
 
                 MessageBox.Show("Printer Malfunction.But Invoice Done");
             }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            ValueInPut valinput = new ValueInPut(invoiceid,"Refund", invmstr.InvoiceNum);
+            valinput.ShowDialog();
         }
     }
 }

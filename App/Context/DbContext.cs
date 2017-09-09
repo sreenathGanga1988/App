@@ -36,6 +36,8 @@ namespace App.Context
         public DbSet<AppUserSetting> AppUserSettings { get; set; }
         public DbSet<OdooDetail> OdooDetails { get; set; }
         public DbSet<PrinterDetail> PrinterDetails { get; set; }
+        public DbSet<RefundMaster> RefundMasters { get; set; }
         
+
     }
 }

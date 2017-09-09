@@ -57,6 +57,7 @@ namespace App.Model
         public String UserName { get; set; }
 
         public virtual Store Store { get; set; }
+        public virtual List<RefundMaster> RefundMasters { get; set; }
     }
 
 
@@ -78,7 +79,9 @@ namespace App.Model
         public virtual List<KotMaster> KotMasters { get; set; }
         public virtual List<PrinterDetail> PrinterDetails { get; set; }
 
-        
+        public virtual List<RefundMaster> RefundMasters { get; set; }
+
+
     }
 
     public class Company
@@ -176,6 +179,7 @@ namespace App.Model
         public string Cashier { get; set; }
         [NotMapped]
         public string CustomerName { get; set; }
+        public virtual List<RefundMaster> RefundMasters { get; set; }
     }
 
     public class InvoiceDetail
@@ -308,4 +312,20 @@ namespace App.Model
 
     }
 
+
+
+    public class RefundMaster
+    {
+        [Key]
+        public int RefundMasterID { get; set; }
+        public string RefundNum { get; set; }
+        public int StoreID { get; set; }
+        public int UserID { get; set; }  
+        public int InvoicemasterID { get; set; }
+        public DateTime RefundDate { get; set; }
+        public Decimal TotalRefund { get; set; }
+        public virtual Store Store { get; set; }
+        public virtual User User { get; set; }
+        public virtual Invoicemaster Invoicemaster { get; set; }
+    }
 }

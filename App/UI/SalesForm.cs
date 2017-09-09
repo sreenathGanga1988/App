@@ -1,6 +1,7 @@
 ﻿using App.Extensions;
 using App.Model;
 using App.Repository;
+using App.UI.RefundAndExpense;
 using App.ViewModal;
 using System;
 using System.Collections.Generic;
@@ -720,6 +721,12 @@ namespace App.UI
             {
                 AddInvoice();
             }
+        }
+
+        private void btn_actionBoard_Click(object sender, EventArgs e)
+        {
+            ActionBoard Board = new ActionBoard();
+            Board.ShowDialog();
         }
     }
 }

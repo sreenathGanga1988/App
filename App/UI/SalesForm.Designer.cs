@@ -45,6 +45,7 @@
             this.Total = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.grp_btn = new System.Windows.Forms.GroupBox();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.button18 = new System.Windows.Forms.Button();
             this.button16 = new System.Windows.Forms.Button();
             this.button14 = new System.Windows.Forms.Button();
             this.button13 = new System.Windows.Forms.Button();
@@ -76,7 +77,7 @@
             this.lbl_table = new System.Windows.Forms.TextBox();
             this.grp_table = new System.Windows.Forms.GroupBox();
             this.pnl_product = new System.Windows.Forms.Panel();
-            this.button18 = new System.Windows.Forms.Button();
+            this.btn_actionBoard = new System.Windows.Forms.Button();
             this.grp_bottompanel.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -265,6 +266,18 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(432, 294);
             this.panel2.TabIndex = 1;
+            // 
+            // button18
+            // 
+            this.button18.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.button18.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
+            this.button18.Location = new System.Drawing.Point(5, 230);
+            this.button18.Name = "button18";
+            this.button18.Size = new System.Drawing.Size(152, 43);
+            this.button18.TabIndex = 21;
+            this.button18.Text = "Table Bill";
+            this.button18.UseVisualStyleBackColor = false;
+            this.button18.Click += new System.EventHandler(this.button18_Click);
             // 
             // button16
             // 
@@ -487,6 +500,7 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.btn_actionBoard);
             this.groupBox2.Controls.Add(this.button17);
             this.groupBox2.Controls.Add(this.btn_printCheckOut);
             this.groupBox2.Controls.Add(this.txt_change);
@@ -509,9 +523,9 @@
             this.button17.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.button17.Dock = System.Windows.Forms.DockStyle.Top;
             this.button17.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold);
-            this.button17.Location = new System.Drawing.Point(3, 284);
+            this.button17.Location = new System.Drawing.Point(3, 271);
             this.button17.Name = "button17";
-            this.button17.Size = new System.Drawing.Size(81, 80);
+            this.button17.Size = new System.Drawing.Size(81, 67);
             this.button17.TabIndex = 8;
             this.button17.Text = "Check Out ";
             this.button17.UseVisualStyleBackColor = false;
@@ -523,7 +537,7 @@
             this.btn_printCheckOut.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_printCheckOut.Location = new System.Drawing.Point(3, 204);
             this.btn_printCheckOut.Name = "btn_printCheckOut";
-            this.btn_printCheckOut.Size = new System.Drawing.Size(81, 80);
+            this.btn_printCheckOut.Size = new System.Drawing.Size(81, 67);
             this.btn_printCheckOut.TabIndex = 7;
             this.btn_printCheckOut.Text = "Check Out (Bill)";
             this.btn_printCheckOut.UseVisualStyleBackColor = false;
@@ -625,17 +639,17 @@
             this.pnl_product.Size = new System.Drawing.Size(190, 467);
             this.pnl_product.TabIndex = 8;
             // 
-            // button18
+            // btn_actionBoard
             // 
-            this.button18.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.button18.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
-            this.button18.Location = new System.Drawing.Point(5, 230);
-            this.button18.Name = "button18";
-            this.button18.Size = new System.Drawing.Size(152, 43);
-            this.button18.TabIndex = 21;
-            this.button18.Text = "Table Bill";
-            this.button18.UseVisualStyleBackColor = false;
-            this.button18.Click += new System.EventHandler(this.button18_Click);
+            this.btn_actionBoard.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btn_actionBoard.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold);
+            this.btn_actionBoard.Location = new System.Drawing.Point(3, 338);
+            this.btn_actionBoard.Name = "btn_actionBoard";
+            this.btn_actionBoard.Size = new System.Drawing.Size(81, 67);
+            this.btn_actionBoard.TabIndex = 9;
+            this.btn_actionBoard.Text = "Action";
+            this.btn_actionBoard.UseVisualStyleBackColor = true;
+            this.btn_actionBoard.Click += new System.EventHandler(this.btn_actionBoard_Click);
             // 
             // SalesForm
             // 
@@ -718,5 +732,6 @@
         private System.Windows.Forms.Button btn_printCheckOut;
         private System.Windows.Forms.Button button17;
         private System.Windows.Forms.Button button18;
+        private System.Windows.Forms.Button btn_actionBoard;
     }
 }
