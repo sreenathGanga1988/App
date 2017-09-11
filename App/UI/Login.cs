@@ -19,14 +19,14 @@ namespace App.UI
 
             InitializeComponent();
 
-            Company objCompany = new Company();
-            objCompany.CompanyId = DateTime.Now.ToString();
-            objCompany.Name = "Sree";
+          //  Company objCompany = new Company();
+          //  objCompany.CompanyId = DateTime.Now.ToString();
+           // objCompany.Name = "Sree";
 
           //  Create context object and then save company data.  
-            POSDataContext objContext = new POSDataContext();
-            objContext.Companies.Add(objCompany);
-           objContext.SaveChanges();
+           // POSDataContext objContext = new POSDataContext();
+          //  objContext.Companies.Add(objCompany);
+          // objContext.SaveChanges();
 
 
         }

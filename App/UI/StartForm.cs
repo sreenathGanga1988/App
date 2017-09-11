@@ -88,5 +88,10 @@ namespace App.UI
         {
 
         }
+
+        private void StartForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }

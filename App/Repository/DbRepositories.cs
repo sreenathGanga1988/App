@@ -7,7 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using System.Windows.Forms;
 namespace App.Repository
 {
     class ProductRepositories
@@ -82,7 +82,7 @@ namespace App.Repository
             }
             catch (Exception ex)
             {
-
+                MessageBox.Show(ex.ToString());
                 isvalid = false;
             }
 

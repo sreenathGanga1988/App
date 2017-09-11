@@ -18,5 +18,10 @@ namespace App
             this.IsMdiContainer = true;
            
         }
+
+        private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+           
+        }
     }
 }
