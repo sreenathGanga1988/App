@@ -223,6 +223,8 @@ namespace App.Repository
         public Invoicemaster UpdateInvoicemaster(Invoicemaster invoicemaster)
         {
 
+
+            
            
 
             var q = from invmstr in cntxt.Invoicemasters
@@ -248,7 +250,98 @@ namespace App.Repository
               
             }
 
-       
+
+
+            foreach (InvoiceDetail invdet  in invoicemaster.InvoiceDetails )
+            {
+
+                if (!cntxt.InvoiceDetails.Any(f => f.InvoicemasterID == invdet.InvoicemasterID && f.ProductId == invdet.ProductId ))
+                {
+                    InvoiceDetail invoicedetail = new InvoiceDetail();
+                    invoicedetail.ProductId = invdet.ProductId;
+                    invoicedetail.ProductName = invdet.ProductName;
+
+                    invoicedetail.IsDeleted = invdet.IsDeleted;
+                    invoicedetail.UnitPrice = invdet.UnitPrice;
+                    invoicedetail.Qty = invdet.Qty;
+                    invoicedetail.DiscountPerUOM = invdet.DiscountPerUOM;
+                    invoicedetail.Total = invdet.Total;
+                    invoicedetail.IsUploaded = invdet.IsUploaded;
+                    invoicedetail.PreviousQty = invdet.PreviousQty;
+                    invoicedetail.AdjustedQty = invdet.AdjustedQty;
+                    invoicedetail.InvoicemasterID = invdet.InvoicemasterID;
+
+                    cntxt.InvoiceDetails.Add(invoicedetail);
+                }
+                else
+                {
+                    var q1 = from ivoidedetail in cntxt.InvoiceDetails
+                            where ivoidedetail.InvoicemasterID == invdet.InvoicemasterID && ivoidedetail.ProductId == invdet.ProductId
+                            select ivoidedetail;
+                    foreach (var element in q1)
+                    {
+                        element.PreviousQty = element.Qty;
+
+                        element.ProductId = invdet.ProductId;
+                        element.ProductName = invdet.ProductName;
+
+                        element.IsDeleted = invdet.IsDeleted;
+                        element.UnitPrice = invdet.UnitPrice;
+                        element.Qty = invdet.Qty;
+                        element.DiscountPerUOM = invdet.DiscountPerUOM;
+                        element.Total = invdet.Total;
+                        element.IsUploaded = invdet.IsUploaded;
+
+                      
+                        element.AdjustedQty = element.PreviousQty- invdet.Qty;
+                   
+
+                    }
+
+                }
+
+
+
+
+           
+
+
+
+
+
+
+
+
+
+
+                cntxt.SaveChanges();
+
+
+            }
+
+
+
+
+            var alreadyenteredinvoicelist = from ivoidedetail in cntxt.InvoiceDetails
+                                            where ivoidedetail.InvoicemasterID == invoicemaster.InvoicemasterID
+                                            select ivoidedetail;
+
+
+
+            foreach(var element in alreadyenteredinvoicelist)
+            {
+
+
+                if (!invoicemaster.InvoiceDetails.Any(f => f.ProductId ==element.ProductId))
+                {
+
+
+                }
+
+             }
+
+
+
 
 
             return invoicemaster;
@@ -304,7 +397,7 @@ namespace App.Repository
 
         public List<Invoicemaster> GetInvoiPendingtoBill(int storeid)
         {
-            var q = (cntxt.Invoicemasters.Where(u => u.StoreID == storeid && u.IstableBill==true)).ToList();
+            var q = (cntxt.Invoicemasters.Where(u => u.StoreID == storeid && u.IstableBill == true || u.IsKOT == true)).ToList();
 
             return q;
         }

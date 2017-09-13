@@ -268,7 +268,7 @@ namespace App.Extensions
         }
 
 
-        public void printKOTreport(KotMaster kotMaster)
+        public void printKOTreport(Invoicemaster kotMaster)
         {
 
             PrinterUtility.EscPosEpsonCommands.EscPosEpson obj = new PrinterUtility.EscPosEpsonCommands.EscPosEpson();
@@ -291,9 +291,12 @@ namespace App.Extensions
             BytesValue = PrintExtensions.AddBytes(BytesValue, Encoding.ASCII.GetBytes("Date        : " + kotMaster.InvoiceDate.ToString("dd/MM/yy") + "     Cashier  :" + kotMaster.Cashier.Trim() + "\n"));
             BytesValue = PrintExtensions.AddBytes(BytesValue, Encoding.ASCII.GetBytes("Itm                             Qty \n"));
             BytesValue = PrintExtensions.AddBytes(BytesValue, obj.Separator());
-            foreach (KotDetail kotdetail in kotMaster.KotDetails)
+            foreach (InvoiceDetail kotdetail in kotMaster.InvoiceDetails)
             {
-                BytesValue = PrintExtensions.AddBytes(BytesValue, string.Format("{0,-35}{1,6}\n", kotdetail.ProductName, kotdetail.Qty));
+                
+                    BytesValue = PrintExtensions.AddBytes(BytesValue, string.Format("{0,-35}{1,6}\n", kotdetail.ProductName, kotdetail.Qty));
+                
+              
             }
 
 
@@ -301,7 +304,7 @@ namespace App.Extensions
             BytesValue = PrintExtensions.AddBytes(BytesValue, obj.Alignment.Right());
             BytesValue = PrintExtensions.AddBytes(BytesValue, obj.Separator());
             BytesValue = PrintExtensions.AddBytes(BytesValue, Encoding.ASCII.GetBytes("Total\n"));
-            BytesValue = PrintExtensions.AddBytes(BytesValue, Encoding.ASCII.GetBytes(kotMaster.KotDetails.Count() + " Items \n"));
+            BytesValue = PrintExtensions.AddBytes(BytesValue, Encoding.ASCII.GetBytes(kotMaster.InvoiceDetails.Count() + " Items \n"));
             BytesValue = PrintExtensions.AddBytes(BytesValue, obj.Separator());
             BytesValue = PrintExtensions.AddBytes(BytesValue, obj.Lf());
             //BytesValue = PrintExtensions.AddBytes(BytesValue, obj.Alignment.Center());

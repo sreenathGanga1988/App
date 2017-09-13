@@ -169,6 +169,7 @@ namespace App.Model
         public virtual Customer Customer { get; set; }
         public Boolean IsUploaded { get; set; }
         public Boolean? IstableBill { get; set; }
+        public Boolean? IsKOT { get; set; }
         public virtual List<InvoiceDetail> InvoiceDetails { get; set; }
         public String Color { get; set; }
 
@@ -196,6 +197,12 @@ namespace App.Model
         public Decimal DiscountPerUOM { get; set; }
         public Decimal Total { get; set; }
         public Boolean IsUploaded { get; set; }
+        public Boolean? IsDeleted { get; set; }
+
+        public Decimal PreviousQty { get; set; }
+
+        public Decimal AdjustedQty { get; set; }
+
         public virtual Product Product { get; set; }
         public virtual Invoicemaster Invoicemaster { get; set; }
         [NotMapped]
@@ -310,6 +317,8 @@ namespace App.Model
         public Decimal DiscountPerUOM { get; set; }
         public Decimal Total { get; set; }
         public Boolean IsUploaded { get; set; }
+
+        public Boolean IsPrinted { get; set; }
         public virtual Product Product { get; set; }
        public virtual KotMaster KotMasters { get; set; }
 

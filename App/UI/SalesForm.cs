@@ -488,7 +488,10 @@ namespace App.UI
             {
                 if (ValidateforKot())
                 {
-                    AddKoT();
+                    //AddKoT();
+                    AddInvoice("kot");
+
+
                     clearGridView();
                 }
 
@@ -578,49 +581,49 @@ namespace App.UI
             }
         }
 
-        public void AddKoT()
-        {
-            KotMaster komstr = new KotMaster();
-            komstr.StoreID = Program.LocationID;
-            komstr.UserID = Program.UserID;
-            komstr.InvoiceDate = DateTime.Now;
-            komstr.CustomerID = int.Parse(lbl_custid.Text);
-            komstr.TableID = int.Parse(lbl_tableID.Text);
-            komstr.StoreName = Program.StoreName;
-            komstr.StoreAddress = Program.StoreAddress;
-            komstr.Cashier = Program.Username;
-            komstr.CustomerName = lbl_customer.Text;
-            List<KotDetail> KotDetails = new List<KotDetail> { };
-            foreach (DataGridViewRow row in grd_ProductDetails.Rows)
-            {
-                KotDetail kotdetail = new KotDetail();
-                kotdetail.ProductId = int.Parse( row.Cells["ID"].Value.ToString());
-                kotdetail.ProductName = row.Cells["Item"].Value.ToString();
-                kotdetail.UnitPrice = Decimal.Parse(row.Cells["Price"].Value.ToString());
-                kotdetail.Qty = Decimal.Parse(row.Cells["Qty"].Value.ToString());
-                kotdetail.DiscountPerUOM = Decimal.Parse(row.Cells["Discount"].Value.ToString());
+        //public void AddKoT()
+        //{
+        //    KotMaster komstr = new KotMaster();
+        //    komstr.StoreID = Program.LocationID;
+        //    komstr.UserID = Program.UserID;
+        //    komstr.InvoiceDate = DateTime.Now;
+        //    komstr.CustomerID = int.Parse(lbl_custid.Text);
+        //    komstr.TableID = int.Parse(lbl_tableID.Text);
+        //    komstr.StoreName = Program.StoreName;
+        //    komstr.StoreAddress = Program.StoreAddress;
+        //    komstr.Cashier = Program.Username;
+        //    komstr.CustomerName = lbl_customer.Text;
+        //    List<KotDetail> KotDetails = new List<KotDetail> { };
+        //    foreach (DataGridViewRow row in grd_ProductDetails.Rows)
+        //    {
+        //        KotDetail kotdetail = new KotDetail();
+        //        kotdetail.ProductId = int.Parse( row.Cells["ID"].Value.ToString());
+        //        kotdetail.ProductName = row.Cells["Item"].Value.ToString();
+        //        kotdetail.UnitPrice = Decimal.Parse(row.Cells["Price"].Value.ToString());
+        //        kotdetail.Qty = Decimal.Parse(row.Cells["Qty"].Value.ToString());
+        //        kotdetail.DiscountPerUOM = Decimal.Parse(row.Cells["Discount"].Value.ToString());
 
-                KotDetails.Add(kotdetail);
-            }
-            komstr.KotDetails = KotDetails;
-            KotRepository kotrepo = new KotRepository();
-            komstr= kotrepo.InsertKOT(komstr);
+        //        KotDetails.Add(kotdetail);
+        //    }
+        //    komstr.KotDetails = KotDetails;
+        //    KotRepository kotrepo = new KotRepository();
+        //    komstr= kotrepo.InsertKOT(komstr);
            
 
-            try
-            {
-                PrintReceipt prnt = new PrintReceipt();
-                prnt.printKOTreport(komstr);
+        //    try
+        //    {
+        //        PrintReceipt prnt = new PrintReceipt();
+        //        prnt.printKOTreport(komstr);
 
-                MessageBox.Show("KOT #:" + komstr.KotNum);
-            }
-            catch (Exception ex)
-            {
+        //        MessageBox.Show("KOT #:" + komstr.KotNum);
+        //    }
+        //    catch (Exception ex)
+        //    {
 
-                MessageBox.Show("Printer Malfunction.But Invoice Done");
-            }
+        //        MessageBox.Show("Printer Malfunction.But Invoice Done");
+        //    }
 
-        }
+        //}
 
 
         public void AddInvoice( String BillType)
@@ -647,7 +650,15 @@ namespace App.UI
             {
                 invoicemaster.IstableBill = false;
             }
+            if (BillType == "kot")
+            {
+                invoicemaster.IsKOT = true;
 
+            }
+            else
+            {
+                invoicemaster.IsKOT = false;
+            }
             if (invoiceid != 0)
             {
                 invoicemaster.InvoicemasterID = invoiceid;
@@ -658,13 +669,15 @@ namespace App.UI
                 InvoiceDetail invoicedetail = new InvoiceDetail();
                 invoicedetail.ProductId = int.Parse(row.Cells["ID"].Value.ToString());
                 invoicedetail.ProductName = row.Cells["Item"].Value.ToString().Trim();
-                
+
+                invoicedetail.IsDeleted = false;               
                 invoicedetail.UnitPrice = Decimal.Parse(row.Cells["Price"].Value.ToString());
                 invoicedetail.Qty = Decimal.Parse(row.Cells["Qty"].Value.ToString());
                 invoicedetail.DiscountPerUOM = Decimal.Parse(row.Cells["Discount"].Value.ToString());
                 invoicedetail.Total = Decimal.Parse(row.Cells["Total"].Value.ToString());
                 invoicedetail.IsUploaded = false;
-
+                invoicedetail.PreviousQty = invoicedetail.Qty;
+                invoicedetail.AdjustedQty = 0;
                 if (invoiceid != 0)
                 {
                     invoicedetail.InvoicemasterID = invoiceid;
@@ -679,9 +692,21 @@ namespace App.UI
             try
             {
                 PrintReceipt prnt = new PrintReceipt();
-                prnt.printInvoicereport(invoicemaster);
 
-                MessageBox.Show("Bill #:" + invoicemaster.InvoiceNum);
+                if (BillType == "kot")
+                {
+                    prnt = new PrintReceipt();
+                    prnt.printKOTreport(invoicemaster);
+
+                    MessageBox.Show("KOT #:" + invoicemaster.InvoiceNum);
+                }
+                else
+                {
+                    prnt.printInvoicereport(invoicemaster);
+
+                    MessageBox.Show("Bill #:" + invoicemaster.InvoiceNum);
+                }
+             
             }
             catch (Exception ex)
             {

@@ -250,6 +250,18 @@
     <Compile Include="Migrations\201709131000336_addedkotprefix.Designer.cs">
       <DependentUpon>201709131000336_addedkotprefix.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201709131119377_addedkotprintedoption.cs" />
+    <Compile Include="Migrations\201709131119377_addedkotprintedoption.Designer.cs">
+      <DependentUpon>201709131119377_addedkotprintedoption.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201709131200026_add iskot.cs" />
+    <Compile Include="Migrations\201709131200026_add iskot.Designer.cs">
+      <DependentUpon>201709131200026_add iskot.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201709131227058_addedinvedet.cs" />
+    <Compile Include="Migrations\201709131227058_addedinvedet.Designer.cs">
+      <DependentUpon>201709131227058_addedinvedet.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Model\Product.cs" />
     <Compile Include="Model\UIModel.cs" />
@@ -430,6 +442,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201709131000336_addedkotprefix.resx">
       <DependentUpon>201709131000336_addedkotprefix.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709131119377_addedkotprintedoption.resx">
+      <DependentUpon>201709131119377_addedkotprintedoption.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709131200026_add iskot.resx">
+      <DependentUpon>201709131200026_add iskot.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709131227058_addedinvedet.resx">
+      <DependentUpon>201709131227058_addedinvedet.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
