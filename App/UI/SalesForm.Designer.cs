@@ -66,6 +66,7 @@
             this.button3 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.btn_actionBoard = new System.Windows.Forms.Button();
             this.button17 = new System.Windows.Forms.Button();
             this.btn_printCheckOut = new System.Windows.Forms.Button();
             this.txt_change = new System.Windows.Forms.TextBox();
@@ -77,7 +78,7 @@
             this.lbl_table = new System.Windows.Forms.TextBox();
             this.grp_table = new System.Windows.Forms.GroupBox();
             this.pnl_product = new System.Windows.Forms.Panel();
-            this.btn_actionBoard = new System.Windows.Forms.Button();
+            this.button19 = new System.Windows.Forms.Button();
             this.grp_bottompanel.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -94,9 +95,9 @@
             this.grp_bottompanel.Controls.Add(this.lbl_customer);
             this.grp_bottompanel.Controls.Add(this.label2);
             this.grp_bottompanel.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.grp_bottompanel.Location = new System.Drawing.Point(0, 517);
+            this.grp_bottompanel.Location = new System.Drawing.Point(0, 559);
             this.grp_bottompanel.Name = "grp_bottompanel";
-            this.grp_bottompanel.Size = new System.Drawing.Size(809, 27);
+            this.grp_bottompanel.Size = new System.Drawing.Size(809, 33);
             this.grp_bottompanel.TabIndex = 1;
             this.grp_bottompanel.TabStop = false;
             this.grp_bottompanel.Text = "Bottom";
@@ -105,11 +106,10 @@
             // 
             this.lbl_tableID.AutoSize = true;
             this.lbl_tableID.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_tableID.Location = new System.Drawing.Point(213, 13);
+            this.lbl_tableID.Location = new System.Drawing.Point(214, 13);
             this.lbl_tableID.Name = "lbl_tableID";
-            this.lbl_tableID.Size = new System.Drawing.Size(16, 16);
+            this.lbl_tableID.Size = new System.Drawing.Size(0, 16);
             this.lbl_tableID.TabIndex = 3;
-            this.lbl_tableID.Text = "1";
             this.lbl_tableID.Visible = false;
             // 
             // lbl_custid
@@ -120,7 +120,7 @@
             this.lbl_custid.Name = "lbl_custid";
             this.lbl_custid.Size = new System.Drawing.Size(16, 16);
             this.lbl_custid.TabIndex = 2;
-            this.lbl_custid.Text = "1";
+            this.lbl_custid.Text = "8";
             this.lbl_custid.Visible = false;
             // 
             // lbl_customer
@@ -150,7 +150,7 @@
             this.grp_Category.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.grp_Category.Location = new System.Drawing.Point(0, 50);
             this.grp_Category.Name = "grp_Category";
-            this.grp_Category.Size = new System.Drawing.Size(88, 467);
+            this.grp_Category.Size = new System.Drawing.Size(88, 509);
             this.grp_Category.TabIndex = 2;
             this.grp_Category.TabStop = false;
             this.grp_Category.Text = "Category";
@@ -162,7 +162,7 @@
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Left;
             this.groupBox1.Location = new System.Drawing.Point(88, 50);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(444, 467);
+            this.groupBox1.Size = new System.Drawing.Size(444, 509);
             this.groupBox1.TabIndex = 3;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Bill";
@@ -173,7 +173,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(3, 16);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(438, 135);
+            this.panel1.Size = new System.Drawing.Size(438, 177);
             this.panel1.TabIndex = 1;
             // 
             // grd_ProductDetails
@@ -194,7 +194,7 @@
             this.grd_ProductDetails.Name = "grd_ProductDetails";
             this.grd_ProductDetails.RowHeadersVisible = false;
             this.grd_ProductDetails.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.grd_ProductDetails.Size = new System.Drawing.Size(438, 135);
+            this.grd_ProductDetails.Size = new System.Drawing.Size(438, 177);
             this.grd_ProductDetails.TabIndex = 0;
             // 
             // ID
@@ -231,7 +231,7 @@
             // 
             this.grp_btn.Controls.Add(this.panel2);
             this.grp_btn.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.grp_btn.Location = new System.Drawing.Point(3, 151);
+            this.grp_btn.Location = new System.Drawing.Point(3, 193);
             this.grp_btn.Name = "grp_btn";
             this.grp_btn.Size = new System.Drawing.Size(438, 313);
             this.grp_btn.TabIndex = 0;
@@ -241,6 +241,7 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.SystemColors.Info;
+            this.panel2.Controls.Add(this.button19);
             this.panel2.Controls.Add(this.button18);
             this.panel2.Controls.Add(this.button16);
             this.panel2.Controls.Add(this.button14);
@@ -513,10 +514,22 @@
             this.groupBox2.Dock = System.Windows.Forms.DockStyle.Left;
             this.groupBox2.Location = new System.Drawing.Point(532, 50);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(87, 467);
+            this.groupBox2.Size = new System.Drawing.Size(87, 509);
             this.groupBox2.TabIndex = 6;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Summary";
+            // 
+            // btn_actionBoard
+            // 
+            this.btn_actionBoard.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btn_actionBoard.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold);
+            this.btn_actionBoard.Location = new System.Drawing.Point(3, 338);
+            this.btn_actionBoard.Name = "btn_actionBoard";
+            this.btn_actionBoard.Size = new System.Drawing.Size(81, 67);
+            this.btn_actionBoard.TabIndex = 9;
+            this.btn_actionBoard.Text = "Action";
+            this.btn_actionBoard.UseVisualStyleBackColor = true;
+            this.btn_actionBoard.Click += new System.EventHandler(this.btn_actionBoard_Click);
             // 
             // button17
             // 
@@ -529,6 +542,7 @@
             this.button17.TabIndex = 8;
             this.button17.Text = "Check Out ";
             this.button17.UseVisualStyleBackColor = false;
+            this.button17.Click += new System.EventHandler(this.button17_Click);
             // 
             // btn_printCheckOut
             // 
@@ -636,27 +650,27 @@
             this.pnl_product.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnl_product.Location = new System.Drawing.Point(619, 50);
             this.pnl_product.Name = "pnl_product";
-            this.pnl_product.Size = new System.Drawing.Size(190, 467);
+            this.pnl_product.Size = new System.Drawing.Size(190, 509);
             this.pnl_product.TabIndex = 8;
             // 
-            // btn_actionBoard
+            // button19
             // 
-            this.btn_actionBoard.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btn_actionBoard.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold);
-            this.btn_actionBoard.Location = new System.Drawing.Point(3, 338);
-            this.btn_actionBoard.Name = "btn_actionBoard";
-            this.btn_actionBoard.Size = new System.Drawing.Size(81, 67);
-            this.btn_actionBoard.TabIndex = 9;
-            this.btn_actionBoard.Text = "Action";
-            this.btn_actionBoard.UseVisualStyleBackColor = true;
-            this.btn_actionBoard.Click += new System.EventHandler(this.btn_actionBoard_Click);
+            this.button19.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.button19.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
+            this.button19.Location = new System.Drawing.Point(320, 227);
+            this.button19.Name = "button19";
+            this.button19.Size = new System.Drawing.Size(109, 43);
+            this.button19.TabIndex = 22;
+            this.button19.Text = "Reset";
+            this.button19.UseVisualStyleBackColor = false;
+            this.button19.Click += new System.EventHandler(this.numericbuttonclicked_Click);
             // 
             // SalesForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(809, 544);
+            this.ClientSize = new System.Drawing.Size(809, 592);
             this.Controls.Add(this.pnl_product);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
@@ -733,5 +747,6 @@
         private System.Windows.Forms.Button button17;
         private System.Windows.Forms.Button button18;
         private System.Windows.Forms.Button btn_actionBoard;
+        private System.Windows.Forms.Button button19;
     }
 }

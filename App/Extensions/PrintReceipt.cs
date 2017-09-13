@@ -224,13 +224,13 @@ namespace App.Extensions
             BytesValue = PrintExtensions.AddBytes(BytesValue, obj.Separator());
             BytesValue = PrintExtensions.AddBytes(BytesValue, Encoding.ASCII.GetBytes("Invoice\n"));
             BytesValue = PrintExtensions.AddBytes(BytesValue, obj.Alignment.Left());
-            BytesValue = PrintExtensions.AddBytes(BytesValue, Encoding.ASCII.GetBytes("Invoice No. : 12345\n"));
+            BytesValue = PrintExtensions.AddBytes(BytesValue, Encoding.ASCII.GetBytes("Invoice No. :"+invoicemaster.InvoiceNum+"\n"));
             BytesValue = PrintExtensions.AddBytes(BytesValue, Encoding.ASCII.GetBytes("Date        : "+invoicemaster.InvoiceDate.ToString("dd/MM/yy")+ "     Cashier  :"+invoicemaster.Cashier.Trim()+"\n"));
             BytesValue = PrintExtensions.AddBytes(BytesValue, Encoding.ASCII.GetBytes("Itm                    Qty   Net   Dis  Total\n"));
             BytesValue = PrintExtensions.AddBytes(BytesValue, obj.Separator());
             foreach (InvoiceDetail invoicedet in invoicemaster.InvoiceDetails)
             {
-                BytesValue = PrintExtensions.AddBytes(BytesValue, string.Format("{0,-25}{1,6}{2,8}{3,8}{4,6:N2}\n", invoicedet.Product.ProductName, invoicedet.Qty, invoicedet.UnitPrice, invoicedet.DiscountPerUOM, invoicedet.Total));
+                BytesValue = PrintExtensions.AddBytes(BytesValue, string.Format("{0,-25}{1,6}{2,8}{3,8}{4,6:N2}\n", invoicedet.ProductName, invoicedet.Qty, invoicedet.UnitPrice, invoicedet.DiscountPerUOM, invoicedet.Total));
             }
 
            

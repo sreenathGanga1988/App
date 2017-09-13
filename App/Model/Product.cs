@@ -168,6 +168,7 @@ namespace App.Model
         public virtual User User { get; set; }
         public virtual Customer Customer { get; set; }
         public Boolean IsUploaded { get; set; }
+        public Boolean? IstableBill { get; set; }
         public virtual List<InvoiceDetail> InvoiceDetails { get; set; }
         public String Color { get; set; }
 
@@ -226,6 +227,9 @@ namespace App.Model
         public  int ProductperRow { get; set; }
 
         public  String InvoicePrefix { get; set; }
+
+        public string KotPrefix { get; set; }
+
 
         public  int PaddingNumber { get; set; }
 

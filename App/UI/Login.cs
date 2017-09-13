@@ -1,9 +1,11 @@
 ﻿using App.Context;
+using App.Migrations;
 using App.Model;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.Entity;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -18,15 +20,15 @@ namespace App.UI
         {
 
             InitializeComponent();
+            Database.SetInitializer(new MigrateDatabaseToLatestVersion<POSDataContext, Configuration>());
+            Company objCompany = new Company();
+            objCompany.CompanyId = DateTime.Now.ToString();
+            objCompany.Name = "Sree";
 
-          //  Company objCompany = new Company();
-          //  objCompany.CompanyId = DateTime.Now.ToString();
-           // objCompany.Name = "Sree";
-
-          //  Create context object and then save company data.  
-           // POSDataContext objContext = new POSDataContext();
-          //  objContext.Companies.Add(objCompany);
-          // objContext.SaveChanges();
+          
+            POSDataContext objContext = new POSDataContext();
+            objContext.Companies.Add(objCompany);
+            objContext.SaveChanges();
 
 
         }

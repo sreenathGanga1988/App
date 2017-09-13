@@ -4,6 +4,7 @@ using App.Model;
 using App.ViewModal;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -183,10 +184,13 @@ namespace App.Repository
     {
         POSDataContext cntxt = new POSDataContext();
 
-        public void InsertKOT(KotMaster kotmaster)
+        public KotMaster InsertKOT(KotMaster kotmaster)
         {
             cntxt.KotMasters.Add(kotmaster);
             cntxt.SaveChanges();
+            kotmaster.KotNum = Program.MySettingViewModal.AppUserSettings.InvoicePrefix + kotmaster.KotMasterID;
+            cntxt.SaveChanges();
+            return kotmaster;
         }
 
 
@@ -213,14 +217,63 @@ namespace App.Repository
     {
         POSDataContext cntxt = new POSDataContext();
 
+
+
+
+        public Invoicemaster UpdateInvoicemaster(Invoicemaster invoicemaster)
+        {
+
+           
+
+            var q = from invmstr in cntxt.Invoicemasters
+                    where invmstr.InvoicemasterID == invoicemaster.InvoicemasterID
+                    select invmstr;
+
+
+            foreach(var element in q)
+            {
+                element.StoreID = invoicemaster.StoreID;
+                element.UserID = invoicemaster.UserID;
+                element.InvoiceDate = invoicemaster.InvoiceDate;
+                element.CustomerID = invoicemaster.CustomerID;
+                element.TableID = invoicemaster.TableID;
+                element.TotalPaid = invoicemaster.TotalPaid;
+                element.TotalBill = invoicemaster.TotalBill;
+                element.StoreName = invoicemaster.StoreName;
+                element.StoreAddress = invoicemaster.StoreAddress;
+                element.Cashier = invoicemaster.Cashier;
+                element.CustomerName = invoicemaster.CustomerName;
+                element.IsUploaded = invoicemaster.IsUploaded;
+                element.IstableBill = invoicemaster.IstableBill;
+              
+            }
+
+       
+
+
+            return invoicemaster;
+
+
+        }
+
+
         public Invoicemaster InsertInvoiceLocal(Invoicemaster invoicemaster)
         {
-        
-            cntxt.Invoicemasters.Add(invoicemaster);
-            cntxt.SaveChanges();
-            invoicemaster.InvoiceNum = "" + invoicemaster.InvoicemasterID;
-            cntxt.SaveChanges();
-            return invoicemaster;
+            if(invoicemaster.InvoicemasterID!=0)
+            { 
+         
+                return UpdateInvoicemaster(invoicemaster);
+
+            }
+            else
+            {
+                cntxt.Invoicemasters.Add(invoicemaster);
+                cntxt.SaveChanges();
+                invoicemaster.InvoiceNum = Program.MySettingViewModal.AppUserSettings.InvoicePrefix + invoicemaster.InvoicemasterID;
+                cntxt.SaveChanges();
+                return invoicemaster;
+            }
+           
 
         }
         public List <InvoiceviewModal> GetInvoicePending(int storeid)
@@ -245,6 +298,13 @@ namespace App.Repository
 
 
             var q = cntxt.Invoicemasters.Where(u => u.InvoicemasterID == invoicemasterid).FirstOrDefault();
+
+            return q;
+        }
+
+        public List<Invoicemaster> GetInvoiPendingtoBill(int storeid)
+        {
+            var q = (cntxt.Invoicemasters.Where(u => u.StoreID == storeid && u.IstableBill==true)).ToList();
 
             return q;
         }

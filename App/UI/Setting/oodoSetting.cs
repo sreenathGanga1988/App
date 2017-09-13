@@ -29,6 +29,7 @@ namespace App.UI.Setting
                 showOdoodetails();
                 PopulateInstalledPrintersCombo();
                 showPrinterDetails();
+                ShowAppuserSetting();
             }
             catch (Exception)
             {
@@ -58,6 +59,30 @@ namespace App.UI.Setting
 
 
         }
+
+
+        public void ShowAppuserSetting()
+        {
+            AppUserSetting appUserSetting = Program.MySettingViewModal.AppUserSettings;
+            txt_noofproductonrow.Text = appUserSetting.ProductperRow.ToString();
+
+            txt_invoiceprefix.Text = appUserSetting.InvoicePrefix;
+            txt_kotprefix.Text= appUserSetting.KotPrefix;
+            txt_padding.Text = appUserSetting.PaddingNumber.ToString();
+            txt_buttonwidth.Text = appUserSetting.ProductButtonWidth.ToString();
+            txt_buttonHeight.Text = appUserSetting.ProductButtonHeigth.ToString();
+            chk_realtime.Checked = appUserSetting.RealtimeInvoiceUpdate;
+            chk_fastloading.Checked = appUserSetting.FastLoading;
+            chk_autosizeproduct.Checked = appUserSetting.AutoSizebutton;
+         
+
+
+        }
+
+
+
+
+
         private void button2_Click(object sender, EventArgs e)
         {
 
@@ -159,9 +184,11 @@ namespace App.UI.Setting
             AppUserSetting appUserSetting = new AppUserSetting();
             appUserSetting.ProductperRow = int.Parse(txt_noofproductonrow.Text);
             appUserSetting.InvoicePrefix = txt_invoiceprefix.Text.Trim();
+            appUserSetting.KotPrefix = txt_kotprefix.Text.Trim();
             appUserSetting.PaddingNumber = int.Parse(txt_padding.Text);
             appUserSetting.ProductButtonWidth = Decimal.Parse(txt_buttonwidth.Text);
             appUserSetting.ProductButtonHeigth = Decimal.Parse(txt_buttonHeight.Text);
+           
             appUserSetting.StoreID = Program.LocationID;
             appUserSetting.IsActive = true;
             appUserSetting.RealtimeInvoiceUpdate = (chk_realtime.Checked) ? true : false;

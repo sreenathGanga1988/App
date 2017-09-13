@@ -13,8 +13,9 @@ namespace App.Context
     {
         public POSDataContext() : base("name = LimsDBConnectionString")
         {
-           Database.SetInitializer<POSDataContext>(null);
-           //  Database.SetInitializer(new DropCreateDatabaseAlways<POSDataContext>());
+          
+            Database.SetInitializer<POSDataContext>(new CreateDatabaseIfNotExists<POSDataContext>());
+
         }
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

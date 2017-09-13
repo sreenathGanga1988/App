@@ -17,6 +17,9 @@ namespace App.UI
 {
     public partial class SalesForm : Form
     {
+
+        int invoiceid = 0;
+
         public SalesForm()
         {
             InitializeComponent();
@@ -24,8 +27,53 @@ namespace App.UI
             LoadCategory(salesViewmodal);
             LoadTable(salesViewmodal);
         }
+        public SalesForm(Invoicemaster  invoicemaster)
+        {
+            InitializeComponent();
+            SalesViewModal salesViewmodal = new SalesViewModal();
+            invoiceid = invoicemaster.InvoicemasterID;
+            LoadCategory(salesViewmodal);
+            LoadTable(salesViewmodal);
+            LoadInvoicedata(invoicemaster);
+        }
 
 
+        public void LoadInvoicedata(Invoicemaster invoicemaster)
+        {
+
+
+
+
+
+            lbl_custid.Text = invoicemaster.CustomerID.ToString();
+            lbl_customer.Text = invoicemaster.Customer.CustomerName;
+            lbl_tableID.Text = invoicemaster.TableID.ToString();
+            lbl_table.Text = invoicemaster.Table.TableName;
+
+            foreach( InvoiceDetail invdet in invoicemaster.InvoiceDetails)
+            {
+                var index = grd_ProductDetails.Rows.Add();
+                grd_ProductDetails.Rows[index].Cells["ID"].Value = invdet.ProductId.ToString();
+                grd_ProductDetails.Rows[index].Cells["Item"].Value = invdet.Product.ProductName.ToString();
+                grd_ProductDetails.Rows[index].Cells["Price"].Value = invdet.UnitPrice.ToString();
+                grd_ProductDetails.Rows[index].Cells["Qty"].Value = invdet.Qty.ToString(); ;
+                grd_ProductDetails.Rows[index].Cells["Discount"].Value = invdet.DiscountPerUOM.ToString();
+
+                grd_ProductDetails.Rows[index].Cells["ID"].ReadOnly = true;
+                grd_ProductDetails.Rows[index].Cells["Item"].ReadOnly = true;
+                grd_ProductDetails.Rows[index].Cells["Price"].ReadOnly = true;
+                grd_ProductDetails.Rows[index].Cells["Discount"].ReadOnly = true;
+                if (invdet.Product.IsRateChangable == true)
+                {
+                    grd_ProductDetails.Rows[index].Cells["Price"].ReadOnly = false;
+
+                }
+
+                CalculateTotal();
+            }
+            
+
+        }
 
 
         public void LoadCategory(SalesViewModal salesViewmodal)
@@ -218,7 +266,7 @@ namespace App.UI
             foreach (DataGridViewRow row in grd_ProductDetails.Rows)
             {
         
-                row.Cells["Total"].Value = int.Parse(row.Cells["Qty"].Value.ToString()) * (Decimal.Parse(row.Cells["Price"].Value.ToString()) - Decimal.Parse(row.Cells["Discount"].Value.ToString()));
+                row.Cells["Total"].Value = decimal.Parse(row.Cells["Qty"].Value.ToString()) * (Decimal.Parse(row.Cells["Price"].Value.ToString()) - Decimal.Parse(row.Cells["Discount"].Value.ToString()));
 
                 TotalValue = TotalValue + decimal.Parse(row.Cells["Total"].Value.ToString());
                 row.Cells["Total"].ReadOnly = true;
@@ -231,7 +279,7 @@ namespace App.UI
 
 
 
-            public Boolean IsItemAlreadyAdded( int productid)
+        public Boolean IsItemAlreadyAdded( int productid)
         { Boolean ispresent = false;
             foreach (DataGridViewRow row in grd_ProductDetails.Rows)
             {
@@ -441,6 +489,7 @@ namespace App.UI
                 if (ValidateforKot())
                 {
                     AddKoT();
+                    clearGridView();
                 }
 
             }
@@ -453,7 +502,7 @@ namespace App.UI
             {
                 if (ValidateforCheckOut())
                 {
-                    AddInvoice();
+                    AddInvoice("");
                 }
               
             }
@@ -465,7 +514,13 @@ namespace App.UI
 
             }
 
+            else if (btn.Text.Trim() == "Reset")
+            {
 
+                clearGridView();
+
+
+            }
 
 
             else
@@ -549,13 +604,26 @@ namespace App.UI
             }
             komstr.KotDetails = KotDetails;
             KotRepository kotrepo = new KotRepository();
-            kotrepo.InsertKOT(komstr);
-            PrintReceipt prnt = new PrintReceipt();
-            prnt.printKOTreport(komstr);
+            komstr= kotrepo.InsertKOT(komstr);
+           
+
+            try
+            {
+                PrintReceipt prnt = new PrintReceipt();
+                prnt.printKOTreport(komstr);
+
+                MessageBox.Show("KOT #:" + komstr.KotNum);
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show("Printer Malfunction.But Invoice Done");
+            }
+
         }
 
 
-        public void AddInvoice()
+        public void AddInvoice( String BillType)
         {
             Invoicemaster invoicemaster = new Invoicemaster();
             invoicemaster.StoreID = Program.LocationID;
@@ -570,6 +638,20 @@ namespace App.UI
             invoicemaster.Cashier = Program.Username;
             invoicemaster.CustomerName = lbl_customer.Text;
             invoicemaster.IsUploaded = false;
+            if (BillType == "Table")
+            {
+                invoicemaster.IstableBill = true;
+
+            }
+            else
+            {
+                invoicemaster.IstableBill = false;
+            }
+
+            if (invoiceid != 0)
+            {
+                invoicemaster.InvoicemasterID = invoiceid;
+            }
             List<InvoiceDetail> invoicedetails = new List<InvoiceDetail> { };
             foreach (DataGridViewRow row in grd_ProductDetails.Rows)
             {
@@ -582,6 +664,12 @@ namespace App.UI
                 invoicedetail.DiscountPerUOM = Decimal.Parse(row.Cells["Discount"].Value.ToString());
                 invoicedetail.Total = Decimal.Parse(row.Cells["Total"].Value.ToString());
                 invoicedetail.IsUploaded = false;
+
+                if (invoiceid != 0)
+                {
+                    invoicedetail.InvoicemasterID = invoiceid;
+                }
+
                 invoicedetails.Add(invoicedetail);
             }
             invoicemaster.InvoiceDetails = invoicedetails;
@@ -592,6 +680,8 @@ namespace App.UI
             {
                 PrintReceipt prnt = new PrintReceipt();
                 prnt.printInvoicereport(invoicemaster);
+
+                MessageBox.Show("Bill #:" + invoicemaster.InvoiceNum);
             }
             catch (Exception ex)
             {
@@ -711,7 +801,8 @@ namespace App.UI
         {
             if (ValidateforCheckOut())
             {
-                AddInvoice();
+                AddInvoice("");
+                clearGridView();
             }
         }
 
@@ -719,7 +810,8 @@ namespace App.UI
         {
             if (ValidateforTableBill())
             {
-                AddInvoice();
+                AddInvoice("Table");
+                clearGridView();
             }
         }
 
@@ -727,6 +819,23 @@ namespace App.UI
         {
             ActionBoard Board = new ActionBoard();
             Board.ShowDialog();
+        }
+
+
+        public void clearGridView()
+        {
+
+            grd_ProductDetails.Rows.Clear();
+            txt_total.Text = "0";
+            txt_cash.Text = "0";
+            txt_change.Text = "0";
+            invoiceid = 0;
+
+        }
+
+        private void button17_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

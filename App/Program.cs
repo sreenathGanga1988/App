@@ -1,6 +1,8 @@
-﻿using App.Model;
+﻿using App.Context;
+using App.Model;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -26,6 +28,8 @@ namespace App
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+          
+
             Application.Run(new UI.Login());
         }
     }

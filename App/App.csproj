@@ -12,6 +12,7 @@
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <IsWebBootstrapper>false</IsWebBootstrapper>
+    <TargetFrameworkProfile />
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -22,11 +23,12 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationRevision>4</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
     <BootstrapperEnabled>true</BootstrapperEnabled>
-    <TargetFrameworkProfile />
+    <BootstrapperComponentsLocation>Relative</BootstrapperComponentsLocation>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -46,6 +48,18 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestCertificateThumbprint>251F7C6D0087A02315D869A59646B5D30484A73D</ManifestCertificateThumbprint>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestKeyFile>App_TemporaryKey.pfx</ManifestKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>true</GenerateManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignManifests>true</SignManifests>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
@@ -80,6 +94,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Context\DbContext.cs" />
+    <Compile Include="DataSet1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataSet1.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Extensions\Controls.cs" />
     <Compile Include="Extensions\Extesions.cs" />
     <Compile Include="Extensions\PrintReceipt.cs" />
@@ -218,6 +237,18 @@
     <Compile Include="Migrations\201709091312053_updateadsad.cs" />
     <Compile Include="Migrations\201709091312053_updateadsad.Designer.cs">
       <DependentUpon>201709091312053_updateadsad.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201709121027199_addedall.cs" />
+    <Compile Include="Migrations\201709121027199_addedall.Designer.cs">
+      <DependentUpon>201709121027199_addedall.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201709130910114_added istanlebill.cs" />
+    <Compile Include="Migrations\201709130910114_added istanlebill.Designer.cs">
+      <DependentUpon>201709130910114_added istanlebill.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201709131000336_addedkotprefix.cs" />
+    <Compile Include="Migrations\201709131000336_addedkotprefix.Designer.cs">
+      <DependentUpon>201709131000336_addedkotprefix.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Model\Product.cs" />
@@ -391,6 +422,15 @@
     <EmbeddedResource Include="Migrations\201709091312053_updateadsad.resx">
       <DependentUpon>201709091312053_updateadsad.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709121027199_addedall.resx">
+      <DependentUpon>201709121027199_addedall.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709130910114_added istanlebill.resx">
+      <DependentUpon>201709130910114_added istanlebill.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709131000336_addedkotprefix.resx">
+      <DependentUpon>201709131000336_addedkotprefix.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -435,6 +475,18 @@
     <EmbeddedResource Include="UI\StartForm.resx">
       <DependentUpon>StartForm.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="App_TemporaryKey.pfx" />
+    <None Include="DataSet1.xsc">
+      <DependentUpon>DataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="DataSet1.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DataSet1.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="DataSet1.xss">
+      <DependentUpon>DataSet1.xsd</DependentUpon>
+    </None>
     <None Include="LimsDBDataSet.xsc">
       <DependentUpon>LimsDBDataSet.xsd</DependentUpon>
     </None>
@@ -463,11 +515,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <BootstrapperPackage Include=".NETFramework,Version=v4.5.2">
-      <Visible>False</Visible>
-      <ProductName>Microsoft .NET Framework 4.5.2 %28x86 and x64%29</ProductName>
-      <Install>true</Install>
-    </BootstrapperPackage>
     <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
       <Visible>False</Visible>
       <ProductName>.NET Framework 3.5 SP1</ProductName>

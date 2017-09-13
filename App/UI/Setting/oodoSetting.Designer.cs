@@ -30,6 +30,14 @@
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.cmb_juice = new System.Windows.Forms.ComboBox();
+            this.cmb_kot = new System.Windows.Forms.ComboBox();
+            this.cmb_pos = new System.Windows.Forms.ComboBox();
+            this.label17 = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
+            this.button2 = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.chk_autosizeproduct = new System.Windows.Forms.CheckBox();
             this.label14 = new System.Windows.Forms.Label();
@@ -63,20 +71,14 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.button2 = new System.Windows.Forms.Button();
-            this.label15 = new System.Windows.Forms.Label();
-            this.label16 = new System.Windows.Forms.Label();
-            this.label17 = new System.Windows.Forms.Label();
-            this.cmb_pos = new System.Windows.Forms.ComboBox();
-            this.cmb_kot = new System.Windows.Forms.ComboBox();
-            this.cmb_juice = new System.Windows.Forms.ComboBox();
+            this.txt_kotprefix = new System.Windows.Forms.TextBox();
+            this.label18 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox4.SuspendLayout();
+            this.groupBox5.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.panel1.SuspendLayout();
             this.groupBox2.SuspendLayout();
-            this.groupBox5.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -86,7 +88,7 @@
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox1.Location = new System.Drawing.Point(0, 0);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(985, 347);
+            this.groupBox1.Size = new System.Drawing.Size(985, 381);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Settings";
@@ -99,13 +101,93 @@
             this.groupBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
             this.groupBox4.Location = new System.Drawing.Point(294, 16);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(688, 328);
+            this.groupBox4.Size = new System.Drawing.Size(688, 362);
             this.groupBox4.TabIndex = 2;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Pos Setting";
             // 
+            // groupBox5
+            // 
+            this.groupBox5.Controls.Add(this.cmb_juice);
+            this.groupBox5.Controls.Add(this.cmb_kot);
+            this.groupBox5.Controls.Add(this.cmb_pos);
+            this.groupBox5.Controls.Add(this.label17);
+            this.groupBox5.Controls.Add(this.label16);
+            this.groupBox5.Controls.Add(this.label15);
+            this.groupBox5.Controls.Add(this.button2);
+            this.groupBox5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox5.Location = new System.Drawing.Point(342, 19);
+            this.groupBox5.Name = "groupBox5";
+            this.groupBox5.Size = new System.Drawing.Size(321, 337);
+            this.groupBox5.TabIndex = 3;
+            this.groupBox5.TabStop = false;
+            this.groupBox5.Text = "Printer Setting";
+            // 
+            // cmb_juice
+            // 
+            this.cmb_juice.FormattingEnabled = true;
+            this.cmb_juice.Location = new System.Drawing.Point(121, 132);
+            this.cmb_juice.Name = "cmb_juice";
+            this.cmb_juice.Size = new System.Drawing.Size(185, 21);
+            this.cmb_juice.TabIndex = 20;
+            // 
+            // cmb_kot
+            // 
+            this.cmb_kot.FormattingEnabled = true;
+            this.cmb_kot.Location = new System.Drawing.Point(121, 82);
+            this.cmb_kot.Name = "cmb_kot";
+            this.cmb_kot.Size = new System.Drawing.Size(185, 21);
+            this.cmb_kot.TabIndex = 19;
+            // 
+            // cmb_pos
+            // 
+            this.cmb_pos.FormattingEnabled = true;
+            this.cmb_pos.Location = new System.Drawing.Point(121, 32);
+            this.cmb_pos.Name = "cmb_pos";
+            this.cmb_pos.Size = new System.Drawing.Size(185, 21);
+            this.cmb_pos.TabIndex = 18;
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(3, 140);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(108, 13);
+            this.label17.TabIndex = 17;
+            this.label17.Text = "Juice Area Printer";
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(44, 89);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(67, 13);
+            this.label16.TabIndex = 16;
+            this.label16.Text = "Kot Printer";
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(19, 35);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(92, 13);
+            this.label15.TabIndex = 15;
+            this.label15.Text = "Receipt Printer";
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(170, 165);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(78, 31);
+            this.button2.TabIndex = 14;
+            this.button2.Text = "Save";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click_1);
+            // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.txt_kotprefix);
+            this.groupBox3.Controls.Add(this.label18);
             this.groupBox3.Controls.Add(this.chk_autosizeproduct);
             this.groupBox3.Controls.Add(this.label14);
             this.groupBox3.Controls.Add(this.txt_buttonHeight);
@@ -127,7 +209,7 @@
             this.groupBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox3.Location = new System.Drawing.Point(21, 19);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(306, 312);
+            this.groupBox3.Size = new System.Drawing.Size(306, 343);
             this.groupBox3.TabIndex = 2;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Application Setting";
@@ -154,7 +236,7 @@
             // 
             // txt_buttonHeight
             // 
-            this.txt_buttonHeight.Location = new System.Drawing.Point(235, 240);
+            this.txt_buttonHeight.Location = new System.Drawing.Point(235, 256);
             this.txt_buttonHeight.Name = "txt_buttonHeight";
             this.txt_buttonHeight.Size = new System.Drawing.Size(41, 20);
             this.txt_buttonHeight.TabIndex = 25;
@@ -163,7 +245,7 @@
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(58, 243);
+            this.label12.Location = new System.Drawing.Point(58, 259);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(133, 13);
             this.label12.TabIndex = 24;
@@ -171,7 +253,7 @@
             // 
             // txt_buttonwidth
             // 
-            this.txt_buttonwidth.Location = new System.Drawing.Point(235, 204);
+            this.txt_buttonwidth.Location = new System.Drawing.Point(235, 220);
             this.txt_buttonwidth.Name = "txt_buttonwidth";
             this.txt_buttonwidth.Size = new System.Drawing.Size(41, 20);
             this.txt_buttonwidth.TabIndex = 23;
@@ -180,7 +262,7 @@
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(57, 211);
+            this.label13.Location = new System.Drawing.Point(57, 227);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(129, 13);
             this.label13.TabIndex = 22;
@@ -188,7 +270,7 @@
             // 
             // txt_padding
             // 
-            this.txt_padding.Location = new System.Drawing.Point(235, 176);
+            this.txt_padding.Location = new System.Drawing.Point(235, 192);
             this.txt_padding.Name = "txt_padding";
             this.txt_padding.Size = new System.Drawing.Size(41, 20);
             this.txt_padding.TabIndex = 21;
@@ -197,7 +279,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(65, 179);
+            this.label9.Location = new System.Drawing.Point(65, 195);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(122, 13);
             this.label9.TabIndex = 20;
@@ -250,7 +332,7 @@
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(133, 269);
+            this.button3.Location = new System.Drawing.Point(125, 303);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(78, 31);
             this.button3.TabIndex = 14;
@@ -299,7 +381,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel1.Location = new System.Drawing.Point(3, 16);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(291, 328);
+            this.panel1.Size = new System.Drawing.Size(291, 362);
             this.panel1.TabIndex = 0;
             // 
             // groupBox2
@@ -425,101 +507,40 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Server";
             // 
-            // groupBox5
+            // txt_kotprefix
             // 
-            this.groupBox5.Controls.Add(this.cmb_juice);
-            this.groupBox5.Controls.Add(this.cmb_kot);
-            this.groupBox5.Controls.Add(this.cmb_pos);
-            this.groupBox5.Controls.Add(this.label17);
-            this.groupBox5.Controls.Add(this.label16);
-            this.groupBox5.Controls.Add(this.label15);
-            this.groupBox5.Controls.Add(this.button2);
-            this.groupBox5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox5.Location = new System.Drawing.Point(342, 19);
-            this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(321, 312);
-            this.groupBox5.TabIndex = 3;
-            this.groupBox5.TabStop = false;
-            this.groupBox5.Text = "Printer Setting";
+            this.txt_kotprefix.Location = new System.Drawing.Point(235, 167);
+            this.txt_kotprefix.Name = "txt_kotprefix";
+            this.txt_kotprefix.Size = new System.Drawing.Size(41, 20);
+            this.txt_kotprefix.TabIndex = 29;
+            this.txt_kotprefix.Text = "KO";
             // 
-            // button2
+            // label18
             // 
-            this.button2.Location = new System.Drawing.Point(170, 165);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(78, 31);
-            this.button2.TabIndex = 14;
-            this.button2.Text = "Save";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click_1);
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(19, 35);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(92, 13);
-            this.label15.TabIndex = 15;
-            this.label15.Text = "Receipt Printer";
-            // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(44, 89);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(67, 13);
-            this.label16.TabIndex = 16;
-            this.label16.Text = "Kot Printer";
-            // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(3, 140);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(108, 13);
-            this.label17.TabIndex = 17;
-            this.label17.Text = "Juice Area Printer";
-            // 
-            // cmb_pos
-            // 
-            this.cmb_pos.FormattingEnabled = true;
-            this.cmb_pos.Location = new System.Drawing.Point(121, 32);
-            this.cmb_pos.Name = "cmb_pos";
-            this.cmb_pos.Size = new System.Drawing.Size(185, 21);
-            this.cmb_pos.TabIndex = 18;
-            // 
-            // cmb_kot
-            // 
-            this.cmb_kot.FormattingEnabled = true;
-            this.cmb_kot.Location = new System.Drawing.Point(121, 82);
-            this.cmb_kot.Name = "cmb_kot";
-            this.cmb_kot.Size = new System.Drawing.Size(185, 21);
-            this.cmb_kot.TabIndex = 19;
-            // 
-            // cmb_juice
-            // 
-            this.cmb_juice.FormattingEnabled = true;
-            this.cmb_juice.Location = new System.Drawing.Point(121, 132);
-            this.cmb_juice.Name = "cmb_juice";
-            this.cmb_juice.Size = new System.Drawing.Size(185, 21);
-            this.cmb_juice.TabIndex = 20;
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(101, 174);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(61, 13);
+            this.label18.TabIndex = 28;
+            this.label18.Text = "Kot prefix";
             // 
             // oodoSetting
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(985, 347);
+            this.ClientSize = new System.Drawing.Size(985, 381);
             this.Controls.Add(this.groupBox1);
             this.Name = "oodoSetting";
             this.Text = "Setting";
             this.groupBox1.ResumeLayout(false);
             this.groupBox4.ResumeLayout(false);
+            this.groupBox5.ResumeLayout(false);
+            this.groupBox5.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
-            this.groupBox5.ResumeLayout(false);
-            this.groupBox5.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -569,5 +590,7 @@
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.TextBox txt_kotprefix;
+        private System.Windows.Forms.Label label18;
     }
 }
