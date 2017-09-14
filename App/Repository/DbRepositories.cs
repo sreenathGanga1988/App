@@ -162,6 +162,18 @@ namespace App.Repository
         }
 
 
+        public void Addcategory(Category ctgry) {
+
+            cntxt.Categorys.Add(ctgry);
+            cntxt.SaveChanges();
+        }
+
+        public void UpdateCategory(Category ctgry)
+        {
+
+            cntxt.Entry(ctgry).State = EntityState.Modified;
+            cntxt.SaveChanges();
+        }
 
     }
 
@@ -178,7 +190,7 @@ namespace App.Repository
 
     }
 
-
+   
 
     public class KotRepository
     {
@@ -247,7 +259,7 @@ namespace App.Repository
                 element.CustomerName = invoicemaster.CustomerName;
                 element.IsUploaded = invoicemaster.IsUploaded;
                 element.IstableBill = invoicemaster.IstableBill;
-              
+                invoicemaster.InvoiceNum = element.InvoiceNum;
             }
 
 
@@ -293,7 +305,7 @@ namespace App.Repository
                         element.IsUploaded = invdet.IsUploaded;
 
                       
-                        element.AdjustedQty = element.PreviousQty- invdet.Qty;
+                        element.AdjustedQty = invdet.Qty - element.PreviousQty;
                    
 
                     }
@@ -335,14 +347,17 @@ namespace App.Repository
                 if (!invoicemaster.InvoiceDetails.Any(f => f.ProductId ==element.ProductId))
                 {
 
-
+                    element.IsDeleted = true;
+                    element.PreviousQty = element.Qty;
+                    element.Qty = 0;
+                    element.AdjustedQty = element.AdjustedQty = element.Qty - element.PreviousQty;
                 }
 
              }
 
 
 
-
+            cntxt.SaveChanges();
 
             return invoicemaster;
 
@@ -534,6 +549,36 @@ namespace App.ApplicationSettingRepository
 
 
     }
+
+
+    public class PrinterRepository
+    {
+        POSDataContext cntxt = new POSDataContext();
+        public List<Printer> GetPrinterList(int? LocationID = 0)
+        {
+
+            var q = cntxt.Printers.Where (u=>u.StoreID== LocationID).ToList();
+
+            return q;
+        }
+
+
+        public void Addcategory(Printer ctgry)
+        {
+
+            cntxt.Printers.Add(ctgry);
+            cntxt.SaveChanges();
+        }
+
+        public void UpdateCategory(Printer ctgry)
+        {
+
+            cntxt.Entry(ctgry).State = EntityState.Modified;
+            cntxt.SaveChanges();
+        }
+
+    }
+
     public class AppuserSettingRepository
     {
         POSDataContext cntxt = new POSDataContext();

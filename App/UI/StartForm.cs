@@ -50,7 +50,8 @@ namespace App.UI
 
         private void button1_Click(object sender, EventArgs e)
         {
-           
+            UI.Masters.MasterForm frm = new Masters.MasterForm();
+            frm.Show();
         }
 
         private void button5_Click(object sender, EventArgs e)
@@ -78,10 +79,7 @@ namespace App.UI
         {
 
 
-            KOT frm = new KOT();
-
-            frm.StartPosition = FormStartPosition.CenterScreen;
-            frm.Show();
+            
         }
 
         private void button6_Click(object sender, EventArgs e)

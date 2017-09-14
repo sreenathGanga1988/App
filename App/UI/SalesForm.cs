@@ -52,6 +52,7 @@ namespace App.UI
 
             foreach( InvoiceDetail invdet in invoicemaster.InvoiceDetails)
             {
+                if (invdet.IsDeleted == false) { 
                 var index = grd_ProductDetails.Rows.Add();
                 grd_ProductDetails.Rows[index].Cells["ID"].Value = invdet.ProductId.ToString();
                 grd_ProductDetails.Rows[index].Cells["Item"].Value = invdet.Product.ProductName.ToString();
@@ -68,7 +69,7 @@ namespace App.UI
                     grd_ProductDetails.Rows[index].Cells["Price"].ReadOnly = false;
 
                 }
-
+                }
                 CalculateTotal();
             }
             
@@ -93,8 +94,8 @@ namespace App.UI
 
                     int categorycount = Category.Count;
                      
-                    float parentheight = float.Parse(this.grp_Category.Height.ToString());
-                    float parentwidth = float.Parse(this.grp_Category.Width.ToString());
+                    float parentheight = float.Parse(this.pnl_category.Height.ToString());
+                    float parentwidth = float.Parse(this.pnl_category.Width.ToString());
                     buttonheight = (int)Math.Ceiling(parentheight)/ categorycount;
                     buttonwidth = (int)Math.Ceiling(parentwidth);
                 }
@@ -127,7 +128,7 @@ namespace App.UI
                 temp.Tag = i;
                 
                 temp.Click += new EventHandler(OnButtonClick);
-                this.grp_Category. Controls.Add(temp);
+                this.pnl_category. Controls.Add(temp);
                     i++;
             }
             
@@ -861,6 +862,19 @@ namespace App.UI
         private void button17_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void btn_pending_Click(object sender, EventArgs e)
+        {
+            KOT frm = new KOT();
+
+            frm.StartPosition = FormStartPosition.CenterScreen;
+            frm.Show();
+        }
+
+        private void btn_close_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

@@ -39,8 +39,10 @@ namespace App.Model
         public int? OdooCategoryId { get; set; }
         public String CategoryName { get; set; }
         public String Color { get; set; }
-        
+        public int? PrinterId { get; set; }
         public virtual List<Product> Products { get; set; }
+
+        public virtual Printer Printer { get; set; }
     }
 
 
@@ -80,7 +82,7 @@ namespace App.Model
         public virtual List<PrinterDetail> PrinterDetails { get; set; }
 
         public virtual List<RefundMaster> RefundMasters { get; set; }
-
+        public virtual List<Printer> Printers { get; set; }
 
     }
 
@@ -272,7 +274,18 @@ namespace App.Model
     }
 
 
+    public class Printer
+    {
 
+
+        [Key]
+        public int PrinterId { get; set; }
+        public String PrinterName { get; set; }
+        public String Remark { get; set; }
+        public int StoreID { get; set; }
+        public virtual List<Category> Categorys { get; set; }
+        public virtual Store Store { get; set; }
+    }
 
     public class KotMaster
     {

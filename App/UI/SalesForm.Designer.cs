@@ -45,6 +45,7 @@
             this.Total = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.grp_btn = new System.Windows.Forms.GroupBox();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.button19 = new System.Windows.Forms.Button();
             this.button18 = new System.Windows.Forms.Button();
             this.button16 = new System.Windows.Forms.Button();
             this.button14 = new System.Windows.Forms.Button();
@@ -78,14 +79,19 @@
             this.lbl_table = new System.Windows.Forms.TextBox();
             this.grp_table = new System.Windows.Forms.GroupBox();
             this.pnl_product = new System.Windows.Forms.Panel();
-            this.button19 = new System.Windows.Forms.Button();
+            this.btn_pending = new System.Windows.Forms.Button();
+            this.pnl_leftbutton = new System.Windows.Forms.Panel();
+            this.pnl_category = new System.Windows.Forms.Panel();
+            this.btn_close = new System.Windows.Forms.Button();
             this.grp_bottompanel.SuspendLayout();
+            this.grp_Category.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grd_ProductDetails)).BeginInit();
             this.grp_btn.SuspendLayout();
             this.panel2.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            this.pnl_leftbutton.SuspendLayout();
             this.SuspendLayout();
             // 
             // grp_bottompanel
@@ -146,11 +152,13 @@
             // 
             // grp_Category
             // 
+            this.grp_Category.Controls.Add(this.pnl_category);
+            this.grp_Category.Controls.Add(this.pnl_leftbutton);
             this.grp_Category.Dock = System.Windows.Forms.DockStyle.Left;
             this.grp_Category.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.grp_Category.Location = new System.Drawing.Point(0, 50);
             this.grp_Category.Name = "grp_Category";
-            this.grp_Category.Size = new System.Drawing.Size(88, 509);
+            this.grp_Category.Size = new System.Drawing.Size(93, 509);
             this.grp_Category.TabIndex = 2;
             this.grp_Category.TabStop = false;
             this.grp_Category.Text = "Category";
@@ -160,7 +168,7 @@
             this.groupBox1.Controls.Add(this.panel1);
             this.groupBox1.Controls.Add(this.grp_btn);
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Left;
-            this.groupBox1.Location = new System.Drawing.Point(88, 50);
+            this.groupBox1.Location = new System.Drawing.Point(93, 50);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(444, 509);
             this.groupBox1.TabIndex = 3;
@@ -267,6 +275,18 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(432, 294);
             this.panel2.TabIndex = 1;
+            // 
+            // button19
+            // 
+            this.button19.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.button19.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
+            this.button19.Location = new System.Drawing.Point(320, 227);
+            this.button19.Name = "button19";
+            this.button19.Size = new System.Drawing.Size(109, 43);
+            this.button19.TabIndex = 22;
+            this.button19.Text = "Reset";
+            this.button19.UseVisualStyleBackColor = false;
+            this.button19.Click += new System.EventHandler(this.numericbuttonclicked_Click);
             // 
             // button18
             // 
@@ -501,6 +521,7 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.btn_pending);
             this.groupBox2.Controls.Add(this.btn_actionBoard);
             this.groupBox2.Controls.Add(this.button17);
             this.groupBox2.Controls.Add(this.btn_printCheckOut);
@@ -512,7 +533,7 @@
             this.groupBox2.Controls.Add(this.label1);
             this.groupBox2.Controls.Add(this.lbl_table);
             this.groupBox2.Dock = System.Windows.Forms.DockStyle.Left;
-            this.groupBox2.Location = new System.Drawing.Point(532, 50);
+            this.groupBox2.Location = new System.Drawing.Point(537, 50);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(87, 509);
             this.groupBox2.TabIndex = 6;
@@ -648,22 +669,52 @@
             // pnl_product
             // 
             this.pnl_product.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnl_product.Location = new System.Drawing.Point(619, 50);
+            this.pnl_product.Location = new System.Drawing.Point(624, 50);
             this.pnl_product.Name = "pnl_product";
-            this.pnl_product.Size = new System.Drawing.Size(190, 509);
+            this.pnl_product.Size = new System.Drawing.Size(185, 509);
             this.pnl_product.TabIndex = 8;
             // 
-            // button19
+            // btn_pending
             // 
-            this.button19.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.button19.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
-            this.button19.Location = new System.Drawing.Point(320, 227);
-            this.button19.Name = "button19";
-            this.button19.Size = new System.Drawing.Size(109, 43);
-            this.button19.TabIndex = 22;
-            this.button19.Text = "Reset";
-            this.button19.UseVisualStyleBackColor = false;
-            this.button19.Click += new System.EventHandler(this.numericbuttonclicked_Click);
+            this.btn_pending.BackColor = System.Drawing.Color.Red;
+            this.btn_pending.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btn_pending.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold);
+            this.btn_pending.Location = new System.Drawing.Point(3, 405);
+            this.btn_pending.Name = "btn_pending";
+            this.btn_pending.Size = new System.Drawing.Size(81, 67);
+            this.btn_pending.TabIndex = 10;
+            this.btn_pending.Text = "Pending Bills";
+            this.btn_pending.UseVisualStyleBackColor = false;
+            this.btn_pending.Click += new System.EventHandler(this.btn_pending_Click);
+            // 
+            // pnl_leftbutton
+            // 
+            this.pnl_leftbutton.Controls.Add(this.btn_close);
+            this.pnl_leftbutton.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.pnl_leftbutton.Location = new System.Drawing.Point(3, 436);
+            this.pnl_leftbutton.Name = "pnl_leftbutton";
+            this.pnl_leftbutton.Size = new System.Drawing.Size(87, 70);
+            this.pnl_leftbutton.TabIndex = 0;
+            // 
+            // pnl_category
+            // 
+            this.pnl_category.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnl_category.Location = new System.Drawing.Point(3, 16);
+            this.pnl_category.Name = "pnl_category";
+            this.pnl_category.Size = new System.Drawing.Size(87, 420);
+            this.pnl_category.TabIndex = 1;
+            // 
+            // btn_close
+            // 
+            this.btn_close.BackColor = System.Drawing.Color.SkyBlue;
+            this.btn_close.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.btn_close.Location = new System.Drawing.Point(0, 3);
+            this.btn_close.Name = "btn_close";
+            this.btn_close.Size = new System.Drawing.Size(87, 67);
+            this.btn_close.TabIndex = 0;
+            this.btn_close.Text = "Exit";
+            this.btn_close.UseVisualStyleBackColor = false;
+            this.btn_close.Click += new System.EventHandler(this.btn_close_Click);
             // 
             // SalesForm
             // 
@@ -684,6 +735,7 @@
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.SalesForm_KeyDown);
             this.grp_bottompanel.ResumeLayout(false);
             this.grp_bottompanel.PerformLayout();
+            this.grp_Category.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.grd_ProductDetails)).EndInit();
@@ -692,6 +744,7 @@
             this.panel2.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            this.pnl_leftbutton.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -748,5 +801,9 @@
         private System.Windows.Forms.Button button18;
         private System.Windows.Forms.Button btn_actionBoard;
         private System.Windows.Forms.Button button19;
+        private System.Windows.Forms.Button btn_pending;
+        private System.Windows.Forms.Panel pnl_category;
+        private System.Windows.Forms.Panel pnl_leftbutton;
+        private System.Windows.Forms.Button btn_close;
     }
 }

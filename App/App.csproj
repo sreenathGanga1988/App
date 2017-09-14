@@ -262,6 +262,10 @@
     <Compile Include="Migrations\201709131227058_addedinvedet.Designer.cs">
       <DependentUpon>201709131227058_addedinvedet.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201709141336203_addedprinter and master.cs" />
+    <Compile Include="Migrations\201709141336203_addedprinter and master.Designer.cs">
+      <DependentUpon>201709141336203_addedprinter and master.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Model\Product.cs" />
     <Compile Include="Model\UIModel.cs" />
@@ -287,6 +291,30 @@
     </Compile>
     <Compile Include="UI\Login.Designer.cs">
       <DependentUpon>Login.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Masters\FrmCategory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Masters\FrmCategory.Designer.cs">
+      <DependentUpon>FrmCategory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Masters\MasterForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Masters\MasterForm.Designer.cs">
+      <DependentUpon>MasterForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Masters\PrinterForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Masters\PrinterForm.Designer.cs">
+      <DependentUpon>PrinterForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Masters\Product.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Masters\Product.Designer.cs">
+      <DependentUpon>Product.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\RefundAndExpense\ActionBoard.cs">
       <SubType>Form</SubType>
@@ -452,6 +480,9 @@
     <EmbeddedResource Include="Migrations\201709131227058_addedinvedet.resx">
       <DependentUpon>201709131227058_addedinvedet.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709141336203_addedprinter and master.resx">
+      <DependentUpon>201709141336203_addedprinter and master.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -471,6 +502,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Masters\FrmCategory.resx">
+      <DependentUpon>FrmCategory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Masters\MasterForm.resx">
+      <DependentUpon>MasterForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Masters\PrinterForm.resx">
+      <DependentUpon>PrinterForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\RefundAndExpense\ActionBoard.resx">
       <DependentUpon>ActionBoard.cs</DependentUpon>

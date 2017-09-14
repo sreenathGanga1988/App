@@ -38,7 +38,7 @@ namespace App.Context
         public DbSet<OdooDetail> OdooDetails { get; set; }
         public DbSet<PrinterDetail> PrinterDetails { get; set; }
         public DbSet<RefundMaster> RefundMasters { get; set; }
-        
+        public DbSet<Printer> Printers { get; set; }
 
     }
 }
