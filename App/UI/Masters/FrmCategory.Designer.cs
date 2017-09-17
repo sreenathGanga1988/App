@@ -30,22 +30,23 @@
         {
             this.grp_category = new System.Windows.Forms.GroupBox();
             this.dgv = new System.Windows.Forms.DataGridView();
+            this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.OdooCategoryId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CategoryName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Color = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Printer = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.cmb_pos = new System.Windows.Forms.ComboBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.txt_color = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.TXT_OODOID = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.btn_save = new System.Windows.Forms.Button();
             this.txt_cATEGORYNAME = new System.Windows.Forms.TextBox();
             this.lbl_id = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.txt_color = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.OdooCategoryId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CategoryName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Color = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Printer = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cmb_pos = new System.Windows.Forms.ComboBox();
-            this.label4 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
             this.grp_category.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -83,9 +84,35 @@
             this.dgv.TabIndex = 0;
             this.dgv.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_CellDoubleClick);
             // 
+            // Id
+            // 
+            this.Id.HeaderText = "Id ";
+            this.Id.Name = "Id";
+            // 
+            // OdooCategoryId
+            // 
+            this.OdooCategoryId.HeaderText = "OdooCategoryId";
+            this.OdooCategoryId.Name = "OdooCategoryId";
+            // 
+            // CategoryName
+            // 
+            this.CategoryName.HeaderText = "CategoryName";
+            this.CategoryName.Name = "CategoryName";
+            // 
+            // Color
+            // 
+            this.Color.HeaderText = "Color";
+            this.Color.Name = "Color";
+            // 
+            // Printer
+            // 
+            this.Printer.HeaderText = "Printer";
+            this.Printer.Name = "Printer";
+            // 
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.Color.White;
+            this.groupBox1.Controls.Add(this.button1);
             this.groupBox1.Controls.Add(this.cmb_pos);
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.txt_color);
@@ -106,6 +133,39 @@
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Add New";
+            // 
+            // cmb_pos
+            // 
+            this.cmb_pos.FormattingEnabled = true;
+            this.cmb_pos.Location = new System.Drawing.Point(144, 161);
+            this.cmb_pos.Name = "cmb_pos";
+            this.cmb_pos.Size = new System.Drawing.Size(170, 21);
+            this.cmb_pos.TabIndex = 21;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(12, 161);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(88, 13);
+            this.label4.TabIndex = 20;
+            this.label4.Text = "Printer Name :";
+            // 
+            // txt_color
+            // 
+            this.txt_color.Location = new System.Drawing.Point(144, 127);
+            this.txt_color.Name = "txt_color";
+            this.txt_color.Size = new System.Drawing.Size(170, 20);
+            this.txt_color.TabIndex = 7;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(12, 127);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(44, 13);
+            this.label2.TabIndex = 6;
+            this.label2.Text = "Color :";
             // 
             // TXT_OODOID
             // 
@@ -160,63 +220,15 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Category Name :";
             // 
-            // txt_color
+            // button1
             // 
-            this.txt_color.Location = new System.Drawing.Point(144, 127);
-            this.txt_color.Name = "txt_color";
-            this.txt_color.Size = new System.Drawing.Size(170, 20);
-            this.txt_color.TabIndex = 7;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 127);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(44, 13);
-            this.label2.TabIndex = 6;
-            this.label2.Text = "Color :";
-            // 
-            // Id
-            // 
-            this.Id.HeaderText = "Id ";
-            this.Id.Name = "Id";
-            // 
-            // OdooCategoryId
-            // 
-            this.OdooCategoryId.HeaderText = "OdooCategoryId";
-            this.OdooCategoryId.Name = "OdooCategoryId";
-            // 
-            // CategoryName
-            // 
-            this.CategoryName.HeaderText = "CategoryName";
-            this.CategoryName.Name = "CategoryName";
-            // 
-            // Color
-            // 
-            this.Color.HeaderText = "Color";
-            this.Color.Name = "Color";
-            // 
-            // Printer
-            // 
-            this.Printer.HeaderText = "Printer";
-            this.Printer.Name = "Printer";
-            // 
-            // cmb_pos
-            // 
-            this.cmb_pos.FormattingEnabled = true;
-            this.cmb_pos.Location = new System.Drawing.Point(144, 161);
-            this.cmb_pos.Name = "cmb_pos";
-            this.cmb_pos.Size = new System.Drawing.Size(170, 21);
-            this.cmb_pos.TabIndex = 21;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(12, 161);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(88, 13);
-            this.label4.TabIndex = 20;
-            this.label4.Text = "Printer Name :";
+            this.button1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.button1.Location = new System.Drawing.Point(4, 187);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(525, 34);
+            this.button1.TabIndex = 22;
+            this.button1.Text = "From Odoo";
+            this.button1.UseVisualStyleBackColor = true;
             // 
             // FrmCategory
             // 
@@ -255,5 +267,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Printer;
         private System.Windows.Forms.ComboBox cmb_pos;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Button button1;
     }
 }
