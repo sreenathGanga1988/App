@@ -161,7 +161,7 @@
             this.button10.Name = "button10";
             this.button10.Size = new System.Drawing.Size(65, 65);
             this.button10.TabIndex = 8;
-            this.button10.Text = " ";
+            this.button10.Text = "OK";
             this.button10.UseVisualStyleBackColor = false;
             this.button10.Click += new System.EventHandler(this.button10_Click);
             // 

@@ -56,10 +56,16 @@
     <ManifestKeyFile>App_TemporaryKey.pfx</ManifestKeyFile>
   </PropertyGroup>
   <PropertyGroup>
-    <GenerateManifests>true</GenerateManifests>
+    <GenerateManifests>false</GenerateManifests>
   </PropertyGroup>
   <PropertyGroup>
     <SignManifests>false</SignManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <TargetZone>LocalIntranet</TargetZone>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>Properties\app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
@@ -289,8 +295,26 @@
     <Compile Include="UI\FrmPOS.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UI\FrmPOS.Designer.cs">
+    <Compile Include="UI\FrmPOS.designer.cs">
       <DependentUpon>FrmPOS.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\FrmPOS1Table.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\FrmPOS1Table.designer.cs">
+      <DependentUpon>FrmPOS1Table.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\FrmPOS1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\FrmPOS1.designer.cs">
+      <DependentUpon>FrmPOS1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\FrmPOS2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\FrmPOS2.designer.cs">
+      <DependentUpon>FrmPOS2.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\KOT.cs">
       <SubType>Form</SubType>
@@ -514,6 +538,15 @@
     <EmbeddedResource Include="UI\FrmPOS.resx">
       <DependentUpon>FrmPOS.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UI\FrmPOS1Table.resx">
+      <DependentUpon>FrmPOS1Table.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\FrmPOS1.resx">
+      <DependentUpon>FrmPOS1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\FrmPOS2.resx">
+      <DependentUpon>FrmPOS2.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UI\KOT.resx">
       <DependentUpon>KOT.cs</DependentUpon>
     </EmbeddedResource>
@@ -577,6 +610,7 @@
       <DependentUpon>LimsDBDataSet.xsd</DependentUpon>
     </None>
     <None Include="packages.config" />
+    <None Include="Properties\app.manifest" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -600,7 +634,7 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="bin\Debug\" />
+    <Folder Include="bin\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
