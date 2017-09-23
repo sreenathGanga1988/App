@@ -497,6 +497,18 @@ namespace App.UI
                 }
 
             }
+            else if (btn.Text.Trim() == "Table Bill")
+            {
+                if (ValidateforKot())
+                {
+                    //AddKoT();
+                    AddInvoice("kot");
+
+
+                    clearGridView();
+                }
+
+            }
             else if (btn.Text.Trim() == "Clear")
             {
                 txt_producrtcode.Text = "";

@@ -79,9 +79,12 @@ namespace App.UI
 
         private void button4_Click(object sender, EventArgs e)
         {
+            FrmPOS1Table frm = new FrmPOS1Table();
+
+            frm.StartPosition = FormStartPosition.CenterScreen;
+            frm.Show();
 
 
-            
         }
 
         private void button6_Click(object sender, EventArgs e)
