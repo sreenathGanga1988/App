@@ -19,27 +19,15 @@ namespace App.UI
 
         private void FrmPOS_Load(object sender, EventArgs e)
         {
-
+            //this.button1.Dock = System.Windows.Forms.DockStyle.Fill;
+            //this.button1.Location = new System.Drawing.Point(0, 0);
+            //this.button1.Name = "button1";
+            //this.button1.Size = new System.Drawing.Size(103, 43);
+            //this.button1.TabIndex = 0;
+            //this.button1.Text = "button1";
+            //this.button1.UseVisualStyleBackColor = true;
         }
 
-        private void panel27_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void panel28_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void button27_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void panel21_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
+        
     }
 }

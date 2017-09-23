@@ -30,7 +30,7 @@ namespace App
             Application.SetCompatibleTextRenderingDefault(false);
           
 
-            Application.Run(new UI.Login());
+            Application.Run(new UI.FrmLogin());
         }
     }
 }

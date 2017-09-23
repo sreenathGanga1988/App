@@ -19,11 +19,13 @@ namespace App.UI
         public FrmLogin()
         {
             InitializeComponent();
+            
             Database.SetInitializer(new MigrateDatabaseToLatestVersion<POSDataContext, Configuration>());
             Company objCompany = new Company();
             objCompany.CompanyId = DateTime.Now.ToString();
             objCompany.Name = "Sree";
 
+           
 
             POSDataContext objContext = new POSDataContext();
             //objContext.Companies.Add(objCompany);
@@ -95,6 +97,12 @@ namespace App.UI
         private void panel5_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+
+        private void FrmLogin_Load(object sender, EventArgs e)
+        {
+            lbl_datetimenow.Text = DateTime.Now.ToString();
+            lbl_dayname.Text = DateTime.Now.Date.DayOfWeek.ToString();
         }
     }
 }

@@ -46,8 +46,8 @@
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
+            this.lbl_dayname = new System.Windows.Forms.Label();
+            this.lbl_datetimenow = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -127,6 +127,7 @@
             this.button7.TabIndex = 11;
             this.button7.Text = "8";
             this.button7.UseVisualStyleBackColor = false;
+            this.button7.Click += new System.EventHandler(this.buttonclicked_Click);
             // 
             // button8
             // 
@@ -139,6 +140,7 @@
             this.button8.TabIndex = 10;
             this.button8.Text = "9";
             this.button8.UseVisualStyleBackColor = false;
+            this.button8.Click += new System.EventHandler(this.buttonclicked_Click);
             // 
             // button9
             // 
@@ -151,6 +153,7 @@
             this.button9.TabIndex = 9;
             this.button9.Text = "0";
             this.button9.UseVisualStyleBackColor = false;
+            this.button9.Click += new System.EventHandler(this.buttonclicked_Click);
             // 
             // button10
             // 
@@ -161,9 +164,9 @@
             this.button10.Name = "button10";
             this.button10.Size = new System.Drawing.Size(65, 65);
             this.button10.TabIndex = 8;
-            this.button10.Text = " ";
+            this.button10.Text = "OK";
             this.button10.UseVisualStyleBackColor = false;
-            this.button10.Click += new System.EventHandler(this.button10_Click);
+            this.button10.Click += new System.EventHandler(this.buttonclicked_Click);
             // 
             // button11
             // 
@@ -176,6 +179,7 @@
             this.button11.TabIndex = 7;
             this.button11.Text = "Back";
             this.button11.UseVisualStyleBackColor = false;
+            this.button11.Click += new System.EventHandler(this.buttonclicked_Click);
             // 
             // button12
             // 
@@ -188,6 +192,7 @@
             this.button12.TabIndex = 6;
             this.button12.Text = "7";
             this.button12.UseVisualStyleBackColor = false;
+            this.button12.Click += new System.EventHandler(this.buttonclicked_Click);
             // 
             // button6
             // 
@@ -200,6 +205,7 @@
             this.button6.TabIndex = 5;
             this.button6.Text = "2";
             this.button6.UseVisualStyleBackColor = false;
+            this.button6.Click += new System.EventHandler(this.buttonclicked_Click);
             // 
             // button5
             // 
@@ -212,6 +218,7 @@
             this.button5.TabIndex = 4;
             this.button5.Text = "3";
             this.button5.UseVisualStyleBackColor = false;
+            this.button5.Click += new System.EventHandler(this.buttonclicked_Click);
             // 
             // button4
             // 
@@ -224,6 +231,7 @@
             this.button4.TabIndex = 3;
             this.button4.Text = "4";
             this.button4.UseVisualStyleBackColor = false;
+            this.button4.Click += new System.EventHandler(this.buttonclicked_Click);
             // 
             // button3
             // 
@@ -236,6 +244,7 @@
             this.button3.TabIndex = 2;
             this.button3.Text = "6";
             this.button3.UseVisualStyleBackColor = false;
+            this.button3.Click += new System.EventHandler(this.buttonclicked_Click);
             // 
             // button2
             // 
@@ -248,6 +257,7 @@
             this.button2.TabIndex = 1;
             this.button2.Text = "5";
             this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.buttonclicked_Click);
             // 
             // button1
             // 
@@ -260,41 +270,42 @@
             this.button1.TabIndex = 0;
             this.button1.Text = "1";
             this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.buttonclicked_Click);
             // 
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.DarkRed;
             this.panel2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel2.BackgroundImage")));
             this.panel2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.panel2.Controls.Add(this.label4);
-            this.panel2.Controls.Add(this.label3);
+            this.panel2.Controls.Add(this.lbl_dayname);
+            this.panel2.Controls.Add(this.lbl_datetimenow);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(260, 328);
             this.panel2.TabIndex = 0;
             // 
-            // label4
+            // lbl_dayname
             // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.ForeColor = System.Drawing.Color.White;
-            this.label4.Location = new System.Drawing.Point(82, 286);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(77, 18);
-            this.label4.TabIndex = 8;
-            this.label4.Text = "MONDAY";
+            this.lbl_dayname.AutoSize = true;
+            this.lbl_dayname.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_dayname.ForeColor = System.Drawing.Color.White;
+            this.lbl_dayname.Location = new System.Drawing.Point(82, 286);
+            this.lbl_dayname.Name = "lbl_dayname";
+            this.lbl_dayname.Size = new System.Drawing.Size(48, 18);
+            this.lbl_dayname.TabIndex = 8;
+            this.lbl_dayname.Text = "****";
             // 
-            // label3
+            // lbl_datetimenow
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(18, 258);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(207, 18);
-            this.label3.TabIndex = 7;
-            this.label3.Text = "01/01/2017 12:12:45 AM";
+            this.lbl_datetimenow.AutoSize = true;
+            this.lbl_datetimenow.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_datetimenow.ForeColor = System.Drawing.Color.White;
+            this.lbl_datetimenow.Location = new System.Drawing.Point(18, 258);
+            this.lbl_datetimenow.Name = "lbl_datetimenow";
+            this.lbl_datetimenow.Size = new System.Drawing.Size(18, 18);
+            this.lbl_datetimenow.TabIndex = 7;
+            this.lbl_datetimenow.Text = "0";
             // 
             // groupBox1
             // 
@@ -364,6 +375,7 @@
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Login";
+            this.Load += new System.EventHandler(this.FrmLogin_Load);
             this.panel1.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
@@ -400,7 +412,7 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label lbl_dayname;
+        private System.Windows.Forms.Label lbl_datetimenow;
     }
 }

@@ -64,13 +64,13 @@
             this.panel29 = new System.Windows.Forms.Panel();
             this.panel34 = new System.Windows.Forms.Panel();
             this.button28 = new System.Windows.Forms.Button();
+            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.panel33 = new System.Windows.Forms.Panel();
             this.panel32 = new System.Windows.Forms.Panel();
             this.button27 = new System.Windows.Forms.Button();
             this.panel31 = new System.Windows.Forms.Panel();
             this.panel30 = new System.Windows.Forms.Panel();
             this.button26 = new System.Windows.Forms.Button();
-            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.panel28 = new System.Windows.Forms.Panel();
             this.panel27 = new System.Windows.Forms.Panel();
             this.label8 = new System.Windows.Forms.Label();
@@ -91,8 +91,7 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel17 = new System.Windows.Forms.Panel();
             this.panel18 = new System.Windows.Forms.Panel();
-            this.button8 = new System.Windows.Forms.Button();
-            this.panel3 = new System.Windows.Forms.Panel();
+            this.pnl_category = new System.Windows.Forms.Panel();
             this.panel15 = new System.Windows.Forms.Panel();
             this.button7 = new System.Windows.Forms.Button();
             this.panel16 = new System.Windows.Forms.Panel();
@@ -113,6 +112,7 @@
             this.panel5 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
             this.button1 = new System.Windows.Forms.Button();
+            this.button8 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel21.SuspendLayout();
             this.panel20.SuspendLayout();
@@ -126,7 +126,7 @@
             this.panel2.SuspendLayout();
             this.panel17.SuspendLayout();
             this.panel18.SuspendLayout();
-            this.panel3.SuspendLayout();
+            this.pnl_category.SuspendLayout();
             this.panel15.SuspendLayout();
             this.panel13.SuspendLayout();
             this.panel11.SuspendLayout();
@@ -185,7 +185,7 @@
             this.panel21.Name = "panel21";
             this.panel21.Size = new System.Drawing.Size(608, 729);
             this.panel21.TabIndex = 4;
-            this.panel21.Paint += new System.Windows.Forms.PaintEventHandler(this.panel21_Paint);
+       
             // 
             // button31
             // 
@@ -547,6 +547,17 @@
             this.button28.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.button28.UseVisualStyleBackColor = true;
             // 
+            // imageList1
+            // 
+            this.imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
+            this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
+            this.imageList1.Images.SetKeyName(0, "if_cart-empty_126588 (2).ico");
+            this.imageList1.Images.SetKeyName(1, "if_cart-empty_126588 (1).ico");
+            this.imageList1.Images.SetKeyName(2, "if_cart-empty_126588.ico");
+            this.imageList1.Images.SetKeyName(3, "if_equipmentrental_2318443.png");
+            this.imageList1.Images.SetKeyName(4, "256-256-d13cafbf17ecd8f2065c8842a6e4e228.png");
+            this.imageList1.Images.SetKeyName(5, "45200.png");
+            // 
             // panel33
             // 
             this.panel33.Dock = System.Windows.Forms.DockStyle.Left;
@@ -577,7 +588,7 @@
             this.button27.Text = "Take Away";
             this.button27.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.button27.UseVisualStyleBackColor = true;
-            this.button27.Click += new System.EventHandler(this.button27_Click);
+
             // 
             // panel31
             // 
@@ -610,17 +621,6 @@
             this.button26.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.button26.UseVisualStyleBackColor = true;
             // 
-            // imageList1
-            // 
-            this.imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
-            this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
-            this.imageList1.Images.SetKeyName(0, "if_cart-empty_126588 (2).ico");
-            this.imageList1.Images.SetKeyName(1, "if_cart-empty_126588 (1).ico");
-            this.imageList1.Images.SetKeyName(2, "if_cart-empty_126588.ico");
-            this.imageList1.Images.SetKeyName(3, "if_equipmentrental_2318443.png");
-            this.imageList1.Images.SetKeyName(4, "256-256-d13cafbf17ecd8f2065c8842a6e4e228.png");
-            this.imageList1.Images.SetKeyName(5, "45200.png");
-            // 
             // panel28
             // 
             this.panel28.Dock = System.Windows.Forms.DockStyle.Top;
@@ -628,7 +628,7 @@
             this.panel28.Name = "panel28";
             this.panel28.Size = new System.Drawing.Size(280, 5);
             this.panel28.TabIndex = 7;
-            this.panel28.Paint += new System.Windows.Forms.PaintEventHandler(this.panel28_Paint);
+
             // 
             // panel27
             // 
@@ -647,7 +647,7 @@
             this.panel27.Name = "panel27";
             this.panel27.Size = new System.Drawing.Size(280, 108);
             this.panel27.TabIndex = 6;
-            this.panel27.Paint += new System.Windows.Forms.PaintEventHandler(this.panel27_Paint);
+
             // 
             // label8
             // 
@@ -804,7 +804,7 @@
             // panel2
             // 
             this.panel2.Controls.Add(this.panel17);
-            this.panel2.Controls.Add(this.panel3);
+            this.panel2.Controls.Add(this.pnl_category);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
@@ -829,42 +829,27 @@
             this.panel18.Size = new System.Drawing.Size(103, 43);
             this.panel18.TabIndex = 13;
             // 
-            // button8
+            // pnl_category
             // 
-            this.button8.BackColor = System.Drawing.Color.Red;
-            this.button8.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.button8.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button8.ForeColor = System.Drawing.Color.White;
-            this.button8.Image = ((System.Drawing.Image)(resources.GetObject("button8.Image")));
-            this.button8.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button8.Location = new System.Drawing.Point(0, 0);
-            this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(103, 43);
-            this.button8.TabIndex = 0;
-            this.button8.Text = "Close";
-            this.button8.UseVisualStyleBackColor = false;
-            // 
-            // panel3
-            // 
-            this.panel3.BackColor = System.Drawing.Color.LightGray;
-            this.panel3.Controls.Add(this.panel15);
-            this.panel3.Controls.Add(this.panel16);
-            this.panel3.Controls.Add(this.panel13);
-            this.panel3.Controls.Add(this.panel14);
-            this.panel3.Controls.Add(this.panel11);
-            this.panel3.Controls.Add(this.panel12);
-            this.panel3.Controls.Add(this.panel9);
-            this.panel3.Controls.Add(this.panel10);
-            this.panel3.Controls.Add(this.panel7);
-            this.panel3.Controls.Add(this.panel8);
-            this.panel3.Controls.Add(this.panel6);
-            this.panel3.Controls.Add(this.panel5);
-            this.panel3.Controls.Add(this.panel4);
-            this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel3.Location = new System.Drawing.Point(0, 0);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(103, 432);
-            this.panel3.TabIndex = 0;
+            this.pnl_category.BackColor = System.Drawing.Color.LightGray;
+            this.pnl_category.Controls.Add(this.panel15);
+            this.pnl_category.Controls.Add(this.panel16);
+            this.pnl_category.Controls.Add(this.panel13);
+            this.pnl_category.Controls.Add(this.panel14);
+            this.pnl_category.Controls.Add(this.panel11);
+            this.pnl_category.Controls.Add(this.panel12);
+            this.pnl_category.Controls.Add(this.panel9);
+            this.pnl_category.Controls.Add(this.panel10);
+            this.pnl_category.Controls.Add(this.panel7);
+            this.pnl_category.Controls.Add(this.panel8);
+            this.pnl_category.Controls.Add(this.panel6);
+            this.pnl_category.Controls.Add(this.panel5);
+            this.pnl_category.Controls.Add(this.panel4);
+            this.pnl_category.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnl_category.Location = new System.Drawing.Point(0, 0);
+            this.pnl_category.Name = "pnl_category";
+            this.pnl_category.Size = new System.Drawing.Size(103, 432);
+            this.pnl_category.TabIndex = 0;
             // 
             // panel15
             // 
@@ -1060,6 +1045,21 @@
             this.button1.Text = "button1";
             this.button1.UseVisualStyleBackColor = true;
             // 
+            // button8
+            // 
+            this.button8.BackColor = System.Drawing.Color.Red;
+            this.button8.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.button8.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button8.ForeColor = System.Drawing.Color.White;
+            this.button8.Image = ((System.Drawing.Image)(resources.GetObject("button8.Image")));
+            this.button8.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button8.Location = new System.Drawing.Point(0, 0);
+            this.button8.Name = "button8";
+            this.button8.Size = new System.Drawing.Size(103, 43);
+            this.button8.TabIndex = 0;
+            this.button8.Text = "Close";
+            this.button8.UseVisualStyleBackColor = false;
+            // 
             // FrmPOS
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1084,7 +1084,7 @@
             this.panel2.ResumeLayout(false);
             this.panel17.ResumeLayout(false);
             this.panel18.ResumeLayout(false);
-            this.panel3.ResumeLayout(false);
+            this.pnl_category.ResumeLayout(false);
             this.panel15.ResumeLayout(false);
             this.panel13.ResumeLayout(false);
             this.panel11.ResumeLayout(false);
@@ -1100,7 +1100,7 @@
 
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Panel pnl_category;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Panel panel15;
@@ -1123,7 +1123,6 @@
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.Panel panel17;
         private System.Windows.Forms.Panel panel18;
-        private System.Windows.Forms.Button button8;
         private System.Windows.Forms.Panel panel23;
         private System.Windows.Forms.Panel panel21;
         private System.Windows.Forms.Button button9;
@@ -1181,5 +1180,6 @@
         private System.Windows.Forms.Panel panel36;
         private System.Windows.Forms.Button button29;
         private System.Windows.Forms.Panel panel35;
+        private System.Windows.Forms.Button button8;
     }
 }
