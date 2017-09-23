@@ -41,8 +41,10 @@ namespace App.UI
 
         private void button2_Click(object sender, EventArgs e)
         {
-            SalesForm frm = new SalesForm();
-          
+            //SalesForm frm = new SalesForm();
+
+            FrmPOS1Table frm = new FrmPOS1Table();
+
             frm.StartPosition = FormStartPosition.CenterScreen;
             frm.Show();
            

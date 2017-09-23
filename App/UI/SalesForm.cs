@@ -876,5 +876,10 @@ namespace App.UI
         {
             this.Close();
         }
+
+        private void txt_producrtcode_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

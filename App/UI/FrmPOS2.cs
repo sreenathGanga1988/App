@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace App.UI
 {
-    public partial class FrmPOS : Form
+    public partial class FrmPOS2 : Form
     {
-        public FrmPOS()
+        public FrmPOS2()
         {
             InitializeComponent();
         }
@@ -58,6 +58,11 @@ namespace App.UI
         }
 
         private void button7_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
         {
 
         }

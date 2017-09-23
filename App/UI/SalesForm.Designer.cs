@@ -34,6 +34,9 @@
             this.lbl_customer = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.grp_Category = new System.Windows.Forms.GroupBox();
+            this.pnl_category = new System.Windows.Forms.Panel();
+            this.pnl_leftbutton = new System.Windows.Forms.Panel();
+            this.btn_close = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.grd_ProductDetails = new System.Windows.Forms.DataGridView();
@@ -67,6 +70,7 @@
             this.button3 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.btn_pending = new System.Windows.Forms.Button();
             this.btn_actionBoard = new System.Windows.Forms.Button();
             this.button17 = new System.Windows.Forms.Button();
             this.btn_printCheckOut = new System.Windows.Forms.Button();
@@ -79,19 +83,15 @@
             this.lbl_table = new System.Windows.Forms.TextBox();
             this.grp_table = new System.Windows.Forms.GroupBox();
             this.pnl_product = new System.Windows.Forms.Panel();
-            this.btn_pending = new System.Windows.Forms.Button();
-            this.pnl_leftbutton = new System.Windows.Forms.Panel();
-            this.pnl_category = new System.Windows.Forms.Panel();
-            this.btn_close = new System.Windows.Forms.Button();
             this.grp_bottompanel.SuspendLayout();
             this.grp_Category.SuspendLayout();
+            this.pnl_leftbutton.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grd_ProductDetails)).BeginInit();
             this.grp_btn.SuspendLayout();
             this.panel2.SuspendLayout();
             this.groupBox2.SuspendLayout();
-            this.pnl_leftbutton.SuspendLayout();
             this.SuspendLayout();
             // 
             // grp_bottompanel
@@ -162,6 +162,35 @@
             this.grp_Category.TabIndex = 2;
             this.grp_Category.TabStop = false;
             this.grp_Category.Text = "Category";
+            // 
+            // pnl_category
+            // 
+            this.pnl_category.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnl_category.Location = new System.Drawing.Point(3, 16);
+            this.pnl_category.Name = "pnl_category";
+            this.pnl_category.Size = new System.Drawing.Size(87, 420);
+            this.pnl_category.TabIndex = 1;
+            // 
+            // pnl_leftbutton
+            // 
+            this.pnl_leftbutton.Controls.Add(this.btn_close);
+            this.pnl_leftbutton.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.pnl_leftbutton.Location = new System.Drawing.Point(3, 436);
+            this.pnl_leftbutton.Name = "pnl_leftbutton";
+            this.pnl_leftbutton.Size = new System.Drawing.Size(87, 70);
+            this.pnl_leftbutton.TabIndex = 0;
+            // 
+            // btn_close
+            // 
+            this.btn_close.BackColor = System.Drawing.Color.SkyBlue;
+            this.btn_close.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.btn_close.Location = new System.Drawing.Point(0, 3);
+            this.btn_close.Name = "btn_close";
+            this.btn_close.Size = new System.Drawing.Size(87, 67);
+            this.btn_close.TabIndex = 0;
+            this.btn_close.Text = "Exit";
+            this.btn_close.UseVisualStyleBackColor = false;
+            this.btn_close.Click += new System.EventHandler(this.btn_close_Click);
             // 
             // groupBox1
             // 
@@ -383,6 +412,7 @@
             this.txt_producrtcode.Size = new System.Drawing.Size(100, 29);
             this.txt_producrtcode.TabIndex = 14;
             this.txt_producrtcode.Text = "0";
+            this.txt_producrtcode.TextChanged += new System.EventHandler(this.txt_producrtcode_TextChanged);
             this.txt_producrtcode.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textBox1_KeyUp);
             // 
             // button11
@@ -540,6 +570,19 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Summary";
             // 
+            // btn_pending
+            // 
+            this.btn_pending.BackColor = System.Drawing.Color.Red;
+            this.btn_pending.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btn_pending.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold);
+            this.btn_pending.Location = new System.Drawing.Point(3, 405);
+            this.btn_pending.Name = "btn_pending";
+            this.btn_pending.Size = new System.Drawing.Size(81, 67);
+            this.btn_pending.TabIndex = 10;
+            this.btn_pending.Text = "Pending Bills";
+            this.btn_pending.UseVisualStyleBackColor = false;
+            this.btn_pending.Click += new System.EventHandler(this.btn_pending_Click);
+            // 
             // btn_actionBoard
             // 
             this.btn_actionBoard.Dock = System.Windows.Forms.DockStyle.Top;
@@ -674,48 +717,6 @@
             this.pnl_product.Size = new System.Drawing.Size(185, 509);
             this.pnl_product.TabIndex = 8;
             // 
-            // btn_pending
-            // 
-            this.btn_pending.BackColor = System.Drawing.Color.Red;
-            this.btn_pending.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btn_pending.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold);
-            this.btn_pending.Location = new System.Drawing.Point(3, 405);
-            this.btn_pending.Name = "btn_pending";
-            this.btn_pending.Size = new System.Drawing.Size(81, 67);
-            this.btn_pending.TabIndex = 10;
-            this.btn_pending.Text = "Pending Bills";
-            this.btn_pending.UseVisualStyleBackColor = false;
-            this.btn_pending.Click += new System.EventHandler(this.btn_pending_Click);
-            // 
-            // pnl_leftbutton
-            // 
-            this.pnl_leftbutton.Controls.Add(this.btn_close);
-            this.pnl_leftbutton.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.pnl_leftbutton.Location = new System.Drawing.Point(3, 436);
-            this.pnl_leftbutton.Name = "pnl_leftbutton";
-            this.pnl_leftbutton.Size = new System.Drawing.Size(87, 70);
-            this.pnl_leftbutton.TabIndex = 0;
-            // 
-            // pnl_category
-            // 
-            this.pnl_category.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnl_category.Location = new System.Drawing.Point(3, 16);
-            this.pnl_category.Name = "pnl_category";
-            this.pnl_category.Size = new System.Drawing.Size(87, 420);
-            this.pnl_category.TabIndex = 1;
-            // 
-            // btn_close
-            // 
-            this.btn_close.BackColor = System.Drawing.Color.SkyBlue;
-            this.btn_close.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.btn_close.Location = new System.Drawing.Point(0, 3);
-            this.btn_close.Name = "btn_close";
-            this.btn_close.Size = new System.Drawing.Size(87, 67);
-            this.btn_close.TabIndex = 0;
-            this.btn_close.Text = "Exit";
-            this.btn_close.UseVisualStyleBackColor = false;
-            this.btn_close.Click += new System.EventHandler(this.btn_close_Click);
-            // 
             // SalesForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -736,6 +737,7 @@
             this.grp_bottompanel.ResumeLayout(false);
             this.grp_bottompanel.PerformLayout();
             this.grp_Category.ResumeLayout(false);
+            this.pnl_leftbutton.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.grd_ProductDetails)).EndInit();
@@ -744,7 +746,6 @@
             this.panel2.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
-            this.pnl_leftbutton.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
