@@ -391,8 +391,8 @@ namespace App.UI
                 }
 
 
-                temp.Location = new System.Drawing.Point((buttonwidth * buttonindex), (buttonheight * colcount));//please adjust location as per your need
-
+             //   temp.Location = new System.Drawing.Point((buttonwidth * buttonindex), (buttonheight * colcount));//please adjust location as per your need
+                temp.Location = new System.Drawing.Point((temp.Width * buttonindex), (temp.Height * colcount));//please adjust location as per your need
                 if (buttonindex % 5 == 0 && buttonindex != 0)
                 {
                     colcount++;
