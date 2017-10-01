@@ -393,7 +393,7 @@ namespace App.UI
 
              //   temp.Location = new System.Drawing.Point((buttonwidth * buttonindex), (buttonheight * colcount));//please adjust location as per your need
                 temp.Location = new System.Drawing.Point((temp.Width * buttonindex), (temp.Height * colcount));//please adjust location as per your need
-                if (buttonindex % 5 == 0 && buttonindex != 0)
+                if (buttonindex % 4 == 0 && buttonindex != 0)
                 {
                     colcount++;
                     buttonindex = 0;
@@ -933,6 +933,24 @@ namespace App.UI
         private void panel17_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+        int yLoc = 0;
+        private void btn_up_Click(object sender, EventArgs e)
+        {
+
+            pnl_product.Top -= 40;
+            if (pnl_product.Top < pnl_product.VerticalScroll.Maximum)
+            {
+                pnl_product.PerformLayout();
+            }
+
+        }
+
+        private void btn_down_Click(object sender, EventArgs e)
+        {
+
+            pnl_product.Top -= 40;
+
         }
     }
 }

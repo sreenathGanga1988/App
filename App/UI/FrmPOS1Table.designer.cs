@@ -156,6 +156,10 @@
             this.lbl_table = new System.Windows.Forms.Button();
             this.panel17 = new System.Windows.Forms.Panel();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
+            this.panel6 = new System.Windows.Forms.Panel();
+            this.panel10 = new System.Windows.Forms.Panel();
+            this.btn_up = new System.Windows.Forms.Button();
+            this.btn_down = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel72.SuspendLayout();
             this.pnl_customer.SuspendLayout();
@@ -204,6 +208,8 @@
             this.panel80.SuspendLayout();
             this.pnl_category.SuspendLayout();
             this.panel71.SuspendLayout();
+            this.panel6.SuspendLayout();
+            this.panel10.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -255,10 +261,9 @@
             // 
             this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(121)))), ((int)(((byte)(166)))));
             this.panel4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel4.Controls.Add(this.panel10);
+            this.panel4.Controls.Add(this.panel6);
             this.panel4.Controls.Add(this.lbl_tableID);
-            this.panel4.Controls.Add(this.lbl_custid);
-            this.panel4.Controls.Add(this.label1);
-            this.panel4.Controls.Add(this.label2);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel4.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.panel4.Location = new System.Drawing.Point(366, 0);
@@ -280,7 +285,7 @@
             // 
             this.lbl_custid.AutoSize = true;
             this.lbl_custid.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_custid.Location = new System.Drawing.Point(135, 41);
+            this.lbl_custid.Location = new System.Drawing.Point(78, 51);
             this.lbl_custid.Name = "lbl_custid";
             this.lbl_custid.Size = new System.Drawing.Size(16, 16);
             this.lbl_custid.TabIndex = 4;
@@ -292,7 +297,7 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(25, 35);
+            this.label1.Location = new System.Drawing.Point(73, 54);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(53, 13);
             this.label1.TabIndex = 3;
@@ -304,7 +309,7 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(6, 8);
+            this.label2.Location = new System.Drawing.Point(6, 36);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(109, 13);
             this.label2.TabIndex = 2;
@@ -315,6 +320,7 @@
             this.panel7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(121)))), ((int)(((byte)(166)))));
             this.panel7.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel7.Controls.Add(this.label3);
+            this.panel7.Controls.Add(this.lbl_custid);
             this.panel7.Controls.Add(this.label4);
             this.panel7.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel7.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -351,6 +357,8 @@
             this.panel9.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel9.Controls.Add(this.lbl_customer);
             this.panel9.Controls.Add(this.label21);
+            this.panel9.Controls.Add(this.label1);
+            this.panel9.Controls.Add(this.label2);
             this.panel9.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel9.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.panel9.Location = new System.Drawing.Point(0, 0);
@@ -363,7 +371,7 @@
             this.lbl_customer.AutoSize = true;
             this.lbl_customer.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_customer.ForeColor = System.Drawing.Color.White;
-            this.lbl_customer.Location = new System.Drawing.Point(32, 35);
+            this.lbl_customer.Location = new System.Drawing.Point(73, 17);
             this.lbl_customer.Name = "lbl_customer";
             this.lbl_customer.Size = new System.Drawing.Size(62, 13);
             this.lbl_customer.TabIndex = 3;
@@ -374,7 +382,7 @@
             this.label21.AutoSize = true;
             this.label21.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label21.ForeColor = System.Drawing.Color.White;
-            this.label21.Location = new System.Drawing.Point(6, 8);
+            this.label21.Location = new System.Drawing.Point(6, 5);
             this.label21.Name = "label21";
             this.label21.Size = new System.Drawing.Size(62, 13);
             this.label21.TabIndex = 2;
@@ -1614,6 +1622,48 @@
             this.imageList1.Images.SetKeyName(4, "256-256-d13cafbf17ecd8f2065c8842a6e4e228.png");
             this.imageList1.Images.SetKeyName(5, "45200.png");
             // 
+            // panel6
+            // 
+            this.panel6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.panel6.Controls.Add(this.btn_up);
+            this.panel6.Dock = System.Windows.Forms.DockStyle.Right;
+            this.panel6.Location = new System.Drawing.Point(235, 0);
+            this.panel6.Name = "panel6";
+            this.panel6.Size = new System.Drawing.Size(74, 72);
+            this.panel6.TabIndex = 6;
+            // 
+            // panel10
+            // 
+            this.panel10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.panel10.Controls.Add(this.btn_down);
+            this.panel10.Dock = System.Windows.Forms.DockStyle.Right;
+            this.panel10.Location = new System.Drawing.Point(161, 0);
+            this.panel10.Name = "panel10";
+            this.panel10.Size = new System.Drawing.Size(74, 72);
+            this.panel10.TabIndex = 7;
+            // 
+            // btn_up
+            // 
+            this.btn_up.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btn_up.Location = new System.Drawing.Point(0, 0);
+            this.btn_up.Name = "btn_up";
+            this.btn_up.Size = new System.Drawing.Size(74, 72);
+            this.btn_up.TabIndex = 0;
+            this.btn_up.Text = "Up";
+            this.btn_up.UseVisualStyleBackColor = true;
+            this.btn_up.Click += new System.EventHandler(this.btn_up_Click);
+            // 
+            // btn_down
+            // 
+            this.btn_down.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btn_down.Location = new System.Drawing.Point(0, 0);
+            this.btn_down.Name = "btn_down";
+            this.btn_down.Size = new System.Drawing.Size(74, 72);
+            this.btn_down.TabIndex = 0;
+            this.btn_down.Text = "Down";
+            this.btn_down.UseVisualStyleBackColor = true;
+            this.btn_down.Click += new System.EventHandler(this.btn_down_Click);
+            // 
             // FrmPOS1Table
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1683,6 +1733,8 @@
             this.panel80.PerformLayout();
             this.pnl_category.ResumeLayout(false);
             this.panel71.ResumeLayout(false);
+            this.panel6.ResumeLayout(false);
+            this.panel10.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -1815,5 +1867,9 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label lbl_tableID;
         private System.Windows.Forms.Label lbl_custid;
+        private System.Windows.Forms.Panel panel10;
+        private System.Windows.Forms.Button btn_down;
+        private System.Windows.Forms.Panel panel6;
+        private System.Windows.Forms.Button btn_up;
     }
 }
