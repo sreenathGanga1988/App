@@ -49,22 +49,22 @@ namespace App.Repository
     {
         POSDataContext cntxt = new POSDataContext();
 
-        public User GetUserDetails(int PassID)
+        public User GetUserDetails(int PassID ,int usserid)
         {
 
             var q = (from usr in cntxt.Users
-                     where usr.PassCode == PassID
+                     where usr.PassCode == PassID && usr.UserID==usserid
                      select usr).FirstOrDefault();
 
             return q;
         }
 
-        public Boolean IsuserValid(int PassID)
+        public Boolean IsuserValid(int PassID,int userid)
         {
             Boolean isvalid = false;
             try
             {
-                User usr = GetUserDetails(PassID);
+                User usr = GetUserDetails(PassID, userid);
 
 
                 if (usr == null)

@@ -49,7 +49,7 @@
             this.lbl_dayname = new System.Windows.Forms.Label();
             this.lbl_datetimenow = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.cmb_user = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.txt_PasscodeDisplay = new System.Windows.Forms.TextBox();
@@ -310,7 +310,7 @@
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.Color.DarkRed;
-            this.groupBox1.Controls.Add(this.comboBox1);
+            this.groupBox1.Controls.Add(this.cmb_user);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.txt_PasscodeDisplay);
@@ -324,13 +324,13 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "User Login";
             // 
-            // comboBox1
+            // cmb_user
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(172, 18);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(230, 21);
-            this.comboBox1.TabIndex = 3;
+            this.cmb_user.FormattingEnabled = true;
+            this.cmb_user.Location = new System.Drawing.Point(172, 18);
+            this.cmb_user.Name = "cmb_user";
+            this.cmb_user.Size = new System.Drawing.Size(230, 21);
+            this.cmb_user.TabIndex = 3;
             // 
             // label2
             // 
@@ -392,7 +392,7 @@
 
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox cmb_user;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txt_PasscodeDisplay;

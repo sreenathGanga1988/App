@@ -24,12 +24,15 @@ namespace App.UI
             Company objCompany = new Company();
             objCompany.CompanyId = DateTime.Now.ToString();
             objCompany.Name = "Sree";
-
+          
            
 
             POSDataContext objContext = new POSDataContext();
             //objContext.Companies.Add(objCompany);
             objContext.SaveChanges();
+            cmb_user.DataSource  = objContext.Users.ToList();
+            cmb_user.DisplayMember = "UserName";
+            cmb_user.ValueMember = "UserID";
         }
 
         private void panel1_Paint(object sender, PaintEventArgs e)
@@ -52,7 +55,7 @@ namespace App.UI
                 {
                     Repository.UserRepository usrrep = new Repository.UserRepository();
 
-                    if (usrrep.IsuserValid(int.Parse(txt_PasscodeDisplay.Text)))
+                    if (usrrep.IsuserValid(int.Parse(txt_PasscodeDisplay.Text),int.Parse(cmb_user.SelectedValue.ToString ())))
                     {
                         this.Hide();
                         StartForm frm = new StartForm();

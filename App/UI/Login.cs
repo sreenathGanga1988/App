@@ -44,7 +44,7 @@ namespace App.UI
                 {
                     Repository.UserRepository usrrep = new Repository.UserRepository();
 
-                    if (usrrep.IsuserValid(int.Parse(txt_PasscodeDisplay.Text)))
+                    if (usrrep.IsuserValid(int.Parse(txt_PasscodeDisplay.Text),1))
                     {
                         this.Hide();
                         StartForm frm = new StartForm();
