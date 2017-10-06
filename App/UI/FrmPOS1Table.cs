@@ -491,12 +491,13 @@ namespace App.UI
                 }
                 CalculateTotal();
             }
-            else if (btn.Text.Trim() == "Cash")
+            else if (btn.Text.Trim() == "Price")
             {
 
                 try
                 {
-                    txt_total.Text = Decimal.Parse(txt_producrtcode.Text.Trim()).ToString(); ;
+                    txt_cash.Text = Decimal.Parse(txt_producrtcode.Text.Trim()).ToString(); ;
+                    fillchange();
                 }
                 catch (Exception)
                 {
@@ -582,7 +583,7 @@ namespace App.UI
         public Decimal calculateChange()
         {
             Decimal Total = Decimal.Parse(txt_total.Text);
-            Decimal cash = Decimal.Parse(txt_total.Text);
+            Decimal cash = Decimal.Parse(txt_cash.Text);
             Decimal change = cash - Total;
             return change;
         }
@@ -799,7 +800,7 @@ namespace App.UI
             {
 
             }
-            else if (txt_total.Text.Trim() == "" || txt_total.Text == null)
+            else if (txt_cash.Text.Trim() == "" || txt_cash.Text == null)
             {
                 MessageBox.Show("Enter Cash");
             }
@@ -807,7 +808,7 @@ namespace App.UI
             {
                 MessageBox.Show("Wrong total Select one more item ");
             }
-            else if (!MyExtensions.CheckifDecimal(txt_total.Text.Trim()))
+            else if (!MyExtensions.CheckifDecimal(txt_cash.Text.Trim()))
             {
                 MessageBox.Show("Enter Cash Correctly");
             }
@@ -815,7 +816,7 @@ namespace App.UI
             {
                 MessageBox.Show("Wrong total");
             }
-            else if (Decimal.Parse(txt_total.Text.Trim()) > Decimal.Parse(txt_total.Text.Trim()))
+            else if (Decimal.Parse(txt_total.Text.Trim()) > Decimal.Parse(txt_cash.Text.Trim()))
             {
                 MessageBox.Show("Insufficeint cash..");
 
@@ -842,7 +843,7 @@ namespace App.UI
             {
                 MessageBox.Show("Wrong total Select one more item ");
             }
-            else if (!MyExtensions.CheckifDecimal(txt_total.Text.Trim()))
+            else if (!MyExtensions.CheckifDecimal(txt_cash.Text.Trim()))
             {
                 MessageBox.Show("Enter Cash Correctly");
             }
@@ -890,7 +891,7 @@ namespace App.UI
 
             grd_ProductDetails.Rows.Clear();
             txt_total.Text = "0";
-            txt_total.Text = "0";
+            txt_cash.Text = "0";
             txt_change.Text = "0";
             invoiceid = 0;
 

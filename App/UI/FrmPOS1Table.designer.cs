@@ -35,16 +35,20 @@
             this.pnl_product = new System.Windows.Forms.Panel();
             this.pnl_customer = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.panel10 = new System.Windows.Forms.Panel();
+            this.btn_down = new System.Windows.Forms.Button();
+            this.panel6 = new System.Windows.Forms.Panel();
+            this.btn_up = new System.Windows.Forms.Button();
             this.lbl_tableID = new System.Windows.Forms.Label();
-            this.lbl_custid = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
             this.panel7 = new System.Windows.Forms.Panel();
             this.label3 = new System.Windows.Forms.Label();
+            this.lbl_custid = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.panel9 = new System.Windows.Forms.Panel();
             this.lbl_customer = new System.Windows.Forms.Label();
             this.label21 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel73 = new System.Windows.Forms.Panel();
             this.panel81 = new System.Windows.Forms.Panel();
@@ -156,14 +160,12 @@
             this.lbl_table = new System.Windows.Forms.Button();
             this.panel17 = new System.Windows.Forms.Panel();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
-            this.panel6 = new System.Windows.Forms.Panel();
-            this.panel10 = new System.Windows.Forms.Panel();
-            this.btn_up = new System.Windows.Forms.Button();
-            this.btn_down = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel72.SuspendLayout();
             this.pnl_customer.SuspendLayout();
             this.panel4.SuspendLayout();
+            this.panel10.SuspendLayout();
+            this.panel6.SuspendLayout();
             this.panel7.SuspendLayout();
             this.panel9.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -208,8 +210,6 @@
             this.panel80.SuspendLayout();
             this.pnl_category.SuspendLayout();
             this.panel71.SuspendLayout();
-            this.panel6.SuspendLayout();
-            this.panel10.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -271,6 +271,48 @@
             this.panel4.Size = new System.Drawing.Size(311, 74);
             this.panel4.TabIndex = 17;
             // 
+            // panel10
+            // 
+            this.panel10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.panel10.Controls.Add(this.btn_down);
+            this.panel10.Dock = System.Windows.Forms.DockStyle.Right;
+            this.panel10.Location = new System.Drawing.Point(161, 0);
+            this.panel10.Name = "panel10";
+            this.panel10.Size = new System.Drawing.Size(74, 72);
+            this.panel10.TabIndex = 7;
+            // 
+            // btn_down
+            // 
+            this.btn_down.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btn_down.Location = new System.Drawing.Point(0, 0);
+            this.btn_down.Name = "btn_down";
+            this.btn_down.Size = new System.Drawing.Size(74, 72);
+            this.btn_down.TabIndex = 0;
+            this.btn_down.Text = "Down";
+            this.btn_down.UseVisualStyleBackColor = true;
+            this.btn_down.Click += new System.EventHandler(this.btn_down_Click);
+            // 
+            // panel6
+            // 
+            this.panel6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.panel6.Controls.Add(this.btn_up);
+            this.panel6.Dock = System.Windows.Forms.DockStyle.Right;
+            this.panel6.Location = new System.Drawing.Point(235, 0);
+            this.panel6.Name = "panel6";
+            this.panel6.Size = new System.Drawing.Size(74, 72);
+            this.panel6.TabIndex = 6;
+            // 
+            // btn_up
+            // 
+            this.btn_up.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btn_up.Location = new System.Drawing.Point(0, 0);
+            this.btn_up.Name = "btn_up";
+            this.btn_up.Size = new System.Drawing.Size(74, 72);
+            this.btn_up.TabIndex = 0;
+            this.btn_up.Text = "Up";
+            this.btn_up.UseVisualStyleBackColor = true;
+            this.btn_up.Click += new System.EventHandler(this.btn_up_Click);
+            // 
             // lbl_tableID
             // 
             this.lbl_tableID.AutoSize = true;
@@ -280,40 +322,6 @@
             this.lbl_tableID.Size = new System.Drawing.Size(0, 16);
             this.lbl_tableID.TabIndex = 5;
             this.lbl_tableID.Visible = false;
-            // 
-            // lbl_custid
-            // 
-            this.lbl_custid.AutoSize = true;
-            this.lbl_custid.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_custid.Location = new System.Drawing.Point(78, 51);
-            this.lbl_custid.Name = "lbl_custid";
-            this.lbl_custid.Size = new System.Drawing.Size(16, 16);
-            this.lbl_custid.TabIndex = 4;
-            this.lbl_custid.Text = "8";
-            this.lbl_custid.Visible = false;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(73, 54);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(53, 13);
-            this.label1.TabIndex = 3;
-            this.label1.Text = "Address";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(6, 36);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(109, 13);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "Address && Mob No";
             // 
             // panel7
             // 
@@ -339,6 +347,17 @@
             this.label3.Size = new System.Drawing.Size(31, 13);
             this.label3.TabIndex = 3;
             this.label3.Text = "0.00";
+            // 
+            // lbl_custid
+            // 
+            this.lbl_custid.AutoSize = true;
+            this.lbl_custid.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_custid.Location = new System.Drawing.Point(78, 51);
+            this.lbl_custid.Name = "lbl_custid";
+            this.lbl_custid.Size = new System.Drawing.Size(16, 16);
+            this.lbl_custid.TabIndex = 4;
+            this.lbl_custid.Text = "8";
+            this.lbl_custid.Visible = false;
             // 
             // label4
             // 
@@ -387,6 +406,29 @@
             this.label21.Size = new System.Drawing.Size(62, 13);
             this.label21.TabIndex = 2;
             this.label21.Text = "Customer";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.Location = new System.Drawing.Point(73, 54);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(53, 13);
+            this.label1.TabIndex = 3;
+            this.label1.Text = "Address";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.White;
+            this.label2.Location = new System.Drawing.Point(6, 36);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(109, 13);
+            this.label2.TabIndex = 2;
+            this.label2.Text = "Address && Mob No";
             // 
             // panel3
             // 
@@ -1248,6 +1290,7 @@
             this.button48.TabIndex = 26;
             this.button48.Text = "Price";
             this.button48.UseVisualStyleBackColor = false;
+            this.button48.Click += new System.EventHandler(this.numericbuttonclicked_Click);
             // 
             // button47
             // 
@@ -1622,48 +1665,6 @@
             this.imageList1.Images.SetKeyName(4, "256-256-d13cafbf17ecd8f2065c8842a6e4e228.png");
             this.imageList1.Images.SetKeyName(5, "45200.png");
             // 
-            // panel6
-            // 
-            this.panel6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            this.panel6.Controls.Add(this.btn_up);
-            this.panel6.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel6.Location = new System.Drawing.Point(235, 0);
-            this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(74, 72);
-            this.panel6.TabIndex = 6;
-            // 
-            // panel10
-            // 
-            this.panel10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            this.panel10.Controls.Add(this.btn_down);
-            this.panel10.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel10.Location = new System.Drawing.Point(161, 0);
-            this.panel10.Name = "panel10";
-            this.panel10.Size = new System.Drawing.Size(74, 72);
-            this.panel10.TabIndex = 7;
-            // 
-            // btn_up
-            // 
-            this.btn_up.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btn_up.Location = new System.Drawing.Point(0, 0);
-            this.btn_up.Name = "btn_up";
-            this.btn_up.Size = new System.Drawing.Size(74, 72);
-            this.btn_up.TabIndex = 0;
-            this.btn_up.Text = "Up";
-            this.btn_up.UseVisualStyleBackColor = true;
-            this.btn_up.Click += new System.EventHandler(this.btn_up_Click);
-            // 
-            // btn_down
-            // 
-            this.btn_down.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btn_down.Location = new System.Drawing.Point(0, 0);
-            this.btn_down.Name = "btn_down";
-            this.btn_down.Size = new System.Drawing.Size(74, 72);
-            this.btn_down.TabIndex = 0;
-            this.btn_down.Text = "Down";
-            this.btn_down.UseVisualStyleBackColor = true;
-            this.btn_down.Click += new System.EventHandler(this.btn_down_Click);
-            // 
             // FrmPOS1Table
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1679,6 +1680,8 @@
             this.pnl_customer.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
+            this.panel10.ResumeLayout(false);
+            this.panel6.ResumeLayout(false);
             this.panel7.ResumeLayout(false);
             this.panel7.PerformLayout();
             this.panel9.ResumeLayout(false);
@@ -1733,8 +1736,6 @@
             this.panel80.PerformLayout();
             this.pnl_category.ResumeLayout(false);
             this.panel71.ResumeLayout(false);
-            this.panel6.ResumeLayout(false);
-            this.panel10.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }

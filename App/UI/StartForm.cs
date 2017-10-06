@@ -96,5 +96,11 @@ namespace App.UI
         {
             Application.Exit();
         }
+
+        private void button9_Click(object sender, EventArgs e)
+        {
+            FrmAddCustomer cstmr = new FrmAddCustomer();
+            cstmr.Show();
+        }
     }
 }

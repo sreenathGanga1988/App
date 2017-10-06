@@ -286,6 +286,24 @@
     <Compile Include="UI\EndOfDay.Designer.cs">
       <DependentUpon>EndOfDay.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\FrmAddCustomer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\FrmAddCustomer.designer.cs">
+      <DependentUpon>FrmAddCustomer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\FrmBuzzers.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\FrmBuzzers.designer.cs">
+      <DependentUpon>FrmBuzzers.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\FrmDailyReports.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\FrmDailyReports.designer.cs">
+      <DependentUpon>FrmDailyReports.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\FrmLogin.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -531,6 +549,15 @@
     </Compile>
     <EmbeddedResource Include="UI\EndOfDay.resx">
       <DependentUpon>EndOfDay.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\FrmAddCustomer.resx">
+      <DependentUpon>FrmAddCustomer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\FrmBuzzers.resx">
+      <DependentUpon>FrmBuzzers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\FrmDailyReports.resx">
+      <DependentUpon>FrmDailyReports.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\FrmLogin.resx">
       <DependentUpon>FrmLogin.cs</DependentUpon>

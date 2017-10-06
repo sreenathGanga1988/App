@@ -134,10 +134,10 @@ namespace App.Repository
     public class CustomerRepositiry
     {
         POSDataContext cntxt = new POSDataContext();
-        public List<Table> GetCustomerListofLocation(int? LocationID = 0)
+        public List<Customer> GetcustomerofLocation(int? LocationID = 0)
         {
 
-            var q = cntxt.Tables.Where(u => u.StoreID == LocationID).ToList();
+            var q = cntxt.Customers.Where(u => u.StoreID == LocationID).ToList();
 
             return q;
         }
@@ -148,6 +148,20 @@ namespace App.Repository
             return q;
 
         }
+
+        public void AddCustomer(Customer customer)
+        {
+
+            cntxt.Customers.Add(customer);
+            cntxt.SaveChanges();
+        }
+        public void UpdateCustomer(Customer customer)
+        {
+
+            cntxt.Entry(customer).State = EntityState.Modified;
+            cntxt.SaveChanges();
+        }
+
     }
 
     public class CategoryRepository
