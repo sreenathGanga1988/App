@@ -102,5 +102,11 @@ namespace App.UI
             FrmAddCustomer cstmr = new FrmAddCustomer();
             cstmr.Show();
         }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            FrmTables frm = new FrmTables();
+            frm.Show();
+        }
     }
 }

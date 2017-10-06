@@ -334,6 +334,12 @@
     <Compile Include="UI\FrmPOS2.designer.cs">
       <DependentUpon>FrmPOS2.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\FrmTables.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\FrmTables.designer.cs">
+      <DependentUpon>FrmTables.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\KOT.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -573,6 +579,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\FrmPOS2.resx">
       <DependentUpon>FrmPOS2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\FrmTables.resx">
+      <DependentUpon>FrmTables.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\KOT.resx">
       <DependentUpon>KOT.cs</DependentUpon>
