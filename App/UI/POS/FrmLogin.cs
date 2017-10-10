@@ -51,28 +51,7 @@ namespace App.UI
             if (btn.Text == "OK")
             {
 
-                try
-                {
-                    Repository.UserRepository usrrep = new Repository.UserRepository();
-
-                    if (usrrep.IsuserValid(int.Parse(txt_PasscodeDisplay.Text),int.Parse(cmb_user.SelectedValue.ToString ())))
-                    {
-                        this.Hide();
-                        StartForm frm = new StartForm();
-                        frm.Show();
-
-                    }
-                    else
-                    {
-
-                        MessageBox.Show("Passcode not Valid");
-                    }
-                }
-                catch (Exception)
-                {
-
-                    MessageBox.Show("Hi Dude You lost connection to DB");
-                }
+                userAuthentication();
 
             }
             else if (btn.Text == "Back")
@@ -87,9 +66,49 @@ namespace App.UI
 
         }
 
+
+
+
+
+        public void userAuthentication()
+        { 
+            
+            try
+            {
+                Repository.UserRepository usrrep = new Repository.UserRepository();
+
+                if (usrrep.IsuserValid(int.Parse(txt_PasscodeDisplay.Text), int.Parse(cmb_user.SelectedValue.ToString())))
+                {
+                    this.Hide();
+                    StartForm frm = new StartForm();
+                    frm.Show();
+
+                }
+                else
+                {
+
+                    MessageBox.Show("Passcode not Valid");
+                }
+            }
+            catch (Exception)
+            {
+
+                MessageBox.Show("Hi Dude You lost connection to DB");
+            }
+        }
+
+
+
+
+
+
+
+
+
         private void buttonclicked_Click(object sender, EventArgs e)
         {
-            KeyPressed((Button)sender);
+           
+               
         }
 
         private void button10_Click(object sender, EventArgs e)
@@ -103,9 +122,35 @@ namespace App.UI
         }
 
         private void FrmLogin_Load(object sender, EventArgs e)
-        {
+        { 
+            
             lbl_datetimenow.Text = DateTime.Now.ToString();
             lbl_dayname.Text = DateTime.Now.Date.DayOfWeek.ToString();
+        }
+
+        private void txt_PasscodeDisplay_KeyPress(object sender, KeyPressEventArgs e)
+        {
+
+            if (e.KeyChar == (char)Keys.Return)
+
+            {
+                userAuthentication();
+            }
+        }
+
+        private void FrmLogin_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Return)
+
+            {
+                userAuthentication();
+            }
+        }
+
+        private void button1_MouseClick(object sender, MouseEventArgs e)
+        {
+            KeyPressed((Button)sender);
+            txt_PasscodeDisplay.Focus();
         }
     }
 }

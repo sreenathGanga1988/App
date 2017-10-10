@@ -21,7 +21,8 @@ namespace App.UI
             SalesViewModal salesViewmodal = new SalesViewModal();
             LoadTable(salesViewmodal);
         }
-
+        public int SelectedTableID { get; set; }
+        public String Selectedtablename { get; set; }
         public void LoadTable(SalesViewModal salesViewmodal)
         {
 
@@ -104,7 +105,8 @@ namespace App.UI
                 }
                 temp.Tag = i;
 
-                //temp.Click += new EventHandler(OnProductButtonClick);
+                temp.Click += new EventHandler(OnTableButtonClick);
+                
                 parent.Controls.Add(temp);
                 i++;
             }
@@ -112,6 +114,16 @@ namespace App.UI
 
         }
 
+      
 
+        private void OnTableButtonClick(object sender, EventArgs e)
+        {
+            SelectedTableID = int.Parse(((ValueButton)sender)._value);
+           Selectedtablename  = ((ValueButton)sender).Text;
+            this.Close();
+         
+            //your code for the event.
+        }
+      
     }
 }

@@ -129,9 +129,10 @@ namespace App.UI
 
 
                 }
+             //   temp.Location = new System.Drawing.Point((temp.Width * buttonindex), (temp.Height * colcount));//please adjust location as per your need
 
 
-                temp.Location = new System.Drawing.Point(0, (buttonheight * i));//please adjust location as per your need
+                temp.Location = new System.Drawing.Point(0, (temp.Height * i));//please adjust location as per your need
                 temp.Tag = i;
 
                 temp.Click += new EventHandler(OnButtonClick);
@@ -144,63 +145,7 @@ namespace App.UI
         }
 
 
-        //public void LoadTable(SalesViewModal salesViewmodal)
-        //{
-
-        //    int i = 0;
-        //    int buttonheight = 0;
-        //    int buttonwidth = 0;
-        //    List<Table> tableList = salesViewmodal.TableList;
-
-
-
-        //    if (tableList != null)
-        //    {
-        //        if (tableList.Count > 0)
-        //        {
-
-        //            int tablecount = tableList.Count;
-
-        //            float parentheight = float.Parse(this.grp_table.Height.ToString());
-        //            float parentwidth = float.Parse(this.grp_table.Width.ToString());
-        //            buttonwidth = (int)Math.Ceiling(parentwidth) / tablecount;
-
-        //            buttonheight = (int)Math.Ceiling(parentheight);
-        //        }
-        //    }
-
-        //    foreach (Table table in tableList)
-        //    {
-        //        ValueButton temp = new ValueButton();
-        //        temp.Name = "button" + table.TableID.ToString();
-        //        temp.Text = table.TableName;
-        //        temp._value = table.TableID.ToString();
-        //        // temp.AutoSize = true;
-        //        temp.Width = buttonwidth;
-        //        temp.Height = buttonheight;
-        //        try
-        //        {
-        //            if (table.Color != null && table.Color.Trim() != "")
-        //            {
-        //                temp.BackColor = Color.FromName(table.Color);
-        //            }
-        //        }
-        //        catch (Exception)
-        //        {
-
-
-        //        }
-
-
-        //        temp.Location = new System.Drawing.Point((buttonwidth * i), 0);//please adjust location as per your need
-        //        temp.Tag = i;
-
-        //        temp.Click += new EventHandler(OnTableButtonClick);
-        //        this.grp_table.Controls.Add(temp);
-        //        i++;
-        //    }
-
-        //}
+      
 
         private void OnTableButtonClick(object sender, EventArgs e)
         {
@@ -222,13 +167,13 @@ namespace App.UI
         private void OnProductButtonClick(object sender, EventArgs e)
         {
             int ProductID = int.Parse(((ValueButton)sender)._value);
-            LoadSelectedBills(ProductID);
+            LoadSelectedProduct(ProductID);
 
         }
 
 
 
-        public void LoadSelectedBills(int ProductID)
+        public void LoadSelectedProduct(int ProductID)
         {
             ProductRepositories productrep = new ProductRepositories();
 
@@ -268,24 +213,15 @@ namespace App.UI
 
         }
 
-        public void CalculateTotal()
-        {
-            Decimal TotalValue = 0;
-            foreach (DataGridViewRow row in grd_ProductDetails.Rows)
-            {
 
-                row.Cells["Total"].Value = decimal.Parse(row.Cells["Qty"].Value.ToString()) * (Decimal.Parse(row.Cells["Price"].Value.ToString()) - Decimal.Parse(row.Cells["Discount"].Value.ToString()));
-
-                TotalValue = TotalValue + decimal.Parse(row.Cells["Total"].Value.ToString());
-                row.Cells["Total"].ReadOnly = true;
-            }
-
-            txt_total.Text = TotalValue.ToString();
-        }
+      
 
 
-
-
+        /// <summary>
+        /// check whether the item is already avaiable in the grid and will send false if not there
+        /// </summary>
+        /// <param name="productid"></param>
+        /// <returns></returns>
 
         public Boolean IsItemAlreadyAdded(int productid)
         {
@@ -309,6 +245,9 @@ namespace App.UI
         }
 
 
+        /// <summary>
+        /// add the decimal point to the typing
+        /// </summary>
         public void AddFloatPoint()
         {
             try
@@ -432,13 +371,8 @@ namespace App.UI
             if (e.KeyCode == Keys.Enter)
             {
                 int ProductID = int.Parse(((TextBox)sender).Text);
-                LoadSelectedBills(ProductID);
+                LoadSelectedProduct(ProductID);
             }
-        }
-
-        private void btn_addItembyCode_Click(object sender, EventArgs e)
-        {
-
         }
 
 
@@ -452,58 +386,24 @@ namespace App.UI
 
             if (btn.Text.Trim() == "Add Item")
             {
-
-                int ProductID = int.Parse((txt_producrtcode.Text));
-                LoadSelectedBills(ProductID);
+                Additem();
             }
             else if (btn.Text.Trim() == "<")
             {
-                txt_producrtcode.Text = Extensions.MyExtensions.TrimLastCharacter(txt_producrtcode.Text);
-
+                BackSpace();
             }
             else if (btn.Text.Trim() == "Customer")
             {
-                try
-                {
-                    int CustomerID = int.Parse((txt_producrtcode.Text));
-                    CustomerRepositiry custrepo = new CustomerRepositiry();
-
-                    Customer cust = custrepo.GetCustomer(CustomerID);
-
-
-                    lbl_customer.Text = cust.CustomerName;
-                    lbl_custid.Text = cust.CustomerID.ToString();
-                }
-                catch (Exception)
-                {
-
-                    MessageBox.Show("Wrong customer ID");
-                }
+                SelectCustomer();               
 
             }
             else if (btn.Text.Trim() == "Qty")
             {
-
-                foreach (DataGridViewRow row in grd_ProductDetails.SelectedRows)
-                {
-                    row.Cells["Qty"].Value = int.Parse(txt_producrtcode.Text.ToString());
-
-                }
-                CalculateTotal();
+                IncreaseItemQty();
             }
-            else if (btn.Text.Trim() == "Price")
+            else if (btn.Text.Trim() == "Price"|| btn.Text.Trim() == "Cash")
             {
-
-                try
-                {
-                    txt_cash.Text = Decimal.Parse(txt_producrtcode.Text.Trim()).ToString(); ;
-                    fillchange();
-                }
-                catch (Exception)
-                {
-
-                    MessageBox.Show("Wrong Cash Entered");
-                }
+                AddCash();
             }
             else if (btn.Text.Trim() == "KOT")
             {
@@ -562,7 +462,13 @@ namespace App.UI
 
 
             }
+            else if (btn.Text.Trim() == "TABLES")
+            {
 
+                SelectTable(btn);
+
+
+            }
 
             else
             {
@@ -571,6 +477,93 @@ namespace App.UI
 
         }
 
+        /// <summary>
+        /// Add the selected Item
+        /// </summary>
+        public void Additem()
+        {
+            int ProductID = int.Parse((txt_producrtcode.Text));
+            LoadSelectedProduct(ProductID);
+        }
+
+        /// <summary>
+        /// Removes the last typed in Product
+        /// </summary>
+        public void BackSpace()
+        {
+            txt_producrtcode.Text = Extensions.MyExtensions.TrimLastCharacter(txt_producrtcode.Text);
+
+        }
+
+
+        /// <summary>
+        /// Select the supplier based on code applied
+        /// </summary>
+        public void SelectCustomer()
+        {
+            try
+            {
+                int CustomerID = int.Parse((txt_producrtcode.Text));
+                CustomerRepositiry custrepo = new CustomerRepositiry();
+
+                Customer cust = custrepo.GetCustomer(CustomerID);
+
+
+                lbl_customer.Text = cust.CustomerName;
+                lbl_custid.Text = cust.CustomerID.ToString();
+            }
+            catch (Exception)
+            {
+
+                MessageBox.Show("Wrong customer ID");
+            }
+        }
+
+
+        /// <summary>
+        /// Increase the qty of selected item in grid
+        /// </summary>
+        public void IncreaseItemQty()
+        {
+
+            foreach (DataGridViewRow row in grd_ProductDetails.SelectedRows)
+            {
+                row.Cells["Qty"].Value = int.Parse(txt_producrtcode.Text.ToString());
+
+            }
+            CalculateTotal();
+        }
+
+
+        /// <summary>
+        /// Insert the cash received from customer
+        /// </summary>
+        public void AddCash()
+        {
+
+            try
+            {
+                txt_cash.Text = Decimal.Parse(txt_producrtcode.Text.Trim()).ToString(); ;
+                fillchange();
+            }
+            catch (Exception)
+            {
+
+                MessageBox.Show("Wrong Cash Entered");
+            }
+        }
+
+
+
+
+        public void SelectTable( Button btn)
+        {
+            FrmTables frm = new FrmTables();
+            frm.ShowDialog();
+            btn.Text = frm.Selectedtablename;
+            lbl_tableID.Text = frm.SelectedTableID.ToString();
+            frm.Dispose();
+        }
 
 
 
@@ -580,43 +573,36 @@ namespace App.UI
             if (calculateChange() > 0) { txt_change.Text = calculateChange().ToString(); } else { txt_change.Text = "0"; };
 
         }
+
+
+        /// <summary>
+        /// calculate the total value of the grid after discount and show it
+        /// </summary>
+        public void CalculateTotal()
+        {
+            Decimal TotalValue = 0;
+            foreach (DataGridViewRow row in grd_ProductDetails.Rows)
+            {
+
+                row.Cells["Total"].Value = decimal.Parse(row.Cells["Qty"].Value.ToString()) * (Decimal.Parse(row.Cells["Price"].Value.ToString()) - Decimal.Parse(row.Cells["Discount"].Value.ToString()));
+
+                TotalValue = TotalValue + decimal.Parse(row.Cells["Total"].Value.ToString());
+                row.Cells["Total"].ReadOnly = true;
+            }
+
+            txt_total.Text = TotalValue.ToString();
+        }
+
+
+
+
+
         public Decimal calculateChange()
         {
             Decimal Total = Decimal.Parse(txt_total.Text);
             Decimal cash = Decimal.Parse(txt_cash.Text);
             Decimal change = cash - Total;
             return change;
-        }
-
-        private void txt_total_TextChanged(object sender, EventArgs e)
-        {
-            try
-            {
-                fillchange();
-            }
-            catch (Exception)
-            {
-
-
-            }
-        }
-
-        private void txt_change_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txt_cash_TextChanged(object sender, EventArgs e)
-        {
-            try
-            {
-                fillchange();
-            }
-            catch (Exception)
-            {
-
-
-            }
         }
 
         //public void AddKoT()
@@ -861,24 +847,6 @@ namespace App.UI
         }
 
 
-        private void btn_printCheckOut_Click(object sender, EventArgs e)
-        {
-            if (ValidateforCheckOut())
-            {
-                AddInvoice("");
-                clearGridView();
-            }
-        }
-
-        private void button18_Click(object sender, EventArgs e)
-        {
-            if (ValidateforTableBill())
-            {
-                AddInvoice("Table");
-                clearGridView();
-            }
-        }
-
         private void btn_actionBoard_Click(object sender, EventArgs e)
         {
             ActionBoard Board = new ActionBoard();
@@ -894,13 +862,11 @@ namespace App.UI
             txt_cash.Text = "0";
             txt_change.Text = "0";
             invoiceid = 0;
-
+            
+            
         }
 
-        private void button17_Click(object sender, EventArgs e)
-        {
-
-        }
+      
 
         private void btn_pending_Click(object sender, EventArgs e)
         {
@@ -925,33 +891,16 @@ namespace App.UI
             lbl_datettime.Text = DateTime.Now.ToString();
             lbl_userid.Text = Program.Username;
         }
-
-        private void panel17_Paint(object sender, PaintEventArgs e)
-        {
-          
-        }
+        
 
         private void panel17_Click(object sender, EventArgs e)
         {
             this.Close();
         }
-        int yLoc = 0;
-        private void btn_up_Click(object sender, EventArgs e)
+
+        private void lbl_table_Click(object sender, EventArgs e)
         {
-
-            pnl_product.Top -= 40;
-            if (pnl_product.Top < pnl_product.VerticalScroll.Maximum)
-            {
-                pnl_product.PerformLayout();
-            }
-
-        }
-
-        private void btn_down_Click(object sender, EventArgs e)
-        {
-
-            pnl_product.Top -= 40;
-
+            KeyPressed((Button)sender);
         }
     }
 }

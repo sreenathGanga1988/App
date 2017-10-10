@@ -304,10 +304,10 @@
     <Compile Include="UI\FrmDailyReports.designer.cs">
       <DependentUpon>FrmDailyReports.cs</DependentUpon>
     </Compile>
-    <Compile Include="UI\FrmLogin.cs">
+    <Compile Include="UI\POS\FrmLogin.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UI\FrmLogin.Designer.cs">
+    <Compile Include="UI\POS\FrmLogin.Designer.cs">
       <DependentUpon>FrmLogin.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\FrmPOS.cs">
@@ -316,10 +316,10 @@
     <Compile Include="UI\FrmPOS.designer.cs">
       <DependentUpon>FrmPOS.cs</DependentUpon>
     </Compile>
-    <Compile Include="UI\FrmPOS1Table.cs">
+    <Compile Include="UI\POS\FrmPOS1Table.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UI\FrmPOS1Table.designer.cs">
+    <Compile Include="UI\POS\FrmPOS1Table.designer.cs">
       <DependentUpon>FrmPOS1Table.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\FrmPOS1.cs">
@@ -565,13 +565,13 @@
     <EmbeddedResource Include="UI\FrmDailyReports.resx">
       <DependentUpon>FrmDailyReports.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI\FrmLogin.resx">
+    <EmbeddedResource Include="UI\POS\FrmLogin.resx">
       <DependentUpon>FrmLogin.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\FrmPOS.resx">
       <DependentUpon>FrmPOS.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI\FrmPOS1Table.resx">
+    <EmbeddedResource Include="UI\POS\FrmPOS1Table.resx">
       <DependentUpon>FrmPOS1Table.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\FrmPOS1.resx">

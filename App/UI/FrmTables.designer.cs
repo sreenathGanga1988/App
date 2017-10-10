@@ -32,8 +32,6 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmTables));
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.pnl_table = new System.Windows.Forms.Panel();
-            this.button9 = new System.Windows.Forms.Button();
-            this.pnl_table.SuspendLayout();
             this.SuspendLayout();
             // 
             // imageList1
@@ -50,24 +48,11 @@
             // pnl_table
             // 
             this.pnl_table.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(213)))), ((int)(((byte)(225)))), ((int)(((byte)(235)))));
-            this.pnl_table.Controls.Add(this.button9);
             this.pnl_table.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnl_table.Location = new System.Drawing.Point(0, 0);
             this.pnl_table.Name = "pnl_table";
             this.pnl_table.Size = new System.Drawing.Size(739, 420);
             this.pnl_table.TabIndex = 22;
-            // 
-            // button9
-            // 
-            this.button9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(121)))), ((int)(((byte)(166)))));
-            this.button9.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button9.ForeColor = System.Drawing.Color.White;
-            this.button9.Location = new System.Drawing.Point(39, 35);
-            this.button9.Name = "button9";
-            this.button9.Size = new System.Drawing.Size(126, 81);
-            this.button9.TabIndex = 1;
-            this.button9.Text = "TABLE 1";
-            this.button9.UseVisualStyleBackColor = false;
             // 
             // FrmTables
             // 
@@ -78,7 +63,6 @@
             this.Name = "FrmTables";
             this.ShowIcon = false;
             this.Text = "Tables";
-            this.pnl_table.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -86,6 +70,5 @@
         #endregion
         private System.Windows.Forms.ImageList imageList1;
         private System.Windows.Forms.Panel pnl_table;
-        private System.Windows.Forms.Button button9;
     }
 }

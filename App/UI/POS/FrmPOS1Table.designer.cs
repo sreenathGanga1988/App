@@ -290,7 +290,6 @@
             this.btn_down.TabIndex = 0;
             this.btn_down.Text = "Down";
             this.btn_down.UseVisualStyleBackColor = true;
-            this.btn_down.Click += new System.EventHandler(this.btn_down_Click);
             // 
             // panel6
             // 
@@ -311,7 +310,6 @@
             this.btn_up.TabIndex = 0;
             this.btn_up.Text = "Up";
             this.btn_up.UseVisualStyleBackColor = true;
-            this.btn_up.Click += new System.EventHandler(this.btn_up_Click);
             // 
             // lbl_tableID
             // 
@@ -991,6 +989,7 @@
             this.btn_customer.TabIndex = 21;
             this.btn_customer.Text = "Customer";
             this.btn_customer.UseVisualStyleBackColor = false;
+            this.btn_customer.Click += new System.EventHandler(this.numericbuttonclicked_Click);
             // 
             // panel47
             // 
@@ -1291,6 +1290,7 @@
             this.button48.Text = "Price";
             this.button48.UseVisualStyleBackColor = false;
             this.button48.Click += new System.EventHandler(this.numericbuttonclicked_Click);
+            this.button48.MouseClick += new System.Windows.Forms.MouseEventHandler(this.numericbuttonclicked_Click);
             // 
             // button47
             // 
@@ -1640,6 +1640,7 @@
             this.lbl_table.TabIndex = 1;
             this.lbl_table.Text = "TABLES";
             this.lbl_table.UseVisualStyleBackColor = false;
+            this.lbl_table.Click += new System.EventHandler(this.lbl_table_Click);
             // 
             // panel17
             // 
@@ -1652,7 +1653,6 @@
             this.panel17.Size = new System.Drawing.Size(103, 74);
             this.panel17.TabIndex = 1;
             this.panel17.Click += new System.EventHandler(this.panel17_Click);
-            this.panel17.Paint += new System.Windows.Forms.PaintEventHandler(this.panel17_Paint);
             // 
             // imageList1
             // 
@@ -1869,8 +1869,8 @@
         private System.Windows.Forms.Label lbl_tableID;
         private System.Windows.Forms.Label lbl_custid;
         private System.Windows.Forms.Panel panel10;
-        private System.Windows.Forms.Button btn_down;
         private System.Windows.Forms.Panel panel6;
         private System.Windows.Forms.Button btn_up;
+        private System.Windows.Forms.Button btn_down;
     }
 }
