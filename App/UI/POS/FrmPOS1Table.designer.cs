@@ -35,10 +35,6 @@
             this.pnl_product = new System.Windows.Forms.Panel();
             this.pnl_customer = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.panel10 = new System.Windows.Forms.Panel();
-            this.btn_down = new System.Windows.Forms.Button();
-            this.panel6 = new System.Windows.Forms.Panel();
-            this.btn_up = new System.Windows.Forms.Button();
             this.lbl_tableID = new System.Windows.Forms.Label();
             this.panel7 = new System.Windows.Forms.Panel();
             this.label3 = new System.Windows.Forms.Label();
@@ -142,12 +138,6 @@
             this.button45 = new System.Windows.Forms.Button();
             this.panel26 = new System.Windows.Forms.Panel();
             this.grd_ProductDetails = new System.Windows.Forms.DataGridView();
-            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Item = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Price = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Qty = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Discount = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Total = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel24 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel80 = new System.Windows.Forms.Panel();
@@ -160,12 +150,16 @@
             this.lbl_table = new System.Windows.Forms.Button();
             this.panel17 = new System.Windows.Forms.Panel();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
+            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Item = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Price = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Qty = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Discount = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Total = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
             this.panel72.SuspendLayout();
             this.pnl_customer.SuspendLayout();
             this.panel4.SuspendLayout();
-            this.panel10.SuspendLayout();
-            this.panel6.SuspendLayout();
             this.panel7.SuspendLayout();
             this.panel9.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -261,8 +255,6 @@
             // 
             this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(121)))), ((int)(((byte)(166)))));
             this.panel4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel4.Controls.Add(this.panel10);
-            this.panel4.Controls.Add(this.panel6);
             this.panel4.Controls.Add(this.lbl_tableID);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel4.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -270,46 +262,6 @@
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(311, 74);
             this.panel4.TabIndex = 17;
-            // 
-            // panel10
-            // 
-            this.panel10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            this.panel10.Controls.Add(this.btn_down);
-            this.panel10.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel10.Location = new System.Drawing.Point(161, 0);
-            this.panel10.Name = "panel10";
-            this.panel10.Size = new System.Drawing.Size(74, 72);
-            this.panel10.TabIndex = 7;
-            // 
-            // btn_down
-            // 
-            this.btn_down.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btn_down.Location = new System.Drawing.Point(0, 0);
-            this.btn_down.Name = "btn_down";
-            this.btn_down.Size = new System.Drawing.Size(74, 72);
-            this.btn_down.TabIndex = 0;
-            this.btn_down.Text = "Down";
-            this.btn_down.UseVisualStyleBackColor = true;
-            // 
-            // panel6
-            // 
-            this.panel6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            this.panel6.Controls.Add(this.btn_up);
-            this.panel6.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel6.Location = new System.Drawing.Point(235, 0);
-            this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(74, 72);
-            this.panel6.TabIndex = 6;
-            // 
-            // btn_up
-            // 
-            this.btn_up.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btn_up.Location = new System.Drawing.Point(0, 0);
-            this.btn_up.Name = "btn_up";
-            this.btn_up.Size = new System.Drawing.Size(74, 72);
-            this.btn_up.TabIndex = 0;
-            this.btn_up.Text = "Up";
-            this.btn_up.UseVisualStyleBackColor = true;
             // 
             // lbl_tableID
             // 
@@ -1507,36 +1459,6 @@
             this.grd_ProductDetails.Size = new System.Drawing.Size(345, 278);
             this.grd_ProductDetails.TabIndex = 1;
             // 
-            // ID
-            // 
-            this.ID.HeaderText = "ID";
-            this.ID.Name = "ID";
-            // 
-            // Item
-            // 
-            this.Item.HeaderText = "Item";
-            this.Item.Name = "Item";
-            // 
-            // Price
-            // 
-            this.Price.HeaderText = "Price";
-            this.Price.Name = "Price";
-            // 
-            // Qty
-            // 
-            this.Qty.HeaderText = "Qty";
-            this.Qty.Name = "Qty";
-            // 
-            // Discount
-            // 
-            this.Discount.HeaderText = "Discount";
-            this.Discount.Name = "Discount";
-            // 
-            // Total
-            // 
-            this.Total.HeaderText = "Total";
-            this.Total.Name = "Total";
-            // 
             // panel24
             // 
             this.panel24.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(58)))), ((int)(((byte)(69)))));
@@ -1665,6 +1587,38 @@
             this.imageList1.Images.SetKeyName(4, "256-256-d13cafbf17ecd8f2065c8842a6e4e228.png");
             this.imageList1.Images.SetKeyName(5, "45200.png");
             // 
+            // ID
+            // 
+            this.ID.HeaderText = "ID";
+            this.ID.Name = "ID";
+            this.ID.Visible = false;
+            // 
+            // Item
+            // 
+            this.Item.HeaderText = "Item";
+            this.Item.Name = "Item";
+            // 
+            // Price
+            // 
+            this.Price.HeaderText = "Price";
+            this.Price.Name = "Price";
+            // 
+            // Qty
+            // 
+            this.Qty.HeaderText = "Qty";
+            this.Qty.Name = "Qty";
+            // 
+            // Discount
+            // 
+            this.Discount.HeaderText = "Discount";
+            this.Discount.Name = "Discount";
+            this.Discount.Visible = false;
+            // 
+            // Total
+            // 
+            this.Total.HeaderText = "Total";
+            this.Total.Name = "Total";
+            // 
             // FrmPOS1Table
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1680,8 +1634,6 @@
             this.pnl_customer.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
-            this.panel10.ResumeLayout(false);
-            this.panel6.ResumeLayout(false);
             this.panel7.ResumeLayout(false);
             this.panel7.PerformLayout();
             this.panel9.ResumeLayout(false);
@@ -1830,12 +1782,6 @@
         private System.Windows.Forms.Label lbl_datettime;
         private System.Windows.Forms.Label lbl_userid;
         private System.Windows.Forms.DataGridView grd_ProductDetails;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Item;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Price;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Qty;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Discount;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Total;
         private System.Windows.Forms.Button btn_customer;
         private System.Windows.Forms.Panel panel23;
         private System.Windows.Forms.Panel panel72;
@@ -1868,9 +1814,11 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label lbl_tableID;
         private System.Windows.Forms.Label lbl_custid;
-        private System.Windows.Forms.Panel panel10;
-        private System.Windows.Forms.Panel panel6;
-        private System.Windows.Forms.Button btn_up;
-        private System.Windows.Forms.Button btn_down;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Item;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Price;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Qty;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Discount;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Total;
     }
 }

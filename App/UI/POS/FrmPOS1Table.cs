@@ -23,7 +23,42 @@ namespace App.UI
             InitializeComponent();
             SalesViewModal salesViewmodal = new SalesViewModal();
             LoadCategory(salesViewmodal);
+            UpdateFont();
           //  LoadTable(salesViewmodal);
+        }
+
+
+        private void UpdateFont()
+        {
+            //Change cell font
+            grd_ProductDetails.ColumnHeadersDefaultCellStyle.BackColor = Color.Navy;
+            grd_ProductDetails.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
+            grd_ProductDetails.ColumnHeadersDefaultCellStyle.Font =new Font(grd_ProductDetails.Font, FontStyle.Bold);
+         
+            foreach (DataGridViewColumn c in grd_ProductDetails.Columns)
+            {
+                c.DefaultCellStyle.Font = new Font("Arial", 10.5F,FontStyle.Bold);
+                c.DefaultCellStyle.ForeColor = Color.Black;
+               
+            }
+            
+            grd_ProductDetails.Columns["Item"].Width = 60;
+            grd_ProductDetails.Columns["Price"].Width = 20;
+            grd_ProductDetails.Columns["Qty"].Width = 10;
+            grd_ProductDetails.Columns["Total"].Width = 25;
+        }
+        //
+        // source code 
+        // Code Snippet for disabling close button
+        private const int CP_NOCLOSE_BUTTON = 0x200;
+        protected override CreateParams CreateParams
+        {
+            get
+            {
+                CreateParams myCp = base.CreateParams;
+                myCp.ClassStyle = myCp.ClassStyle | CP_NOCLOSE_BUTTON;
+                return myCp;
+            }
         }
         public FrmPOS1Table(Invoicemaster invoicemaster)
         {
@@ -31,8 +66,10 @@ namespace App.UI
             SalesViewModal salesViewmodal = new SalesViewModal();
             invoiceid = invoicemaster.InvoicemasterID;
             LoadCategory(salesViewmodal);
+            UpdateFont();
             //LoadTable(salesViewmodal);
             LoadInvoicedata(invoicemaster);
+
         }
 
 
@@ -275,6 +312,7 @@ namespace App.UI
             int buttonwidth = 0;
             int buttonindex = 0;
 
+            int allowedproduct = 2;
 
 
             if (Productlist != null)
@@ -286,7 +324,7 @@ namespace App.UI
 
                     float parentheight = float.Parse(parent.Height.ToString());
                     float parentwidth = float.Parse(parent.Width.ToString());
-                    buttonwidth = (int)Math.Ceiling(parentwidth) / 4;
+                    buttonwidth = (int)Math.Ceiling(parentwidth) / allowedproduct;
 
                     buttonheight = buttonwidth;
                 }
@@ -332,7 +370,7 @@ namespace App.UI
 
              //   temp.Location = new System.Drawing.Point((buttonwidth * buttonindex), (buttonheight * colcount));//please adjust location as per your need
                 temp.Location = new System.Drawing.Point((temp.Width * buttonindex), (temp.Height * colcount));//please adjust location as per your need
-                if (buttonindex % 4 == 0 && buttonindex != 0)
+                if (buttonindex % allowedproduct == 0 && buttonindex != 0)
                 {
                     colcount++;
                     buttonindex = 0;
@@ -462,13 +500,7 @@ namespace App.UI
 
 
             }
-            else if (btn.Text.Trim() == "TABLES")
-            {
-
-                SelectTable(btn);
-
-
-            }
+           
 
             else
             {
@@ -895,12 +927,24 @@ namespace App.UI
 
         private void panel17_Click(object sender, EventArgs e)
         {
-            this.Close();
+            DialogResult dialogResult = MessageBox.Show("Un Saved Transactions may loss ,Want  to Close? ", "Are You Sure", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.Yes)
+            {
+                this.Close();
+            }
+            else if (dialogResult == DialogResult.No)
+            {
+              
+            }
+           
         }
 
         private void lbl_table_Click(object sender, EventArgs e)
         {
-            KeyPressed((Button)sender);
+                SelectTable((Button)sender);
+
+
+            
         }
     }
 }
