@@ -35,6 +35,7 @@
             this.pnl_product = new System.Windows.Forms.Panel();
             this.pnl_customer = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.lbl_paymentMode = new System.Windows.Forms.Label();
             this.lbl_tableID = new System.Windows.Forms.Label();
             this.panel7 = new System.Windows.Forms.Panel();
             this.label3 = new System.Windows.Forms.Label();
@@ -87,9 +88,9 @@
             this.panel52 = new System.Windows.Forms.Panel();
             this.panel51 = new System.Windows.Forms.Panel();
             this.panel61 = new System.Windows.Forms.Panel();
-            this.button55 = new System.Windows.Forms.Button();
+            this.btn_paymentmode = new System.Windows.Forms.Button();
             this.panel60 = new System.Windows.Forms.Panel();
-            this.button29 = new System.Windows.Forms.Button();
+            this.btn_buzzer = new System.Windows.Forms.Button();
             this.panel48 = new System.Windows.Forms.Panel();
             this.panel28 = new System.Windows.Forms.Panel();
             this.panel38 = new System.Windows.Forms.Panel();
@@ -138,6 +139,12 @@
             this.button45 = new System.Windows.Forms.Button();
             this.panel26 = new System.Windows.Forms.Panel();
             this.grd_ProductDetails = new System.Windows.Forms.DataGridView();
+            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Item = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Price = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Qty = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Discount = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Total = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel24 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel80 = new System.Windows.Forms.Panel();
@@ -150,12 +157,6 @@
             this.lbl_table = new System.Windows.Forms.Button();
             this.panel17 = new System.Windows.Forms.Panel();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
-            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Item = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Price = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Qty = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Discount = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Total = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
             this.panel72.SuspendLayout();
             this.pnl_customer.SuspendLayout();
@@ -255,6 +256,7 @@
             // 
             this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(121)))), ((int)(((byte)(166)))));
             this.panel4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel4.Controls.Add(this.lbl_paymentMode);
             this.panel4.Controls.Add(this.lbl_tableID);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel4.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -263,15 +265,25 @@
             this.panel4.Size = new System.Drawing.Size(311, 74);
             this.panel4.TabIndex = 17;
             // 
+            // lbl_paymentMode
+            // 
+            this.lbl_paymentMode.AutoSize = true;
+            this.lbl_paymentMode.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_paymentMode.Location = new System.Drawing.Point(147, 28);
+            this.lbl_paymentMode.Name = "lbl_paymentMode";
+            this.lbl_paymentMode.Size = new System.Drawing.Size(14, 16);
+            this.lbl_paymentMode.TabIndex = 6;
+            this.lbl_paymentMode.Text = "*";
+            // 
             // lbl_tableID
             // 
             this.lbl_tableID.AutoSize = true;
             this.lbl_tableID.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_tableID.Location = new System.Drawing.Point(173, 41);
             this.lbl_tableID.Name = "lbl_tableID";
-            this.lbl_tableID.Size = new System.Drawing.Size(0, 16);
+            this.lbl_tableID.Size = new System.Drawing.Size(14, 16);
             this.lbl_tableID.TabIndex = 5;
-            this.lbl_tableID.Visible = false;
+            this.lbl_tableID.Text = "*";
             // 
             // panel7
             // 
@@ -307,7 +319,6 @@
             this.lbl_custid.Size = new System.Drawing.Size(16, 16);
             this.lbl_custid.TabIndex = 4;
             this.lbl_custid.Text = "8";
-            this.lbl_custid.Visible = false;
             // 
             // label4
             // 
@@ -524,9 +535,8 @@
             this.txt_producrtcode.Dock = System.Windows.Forms.DockStyle.Left;
             this.txt_producrtcode.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt_producrtcode.Location = new System.Drawing.Point(3, 3);
-            this.txt_producrtcode.Multiline = true;
             this.txt_producrtcode.Name = "txt_producrtcode";
-            this.txt_producrtcode.Size = new System.Drawing.Size(231, 38);
+            this.txt_producrtcode.Size = new System.Drawing.Size(231, 31);
             this.txt_producrtcode.TabIndex = 4;
             // 
             // panel76
@@ -824,49 +834,50 @@
             // 
             // panel61
             // 
-            this.panel61.Controls.Add(this.button55);
+            this.panel61.Controls.Add(this.btn_paymentmode);
             this.panel61.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel61.Location = new System.Drawing.Point(116, 0);
             this.panel61.Name = "panel61";
             this.panel61.Size = new System.Drawing.Size(117, 68);
             this.panel61.TabIndex = 1;
             // 
-            // button55
+            // btn_paymentmode
             // 
-            this.button55.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(187)))), ((int)(((byte)(166)))));
-            this.button55.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.button55.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button55.ForeColor = System.Drawing.Color.White;
-            this.button55.Location = new System.Drawing.Point(0, 0);
-            this.button55.Name = "button55";
-            this.button55.Size = new System.Drawing.Size(117, 68);
-            this.button55.TabIndex = 20;
-            this.button55.Text = "Payment Method";
-            this.button55.UseVisualStyleBackColor = false;
-            this.button55.Click += new System.EventHandler(this.numericbuttonclicked_Click);
+            this.btn_paymentmode.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(187)))), ((int)(((byte)(166)))));
+            this.btn_paymentmode.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btn_paymentmode.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_paymentmode.ForeColor = System.Drawing.Color.White;
+            this.btn_paymentmode.Location = new System.Drawing.Point(0, 0);
+            this.btn_paymentmode.Name = "btn_paymentmode";
+            this.btn_paymentmode.Size = new System.Drawing.Size(117, 68);
+            this.btn_paymentmode.TabIndex = 20;
+            this.btn_paymentmode.Text = "Payment Method";
+            this.btn_paymentmode.UseVisualStyleBackColor = false;
+            this.btn_paymentmode.Click += new System.EventHandler(this.btn_paymentmode_Click);
+            this.btn_paymentmode.MouseClick += new System.Windows.Forms.MouseEventHandler(this.btn_paymentmode_MouseClick);
             // 
             // panel60
             // 
-            this.panel60.Controls.Add(this.button29);
+            this.panel60.Controls.Add(this.btn_buzzer);
             this.panel60.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel60.Location = new System.Drawing.Point(0, 0);
             this.panel60.Name = "panel60";
             this.panel60.Size = new System.Drawing.Size(116, 68);
             this.panel60.TabIndex = 0;
             // 
-            // button29
+            // btn_buzzer
             // 
-            this.button29.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(187)))), ((int)(((byte)(166)))));
-            this.button29.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.button29.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button29.ForeColor = System.Drawing.Color.White;
-            this.button29.Location = new System.Drawing.Point(0, 0);
-            this.button29.Name = "button29";
-            this.button29.Size = new System.Drawing.Size(116, 68);
-            this.button29.TabIndex = 19;
-            this.button29.Text = "Cancel Order";
-            this.button29.UseVisualStyleBackColor = false;
-            this.button29.Click += new System.EventHandler(this.numericbuttonclicked_Click);
+            this.btn_buzzer.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(187)))), ((int)(((byte)(166)))));
+            this.btn_buzzer.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btn_buzzer.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_buzzer.ForeColor = System.Drawing.Color.White;
+            this.btn_buzzer.Location = new System.Drawing.Point(0, 0);
+            this.btn_buzzer.Name = "btn_buzzer";
+            this.btn_buzzer.Size = new System.Drawing.Size(116, 68);
+            this.btn_buzzer.TabIndex = 19;
+            this.btn_buzzer.Text = "Buzzers";
+            this.btn_buzzer.UseVisualStyleBackColor = false;
+            this.btn_buzzer.MouseClick += new System.Windows.Forms.MouseEventHandler(this.btn_buzzer_MouseClick);
             // 
             // panel48
             // 
@@ -933,7 +944,7 @@
             // 
             this.btn_customer.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(187)))), ((int)(((byte)(166)))));
             this.btn_customer.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btn_customer.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_customer.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
             this.btn_customer.ForeColor = System.Drawing.Color.White;
             this.btn_customer.Location = new System.Drawing.Point(37, 0);
             this.btn_customer.Name = "btn_customer";
@@ -1459,6 +1470,38 @@
             this.grd_ProductDetails.Size = new System.Drawing.Size(345, 278);
             this.grd_ProductDetails.TabIndex = 1;
             // 
+            // ID
+            // 
+            this.ID.HeaderText = "ID";
+            this.ID.Name = "ID";
+            this.ID.Visible = false;
+            // 
+            // Item
+            // 
+            this.Item.HeaderText = "Item";
+            this.Item.Name = "Item";
+            // 
+            // Price
+            // 
+            this.Price.HeaderText = "Price";
+            this.Price.Name = "Price";
+            // 
+            // Qty
+            // 
+            this.Qty.HeaderText = "Qty";
+            this.Qty.Name = "Qty";
+            // 
+            // Discount
+            // 
+            this.Discount.HeaderText = "Discount";
+            this.Discount.Name = "Discount";
+            this.Discount.Visible = false;
+            // 
+            // Total
+            // 
+            this.Total.HeaderText = "Total";
+            this.Total.Name = "Total";
+            // 
             // panel24
             // 
             this.panel24.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(58)))), ((int)(((byte)(69)))));
@@ -1587,38 +1630,6 @@
             this.imageList1.Images.SetKeyName(4, "256-256-d13cafbf17ecd8f2065c8842a6e4e228.png");
             this.imageList1.Images.SetKeyName(5, "45200.png");
             // 
-            // ID
-            // 
-            this.ID.HeaderText = "ID";
-            this.ID.Name = "ID";
-            this.ID.Visible = false;
-            // 
-            // Item
-            // 
-            this.Item.HeaderText = "Item";
-            this.Item.Name = "Item";
-            // 
-            // Price
-            // 
-            this.Price.HeaderText = "Price";
-            this.Price.Name = "Price";
-            // 
-            // Qty
-            // 
-            this.Qty.HeaderText = "Qty";
-            this.Qty.Name = "Qty";
-            // 
-            // Discount
-            // 
-            this.Discount.HeaderText = "Discount";
-            this.Discount.Name = "Discount";
-            this.Discount.Visible = false;
-            // 
-            // Total
-            // 
-            this.Total.HeaderText = "Total";
-            this.Total.Name = "Total";
-            // 
             // FrmPOS1Table
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1746,9 +1757,9 @@
         private System.Windows.Forms.Panel panel62;
         private System.Windows.Forms.Button btn_tablebill;
         private System.Windows.Forms.Panel panel61;
-        private System.Windows.Forms.Button button55;
+        private System.Windows.Forms.Button btn_paymentmode;
         private System.Windows.Forms.Panel panel60;
-        private System.Windows.Forms.Button button29;
+        private System.Windows.Forms.Button btn_buzzer;
         private System.Windows.Forms.Panel panel39;
         private System.Windows.Forms.Panel panel25;
         private System.Windows.Forms.Label txt_total;
@@ -1820,5 +1831,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Qty;
         private System.Windows.Forms.DataGridViewTextBoxColumn Discount;
         private System.Windows.Forms.DataGridViewTextBoxColumn Total;
+        private System.Windows.Forms.Label lbl_paymentMode;
     }
 }

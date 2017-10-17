@@ -466,9 +466,9 @@ namespace App.UI
             }
             else if (btn.Text.Trim() == "Action")
             {
-                ActionBoard Board = new ActionBoard();
-                Board.ShowDialog();
-
+                //ActionBoard Board = new ActionBoard();
+                //Board.ShowDialog();
+                ShowAction();
             }
 
            
@@ -500,8 +500,14 @@ namespace App.UI
 
 
             }
-           
 
+            else if (btn.Text.Trim() == "Payment Term")
+            {
+
+                clearGridView();
+
+
+            }
             else
             {
                 txt_producrtcode.Text = txt_producrtcode.Text + btn.Text.Trim();
@@ -587,7 +593,10 @@ namespace App.UI
 
 
 
-
+        /// <summary>
+        /// select table
+        /// </summary>
+        /// <param name="btn"></param>
         public void SelectTable( Button btn)
         {
             FrmTables frm = new FrmTables();
@@ -596,9 +605,25 @@ namespace App.UI
             lbl_tableID.Text = frm.SelectedTableID.ToString();
             frm.Dispose();
         }
-
-
-
+        /// <summary>
+        /// select payment method
+        /// </summary>
+        public void selectPaymentMode( Button btn)
+        {
+            FrmPaymentMethods frmpymntmethode = new FrmPaymentMethods();
+            frmpymntmethode.ShowDialog();
+            btn.Text = frmpymntmethode.SelectedPaymentMode;
+            frmpymntmethode.Dispose();
+            lbl_paymentMode.Text = btn.Text;
+        }
+        /// <summary>
+        /// select buzzers
+        /// </summary>
+        public void selectBuzzer()
+        {
+            FrmBuzzers frmbuzzers = new FrmBuzzers();
+            frmbuzzers.ShowDialog();
+        }
         public void fillchange()
         {
 
@@ -879,10 +904,9 @@ namespace App.UI
         }
 
 
-        private void btn_actionBoard_Click(object sender, EventArgs e)
-        {
-            ActionBoard Board = new ActionBoard();
-            Board.ShowDialog();
+        public void ShowAction() { 
+            FrmActions actions = new FrmActions();
+            actions.ShowDialog();
         }
 
 
@@ -945,6 +969,21 @@ namespace App.UI
 
 
             
+        }
+
+        private void btn_paymentmode_MouseClick(object sender, MouseEventArgs e)
+        {
+            selectPaymentMode((Button)sender);
+        }
+
+        private void btn_buzzer_MouseClick(object sender, MouseEventArgs e)
+        {
+            selectBuzzer();
+        }
+
+        private void btn_paymentmode_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -83,7 +83,7 @@ namespace App.Model
 
         public virtual List<RefundMaster> RefundMasters { get; set; }
         public virtual List<Printer> Printers { get; set; }
-
+        public virtual List<Buzzer> Buzzers { get; set; }
     }
 
     public class Company
@@ -123,6 +123,24 @@ namespace App.Model
     }
 
 
+    public class Buzzer
+    {
+
+        [Key]
+        public int BuzzerID { get; set; }
+
+
+        public int StoreID { get; set; }
+
+        public String BuzzerName { get; set; }
+
+        public virtual Store Store { get; set; }
+
+        public String Color { get; set; }
+
+        
+        public virtual List<Invoicemaster> Invoicemasters { get; set; }
+    }
 
 
     public class Customer
@@ -174,7 +192,10 @@ namespace App.Model
         public Boolean? IsKOT { get; set; }
         public virtual List<InvoiceDetail> InvoiceDetails { get; set; }
         public String Color { get; set; }
-
+        public String PaymentMode { get; set; }
+        public String BuzzerName { get; set; }
+        public int? BuzzerID { get; set; }
+        public virtual Buzzer Buzzer { get; set; }
         [NotMapped]
         public string StoreName { get; set; }
         [NotMapped]

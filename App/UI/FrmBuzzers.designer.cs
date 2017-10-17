@@ -88,7 +88,7 @@
             this.panel25.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel25.Location = new System.Drawing.Point(0, 0);
             this.panel25.Name = "panel25";
-            this.panel25.Size = new System.Drawing.Size(427, 539);
+            this.panel25.Size = new System.Drawing.Size(447, 551);
             this.panel25.TabIndex = 22;
             // 
             // button16
@@ -96,7 +96,7 @@
             this.button16.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(121)))), ((int)(((byte)(166)))));
             this.button16.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button16.ForeColor = System.Drawing.Color.White;
-            this.button16.Location = new System.Drawing.Point(303, 360);
+            this.button16.Location = new System.Drawing.Point(303, 367);
             this.button16.Name = "button16";
             this.button16.Size = new System.Drawing.Size(108, 81);
             this.button16.TabIndex = 40;
@@ -108,7 +108,7 @@
             this.button17.BackColor = System.Drawing.Color.LightSalmon;
             this.button17.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button17.ForeColor = System.Drawing.Color.White;
-            this.button17.Location = new System.Drawing.Point(303, 12);
+            this.button17.Location = new System.Drawing.Point(303, 19);
             this.button17.Name = "button17";
             this.button17.Size = new System.Drawing.Size(108, 81);
             this.button17.TabIndex = 39;
@@ -121,7 +121,7 @@
             this.button18.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(121)))), ((int)(((byte)(166)))));
             this.button18.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button18.ForeColor = System.Drawing.Color.White;
-            this.button18.Location = new System.Drawing.Point(167, 360);
+            this.button18.Location = new System.Drawing.Point(167, 367);
             this.button18.Name = "button18";
             this.button18.Size = new System.Drawing.Size(108, 81);
             this.button18.TabIndex = 38;
@@ -133,7 +133,7 @@
             this.button19.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(121)))), ((int)(((byte)(166)))));
             this.button19.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button19.ForeColor = System.Drawing.Color.White;
-            this.button19.Location = new System.Drawing.Point(35, 273);
+            this.button19.Location = new System.Drawing.Point(35, 280);
             this.button19.Name = "button19";
             this.button19.Size = new System.Drawing.Size(108, 81);
             this.button19.TabIndex = 37;
@@ -145,7 +145,7 @@
             this.button20.BackColor = System.Drawing.Color.LightSalmon;
             this.button20.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button20.ForeColor = System.Drawing.Color.White;
-            this.button20.Location = new System.Drawing.Point(167, 99);
+            this.button20.Location = new System.Drawing.Point(167, 106);
             this.button20.Name = "button20";
             this.button20.Size = new System.Drawing.Size(108, 81);
             this.button20.TabIndex = 36;
@@ -157,7 +157,7 @@
             this.button11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(121)))), ((int)(((byte)(166)))));
             this.button11.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button11.ForeColor = System.Drawing.Color.White;
-            this.button11.Location = new System.Drawing.Point(303, 447);
+            this.button11.Location = new System.Drawing.Point(303, 454);
             this.button11.Name = "button11";
             this.button11.Size = new System.Drawing.Size(108, 81);
             this.button11.TabIndex = 35;
@@ -169,7 +169,7 @@
             this.button12.BackColor = System.Drawing.Color.LightSalmon;
             this.button12.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button12.ForeColor = System.Drawing.Color.White;
-            this.button12.Location = new System.Drawing.Point(303, 273);
+            this.button12.Location = new System.Drawing.Point(303, 280);
             this.button12.Name = "button12";
             this.button12.Size = new System.Drawing.Size(108, 81);
             this.button12.TabIndex = 34;
@@ -181,7 +181,7 @@
             this.button13.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(121)))), ((int)(((byte)(166)))));
             this.button13.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button13.ForeColor = System.Drawing.Color.White;
-            this.button13.Location = new System.Drawing.Point(167, 273);
+            this.button13.Location = new System.Drawing.Point(167, 280);
             this.button13.Name = "button13";
             this.button13.Size = new System.Drawing.Size(108, 81);
             this.button13.TabIndex = 33;
@@ -193,7 +193,7 @@
             this.button14.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(121)))), ((int)(((byte)(166)))));
             this.button14.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button14.ForeColor = System.Drawing.Color.White;
-            this.button14.Location = new System.Drawing.Point(35, 186);
+            this.button14.Location = new System.Drawing.Point(35, 193);
             this.button14.Name = "button14";
             this.button14.Size = new System.Drawing.Size(108, 81);
             this.button14.TabIndex = 32;
@@ -205,7 +205,7 @@
             this.button15.BackColor = System.Drawing.Color.LightSalmon;
             this.button15.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button15.ForeColor = System.Drawing.Color.White;
-            this.button15.Location = new System.Drawing.Point(167, 12);
+            this.button15.Location = new System.Drawing.Point(167, 19);
             this.button15.Name = "button15";
             this.button15.Size = new System.Drawing.Size(108, 81);
             this.button15.TabIndex = 31;
@@ -217,7 +217,7 @@
             this.button8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(121)))), ((int)(((byte)(166)))));
             this.button8.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button8.ForeColor = System.Drawing.Color.White;
-            this.button8.Location = new System.Drawing.Point(303, 186);
+            this.button8.Location = new System.Drawing.Point(303, 193);
             this.button8.Name = "button8";
             this.button8.Size = new System.Drawing.Size(108, 81);
             this.button8.TabIndex = 29;
@@ -229,7 +229,7 @@
             this.button7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(121)))), ((int)(((byte)(166)))));
             this.button7.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button7.ForeColor = System.Drawing.Color.White;
-            this.button7.Location = new System.Drawing.Point(167, 186);
+            this.button7.Location = new System.Drawing.Point(167, 193);
             this.button7.Name = "button7";
             this.button7.Size = new System.Drawing.Size(108, 81);
             this.button7.TabIndex = 28;
@@ -241,7 +241,7 @@
             this.button6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(121)))), ((int)(((byte)(166)))));
             this.button6.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button6.ForeColor = System.Drawing.Color.White;
-            this.button6.Location = new System.Drawing.Point(35, 99);
+            this.button6.Location = new System.Drawing.Point(35, 106);
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(108, 81);
             this.button6.TabIndex = 27;
@@ -253,7 +253,7 @@
             this.button5.BackColor = System.Drawing.Color.LightSalmon;
             this.button5.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button5.ForeColor = System.Drawing.Color.White;
-            this.button5.Location = new System.Drawing.Point(35, 447);
+            this.button5.Location = new System.Drawing.Point(35, 454);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(108, 81);
             this.button5.TabIndex = 26;
@@ -265,7 +265,7 @@
             this.button3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(121)))), ((int)(((byte)(166)))));
             this.button3.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button3.ForeColor = System.Drawing.Color.White;
-            this.button3.Location = new System.Drawing.Point(303, 99);
+            this.button3.Location = new System.Drawing.Point(303, 106);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(108, 81);
             this.button3.TabIndex = 24;
@@ -277,7 +277,7 @@
             this.button2.BackColor = System.Drawing.Color.LightSalmon;
             this.button2.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button2.ForeColor = System.Drawing.Color.White;
-            this.button2.Location = new System.Drawing.Point(167, 447);
+            this.button2.Location = new System.Drawing.Point(167, 454);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(108, 81);
             this.button2.TabIndex = 23;
@@ -289,7 +289,7 @@
             this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(121)))), ((int)(((byte)(166)))));
             this.button1.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(35, 360);
+            this.button1.Location = new System.Drawing.Point(35, 367);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(108, 81);
             this.button1.TabIndex = 22;
@@ -301,7 +301,7 @@
             this.button9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(121)))), ((int)(((byte)(166)))));
             this.button9.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button9.ForeColor = System.Drawing.Color.White;
-            this.button9.Location = new System.Drawing.Point(35, 12);
+            this.button9.Location = new System.Drawing.Point(35, 19);
             this.button9.Name = "button9";
             this.button9.Size = new System.Drawing.Size(108, 81);
             this.button9.TabIndex = 21;
@@ -312,10 +312,11 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(427, 539);
+            this.ClientSize = new System.Drawing.Size(447, 551);
             this.Controls.Add(this.panel25);
             this.Name = "FrmBuzzers";
             this.ShowIcon = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Buzzers";
             this.Load += new System.EventHandler(this.FrmPOS1_Load);
             this.panel25.ResumeLayout(false);

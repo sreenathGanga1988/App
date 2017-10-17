@@ -272,6 +272,14 @@
     <Compile Include="Migrations\201709141336203_addedprinter and master.Designer.cs">
       <DependentUpon>201709141336203_addedprinter and master.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201710171839071_addedpaymentmode .cs" />
+    <Compile Include="Migrations\201710171839071_addedpaymentmode .Designer.cs">
+      <DependentUpon>201710171839071_addedpaymentmode .cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710171916265_hhgdhfdjh.cs" />
+    <Compile Include="Migrations\201710171916265_hhgdhfdjh.Designer.cs">
+      <DependentUpon>201710171916265_hhgdhfdjh.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Model\Product.cs" />
     <Compile Include="Model\UIModel.cs" />
@@ -285,6 +293,12 @@
     </Compile>
     <Compile Include="UI\EndOfDay.Designer.cs">
       <DependentUpon>EndOfDay.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\FrmActions.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\FrmActions.designer.cs">
+      <DependentUpon>FrmActions.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\FrmAddCustomer.cs">
       <SubType>Form</SubType>
@@ -303,6 +317,12 @@
     </Compile>
     <Compile Include="UI\FrmDailyReports.designer.cs">
       <DependentUpon>FrmDailyReports.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\FrmPaymentMethods.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\FrmPaymentMethods.designer.cs">
+      <DependentUpon>FrmPaymentMethods.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\POS\FrmLogin.cs">
       <SubType>Form</SubType>
@@ -543,6 +563,12 @@
     <EmbeddedResource Include="Migrations\201709141336203_addedprinter and master.resx">
       <DependentUpon>201709141336203_addedprinter and master.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710171839071_addedpaymentmode .resx">
+      <DependentUpon>201710171839071_addedpaymentmode .cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710171916265_hhgdhfdjh.resx">
+      <DependentUpon>201710171916265_hhgdhfdjh.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -556,6 +582,9 @@
     <EmbeddedResource Include="UI\EndOfDay.resx">
       <DependentUpon>EndOfDay.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UI\FrmActions.resx">
+      <DependentUpon>FrmActions.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UI\FrmAddCustomer.resx">
       <DependentUpon>FrmAddCustomer.cs</DependentUpon>
     </EmbeddedResource>
@@ -564,6 +593,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\FrmDailyReports.resx">
       <DependentUpon>FrmDailyReports.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\FrmPaymentMethods.resx">
+      <DependentUpon>FrmPaymentMethods.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\POS\FrmLogin.resx">
       <DependentUpon>FrmLogin.cs</DependentUpon>
