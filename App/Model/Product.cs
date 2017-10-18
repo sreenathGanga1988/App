@@ -27,6 +27,9 @@ namespace App.Model
         public String Image { get; set; }
         public Boolean IsAvailable { get; set; }
         public Boolean? IsRateChangable { get; set; }
+
+        public Boolean? IsTodaySpecial { get; set; }
+
         public virtual List<InvoiceDetail> InvoiceDetails { get; set; }
         public virtual List<KotDetail> KotDetails { get; set; }
     }

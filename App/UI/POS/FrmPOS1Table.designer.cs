@@ -521,6 +521,7 @@
             this.button52.TabIndex = 1;
             this.button52.Text = "Todays Specials";
             this.button52.UseVisualStyleBackColor = false;
+            this.button52.Click += new System.EventHandler(this.button52_Click);
             // 
             // panel77
             // 
@@ -1453,7 +1454,6 @@
             this.grd_ProductDetails.AllowUserToAddRows = false;
             this.grd_ProductDetails.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.grd_ProductDetails.BackgroundColor = System.Drawing.Color.White;
-            this.grd_ProductDetails.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.grd_ProductDetails.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ID,
             this.Item,

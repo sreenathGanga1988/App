@@ -34,18 +34,18 @@ namespace App.UI
             grd_ProductDetails.ColumnHeadersDefaultCellStyle.BackColor = Color.Navy;
             grd_ProductDetails.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
             grd_ProductDetails.ColumnHeadersDefaultCellStyle.Font =new Font(grd_ProductDetails.Font, FontStyle.Bold);
-         
+            grd_ProductDetails.RowTemplate.Height = 40;
             foreach (DataGridViewColumn c in grd_ProductDetails.Columns)
             {
-                c.DefaultCellStyle.Font = new Font("Arial", 10.5F,FontStyle.Bold);
+                c.DefaultCellStyle.Font = new Font("Arial", 12.5F,FontStyle.Bold);
                 c.DefaultCellStyle.ForeColor = Color.Black;
                
             }
             
-            grd_ProductDetails.Columns["Item"].Width = 60;
-            grd_ProductDetails.Columns["Price"].Width = 20;
-            grd_ProductDetails.Columns["Qty"].Width = 10;
-            grd_ProductDetails.Columns["Total"].Width = 25;
+            grd_ProductDetails.Columns["Item"].Width = 150;
+            grd_ProductDetails.Columns["Price"].Width = 60;
+            grd_ProductDetails.Columns["Qty"].Width = 60;
+            grd_ProductDetails.Columns["Total"].Width = 75;
         }
         //
         // source code 
@@ -143,6 +143,7 @@ namespace App.UI
                 temp.Name = "button" + catgry.Id.ToString();
                 temp.Text = catgry.CategoryName;
                 temp._value = catgry.Id.ToString();
+                temp.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 
                 temp.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(187)))), ((int)(((byte)(166)))));
               
@@ -340,7 +341,7 @@ namespace App.UI
                 temp.ForeColor = System.Drawing.Color.White;
                 temp.Location = new System.Drawing.Point(6, 271);
 
-                temp.Size = new System.Drawing.Size(126, 81);
+                temp.Size = new System.Drawing.Size(130, 81);
                 temp.TabIndex = 12;
                 temp.Text = "button24";
                 temp.UseVisualStyleBackColor = false;
@@ -413,36 +414,61 @@ namespace App.UI
             }
         }
 
-
-
+        Button Lastbuttonclicked;
+        Color LastButtonActualControl;
         private void numericbuttonclicked_Click(object sender, EventArgs e)
         {
-            KeyPressed((Button)sender);
+
+
+            LastButtonClicker(sender, e);
+
+
         }
+
+
+
+
+        public void LastButtonClicker(object sender, EventArgs e)
+        {
+            Button button = (Button)sender;
+          
+
+            if (string.Equals(button.Text.Trim(), "Tables", StringComparison.CurrentCultureIgnoreCase)){ button.Text = "Tables";   }
+            else if (string.Equals(button.Text.Trim(), "Qty", StringComparison.CurrentCultureIgnoreCase)) { button.Text = "Qty"; }
+            else if (string.Equals(button.Text.Trim(), "Disc", StringComparison.CurrentCultureIgnoreCase)) { button.Text = "Disc"; }
+            else if (string.Equals(button.Text.Trim(), "Price", StringComparison.CurrentCultureIgnoreCase)) { button.Text = "Price"; }
+            else if (string.Equals(button.Text.Trim(), "Add item", StringComparison.CurrentCultureIgnoreCase)) { button.Text = "Add item"; }
+            else if (string.Equals(button.Text.Trim(), "Payment method", StringComparison.CurrentCultureIgnoreCase)) { button.Text = "Payment method"; }
+            else if (string.Equals(button.Text.Trim(), "Buzzer", StringComparison.CurrentCultureIgnoreCase)) { button.Text = "Buzzer"; }
+            else if (string.Equals(button.Text.Trim(), "Table Bill", StringComparison.CurrentCultureIgnoreCase)) { button.Text = "Table Bill"; }
+            else if (string.Equals(button.Text.Trim(), "KOT", StringComparison.CurrentCultureIgnoreCase)) { button.Text = "KOT"; }
+            else if (string.Equals(button.Text.Trim(), "Action", StringComparison.CurrentCultureIgnoreCase)) { button.Text = "Action"; }
+            else if (string.Equals(button.Text.Trim(), "Clear", StringComparison.CurrentCultureIgnoreCase)) { button.Text = "Clear"; }
+            else if (string.Equals(button.Text.Trim(), "Print", StringComparison.CurrentCultureIgnoreCase)) { button.Text = "Print"; }
+            else if (string.Equals(button.Text.Trim(), "Hold", StringComparison.CurrentCultureIgnoreCase)) { button.Text = "Hold"; }
+            else if (string.Equals(button.Text.Trim(), "Customer", StringComparison.CurrentCultureIgnoreCase)) { button.Text = "Customer"; }
+            else if (string.Equals(button.Text.Trim(), "<", StringComparison.CurrentCultureIgnoreCase)) { button.Text = "<"; }
+            else if (string.Equals(button.Text.Trim(), "Todays Special", StringComparison.CurrentCultureIgnoreCase)) { button.Text = "Todays Special"; }
+
+            KeyPressed(button);
+
+        }
+
         public void KeyPressed(Button btn)
         {
 
-            if (btn.Text.Trim() == "Add Item")
-            {
-                Additem();
-            }
-            else if (btn.Text.Trim() == "<")
+            List<string> ExceptionList = new List<string> { "Add item", "Qty", "Price", "Cash", "Customer" };
+            
+
+
+           
+          
+             if (btn.Text.Trim() == "<")
             {
                 BackSpace();
             }
-            else if (btn.Text.Trim() == "Customer")
-            {
-                SelectCustomer();               
-
-            }
-            else if (btn.Text.Trim() == "Qty")
-            {
-                IncreaseItemQty();
-            }
-            else if (btn.Text.Trim() == "Price"|| btn.Text.Trim() == "Cash")
-            {
-                AddCash();
-            }
+           
+           
             else if (btn.Text.Trim() == "KOT")
             {
                 if (ValidateforKot())
@@ -466,8 +492,7 @@ namespace App.UI
             }
             else if (btn.Text.Trim() == "Action")
             {
-                //ActionBoard Board = new ActionBoard();
-                //Board.ShowDialog();
+                
                 ShowAction();
             }
 
@@ -510,10 +535,93 @@ namespace App.UI
             }
             else
             {
-                txt_producrtcode.Text = txt_producrtcode.Text + btn.Text.Trim();
+                if (!ExceptionList.Contains(btn.Text.Trim()))
+                {
+                    txt_producrtcode.Text = txt_producrtcode.Text + btn.Text.Trim();
+                   
+                }
+                else
+                {
+                    try
+                    {
+                        Lastbuttonclicked.BackColor = LastButtonActualControl;
+                    }
+                    catch (Exception)
+                    {
+
+                       
+                    }
+                    txt_producrtcode.Text = "";
+                    Lastbuttonclicked = btn;
+                    LastButtonActualControl = btn.BackColor;
+                    btn.BackColor = Color.Yellow;
+
+                }
+                if(Lastbuttonclicked != null) {
+                    CheckLastbutton(Lastbuttonclicked);
+                }
+            
             }
 
         }
+
+
+
+
+        public void CheckLastbutton( Button lastbutton)
+        {
+            if (lastbutton.Text.Trim() == "Add item")
+            {
+                try
+                {
+                    Additem();
+                }
+                catch (Exception)
+                {
+
+                   
+                }
+            }
+           else  if (lastbutton.Text.Trim() == "Qty")
+            {
+                try
+                {
+                    IncreaseItemQty();
+                }
+                catch (Exception)
+                {
+
+
+                }
+            }
+            else if (lastbutton.Text.Trim() == "Price" || lastbutton.Text.Trim() == "Cash")
+                {
+                    try
+                    {
+                        AddCash();
+                }
+                catch (Exception)
+                {
+
+
+                }
+            }
+            else if (lastbutton.Text.Trim() == "Customer")
+                    {
+                        try
+                        {
+                            SelectCustomer();
+                }
+                catch (Exception)
+                {
+
+
+                }
+
+            }
+        }
+
+
 
         /// <summary>
         /// Add the selected Item
@@ -982,6 +1090,11 @@ namespace App.UI
         }
 
         private void btn_paymentmode_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button52_Click(object sender, EventArgs e)
         {
 
         }
