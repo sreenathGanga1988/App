@@ -12,9 +12,9 @@ using System.Windows.Forms;
 
 namespace App.UI
 {
-    public partial class StartForm : Form
+    public partial class FrmMainForm : Form
     {
-        public StartForm()
+        public FrmMainForm()
         {
             InitializeComponent();
 
@@ -52,8 +52,7 @@ namespace App.UI
 
         private void button1_Click(object sender, EventArgs e)
         {
-            UI.Masters.MasterForm frm = new Masters.MasterForm();
-            frm.Show();
+            
         }
 
         private void button5_Click(object sender, EventArgs e)
@@ -62,7 +61,7 @@ namespace App.UI
             odoosetting.Show();
 
 
-
+           
 
         }
 
@@ -87,11 +86,7 @@ namespace App.UI
 
         }
 
-        private void button6_Click(object sender, EventArgs e)
-        {
-
-        }
-
+     
         private void StartForm_FormClosed(object sender, FormClosedEventArgs e)
         {
             Application.Exit();
@@ -99,13 +94,45 @@ namespace App.UI
 
         private void button9_Click(object sender, EventArgs e)
         {
-           
+            FrmAddCustomer cstmr = new FrmAddCustomer();
+            cstmr.Show();
         }
 
         private void button8_Click(object sender, EventArgs e)
         {
             FrmTables frm = new FrmTables();
             frm.Show();
+        }
+
+       
+        private void btn_pos_Click(object sender, EventArgs e)
+        {
+            FrmPOS1Table frmpos = new FrmPOS1Table();
+            frmpos.ShowDialog();
+        }
+
+        private void btn_masters_Click(object sender, EventArgs e)
+        {
+            Masters.MasterForm frm = new Masters.MasterForm();
+            frm.Show();
+        }
+
+        private void btnSettings_Click(object sender, EventArgs e)
+        {
+            Setting.oodoSetting odoosetting = new Setting.oodoSetting(int.Parse(Program.LocationID.ToString()));
+            odoosetting.Show();
+        }
+
+        private void btn_misreport_Click(object sender, EventArgs e)
+        {
+            FrmDailyReports reports = new FrmDailyReports();
+            reports.ShowDialog();
+        }
+
+        private void btn_action_Click(object sender, EventArgs e)
+        {
+            FrmActions actions = new FrmActions();
+            actions.ShowDialog();
         }
     }
 }

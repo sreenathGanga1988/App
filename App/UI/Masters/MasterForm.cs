@@ -17,13 +17,25 @@ namespace App.UI.Masters
             InitializeComponent();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+      
+
+        private void btn_category_Click(object sender, EventArgs e)
         {
             UI.Masters.FrmCategory frm = new Masters.FrmCategory();
             frm.Show();
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private void btn_product_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btn_customer_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btn_printer_Click(object sender, EventArgs e)
         {
             UI.Masters.PrinterForm frm = new Masters.PrinterForm();
             frm.Show();

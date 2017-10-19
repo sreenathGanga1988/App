@@ -574,7 +574,8 @@ namespace App.UI
             {
                 try
                 {
-                    Additem();
+                    //Additem();
+                    SearchItem();
                 }
                 catch (Exception)
                 {
@@ -608,9 +609,11 @@ namespace App.UI
             }
             else if (lastbutton.Text.Trim() == "Customer")
                     {
-                        try
-                        {
-                            SelectCustomer();
+                try
+                {
+                    FrmAddCustomer cstmr = new FrmAddCustomer();
+                    cstmr.ShowDialog();
+                   
                 }
                 catch (Exception)
                 {
@@ -1097,6 +1100,17 @@ namespace App.UI
         private void button52_Click(object sender, EventArgs e)
         {
 
+        }
+
+
+
+        public void SearchItem()
+        {
+            int categoryId = int.Parse((txt_producrtcode.Text));
+            ProductRepositories productrep = new ProductRepositories();
+
+            List<ProductlistViewModal> Products = productrep.GetMarchingProductlist(categoryId);
+            LoadProducts(Products);
         }
     }
 }

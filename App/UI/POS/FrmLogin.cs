@@ -80,9 +80,10 @@ namespace App.UI
                 if (usrrep.IsuserValid(int.Parse(txt_PasscodeDisplay.Text), int.Parse(cmb_user.SelectedValue.ToString())))
                 {
                     this.Hide();
-                    StartForm frm = new StartForm();
+                    //StartForm frm = new StartForm();
+                    //frm.Show();
+                    FrmMainForm frm = new FrmMainForm();
                     frm.Show();
-
                 }
                 else
                 {

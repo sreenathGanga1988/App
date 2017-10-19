@@ -304,16 +304,16 @@
     <Compile Include="UI\FrmActions.designer.cs">
       <DependentUpon>FrmActions.cs</DependentUpon>
     </Compile>
-    <Compile Include="UI\FrmAddCustomer.cs">
+    <Compile Include="UI\POS\FrmAddCustomer.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UI\FrmAddCustomer.designer.cs">
+    <Compile Include="UI\POS\FrmAddCustomer.designer.cs">
       <DependentUpon>FrmAddCustomer.cs</DependentUpon>
     </Compile>
-    <Compile Include="UI\FrmBuzzers.cs">
+    <Compile Include="UI\Masters\FrmBuzzers.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UI\FrmBuzzers.designer.cs">
+    <Compile Include="UI\Masters\FrmBuzzers.designer.cs">
       <DependentUpon>FrmBuzzers.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\FrmDailyReports.cs">
@@ -321,6 +321,12 @@
     </Compile>
     <Compile Include="UI\FrmDailyReports.designer.cs">
       <DependentUpon>FrmDailyReports.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\FrmMainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\FrmMainForm.Designer.cs">
+      <DependentUpon>FrmMainForm.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\FrmPaymentMethods.cs">
       <SubType>Form</SubType>
@@ -334,29 +340,11 @@
     <Compile Include="UI\POS\FrmLogin.Designer.cs">
       <DependentUpon>FrmLogin.cs</DependentUpon>
     </Compile>
-    <Compile Include="UI\FrmPOS.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="UI\FrmPOS.designer.cs">
-      <DependentUpon>FrmPOS.cs</DependentUpon>
-    </Compile>
     <Compile Include="UI\POS\FrmPOS1Table.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="UI\POS\FrmPOS1Table.designer.cs">
       <DependentUpon>FrmPOS1Table.cs</DependentUpon>
-    </Compile>
-    <Compile Include="UI\FrmPOS1.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="UI\FrmPOS1.designer.cs">
-      <DependentUpon>FrmPOS1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="UI\FrmPOS2.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="UI\FrmPOS2.designer.cs">
-      <DependentUpon>FrmPOS2.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\FrmTables.cs">
       <SubType>Form</SubType>
@@ -592,14 +580,17 @@
     <EmbeddedResource Include="UI\FrmActions.resx">
       <DependentUpon>FrmActions.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI\FrmAddCustomer.resx">
+    <EmbeddedResource Include="UI\POS\FrmAddCustomer.resx">
       <DependentUpon>FrmAddCustomer.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI\FrmBuzzers.resx">
+    <EmbeddedResource Include="UI\Masters\FrmBuzzers.resx">
       <DependentUpon>FrmBuzzers.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\FrmDailyReports.resx">
       <DependentUpon>FrmDailyReports.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\FrmMainForm.resx">
+      <DependentUpon>FrmMainForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\FrmPaymentMethods.resx">
       <DependentUpon>FrmPaymentMethods.cs</DependentUpon>
@@ -607,17 +598,8 @@
     <EmbeddedResource Include="UI\POS\FrmLogin.resx">
       <DependentUpon>FrmLogin.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI\FrmPOS.resx">
-      <DependentUpon>FrmPOS.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="UI\POS\FrmPOS1Table.resx">
       <DependentUpon>FrmPOS1Table.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UI\FrmPOS1.resx">
-      <DependentUpon>FrmPOS1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UI\FrmPOS2.resx">
-      <DependentUpon>FrmPOS2.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\FrmTables.resx">
       <DependentUpon>FrmTables.cs</DependentUpon>

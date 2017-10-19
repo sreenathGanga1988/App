@@ -34,6 +34,20 @@ namespace App.Repository
 
         }
 
+        public List<ProductlistViewModal> GetMarchingProductlist(int? categoryID = 0)
+        {
+         
+
+          
+                var q = (cntxt.Products.Where(u => u.Id.ToString().Contains(categoryID.ToString())).
+                Select(x => new ProductlistViewModal { ProductID = x.Id, ProductName = x.ProductName, Color = x.Color })).ToList();
+                return q;
+
+          
+
+
+        }
+
         public Product GetProduct(int Id)
         {
 
@@ -148,6 +162,16 @@ namespace App.Repository
             return q;
 
         }
+
+
+        public List<Customer> GetcustomerofLocationSearch(String searchtext, int? LocationID = 0)
+        {
+
+            var q = cntxt.Customers.Where(u => u.StoreID == LocationID && (u.PhoneNumber.Contains(searchtext)||u.CustomerName.Contains(searchtext)) ).ToList();
+
+            return q;
+        }
+
 
         public void AddCustomer(Customer customer)
         {
