@@ -27,7 +27,7 @@ namespace App.Model
         public String Image { get; set; }
         public Boolean IsAvailable { get; set; }
         public Boolean? IsRateChangable { get; set; }
-
+        public int? OdooCategoryId { get; set; }
         public Boolean? IsTodaySpecial { get; set; }
 
         public virtual List<InvoiceDetail> InvoiceDetails { get; set; }
@@ -74,7 +74,7 @@ namespace App.Model
         public int StoreID { get; set; }
 
         public String StoreName { get; set; }
-
+        public int? OdooStoreId { get; set; }
         public String  StoreAddress { get; set; }
 
         public virtual List<User> Users { get; set; }

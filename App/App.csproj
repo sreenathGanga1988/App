@@ -284,6 +284,10 @@
     <Compile Include="Migrations\201710180907504_added todayspecial.Designer.cs">
       <DependentUpon>201710180907504_added todayspecial.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201710251227268_added oodo id.cs" />
+    <Compile Include="Migrations\201710251227268_added oodo id.Designer.cs">
+      <DependentUpon>201710251227268_added oodo id.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Model\Product.cs" />
     <Compile Include="Model\UIModel.cs" />
@@ -564,6 +568,9 @@
     <EmbeddedResource Include="Migrations\201710180907504_added todayspecial.resx">
       <DependentUpon>201710180907504_added todayspecial.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710251227268_added oodo id.resx">
+      <DependentUpon>201710251227268_added oodo id.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -579,6 +586,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\FrmActions.resx">
       <DependentUpon>FrmActions.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Masters\Product.resx">
+      <DependentUpon>Product.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\POS\FrmAddCustomer.resx">
       <DependentUpon>FrmAddCustomer.cs</DependentUpon>
