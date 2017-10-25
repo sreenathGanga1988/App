@@ -11,21 +11,21 @@ namespace App.Model
 {
     public class Product
     {
-       
+
 
         [Key]
         public int Id { get; set; }
         public int? OdooProductId { get; set; }
         public string ProductName { get; set; }
         public int CategoryId { get; set; }
-       
-        public Decimal UnitPrice { get; set; }
-        public Decimal DiscountForLocation { get; set; }
-        public Decimal MinimumSPForLocation { get; set; }
+
+        public Decimal? UnitPrice { get; set; }
+        public Decimal? DiscountForLocation { get; set; }
+        public Decimal? MinimumSPForLocation { get; set; }
         public virtual Category Category { get; set; }
         public String Color { get; set; }
         public String Image { get; set; }
-        public Boolean IsAvailable { get; set; }
+        public Boolean? IsAvailable { get; set; }
         public Boolean? IsRateChangable { get; set; }
         public int? OdooCategoryId { get; set; }
         public Boolean? IsTodaySpecial { get; set; }
@@ -35,7 +35,7 @@ namespace App.Model
     }
     public class Category
     {
-      
+
 
         [Key]
         public int Id { get; set; }
@@ -75,7 +75,7 @@ namespace App.Model
 
         public String StoreName { get; set; }
         public int? OdooStoreId { get; set; }
-        public String  StoreAddress { get; set; }
+        public String StoreAddress { get; set; }
 
         public virtual List<User> Users { get; set; }
         public virtual List<ControlDiemension> ControlDiemensions { get; set; }
@@ -101,7 +101,7 @@ namespace App.Model
             get;
             set;
         }
-      
+
     }
 
 
@@ -112,13 +112,13 @@ namespace App.Model
         [Key]
         public int TableID { get; set; }
 
-       
+
         public int StoreID { get; set; }
 
         public String TableName { get; set; }
 
         public virtual Store Store { get; set; }
-        
+
         public String Color { get; set; }
 
         public virtual List<KotMaster> KotMasters { get; set; }
@@ -141,7 +141,7 @@ namespace App.Model
 
         public String Color { get; set; }
 
-        
+
         public virtual List<Invoicemaster> Invoicemasters { get; set; }
     }
 
@@ -236,7 +236,7 @@ namespace App.Model
 
     }
 
-  
+
     public class OdooDetail
     {
 
@@ -253,29 +253,29 @@ namespace App.Model
     }
 
 
-    public  class AppUserSetting
+    public class AppUserSetting
     {
         [Key]
         public int AppUserSettingID { get; set; }
-        public  int ProductperRow { get; set; }
+        public int ProductperRow { get; set; }
 
-        public  String InvoicePrefix { get; set; }
+        public String InvoicePrefix { get; set; }
 
         public string KotPrefix { get; set; }
 
 
-        public  int PaddingNumber { get; set; }
+        public int PaddingNumber { get; set; }
 
-        public  Decimal ProductButtonWidth { get; set; }
-        public  Decimal ProductButtonHeigth { get; set; }
+        public Decimal ProductButtonWidth { get; set; }
+        public Decimal ProductButtonHeigth { get; set; }
 
-        public  int StoreID { get; set; }
+        public int StoreID { get; set; }
 
-        public  Boolean RealtimeInvoiceUpdate { get; set; }
+        public Boolean RealtimeInvoiceUpdate { get; set; }
 
-        public  Boolean FastLoading { get; set; }
+        public Boolean FastLoading { get; set; }
 
-        public  Boolean AutoSizebutton { get; set; }
+        public Boolean AutoSizebutton { get; set; }
         public virtual Store Store { get; set; }
         public Boolean IsActive { get; set; }
     }
@@ -287,11 +287,11 @@ namespace App.Model
         [Key]
         public int PrinterDetailId { get; set; }
         public String PosPrinter { get; set; }
-    
+
         public String KotPrinter { get; set; }
-      
+
         public String JuicePrinter { get; set; }
-      
+
         public int StoreID { get; set; }
         public virtual Store Store { get; set; }
         public Boolean IsActive { get; set; }
@@ -318,7 +318,7 @@ namespace App.Model
         public string KotNum { get; set; }
         public int StoreID { get; set; }
         public int UserID { get; set; }
-       
+
         public int CustomerID { get; set; }
         public DateTime InvoiceDate { get; set; }
         public int TableID { get; set; }
@@ -357,7 +357,7 @@ namespace App.Model
 
         public Boolean IsPrinted { get; set; }
         public virtual Product Product { get; set; }
-       public virtual KotMaster KotMasters { get; set; }
+        public virtual KotMaster KotMasters { get; set; }
 
 
     }
@@ -370,7 +370,7 @@ namespace App.Model
         public int RefundMasterID { get; set; }
         public string RefundNum { get; set; }
         public int StoreID { get; set; }
-        public int UserID { get; set; }  
+        public int UserID { get; set; }
         public int InvoicemasterID { get; set; }
         public DateTime RefundDate { get; set; }
         public Decimal TotalRefund { get; set; }

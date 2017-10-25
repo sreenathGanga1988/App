@@ -725,6 +725,7 @@ namespace App.UI
             frmpymntmethode.ShowDialog();
             btn.Text = frmpymntmethode.SelectedPaymentMode;
             frmpymntmethode.Dispose();
+            if (btn.Text== "") { btn.Text = "Payment Method"; }
             lbl_paymentMode.Text = btn.Text;
         }
         /// <summary>

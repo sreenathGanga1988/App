@@ -162,7 +162,15 @@ namespace App.Repository
             return q;
 
         }
+        public int GetOrginalCategoryID(int odooCategoryID)
+        {
+            int categoryid = 0;
 
+            var q = cntxt.Categorys.Where(u => u.OdooCategoryId == odooCategoryID).Select(u => u.Id).FirstOrDefault();
+
+            categoryid = int.Parse(q.ToString());
+            return categoryid;
+        }
 
         public List<Customer> GetcustomerofLocationSearch(String searchtext, int? LocationID = 0)
         {

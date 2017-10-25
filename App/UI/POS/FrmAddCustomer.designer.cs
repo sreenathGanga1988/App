@@ -70,6 +70,8 @@
             this.panel7 = new System.Windows.Forms.Panel();
             this.panel14 = new System.Windows.Forms.Panel();
             this.panel71 = new System.Windows.Forms.Panel();
+            this.button1 = new System.Windows.Forms.Button();
+            this.panel6.SuspendLayout();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv)).BeginInit();
             this.panel12.SuspendLayout();
@@ -118,6 +120,7 @@
             // 
             // panel6
             // 
+            this.panel6.Controls.Add(this.button1);
             this.panel6.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel6.Location = new System.Drawing.Point(0, 0);
             this.panel6.Name = "panel6";
@@ -480,6 +483,15 @@
             this.panel71.Size = new System.Drawing.Size(51, 30);
             this.panel71.TabIndex = 4;
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(7, 3);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 0;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
             // FrmAddCustomer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -489,6 +501,7 @@
             this.Name = "FrmAddCustomer";
             this.ShowIcon = false;
             this.Text = "Customer";
+            this.panel6.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgv)).EndInit();
             this.panel12.ResumeLayout(false);
@@ -549,5 +562,6 @@
         private System.Windows.Forms.Panel panel7;
         private System.Windows.Forms.Panel panel14;
         private System.Windows.Forms.Panel panel71;
+        private System.Windows.Forms.Button button1;
     }
 }
