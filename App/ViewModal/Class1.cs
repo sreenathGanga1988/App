@@ -17,6 +17,7 @@ namespace App.ViewModal
         public int ProductID { get; set; }
         public String ProductName { get; set; }
         public String Color { get; set; }
+     
 
     }
     public  class SalesViewModal

@@ -83,11 +83,6 @@ namespace App.UI.Setting
 
 
 
-        private void button2_Click(object sender, EventArgs e)
-        {
-
-        }
-
 
         public Boolean TestConnection()
         {
@@ -119,67 +114,30 @@ namespace App.UI.Setting
 
             return isok;
         }
-        private void button1_Click(object sender, EventArgs e)
-        {
-            if (TestConnection())
-            {
-                btn_saveodoosetting.Enabled = true;
-            }
-            else
-            {
-
-            }
-        }
-
-        private void textBox3_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox4_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label8_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label9_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btn_saveodoosetting_Click(object sender, EventArgs e)
-        {
-            if (TestConnection())
-            {
-                SettingRepository sysrepo = new SettingRepository();
-
-                OdooDetail odetails = new OdooDetail { Server = tbHost.Text.Trim(), PortNum = int.Parse(tbPort.Text.Trim()), UserId = tbUser.Text.Trim(), Password = tbPass.Text.Trim(), DataBasename = tbDataBaseName.Text.Trim() ,IsActive=true ,StoreID=Program.LocationID };
-                sysrepo.UpdateOdooReopository(odetails);
-                MessageBox.Show("Odoo settings Updated Correctly. Please Logout the App and login");
-
-            }
-        }
-
+  
 
 
         public void SaveOODOSetting()
         {
 
 
+            if (TestConnection())
+            {
+                SettingRepository sysrepo = new SettingRepository();
 
+                OdooDetail odetails = new OdooDetail { Server = tbHost.Text.Trim(), PortNum = int.Parse(tbPort.Text.Trim()), UserId = tbUser.Text.Trim(), Password = tbPass.Text.Trim(), DataBasename = tbDataBaseName.Text.Trim(), IsActive = true, StoreID = Program.LocationID };
+                sysrepo.UpdateOdooReopository(odetails);
+                MessageBox.Show("Odoo settings Updated Correctly. Please Logout the App and login");
+
+            }
 
         }
 
-        private void button3_Click(object sender, EventArgs e)
-        {
+       
 
-        }
 
-        private void button3_Click_1(object sender, EventArgs e)
+
+        public void settingupdate()
         {
             AppUserSetting appUserSetting = new AppUserSetting();
             appUserSetting.ProductperRow = int.Parse(txt_noofproductonrow.Text);
@@ -188,7 +146,7 @@ namespace App.UI.Setting
             appUserSetting.PaddingNumber = int.Parse(txt_padding.Text);
             appUserSetting.ProductButtonWidth = Decimal.Parse(txt_buttonwidth.Text);
             appUserSetting.ProductButtonHeigth = Decimal.Parse(txt_buttonHeight.Text);
-           
+
             appUserSetting.StoreID = Program.LocationID;
             appUserSetting.IsActive = true;
             appUserSetting.RealtimeInvoiceUpdate = (chk_realtime.Checked) ? true : false;
@@ -197,12 +155,7 @@ namespace App.UI.Setting
             SettingRepository sysrepo = new SettingRepository();
             sysrepo.UpdateUsersettingReopository(appUserSetting);
             MessageBox.Show("App Store settings Updated Correctly. Please Logout the App and login");
-
         }
-
-
-
-
 
 
 
@@ -235,12 +188,51 @@ namespace App.UI.Setting
 
         private void button2_Click_1(object sender, EventArgs e)
         {
+        }
+        
+
+
+        public void InsertprinterDetails()
+        {
+
             SettingRepository sysrepo = new SettingRepository();
-            PrinterDetail printerDetails = new PrinterDetail { PosPrinter = cmb_pos.Text.Trim(),
-                KotPrinter = cmb_kot.Text.Trim(), JuicePrinter = cmb_juice.Text.Trim(),
-               IsActive = true, StoreID = Program.LocationID };
+            PrinterDetail printerDetails = new PrinterDetail
+            {
+                PosPrinter = cmb_pos.Text.Trim(),
+                KotPrinter = cmb_kot.Text.Trim(),
+                JuicePrinter = cmb_juice.Text.Trim(),
+                IsActive = true,
+                StoreID = Program.LocationID
+            };
             sysrepo.UpdatePrinterReopository(printerDetails);
             MessageBox.Show("Printer settings Updated Correctly. Please Logout the App and login");
+        }
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+
+            if (TestConnection())
+            {
+                btn_saveodoosetting.Enabled = true;
+            }
+            else
+            {
+
+            }
+        }
+
+        private void btn_saveodoosetting_Click_1(object sender, EventArgs e)
+        {
+            SaveOODOSetting();
+        }
+
+        private void button3_Click_2(object sender, EventArgs e)
+        {
+            settingupdate();
+        }
+
+        private void button2_Click_2(object sender, EventArgs e)
+        {
+            InsertprinterDetails();
         }
     }
 }

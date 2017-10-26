@@ -55,7 +55,13 @@ namespace App.Repository
             return q;
 
         }
+        public List<Product> GetProductList()
+        {
 
+            var q = cntxt.Products.ToList();
+            return q;
+
+        }
 
     }
 
@@ -219,6 +225,15 @@ namespace App.Repository
 
             cntxt.Entry(ctgry).State = EntityState.Modified;
             cntxt.SaveChanges();
+        }
+        public int GetOrginalCategoryID(int odooCategoryID)
+        {
+            int categoryid = 0;
+
+            var q = cntxt.Categorys.Where(u => u.OdooCategoryId == odooCategoryID).Select(u => u.Id).FirstOrDefault();
+
+            categoryid = int.Parse(q.ToString());
+            return categoryid;
         }
 
     }

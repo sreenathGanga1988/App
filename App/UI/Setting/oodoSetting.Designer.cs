@@ -215,6 +215,7 @@
             this.btn_saveodoosetting.TabIndex = 14;
             this.btn_saveodoosetting.Text = "Save";
             this.btn_saveodoosetting.UseVisualStyleBackColor = true;
+            this.btn_saveodoosetting.Click += new System.EventHandler(this.btn_saveodoosetting_Click_1);
             // 
             // button1
             // 
@@ -226,6 +227,7 @@
             this.button1.TabIndex = 13;
             this.button1.Text = "Test Connection";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click_1);
             // 
             // tbPort
             // 
@@ -450,6 +452,7 @@
             this.button2.TabIndex = 14;
             this.button2.Text = "Save";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click_2);
             // 
             // groupBox3
             // 
@@ -534,6 +537,7 @@
             this.button3.TabIndex = 14;
             this.button3.Text = "Save";
             this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click_2);
             // 
             // txt_noofproductonrow
             // 

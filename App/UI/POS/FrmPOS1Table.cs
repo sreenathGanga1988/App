@@ -713,7 +713,9 @@ namespace App.UI
             FrmTables frm = new FrmTables();
             frm.ShowDialog();
             btn.Text = frm.Selectedtablename;
+            if (btn.Text == "") { btn.Text = "Tables"; }
             lbl_tableID.Text = frm.SelectedTableID.ToString();
+            
             frm.Dispose();
         }
         /// <summary>

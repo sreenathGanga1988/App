@@ -63,7 +63,15 @@ namespace App.UI.Masters
                 dgv.Rows[index].Cells["OdooCategoryId"].Value = ctgry.OdooCategoryId.ToString();
                 dgv.Rows[index].Cells["CategoryName"].Value = ctgry.CategoryName.ToString();
                 dgv.Rows[index].Cells["Color"].Value = ctgry.Color==null ? "" : ctgry.Color.ToString();
-                dgv.Rows[index].Cells["Printer"].Value = ctgry.Printer.PrinterName.ToString();
+                try
+                {
+                    dgv.Rows[index].Cells["Printer"].Value = ctgry.Printer.PrinterName.ToString();
+                }
+                catch (Exception)
+                {
+
+                   
+                }
             }
 
 
@@ -113,6 +121,20 @@ namespace App.UI.Masters
             cmb_pos.Text= dgv.Rows[e.RowIndex].Cells["Printer"].Value.ToString();
             txt_cATEGORYNAME.Text= dgv.Rows[e.RowIndex].Cells["CategoryName"].Value.ToString();
             btn_save.Text = "Update";
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            getProductsfromOdoo();
+        }
+
+        public void getProductsfromOdoo()
+        {
+            OdooUpdator odooUpdator = new OdooUpdator();
+            odooUpdator.GetCategoryfromODOO();
+            odooUpdator.GetProductfromODOO();
+
+            MessageBox.Show("Sucessfully Updated From Odoo");
         }
     }
 }

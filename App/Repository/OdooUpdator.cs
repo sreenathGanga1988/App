@@ -3,6 +3,7 @@ using App.Model;
 using Npgsql;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -101,92 +102,90 @@ values(:create_uid,:user_id, :store_id,:write_uid ,:create_date,:write_date,:tab
 
 
 
-//        public void uploadInvoiceDetails()
-//        {
-//            var q = from invoiceDetail in cntxt.InvoiceDetails
-//                    where invoiceDetail.IsUploaded == false
-//                    select invoiceDetail;
+        public void GetProductfromODOO()
+        {
 
-//            foreach (var element in q)
-//            {
+            CategoryRepository repo = new CategoryRepository();
+            POSDataContext cntxt = new POSDataContext();
+            string connstring = String.Format("Server={0};Port={1};" +
+            "User Id={2};Password={3};Database={4};",
+            Program.MySettingViewModal.MyOoodoDetasils.Server.Trim(), Program.MySettingViewModal.MyOoodoDetasils.PortNum.ToString().Trim(), Program.MySettingViewModal.MyOoodoDetasils.UserId.ToString().Trim(),
+            Program.MySettingViewModal.MyOoodoDetasils.Password.ToString().Trim(), Program.MySettingViewModal.MyOoodoDetasils.DataBasename.ToString().Trim());
+            NpgsqlConnection conn = new NpgsqlConnection(connstring);
+            conn.Open();
+            NpgsqlCommand cmd = new NpgsqlCommand(@"select a.id,b.name,b.categ_id,b.list_price from product_product a, product_template b 
+            where a.product_tmpl_id=b.id", conn);
 
-//                if (InsertInvoicemaster(element))
-//                {
+            DataTable dt = new DataTable();
+            NpgsqlDataReader rdr = cmd.ExecuteReader();
 
+            dt.Load(rdr);
+            List<Product> Products = new List<Product>();
+            foreach (DataRow row in dt.Rows)
+            {
 
-//                    element.IsUploaded = true;
+                Product product = new Product();
+                product.ProductName = row["name"].ToString();
+                product.OdooCategoryId = int.Parse(row["categ_id"].ToString());
+                product.CategoryId = repo.GetOrginalCategoryID(int.Parse(row["categ_id"].ToString()));
+                product.UnitPrice = decimal.Parse(row["list_price"].ToString());
+                product.OdooProductId = int.Parse(row["id"].ToString());
 
-//                };
+                product.DiscountForLocation = 0;
+                product.MinimumSPForLocation = 0;
+                product.Color = "";
+                product.Image = "";
 
-
-
-//            }
-
-//            cntxt.SaveChanges();
-//        }
-
-
-
-
-
-
-//        public Boolean InsertInvoiceDetails(InvoiceDetail invdet)
-//        {
-//            Boolean isok = false;
-
-//            try
-//            {
-//                //string connstring = String.Format("Server=192.168.1.73;Port=5432;User Id=odoo;Password=at123;Database=ken-aug20;");
-//                string connstring = String.Format("Server={0};Port={1};" +
-//                        "User Id={2};Password={3};Database={4};",
-//                        Program.MySettingViewModal.MyOoodoDetasils.Server.Trim(), Program.MySettingViewModal.MyOoodoDetasils.PortNum.ToString().Trim(), Program.MySettingViewModal.MyOoodoDetasils.UserId.ToString().Trim(),
-//                       Program.MySettingViewModal.MyOoodoDetasils.Password.ToString().Trim(), Program.MySettingViewModal.MyOoodoDetasils.DataBasename.ToString().Trim());
-//                NpgsqlConnection conn = new NpgsqlConnection(connstring);
-//                conn.Open();
-//                NpgsqlCommand cmd = new NpgsqlCommand(@"insert into pos_order_invoice_details 
-//(create_uid,create_date,product_id,discount,unit_price,write_uid,line_id,pos_invoice_id,write_date,qty,pos_invoice_details_id,product_name)
-//values(:create_uid,)", conn);
-//                cmd.Parameters.Add(new NpgsqlParameter("create_uid", invdet.Invoicemaster.UserID));
-//                cmd.Parameters.Add(new NpgsqlParameter("create_date", DateTime.Now));
-
-//                cmd.Parameters.Add(new NpgsqlParameter("product_id", invdet.ProductId));
-//                cmd.Parameters.Add(new NpgsqlParameter("discount", invdet.DiscountPerUOM));
-//                cmd.Parameters.Add(new NpgsqlParameter("unit_price", invdet.UnitPrice));
-//                cmd.Parameters.Add(new NpgsqlParameter("write_uid", invdet.Invoicemaster.UserID)); ;
-              
+                product.IsAvailable = true;
+                product.IsRateChangable = true;
+                product.IsTodaySpecial = true;
+                cntxt.Products.Add(product);
 
 
 
-//             //   cmd.Parameters.Add(new NpgsqlParameter("line_id", invdet.TableID));
-//                cmd.Parameters.Add(new NpgsqlParameter("pos_invoice_id", invdet.InvoicemasterID));
-//                cmd.Parameters.Add(new NpgsqlParameter("write_date", DateTime.Now));
-//                cmd.Parameters.Add(new NpgsqlParameter("qty", invdet.Qty));
-//                cmd.Parameters.Add(new NpgsqlParameter("pos_invoice_details_id", invdet.InvoiceDetailID));
-              
-          
-//                cmd.ExecuteNonQuery();
+            }
+
+            cntxt.SaveChanges();
+
+        }
 
 
 
 
-//                // since we only showing the result we don't need connection anymore
-//                conn.Close();
+        public void GetCategoryfromODOO()
+        {
+
+            CategoryRepository repo = new CategoryRepository();
+            POSDataContext cntxt = new POSDataContext();
+            string connstring = String.Format("Server={0};Port={1};" +
+            "User Id={2};Password={3};Database={4};",
+            Program.MySettingViewModal.MyOoodoDetasils.Server.Trim(), Program.MySettingViewModal.MyOoodoDetasils.PortNum.ToString().Trim(), Program.MySettingViewModal.MyOoodoDetasils.UserId.ToString().Trim(),
+            Program.MySettingViewModal.MyOoodoDetasils.Password.ToString().Trim(), Program.MySettingViewModal.MyOoodoDetasils.DataBasename.ToString().Trim());
+            NpgsqlConnection conn = new NpgsqlConnection(connstring);
+            conn.Open();
+            NpgsqlCommand cmd = new NpgsqlCommand(@"select id , name from product_category", conn);
+
+            DataTable dt = new DataTable();
+            NpgsqlDataReader rdr = cmd.ExecuteReader();
+
+            dt.Load(rdr);
+            List<Product> Products = new List<Product>();
+            foreach (DataRow row in dt.Rows)
+            {
+
+                Category category = new Category();
+                category.CategoryName = row["name"].ToString();
+                category.OdooCategoryId = int.Parse(row["id"].ToString());
+                category.Color = "";
+                cntxt.Categorys.Add(category);
 
 
 
-//                isok = true;
-//            }
-//            catch (Exception Ex)
-//            {
-//                isok = false;
+            }
 
-//            }
+            cntxt.SaveChanges();
 
-//            return isok;
-//        }
-
-
-
+        }
 
 
 

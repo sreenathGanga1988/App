@@ -1,4 +1,6 @@
-﻿using System;
+﻿using App.Repository;
+using App.ViewModal;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -16,5 +18,37 @@ namespace App.UI.Masters
         {
             InitializeComponent();
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            getProductsfromOdoo()
+        }
+
+        public void getProductsfromOdoo()
+        {
+            OdooUpdator odooUpdator = new OdooUpdator();
+            odooUpdator.GetCategoryfromODOO();
+            odooUpdator.GetProductfromODOO();
+
+            MessageBox.Show("Sucessfully Updated From Odoo");
+        }
+
+
+
+        public void fillProduct()
+        {
+            ProductRepositories productRepositories = new ProductRepositories();
+
+            List<Model.Product> products = productRepositories.GetProductList().ToList();
+            
+
+
+
+
+        }
+
+
+
+
     }
 }
