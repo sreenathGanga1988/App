@@ -132,7 +132,7 @@ values(:create_uid,:user_id, :store_id,:write_uid ,:create_date,:write_date,:tab
                 product.OdooProductId = int.Parse(row["id"].ToString());
 
                 product.DiscountForLocation = 0;
-                product.MinimumSPForLocation = 0;
+                product.MinimumSPForLocation = product.UnitPrice;
                 product.Color = "";
                 product.Image = "";
 

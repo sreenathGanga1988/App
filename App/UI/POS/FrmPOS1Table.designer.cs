@@ -57,7 +57,7 @@
             this.panel79 = new System.Windows.Forms.Panel();
             this.button53 = new System.Windows.Forms.Button();
             this.panel78 = new System.Windows.Forms.Panel();
-            this.button52 = new System.Windows.Forms.Button();
+            this.btn_todaySpecial = new System.Windows.Forms.Button();
             this.panel77 = new System.Windows.Forms.Panel();
             this.txt_producrtcode = new System.Windows.Forms.TextBox();
             this.panel76 = new System.Windows.Forms.Panel();
@@ -502,26 +502,26 @@
             // 
             // panel78
             // 
-            this.panel78.Controls.Add(this.button52);
+            this.panel78.Controls.Add(this.btn_todaySpecial);
             this.panel78.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel78.Location = new System.Drawing.Point(237, 3);
             this.panel78.Name = "panel78";
             this.panel78.Size = new System.Drawing.Size(129, 38);
             this.panel78.TabIndex = 6;
             // 
-            // button52
+            // btn_todaySpecial
             // 
-            this.button52.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(121)))), ((int)(((byte)(166)))));
-            this.button52.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.button52.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button52.ForeColor = System.Drawing.Color.White;
-            this.button52.Location = new System.Drawing.Point(0, 0);
-            this.button52.Name = "button52";
-            this.button52.Size = new System.Drawing.Size(129, 38);
-            this.button52.TabIndex = 1;
-            this.button52.Text = "Todays Specials";
-            this.button52.UseVisualStyleBackColor = false;
-            this.button52.Click += new System.EventHandler(this.button52_Click);
+            this.btn_todaySpecial.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(121)))), ((int)(((byte)(166)))));
+            this.btn_todaySpecial.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btn_todaySpecial.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_todaySpecial.ForeColor = System.Drawing.Color.White;
+            this.btn_todaySpecial.Location = new System.Drawing.Point(0, 0);
+            this.btn_todaySpecial.Name = "btn_todaySpecial";
+            this.btn_todaySpecial.Size = new System.Drawing.Size(129, 38);
+            this.btn_todaySpecial.TabIndex = 1;
+            this.btn_todaySpecial.Text = "Todays Specials";
+            this.btn_todaySpecial.UseVisualStyleBackColor = false;
+            this.btn_todaySpecial.Click += new System.EventHandler(this.btn_todaySpecial_Click);
             // 
             // panel77
             // 
@@ -1808,7 +1808,7 @@
         private System.Windows.Forms.Panel panel79;
         private System.Windows.Forms.Button button53;
         private System.Windows.Forms.Panel panel78;
-        private System.Windows.Forms.Button button52;
+        private System.Windows.Forms.Button btn_todaySpecial;
         private System.Windows.Forms.Panel panel77;
         private System.Windows.Forms.TextBox txt_producrtcode;
         private System.Windows.Forms.Panel panel76;

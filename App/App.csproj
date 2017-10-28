@@ -308,6 +308,12 @@
     <Compile Include="UI\FrmActions.designer.cs">
       <DependentUpon>FrmActions.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\Masters\FrmProduct.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Masters\FrmProduct.Designer.cs">
+      <DependentUpon>FrmProduct.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\POS\FrmAddCustomer.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -385,12 +391,6 @@
     </Compile>
     <Compile Include="UI\Masters\PrinterForm.Designer.cs">
       <DependentUpon>PrinterForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="UI\Masters\Product.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="UI\Masters\Product.Designer.cs">
-      <DependentUpon>Product.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\RefundAndExpense\ActionBoard.cs">
       <SubType>Form</SubType>
@@ -587,8 +587,8 @@
     <EmbeddedResource Include="UI\FrmActions.resx">
       <DependentUpon>FrmActions.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI\Masters\Product.resx">
-      <DependentUpon>Product.cs</DependentUpon>
+    <EmbeddedResource Include="UI\Masters\FrmProduct.resx">
+      <DependentUpon>FrmProduct.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\POS\FrmAddCustomer.resx">
       <DependentUpon>FrmAddCustomer.cs</DependentUpon>

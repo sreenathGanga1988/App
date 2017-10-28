@@ -123,7 +123,7 @@ namespace App.UI
 
             Invoicemaster mstr = invoiceRepository.GetInvoice(invoiceid);
 
-            SalesForm frm = new SalesForm(mstr);
+            FrmPOS1Table frm = new FrmPOS1Table(mstr);
             frm.Show();
         }
     }

@@ -776,6 +776,24 @@ namespace App.UI
             return change;
         }
 
+
+
+
+
+        public void SelectTodaysSpecial()
+        {
+            ProductRepositories productrep = new ProductRepositories();
+
+            List<ProductlistViewModal> Products = productrep.GetTodaySpecial(0);
+            LoadProducts(Products);
+        }
+
+
+
+
+
+
+
         //public void AddKoT()
         //{
         //    KotMaster komstr = new KotMaster();
@@ -1018,9 +1036,10 @@ namespace App.UI
         }
 
 
-        public void ShowAction() { 
-            FrmActions actions = new FrmActions();
-            actions.ShowDialog();
+        public void ShowAction() {
+            //FrmActions actions = new FrmActions();
+            //actions.ShowDialog();
+            Showpending();
         }
 
 
@@ -1036,14 +1055,17 @@ namespace App.UI
             
         }
 
-      
-
-        private void btn_pending_Click(object sender, EventArgs e)
+      public void Showpending()
         {
             KOT frm = new KOT();
 
             frm.StartPosition = FormStartPosition.CenterScreen;
             frm.Show();
+        }
+
+        private void btn_pending_Click(object sender, EventArgs e)
+        {
+          
         }
 
         private void btn_close_Click(object sender, EventArgs e)
@@ -1100,11 +1122,6 @@ namespace App.UI
 
         }
 
-        private void button52_Click(object sender, EventArgs e)
-        {
-
-        }
-
 
 
         public void SearchItem()
@@ -1114,6 +1131,13 @@ namespace App.UI
 
             List<ProductlistViewModal> Products = productrep.GetMarchingProductlist(categoryId);
             LoadProducts(Products);
+        }
+
+
+
+        private void btn_todaySpecial_Click(object sender, EventArgs e)
+        {
+            SelectTodaysSpecial();
         }
     }
 }

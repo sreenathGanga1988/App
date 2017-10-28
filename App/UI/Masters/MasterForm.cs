@@ -27,7 +27,7 @@ namespace App.UI.Masters
 
         private void btn_product_Click(object sender, EventArgs e)
         {
-            UI.Masters.Product frm = new Masters.Product();
+            UI.Masters.FrmProduct frm = new Masters.FrmProduct();
             frm.Show();
         }
 

@@ -47,7 +47,19 @@ namespace App.Repository
 
 
         }
+        public List<ProductlistViewModal> GetTodaySpecial(int? categoryID = 0)
+        {
 
+
+
+            var q = (cntxt.Products.Where(u => u.IsTodaySpecial==true).
+            Select(x => new ProductlistViewModal { ProductID = x.Id, ProductName = x.ProductName, Color = x.Color })).ToList();
+            return q;
+
+
+
+
+        }
         public Product GetProduct(int Id)
         {
 
@@ -61,6 +73,28 @@ namespace App.Repository
             var q = cntxt.Products.ToList();
             return q;
 
+        }
+
+        public List<Product> GetProductSearch(String searchtext, int? LocationID = 0)
+        {
+
+            var q = cntxt.Products.Where(u => u.Id.ToString().Contains(searchtext) || u.ProductName.Contains(searchtext) || u.Category.CategoryName.Contains(searchtext)).ToList();
+
+            return q;
+        }
+
+
+        public void UpdateTodaySpoecial(int ID ,Boolean status)
+        {
+            var q = from product in cntxt.Products
+                    where product.Id == ID
+                    select product;
+
+            foreach (var element in q) {
+                element.IsTodaySpecial = status;
+            }
+
+            cntxt.SaveChanges();
         }
 
     }
