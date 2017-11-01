@@ -24,11 +24,15 @@ namespace App.ViewModal
     {
         CategoryRepository catrepo = new CategoryRepository();
         TableRepository tablerepo = new TableRepository();
-
+        BuzzerRepository buzzerrepo = new BuzzerRepository();
+        CustomerRepositiry custorepo = new CustomerRepositiry();
 
         public List<Category> CategoryList { get => catrepo.GetCategoryList(); set => CategoryList = value; }
         public List<Table> TableList { get => tablerepo.GetTableList(Program.LocationID); set => TableList = value; }
 
+        public List<Customer> CustomerList { get => custorepo.GetcustomerofLocation(Program.LocationID); set => CustomerList = value; }
+
+        public List<Buzzer> BuzzerList { get; set; }
     }
 
     public class InvoiceviewModal

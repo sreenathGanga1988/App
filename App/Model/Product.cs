@@ -141,7 +141,7 @@ namespace App.Model
 
         public String Color { get; set; }
 
-
+        public Boolean IsLocked { get; set; }
         public virtual List<Invoicemaster> Invoicemasters { get; set; }
     }
 
@@ -181,6 +181,9 @@ namespace App.Model
         public int? KotMasterID { get; set; }
         public int CustomerID { get; set; }
         public int TableID { get; set; }
+        public int PayMentModeId { get; set; }
+        public int? BuzzerID { get; set; }
+
         public DateTime InvoiceDate { get; set; }
         public virtual Table Table { get; set; }
         public Decimal TotalPaid { get; set; }
@@ -195,9 +198,11 @@ namespace App.Model
         public Boolean? IsKOT { get; set; }
         public virtual List<InvoiceDetail> InvoiceDetails { get; set; }
         public String Color { get; set; }
+        public String TableName { get; set; }
+
         public String PaymentMode { get; set; }
         public String BuzzerName { get; set; }
-        public int? BuzzerID { get; set; }
+       
         public virtual Buzzer Buzzer { get; set; }
         [NotMapped]
         public string StoreName { get; set; }
@@ -210,6 +215,14 @@ namespace App.Model
         public virtual List<RefundMaster> RefundMasters { get; set; }
     }
 
+    public class PaymentModeMaster
+    {
+        [Key]
+        public int PaymentModeID { get; set; }
+
+        public String PaymentMode { get; set; }
+    }
+   
     public class InvoiceDetail
     {
 

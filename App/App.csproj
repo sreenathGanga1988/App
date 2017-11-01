@@ -288,6 +288,18 @@
     <Compile Include="Migrations\201710251227268_added oodo id.Designer.cs">
       <DependentUpon>201710251227268_added oodo id.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201711010606000_addsomething.cs" />
+    <Compile Include="Migrations\201711010606000_addsomething.Designer.cs">
+      <DependentUpon>201711010606000_addsomething.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201711010626228_addedislocked to.cs" />
+    <Compile Include="Migrations\201711010626228_addedislocked to.Designer.cs">
+      <DependentUpon>201711010626228_addedislocked to.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201711011332196_addedpaymenttremidansvalue.cs" />
+    <Compile Include="Migrations\201711011332196_addedpaymenttremidansvalue.Designer.cs">
+      <DependentUpon>201711011332196_addedpaymenttremidansvalue.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Model\Product.cs" />
     <Compile Include="Model\UIModel.cs" />
@@ -570,6 +582,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201710251227268_added oodo id.resx">
       <DependentUpon>201710251227268_added oodo id.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711010606000_addsomething.resx">
+      <DependentUpon>201711010606000_addsomething.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711010626228_addedislocked to.resx">
+      <DependentUpon>201711010626228_addedislocked to.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711011332196_addedpaymenttremidansvalue.resx">
+      <DependentUpon>201711011332196_addedpaymenttremidansvalue.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

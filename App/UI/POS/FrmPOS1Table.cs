@@ -18,17 +18,45 @@ namespace App.UI
     public partial class FrmPOS1Table : Form
     {
         int invoiceid = 0;
+        public int selectedCustomerID = 0;
+        public int selectedBuzzerID = 0;
+        public int selectedTableID = 0;
+        public int selectedPaymentID = 0;
+
+        public String selectedCustomerName = "";
+        public String selectedBuzzerName = "";
+        public String selectedTableName = "";
+        public String selectedPaymentName = "";
+
         public FrmPOS1Table()
         {
             InitializeComponent();
             SalesViewModal salesViewmodal = new SalesViewModal();
             LoadCategory(salesViewmodal);
             UpdateFont();
-          //  LoadTable(salesViewmodal);
+            Intializeselecteditems();
         }
 
 
-        private void UpdateFont()
+
+      
+
+
+        public void Intializeselecteditems()
+        {
+         selectedCustomerID = 0;
+         selectedBuzzerID = 0;
+         selectedTableID = 0;
+         selectedPaymentID = 0;
+
+         selectedCustomerName = "";
+         selectedBuzzerName = "";
+         selectedTableName = "";
+         selectedPaymentName = "";
+
+    }
+
+    private void UpdateFont()
         {
             //Change cell font
             grd_ProductDetails.ColumnHeadersDefaultCellStyle.BackColor = Color.Navy;
@@ -80,9 +108,12 @@ namespace App.UI
 
 
 
-            lbl_custid.Text = invoicemaster.CustomerID.ToString();
+            selectedCustomerID = invoicemaster.CustomerID;
             lbl_customer.Text = invoicemaster.Customer.CustomerName;
-            lbl_tableID.Text = invoicemaster.TableID.ToString();
+           
+
+            selectedTableID = int.Parse(invoicemaster.TableID.ToString());
+            selectedTableName = invoicemaster.Table.TableName;
             lbl_table.Text = invoicemaster.Table.TableName;
 
             foreach (InvoiceDetail invdet in invoicemaster.InvoiceDetails)
@@ -188,7 +219,9 @@ namespace App.UI
         private void OnTableButtonClick(object sender, EventArgs e)
         {
             lbl_table.Text = ((ValueButton)sender).Text;
-            lbl_tableID.Text = ((ValueButton)sender)._value.ToString();
+            selectedTableID =int.Parse ( ((ValueButton)sender)._value.ToString());
+            selectedTableName= ((ValueButton)sender).Text;
+
             //your code for the event.
         }
 
@@ -609,22 +642,28 @@ namespace App.UI
             }
             else if (lastbutton.Text.Trim() == "Customer")
                     {
-                try
-                {
-                    FrmAddCustomer cstmr = new FrmAddCustomer();
-                    cstmr.ShowDialog();
-                   
-                }
-                catch (Exception)
-                {
-
-
-                }
-
+                SelectCustomerOnclick(lastbutton);
             }
         }
 
+        public void SelectCustomerOnclick(Button lastbutton)
+        {
+            try
+            {
+                FrmAddCustomer cstmr = new FrmAddCustomer();
+                cstmr.ShowDialog();
 
+                selectedCustomerID = int.Parse (cstmr.SelectedCustomerID);
+                selectedCustomerName = cstmr.SelectedCustomerName;
+                lbl_customer.Text = cstmr.SelectedCustomerName;
+            }
+            catch (Exception)
+            {
+
+
+            }
+
+        }
 
         /// <summary>
         /// Add the selected Item
@@ -650,16 +689,21 @@ namespace App.UI
         /// </summary>
         public void SelectCustomer()
         {
+            int CustomerID = int.Parse((txt_producrtcode.Text));
+            selectCustomerByID(CustomerID);
+        }
+        public void selectCustomerByID(int id)
+        {
             try
             {
-                int CustomerID = int.Parse((txt_producrtcode.Text));
+               
                 CustomerRepositiry custrepo = new CustomerRepositiry();
 
-                Customer cust = custrepo.GetCustomer(CustomerID);
+                Customer cust = custrepo.GetCustomer(id);
 
 
                 lbl_customer.Text = cust.CustomerName;
-                lbl_custid.Text = cust.CustomerID.ToString();
+                selectedCustomerID = cust.CustomerID;
             }
             catch (Exception)
             {
@@ -667,7 +711,6 @@ namespace App.UI
                 MessageBox.Show("Wrong customer ID");
             }
         }
-
 
         /// <summary>
         /// Increase the qty of selected item in grid
@@ -714,8 +757,8 @@ namespace App.UI
             frm.ShowDialog();
             btn.Text = frm.Selectedtablename;
             if (btn.Text == "") { btn.Text = "Tables"; }
-            lbl_tableID.Text = frm.SelectedTableID.ToString();
-            
+            selectedTableID = frm.SelectedTableID;
+            selectedTableName = btn.Text;
             frm.Dispose();
         }
         /// <summary>
@@ -728,15 +771,18 @@ namespace App.UI
             btn.Text = frmpymntmethode.SelectedPaymentMode;
             frmpymntmethode.Dispose();
             if (btn.Text== "") { btn.Text = "Payment Method"; }
-            lbl_paymentMode.Text = btn.Text;
+            selectedPaymentName = btn.Text;
         }
         /// <summary>
         /// select buzzers
         /// </summary>
-        public void selectBuzzer()
+        public void selectBuzzer(Button btn)
         {
             FrmBuzzers frmbuzzers = new FrmBuzzers();
             frmbuzzers.ShowDialog();
+            btn.Text = frmbuzzers.SelectedBuzzername;
+            if (btn.Text == "") { btn.Text = "Buzzers"; }
+            btn_buzzer.Text = btn.Text;
         }
         public void fillchange()
         {
@@ -845,15 +891,29 @@ namespace App.UI
             invoicemaster.StoreID = Program.LocationID;
             invoicemaster.UserID = Program.UserID;
             invoicemaster.InvoiceDate = DateTime.Now;
-            invoicemaster.CustomerID = int.Parse(lbl_custid.Text);
-            invoicemaster.TableID = int.Parse(lbl_tableID.Text);
+           
+          
             invoicemaster.TotalPaid = Decimal.Parse(txt_total.Text);
             invoicemaster.TotalBill = Decimal.Parse(txt_total.Text);
             invoicemaster.StoreName = Program.StoreName;
             invoicemaster.StoreAddress = Program.StoreAddress;
             invoicemaster.Cashier = Program.Username;
-            invoicemaster.CustomerName = lbl_customer.Text;
+         
             invoicemaster.IsUploaded = false;
+
+            invoicemaster.BuzzerID = selectedBuzzerID;
+            invoicemaster.CustomerID = selectedCustomerID;
+            invoicemaster.TableID = int.Parse(selectedTableID.ToString());
+          
+            invoicemaster.PayMentModeId = selectedPaymentID;
+
+            invoicemaster.CustomerName = selectedCustomerName;
+            invoicemaster.PaymentMode = selectedPaymentName;
+            invoicemaster.TableName = selectedTableName;
+            invoicemaster.BuzzerName = selectedBuzzerName;
+
+            invoicemaster = AdjustAutoSelection(invoicemaster);
+
             if (BillType == "Table")
             {
                 invoicemaster.IstableBill = true;
@@ -899,9 +959,13 @@ namespace App.UI
                 invoicedetails.Add(invoicedetail);
             }
             invoicemaster.InvoiceDetails = invoicedetails;
+
+
+
             InvoiceRepository invrrepo = new InvoiceRepository();
 
             invoicemaster = invrrepo.InsertInvoiceLocal(invoicemaster);
+            Intializeselecteditems();
             try
             {
                 PrintReceipt prnt = new PrintReceipt();
@@ -926,18 +990,51 @@ namespace App.UI
 
                 MessageBox.Show("Printer Malfunction.But Invoice Done");
             }
-        }
 
+
+        }
+        public Invoicemaster AdjustAutoSelection(Invoicemaster invoicemaster)
+        {
+           
+            invoicemaster.CustomerID = selectedCustomerID;
+            invoicemaster.TableID = int.Parse(selectedTableID.ToString());
+            invoicemaster.PaymentMode = selectedPaymentName;
+            if (invoicemaster.BuzzerID == 0)
+            {
+               
+                invoicemaster.BuzzerName = "Buzzers";
+                invoicemaster.BuzzerID = 15;
+
+            }
+            if (invoicemaster.CustomerID ==0)
+            {
+                invoicemaster.CustomerName = "New";
+                invoicemaster.CustomerID = 8;
+            }
+            if (invoicemaster.TableID == 0)
+            {
+                invoicemaster.TableName = "Take Away";
+                invoicemaster.TableID = 1;
+
+            }
+            if (invoicemaster.PayMentModeId == 0)
+            {
+                invoicemaster.PaymentMode = "Cash";
+                invoicemaster.PayMentModeId = 1;
+            }
+
+            return invoicemaster;
+        }
 
         public Boolean ValidateforKot()
         {
             Boolean isvalidforKot = false;
 
-            if (lbl_custid.Text.Trim() == "")
+            if (selectedCustomerID.ToString().Trim() == "")
             {
                 MessageBox.Show("Enter Customer ID");
             }
-            else if (lbl_tableID.Text.Trim() == "")
+            else if (selectedTableID.ToString().Trim() == "")
             {
 
                 MessageBox.Show("Select A Table");
@@ -948,12 +1045,12 @@ namespace App.UI
                 MessageBox.Show("No Item Selected");
             }
 
-            else if (!MyExtensions.CheckifNumeric(lbl_custid.Text.Trim()))
+            else if (!MyExtensions.CheckifNumeric(selectedCustomerID.ToString().Trim()))
             {
 
                 MessageBox.Show("Enter Valid Customer ID");
             }
-            else if (!MyExtensions.CheckifNumeric(lbl_tableID.Text.Trim()))
+            else if (!MyExtensions.CheckifNumeric(selectedTableID.ToString().Trim()))
             {
 
                 MessageBox.Show("Select A  Valid Table");
@@ -1114,7 +1211,7 @@ namespace App.UI
 
         private void btn_buzzer_MouseClick(object sender, MouseEventArgs e)
         {
-            selectBuzzer();
+            selectBuzzer((Button)sender);
         }
 
         private void btn_paymentmode_Click(object sender, EventArgs e)
@@ -1138,6 +1235,11 @@ namespace App.UI
         private void btn_todaySpecial_Click(object sender, EventArgs e)
         {
             SelectTodaysSpecial();
+        }
+
+        private void btn_buzzer_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

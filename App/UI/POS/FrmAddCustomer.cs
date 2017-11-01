@@ -21,7 +21,7 @@ namespace App.UI
             dgv.RowTemplate.Height = 40;
         }
 
-        public String SelectedCustomer { get; set; }
+        public String SelectedCustomerName { get; set; }
         public String SelectedCustomerID { get; set; }
         public void LoadAllcustomer()
         {
@@ -105,11 +105,7 @@ namespace App.UI
 
         private void dgv_CellDoubleClick_1(object sender, DataGridViewCellEventArgs e)
         {
-            lbl_cutomerid.Text = dgv.Rows[e.RowIndex].Cells[0].Value.ToString();
-
-            txt_name.Text = dgv.Rows[e.RowIndex].Cells["CustomerName"].Value.ToString();
-            txt_mobnumber.Text = dgv.Rows[e.RowIndex].Cells["PhoneNumber"].Value.ToString();
-            txt_address.Text = dgv.Rows[e.RowIndex].Cells["CustomerDetails"].Value.ToString();
+            seleectcustomer(e);
         }
 
         private void btn_searcharea_TextChanged(object sender, EventArgs e)
@@ -119,6 +115,27 @@ namespace App.UI
             List<Customer> customerlist = custrepo.GetcustomerofLocationSearch(texttodearch, Program.LocationID);
             loadcustomer(customerlist);
 
+        }
+
+        private void dgv_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            seleectcustomer(e);
+        }
+
+        public void seleectcustomer(DataGridViewCellEventArgs e)
+        {
+            SelectedCustomerID = dgv.Rows[e.RowIndex].Cells[0].Value.ToString();
+            SelectedCustomerName = dgv.Rows[e.RowIndex].Cells["CustomerName"].Value.ToString();
+            this.Close();
+        }
+
+        private void dgv_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            lbl_cutomerid.Text = dgv.Rows[e.RowIndex].Cells[0].Value.ToString();
+
+            txt_name.Text = dgv.Rows[e.RowIndex].Cells["CustomerName"].Value.ToString();
+            txt_mobnumber.Text = dgv.Rows[e.RowIndex].Cells["PhoneNumber"].Value.ToString();
+            txt_address.Text = dgv.Rows[e.RowIndex].Cells["CustomerDetails"].Value.ToString();
         }
     }
 }

@@ -35,11 +35,8 @@
             this.pnl_product = new System.Windows.Forms.Panel();
             this.pnl_customer = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.lbl_paymentMode = new System.Windows.Forms.Label();
-            this.lbl_tableID = new System.Windows.Forms.Label();
             this.panel7 = new System.Windows.Forms.Panel();
             this.label3 = new System.Windows.Forms.Label();
-            this.lbl_custid = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.panel9 = new System.Windows.Forms.Panel();
             this.lbl_customer = new System.Windows.Forms.Label();
@@ -160,7 +157,6 @@
             this.panel1.SuspendLayout();
             this.panel72.SuspendLayout();
             this.pnl_customer.SuspendLayout();
-            this.panel4.SuspendLayout();
             this.panel7.SuspendLayout();
             this.panel9.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -256,8 +252,6 @@
             // 
             this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(121)))), ((int)(((byte)(166)))));
             this.panel4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel4.Controls.Add(this.lbl_paymentMode);
-            this.panel4.Controls.Add(this.lbl_tableID);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel4.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.panel4.Location = new System.Drawing.Point(366, 0);
@@ -265,32 +259,11 @@
             this.panel4.Size = new System.Drawing.Size(311, 74);
             this.panel4.TabIndex = 17;
             // 
-            // lbl_paymentMode
-            // 
-            this.lbl_paymentMode.AutoSize = true;
-            this.lbl_paymentMode.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_paymentMode.Location = new System.Drawing.Point(147, 28);
-            this.lbl_paymentMode.Name = "lbl_paymentMode";
-            this.lbl_paymentMode.Size = new System.Drawing.Size(14, 16);
-            this.lbl_paymentMode.TabIndex = 6;
-            this.lbl_paymentMode.Text = "*";
-            // 
-            // lbl_tableID
-            // 
-            this.lbl_tableID.AutoSize = true;
-            this.lbl_tableID.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_tableID.Location = new System.Drawing.Point(173, 41);
-            this.lbl_tableID.Name = "lbl_tableID";
-            this.lbl_tableID.Size = new System.Drawing.Size(14, 16);
-            this.lbl_tableID.TabIndex = 5;
-            this.lbl_tableID.Text = "*";
-            // 
             // panel7
             // 
             this.panel7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(121)))), ((int)(((byte)(166)))));
             this.panel7.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel7.Controls.Add(this.label3);
-            this.panel7.Controls.Add(this.lbl_custid);
             this.panel7.Controls.Add(this.label4);
             this.panel7.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel7.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -309,16 +282,6 @@
             this.label3.Size = new System.Drawing.Size(31, 13);
             this.label3.TabIndex = 3;
             this.label3.Text = "0.00";
-            // 
-            // lbl_custid
-            // 
-            this.lbl_custid.AutoSize = true;
-            this.lbl_custid.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_custid.Location = new System.Drawing.Point(78, 51);
-            this.lbl_custid.Name = "lbl_custid";
-            this.lbl_custid.Size = new System.Drawing.Size(16, 16);
-            this.lbl_custid.TabIndex = 4;
-            this.lbl_custid.Text = "8";
             // 
             // label4
             // 
@@ -878,6 +841,7 @@
             this.btn_buzzer.TabIndex = 19;
             this.btn_buzzer.Text = "Buzzers";
             this.btn_buzzer.UseVisualStyleBackColor = false;
+            this.btn_buzzer.Click += new System.EventHandler(this.btn_buzzer_Click);
             this.btn_buzzer.MouseClick += new System.Windows.Forms.MouseEventHandler(this.btn_buzzer_MouseClick);
             // 
             // panel48
@@ -1643,8 +1607,6 @@
             this.panel1.ResumeLayout(false);
             this.panel72.ResumeLayout(false);
             this.pnl_customer.ResumeLayout(false);
-            this.panel4.ResumeLayout(false);
-            this.panel4.PerformLayout();
             this.panel7.ResumeLayout(false);
             this.panel7.PerformLayout();
             this.panel9.ResumeLayout(false);
@@ -1823,14 +1785,11 @@
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label lbl_tableID;
-        private System.Windows.Forms.Label lbl_custid;
         private System.Windows.Forms.DataGridViewTextBoxColumn ID;
         private System.Windows.Forms.DataGridViewTextBoxColumn Item;
         private System.Windows.Forms.DataGridViewTextBoxColumn Price;
         private System.Windows.Forms.DataGridViewTextBoxColumn Qty;
         private System.Windows.Forms.DataGridViewTextBoxColumn Discount;
         private System.Windows.Forms.DataGridViewTextBoxColumn Total;
-        private System.Windows.Forms.Label lbl_paymentMode;
     }
 }
