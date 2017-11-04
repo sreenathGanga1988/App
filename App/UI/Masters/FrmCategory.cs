@@ -118,7 +118,15 @@ namespace App.UI.Masters
             lbl_id.Text = dgv.Rows[e.RowIndex].Cells[0].Value.ToString();
             txt_color.Text = "";
             TXT_OODOID.Text= dgv.Rows[e.RowIndex].Cells["OdooCategoryId"].Value.ToString();
-            cmb_pos.Text= dgv.Rows[e.RowIndex].Cells["Printer"].Value.ToString();
+            try
+            {
+                cmb_pos.Text = dgv.Rows[e.RowIndex].Cells["Printer"].Value.ToString();
+            }
+            catch (Exception)
+            {
+
+              
+            }
             txt_cATEGORYNAME.Text= dgv.Rows[e.RowIndex].Cells["CategoryName"].Value.ToString();
             btn_save.Text = "Update";
         }

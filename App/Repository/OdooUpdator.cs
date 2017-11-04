@@ -113,7 +113,7 @@ values(:create_uid,:user_id, :store_id,:write_uid ,:create_date,:write_date,:tab
             Program.MySettingViewModal.MyOoodoDetasils.Password.ToString().Trim(), Program.MySettingViewModal.MyOoodoDetasils.DataBasename.ToString().Trim());
             NpgsqlConnection conn = new NpgsqlConnection(connstring);
             conn.Open();
-            NpgsqlCommand cmd = new NpgsqlCommand(@"select a.id,b.name,b.categ_id,b.list_price from product_product a, product_template b 
+            NpgsqlCommand cmd = new NpgsqlCommand(@"select a.id,b.name,b.pos_categ_id,b.list_price from product_product a, product_template b 
             where a.product_tmpl_id=b.id", conn);
 
             DataTable dt = new DataTable();
@@ -126,8 +126,8 @@ values(:create_uid,:user_id, :store_id,:write_uid ,:create_date,:write_date,:tab
 
                 Product product = new Product();
                 product.ProductName = row["name"].ToString();
-                product.OdooCategoryId = int.Parse(row["categ_id"].ToString());
-                product.CategoryId = repo.GetOrginalCategoryID(int.Parse(row["categ_id"].ToString()));
+                product.OdooCategoryId = int.Parse(row["pos_categ_id"].ToString());
+                product.CategoryId = repo.GetOrginalCategoryID(int.Parse(row["pos_categ_id"].ToString()));
                 product.UnitPrice = decimal.Parse(row["list_price"].ToString());
                 product.OdooProductId = int.Parse(row["id"].ToString());
 
@@ -163,7 +163,7 @@ values(:create_uid,:user_id, :store_id,:write_uid ,:create_date,:write_date,:tab
             Program.MySettingViewModal.MyOoodoDetasils.Password.ToString().Trim(), Program.MySettingViewModal.MyOoodoDetasils.DataBasename.ToString().Trim());
             NpgsqlConnection conn = new NpgsqlConnection(connstring);
             conn.Open();
-            NpgsqlCommand cmd = new NpgsqlCommand(@"select id , name from product_category", conn);
+            NpgsqlCommand cmd = new NpgsqlCommand(@"select id , name from pos_category", conn);
 
             DataTable dt = new DataTable();
             NpgsqlDataReader rdr = cmd.ExecuteReader();

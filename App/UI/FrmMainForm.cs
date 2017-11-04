@@ -50,6 +50,38 @@ namespace App.UI
            
         }
 
+        private bool IsAlreadyOpen(Type formType)
+
+        {
+
+            bool isOpen = false;
+
+
+
+            foreach (Form f in Application.OpenForms)
+
+            {
+
+                if (f.GetType() == formType)
+
+                {
+
+                    f.BringToFront();
+
+                    f.WindowState = FormWindowState.Normal;
+
+                    isOpen = true;
+
+                }
+
+            }
+
+
+            return isOpen;
+
+        }
+
+
         private void button1_Click(object sender, EventArgs e)
         {
             
@@ -107,8 +139,24 @@ namespace App.UI
        
         private void btn_pos_Click(object sender, EventArgs e)
         {
-            FrmPOS1Table frmpos = new FrmPOS1Table();
-            frmpos.ShowDialog();
+
+            FrmPOS1Table frmpos = null;
+            bool isFormOpen = IsAlreadyOpen(typeof(FrmPOS1Table));
+            if (isFormOpen == false)
+            {
+                frmpos = new FrmPOS1Table();
+             //   frmpos.MdiParent = this;
+              //  frmpos.StartPosition = FormStartPosition.CenterScreen;
+                frmpos.Show();
+            }
+
+
+
+
+
+
+            //FrmPOS1Table frmpos = new FrmPOS1Table();
+            //frmpos.ShowDialog();
         }
 
         private void btn_masters_Click(object sender, EventArgs e)
@@ -133,6 +181,7 @@ namespace App.UI
         {
             FrmActions actions = new FrmActions();
             actions.ShowDialog();
+
         }
     }
 }

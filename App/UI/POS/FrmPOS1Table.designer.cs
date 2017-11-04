@@ -45,12 +45,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel73 = new System.Windows.Forms.Panel();
-            this.panel81 = new System.Windows.Forms.Panel();
-            this.panel84 = new System.Windows.Forms.Panel();
-            this.label19 = new System.Windows.Forms.Label();
-            this.label17 = new System.Windows.Forms.Label();
-            this.panel83 = new System.Windows.Forms.Panel();
-            this.panel82 = new System.Windows.Forms.Panel();
             this.panel79 = new System.Windows.Forms.Panel();
             this.button53 = new System.Windows.Forms.Button();
             this.panel78 = new System.Windows.Forms.Panel();
@@ -135,18 +129,8 @@
             this.button44 = new System.Windows.Forms.Button();
             this.button45 = new System.Windows.Forms.Button();
             this.panel26 = new System.Windows.Forms.Panel();
-            this.grd_ProductDetails = new System.Windows.Forms.DataGridView();
-            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Item = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Price = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Qty = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Discount = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Total = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel24 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.panel80 = new System.Windows.Forms.Panel();
-            this.lbl_datettime = new System.Windows.Forms.Label();
-            this.lbl_userid = new System.Windows.Forms.Label();
             this.pnl_category = new System.Windows.Forms.Panel();
             this.panel8 = new System.Windows.Forms.Panel();
             this.panel5 = new System.Windows.Forms.Panel();
@@ -154,6 +138,19 @@
             this.lbl_table = new System.Windows.Forms.Button();
             this.panel17 = new System.Windows.Forms.Panel();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
+            this.panel81 = new System.Windows.Forms.Panel();
+            this.panel82 = new System.Windows.Forms.Panel();
+            this.panel83 = new System.Windows.Forms.Panel();
+            this.label17 = new System.Windows.Forms.Label();
+            this.lbl_invoicenum = new System.Windows.Forms.Label();
+            this.panel84 = new System.Windows.Forms.Panel();
+            this.Total = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Discount = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Qty = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Price = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Item = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.grd_ProductDetails = new System.Windows.Forms.DataGridView();
             this.panel1.SuspendLayout();
             this.panel72.SuspendLayout();
             this.pnl_customer.SuspendLayout();
@@ -161,8 +158,6 @@
             this.panel9.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel73.SuspendLayout();
-            this.panel81.SuspendLayout();
-            this.panel84.SuspendLayout();
             this.panel79.SuspendLayout();
             this.panel78.SuspendLayout();
             this.panel20.SuspendLayout();
@@ -196,11 +191,12 @@
             this.panel25.SuspendLayout();
             this.panel35.SuspendLayout();
             this.panel26.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.grd_ProductDetails)).BeginInit();
             this.panel2.SuspendLayout();
-            this.panel80.SuspendLayout();
             this.pnl_category.SuspendLayout();
             this.panel71.SuspendLayout();
+            this.panel81.SuspendLayout();
+            this.panel84.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.grd_ProductDetails)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -378,69 +374,6 @@
             this.panel73.Size = new System.Drawing.Size(677, 41);
             this.panel73.TabIndex = 7;
             // 
-            // panel81
-            // 
-            this.panel81.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(213)))), ((int)(((byte)(225)))), ((int)(((byte)(235)))));
-            this.panel81.Controls.Add(this.panel84);
-            this.panel81.Controls.Add(this.panel83);
-            this.panel81.Controls.Add(this.panel82);
-            this.panel81.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel81.Location = new System.Drawing.Point(495, 3);
-            this.panel81.Name = "panel81";
-            this.panel81.Size = new System.Drawing.Size(182, 38);
-            this.panel81.TabIndex = 8;
-            // 
-            // panel84
-            // 
-            this.panel84.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(121)))), ((int)(((byte)(166)))));
-            this.panel84.Controls.Add(this.label19);
-            this.panel84.Controls.Add(this.label17);
-            this.panel84.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel84.Location = new System.Drawing.Point(0, 3);
-            this.panel84.Name = "panel84";
-            this.panel84.Size = new System.Drawing.Size(182, 32);
-            this.panel84.TabIndex = 4;
-            // 
-            // label19
-            // 
-            this.label19.AutoSize = true;
-            this.label19.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label19.ForeColor = System.Drawing.Color.White;
-            this.label19.Location = new System.Drawing.Point(104, 6);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(48, 16);
-            this.label19.TabIndex = 1;
-            this.label19.Text = "00001";
-            // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label17.ForeColor = System.Drawing.Color.White;
-            this.label17.Location = new System.Drawing.Point(24, 6);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(74, 16);
-            this.label17.TabIndex = 0;
-            this.label17.Text = "Order No :";
-            // 
-            // panel83
-            // 
-            this.panel83.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel83.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.panel83.Location = new System.Drawing.Point(0, 35);
-            this.panel83.Name = "panel83";
-            this.panel83.Size = new System.Drawing.Size(182, 3);
-            this.panel83.TabIndex = 3;
-            // 
-            // panel82
-            // 
-            this.panel82.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel82.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.panel82.Location = new System.Drawing.Point(0, 0);
-            this.panel82.Name = "panel82";
-            this.panel82.Size = new System.Drawing.Size(182, 3);
-            this.panel82.TabIndex = 2;
-            // 
             // panel79
             // 
             this.panel79.Controls.Add(this.button53);
@@ -602,7 +535,7 @@
             this.btn_print.Name = "btn_print";
             this.btn_print.Size = new System.Drawing.Size(112, 93);
             this.btn_print.TabIndex = 20;
-            this.btn_print.Text = "Print";
+            this.btn_print.Text = "CheckOut";
             this.btn_print.UseVisualStyleBackColor = false;
             this.btn_print.Click += new System.EventHandler(this.numericbuttonclicked_Click);
             // 
@@ -637,6 +570,7 @@
             this.btn_hold.TabIndex = 20;
             this.btn_hold.Text = "Hold";
             this.btn_hold.UseVisualStyleBackColor = false;
+            this.btn_hold.Click += new System.EventHandler(this.numericbuttonclicked_Click);
             // 
             // panel50
             // 
@@ -1413,59 +1347,6 @@
             this.panel26.Size = new System.Drawing.Size(345, 278);
             this.panel26.TabIndex = 5;
             // 
-            // grd_ProductDetails
-            // 
-            this.grd_ProductDetails.AllowUserToAddRows = false;
-            this.grd_ProductDetails.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.grd_ProductDetails.BackgroundColor = System.Drawing.Color.White;
-            this.grd_ProductDetails.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.ID,
-            this.Item,
-            this.Price,
-            this.Qty,
-            this.Discount,
-            this.Total});
-            this.grd_ProductDetails.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.grd_ProductDetails.Location = new System.Drawing.Point(0, 0);
-            this.grd_ProductDetails.MultiSelect = false;
-            this.grd_ProductDetails.Name = "grd_ProductDetails";
-            this.grd_ProductDetails.RowHeadersVisible = false;
-            this.grd_ProductDetails.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.grd_ProductDetails.Size = new System.Drawing.Size(345, 278);
-            this.grd_ProductDetails.TabIndex = 1;
-            // 
-            // ID
-            // 
-            this.ID.HeaderText = "ID";
-            this.ID.Name = "ID";
-            this.ID.Visible = false;
-            // 
-            // Item
-            // 
-            this.Item.HeaderText = "Item";
-            this.Item.Name = "Item";
-            // 
-            // Price
-            // 
-            this.Price.HeaderText = "Price";
-            this.Price.Name = "Price";
-            // 
-            // Qty
-            // 
-            this.Qty.HeaderText = "Qty";
-            this.Qty.Name = "Qty";
-            // 
-            // Discount
-            // 
-            this.Discount.HeaderText = "Discount";
-            this.Discount.Name = "Discount";
-            this.Discount.Visible = false;
-            // 
-            // Total
-            // 
-            this.Total.HeaderText = "Total";
-            this.Total.Name = "Total";
-            // 
             // panel24
             // 
             this.panel24.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(58)))), ((int)(((byte)(69)))));
@@ -1478,7 +1359,6 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(53)))), ((int)(((byte)(66)))));
-            this.panel2.Controls.Add(this.panel80);
             this.panel2.Controls.Add(this.pnl_category);
             this.panel2.Controls.Add(this.panel71);
             this.panel2.Controls.Add(this.panel17);
@@ -1488,46 +1368,15 @@
             this.panel2.Size = new System.Drawing.Size(103, 733);
             this.panel2.TabIndex = 0;
             // 
-            // panel80
-            // 
-            this.panel80.Controls.Add(this.lbl_datettime);
-            this.panel80.Controls.Add(this.lbl_userid);
-            this.panel80.Location = new System.Drawing.Point(0, 593);
-            this.panel80.Name = "panel80";
-            this.panel80.Size = new System.Drawing.Size(103, 66);
-            this.panel80.TabIndex = 4;
-            // 
-            // lbl_datettime
-            // 
-            this.lbl_datettime.AutoSize = true;
-            this.lbl_datettime.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_datettime.ForeColor = System.Drawing.Color.White;
-            this.lbl_datettime.Location = new System.Drawing.Point(12, 42);
-            this.lbl_datettime.Name = "lbl_datettime";
-            this.lbl_datettime.Size = new System.Drawing.Size(75, 13);
-            this.lbl_datettime.TabIndex = 6;
-            this.lbl_datettime.Text = "01/01/2017";
-            // 
-            // lbl_userid
-            // 
-            this.lbl_userid.AutoSize = true;
-            this.lbl_userid.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_userid.ForeColor = System.Drawing.Color.White;
-            this.lbl_userid.Location = new System.Drawing.Point(22, 21);
-            this.lbl_userid.Name = "lbl_userid";
-            this.lbl_userid.Size = new System.Drawing.Size(43, 13);
-            this.lbl_userid.TabIndex = 4;
-            this.lbl_userid.Text = "Admin";
-            // 
             // pnl_category
             // 
             this.pnl_category.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(53)))), ((int)(((byte)(66)))));
             this.pnl_category.Controls.Add(this.panel8);
             this.pnl_category.Controls.Add(this.panel5);
-            this.pnl_category.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnl_category.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnl_category.Location = new System.Drawing.Point(0, 61);
             this.pnl_category.Name = "pnl_category";
-            this.pnl_category.Size = new System.Drawing.Size(103, 526);
+            this.pnl_category.Size = new System.Drawing.Size(103, 598);
             this.pnl_category.TabIndex = 3;
             // 
             // panel8
@@ -1594,6 +1443,122 @@
             this.imageList1.Images.SetKeyName(4, "256-256-d13cafbf17ecd8f2065c8842a6e4e228.png");
             this.imageList1.Images.SetKeyName(5, "45200.png");
             // 
+            // panel81
+            // 
+            this.panel81.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(213)))), ((int)(((byte)(225)))), ((int)(((byte)(235)))));
+            this.panel81.Controls.Add(this.panel84);
+            this.panel81.Controls.Add(this.panel83);
+            this.panel81.Controls.Add(this.panel82);
+            this.panel81.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel81.Location = new System.Drawing.Point(495, 3);
+            this.panel81.Name = "panel81";
+            this.panel81.Size = new System.Drawing.Size(182, 38);
+            this.panel81.TabIndex = 8;
+            // 
+            // panel82
+            // 
+            this.panel82.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel82.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.panel82.Location = new System.Drawing.Point(0, 0);
+            this.panel82.Name = "panel82";
+            this.panel82.Size = new System.Drawing.Size(182, 3);
+            this.panel82.TabIndex = 2;
+            // 
+            // panel83
+            // 
+            this.panel83.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel83.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.panel83.Location = new System.Drawing.Point(0, 35);
+            this.panel83.Name = "panel83";
+            this.panel83.Size = new System.Drawing.Size(182, 3);
+            this.panel83.TabIndex = 3;
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label17.ForeColor = System.Drawing.Color.White;
+            this.label17.Location = new System.Drawing.Point(24, 6);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(74, 16);
+            this.label17.TabIndex = 0;
+            this.label17.Text = "Order No :";
+            // 
+            // lbl_invoicenum
+            // 
+            this.lbl_invoicenum.AutoSize = true;
+            this.lbl_invoicenum.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_invoicenum.ForeColor = System.Drawing.Color.White;
+            this.lbl_invoicenum.Location = new System.Drawing.Point(104, 6);
+            this.lbl_invoicenum.Name = "lbl_invoicenum";
+            this.lbl_invoicenum.Size = new System.Drawing.Size(48, 16);
+            this.lbl_invoicenum.TabIndex = 1;
+            this.lbl_invoicenum.Text = "00001";
+            // 
+            // panel84
+            // 
+            this.panel84.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(121)))), ((int)(((byte)(166)))));
+            this.panel84.Controls.Add(this.lbl_invoicenum);
+            this.panel84.Controls.Add(this.label17);
+            this.panel84.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel84.Location = new System.Drawing.Point(0, 3);
+            this.panel84.Name = "panel84";
+            this.panel84.Size = new System.Drawing.Size(182, 32);
+            this.panel84.TabIndex = 4;
+            // 
+            // Total
+            // 
+            this.Total.HeaderText = "Total";
+            this.Total.Name = "Total";
+            // 
+            // Discount
+            // 
+            this.Discount.HeaderText = "Discount";
+            this.Discount.Name = "Discount";
+            this.Discount.Visible = false;
+            // 
+            // Qty
+            // 
+            this.Qty.HeaderText = "Qty";
+            this.Qty.Name = "Qty";
+            // 
+            // Price
+            // 
+            this.Price.HeaderText = "Price";
+            this.Price.Name = "Price";
+            // 
+            // Item
+            // 
+            this.Item.HeaderText = "Item";
+            this.Item.Name = "Item";
+            // 
+            // ID
+            // 
+            this.ID.HeaderText = "ID";
+            this.ID.Name = "ID";
+            this.ID.Visible = false;
+            // 
+            // grd_ProductDetails
+            // 
+            this.grd_ProductDetails.AllowUserToAddRows = false;
+            this.grd_ProductDetails.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.grd_ProductDetails.BackgroundColor = System.Drawing.Color.White;
+            this.grd_ProductDetails.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.ID,
+            this.Item,
+            this.Price,
+            this.Qty,
+            this.Discount,
+            this.Total});
+            this.grd_ProductDetails.Dock = System.Windows.Forms.DockStyle.Right;
+            this.grd_ProductDetails.Location = new System.Drawing.Point(0, 0);
+            this.grd_ProductDetails.MultiSelect = false;
+            this.grd_ProductDetails.Name = "grd_ProductDetails";
+            this.grd_ProductDetails.RowHeadersVisible = false;
+            this.grd_ProductDetails.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.grd_ProductDetails.Size = new System.Drawing.Size(345, 278);
+            this.grd_ProductDetails.TabIndex = 1;
+            // 
             // FrmPOS1Table
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1614,9 +1579,6 @@
             this.panel3.ResumeLayout(false);
             this.panel73.ResumeLayout(false);
             this.panel73.PerformLayout();
-            this.panel81.ResumeLayout(false);
-            this.panel84.ResumeLayout(false);
-            this.panel84.PerformLayout();
             this.panel79.ResumeLayout(false);
             this.panel78.ResumeLayout(false);
             this.panel20.ResumeLayout(false);
@@ -1655,12 +1617,13 @@
             this.panel25.PerformLayout();
             this.panel35.ResumeLayout(false);
             this.panel26.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.grd_ProductDetails)).EndInit();
             this.panel2.ResumeLayout(false);
-            this.panel80.ResumeLayout(false);
-            this.panel80.PerformLayout();
             this.pnl_category.ResumeLayout(false);
             this.panel71.ResumeLayout(false);
+            this.panel81.ResumeLayout(false);
+            this.panel84.ResumeLayout(false);
+            this.panel84.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.grd_ProductDetails)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1751,22 +1714,12 @@
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.Panel panel71;
         private System.Windows.Forms.Button lbl_table;
-        private System.Windows.Forms.Panel panel80;
-        private System.Windows.Forms.Label lbl_datettime;
-        private System.Windows.Forms.Label lbl_userid;
-        private System.Windows.Forms.DataGridView grd_ProductDetails;
         private System.Windows.Forms.Button btn_customer;
         private System.Windows.Forms.Panel panel23;
         private System.Windows.Forms.Panel panel72;
         private System.Windows.Forms.Panel pnl_customer;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Panel panel73;
-        private System.Windows.Forms.Panel panel81;
-        private System.Windows.Forms.Panel panel84;
-        private System.Windows.Forms.Label label19;
-        private System.Windows.Forms.Label label17;
-        private System.Windows.Forms.Panel panel83;
-        private System.Windows.Forms.Panel panel82;
         private System.Windows.Forms.Panel panel79;
         private System.Windows.Forms.Button button53;
         private System.Windows.Forms.Panel panel78;
@@ -1785,6 +1738,13 @@
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Panel panel81;
+        private System.Windows.Forms.Panel panel84;
+        private System.Windows.Forms.Label lbl_invoicenum;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.Panel panel83;
+        private System.Windows.Forms.Panel panel82;
+        private System.Windows.Forms.DataGridView grd_ProductDetails;
         private System.Windows.Forms.DataGridViewTextBoxColumn ID;
         private System.Windows.Forms.DataGridViewTextBoxColumn Item;
         private System.Windows.Forms.DataGridViewTextBoxColumn Price;

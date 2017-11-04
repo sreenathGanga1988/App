@@ -27,14 +27,15 @@ namespace App.UI
         public String selectedBuzzerName = "";
         public String selectedTableName = "";
         public String selectedPaymentName = "";
-
+        SalesViewModal salesViewmodal = null;
         public FrmPOS1Table()
         {
             InitializeComponent();
-            SalesViewModal salesViewmodal = new SalesViewModal();
+             salesViewmodal = new SalesViewModal();
             LoadCategory(salesViewmodal);
             UpdateFont();
             Intializeselecteditems();
+            this.WindowState = FormWindowState.Maximized;
         }
 
 
@@ -54,7 +55,12 @@ namespace App.UI
          selectedTableName = "";
          selectedPaymentName = "";
 
-    }
+
+            lbl_customer.Text = "New";
+            btn_buzzer.Text = "Buzzers";
+            btn_paymentmode.Text = "Payment Method";
+
+        }
 
     private void UpdateFont()
         {
@@ -95,6 +101,7 @@ namespace App.UI
             invoiceid = invoicemaster.InvoicemasterID;
             LoadCategory(salesViewmodal);
             UpdateFont();
+            lbl_invoicenum.Text = invoicemaster.InvoiceNum;
             //LoadTable(salesViewmodal);
             LoadInvoicedata(invoicemaster);
 
@@ -471,7 +478,7 @@ namespace App.UI
             else if (string.Equals(button.Text.Trim(), "Disc", StringComparison.CurrentCultureIgnoreCase)) { button.Text = "Disc"; }
             else if (string.Equals(button.Text.Trim(), "Price", StringComparison.CurrentCultureIgnoreCase)) { button.Text = "Price"; }
             else if (string.Equals(button.Text.Trim(), "Add item", StringComparison.CurrentCultureIgnoreCase)) { button.Text = "Add item"; }
-            else if (string.Equals(button.Text.Trim(), "Payment method", StringComparison.CurrentCultureIgnoreCase)) { button.Text = "Payment method"; }
+            else if (string.Equals(button.Text.Trim(), "Payment Method", StringComparison.CurrentCultureIgnoreCase)) { button.Text = "Payment Method"; }
             else if (string.Equals(button.Text.Trim(), "Buzzer", StringComparison.CurrentCultureIgnoreCase)) { button.Text = "Buzzer"; }
             else if (string.Equals(button.Text.Trim(), "Table Bill", StringComparison.CurrentCultureIgnoreCase)) { button.Text = "Table Bill"; }
             else if (string.Equals(button.Text.Trim(), "KOT", StringComparison.CurrentCultureIgnoreCase)) { button.Text = "KOT"; }
@@ -511,6 +518,7 @@ namespace App.UI
 
 
                     clearGridView();
+                    
                 }
 
             }
@@ -519,6 +527,15 @@ namespace App.UI
                 if (ValidateforTableBill())
                 {
                     AddInvoice("Table");
+                    clearGridView();
+                }
+
+            }
+            else if (btn.Text.Trim() == "Hold")
+            {
+                if (ValidateforTableBill())
+                {
+                    AddInvoice("Hold");
                     clearGridView();
                 }
 
@@ -762,7 +779,7 @@ namespace App.UI
             frm.Dispose();
         }
         /// <summary>
-        /// select payment method
+        /// select Payment Method
         /// </summary>
         public void selectPaymentMode( Button btn)
         {
@@ -914,7 +931,7 @@ namespace App.UI
 
             invoicemaster = AdjustAutoSelection(invoicemaster);
 
-            if (BillType == "Table")
+            if (BillType == "Table" || BillType=="Hold")
             {
                 invoicemaster.IstableBill = true;
 
@@ -976,6 +993,12 @@ namespace App.UI
                     prnt.printKOTreport(invoicemaster);
 
                     MessageBox.Show("KOT #:" + invoicemaster.InvoiceNum);
+                }
+                else if (BillType == "Hold")
+                {
+                   
+
+                    MessageBox.Show("Hold #:" + invoicemaster.InvoiceNum);
                 }
                 else
                 {
@@ -1136,6 +1159,7 @@ namespace App.UI
         public void ShowAction() {
             //FrmActions actions = new FrmActions();
             //actions.ShowDialog();
+            this.Close();
             Showpending();
         }
 
@@ -1147,9 +1171,10 @@ namespace App.UI
             txt_total.Text = "0";
             txt_cash.Text = "0";
             txt_change.Text = "0";
+            
             invoiceid = 0;
-            
-            
+
+            Intializeselecteditems();
         }
 
       public void Showpending()
@@ -1177,8 +1202,11 @@ namespace App.UI
 
         private void FrmPOS1Table_Load(object sender, EventArgs e)
         {
-            lbl_datettime.Text = DateTime.Now.ToString();
-            lbl_userid.Text = Program.Username;
+           
+
+
+            String Headertext = "LIMSPOS    " + Program.Username + "  " + DateTime.Now.ToString("dd/MM/yyyy");
+            this.Text = Headertext;
         }
         
 

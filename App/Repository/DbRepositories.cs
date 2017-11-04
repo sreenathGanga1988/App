@@ -202,6 +202,13 @@ namespace App.Repository
             return q;
 
         }
+        public String GetCustomer(String CustomerName)
+        {
+
+            var q = cntxt.Customers.Where(u => u.CustomerName == CustomerName).Select(u=>u.CustomerName).First();
+            return q.ToString().Trim();
+
+        }
         public int GetOrginalCategoryID(int odooCategoryID)
         {
             int categoryid = 0;
@@ -341,7 +348,60 @@ namespace App.Repository
 
 
     }
+    public class PaymentModeRepository
+    {
+        POSDataContext cntxt = new POSDataContext();
+        public List<PaymentModeMaster> GetPaymnetModeList(int? LocationID = 0)
+        {
 
+            //var q = cntxt.PaymentModeMasters.Where(u => u.StoreID == LocationID).ToList();
+            var q = cntxt.PaymentModeMasters.ToList();
+
+            return q;
+        }
+        public Boolean IsBuzzerAlloted(int buzzerid, int storeid)
+        {
+            Boolean issucess = false;
+            var q = (from ododet in cntxt.Buzzers
+                     where ododet.StoreID == storeid && ododet.BuzzerID == buzzerid
+                     select ododet).ToList();
+            foreach (var element in q)
+            {
+                issucess = element.IsLocked;
+
+            }
+
+
+
+
+            return issucess;
+        }
+
+
+
+        public Boolean MarkBuzzerLockedorUnlocked(int buzzerid, int storeid, Boolean status)
+        {
+            Boolean issucess = false;
+            var q = from ododet in cntxt.Buzzers
+                    where ododet.StoreID == storeid && ododet.BuzzerID == buzzerid
+                    select ododet;
+            foreach (var element in q)
+            {
+                element.IsLocked = status;
+
+            }
+
+            cntxt.SaveChanges();
+            issucess = true;
+
+            return issucess;
+        }
+
+
+
+
+
+    }
 
     public class KotRepository
     {

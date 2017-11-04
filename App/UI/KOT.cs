@@ -114,17 +114,54 @@ namespace App.UI
             }
             parent.AutoScroll = true;
         }
+        private bool IsAlreadyOpen(Type formType)
+
+        {
+
+            bool isOpen = false;
+
+
+
+            foreach (Form f in Application.OpenForms)
+
+            {
+
+                if (f.GetType() == formType)
+
+                {
+
+                    f.BringToFront();
+
+                    f.WindowState = FormWindowState.Normal;
+
+                    isOpen = true;
+
+                }
+
+            }
+
+
+            return isOpen;
+
+        }
 
         private void OnInvoiceButtonClick(object sender, EventArgs e)
         {
           int invoiceid= int.Parse( ((ValueButton)sender)._value.ToString());
-            MessageBox.Show(invoiceid.ToString());
+          
             InvoiceRepository invoiceRepository = new InvoiceRepository();
 
             Invoicemaster mstr = invoiceRepository.GetInvoice(invoiceid);
 
-            FrmPOS1Table frm = new FrmPOS1Table(mstr);
-            frm.Show();
+            FrmPOS1Table frmpos = null;
+            bool isFormOpen = IsAlreadyOpen(typeof(FrmPOS1Table));
+            if (isFormOpen == false)
+            {
+                frmpos = new FrmPOS1Table(mstr);
+                //   frmpos.MdiParent = this;
+                //  frmpos.StartPosition = FormStartPosition.CenterScreen;
+                frmpos.Show();
+            }
         }
     }
 }
