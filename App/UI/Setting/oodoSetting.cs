@@ -12,6 +12,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Drawing.Printing;
+using System.Xml.Serialization;
+using System.IO;
 
 namespace App.UI.Setting
 {
@@ -30,6 +32,7 @@ namespace App.UI.Setting
                 PopulateInstalledPrintersCombo();
                 showPrinterDetails();
                 ShowAppuserSetting();
+                ShowDefaultprinter();
             }
             catch (Exception)
             {
@@ -53,8 +56,8 @@ namespace App.UI.Setting
         public void showPrinterDetails()
         {
             cmb_pos.Text = Program.MySettingViewModal.MyPrinterDetails.PosPrinter;
-            cmb_kot.Text = Program.MySettingViewModal.MyPrinterDetails.KotPrinter.ToString();
-            cmb_juice.Text = Program.MySettingViewModal.MyPrinterDetails.JuicePrinter.ToString();
+            txt_defaultKOTpRINTER.Text = Program.MySettingViewModal.MyPrinterDetails.KotPrinter.ToString();
+            txt_defaultKOTpRINTER.Text = Program.MySettingViewModal.MyPrinterDetails.JuicePrinter.ToString();
           
 
 
@@ -80,7 +83,22 @@ namespace App.UI.Setting
         }
 
 
+        public void ShowDefaultprinter()
+        {
+            LocalPrinter localPrinter = new LocalPrinter();
+           
+            XmlSerializer xs = new XmlSerializer(typeof(LocalPrinter));
+            using (FileStream fs = new FileStream("Data.xml", FileMode.Open))
+            {
+                // This will read the XML from the file and create the new instance
+                // of CustomerData
+                localPrinter = xs.Deserialize(fs) as LocalPrinter;
+                cmb_pos.Text= localPrinter.DefaultPrinter;
+                txt_defaultKOTpRINTER.Text = localPrinter.DefaultKOTPrinter;
+            }
 
+            
+        }
 
 
 
@@ -168,8 +186,7 @@ namespace App.UI.Setting
             {
                 pkInstalledPrinters = PrinterSettings.InstalledPrinters[i];
                 cmb_pos.Items.Add(pkInstalledPrinters);
-                cmb_kot.Items.Add(pkInstalledPrinters);
-                cmb_juice.Items.Add(pkInstalledPrinters);
+               
             }
         }
 
@@ -199,8 +216,8 @@ namespace App.UI.Setting
             PrinterDetail printerDetails = new PrinterDetail
             {
                 PosPrinter = cmb_pos.Text.Trim(),
-                KotPrinter = cmb_kot.Text.Trim(),
-                JuicePrinter = cmb_juice.Text.Trim(),
+                KotPrinter = txt_defaultKOTpRINTER.Text,
+                JuicePrinter = txt_defaultKOTpRINTER.Text,
                 IsActive = true,
                 StoreID = Program.LocationID
             };
@@ -233,6 +250,20 @@ namespace App.UI.Setting
         private void button2_Click_2(object sender, EventArgs e)
         {
             InsertprinterDetails();
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            LocalPrinter localPrinter = new LocalPrinter();
+            localPrinter.DefaultPrinter = cmb_pos.Text;
+            localPrinter.DefaultKOTPrinter = txt_defaultKOTpRINTER.Text;
+
+            // Create and XmlSerializer to serialize the data to a file
+            XmlSerializer xs = new XmlSerializer(typeof(LocalPrinter));
+            using (FileStream fs = new FileStream("Data.xml", FileMode.Create))
+            {
+                xs.Serialize(fs, localPrinter);
+            }
         }
     }
 }

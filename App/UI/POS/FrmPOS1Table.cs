@@ -31,11 +31,21 @@ namespace App.UI
         public FrmPOS1Table()
         {
             InitializeComponent();
-             salesViewmodal = new SalesViewModal();
+            salesViewmodal = new SalesViewModal();
             LoadCategory(salesViewmodal);
             UpdateFont();
             Intializeselecteditems();
+
+            //this.TopMost = true;
+           this.FormBorderStyle = FormBorderStyle.None;
+            //this.WindowState = FormWindowState.Maximized;
+
             this.WindowState = FormWindowState.Maximized;
+            //this.Location = new Point(0, 0);
+          
+            //Screen currentScreen = Screen.FromHandle(this.Handle);
+            //this.Size = new System.Drawing.Size(currentScreen.Bounds.Width, currentScreen.Bounds.Height);
+            //this.StartPosition = FormStartPosition.CenterScreen;
         }
 
 
@@ -57,8 +67,9 @@ namespace App.UI
 
 
             lbl_customer.Text = "New";
-            btn_buzzer.Text = "Buzzers";
-            btn_paymentmode.Text = "Payment Method";
+           btn_Tables.Text = "Tables";
+           Btn_buzzer.Text = "Buzzer";
+            btn_paymentMethod.Text = "Payment Method";
 
         }
 
@@ -121,7 +132,7 @@ namespace App.UI
 
             selectedTableID = int.Parse(invoicemaster.TableID.ToString());
             selectedTableName = invoicemaster.Table.TableName;
-            lbl_table.Text = invoicemaster.Table.TableName;
+            lbl_tablebill.Text = invoicemaster.Table.TableName;
 
             foreach (InvoiceDetail invdet in invoicemaster.InvoiceDetails)
             {
@@ -157,8 +168,12 @@ namespace App.UI
             int i = 0;
             int buttonheight = 0;
             int buttonwidth = 0;
+            int colcount = 0;
+            
+         
+            int buttonindex = 0;
             List<Category> Category = salesViewmodal.CategoryList;
-
+            int allowedproduct = 1;
 
 
             if (Category != null)
@@ -205,10 +220,21 @@ namespace App.UI
 
 
                 }
-             //   temp.Location = new System.Drawing.Point((temp.Width * buttonindex), (temp.Height * colcount));//please adjust location as per your need
+                //   temp.Location = new System.Drawing.Point((temp.Width * buttonindex), (temp.Height * colcount));//please adjust location as per your need
 
 
-                temp.Location = new System.Drawing.Point(0, (temp.Height * i));//please adjust location as per your need
+                temp.Location = new System.Drawing.Point((temp.Width * buttonindex)+10, (temp.Height * colcount)+10);//please adjust location as per your need
+                if (buttonindex % allowedproduct == 0 && buttonindex != 0)
+                {
+                    colcount++;
+                    buttonindex = 0;
+
+
+                }
+                else
+                {
+                    buttonindex++;
+                }
                 temp.Tag = i;
 
                 temp.Click += new EventHandler(OnButtonClick);
@@ -216,7 +242,7 @@ namespace App.UI
                 i++;
             }
 
-
+            this.pnl_category.AutoScroll = true;
 
         }
 
@@ -225,7 +251,7 @@ namespace App.UI
 
         private void OnTableButtonClick(object sender, EventArgs e)
         {
-            lbl_table.Text = ((ValueButton)sender).Text;
+            lbl_tablebill.Text = ((ValueButton)sender).Text;
             selectedTableID =int.Parse ( ((ValueButton)sender)._value.ToString());
             selectedTableName= ((ValueButton)sender).Text;
 
@@ -353,7 +379,7 @@ namespace App.UI
             int buttonwidth = 0;
             int buttonindex = 0;
 
-            int allowedproduct = 2;
+            int allowedproduct = 3;
 
 
             if (Productlist != null)
@@ -482,13 +508,16 @@ namespace App.UI
             else if (string.Equals(button.Text.Trim(), "Buzzer", StringComparison.CurrentCultureIgnoreCase)) { button.Text = "Buzzer"; }
             else if (string.Equals(button.Text.Trim(), "Table Bill", StringComparison.CurrentCultureIgnoreCase)) { button.Text = "Table Bill"; }
             else if (string.Equals(button.Text.Trim(), "KOT", StringComparison.CurrentCultureIgnoreCase)) { button.Text = "KOT"; }
-            else if (string.Equals(button.Text.Trim(), "Action", StringComparison.CurrentCultureIgnoreCase)) { button.Text = "Action"; }
+            else if (string.Equals(button.Text.Trim(), "Order", StringComparison.CurrentCultureIgnoreCase)) { button.Text = "Order"; }
             else if (string.Equals(button.Text.Trim(), "Clear", StringComparison.CurrentCultureIgnoreCase)) { button.Text = "Clear"; }
             else if (string.Equals(button.Text.Trim(), "Print", StringComparison.CurrentCultureIgnoreCase)) { button.Text = "Print"; }
             else if (string.Equals(button.Text.Trim(), "Hold", StringComparison.CurrentCultureIgnoreCase)) { button.Text = "Hold"; }
             else if (string.Equals(button.Text.Trim(), "Customer", StringComparison.CurrentCultureIgnoreCase)) { button.Text = "Customer"; }
             else if (string.Equals(button.Text.Trim(), "<", StringComparison.CurrentCultureIgnoreCase)) { button.Text = "<"; }
             else if (string.Equals(button.Text.Trim(), "Todays Special", StringComparison.CurrentCultureIgnoreCase)) { button.Text = "Todays Special"; }
+            else if (string.Equals(button.Text.Trim(), "Notes", StringComparison.CurrentCultureIgnoreCase)) { button.Text = "Notes"; }
+            else if (string.Equals(button.Text.Trim(), "Check Out", StringComparison.CurrentCultureIgnoreCase)) { button.Text = "Check Out"; }
+            else if (string.Equals(button.Text.Trim(), "Price Change", StringComparison.CurrentCultureIgnoreCase)) { button.Text = "Price Change"; }
 
             KeyPressed(button);
 
@@ -497,12 +526,13 @@ namespace App.UI
         public void KeyPressed(Button btn)
         {
 
-            List<string> ExceptionList = new List<string> { "Add item", "Qty", "Price", "Cash", "Customer" };
-            
+            List<string> ExceptionList = new List<string> { "Add item", "Qty", "Price", "Cash", "Customer", "Todays Specials", "Buzzer", "Tables", "Payment Method", "Reset", "Check Out", "Clear", "Order", "Hold", "Table Bill", "KOT", "Price Change" };
+
+ 
 
 
-           
-          
+
+
              if (btn.Text.Trim() == "<")
             {
                 BackSpace();
@@ -540,7 +570,7 @@ namespace App.UI
                 }
 
             }
-            else if (btn.Text.Trim() == "Action")
+            else if (btn.Text.Trim() == "Order")
             {
                 
                 ShowAction();
@@ -552,12 +582,14 @@ namespace App.UI
                 txt_producrtcode.Text = "";
 
             }
-            else if (btn.Text.Trim() == "CheckOut")
+            else if (btn.Text.Trim() == "Check Out")
             {
                 if (ValidateforCheckOut())
                 {
                     AddInvoice("");
+                    clearGridView();
                 }
+
 
             }
             else if (btn.Text.Trim() == ".")
@@ -576,12 +608,61 @@ namespace App.UI
 
             }
 
-            else if (btn.Text.Trim() == "Payment Term")
+            else if (btn.Text.Trim() == "Payment Method" || btn.Name == "btn_paymentMethod")
             {
 
-                clearGridView();
+                selectPaymentMode(btn);
 
 
+            }
+            else if (btn.Text.Trim() == "Customer")
+            {
+
+                SelectCustomerOnclick(btn);
+               
+
+            }
+            else if (btn.Text.Trim() == "")
+            {
+
+                SelectTable(btn);
+           
+
+            }
+            else if (btn.Text.Trim() == "Buzzer"|| btn.Name== "Btn_buzzer")
+            {
+                
+
+
+
+                selectBuzzer(btn);
+
+               
+            }
+            else if (btn.Text.Trim() == "Tables" || btn.Name == "btn_Tables")
+            {
+
+
+
+
+                SelectTable(btn);
+
+
+            }
+            
+            else if (btn.Text.Trim() == "Todays Special")
+            {
+
+                SelectTodaysSpecial();
+
+
+            }
+            else if (btn.Text.Trim() == "Price Change")
+            {
+
+
+
+                Pricechange();
             }
             else
             {
@@ -657,10 +738,10 @@ namespace App.UI
 
                 }
             }
-            else if (lastbutton.Text.Trim() == "Customer")
-                    {
-                SelectCustomerOnclick(lastbutton);
-            }
+            //else if (lastbutton.Text.Trim() == "Customer")
+            //        {
+            //    SelectCustomerOnclick(lastbutton);
+            //}
         }
 
         public void SelectCustomerOnclick(Button lastbutton)
@@ -758,7 +839,15 @@ namespace App.UI
             catch (Exception)
             {
 
-                MessageBox.Show("Wrong Cash Entered");
+                if (txt_producrtcode.Text.Trim() == "")
+                {
+                   
+                }
+                else
+                {
+                    MessageBox.Show("Wrong Cash Entered");
+                }
+               
             }
         }
 
@@ -791,15 +880,15 @@ namespace App.UI
             selectedPaymentName = btn.Text;
         }
         /// <summary>
-        /// select buzzers
+        /// select Buzzer
         /// </summary>
         public void selectBuzzer(Button btn)
         {
-            FrmBuzzers frmbuzzers = new FrmBuzzers();
-            frmbuzzers.ShowDialog();
-            btn.Text = frmbuzzers.SelectedBuzzername;
-            if (btn.Text == "") { btn.Text = "Buzzers"; }
-            btn_buzzer.Text = btn.Text;
+            FrmBuzzers frmBuzzer = new FrmBuzzers();
+            frmBuzzer.ShowDialog();
+            btn.Text = frmBuzzer.SelectedBuzzername;
+            if (btn.Text == "") { btn.Text = "Buzzer"; }
+            btn_Tables.Text = btn.Text;
         }
         public void fillchange()
         {
@@ -851,7 +940,27 @@ namespace App.UI
             LoadProducts(Products);
         }
 
+        public void Pricechange()
+        {
+            
+            ValueInPut input = new ValueInPut(DateTime.Now,"PriceChange");
+            input.ShowDialog();
+            Decimal Newprice = input.Selectedvalue;
 
+            if (Newprice != 0)
+            {
+                foreach (DataGridViewRow r in grd_ProductDetails.SelectedRows)
+                {
+                    if (!r.IsNewRow)
+                    {
+                        grd_ProductDetails.Rows[r.Index].Cells["Price"].Value= Newprice;
+                    }
+                }
+
+                CalculateTotal();
+            }
+           
+        }
 
 
 
@@ -1025,7 +1134,7 @@ namespace App.UI
             if (invoicemaster.BuzzerID == 0)
             {
                
-                invoicemaster.BuzzerName = "Buzzers";
+                invoicemaster.BuzzerName = "Buzzer";
                 invoicemaster.BuzzerID = 15;
 
             }
@@ -1157,13 +1266,24 @@ namespace App.UI
 
 
         public void ShowAction() {
-            //FrmActions actions = new FrmActions();
-            //actions.ShowDialog();
+           
             this.Close();
             Showpending();
         }
 
+        public void closeaction()
+        {
+            DialogResult dialogResult = MessageBox.Show("Un Saved Transactions may loss ,Want  to Close? ", "Are You Sure", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.Yes)
+            {
+                this.Close();
+            }
+            else if (dialogResult == DialogResult.No)
+            {
 
+            }
+
+        }
         public void clearGridView()
         {
 
@@ -1185,10 +1305,6 @@ namespace App.UI
             frm.Show();
         }
 
-        private void btn_pending_Click(object sender, EventArgs e)
-        {
-          
-        }
 
         private void btn_close_Click(object sender, EventArgs e)
         {
@@ -1212,24 +1328,15 @@ namespace App.UI
 
         private void panel17_Click(object sender, EventArgs e)
         {
-            DialogResult dialogResult = MessageBox.Show("Un Saved Transactions may loss ,Want  to Close? ", "Are You Sure", MessageBoxButtons.YesNo);
-            if (dialogResult == DialogResult.Yes)
-            {
-                this.Close();
-            }
-            else if (dialogResult == DialogResult.No)
-            {
-              
-            }
-           
+            closeaction();
         }
 
         private void lbl_table_Click(object sender, EventArgs e)
         {
-                SelectTable((Button)sender);
+
+            SelectTable((Button)sender);
 
 
-            
         }
 
         private void btn_paymentmode_MouseClick(object sender, MouseEventArgs e)
@@ -1242,10 +1349,7 @@ namespace App.UI
             selectBuzzer((Button)sender);
         }
 
-        private void btn_paymentmode_Click(object sender, EventArgs e)
-        {
-
-        }
+       
 
 
 
@@ -1260,14 +1364,18 @@ namespace App.UI
 
 
 
-        private void btn_todaySpecial_Click(object sender, EventArgs e)
+       
+
+        private void panel10_MouseClick(object sender, MouseEventArgs e)
         {
-            SelectTodaysSpecial();
+            closeaction();
         }
 
-        private void btn_buzzer_Click(object sender, EventArgs e)
+        private void button53_Click(object sender, EventArgs e)
         {
-
+            IpPrint print = new IpPrint();
+            print.PrinttoIP("192.168.1.103", ".\\tmpPrint.print");
+            MessageBox.Show("Sucess");
         }
     }
 }

@@ -44,10 +44,23 @@ namespace App.Model
         public String Color { get; set; }
         public int? PrinterId { get; set; }
         public virtual List<Product> Products { get; set; }
-
+        public String PrinterName { get; set; }
         public virtual Printer Printer { get; set; }
     }
 
+
+    public class Shift
+    {
+        public int ShiftID { get; set; }
+        public String ShiftName { get; set; }
+        public DateTime StartTime { get; set; }
+        public DateTime? EndTime { get; set; }
+        public Boolean? IsClosed { get; set; }
+        public int StoreID { get; set; }
+        public String StartUserName { get; set; }
+        public String CloseUserName { get; set; }
+        public virtual Store Store { get; set; }
+    }
 
     public class User
     {
@@ -114,6 +127,8 @@ namespace App.Model
 
 
         public int StoreID { get; set; }
+
+        public int OdooTableID { get; set; }
 
         public String TableName { get; set; }
 

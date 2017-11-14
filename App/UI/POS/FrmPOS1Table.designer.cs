@@ -30,76 +30,70 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmPOS1Table));
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.panel7 = new System.Windows.Forms.Panel();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.button53 = new System.Windows.Forms.Button();
+            this.panel79 = new System.Windows.Forms.Panel();
+            this.button52 = new System.Windows.Forms.Button();
+            this.panel78 = new System.Windows.Forms.Panel();
+            this.panel77 = new System.Windows.Forms.Panel();
+            this.txt_producrtcode = new System.Windows.Forms.TextBox();
+            this.panel76 = new System.Windows.Forms.Panel();
+            this.panel74 = new System.Windows.Forms.Panel();
+            this.panel73 = new System.Windows.Forms.Panel();
+            this.panel20 = new System.Windows.Forms.Panel();
+            this.panel22 = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel72 = new System.Windows.Forms.Panel();
             this.pnl_product = new System.Windows.Forms.Panel();
             this.pnl_customer = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.panel7 = new System.Windows.Forms.Panel();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
+            this.lbl_tableID = new System.Windows.Forms.Label();
             this.panel9 = new System.Windows.Forms.Panel();
             this.lbl_customer = new System.Windows.Forms.Label();
             this.label21 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.panel73 = new System.Windows.Forms.Panel();
-            this.panel79 = new System.Windows.Forms.Panel();
-            this.button53 = new System.Windows.Forms.Button();
-            this.panel78 = new System.Windows.Forms.Panel();
-            this.btn_todaySpecial = new System.Windows.Forms.Button();
-            this.panel77 = new System.Windows.Forms.Panel();
-            this.txt_producrtcode = new System.Windows.Forms.TextBox();
-            this.panel76 = new System.Windows.Forms.Panel();
-            this.panel74 = new System.Windows.Forms.Panel();
             this.panel23 = new System.Windows.Forms.Panel();
-            this.panel20 = new System.Windows.Forms.Panel();
-            this.panel22 = new System.Windows.Forms.Panel();
             this.panel19 = new System.Windows.Forms.Panel();
-            this.panel49 = new System.Windows.Forms.Panel();
-            this.panel27 = new System.Windows.Forms.Panel();
-            this.panel31 = new System.Windows.Forms.Panel();
+            this.pnl_actionbtn = new System.Windows.Forms.Panel();
+            this.panel12 = new System.Windows.Forms.Panel();
             this.btn_print = new System.Windows.Forms.Button();
-            this.panel30 = new System.Windows.Forms.Panel();
-            this.panel29 = new System.Windows.Forms.Panel();
+            this.panel11 = new System.Windows.Forms.Panel();
+            this.button3 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.btn_pricechange = new System.Windows.Forms.Button();
+            this.pnl_Row3 = new System.Windows.Forms.Panel();
+            this.btn_order = new System.Windows.Forms.Button();
+            this.lbl_tablebill = new System.Windows.Forms.Button();
+            this.btn_paymentMethod = new System.Windows.Forms.Button();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.btn_notes = new System.Windows.Forms.Button();
             this.btn_hold = new System.Windows.Forms.Button();
-            this.panel50 = new System.Windows.Forms.Panel();
-            this.panel55 = new System.Windows.Forms.Panel();
-            this.panel65 = new System.Windows.Forms.Panel();
-            this.btn_clear = new System.Windows.Forms.Button();
-            this.panel64 = new System.Windows.Forms.Panel();
-            this.btn_action = new System.Windows.Forms.Button();
-            this.panel54 = new System.Windows.Forms.Panel();
-            this.panel53 = new System.Windows.Forms.Panel();
-            this.panel63 = new System.Windows.Forms.Panel();
             this.btn_kot = new System.Windows.Forms.Button();
-            this.panel62 = new System.Windows.Forms.Panel();
-            this.btn_tablebill = new System.Windows.Forms.Button();
-            this.panel52 = new System.Windows.Forms.Panel();
-            this.panel51 = new System.Windows.Forms.Panel();
-            this.panel61 = new System.Windows.Forms.Panel();
-            this.btn_paymentmode = new System.Windows.Forms.Button();
-            this.panel60 = new System.Windows.Forms.Panel();
-            this.btn_buzzer = new System.Windows.Forms.Button();
+            this.pnl_firstButtonRow = new System.Windows.Forms.Panel();
+            this.btn_clear = new System.Windows.Forms.Button();
+            this.Btn_buzzer = new System.Windows.Forms.Button();
+            this.btn_Tables = new System.Windows.Forms.Button();
             this.panel48 = new System.Windows.Forms.Panel();
             this.panel28 = new System.Windows.Forms.Panel();
             this.panel38 = new System.Windows.Forms.Panel();
-            this.panel70 = new System.Windows.Forms.Panel();
-            this.panel46 = new System.Windows.Forms.Panel();
-            this.btn_customer = new System.Windows.Forms.Button();
-            this.panel47 = new System.Windows.Forms.Panel();
-            this.panel69 = new System.Windows.Forms.Panel();
-            this.panel68 = new System.Windows.Forms.Panel();
             this.panel44 = new System.Windows.Forms.Panel();
             this.txt_change = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
-            this.panel67 = new System.Windows.Forms.Panel();
-            this.panel66 = new System.Windows.Forms.Panel();
+            this.panel68 = new System.Windows.Forms.Panel();
             this.panel42 = new System.Windows.Forms.Panel();
             this.panel59 = new System.Windows.Forms.Panel();
             this.txt_cash = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
+            this.panel67 = new System.Windows.Forms.Panel();
+            this.panel66 = new System.Windows.Forms.Panel();
+            this.panel8 = new System.Windows.Forms.Panel();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
             this.panel45 = new System.Windows.Forms.Panel();
             this.panel43 = new System.Windows.Forms.Panel();
             this.panel40 = new System.Windows.Forms.Panel();
@@ -129,151 +123,75 @@
             this.button44 = new System.Windows.Forms.Button();
             this.button45 = new System.Windows.Forms.Button();
             this.panel26 = new System.Windows.Forms.Panel();
-            this.panel24 = new System.Windows.Forms.Panel();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.pnl_category = new System.Windows.Forms.Panel();
-            this.panel8 = new System.Windows.Forms.Panel();
-            this.panel5 = new System.Windows.Forms.Panel();
-            this.panel71 = new System.Windows.Forms.Panel();
-            this.lbl_table = new System.Windows.Forms.Button();
-            this.panel17 = new System.Windows.Forms.Panel();
-            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
-            this.panel81 = new System.Windows.Forms.Panel();
-            this.panel82 = new System.Windows.Forms.Panel();
-            this.panel83 = new System.Windows.Forms.Panel();
-            this.label17 = new System.Windows.Forms.Label();
-            this.lbl_invoicenum = new System.Windows.Forms.Label();
-            this.panel84 = new System.Windows.Forms.Panel();
-            this.Total = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Discount = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Qty = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Price = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Item = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.grd_ProductDetails = new System.Windows.Forms.DataGridView();
+            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Item = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Price = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Qty = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Discount = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Total = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.panel24 = new System.Windows.Forms.Panel();
+            this.pnl_left = new System.Windows.Forms.Panel();
+            this.pnl_category = new System.Windows.Forms.Panel();
+            this.panel17 = new System.Windows.Forms.Panel();
+            this.panel10 = new System.Windows.Forms.Panel();
+            this.panel5 = new System.Windows.Forms.Panel();
+            this.lbl_datettime = new System.Windows.Forms.Label();
+            this.lbl_userid = new System.Windows.Forms.Label();
+            this.Paneltable = new System.Windows.Forms.Panel();
+            this.panel84 = new System.Windows.Forms.Panel();
+            this.lbl_invoicenum = new System.Windows.Forms.Label();
+            this.label17 = new System.Windows.Forms.Label();
+            this.panel6 = new System.Windows.Forms.Panel();
+            this.label5 = new System.Windows.Forms.Label();
+            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
+            this.panel7.SuspendLayout();
+            this.panel79.SuspendLayout();
+            this.panel78.SuspendLayout();
+            this.panel73.SuspendLayout();
+            this.panel20.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel72.SuspendLayout();
             this.pnl_customer.SuspendLayout();
-            this.panel7.SuspendLayout();
+            this.panel4.SuspendLayout();
             this.panel9.SuspendLayout();
             this.panel3.SuspendLayout();
-            this.panel73.SuspendLayout();
-            this.panel79.SuspendLayout();
-            this.panel78.SuspendLayout();
-            this.panel20.SuspendLayout();
             this.panel19.SuspendLayout();
-            this.panel49.SuspendLayout();
-            this.panel27.SuspendLayout();
-            this.panel31.SuspendLayout();
-            this.panel29.SuspendLayout();
-            this.panel50.SuspendLayout();
-            this.panel55.SuspendLayout();
-            this.panel65.SuspendLayout();
-            this.panel64.SuspendLayout();
-            this.panel53.SuspendLayout();
-            this.panel63.SuspendLayout();
-            this.panel62.SuspendLayout();
-            this.panel51.SuspendLayout();
-            this.panel61.SuspendLayout();
-            this.panel60.SuspendLayout();
+            this.pnl_actionbtn.SuspendLayout();
+            this.panel12.SuspendLayout();
+            this.panel11.SuspendLayout();
+            this.pnl_Row3.SuspendLayout();
+            this.panel2.SuspendLayout();
+            this.pnl_firstButtonRow.SuspendLayout();
             this.panel28.SuspendLayout();
             this.panel38.SuspendLayout();
-            this.panel70.SuspendLayout();
-            this.panel46.SuspendLayout();
-            this.panel68.SuspendLayout();
             this.panel44.SuspendLayout();
-            this.panel66.SuspendLayout();
+            this.panel68.SuspendLayout();
             this.panel42.SuspendLayout();
             this.panel59.SuspendLayout();
+            this.panel66.SuspendLayout();
+            this.panel8.SuspendLayout();
             this.panel43.SuspendLayout();
             this.panel40.SuspendLayout();
             this.panel39.SuspendLayout();
             this.panel25.SuspendLayout();
             this.panel35.SuspendLayout();
             this.panel26.SuspendLayout();
-            this.panel2.SuspendLayout();
-            this.pnl_category.SuspendLayout();
-            this.panel71.SuspendLayout();
-            this.panel81.SuspendLayout();
-            this.panel84.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grd_ProductDetails)).BeginInit();
+            this.pnl_left.SuspendLayout();
+            this.panel17.SuspendLayout();
+            this.panel5.SuspendLayout();
+            this.Paneltable.SuspendLayout();
+            this.panel84.SuspendLayout();
+            this.panel6.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // panel1
-            // 
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(213)))), ((int)(((byte)(225)))), ((int)(((byte)(235)))));
-            this.panel1.Controls.Add(this.panel72);
-            this.panel1.Controls.Add(this.panel23);
-            this.panel1.Controls.Add(this.panel20);
-            this.panel1.Controls.Add(this.panel19);
-            this.panel1.Controls.Add(this.panel2);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1133, 733);
-            this.panel1.TabIndex = 0;
-            // 
-            // panel72
-            // 
-            this.panel72.Controls.Add(this.pnl_product);
-            this.panel72.Controls.Add(this.pnl_customer);
-            this.panel72.Controls.Add(this.panel3);
-            this.panel72.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel72.Location = new System.Drawing.Point(108, 0);
-            this.panel72.Name = "panel72";
-            this.panel72.Size = new System.Drawing.Size(677, 733);
-            this.panel72.TabIndex = 6;
-            // 
-            // pnl_product
-            // 
-            this.pnl_product.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnl_product.Location = new System.Drawing.Point(0, 44);
-            this.pnl_product.Name = "pnl_product";
-            this.pnl_product.Size = new System.Drawing.Size(677, 615);
-            this.pnl_product.TabIndex = 2;
-            // 
-            // pnl_customer
-            // 
-            this.pnl_customer.AccessibleDescription = "";
-            this.pnl_customer.Controls.Add(this.panel4);
-            this.pnl_customer.Controls.Add(this.panel7);
-            this.pnl_customer.Controls.Add(this.panel9);
-            this.pnl_customer.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.pnl_customer.Location = new System.Drawing.Point(0, 659);
-            this.pnl_customer.Name = "pnl_customer";
-            this.pnl_customer.Size = new System.Drawing.Size(677, 74);
-            this.pnl_customer.TabIndex = 1;
-            // 
-            // panel4
-            // 
-            this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(121)))), ((int)(((byte)(166)))));
-            this.panel4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel4.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.panel4.Location = new System.Drawing.Point(366, 0);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(311, 74);
-            this.panel4.TabIndex = 17;
-            // 
-            // panel7
-            // 
-            this.panel7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(121)))), ((int)(((byte)(166)))));
-            this.panel7.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel7.Controls.Add(this.label3);
-            this.panel7.Controls.Add(this.label4);
-            this.panel7.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel7.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.panel7.Location = new System.Drawing.Point(250, 0);
-            this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(116, 74);
-            this.panel7.TabIndex = 16;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(30, 35);
+            this.label3.Location = new System.Drawing.Point(96, 8);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(31, 13);
             this.label3.TabIndex = 3;
@@ -284,104 +202,47 @@
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.White;
-            this.label4.Location = new System.Drawing.Point(6, 8);
+            this.label4.Location = new System.Drawing.Point(7, 8);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(77, 13);
+            this.label4.Size = new System.Drawing.Size(83, 13);
             this.label4.TabIndex = 2;
-            this.label4.Text = "Amount Due";
+            this.label4.Text = "Amount Due :";
             // 
-            // panel9
+            // panel7
             // 
-            this.panel9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(121)))), ((int)(((byte)(166)))));
-            this.panel9.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel9.Controls.Add(this.lbl_customer);
-            this.panel9.Controls.Add(this.label21);
-            this.panel9.Controls.Add(this.label1);
-            this.panel9.Controls.Add(this.label2);
-            this.panel9.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel9.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.panel9.Location = new System.Drawing.Point(0, 0);
-            this.panel9.Name = "panel9";
-            this.panel9.Size = new System.Drawing.Size(250, 74);
-            this.panel9.TabIndex = 15;
+            this.panel7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(121)))), ((int)(((byte)(166)))));
+            this.panel7.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel7.Controls.Add(this.label8);
+            this.panel7.Controls.Add(this.label1);
+            this.panel7.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panel7.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.panel7.Location = new System.Drawing.Point(250, 0);
+            this.panel7.Name = "panel7";
+            this.panel7.Size = new System.Drawing.Size(154, 74);
+            this.panel7.TabIndex = 16;
             // 
-            // lbl_customer
+            // label8
             // 
-            this.lbl_customer.AutoSize = true;
-            this.lbl_customer.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_customer.ForeColor = System.Drawing.Color.White;
-            this.lbl_customer.Location = new System.Drawing.Point(73, 17);
-            this.lbl_customer.Name = "lbl_customer";
-            this.lbl_customer.Size = new System.Drawing.Size(62, 13);
-            this.lbl_customer.TabIndex = 3;
-            this.lbl_customer.Text = "Customer";
-            // 
-            // label21
-            // 
-            this.label21.AutoSize = true;
-            this.label21.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label21.ForeColor = System.Drawing.Color.White;
-            this.label21.Location = new System.Drawing.Point(6, 5);
-            this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(62, 13);
-            this.label21.TabIndex = 2;
-            this.label21.Text = "Customer";
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.ForeColor = System.Drawing.Color.White;
+            this.label8.Location = new System.Drawing.Point(5, 8);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(65, 13);
+            this.label8.TabIndex = 3;
+            this.label8.Text = "Address  : ";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(73, 54);
+            this.label1.Location = new System.Drawing.Point(44, 35);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(53, 13);
             this.label1.TabIndex = 3;
             this.label1.Text = "Address";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(6, 36);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(109, 13);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "Address && Mob No";
-            // 
-            // panel3
-            // 
-            this.panel3.Controls.Add(this.panel73);
-            this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel3.Location = new System.Drawing.Point(0, 0);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(677, 44);
-            this.panel3.TabIndex = 0;
-            // 
-            // panel73
-            // 
-            this.panel73.Controls.Add(this.panel81);
-            this.panel73.Controls.Add(this.panel79);
-            this.panel73.Controls.Add(this.panel78);
-            this.panel73.Controls.Add(this.panel77);
-            this.panel73.Controls.Add(this.txt_producrtcode);
-            this.panel73.Controls.Add(this.panel76);
-            this.panel73.Controls.Add(this.panel74);
-            this.panel73.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel73.Location = new System.Drawing.Point(0, 0);
-            this.panel73.Name = "panel73";
-            this.panel73.Size = new System.Drawing.Size(677, 41);
-            this.panel73.TabIndex = 7;
-            // 
-            // panel79
-            // 
-            this.panel79.Controls.Add(this.button53);
-            this.panel79.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel79.Location = new System.Drawing.Point(366, 3);
-            this.panel79.Name = "panel79";
-            this.panel79.Size = new System.Drawing.Size(129, 38);
-            this.panel79.TabIndex = 7;
             // 
             // button53
             // 
@@ -395,29 +256,39 @@
             this.button53.TabIndex = 1;
             this.button53.Text = "Offers";
             this.button53.UseVisualStyleBackColor = false;
+            this.button53.Click += new System.EventHandler(this.button53_Click);
+            // 
+            // panel79
+            // 
+            this.panel79.Controls.Add(this.button53);
+            this.panel79.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panel79.Location = new System.Drawing.Point(366, 3);
+            this.panel79.Name = "panel79";
+            this.panel79.Size = new System.Drawing.Size(129, 38);
+            this.panel79.TabIndex = 7;
+            // 
+            // button52
+            // 
+            this.button52.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(121)))), ((int)(((byte)(166)))));
+            this.button52.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.button52.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button52.ForeColor = System.Drawing.Color.White;
+            this.button52.Location = new System.Drawing.Point(0, 0);
+            this.button52.Name = "button52";
+            this.button52.Size = new System.Drawing.Size(129, 38);
+            this.button52.TabIndex = 1;
+            this.button52.Text = "Todays Specials";
+            this.button52.UseVisualStyleBackColor = false;
+            this.button52.Click += new System.EventHandler(this.numericbuttonclicked_Click);
             // 
             // panel78
             // 
-            this.panel78.Controls.Add(this.btn_todaySpecial);
+            this.panel78.Controls.Add(this.button52);
             this.panel78.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel78.Location = new System.Drawing.Point(237, 3);
             this.panel78.Name = "panel78";
             this.panel78.Size = new System.Drawing.Size(129, 38);
             this.panel78.TabIndex = 6;
-            // 
-            // btn_todaySpecial
-            // 
-            this.btn_todaySpecial.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(121)))), ((int)(((byte)(166)))));
-            this.btn_todaySpecial.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btn_todaySpecial.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_todaySpecial.ForeColor = System.Drawing.Color.White;
-            this.btn_todaySpecial.Location = new System.Drawing.Point(0, 0);
-            this.btn_todaySpecial.Name = "btn_todaySpecial";
-            this.btn_todaySpecial.Size = new System.Drawing.Size(129, 38);
-            this.btn_todaySpecial.TabIndex = 1;
-            this.btn_todaySpecial.Text = "Todays Specials";
-            this.btn_todaySpecial.UseVisualStyleBackColor = false;
-            this.btn_todaySpecial.Click += new System.EventHandler(this.btn_todaySpecial_Click);
             // 
             // panel77
             // 
@@ -432,8 +303,9 @@
             this.txt_producrtcode.Dock = System.Windows.Forms.DockStyle.Left;
             this.txt_producrtcode.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt_producrtcode.Location = new System.Drawing.Point(3, 3);
+            this.txt_producrtcode.Multiline = true;
             this.txt_producrtcode.Name = "txt_producrtcode";
-            this.txt_producrtcode.Size = new System.Drawing.Size(231, 31);
+            this.txt_producrtcode.Size = new System.Drawing.Size(231, 38);
             this.txt_producrtcode.TabIndex = 4;
             // 
             // panel76
@@ -449,26 +321,32 @@
             this.panel74.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel74.Location = new System.Drawing.Point(0, 0);
             this.panel74.Name = "panel74";
-            this.panel74.Size = new System.Drawing.Size(677, 3);
+            this.panel74.Size = new System.Drawing.Size(753, 3);
             this.panel74.TabIndex = 0;
             // 
-            // panel23
+            // panel73
             // 
-            this.panel23.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(58)))), ((int)(((byte)(69)))));
-            this.panel23.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel23.Location = new System.Drawing.Point(785, 0);
-            this.panel23.Name = "panel23";
-            this.panel23.Size = new System.Drawing.Size(3, 733);
-            this.panel23.TabIndex = 5;
+            this.panel73.BackColor = System.Drawing.Color.LightBlue;
+            this.panel73.Controls.Add(this.panel79);
+            this.panel73.Controls.Add(this.panel78);
+            this.panel73.Controls.Add(this.panel77);
+            this.panel73.Controls.Add(this.txt_producrtcode);
+            this.panel73.Controls.Add(this.panel76);
+            this.panel73.Controls.Add(this.panel74);
+            this.panel73.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel73.Location = new System.Drawing.Point(0, 0);
+            this.panel73.Name = "panel73";
+            this.panel73.Size = new System.Drawing.Size(753, 41);
+            this.panel73.TabIndex = 7;
             // 
             // panel20
             // 
             this.panel20.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(53)))), ((int)(((byte)(66)))));
             this.panel20.Controls.Add(this.panel22);
             this.panel20.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel20.Location = new System.Drawing.Point(103, 0);
+            this.panel20.Location = new System.Drawing.Point(217, 0);
             this.panel20.Name = "panel20";
-            this.panel20.Size = new System.Drawing.Size(5, 733);
+            this.panel20.Size = new System.Drawing.Size(10, 771);
             this.panel20.TabIndex = 3;
             // 
             // panel22
@@ -477,314 +355,449 @@
             this.panel22.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel22.Location = new System.Drawing.Point(0, 0);
             this.panel22.Name = "panel22";
-            this.panel22.Size = new System.Drawing.Size(3, 733);
+            this.panel22.Size = new System.Drawing.Size(3, 771);
             this.panel22.TabIndex = 4;
+            // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(213)))), ((int)(((byte)(225)))), ((int)(((byte)(235)))));
+            this.panel1.Controls.Add(this.panel72);
+            this.panel1.Controls.Add(this.panel23);
+            this.panel1.Controls.Add(this.panel20);
+            this.panel1.Controls.Add(this.panel19);
+            this.panel1.Controls.Add(this.pnl_left);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(1343, 771);
+            this.panel1.TabIndex = 1;
+            // 
+            // panel72
+            // 
+            this.panel72.Controls.Add(this.pnl_product);
+            this.panel72.Controls.Add(this.pnl_customer);
+            this.panel72.Controls.Add(this.panel3);
+            this.panel72.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel72.Location = new System.Drawing.Point(227, 0);
+            this.panel72.Name = "panel72";
+            this.panel72.Size = new System.Drawing.Size(753, 771);
+            this.panel72.TabIndex = 6;
+            // 
+            // pnl_product
+            // 
+            this.pnl_product.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnl_product.Location = new System.Drawing.Point(0, 44);
+            this.pnl_product.Name = "pnl_product";
+            this.pnl_product.Size = new System.Drawing.Size(753, 653);
+            this.pnl_product.TabIndex = 2;
+            this.pnl_product.Click += new System.EventHandler(this.numericbuttonclicked_Click);
+            // 
+            // pnl_customer
+            // 
+            this.pnl_customer.AccessibleDescription = "";
+            this.pnl_customer.Controls.Add(this.panel4);
+            this.pnl_customer.Controls.Add(this.panel7);
+            this.pnl_customer.Controls.Add(this.panel9);
+            this.pnl_customer.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.pnl_customer.Location = new System.Drawing.Point(0, 697);
+            this.pnl_customer.Name = "pnl_customer";
+            this.pnl_customer.Size = new System.Drawing.Size(753, 74);
+            this.pnl_customer.TabIndex = 1;
+            // 
+            // panel4
+            // 
+            this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(121)))), ((int)(((byte)(166)))));
+            this.panel4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel4.Controls.Add(this.label3);
+            this.panel4.Controls.Add(this.lbl_tableID);
+            this.panel4.Controls.Add(this.label4);
+            this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel4.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.panel4.Location = new System.Drawing.Point(404, 0);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(349, 74);
+            this.panel4.TabIndex = 17;
+            // 
+            // lbl_tableID
+            // 
+            this.lbl_tableID.AutoSize = true;
+            this.lbl_tableID.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_tableID.Location = new System.Drawing.Point(173, 41);
+            this.lbl_tableID.Name = "lbl_tableID";
+            this.lbl_tableID.Size = new System.Drawing.Size(0, 16);
+            this.lbl_tableID.TabIndex = 5;
+            this.lbl_tableID.Visible = false;
+            // 
+            // panel9
+            // 
+            this.panel9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(121)))), ((int)(((byte)(166)))));
+            this.panel9.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel9.Controls.Add(this.lbl_customer);
+            this.panel9.Controls.Add(this.label21);
+            this.panel9.Controls.Add(this.label2);
+            this.panel9.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panel9.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.panel9.Location = new System.Drawing.Point(0, 0);
+            this.panel9.Name = "panel9";
+            this.panel9.Size = new System.Drawing.Size(250, 74);
+            this.panel9.TabIndex = 15;
+            // 
+            // lbl_customer
+            // 
+            this.lbl_customer.AutoSize = true;
+            this.lbl_customer.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_customer.ForeColor = System.Drawing.Color.White;
+            this.lbl_customer.Location = new System.Drawing.Point(138, 8);
+            this.lbl_customer.Name = "lbl_customer";
+            this.lbl_customer.Size = new System.Drawing.Size(62, 13);
+            this.lbl_customer.TabIndex = 3;
+            this.lbl_customer.Text = "Customer";
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label21.ForeColor = System.Drawing.Color.White;
+            this.label21.Location = new System.Drawing.Point(6, 5);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(71, 13);
+            this.label21.TabIndex = 2;
+            this.label21.Text = "Customer : ";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.White;
+            this.label2.Location = new System.Drawing.Point(6, 36);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(54, 13);
+            this.label2.TabIndex = 2;
+            this.label2.Text = "Mob No :";
+            // 
+            // panel3
+            // 
+            this.panel3.Controls.Add(this.panel73);
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel3.Location = new System.Drawing.Point(0, 0);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(753, 44);
+            this.panel3.TabIndex = 0;
+            // 
+            // panel23
+            // 
+            this.panel23.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(58)))), ((int)(((byte)(69)))));
+            this.panel23.Dock = System.Windows.Forms.DockStyle.Right;
+            this.panel23.Location = new System.Drawing.Point(980, 0);
+            this.panel23.Name = "panel23";
+            this.panel23.Size = new System.Drawing.Size(3, 771);
+            this.panel23.TabIndex = 5;
             // 
             // panel19
             // 
-            this.panel19.Controls.Add(this.panel49);
+            this.panel19.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(187)))), ((int)(((byte)(166)))));
+            this.panel19.Controls.Add(this.pnl_actionbtn);
             this.panel19.Controls.Add(this.panel48);
             this.panel19.Controls.Add(this.panel28);
             this.panel19.Controls.Add(this.panel26);
             this.panel19.Controls.Add(this.panel24);
             this.panel19.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel19.Location = new System.Drawing.Point(788, 0);
+            this.panel19.Location = new System.Drawing.Point(983, 0);
             this.panel19.Name = "panel19";
-            this.panel19.Size = new System.Drawing.Size(345, 733);
+            this.panel19.Size = new System.Drawing.Size(360, 771);
             this.panel19.TabIndex = 2;
             // 
-            // panel49
+            // pnl_actionbtn
             // 
-            this.panel49.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(58)))), ((int)(((byte)(69)))));
-            this.panel49.Controls.Add(this.panel27);
-            this.panel49.Controls.Add(this.panel50);
-            this.panel49.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel49.Location = new System.Drawing.Point(0, 536);
-            this.panel49.Name = "panel49";
-            this.panel49.Size = new System.Drawing.Size(345, 197);
-            this.panel49.TabIndex = 9;
+            this.pnl_actionbtn.Controls.Add(this.panel12);
+            this.pnl_actionbtn.Controls.Add(this.panel11);
+            this.pnl_actionbtn.Controls.Add(this.pnl_Row3);
+            this.pnl_actionbtn.Controls.Add(this.panel2);
+            this.pnl_actionbtn.Controls.Add(this.pnl_firstButtonRow);
+            this.pnl_actionbtn.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnl_actionbtn.Location = new System.Drawing.Point(0, 501);
+            this.pnl_actionbtn.Name = "pnl_actionbtn";
+            this.pnl_actionbtn.Size = new System.Drawing.Size(360, 270);
+            this.pnl_actionbtn.TabIndex = 0;
             // 
-            // panel27
+            // panel12
             // 
-            this.panel27.Controls.Add(this.panel31);
-            this.panel27.Controls.Add(this.panel30);
-            this.panel27.Controls.Add(this.panel29);
-            this.panel27.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel27.Location = new System.Drawing.Point(233, 0);
-            this.panel27.Name = "panel27";
-            this.panel27.Size = new System.Drawing.Size(112, 197);
-            this.panel27.TabIndex = 1;
-            // 
-            // panel31
-            // 
-            this.panel31.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(58)))), ((int)(((byte)(69)))));
-            this.panel31.Controls.Add(this.btn_print);
-            this.panel31.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel31.Location = new System.Drawing.Point(0, 104);
-            this.panel31.Name = "panel31";
-            this.panel31.Size = new System.Drawing.Size(112, 93);
-            this.panel31.TabIndex = 11;
+            this.panel12.Controls.Add(this.btn_print);
+            this.panel12.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel12.Location = new System.Drawing.Point(0, 222);
+            this.panel12.Name = "panel12";
+            this.panel12.Size = new System.Drawing.Size(360, 56);
+            this.panel12.TabIndex = 26;
             // 
             // btn_print
             // 
             this.btn_print.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(187)))), ((int)(((byte)(166)))));
-            this.btn_print.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btn_print.Dock = System.Windows.Forms.DockStyle.Top;
             this.btn_print.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_print.ForeColor = System.Drawing.Color.White;
+            this.btn_print.Image = ((System.Drawing.Image)(resources.GetObject("btn_print.Image")));
+            this.btn_print.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.btn_print.Location = new System.Drawing.Point(0, 0);
             this.btn_print.Name = "btn_print";
-            this.btn_print.Size = new System.Drawing.Size(112, 93);
-            this.btn_print.TabIndex = 20;
-            this.btn_print.Text = "CheckOut";
+            this.btn_print.Size = new System.Drawing.Size(360, 56);
+            this.btn_print.TabIndex = 21;
+            this.btn_print.Text = "Check Out";
+            this.btn_print.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btn_print.UseVisualStyleBackColor = false;
             this.btn_print.Click += new System.EventHandler(this.numericbuttonclicked_Click);
             // 
-            // panel30
+            // panel11
             // 
-            this.panel30.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel30.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.panel30.Location = new System.Drawing.Point(0, 103);
-            this.panel30.Name = "panel30";
-            this.panel30.Size = new System.Drawing.Size(112, 1);
-            this.panel30.TabIndex = 10;
+            this.panel11.Controls.Add(this.button3);
+            this.panel11.Controls.Add(this.button2);
+            this.panel11.Controls.Add(this.btn_pricechange);
+            this.panel11.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel11.Location = new System.Drawing.Point(0, 166);
+            this.panel11.Name = "panel11";
+            this.panel11.Size = new System.Drawing.Size(360, 56);
+            this.panel11.TabIndex = 25;
             // 
-            // panel29
+            // button3
             // 
-            this.panel29.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(58)))), ((int)(((byte)(69)))));
-            this.panel29.Controls.Add(this.btn_hold);
-            this.panel29.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel29.Location = new System.Drawing.Point(0, 0);
-            this.panel29.Name = "panel29";
-            this.panel29.Size = new System.Drawing.Size(112, 103);
-            this.panel29.TabIndex = 0;
+            this.button3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(187)))), ((int)(((byte)(166)))));
+            this.button3.Dock = System.Windows.Forms.DockStyle.Left;
+            this.button3.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button3.ForeColor = System.Drawing.Color.White;
+            this.button3.Image = ((System.Drawing.Image)(resources.GetObject("button3.Image")));
+            this.button3.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.button3.Location = new System.Drawing.Point(232, 0);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(116, 56);
+            this.button3.TabIndex = 24;
+            this.button3.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.button3.UseVisualStyleBackColor = false;
+            // 
+            // button2
+            // 
+            this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(187)))), ((int)(((byte)(166)))));
+            this.button2.Dock = System.Windows.Forms.DockStyle.Left;
+            this.button2.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button2.ForeColor = System.Drawing.Color.White;
+            this.button2.Image = ((System.Drawing.Image)(resources.GetObject("button2.Image")));
+            this.button2.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.button2.Location = new System.Drawing.Point(116, 0);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(116, 56);
+            this.button2.TabIndex = 23;
+            this.button2.Text = "List";
+            this.button2.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.button2.UseVisualStyleBackColor = false;
+            // 
+            // btn_pricechange
+            // 
+            this.btn_pricechange.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(187)))), ((int)(((byte)(166)))));
+            this.btn_pricechange.Dock = System.Windows.Forms.DockStyle.Left;
+            this.btn_pricechange.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_pricechange.ForeColor = System.Drawing.Color.White;
+            this.btn_pricechange.Image = ((System.Drawing.Image)(resources.GetObject("btn_pricechange.Image")));
+            this.btn_pricechange.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btn_pricechange.Location = new System.Drawing.Point(0, 0);
+            this.btn_pricechange.Name = "btn_pricechange";
+            this.btn_pricechange.Size = new System.Drawing.Size(116, 56);
+            this.btn_pricechange.TabIndex = 22;
+            this.btn_pricechange.Text = "Price Change";
+            this.btn_pricechange.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btn_pricechange.UseVisualStyleBackColor = false;
+            this.btn_pricechange.Click += new System.EventHandler(this.numericbuttonclicked_Click);
+            // 
+            // pnl_Row3
+            // 
+            this.pnl_Row3.Controls.Add(this.btn_order);
+            this.pnl_Row3.Controls.Add(this.lbl_tablebill);
+            this.pnl_Row3.Controls.Add(this.btn_paymentMethod);
+            this.pnl_Row3.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnl_Row3.Location = new System.Drawing.Point(0, 110);
+            this.pnl_Row3.Name = "pnl_Row3";
+            this.pnl_Row3.Size = new System.Drawing.Size(360, 56);
+            this.pnl_Row3.TabIndex = 24;
+            // 
+            // btn_order
+            // 
+            this.btn_order.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(187)))), ((int)(((byte)(166)))));
+            this.btn_order.Dock = System.Windows.Forms.DockStyle.Left;
+            this.btn_order.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_order.ForeColor = System.Drawing.Color.White;
+            this.btn_order.Image = ((System.Drawing.Image)(resources.GetObject("btn_order.Image")));
+            this.btn_order.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btn_order.Location = new System.Drawing.Point(232, 0);
+            this.btn_order.Name = "btn_order";
+            this.btn_order.Size = new System.Drawing.Size(116, 56);
+            this.btn_order.TabIndex = 22;
+            this.btn_order.Text = "Order";
+            this.btn_order.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btn_order.UseVisualStyleBackColor = false;
+            this.btn_order.Click += new System.EventHandler(this.numericbuttonclicked_Click);
+            // 
+            // lbl_tablebill
+            // 
+            this.lbl_tablebill.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(187)))), ((int)(((byte)(166)))));
+            this.lbl_tablebill.Dock = System.Windows.Forms.DockStyle.Left;
+            this.lbl_tablebill.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_tablebill.ForeColor = System.Drawing.Color.White;
+            this.lbl_tablebill.Image = ((System.Drawing.Image)(resources.GetObject("lbl_tablebill.Image")));
+            this.lbl_tablebill.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.lbl_tablebill.Location = new System.Drawing.Point(116, 0);
+            this.lbl_tablebill.Name = "lbl_tablebill";
+            this.lbl_tablebill.Size = new System.Drawing.Size(116, 56);
+            this.lbl_tablebill.TabIndex = 3;
+            this.lbl_tablebill.Text = "Table Bill";
+            this.lbl_tablebill.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.lbl_tablebill.UseVisualStyleBackColor = false;
+            this.lbl_tablebill.Click += new System.EventHandler(this.numericbuttonclicked_Click);
+            // 
+            // btn_paymentMethod
+            // 
+            this.btn_paymentMethod.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(187)))), ((int)(((byte)(166)))));
+            this.btn_paymentMethod.Dock = System.Windows.Forms.DockStyle.Left;
+            this.btn_paymentMethod.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_paymentMethod.ForeColor = System.Drawing.Color.White;
+            this.btn_paymentMethod.Image = ((System.Drawing.Image)(resources.GetObject("btn_paymentMethod.Image")));
+            this.btn_paymentMethod.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btn_paymentMethod.Location = new System.Drawing.Point(0, 0);
+            this.btn_paymentMethod.Name = "btn_paymentMethod";
+            this.btn_paymentMethod.Size = new System.Drawing.Size(116, 56);
+            this.btn_paymentMethod.TabIndex = 21;
+            this.btn_paymentMethod.Text = "Payment Method";
+            this.btn_paymentMethod.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btn_paymentMethod.UseVisualStyleBackColor = false;
+            this.btn_paymentMethod.Click += new System.EventHandler(this.numericbuttonclicked_Click);
+            // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.btn_notes);
+            this.panel2.Controls.Add(this.btn_hold);
+            this.panel2.Controls.Add(this.btn_kot);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel2.Location = new System.Drawing.Point(0, 55);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(360, 55);
+            this.panel2.TabIndex = 23;
+            // 
+            // btn_notes
+            // 
+            this.btn_notes.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(187)))), ((int)(((byte)(166)))));
+            this.btn_notes.Dock = System.Windows.Forms.DockStyle.Left;
+            this.btn_notes.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_notes.ForeColor = System.Drawing.Color.White;
+            this.btn_notes.Image = ((System.Drawing.Image)(resources.GetObject("btn_notes.Image")));
+            this.btn_notes.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btn_notes.Location = new System.Drawing.Point(232, 0);
+            this.btn_notes.Name = "btn_notes";
+            this.btn_notes.Size = new System.Drawing.Size(116, 55);
+            this.btn_notes.TabIndex = 20;
+            this.btn_notes.Text = "Notes";
+            this.btn_notes.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btn_notes.UseVisualStyleBackColor = false;
+            this.btn_notes.Click += new System.EventHandler(this.numericbuttonclicked_Click);
             // 
             // btn_hold
             // 
             this.btn_hold.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(187)))), ((int)(((byte)(166)))));
-            this.btn_hold.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btn_hold.Dock = System.Windows.Forms.DockStyle.Left;
             this.btn_hold.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_hold.ForeColor = System.Drawing.Color.White;
-            this.btn_hold.Location = new System.Drawing.Point(0, 0);
+            this.btn_hold.Image = global::App.Properties.Resources.Hold1;
+            this.btn_hold.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btn_hold.Location = new System.Drawing.Point(116, 0);
             this.btn_hold.Name = "btn_hold";
-            this.btn_hold.Size = new System.Drawing.Size(112, 103);
-            this.btn_hold.TabIndex = 20;
+            this.btn_hold.Size = new System.Drawing.Size(116, 55);
+            this.btn_hold.TabIndex = 21;
             this.btn_hold.Text = "Hold";
+            this.btn_hold.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btn_hold.UseVisualStyleBackColor = false;
             this.btn_hold.Click += new System.EventHandler(this.numericbuttonclicked_Click);
-            // 
-            // panel50
-            // 
-            this.panel50.Controls.Add(this.panel55);
-            this.panel50.Controls.Add(this.panel54);
-            this.panel50.Controls.Add(this.panel53);
-            this.panel50.Controls.Add(this.panel52);
-            this.panel50.Controls.Add(this.panel51);
-            this.panel50.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel50.Location = new System.Drawing.Point(0, 0);
-            this.panel50.Name = "panel50";
-            this.panel50.Size = new System.Drawing.Size(233, 197);
-            this.panel50.TabIndex = 0;
-            // 
-            // panel55
-            // 
-            this.panel55.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(58)))), ((int)(((byte)(69)))));
-            this.panel55.Controls.Add(this.panel65);
-            this.panel55.Controls.Add(this.panel64);
-            this.panel55.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel55.Location = new System.Drawing.Point(0, 139);
-            this.panel55.Name = "panel55";
-            this.panel55.Size = new System.Drawing.Size(233, 58);
-            this.panel55.TabIndex = 15;
-            // 
-            // panel65
-            // 
-            this.panel65.Controls.Add(this.btn_clear);
-            this.panel65.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel65.Location = new System.Drawing.Point(116, 0);
-            this.panel65.Name = "panel65";
-            this.panel65.Size = new System.Drawing.Size(116, 58);
-            this.panel65.TabIndex = 3;
-            // 
-            // btn_clear
-            // 
-            this.btn_clear.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(187)))), ((int)(((byte)(166)))));
-            this.btn_clear.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btn_clear.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_clear.ForeColor = System.Drawing.Color.White;
-            this.btn_clear.Location = new System.Drawing.Point(0, 0);
-            this.btn_clear.Name = "btn_clear";
-            this.btn_clear.Size = new System.Drawing.Size(116, 58);
-            this.btn_clear.TabIndex = 20;
-            this.btn_clear.Text = "Clear";
-            this.btn_clear.UseVisualStyleBackColor = false;
-            this.btn_clear.Click += new System.EventHandler(this.numericbuttonclicked_Click);
-            // 
-            // panel64
-            // 
-            this.panel64.Controls.Add(this.btn_action);
-            this.panel64.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel64.Location = new System.Drawing.Point(0, 0);
-            this.panel64.Name = "panel64";
-            this.panel64.Size = new System.Drawing.Size(116, 58);
-            this.panel64.TabIndex = 2;
-            // 
-            // btn_action
-            // 
-            this.btn_action.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(187)))), ((int)(((byte)(166)))));
-            this.btn_action.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btn_action.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_action.ForeColor = System.Drawing.Color.White;
-            this.btn_action.Location = new System.Drawing.Point(0, 0);
-            this.btn_action.Name = "btn_action";
-            this.btn_action.Size = new System.Drawing.Size(116, 58);
-            this.btn_action.TabIndex = 19;
-            this.btn_action.Text = "Action";
-            this.btn_action.UseVisualStyleBackColor = false;
-            this.btn_action.Click += new System.EventHandler(this.numericbuttonclicked_Click);
-            // 
-            // panel54
-            // 
-            this.panel54.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(58)))), ((int)(((byte)(69)))));
-            this.panel54.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel54.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.panel54.Location = new System.Drawing.Point(0, 137);
-            this.panel54.Name = "panel54";
-            this.panel54.Size = new System.Drawing.Size(233, 2);
-            this.panel54.TabIndex = 14;
-            // 
-            // panel53
-            // 
-            this.panel53.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(58)))), ((int)(((byte)(69)))));
-            this.panel53.Controls.Add(this.panel63);
-            this.panel53.Controls.Add(this.panel62);
-            this.panel53.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel53.Location = new System.Drawing.Point(0, 69);
-            this.panel53.Name = "panel53";
-            this.panel53.Size = new System.Drawing.Size(233, 68);
-            this.panel53.TabIndex = 13;
-            // 
-            // panel63
-            // 
-            this.panel63.Controls.Add(this.btn_kot);
-            this.panel63.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel63.Location = new System.Drawing.Point(116, 0);
-            this.panel63.Name = "panel63";
-            this.panel63.Size = new System.Drawing.Size(117, 68);
-            this.panel63.TabIndex = 2;
             // 
             // btn_kot
             // 
             this.btn_kot.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(187)))), ((int)(((byte)(166)))));
-            this.btn_kot.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btn_kot.Dock = System.Windows.Forms.DockStyle.Left;
             this.btn_kot.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_kot.ForeColor = System.Drawing.Color.White;
+            this.btn_kot.Image = global::App.Properties.Resources.KOT;
+            this.btn_kot.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.btn_kot.Location = new System.Drawing.Point(0, 0);
             this.btn_kot.Name = "btn_kot";
-            this.btn_kot.Size = new System.Drawing.Size(117, 68);
-            this.btn_kot.TabIndex = 20;
+            this.btn_kot.Size = new System.Drawing.Size(116, 55);
+            this.btn_kot.TabIndex = 21;
             this.btn_kot.Text = "KOT";
+            this.btn_kot.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btn_kot.UseVisualStyleBackColor = false;
             this.btn_kot.Click += new System.EventHandler(this.numericbuttonclicked_Click);
             // 
-            // panel62
+            // pnl_firstButtonRow
             // 
-            this.panel62.Controls.Add(this.btn_tablebill);
-            this.panel62.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel62.Location = new System.Drawing.Point(0, 0);
-            this.panel62.Name = "panel62";
-            this.panel62.Size = new System.Drawing.Size(116, 68);
-            this.panel62.TabIndex = 1;
+            this.pnl_firstButtonRow.Controls.Add(this.btn_clear);
+            this.pnl_firstButtonRow.Controls.Add(this.Btn_buzzer);
+            this.pnl_firstButtonRow.Controls.Add(this.btn_Tables);
+            this.pnl_firstButtonRow.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnl_firstButtonRow.Location = new System.Drawing.Point(0, 0);
+            this.pnl_firstButtonRow.Name = "pnl_firstButtonRow";
+            this.pnl_firstButtonRow.Size = new System.Drawing.Size(360, 55);
+            this.pnl_firstButtonRow.TabIndex = 22;
             // 
-            // btn_tablebill
+            // btn_clear
             // 
-            this.btn_tablebill.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(187)))), ((int)(((byte)(166)))));
-            this.btn_tablebill.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btn_tablebill.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_tablebill.ForeColor = System.Drawing.Color.White;
-            this.btn_tablebill.Location = new System.Drawing.Point(0, 0);
-            this.btn_tablebill.Name = "btn_tablebill";
-            this.btn_tablebill.Size = new System.Drawing.Size(116, 68);
-            this.btn_tablebill.TabIndex = 19;
-            this.btn_tablebill.Text = "Table Bill";
-            this.btn_tablebill.UseVisualStyleBackColor = false;
-            this.btn_tablebill.Click += new System.EventHandler(this.numericbuttonclicked_Click);
+            this.btn_clear.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(187)))), ((int)(((byte)(166)))));
+            this.btn_clear.Dock = System.Windows.Forms.DockStyle.Left;
+            this.btn_clear.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_clear.ForeColor = System.Drawing.Color.White;
+            this.btn_clear.Image = global::App.Properties.Resources.clear11;
+            this.btn_clear.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btn_clear.Location = new System.Drawing.Point(232, 0);
+            this.btn_clear.Name = "btn_clear";
+            this.btn_clear.Size = new System.Drawing.Size(116, 55);
+            this.btn_clear.TabIndex = 20;
+            this.btn_clear.Text = "Clear";
+            this.btn_clear.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btn_clear.UseVisualStyleBackColor = false;
+            this.btn_clear.Click += new System.EventHandler(this.numericbuttonclicked_Click);
             // 
-            // panel52
+            // Btn_buzzer
             // 
-            this.panel52.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(58)))), ((int)(((byte)(69)))));
-            this.panel52.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel52.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.panel52.Location = new System.Drawing.Point(0, 68);
-            this.panel52.Name = "panel52";
-            this.panel52.Size = new System.Drawing.Size(233, 1);
-            this.panel52.TabIndex = 12;
+            this.Btn_buzzer.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(187)))), ((int)(((byte)(166)))));
+            this.Btn_buzzer.Dock = System.Windows.Forms.DockStyle.Left;
+            this.Btn_buzzer.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Btn_buzzer.ForeColor = System.Drawing.Color.White;
+            this.Btn_buzzer.Image = ((System.Drawing.Image)(resources.GetObject("Btn_buzzer.Image")));
+            this.Btn_buzzer.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.Btn_buzzer.Location = new System.Drawing.Point(116, 0);
+            this.Btn_buzzer.Name = "Btn_buzzer";
+            this.Btn_buzzer.Size = new System.Drawing.Size(116, 55);
+            this.Btn_buzzer.TabIndex = 21;
+            this.Btn_buzzer.Text = "Buzzer";
+            this.Btn_buzzer.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.Btn_buzzer.UseVisualStyleBackColor = false;
+            this.Btn_buzzer.Click += new System.EventHandler(this.numericbuttonclicked_Click);
             // 
-            // panel51
+            // btn_Tables
             // 
-            this.panel51.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(58)))), ((int)(((byte)(69)))));
-            this.panel51.Controls.Add(this.panel61);
-            this.panel51.Controls.Add(this.panel60);
-            this.panel51.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel51.Location = new System.Drawing.Point(0, 0);
-            this.panel51.Name = "panel51";
-            this.panel51.Size = new System.Drawing.Size(233, 68);
-            this.panel51.TabIndex = 0;
-            // 
-            // panel61
-            // 
-            this.panel61.Controls.Add(this.btn_paymentmode);
-            this.panel61.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel61.Location = new System.Drawing.Point(116, 0);
-            this.panel61.Name = "panel61";
-            this.panel61.Size = new System.Drawing.Size(117, 68);
-            this.panel61.TabIndex = 1;
-            // 
-            // btn_paymentmode
-            // 
-            this.btn_paymentmode.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(187)))), ((int)(((byte)(166)))));
-            this.btn_paymentmode.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btn_paymentmode.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_paymentmode.ForeColor = System.Drawing.Color.White;
-            this.btn_paymentmode.Location = new System.Drawing.Point(0, 0);
-            this.btn_paymentmode.Name = "btn_paymentmode";
-            this.btn_paymentmode.Size = new System.Drawing.Size(117, 68);
-            this.btn_paymentmode.TabIndex = 20;
-            this.btn_paymentmode.Text = "Payment Method";
-            this.btn_paymentmode.UseVisualStyleBackColor = false;
-            this.btn_paymentmode.Click += new System.EventHandler(this.btn_paymentmode_Click);
-            this.btn_paymentmode.MouseClick += new System.Windows.Forms.MouseEventHandler(this.btn_paymentmode_MouseClick);
-            // 
-            // panel60
-            // 
-            this.panel60.Controls.Add(this.btn_buzzer);
-            this.panel60.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel60.Location = new System.Drawing.Point(0, 0);
-            this.panel60.Name = "panel60";
-            this.panel60.Size = new System.Drawing.Size(116, 68);
-            this.panel60.TabIndex = 0;
-            // 
-            // btn_buzzer
-            // 
-            this.btn_buzzer.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(187)))), ((int)(((byte)(166)))));
-            this.btn_buzzer.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btn_buzzer.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_buzzer.ForeColor = System.Drawing.Color.White;
-            this.btn_buzzer.Location = new System.Drawing.Point(0, 0);
-            this.btn_buzzer.Name = "btn_buzzer";
-            this.btn_buzzer.Size = new System.Drawing.Size(116, 68);
-            this.btn_buzzer.TabIndex = 19;
-            this.btn_buzzer.Text = "Buzzers";
-            this.btn_buzzer.UseVisualStyleBackColor = false;
-            this.btn_buzzer.Click += new System.EventHandler(this.btn_buzzer_Click);
-            this.btn_buzzer.MouseClick += new System.Windows.Forms.MouseEventHandler(this.btn_buzzer_MouseClick);
+            this.btn_Tables.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(187)))), ((int)(((byte)(166)))));
+            this.btn_Tables.Dock = System.Windows.Forms.DockStyle.Left;
+            this.btn_Tables.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_Tables.ForeColor = System.Drawing.Color.White;
+            this.btn_Tables.Image = global::App.Properties.Resources.Table11;
+            this.btn_Tables.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btn_Tables.Location = new System.Drawing.Point(0, 0);
+            this.btn_Tables.Name = "btn_Tables";
+            this.btn_Tables.Size = new System.Drawing.Size(116, 55);
+            this.btn_Tables.TabIndex = 20;
+            this.btn_Tables.Text = "Tables";
+            this.btn_Tables.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btn_Tables.UseVisualStyleBackColor = false;
+            this.btn_Tables.Click += new System.EventHandler(this.numericbuttonclicked_Click);
             // 
             // panel48
             // 
             this.panel48.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(58)))), ((int)(((byte)(69)))));
             this.panel48.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel48.Location = new System.Drawing.Point(0, 533);
+            this.panel48.Location = new System.Drawing.Point(0, 498);
             this.panel48.Name = "panel48";
-            this.panel48.Size = new System.Drawing.Size(345, 3);
+            this.panel48.Size = new System.Drawing.Size(360, 3);
             this.panel48.TabIndex = 8;
             // 
             // panel28
@@ -793,16 +806,15 @@
             this.panel28.Controls.Add(this.panel37);
             this.panel28.Controls.Add(this.panel35);
             this.panel28.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel28.Location = new System.Drawing.Point(0, 281);
+            this.panel28.Location = new System.Drawing.Point(0, 246);
             this.panel28.Name = "panel28";
-            this.panel28.Size = new System.Drawing.Size(345, 252);
+            this.panel28.Size = new System.Drawing.Size(360, 252);
             this.panel28.TabIndex = 7;
             // 
             // panel38
             // 
             this.panel38.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(58)))), ((int)(((byte)(69)))));
-            this.panel38.Controls.Add(this.panel70);
-            this.panel38.Controls.Add(this.panel69);
+            this.panel38.Controls.Add(this.panel44);
             this.panel38.Controls.Add(this.panel68);
             this.panel38.Controls.Add(this.panel67);
             this.panel38.Controls.Add(this.panel66);
@@ -814,75 +826,8 @@
             this.panel38.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.panel38.Location = new System.Drawing.Point(236, 0);
             this.panel38.Name = "panel38";
-            this.panel38.Size = new System.Drawing.Size(109, 252);
+            this.panel38.Size = new System.Drawing.Size(124, 252);
             this.panel38.TabIndex = 11;
-            // 
-            // panel70
-            // 
-            this.panel70.Controls.Add(this.panel46);
-            this.panel70.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel70.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.panel70.Location = new System.Drawing.Point(0, 204);
-            this.panel70.Name = "panel70";
-            this.panel70.Size = new System.Drawing.Size(109, 48);
-            this.panel70.TabIndex = 20;
-            // 
-            // panel46
-            // 
-            this.panel46.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(187)))), ((int)(((byte)(166)))));
-            this.panel46.Controls.Add(this.btn_customer);
-            this.panel46.Controls.Add(this.panel47);
-            this.panel46.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel46.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.panel46.Location = new System.Drawing.Point(0, 0);
-            this.panel46.Name = "panel46";
-            this.panel46.Size = new System.Drawing.Size(109, 48);
-            this.panel46.TabIndex = 18;
-            // 
-            // btn_customer
-            // 
-            this.btn_customer.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(187)))), ((int)(((byte)(166)))));
-            this.btn_customer.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btn_customer.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
-            this.btn_customer.ForeColor = System.Drawing.Color.White;
-            this.btn_customer.Location = new System.Drawing.Point(37, 0);
-            this.btn_customer.Name = "btn_customer";
-            this.btn_customer.Size = new System.Drawing.Size(72, 48);
-            this.btn_customer.TabIndex = 21;
-            this.btn_customer.Text = "Customer";
-            this.btn_customer.UseVisualStyleBackColor = false;
-            this.btn_customer.Click += new System.EventHandler(this.numericbuttonclicked_Click);
-            // 
-            // panel47
-            // 
-            this.panel47.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(187)))), ((int)(((byte)(166)))));
-            this.panel47.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel47.BackgroundImage")));
-            this.panel47.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.panel47.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel47.Location = new System.Drawing.Point(0, 0);
-            this.panel47.Name = "panel47";
-            this.panel47.Size = new System.Drawing.Size(37, 48);
-            this.panel47.TabIndex = 2;
-            // 
-            // panel69
-            // 
-            this.panel69.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(58)))), ((int)(((byte)(69)))));
-            this.panel69.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel69.ForeColor = System.Drawing.Color.Coral;
-            this.panel69.Location = new System.Drawing.Point(0, 201);
-            this.panel69.Name = "panel69";
-            this.panel69.Size = new System.Drawing.Size(109, 3);
-            this.panel69.TabIndex = 19;
-            // 
-            // panel68
-            // 
-            this.panel68.Controls.Add(this.panel44);
-            this.panel68.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel68.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.panel68.Location = new System.Drawing.Point(0, 153);
-            this.panel68.Name = "panel68";
-            this.panel68.Size = new System.Drawing.Size(109, 48);
-            this.panel68.TabIndex = 18;
             // 
             // panel44
             // 
@@ -891,10 +836,10 @@
             this.panel44.Controls.Add(this.label16);
             this.panel44.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel44.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.panel44.Location = new System.Drawing.Point(0, 0);
+            this.panel44.Location = new System.Drawing.Point(0, 201);
             this.panel44.Name = "panel44";
-            this.panel44.Size = new System.Drawing.Size(109, 48);
-            this.panel44.TabIndex = 16;
+            this.panel44.Size = new System.Drawing.Size(124, 51);
+            this.panel44.TabIndex = 19;
             // 
             // txt_change
             // 
@@ -912,31 +857,21 @@
             this.label16.AutoSize = true;
             this.label16.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label16.ForeColor = System.Drawing.Color.White;
-            this.label16.Location = new System.Drawing.Point(1, 3);
+            this.label16.Location = new System.Drawing.Point(34, 3);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(51, 13);
             this.label16.TabIndex = 1;
             this.label16.Text = "Balance";
             // 
-            // panel67
+            // panel68
             // 
-            this.panel67.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(58)))), ((int)(((byte)(69)))));
-            this.panel67.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel67.ForeColor = System.Drawing.Color.Coral;
-            this.panel67.Location = new System.Drawing.Point(0, 150);
-            this.panel67.Name = "panel67";
-            this.panel67.Size = new System.Drawing.Size(109, 3);
-            this.panel67.TabIndex = 17;
-            // 
-            // panel66
-            // 
-            this.panel66.Controls.Add(this.panel42);
-            this.panel66.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel66.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.panel66.Location = new System.Drawing.Point(0, 102);
-            this.panel66.Name = "panel66";
-            this.panel66.Size = new System.Drawing.Size(109, 48);
-            this.panel66.TabIndex = 16;
+            this.panel68.Controls.Add(this.panel42);
+            this.panel68.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel68.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.panel68.Location = new System.Drawing.Point(0, 153);
+            this.panel68.Name = "panel68";
+            this.panel68.Size = new System.Drawing.Size(124, 48);
+            this.panel68.TabIndex = 18;
             // 
             // panel42
             // 
@@ -947,8 +882,8 @@
             this.panel42.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.panel42.Location = new System.Drawing.Point(0, 0);
             this.panel42.Name = "panel42";
-            this.panel42.Size = new System.Drawing.Size(109, 48);
-            this.panel42.TabIndex = 14;
+            this.panel42.Size = new System.Drawing.Size(124, 48);
+            this.panel42.TabIndex = 15;
             // 
             // panel59
             // 
@@ -957,7 +892,7 @@
             this.panel59.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.panel59.Location = new System.Drawing.Point(0, 18);
             this.panel59.Name = "panel59";
-            this.panel59.Size = new System.Drawing.Size(109, 30);
+            this.panel59.Size = new System.Drawing.Size(124, 30);
             this.panel59.TabIndex = 8;
             // 
             // txt_cash
@@ -968,7 +903,7 @@
             this.txt_cash.Location = new System.Drawing.Point(0, 0);
             this.txt_cash.Multiline = true;
             this.txt_cash.Name = "txt_cash";
-            this.txt_cash.Size = new System.Drawing.Size(109, 30);
+            this.txt_cash.Size = new System.Drawing.Size(124, 30);
             this.txt_cash.TabIndex = 0;
             this.txt_cash.Text = "0.00";
             this.txt_cash.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -978,11 +913,65 @@
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label14.ForeColor = System.Drawing.Color.White;
-            this.label14.Location = new System.Drawing.Point(1, 0);
+            this.label14.Location = new System.Drawing.Point(41, 0);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(31, 13);
             this.label14.TabIndex = 1;
             this.label14.Text = "Paid";
+            // 
+            // panel67
+            // 
+            this.panel67.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(58)))), ((int)(((byte)(69)))));
+            this.panel67.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel67.ForeColor = System.Drawing.Color.Coral;
+            this.panel67.Location = new System.Drawing.Point(0, 150);
+            this.panel67.Name = "panel67";
+            this.panel67.Size = new System.Drawing.Size(124, 3);
+            this.panel67.TabIndex = 17;
+            // 
+            // panel66
+            // 
+            this.panel66.Controls.Add(this.panel8);
+            this.panel66.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel66.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.panel66.Location = new System.Drawing.Point(0, 102);
+            this.panel66.Name = "panel66";
+            this.panel66.Size = new System.Drawing.Size(124, 48);
+            this.panel66.TabIndex = 16;
+            // 
+            // panel8
+            // 
+            this.panel8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(187)))), ((int)(((byte)(166)))));
+            this.panel8.Controls.Add(this.label6);
+            this.panel8.Controls.Add(this.label7);
+            this.panel8.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel8.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.panel8.Location = new System.Drawing.Point(0, 0);
+            this.panel8.Name = "panel8";
+            this.panel8.Size = new System.Drawing.Size(124, 48);
+            this.panel8.TabIndex = 20;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.ForeColor = System.Drawing.Color.White;
+            this.label6.Location = new System.Drawing.Point(38, 22);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(43, 18);
+            this.label6.TabIndex = 5;
+            this.label6.Text = "0.00";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.ForeColor = System.Drawing.Color.White;
+            this.label7.Location = new System.Drawing.Point(44, 3);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(28, 13);
+            this.label7.TabIndex = 1;
+            this.label7.Text = "Tax";
             // 
             // panel45
             // 
@@ -991,7 +980,7 @@
             this.panel45.ForeColor = System.Drawing.Color.Coral;
             this.panel45.Location = new System.Drawing.Point(0, 99);
             this.panel45.Name = "panel45";
-            this.panel45.Size = new System.Drawing.Size(109, 3);
+            this.panel45.Size = new System.Drawing.Size(124, 3);
             this.panel45.TabIndex = 15;
             // 
             // panel43
@@ -1001,7 +990,7 @@
             this.panel43.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.panel43.Location = new System.Drawing.Point(0, 51);
             this.panel43.Name = "panel43";
-            this.panel43.Size = new System.Drawing.Size(109, 48);
+            this.panel43.Size = new System.Drawing.Size(124, 48);
             this.panel43.TabIndex = 14;
             // 
             // panel40
@@ -1013,7 +1002,7 @@
             this.panel40.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.panel40.Location = new System.Drawing.Point(0, 0);
             this.panel40.Name = "panel40";
-            this.panel40.Size = new System.Drawing.Size(109, 48);
+            this.panel40.Size = new System.Drawing.Size(124, 48);
             this.panel40.TabIndex = 11;
             // 
             // txt_discount
@@ -1032,7 +1021,7 @@
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label12.ForeColor = System.Drawing.Color.White;
-            this.label12.Location = new System.Drawing.Point(1, 3);
+            this.label12.Location = new System.Drawing.Point(27, 3);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(56, 13);
             this.label12.TabIndex = 1;
@@ -1045,7 +1034,7 @@
             this.panel41.ForeColor = System.Drawing.Color.Coral;
             this.panel41.Location = new System.Drawing.Point(0, 48);
             this.panel41.Name = "panel41";
-            this.panel41.Size = new System.Drawing.Size(109, 3);
+            this.panel41.Size = new System.Drawing.Size(124, 3);
             this.panel41.TabIndex = 13;
             // 
             // panel39
@@ -1055,7 +1044,7 @@
             this.panel39.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.panel39.Location = new System.Drawing.Point(0, 0);
             this.panel39.Name = "panel39";
-            this.panel39.Size = new System.Drawing.Size(109, 48);
+            this.panel39.Size = new System.Drawing.Size(124, 48);
             this.panel39.TabIndex = 12;
             // 
             // panel25
@@ -1067,7 +1056,7 @@
             this.panel25.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.panel25.Location = new System.Drawing.Point(0, 0);
             this.panel25.Name = "panel25";
-            this.panel25.Size = new System.Drawing.Size(109, 48);
+            this.panel25.Size = new System.Drawing.Size(124, 48);
             this.panel25.TabIndex = 9;
             // 
             // txt_total
@@ -1086,7 +1075,7 @@
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.ForeColor = System.Drawing.Color.White;
-            this.label9.Location = new System.Drawing.Point(1, 3);
+            this.label9.Location = new System.Drawing.Point(36, 3);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(36, 13);
             this.label9.TabIndex = 1;
@@ -1152,7 +1141,6 @@
             this.button48.Text = "Price";
             this.button48.UseVisualStyleBackColor = false;
             this.button48.Click += new System.EventHandler(this.numericbuttonclicked_Click);
-            this.button48.MouseClick += new System.Windows.Forms.MouseEventHandler(this.numericbuttonclicked_Click);
             // 
             // button47
             // 
@@ -1344,8 +1332,62 @@
             this.panel26.ForeColor = System.Drawing.Color.Coral;
             this.panel26.Location = new System.Drawing.Point(0, 3);
             this.panel26.Name = "panel26";
-            this.panel26.Size = new System.Drawing.Size(345, 278);
+            this.panel26.Size = new System.Drawing.Size(360, 243);
             this.panel26.TabIndex = 5;
+            // 
+            // grd_ProductDetails
+            // 
+            this.grd_ProductDetails.AllowUserToAddRows = false;
+            this.grd_ProductDetails.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.grd_ProductDetails.BackgroundColor = System.Drawing.Color.White;
+            this.grd_ProductDetails.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.grd_ProductDetails.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.ID,
+            this.Item,
+            this.Price,
+            this.Qty,
+            this.Discount,
+            this.Total});
+            this.grd_ProductDetails.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.grd_ProductDetails.Location = new System.Drawing.Point(0, 0);
+            this.grd_ProductDetails.MultiSelect = false;
+            this.grd_ProductDetails.Name = "grd_ProductDetails";
+            this.grd_ProductDetails.RowHeadersVisible = false;
+            this.grd_ProductDetails.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.grd_ProductDetails.Size = new System.Drawing.Size(360, 243);
+            this.grd_ProductDetails.TabIndex = 1;
+            // 
+            // ID
+            // 
+            this.ID.HeaderText = "ID";
+            this.ID.Name = "ID";
+            this.ID.Visible = false;
+            // 
+            // Item
+            // 
+            this.Item.HeaderText = "Item";
+            this.Item.Name = "Item";
+            // 
+            // Price
+            // 
+            this.Price.HeaderText = "Price";
+            this.Price.Name = "Price";
+            // 
+            // Qty
+            // 
+            this.Qty.HeaderText = "Qty";
+            this.Qty.Name = "Qty";
+            // 
+            // Discount
+            // 
+            this.Discount.HeaderText = "Discount";
+            this.Discount.Name = "Discount";
+            this.Discount.Visible = false;
+            // 
+            // Total
+            // 
+            this.Total.HeaderText = "Total";
+            this.Total.Name = "Total";
             // 
             // panel24
             // 
@@ -1353,84 +1395,149 @@
             this.panel24.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel24.Location = new System.Drawing.Point(0, 0);
             this.panel24.Name = "panel24";
-            this.panel24.Size = new System.Drawing.Size(345, 3);
+            this.panel24.Size = new System.Drawing.Size(360, 3);
             this.panel24.TabIndex = 0;
             // 
-            // panel2
+            // pnl_left
             // 
-            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(53)))), ((int)(((byte)(66)))));
-            this.panel2.Controls.Add(this.pnl_category);
-            this.panel2.Controls.Add(this.panel71);
-            this.panel2.Controls.Add(this.panel17);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel2.Location = new System.Drawing.Point(0, 0);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(103, 733);
-            this.panel2.TabIndex = 0;
+            this.pnl_left.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(53)))), ((int)(((byte)(66)))));
+            this.pnl_left.Controls.Add(this.pnl_category);
+            this.pnl_left.Controls.Add(this.panel17);
+            this.pnl_left.Controls.Add(this.Paneltable);
+            this.pnl_left.Dock = System.Windows.Forms.DockStyle.Left;
+            this.pnl_left.Location = new System.Drawing.Point(0, 0);
+            this.pnl_left.Name = "pnl_left";
+            this.pnl_left.Size = new System.Drawing.Size(217, 771);
+            this.pnl_left.TabIndex = 0;
             // 
             // pnl_category
             // 
-            this.pnl_category.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(53)))), ((int)(((byte)(66)))));
-            this.pnl_category.Controls.Add(this.panel8);
-            this.pnl_category.Controls.Add(this.panel5);
             this.pnl_category.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnl_category.Location = new System.Drawing.Point(0, 61);
             this.pnl_category.Name = "pnl_category";
-            this.pnl_category.Size = new System.Drawing.Size(103, 598);
+            this.pnl_category.Size = new System.Drawing.Size(217, 620);
             this.pnl_category.TabIndex = 3;
-            // 
-            // panel8
-            // 
-            this.panel8.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel8.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.panel8.Location = new System.Drawing.Point(0, 5);
-            this.panel8.Name = "panel8";
-            this.panel8.Size = new System.Drawing.Size(103, 5);
-            this.panel8.TabIndex = 3;
-            // 
-            // panel5
-            // 
-            this.panel5.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel5.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.panel5.Location = new System.Drawing.Point(0, 0);
-            this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(103, 5);
-            this.panel5.TabIndex = 1;
-            // 
-            // panel71
-            // 
-            this.panel71.Controls.Add(this.lbl_table);
-            this.panel71.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel71.Location = new System.Drawing.Point(0, 0);
-            this.panel71.Name = "panel71";
-            this.panel71.Size = new System.Drawing.Size(103, 61);
-            this.panel71.TabIndex = 2;
-            // 
-            // lbl_table
-            // 
-            this.lbl_table.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(121)))), ((int)(((byte)(166)))));
-            this.lbl_table.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lbl_table.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_table.ForeColor = System.Drawing.Color.White;
-            this.lbl_table.Location = new System.Drawing.Point(0, 0);
-            this.lbl_table.Name = "lbl_table";
-            this.lbl_table.Size = new System.Drawing.Size(103, 61);
-            this.lbl_table.TabIndex = 1;
-            this.lbl_table.Text = "TABLES";
-            this.lbl_table.UseVisualStyleBackColor = false;
-            this.lbl_table.Click += new System.EventHandler(this.lbl_table_Click);
             // 
             // panel17
             // 
-            this.panel17.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(6)))), ((int)(((byte)(34)))));
-            this.panel17.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel17.BackgroundImage")));
+            this.panel17.BackColor = System.Drawing.Color.White;
             this.panel17.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.panel17.Controls.Add(this.panel10);
+            this.panel17.Controls.Add(this.panel5);
             this.panel17.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel17.Location = new System.Drawing.Point(0, 659);
+            this.panel17.Location = new System.Drawing.Point(0, 681);
             this.panel17.Name = "panel17";
-            this.panel17.Size = new System.Drawing.Size(103, 74);
-            this.panel17.TabIndex = 1;
-            this.panel17.Click += new System.EventHandler(this.panel17_Click);
+            this.panel17.Size = new System.Drawing.Size(217, 90);
+            this.panel17.TabIndex = 2;
+            // 
+            // panel10
+            // 
+            this.panel10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(6)))), ((int)(((byte)(34)))));
+            this.panel10.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel10.BackgroundImage")));
+            this.panel10.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.panel10.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel10.Location = new System.Drawing.Point(0, 0);
+            this.panel10.Name = "panel10";
+            this.panel10.Size = new System.Drawing.Size(217, 52);
+            this.panel10.TabIndex = 2;
+            this.panel10.MouseClick += new System.Windows.Forms.MouseEventHandler(this.panel10_MouseClick);
+            // 
+            // panel5
+            // 
+            this.panel5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(53)))), ((int)(((byte)(66)))));
+            this.panel5.Controls.Add(this.lbl_datettime);
+            this.panel5.Controls.Add(this.lbl_userid);
+            this.panel5.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel5.Location = new System.Drawing.Point(0, 52);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(217, 38);
+            this.panel5.TabIndex = 0;
+            // 
+            // lbl_datettime
+            // 
+            this.lbl_datettime.AutoSize = true;
+            this.lbl_datettime.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_datettime.ForeColor = System.Drawing.Color.White;
+            this.lbl_datettime.Location = new System.Drawing.Point(70, 22);
+            this.lbl_datettime.Name = "lbl_datettime";
+            this.lbl_datettime.Size = new System.Drawing.Size(75, 13);
+            this.lbl_datettime.TabIndex = 8;
+            this.lbl_datettime.Text = "01/01/2017";
+            // 
+            // lbl_userid
+            // 
+            this.lbl_userid.AutoSize = true;
+            this.lbl_userid.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_userid.ForeColor = System.Drawing.Color.White;
+            this.lbl_userid.Location = new System.Drawing.Point(85, 4);
+            this.lbl_userid.Name = "lbl_userid";
+            this.lbl_userid.Size = new System.Drawing.Size(43, 13);
+            this.lbl_userid.TabIndex = 7;
+            this.lbl_userid.Text = "Admin";
+            // 
+            // Paneltable
+            // 
+            this.Paneltable.Controls.Add(this.panel84);
+            this.Paneltable.Controls.Add(this.panel6);
+            this.Paneltable.Dock = System.Windows.Forms.DockStyle.Top;
+            this.Paneltable.Location = new System.Drawing.Point(0, 0);
+            this.Paneltable.Name = "Paneltable";
+            this.Paneltable.Size = new System.Drawing.Size(217, 61);
+            this.Paneltable.TabIndex = 0;
+            // 
+            // panel84
+            // 
+            this.panel84.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(121)))), ((int)(((byte)(166)))));
+            this.panel84.Controls.Add(this.lbl_invoicenum);
+            this.panel84.Controls.Add(this.label17);
+            this.panel84.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel84.Location = new System.Drawing.Point(0, 0);
+            this.panel84.Name = "panel84";
+            this.panel84.Size = new System.Drawing.Size(217, 30);
+            this.panel84.TabIndex = 4;
+            // 
+            // lbl_invoicenum
+            // 
+            this.lbl_invoicenum.AutoSize = true;
+            this.lbl_invoicenum.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_invoicenum.ForeColor = System.Drawing.Color.White;
+            this.lbl_invoicenum.Location = new System.Drawing.Point(97, 6);
+            this.lbl_invoicenum.Name = "lbl_invoicenum";
+            this.lbl_invoicenum.Size = new System.Drawing.Size(48, 16);
+            this.lbl_invoicenum.TabIndex = 1;
+            this.lbl_invoicenum.Text = "00001";
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label17.ForeColor = System.Drawing.Color.White;
+            this.label17.Location = new System.Drawing.Point(7, 6);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(74, 16);
+            this.label17.TabIndex = 0;
+            this.label17.Text = "Order No :";
+            // 
+            // panel6
+            // 
+            this.panel6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(187)))), ((int)(((byte)(166)))));
+            this.panel6.Controls.Add(this.label5);
+            this.panel6.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel6.Location = new System.Drawing.Point(0, 30);
+            this.panel6.Name = "panel6";
+            this.panel6.Size = new System.Drawing.Size(217, 31);
+            this.panel6.TabIndex = 0;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold);
+            this.label5.ForeColor = System.Drawing.Color.White;
+            this.label5.Location = new System.Drawing.Point(60, 9);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(68, 16);
+            this.label5.TabIndex = 3;
+            this.label5.Text = "Category";
             // 
             // imageList1
             // 
@@ -1443,172 +1550,50 @@
             this.imageList1.Images.SetKeyName(4, "256-256-d13cafbf17ecd8f2065c8842a6e4e228.png");
             this.imageList1.Images.SetKeyName(5, "45200.png");
             // 
-            // panel81
-            // 
-            this.panel81.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(213)))), ((int)(((byte)(225)))), ((int)(((byte)(235)))));
-            this.panel81.Controls.Add(this.panel84);
-            this.panel81.Controls.Add(this.panel83);
-            this.panel81.Controls.Add(this.panel82);
-            this.panel81.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel81.Location = new System.Drawing.Point(495, 3);
-            this.panel81.Name = "panel81";
-            this.panel81.Size = new System.Drawing.Size(182, 38);
-            this.panel81.TabIndex = 8;
-            // 
-            // panel82
-            // 
-            this.panel82.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel82.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.panel82.Location = new System.Drawing.Point(0, 0);
-            this.panel82.Name = "panel82";
-            this.panel82.Size = new System.Drawing.Size(182, 3);
-            this.panel82.TabIndex = 2;
-            // 
-            // panel83
-            // 
-            this.panel83.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel83.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.panel83.Location = new System.Drawing.Point(0, 35);
-            this.panel83.Name = "panel83";
-            this.panel83.Size = new System.Drawing.Size(182, 3);
-            this.panel83.TabIndex = 3;
-            // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label17.ForeColor = System.Drawing.Color.White;
-            this.label17.Location = new System.Drawing.Point(24, 6);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(74, 16);
-            this.label17.TabIndex = 0;
-            this.label17.Text = "Order No :";
-            // 
-            // lbl_invoicenum
-            // 
-            this.lbl_invoicenum.AutoSize = true;
-            this.lbl_invoicenum.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_invoicenum.ForeColor = System.Drawing.Color.White;
-            this.lbl_invoicenum.Location = new System.Drawing.Point(104, 6);
-            this.lbl_invoicenum.Name = "lbl_invoicenum";
-            this.lbl_invoicenum.Size = new System.Drawing.Size(48, 16);
-            this.lbl_invoicenum.TabIndex = 1;
-            this.lbl_invoicenum.Text = "00001";
-            // 
-            // panel84
-            // 
-            this.panel84.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(121)))), ((int)(((byte)(166)))));
-            this.panel84.Controls.Add(this.lbl_invoicenum);
-            this.panel84.Controls.Add(this.label17);
-            this.panel84.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel84.Location = new System.Drawing.Point(0, 3);
-            this.panel84.Name = "panel84";
-            this.panel84.Size = new System.Drawing.Size(182, 32);
-            this.panel84.TabIndex = 4;
-            // 
-            // Total
-            // 
-            this.Total.HeaderText = "Total";
-            this.Total.Name = "Total";
-            // 
-            // Discount
-            // 
-            this.Discount.HeaderText = "Discount";
-            this.Discount.Name = "Discount";
-            this.Discount.Visible = false;
-            // 
-            // Qty
-            // 
-            this.Qty.HeaderText = "Qty";
-            this.Qty.Name = "Qty";
-            // 
-            // Price
-            // 
-            this.Price.HeaderText = "Price";
-            this.Price.Name = "Price";
-            // 
-            // Item
-            // 
-            this.Item.HeaderText = "Item";
-            this.Item.Name = "Item";
-            // 
-            // ID
-            // 
-            this.ID.HeaderText = "ID";
-            this.ID.Name = "ID";
-            this.ID.Visible = false;
-            // 
-            // grd_ProductDetails
-            // 
-            this.grd_ProductDetails.AllowUserToAddRows = false;
-            this.grd_ProductDetails.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.grd_ProductDetails.BackgroundColor = System.Drawing.Color.White;
-            this.grd_ProductDetails.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.ID,
-            this.Item,
-            this.Price,
-            this.Qty,
-            this.Discount,
-            this.Total});
-            this.grd_ProductDetails.Dock = System.Windows.Forms.DockStyle.Right;
-            this.grd_ProductDetails.Location = new System.Drawing.Point(0, 0);
-            this.grd_ProductDetails.MultiSelect = false;
-            this.grd_ProductDetails.Name = "grd_ProductDetails";
-            this.grd_ProductDetails.RowHeadersVisible = false;
-            this.grd_ProductDetails.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.grd_ProductDetails.Size = new System.Drawing.Size(345, 278);
-            this.grd_ProductDetails.TabIndex = 1;
-            // 
             // FrmPOS1Table
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1133, 733);
+            this.ClientSize = new System.Drawing.Size(1343, 771);
             this.Controls.Add(this.panel1);
             this.Name = "FrmPOS1Table";
             this.ShowIcon = false;
             this.Text = "Point of Sale";
             this.Load += new System.EventHandler(this.FrmPOS1Table_Load);
+            this.panel7.ResumeLayout(false);
+            this.panel7.PerformLayout();
+            this.panel79.ResumeLayout(false);
+            this.panel78.ResumeLayout(false);
+            this.panel73.ResumeLayout(false);
+            this.panel73.PerformLayout();
+            this.panel20.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel72.ResumeLayout(false);
             this.pnl_customer.ResumeLayout(false);
-            this.panel7.ResumeLayout(false);
-            this.panel7.PerformLayout();
+            this.panel4.ResumeLayout(false);
+            this.panel4.PerformLayout();
             this.panel9.ResumeLayout(false);
             this.panel9.PerformLayout();
             this.panel3.ResumeLayout(false);
-            this.panel73.ResumeLayout(false);
-            this.panel73.PerformLayout();
-            this.panel79.ResumeLayout(false);
-            this.panel78.ResumeLayout(false);
-            this.panel20.ResumeLayout(false);
             this.panel19.ResumeLayout(false);
-            this.panel49.ResumeLayout(false);
-            this.panel27.ResumeLayout(false);
-            this.panel31.ResumeLayout(false);
-            this.panel29.ResumeLayout(false);
-            this.panel50.ResumeLayout(false);
-            this.panel55.ResumeLayout(false);
-            this.panel65.ResumeLayout(false);
-            this.panel64.ResumeLayout(false);
-            this.panel53.ResumeLayout(false);
-            this.panel63.ResumeLayout(false);
-            this.panel62.ResumeLayout(false);
-            this.panel51.ResumeLayout(false);
-            this.panel61.ResumeLayout(false);
-            this.panel60.ResumeLayout(false);
+            this.pnl_actionbtn.ResumeLayout(false);
+            this.panel12.ResumeLayout(false);
+            this.panel11.ResumeLayout(false);
+            this.pnl_Row3.ResumeLayout(false);
+            this.panel2.ResumeLayout(false);
+            this.pnl_firstButtonRow.ResumeLayout(false);
             this.panel28.ResumeLayout(false);
             this.panel38.ResumeLayout(false);
-            this.panel70.ResumeLayout(false);
-            this.panel46.ResumeLayout(false);
-            this.panel68.ResumeLayout(false);
             this.panel44.ResumeLayout(false);
             this.panel44.PerformLayout();
-            this.panel66.ResumeLayout(false);
+            this.panel68.ResumeLayout(false);
             this.panel42.ResumeLayout(false);
             this.panel42.PerformLayout();
             this.panel59.ResumeLayout(false);
             this.panel59.PerformLayout();
+            this.panel66.ResumeLayout(false);
+            this.panel8.ResumeLayout(false);
+            this.panel8.PerformLayout();
             this.panel43.ResumeLayout(false);
             this.panel40.ResumeLayout(false);
             this.panel40.PerformLayout();
@@ -1617,32 +1602,76 @@
             this.panel25.PerformLayout();
             this.panel35.ResumeLayout(false);
             this.panel26.ResumeLayout(false);
-            this.panel2.ResumeLayout(false);
-            this.pnl_category.ResumeLayout(false);
-            this.panel71.ResumeLayout(false);
-            this.panel81.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.grd_ProductDetails)).EndInit();
+            this.pnl_left.ResumeLayout(false);
+            this.panel17.ResumeLayout(false);
+            this.panel5.ResumeLayout(false);
+            this.panel5.PerformLayout();
+            this.Paneltable.ResumeLayout(false);
             this.panel84.ResumeLayout(false);
             this.panel84.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.grd_ProductDetails)).EndInit();
+            this.panel6.ResumeLayout(false);
+            this.panel6.PerformLayout();
             this.ResumeLayout(false);
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Panel panel17;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Panel panel7;
+        private System.Windows.Forms.Button button53;
+        private System.Windows.Forms.Panel panel79;
+        private System.Windows.Forms.Button button52;
+        private System.Windows.Forms.Panel panel78;
+        private System.Windows.Forms.Panel panel77;
+        private System.Windows.Forms.TextBox txt_producrtcode;
+        private System.Windows.Forms.Panel panel76;
+        private System.Windows.Forms.Panel panel74;
+        private System.Windows.Forms.Panel panel73;
         private System.Windows.Forms.Panel panel20;
         private System.Windows.Forms.Panel panel22;
-        private System.Windows.Forms.Panel panel19;
-        private System.Windows.Forms.Panel panel26;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel panel72;
+        private System.Windows.Forms.Panel pnl_product;
+        private System.Windows.Forms.Panel pnl_customer;
+        private System.Windows.Forms.Panel panel9;
+        private System.Windows.Forms.Label lbl_customer;
+        private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Panel panel23;
         private System.Windows.Forms.ImageList imageList1;
-        private System.Windows.Forms.Panel panel24;
+        private System.Windows.Forms.Panel pnl_left;
+        private System.Windows.Forms.Panel Paneltable;
+        private System.Windows.Forms.Panel pnl_category;
+        private System.Windows.Forms.Panel panel17;
+        private System.Windows.Forms.Panel pnl_actionbtn;
+        private System.Windows.Forms.Button btn_print;
+        private System.Windows.Forms.Panel panel19;
+        private System.Windows.Forms.Panel panel48;
         private System.Windows.Forms.Panel panel28;
-        private System.Windows.Forms.Panel panel35;
         private System.Windows.Forms.Panel panel38;
+        private System.Windows.Forms.Panel panel68;
+        private System.Windows.Forms.Panel panel67;
+        private System.Windows.Forms.Panel panel66;
+        private System.Windows.Forms.Panel panel45;
+        private System.Windows.Forms.Panel panel43;
+        private System.Windows.Forms.Panel panel40;
+        private System.Windows.Forms.Label txt_discount;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Panel panel41;
+        private System.Windows.Forms.Panel panel39;
+        private System.Windows.Forms.Panel panel25;
+        private System.Windows.Forms.Label txt_total;
+        private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Panel panel37;
+        private System.Windows.Forms.Panel panel35;
+        private System.Windows.Forms.Button btn_additem;
+        private System.Windows.Forms.Button button48;
+        private System.Windows.Forms.Button button47;
+        private System.Windows.Forms.Button button46;
         private System.Windows.Forms.Button button30;
         private System.Windows.Forms.Button button35;
         private System.Windows.Forms.Button button38;
@@ -1655,101 +1684,53 @@
         private System.Windows.Forms.Button button43;
         private System.Windows.Forms.Button button44;
         private System.Windows.Forms.Button button45;
-        private System.Windows.Forms.Button btn_additem;
-        private System.Windows.Forms.Button button48;
-        private System.Windows.Forms.Button button47;
-        private System.Windows.Forms.Button button46;
-        private System.Windows.Forms.Panel panel48;
-        private System.Windows.Forms.Panel panel49;
-        private System.Windows.Forms.Panel panel50;
-        private System.Windows.Forms.Panel panel51;
-        private System.Windows.Forms.Panel panel53;
-        private System.Windows.Forms.Panel panel52;
-        private System.Windows.Forms.Panel panel55;
-        private System.Windows.Forms.Panel panel54;
-        private System.Windows.Forms.Panel panel27;
-        private System.Windows.Forms.Panel panel31;
-        private System.Windows.Forms.Button btn_print;
-        private System.Windows.Forms.Panel panel30;
-        private System.Windows.Forms.Panel panel29;
+        private System.Windows.Forms.Panel panel26;
+        private System.Windows.Forms.DataGridView grd_ProductDetails;
+        private System.Windows.Forms.Panel panel24;
+        private System.Windows.Forms.Panel panel84;
+        private System.Windows.Forms.Label lbl_invoicenum;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.Panel panel6;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.Label lbl_tableID;
+        private System.Windows.Forms.Panel pnl_Row3;
+        private System.Windows.Forms.Button lbl_tablebill;
+        private System.Windows.Forms.Button btn_paymentMethod;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Button btn_notes;
         private System.Windows.Forms.Button btn_hold;
-        private System.Windows.Forms.Panel panel65;
-        private System.Windows.Forms.Button btn_clear;
-        private System.Windows.Forms.Panel panel64;
-        private System.Windows.Forms.Button btn_action;
-        private System.Windows.Forms.Panel panel63;
         private System.Windows.Forms.Button btn_kot;
-        private System.Windows.Forms.Panel panel62;
-        private System.Windows.Forms.Button btn_tablebill;
-        private System.Windows.Forms.Panel panel61;
-        private System.Windows.Forms.Button btn_paymentmode;
-        private System.Windows.Forms.Panel panel60;
-        private System.Windows.Forms.Button btn_buzzer;
-        private System.Windows.Forms.Panel panel39;
-        private System.Windows.Forms.Panel panel25;
-        private System.Windows.Forms.Label txt_total;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Panel panel45;
-        private System.Windows.Forms.Panel panel43;
-        private System.Windows.Forms.Panel panel40;
-        private System.Windows.Forms.Label txt_discount;
-        private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.Panel panel41;
-        private System.Windows.Forms.Panel panel67;
-        private System.Windows.Forms.Panel panel66;
+        private System.Windows.Forms.Panel pnl_firstButtonRow;
+        private System.Windows.Forms.Button btn_clear;
+        private System.Windows.Forms.Button Btn_buzzer;
+        private System.Windows.Forms.Button btn_Tables;
+        private System.Windows.Forms.Panel panel44;
+        private System.Windows.Forms.Label txt_change;
+        private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Panel panel42;
         private System.Windows.Forms.Panel panel59;
         private System.Windows.Forms.TextBox txt_cash;
         private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.Panel panel69;
-        private System.Windows.Forms.Panel panel68;
-        private System.Windows.Forms.Panel panel44;
-        private System.Windows.Forms.Label txt_change;
-        private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.Panel panel70;
-        private System.Windows.Forms.Panel panel46;
-        private System.Windows.Forms.Panel panel47;
-        private System.Windows.Forms.Panel pnl_category;
         private System.Windows.Forms.Panel panel8;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Panel panel10;
         private System.Windows.Forms.Panel panel5;
-        private System.Windows.Forms.Panel panel71;
-        private System.Windows.Forms.Button lbl_table;
-        private System.Windows.Forms.Button btn_customer;
-        private System.Windows.Forms.Panel panel23;
-        private System.Windows.Forms.Panel panel72;
-        private System.Windows.Forms.Panel pnl_customer;
-        private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.Panel panel73;
-        private System.Windows.Forms.Panel panel79;
-        private System.Windows.Forms.Button button53;
-        private System.Windows.Forms.Panel panel78;
-        private System.Windows.Forms.Button btn_todaySpecial;
-        private System.Windows.Forms.Panel panel77;
-        private System.Windows.Forms.TextBox txt_producrtcode;
-        private System.Windows.Forms.Panel panel76;
-        private System.Windows.Forms.Panel panel74;
-        private System.Windows.Forms.Panel panel7;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Panel panel9;
-        private System.Windows.Forms.Label lbl_customer;
-        private System.Windows.Forms.Label label21;
-        private System.Windows.Forms.Panel pnl_product;
-        private System.Windows.Forms.Panel panel4;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Panel panel81;
-        private System.Windows.Forms.Panel panel84;
-        private System.Windows.Forms.Label lbl_invoicenum;
-        private System.Windows.Forms.Label label17;
-        private System.Windows.Forms.Panel panel83;
-        private System.Windows.Forms.Panel panel82;
-        private System.Windows.Forms.DataGridView grd_ProductDetails;
+        private System.Windows.Forms.Label lbl_datettime;
+        private System.Windows.Forms.Label lbl_userid;
         private System.Windows.Forms.DataGridViewTextBoxColumn ID;
         private System.Windows.Forms.DataGridViewTextBoxColumn Item;
         private System.Windows.Forms.DataGridViewTextBoxColumn Price;
         private System.Windows.Forms.DataGridViewTextBoxColumn Qty;
         private System.Windows.Forms.DataGridViewTextBoxColumn Discount;
         private System.Windows.Forms.DataGridViewTextBoxColumn Total;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Button btn_order;
+        private System.Windows.Forms.Panel panel12;
+        private System.Windows.Forms.Panel panel11;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btn_pricechange;
     }
 }

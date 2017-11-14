@@ -17,7 +17,7 @@ namespace App.UI
         public FrmMainForm()
         {
             InitializeComponent();
-
+            if (LocalDBExtension.IsLocalDBInstalled()) { } else { MessageBox.Show("LocalDB Not Installed"); }
             lbl_welcome.Text = "Welcome " + Program.Username.Trim();
 
             lbl_Location.Text = Program.StoreName.Trim();

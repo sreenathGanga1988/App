@@ -1,6 +1,7 @@
 ﻿using App.Context;
 using App.Migrations;
 using App.Model;
+using App.Repository;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -20,30 +21,22 @@ namespace App.UI
         {
             InitializeComponent();
             
-            Database.SetInitializer(new MigrateDatabaseToLatestVersion<POSDataContext, Configuration>());
-            Company objCompany = new Company();
-            objCompany.CompanyId = DateTime.Now.ToString();
-            objCompany.Name = "Sree";
-          
-           
+           Database.SetInitializer(new MigrateDatabaseToLatestVersion<POSDataContext, Configuration>());
+            //Company objCompany = new Company();
+            //objCompany.CompanyId = DateTime.Now.ToString();
+            //objCompany.Name = "Sree";
+
+
 
             POSDataContext objContext = new POSDataContext();
             //objContext.Companies.Add(objCompany);
-            objContext.SaveChanges();
+            //objContext.SaveChanges();
             cmb_user.DataSource  = objContext.Users.ToList();
             cmb_user.DisplayMember = "UserName";
             cmb_user.ValueMember = "UserID";
         }
 
-        private void panel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void panel4_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
+       
 
         public void KeyPressed(Button btn)
         {
@@ -79,6 +72,9 @@ namespace App.UI
 
                 if (usrrep.IsuserValid(int.Parse(txt_PasscodeDisplay.Text), int.Parse(cmb_user.SelectedValue.ToString())))
                 {
+                    ShiftRepository shiftRepository = new ShiftRepository();
+                    shiftRepository.ShiftAction();
+                             
                     this.Hide();
                     //StartForm frm = new StartForm();
                     //frm.Show();

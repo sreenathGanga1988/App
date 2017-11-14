@@ -56,11 +56,10 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.cmb_juice = new System.Windows.Forms.ComboBox();
-            this.cmb_kot = new System.Windows.Forms.ComboBox();
+            this.txt_defaultKOTpRINTER = new System.Windows.Forms.TextBox();
+            this.label20 = new System.Windows.Forms.Label();
+            this.button4 = new System.Windows.Forms.Button();
             this.cmb_pos = new System.Windows.Forms.ComboBox();
-            this.label17 = new System.Windows.Forms.Label();
-            this.label16 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
@@ -369,11 +368,10 @@
             // groupBox5
             // 
             this.groupBox5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(53)))), ((int)(((byte)(66)))));
-            this.groupBox5.Controls.Add(this.cmb_juice);
-            this.groupBox5.Controls.Add(this.cmb_kot);
+            this.groupBox5.Controls.Add(this.txt_defaultKOTpRINTER);
+            this.groupBox5.Controls.Add(this.label20);
+            this.groupBox5.Controls.Add(this.button4);
             this.groupBox5.Controls.Add(this.cmb_pos);
-            this.groupBox5.Controls.Add(this.label17);
-            this.groupBox5.Controls.Add(this.label16);
             this.groupBox5.Controls.Add(this.label15);
             this.groupBox5.Controls.Add(this.button2);
             this.groupBox5.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -386,23 +384,32 @@
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Printer Setting";
             // 
-            // cmb_juice
+            // txt_defaultKOTpRINTER
             // 
-            this.cmb_juice.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmb_juice.FormattingEnabled = true;
-            this.cmb_juice.Location = new System.Drawing.Point(121, 132);
-            this.cmb_juice.Name = "cmb_juice";
-            this.cmb_juice.Size = new System.Drawing.Size(185, 21);
-            this.cmb_juice.TabIndex = 20;
+            this.txt_defaultKOTpRINTER.Location = new System.Drawing.Point(125, 76);
+            this.txt_defaultKOTpRINTER.Name = "txt_defaultKOTpRINTER";
+            this.txt_defaultKOTpRINTER.Size = new System.Drawing.Size(190, 20);
+            this.txt_defaultKOTpRINTER.TabIndex = 25;
             // 
-            // cmb_kot
+            // label20
             // 
-            this.cmb_kot.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmb_kot.FormattingEnabled = true;
-            this.cmb_kot.Location = new System.Drawing.Point(121, 82);
-            this.cmb_kot.Name = "cmb_kot";
-            this.cmb_kot.Size = new System.Drawing.Size(185, 21);
-            this.cmb_kot.TabIndex = 19;
+            this.label20.AutoSize = true;
+            this.label20.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label20.Location = new System.Drawing.Point(7, 78);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(112, 13);
+            this.label20.TabIndex = 24;
+            this.label20.Text = "Default Kot Printer";
+            // 
+            // button4
+            // 
+            this.button4.Location = new System.Drawing.Point(146, 250);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(75, 23);
+            this.button4.TabIndex = 23;
+            this.button4.Text = "button4";
+            this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // cmb_pos
             // 
@@ -412,26 +419,6 @@
             this.cmb_pos.Name = "cmb_pos";
             this.cmb_pos.Size = new System.Drawing.Size(185, 21);
             this.cmb_pos.TabIndex = 18;
-            // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label17.Location = new System.Drawing.Point(7, 140);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(108, 13);
-            this.label17.TabIndex = 17;
-            this.label17.Text = "Juice Area Printer";
-            // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label16.Location = new System.Drawing.Point(7, 90);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(68, 13);
-            this.label16.TabIndex = 16;
-            this.label16.Text = "Kot Printer";
             // 
             // label15
             // 
@@ -629,11 +616,7 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.GroupBox groupBox5;
-        private System.Windows.Forms.ComboBox cmb_juice;
-        private System.Windows.Forms.ComboBox cmb_kot;
         private System.Windows.Forms.ComboBox cmb_pos;
-        private System.Windows.Forms.Label label17;
-        private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.GroupBox groupBox3;
@@ -646,5 +629,8 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.TextBox txt_defaultKOTpRINTER;
+        private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.Button button4;
     }
 }

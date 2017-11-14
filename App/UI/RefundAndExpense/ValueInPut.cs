@@ -18,6 +18,8 @@ namespace App.UI.RefundAndExpense
            String FormActionType = "";
               String invoicenum = "";
         int Invoiceid = 0;
+
+        public Decimal Selectedvalue { get; set; }
         public ValueInPut()
         {
             InitializeComponent();
@@ -57,7 +59,11 @@ namespace App.UI.RefundAndExpense
                 btn_PosOut.Enabled = true;
 
             }
-        }
+            if (ActionType == "PriceChange")
+            {
+                FormActionType = ActionType;
+            }
+            }
         private void buttonclicked_Click(object sender, EventArgs e)
         {
             KeyPressed((Button)sender);
@@ -68,29 +74,37 @@ namespace App.UI.RefundAndExpense
 
             if (btn.Text == "OK")
             {
-
-                try
-                {
-                    Repository.UserRepository usrrep = new Repository.UserRepository();
-
-                    if (usrrep.IsuserValid(int.Parse(txt_PasscodeDisplay.Text),1))
-                    {
-                        this.Hide();
-                        StartForm frm = new StartForm();
-                        frm.Show();
-
-                    }
-                    else
-                    {
-
-                        MessageBox.Show("Passcode not Valid");
-                    }
-                }
-                catch (Exception)
+                if (FormActionType == "PriceChange")
                 {
 
-                    MessageBox.Show("Hi Dude You lost connection to DB");
+                    Selectedvalue = Decimal.Parse(txt_PasscodeDisplay.Text);
+                    this.Close();
                 }
+                else {
+                    try
+                    {
+                        Repository.UserRepository usrrep = new Repository.UserRepository();
+
+                        if (usrrep.IsuserValid(int.Parse(txt_PasscodeDisplay.Text), 1))
+                        {
+                            this.Hide();
+                            StartForm frm = new StartForm();
+                            frm.Show();
+
+                        }
+                        else
+                        {
+
+                            MessageBox.Show("Passcode not Valid");
+                        }
+                    }
+                    catch (Exception)
+                    {
+
+                        MessageBox.Show("Hi Dude You lost connection to DB");
+                    }
+                }
+              
 
             }
             else if (btn.Text == "Back")

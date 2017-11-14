@@ -17,7 +17,8 @@ namespace App
         public static int LocationID;
         public static String StoreName;
         public static String StoreAddress;
-
+        public static String Shiftname;
+        public static int ShiftId;
         //public static OdooDetail MyOoodoDetasils { get; set; }
         public static ViewModal.SettingViewModal MySettingViewModal { get; set; }
         /// <summary>

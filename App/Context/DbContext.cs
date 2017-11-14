@@ -41,6 +41,7 @@ namespace App.Context
         public DbSet<Printer> Printers { get; set; }
         public DbSet<PaymentModeMaster> PaymentModeMasters { get; set; }
         public DbSet<Buzzer> Buzzers { get; set; }
+        public DbSet<Shift> Shifts { get; set; }
         
 
     }

@@ -12,5 +12,6 @@ namespace App.ViewModal
         public  OdooDetail MyOoodoDetasils { get; set; }
         public  PrinterDetail MyPrinterDetails { get; set; }
         public AppUserSetting AppUserSettings { get; set; }
+        public LocalPrinter LocalPrinterSetting { get; set; }
     }
 }

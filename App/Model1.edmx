@@ -1,0 +1,233 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="CAFEAPPModel.Store" Provider="Npgsql" ProviderManifestToken="9.3.17" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="pos_order">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int4" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="create_date" Type="timestamp" />
+          <Property Name="sale_journal" Type="int4" />
+          <Property Name="pos_reference" Type="varchar" MaxLength="8000" />
+          <Property Name="write_uid" Type="int4" />
+          <Property Name="account_move" Type="int4" />
+          <Property Name="date_order" Type="timestamp" />
+          <Property Name="partner_id" Type="int4" />
+          <Property Name="nb_print" Type="int4" />
+          <Property Name="user_id" Type="int4" />
+          <Property Name="location_id" Type="int4" />
+          <Property Name="company_id" Type="int4" Nullable="false" />
+          <Property Name="note" Type="text" />
+          <Property Name="state" Type="varchar" MaxLength="8000" />
+          <Property Name="pricelist_id" Type="int4" Nullable="false" />
+          <Property Name="create_uid" Type="int4" />
+          <Property Name="write_date" Type="timestamp" />
+          <Property Name="fiscal_position_id" Type="int4" />
+          <Property Name="name" Type="varchar" MaxLength="8000" Nullable="false" />
+          <Property Name="invoice_id" Type="int4" />
+          <Property Name="session_id" Type="int4" Nullable="false" />
+          <Property Name="picking_id" Type="int4" />
+          <Property Name="sequence_number" Type="int4" />
+          <Property Name="customer_count" Type="int4" />
+          <Property Name="table_id" Type="int4" />
+        </EntityType>
+        <EntityType Name="pos_order_line">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int4" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="create_uid" Type="int4" />
+          <Property Name="notice" Type="varchar" MaxLength="8000" />
+          <Property Name="create_date" Type="timestamp" />
+          <Property Name="name" Type="varchar" MaxLength="8000" Nullable="false" />
+          <Property Name="order_id" Type="int4" />
+          <Property Name="price_unit" Type="numeric" Precision="19" Scale="4" />
+          <Property Name="company_id" Type="int4" Nullable="false" />
+          <Property Name="qty" Type="numeric" Precision="19" Scale="4" />
+          <Property Name="discount" Type="numeric" Precision="19" Scale="4" />
+          <Property Name="write_uid" Type="int4" />
+          <Property Name="write_date" Type="timestamp" />
+          <Property Name="product_id" Type="int4" Nullable="false" />
+        </EntityType>
+        <Association Name="pos_order_line_order_id_fkey">
+          <End Role="pos_order" Type="Self.pos_order" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="pos_order_line" Type="Self.pos_order_line" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="pos_order">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="pos_order_line">
+              <PropertyRef Name="order_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="CAFEAPPModelStoreContainer">
+          <EntitySet Name="pos_order" EntityType="Self.pos_order" Schema="public" store:Type="Tables" />
+          <EntitySet Name="pos_order_line" EntityType="Self.pos_order_line" Schema="public" store:Type="Tables" />
+          <AssociationSet Name="pos_order_line_order_id_fkey" Association="Self.pos_order_line_order_id_fkey">
+            <End Role="pos_order" EntitySet="pos_order" />
+            <End Role="pos_order_line" EntitySet="pos_order_line" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="CAFEAPPModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="pos_order">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="create_date" Type="DateTime" Precision="6" />
+          <Property Name="sale_journal" Type="Int32" />
+          <Property Name="pos_reference" Type="String" MaxLength="8000" FixedLength="false" Unicode="true" />
+          <Property Name="write_uid" Type="Int32" />
+          <Property Name="account_move" Type="Int32" />
+          <Property Name="date_order" Type="DateTime" Precision="6" />
+          <Property Name="partner_id" Type="Int32" />
+          <Property Name="nb_print" Type="Int32" />
+          <Property Name="user_id" Type="Int32" />
+          <Property Name="location_id" Type="Int32" />
+          <Property Name="company_id" Type="Int32" Nullable="false" />
+          <Property Name="note" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="state" Type="String" MaxLength="8000" FixedLength="false" Unicode="true" />
+          <Property Name="pricelist_id" Type="Int32" Nullable="false" />
+          <Property Name="create_uid" Type="Int32" />
+          <Property Name="write_date" Type="DateTime" Precision="6" />
+          <Property Name="fiscal_position_id" Type="Int32" />
+          <Property Name="name" Type="String" MaxLength="8000" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="invoice_id" Type="Int32" />
+          <Property Name="session_id" Type="Int32" Nullable="false" />
+          <Property Name="picking_id" Type="Int32" />
+          <Property Name="sequence_number" Type="Int32" />
+          <Property Name="customer_count" Type="Int32" />
+          <Property Name="table_id" Type="Int32" />
+          <NavigationProperty Name="pos_order_line" Relationship="Self.pos_order_line_order_id_fkey" FromRole="pos_order" ToRole="pos_order_line" />
+        </EntityType>
+        <EntityType Name="pos_order_line">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="create_uid" Type="Int32" />
+          <Property Name="notice" Type="String" MaxLength="8000" FixedLength="false" Unicode="true" />
+          <Property Name="create_date" Type="DateTime" Precision="6" />
+          <Property Name="name" Type="String" MaxLength="8000" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="order_id" Type="Int32" />
+          <Property Name="price_unit" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="company_id" Type="Int32" Nullable="false" />
+          <Property Name="qty" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="discount" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="write_uid" Type="Int32" />
+          <Property Name="write_date" Type="DateTime" Precision="6" />
+          <Property Name="product_id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="pos_order" Relationship="Self.pos_order_line_order_id_fkey" FromRole="pos_order_line" ToRole="pos_order" />
+        </EntityType>
+        <Association Name="pos_order_line_order_id_fkey">
+          <End Role="pos_order" Type="Self.pos_order" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="pos_order_line" Type="Self.pos_order_line" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="pos_order">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="pos_order_line">
+              <PropertyRef Name="order_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="CAFEAPPEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="pos_order" EntityType="Self.pos_order" />
+          <EntitySet Name="pos_order_line" EntityType="Self.pos_order_line" />
+          <AssociationSet Name="pos_order_line_order_id_fkey" Association="Self.pos_order_line_order_id_fkey">
+            <End Role="pos_order" EntitySet="pos_order" />
+            <End Role="pos_order_line" EntitySet="pos_order_line" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="CAFEAPPModelStoreContainer" CdmEntityContainer="CAFEAPPEntities">
+          <EntitySetMapping Name="pos_order">
+            <EntityTypeMapping TypeName="CAFEAPPModel.pos_order">
+              <MappingFragment StoreEntitySet="pos_order">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="create_date" ColumnName="create_date" />
+                <ScalarProperty Name="sale_journal" ColumnName="sale_journal" />
+                <ScalarProperty Name="pos_reference" ColumnName="pos_reference" />
+                <ScalarProperty Name="write_uid" ColumnName="write_uid" />
+                <ScalarProperty Name="account_move" ColumnName="account_move" />
+                <ScalarProperty Name="date_order" ColumnName="date_order" />
+                <ScalarProperty Name="partner_id" ColumnName="partner_id" />
+                <ScalarProperty Name="nb_print" ColumnName="nb_print" />
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+                <ScalarProperty Name="location_id" ColumnName="location_id" />
+                <ScalarProperty Name="company_id" ColumnName="company_id" />
+                <ScalarProperty Name="note" ColumnName="note" />
+                <ScalarProperty Name="state" ColumnName="state" />
+                <ScalarProperty Name="pricelist_id" ColumnName="pricelist_id" />
+                <ScalarProperty Name="create_uid" ColumnName="create_uid" />
+                <ScalarProperty Name="write_date" ColumnName="write_date" />
+                <ScalarProperty Name="fiscal_position_id" ColumnName="fiscal_position_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="invoice_id" ColumnName="invoice_id" />
+                <ScalarProperty Name="session_id" ColumnName="session_id" />
+                <ScalarProperty Name="picking_id" ColumnName="picking_id" />
+                <ScalarProperty Name="sequence_number" ColumnName="sequence_number" />
+                <ScalarProperty Name="customer_count" ColumnName="customer_count" />
+                <ScalarProperty Name="table_id" ColumnName="table_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="pos_order_line">
+            <EntityTypeMapping TypeName="CAFEAPPModel.pos_order_line">
+              <MappingFragment StoreEntitySet="pos_order_line">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="create_uid" ColumnName="create_uid" />
+                <ScalarProperty Name="notice" ColumnName="notice" />
+                <ScalarProperty Name="create_date" ColumnName="create_date" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="order_id" ColumnName="order_id" />
+                <ScalarProperty Name="price_unit" ColumnName="price_unit" />
+                <ScalarProperty Name="company_id" ColumnName="company_id" />
+                <ScalarProperty Name="qty" ColumnName="qty" />
+                <ScalarProperty Name="discount" ColumnName="discount" />
+                <ScalarProperty Name="write_uid" ColumnName="write_uid" />
+                <ScalarProperty Name="write_date" ColumnName="write_date" />
+                <ScalarProperty Name="product_id" ColumnName="product_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

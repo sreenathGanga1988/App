@@ -37,7 +37,6 @@
             this.Printer = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.button1 = new System.Windows.Forms.Button();
-            this.cmb_pos = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
             this.txt_color = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -47,6 +46,7 @@
             this.txt_cATEGORYNAME = new System.Windows.Forms.TextBox();
             this.lbl_id = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.txt_printername = new System.Windows.Forms.TextBox();
             this.grp_category.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -112,8 +112,8 @@
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.Color.White;
+            this.groupBox1.Controls.Add(this.txt_printername);
             this.groupBox1.Controls.Add(this.button1);
-            this.groupBox1.Controls.Add(this.cmb_pos);
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.txt_color);
             this.groupBox1.Controls.Add(this.label2);
@@ -144,14 +144,6 @@
             this.button1.Text = "From Odoo";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click_1);
-            // 
-            // cmb_pos
-            // 
-            this.cmb_pos.FormattingEnabled = true;
-            this.cmb_pos.Location = new System.Drawing.Point(144, 161);
-            this.cmb_pos.Name = "cmb_pos";
-            this.cmb_pos.Size = new System.Drawing.Size(170, 21);
-            this.cmb_pos.TabIndex = 21;
             // 
             // label4
             // 
@@ -231,6 +223,13 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Category Name :";
             // 
+            // txt_printername
+            // 
+            this.txt_printername.Location = new System.Drawing.Point(144, 153);
+            this.txt_printername.Name = "txt_printername";
+            this.txt_printername.Size = new System.Drawing.Size(170, 20);
+            this.txt_printername.TabIndex = 23;
+            // 
             // FrmCategory
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -266,8 +265,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn CategoryName;
         private System.Windows.Forms.DataGridViewTextBoxColumn Color;
         private System.Windows.Forms.DataGridViewTextBoxColumn Printer;
-        private System.Windows.Forms.ComboBox cmb_pos;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.TextBox txt_printername;
     }
 }

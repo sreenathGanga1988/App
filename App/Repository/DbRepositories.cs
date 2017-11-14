@@ -36,14 +36,14 @@ namespace App.Repository
 
         public List<ProductlistViewModal> GetMarchingProductlist(int? categoryID = 0)
         {
-         
 
-          
-                var q = (cntxt.Products.Where(u => u.Id.ToString().Contains(categoryID.ToString())).
-                Select(x => new ProductlistViewModal { ProductID = x.Id, ProductName = x.ProductName, Color = x.Color })).ToList();
-                return q;
 
-          
+
+            var q = (cntxt.Products.Where(u => u.Id.ToString().Contains(categoryID.ToString())).
+            Select(x => new ProductlistViewModal { ProductID = x.Id, ProductName = x.ProductName, Color = x.Color })).ToList();
+            return q;
+
+
 
 
         }
@@ -52,7 +52,7 @@ namespace App.Repository
 
 
 
-            var q = (cntxt.Products.Where(u => u.IsTodaySpecial==true).
+            var q = (cntxt.Products.Where(u => u.IsTodaySpecial == true).
             Select(x => new ProductlistViewModal { ProductID = x.Id, ProductName = x.ProductName, Color = x.Color })).ToList();
             return q;
 
@@ -84,7 +84,7 @@ namespace App.Repository
         }
 
 
-        public void UpdateTodaySpoecial(int ID ,Boolean status)
+        public void UpdateTodaySpoecial(int ID, Boolean status)
         {
             var q = from product in cntxt.Products
                     where product.Id == ID
@@ -103,17 +103,17 @@ namespace App.Repository
     {
         POSDataContext cntxt = new POSDataContext();
 
-        public User GetUserDetails(int PassID ,int usserid)
+        public User GetUserDetails(int PassID, int usserid)
         {
 
             var q = (from usr in cntxt.Users
-                     where usr.PassCode == PassID && usr.UserID==usserid
+                     where usr.PassCode == PassID && usr.UserID == usserid
                      select usr).FirstOrDefault();
 
             return q;
         }
 
-        public Boolean IsuserValid(int PassID,int userid)
+        public Boolean IsuserValid(int PassID, int userid)
         {
             Boolean isvalid = false;
             try
@@ -130,7 +130,7 @@ namespace App.Repository
                     if (usr.UserID.ToString().Trim() != "")
                     {
                         isvalid = true;
-                        
+
                         SetUserDetails(usr);
                     }
                 }
@@ -160,12 +160,12 @@ namespace App.Repository
                 AppuserSettingRepository appuserrepo = new AppuserSettingRepository();
                 // OdooDetail odoDetails = sysrepo.LoadOdooDetails(Program.LocationID);
                 SettingViewModal myset = new SettingViewModal();
-                myset.MyOoodoDetasils =sysrepo.LoadOdooDetails(Program.LocationID);
+                myset.MyOoodoDetasils = sysrepo.LoadOdooDetails(Program.LocationID);
                 myset.MyPrinterDetails = sysrepo.LoadtPrinterDetails(Program.LocationID);
                 myset.AppUserSettings = appuserrepo.LoadAppUserSetting(Program.LocationID);
                 Program.MySettingViewModal = myset;
 
-              
+
             }
         }
 
@@ -205,7 +205,7 @@ namespace App.Repository
         public String GetCustomer(String CustomerName)
         {
 
-            var q = cntxt.Customers.Where(u => u.CustomerName == CustomerName).Select(u=>u.CustomerName).First();
+            var q = cntxt.Customers.Where(u => u.CustomerName == CustomerName).Select(u => u.CustomerName).First();
             return q.ToString().Trim();
 
         }
@@ -222,7 +222,7 @@ namespace App.Repository
         public List<Customer> GetcustomerofLocationSearch(String searchtext, int? LocationID = 0)
         {
 
-            var q = cntxt.Customers.Where(u => u.StoreID == LocationID && (u.PhoneNumber.Contains(searchtext)||u.CustomerName.Contains(searchtext)) ).ToList();
+            var q = cntxt.Customers.Where(u => u.StoreID == LocationID && (u.PhoneNumber.Contains(searchtext) || u.CustomerName.Contains(searchtext))).ToList();
 
             return q;
         }
@@ -292,7 +292,55 @@ namespace App.Repository
 
     }
 
-   
+    public class ShiftRepository
+    {
+        POSDataContext cntxt = new POSDataContext();
+
+
+        public void ShiftAction()
+        {
+            if (!cntxt.Shifts.Any(f => f.StoreID == Program.LocationID && f.IsClosed == false))
+            {
+                CreateShift();
+            }
+            else
+            {
+                var q = from shft in cntxt.Shifts
+                        where shft.IsClosed == false && shft.StoreID == Program.LocationID
+                        select shft;
+                foreach(var element in q)
+                {
+                    Program.ShiftId = element.ShiftID;
+                    Program.Shiftname = element.ShiftName;
+                }
+
+            }
+        }
+
+        public void CreateShift()
+        {
+            try
+            {
+                Shift shift = new Shift();
+
+                shift.StartTime = DateTime.Now;
+                shift.StartUserName = Program.Username;
+                shift.StoreID = Program.LocationID;
+                shift.IsClosed = false;
+                cntxt.Shifts.Add(shift);
+                cntxt.SaveChanges();
+                shift.ShiftName = Program.StoreName + DateTime.Now.ToString("dd/MM/yyyy") + "/" + shift.ShiftID;
+                cntxt.SaveChanges();
+                Program.ShiftId = shift.ShiftID;
+                Program.Shiftname = shift.ShiftName;
+            }
+            catch (Exception exp)
+            {
+
+                throw;
+            }
+        }
+    }
 
 
     public class BuzzerRepository

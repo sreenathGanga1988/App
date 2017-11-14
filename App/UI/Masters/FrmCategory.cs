@@ -21,33 +21,33 @@ namespace App.UI.Masters
         {
             InitializeComponent();
             fillcategory();
-            PopulateInstalledPrintersCombo();
+            //PopulateInstalledPrintersCombo();
         }
 
-        private void PopulateInstalledPrintersCombo()
-        {
-            // Add list of installed printers found to the combo box.
-            // The pkInstalledPrinters string will be used to provide the display string.
-            String pkInstalledPrinters;
-            for (int i = 0; i < PrinterSettings.InstalledPrinters.Count; i++)
-            {
-                pkInstalledPrinters = PrinterSettings.InstalledPrinters[i];
-                cmb_pos.Items.Add(pkInstalledPrinters);
+        //private void PopulateInstalledPrintersCombo()
+        //{
+        //    // Add list of installed printers found to the combo box.
+        //    // The pkInstalledPrinters string will be used to provide the display string.
+        //    String pkInstalledPrinters;
+        //    for (int i = 0; i < PrinterSettings.InstalledPrinters.Count; i++)
+        //    {
+        //        pkInstalledPrinters = PrinterSettings.InstalledPrinters[i];
+        //        cmb_pos.Items.Add(pkInstalledPrinters);
 
-            }
+        //    }
 
-            PrinterRepository printerRepository = new PrinterRepository();
+        //    PrinterRepository printerRepository = new PrinterRepository();
 
-            List<Printer> prntr = printerRepository.GetPrinterList(Program.LocationID);
+        //    List<Printer> prntr = printerRepository.GetPrinterList(Program.LocationID);
 
-            foreach(Printer printer in prntr)
-            {
+        //    foreach(Printer printer in prntr)
+        //    {
          
 
-                cmb_pos.Items.Add(printer.PrinterName);
-            }
+        //        cmb_pos.Items.Add(printer.PrinterName);
+        //    }
 
-        }
+        //}
         public void fillcategory()
         {
             CategoryRepository categoryRepository = new CategoryRepository();
@@ -65,7 +65,7 @@ namespace App.UI.Masters
                 dgv.Rows[index].Cells["Color"].Value = ctgry.Color==null ? "" : ctgry.Color.ToString();
                 try
                 {
-                    dgv.Rows[index].Cells["Printer"].Value = ctgry.Printer.PrinterName.ToString();
+                    dgv.Rows[index].Cells["Printer"].Value = ctgry.PrinterName.ToString();
                 }
                 catch (Exception)
                 {
@@ -86,7 +86,7 @@ namespace App.UI.Masters
             if (btn_save.Text == "Save")
             {
 
-                Category CTGRY = new Category() { CategoryName = txt_cATEGORYNAME.Text, OdooCategoryId = int.Parse(TXT_OODOID.Text),Color= txt_color.Text };
+                Category CTGRY = new Category() { CategoryName = txt_cATEGORYNAME.Text, OdooCategoryId = int.Parse(TXT_OODOID.Text),Color= txt_color.Text ,PrinterName=txt_printername.Text};
 
                 CategoryRepository categoryRepository = new CategoryRepository();
                 categoryRepository.Addcategory(CTGRY);
@@ -99,7 +99,7 @@ namespace App.UI.Masters
             {
                 if (lbl_id.Text != "0")
                 {
-                    Category CTGRY = new Category() { CategoryName = txt_cATEGORYNAME.Text, OdooCategoryId = int.Parse(TXT_OODOID.Text),Id=int.Parse (lbl_id.Text), Color = txt_color.Text };
+                    Category CTGRY = new Category() { CategoryName = txt_cATEGORYNAME.Text, OdooCategoryId = int.Parse(TXT_OODOID.Text),Id=int.Parse (lbl_id.Text), Color = txt_color.Text ,PrinterName = txt_printername.Text };
                     CategoryRepository categoryRepository = new CategoryRepository();
                     categoryRepository.UpdateCategory(CTGRY);
                     MessageBox.Show("Sucessfully Updated");
@@ -120,7 +120,7 @@ namespace App.UI.Masters
             TXT_OODOID.Text= dgv.Rows[e.RowIndex].Cells["OdooCategoryId"].Value.ToString();
             try
             {
-                cmb_pos.Text = dgv.Rows[e.RowIndex].Cells["Printer"].Value.ToString();
+                txt_printername.Text = dgv.Rows[e.RowIndex].Cells["Printer"].Value.ToString();
             }
             catch (Exception)
             {
