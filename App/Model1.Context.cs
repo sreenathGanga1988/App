@@ -27,5 +27,6 @@ namespace App
     
         public virtual DbSet<pos_order> pos_order { get; set; }
         public virtual DbSet<pos_order_line> pos_order_line { get; set; }
+        public virtual DbSet<res_users> res_users { get; set; }
     }
 }

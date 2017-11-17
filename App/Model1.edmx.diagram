@@ -8,6 +8,14 @@
         <EntityTypeShape EntityType="CAFEAPPModel.pos_order" Width="1.5" PointX="0.75" PointY="1.125" IsExpanded="true" />
         <EntityTypeShape EntityType="CAFEAPPModel.pos_order_line" Width="1.5" PointX="3" PointY="2.25" IsExpanded="true" />
         <AssociationConnector Association="CAFEAPPModel.pos_order_line_order_id_fkey" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="CAFEAPPModel.res_users" Width="1.5" PointX="7.25" PointY="1.5" />
+        <AssociationConnector Association="CAFEAPPModel.pos_order_create_uid_fkey" />
+        <AssociationConnector Association="CAFEAPPModel.pos_order_user_id_fkey" />
+        <AssociationConnector Association="CAFEAPPModel.pos_order_write_uid_fkey" />
+        <AssociationConnector Association="CAFEAPPModel.pos_order_line_create_uid_fkey" />
+        <AssociationConnector Association="CAFEAPPModel.pos_order_line_write_uid_fkey" />
+        <AssociationConnector Association="CAFEAPPModel.res_users_create_uid_fkey" />
+        <AssociationConnector Association="CAFEAPPModel.res_users_write_uid_fkey" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using App.Repository;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -40,6 +41,12 @@ namespace App.UI.Masters
         {
             UI.Masters.PrinterForm frm = new Masters.PrinterForm();
             frm.Show();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            OdooUpdator odooUpdator = new OdooUpdator();
+            odooUpdator.Updatemaster();
         }
     }
 }

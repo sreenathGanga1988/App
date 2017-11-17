@@ -34,6 +34,7 @@
             this.panel25 = new System.Windows.Forms.Panel();
             this.btn_printer = new System.Windows.Forms.Button();
             this.btn_category = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.panel25.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -73,6 +74,7 @@
             // panel25
             // 
             this.panel25.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(213)))), ((int)(((byte)(225)))), ((int)(((byte)(235)))));
+            this.panel25.Controls.Add(this.button1);
             this.panel25.Controls.Add(this.btn_printer);
             this.panel25.Controls.Add(this.btn_category);
             this.panel25.Controls.Add(this.btn_customer);
@@ -116,6 +118,22 @@
             this.btn_category.UseVisualStyleBackColor = false;
             this.btn_category.Click += new System.EventHandler(this.btn_category_Click);
             // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(121)))), ((int)(((byte)(166)))));
+            this.button1.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.ForeColor = System.Drawing.Color.White;
+            this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
+            this.button1.Location = new System.Drawing.Point(218, 261);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(198, 81);
+            this.button1.TabIndex = 25;
+            this.button1.Text = "Sync Masters";
+            this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.button1.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // MasterForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -136,5 +154,6 @@
         private System.Windows.Forms.Panel panel25;
         private System.Windows.Forms.Button btn_printer;
         private System.Windows.Forms.Button btn_category;
+        private System.Windows.Forms.Button button1;
     }
 }

@@ -69,7 +69,7 @@ namespace App.Model
         public int UserID { get; set; }
 
         public int PassCode { get; set; }
-
+        public int OdooUserID { get; set; }
         public int StoreID { get; set; }
 
         public String UserName { get; set; }

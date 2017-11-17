@@ -53,6 +53,53 @@
           <Property Name="write_date" Type="timestamp" />
           <Property Name="product_id" Type="int4" Nullable="false" />
         </EntityType>
+        <EntityType Name="res_users">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int4" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="active" Type="bool" />
+          <Property Name="login" Type="varchar" MaxLength="8000" Nullable="false" />
+          <Property Name="password" Type="varchar" MaxLength="8000" />
+          <Property Name="company_id" Type="int4" Nullable="false" />
+          <Property Name="partner_id" Type="int4" Nullable="false" />
+          <Property Name="create_date" Type="timestamp" />
+          <Property Name="share" Type="bool" />
+          <Property Name="write_uid" Type="int4" />
+          <Property Name="create_uid" Type="int4" />
+          <Property Name="action_id" Type="int4" />
+          <Property Name="write_date" Type="timestamp" />
+          <Property Name="signature" Type="text" />
+          <Property Name="password_crypt" Type="varchar" MaxLength="8000" />
+          <Property Name="alias_id" Type="int4" />
+          <Property Name="pos_security_pin" Type="varchar" MaxLength="32" />
+          <Property Name="isverified" Type="bool" />
+          <Property Name="login_type" Type="varchar" MaxLength="8000" />
+        </EntityType>
+        <Association Name="pos_order_create_uid_fkey">
+          <End Role="res_users" Type="Self.res_users" Multiplicity="0..1" />
+          <End Role="pos_order" Type="Self.pos_order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="res_users">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="pos_order">
+              <PropertyRef Name="create_uid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="pos_order_line_create_uid_fkey">
+          <End Role="res_users" Type="Self.res_users" Multiplicity="0..1" />
+          <End Role="pos_order_line" Type="Self.pos_order_line" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="res_users">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="pos_order_line">
+              <PropertyRef Name="create_uid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="pos_order_line_order_id_fkey">
           <End Role="pos_order" Type="Self.pos_order" Multiplicity="0..1">
             <OnDelete Action="Cascade" />
@@ -67,12 +114,101 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="pos_order_line_write_uid_fkey">
+          <End Role="res_users" Type="Self.res_users" Multiplicity="0..1" />
+          <End Role="pos_order_line" Type="Self.pos_order_line" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="res_users">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="pos_order_line">
+              <PropertyRef Name="write_uid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="pos_order_user_id_fkey">
+          <End Role="res_users" Type="Self.res_users" Multiplicity="0..1" />
+          <End Role="pos_order" Type="Self.pos_order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="res_users">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="pos_order">
+              <PropertyRef Name="user_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="pos_order_write_uid_fkey">
+          <End Role="res_users" Type="Self.res_users" Multiplicity="0..1" />
+          <End Role="pos_order" Type="Self.pos_order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="res_users">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="pos_order">
+              <PropertyRef Name="write_uid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="res_users_create_uid_fkey">
+          <End Role="res_users" Type="Self.res_users" Multiplicity="0..1" />
+          <End Role="res_users1" Type="Self.res_users" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="res_users">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="res_users1">
+              <PropertyRef Name="create_uid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="res_users_write_uid_fkey">
+          <End Role="res_users" Type="Self.res_users" Multiplicity="0..1" />
+          <End Role="res_users1" Type="Self.res_users" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="res_users">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="res_users1">
+              <PropertyRef Name="write_uid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="CAFEAPPModelStoreContainer">
           <EntitySet Name="pos_order" EntityType="Self.pos_order" Schema="public" store:Type="Tables" />
           <EntitySet Name="pos_order_line" EntityType="Self.pos_order_line" Schema="public" store:Type="Tables" />
+          <EntitySet Name="res_users" EntityType="Self.res_users" Schema="public" store:Type="Tables" />
+          <AssociationSet Name="pos_order_create_uid_fkey" Association="Self.pos_order_create_uid_fkey">
+            <End Role="res_users" EntitySet="res_users" />
+            <End Role="pos_order" EntitySet="pos_order" />
+          </AssociationSet>
+          <AssociationSet Name="pos_order_line_create_uid_fkey" Association="Self.pos_order_line_create_uid_fkey">
+            <End Role="res_users" EntitySet="res_users" />
+            <End Role="pos_order_line" EntitySet="pos_order_line" />
+          </AssociationSet>
           <AssociationSet Name="pos_order_line_order_id_fkey" Association="Self.pos_order_line_order_id_fkey">
             <End Role="pos_order" EntitySet="pos_order" />
             <End Role="pos_order_line" EntitySet="pos_order_line" />
+          </AssociationSet>
+          <AssociationSet Name="pos_order_line_write_uid_fkey" Association="Self.pos_order_line_write_uid_fkey">
+            <End Role="res_users" EntitySet="res_users" />
+            <End Role="pos_order_line" EntitySet="pos_order_line" />
+          </AssociationSet>
+          <AssociationSet Name="pos_order_user_id_fkey" Association="Self.pos_order_user_id_fkey">
+            <End Role="res_users" EntitySet="res_users" />
+            <End Role="pos_order" EntitySet="pos_order" />
+          </AssociationSet>
+          <AssociationSet Name="pos_order_write_uid_fkey" Association="Self.pos_order_write_uid_fkey">
+            <End Role="res_users" EntitySet="res_users" />
+            <End Role="pos_order" EntitySet="pos_order" />
+          </AssociationSet>
+          <AssociationSet Name="res_users_create_uid_fkey" Association="Self.res_users_create_uid_fkey">
+            <End Role="res_users" EntitySet="res_users" />
+            <End Role="res_users1" EntitySet="res_users" />
+          </AssociationSet>
+          <AssociationSet Name="res_users_write_uid_fkey" Association="Self.res_users_write_uid_fkey">
+            <End Role="res_users" EntitySet="res_users" />
+            <End Role="res_users1" EntitySet="res_users" />
           </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
@@ -109,6 +245,9 @@
           <Property Name="customer_count" Type="Int32" />
           <Property Name="table_id" Type="Int32" />
           <NavigationProperty Name="pos_order_line" Relationship="Self.pos_order_line_order_id_fkey" FromRole="pos_order" ToRole="pos_order_line" />
+          <NavigationProperty Name="res_users" Relationship="CAFEAPPModel.pos_order_create_uid_fkey" FromRole="pos_order" ToRole="res_users" />
+          <NavigationProperty Name="res_users1" Relationship="CAFEAPPModel.pos_order_user_id_fkey" FromRole="pos_order" ToRole="res_users" />
+          <NavigationProperty Name="res_users2" Relationship="CAFEAPPModel.pos_order_write_uid_fkey" FromRole="pos_order" ToRole="res_users" />
         </EntityType>
         <EntityType Name="pos_order_line">
           <Key>
@@ -128,6 +267,8 @@
           <Property Name="write_date" Type="DateTime" Precision="6" />
           <Property Name="product_id" Type="Int32" Nullable="false" />
           <NavigationProperty Name="pos_order" Relationship="Self.pos_order_line_order_id_fkey" FromRole="pos_order_line" ToRole="pos_order" />
+          <NavigationProperty Name="res_users" Relationship="CAFEAPPModel.pos_order_line_create_uid_fkey" FromRole="pos_order_line" ToRole="res_users" />
+          <NavigationProperty Name="res_users1" Relationship="CAFEAPPModel.pos_order_line_write_uid_fkey" FromRole="pos_order_line" ToRole="res_users" />
         </EntityType>
         <Association Name="pos_order_line_order_id_fkey">
           <End Role="pos_order" Type="Self.pos_order" Multiplicity="0..1">
@@ -150,7 +291,152 @@
             <End Role="pos_order" EntitySet="pos_order" />
             <End Role="pos_order_line" EntitySet="pos_order_line" />
           </AssociationSet>
+          <EntitySet Name="res_users" EntityType="CAFEAPPModel.res_users" />
+          <AssociationSet Name="pos_order_create_uid_fkey" Association="CAFEAPPModel.pos_order_create_uid_fkey">
+            <End Role="res_users" EntitySet="res_users" />
+            <End Role="pos_order" EntitySet="pos_order" />
+          </AssociationSet>
+          <AssociationSet Name="pos_order_user_id_fkey" Association="CAFEAPPModel.pos_order_user_id_fkey">
+            <End Role="res_users" EntitySet="res_users" />
+            <End Role="pos_order" EntitySet="pos_order" />
+          </AssociationSet>
+          <AssociationSet Name="pos_order_write_uid_fkey" Association="CAFEAPPModel.pos_order_write_uid_fkey">
+            <End Role="res_users" EntitySet="res_users" />
+            <End Role="pos_order" EntitySet="pos_order" />
+          </AssociationSet>
+          <AssociationSet Name="pos_order_line_create_uid_fkey" Association="CAFEAPPModel.pos_order_line_create_uid_fkey">
+            <End Role="res_users" EntitySet="res_users" />
+            <End Role="pos_order_line" EntitySet="pos_order_line" />
+          </AssociationSet>
+          <AssociationSet Name="pos_order_line_write_uid_fkey" Association="CAFEAPPModel.pos_order_line_write_uid_fkey">
+            <End Role="res_users" EntitySet="res_users" />
+            <End Role="pos_order_line" EntitySet="pos_order_line" />
+          </AssociationSet>
+          <AssociationSet Name="res_users_create_uid_fkey" Association="CAFEAPPModel.res_users_create_uid_fkey">
+            <End Role="res_users" EntitySet="res_users" />
+            <End Role="res_users1" EntitySet="res_users" />
+          </AssociationSet>
+          <AssociationSet Name="res_users_write_uid_fkey" Association="CAFEAPPModel.res_users_write_uid_fkey">
+            <End Role="res_users" EntitySet="res_users" />
+            <End Role="res_users1" EntitySet="res_users" />
+          </AssociationSet>
         </EntityContainer>
+        <EntityType Name="res_users">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="active" Type="Boolean" />
+          <Property Name="login" Type="String" Nullable="false" MaxLength="8000" FixedLength="false" Unicode="true" />
+          <Property Name="password" Type="String" MaxLength="8000" FixedLength="false" Unicode="true" />
+          <Property Name="company_id" Type="Int32" Nullable="false" />
+          <Property Name="partner_id" Type="Int32" Nullable="false" />
+          <Property Name="create_date" Type="DateTime" Precision="6" />
+          <Property Name="share" Type="Boolean" />
+          <Property Name="write_uid" Type="Int32" />
+          <Property Name="create_uid" Type="Int32" />
+          <Property Name="action_id" Type="Int32" />
+          <Property Name="write_date" Type="DateTime" Precision="6" />
+          <Property Name="signature" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="password_crypt" Type="String" MaxLength="8000" FixedLength="false" Unicode="true" />
+          <Property Name="alias_id" Type="Int32" />
+          <Property Name="pos_security_pin" Type="String" MaxLength="32" FixedLength="false" Unicode="true" />
+          <Property Name="isverified" Type="Boolean" />
+          <Property Name="login_type" Type="String" MaxLength="8000" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="pos_order" Relationship="CAFEAPPModel.pos_order_create_uid_fkey" FromRole="res_users" ToRole="pos_order" />
+          <NavigationProperty Name="pos_order1" Relationship="CAFEAPPModel.pos_order_user_id_fkey" FromRole="res_users" ToRole="pos_order" />
+          <NavigationProperty Name="pos_order2" Relationship="CAFEAPPModel.pos_order_write_uid_fkey" FromRole="res_users" ToRole="pos_order" />
+          <NavigationProperty Name="pos_order_line" Relationship="CAFEAPPModel.pos_order_line_create_uid_fkey" FromRole="res_users" ToRole="pos_order_line" />
+          <NavigationProperty Name="pos_order_line1" Relationship="CAFEAPPModel.pos_order_line_write_uid_fkey" FromRole="res_users" ToRole="pos_order_line" />
+          <NavigationProperty Name="res_users1" Relationship="CAFEAPPModel.res_users_create_uid_fkey" FromRole="res_users" ToRole="res_users1" />
+          <NavigationProperty Name="res_users2" Relationship="CAFEAPPModel.res_users_create_uid_fkey" FromRole="res_users1" ToRole="res_users" />
+          <NavigationProperty Name="res_users11" Relationship="CAFEAPPModel.res_users_write_uid_fkey" FromRole="res_users" ToRole="res_users1" />
+          <NavigationProperty Name="res_users3" Relationship="CAFEAPPModel.res_users_write_uid_fkey" FromRole="res_users1" ToRole="res_users" />
+        </EntityType>
+        <Association Name="pos_order_create_uid_fkey">
+          <End Type="CAFEAPPModel.res_users" Role="res_users" Multiplicity="0..1" />
+          <End Type="CAFEAPPModel.pos_order" Role="pos_order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="res_users">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="pos_order">
+              <PropertyRef Name="create_uid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="pos_order_user_id_fkey">
+          <End Type="CAFEAPPModel.res_users" Role="res_users" Multiplicity="0..1" />
+          <End Type="CAFEAPPModel.pos_order" Role="pos_order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="res_users">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="pos_order">
+              <PropertyRef Name="user_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="pos_order_write_uid_fkey">
+          <End Type="CAFEAPPModel.res_users" Role="res_users" Multiplicity="0..1" />
+          <End Type="CAFEAPPModel.pos_order" Role="pos_order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="res_users">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="pos_order">
+              <PropertyRef Name="write_uid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="pos_order_line_create_uid_fkey">
+          <End Type="CAFEAPPModel.res_users" Role="res_users" Multiplicity="0..1" />
+          <End Type="CAFEAPPModel.pos_order_line" Role="pos_order_line" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="res_users">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="pos_order_line">
+              <PropertyRef Name="create_uid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="pos_order_line_write_uid_fkey">
+          <End Type="CAFEAPPModel.res_users" Role="res_users" Multiplicity="0..1" />
+          <End Type="CAFEAPPModel.pos_order_line" Role="pos_order_line" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="res_users">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="pos_order_line">
+              <PropertyRef Name="write_uid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="res_users_create_uid_fkey">
+          <End Type="CAFEAPPModel.res_users" Role="res_users" Multiplicity="0..1" />
+          <End Type="CAFEAPPModel.res_users" Role="res_users1" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="res_users">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="res_users1">
+              <PropertyRef Name="create_uid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="res_users_write_uid_fkey">
+          <End Type="CAFEAPPModel.res_users" Role="res_users" Multiplicity="0..1" />
+          <End Type="CAFEAPPModel.res_users" Role="res_users1" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="res_users">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="res_users1">
+              <PropertyRef Name="write_uid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -204,6 +490,30 @@
                 <ScalarProperty Name="write_uid" ColumnName="write_uid" />
                 <ScalarProperty Name="write_date" ColumnName="write_date" />
                 <ScalarProperty Name="product_id" ColumnName="product_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="res_users">
+            <EntityTypeMapping TypeName="CAFEAPPModel.res_users">
+              <MappingFragment StoreEntitySet="res_users">
+                <ScalarProperty Name="login_type" ColumnName="login_type" />
+                <ScalarProperty Name="isverified" ColumnName="isverified" />
+                <ScalarProperty Name="pos_security_pin" ColumnName="pos_security_pin" />
+                <ScalarProperty Name="alias_id" ColumnName="alias_id" />
+                <ScalarProperty Name="password_crypt" ColumnName="password_crypt" />
+                <ScalarProperty Name="signature" ColumnName="signature" />
+                <ScalarProperty Name="write_date" ColumnName="write_date" />
+                <ScalarProperty Name="action_id" ColumnName="action_id" />
+                <ScalarProperty Name="create_uid" ColumnName="create_uid" />
+                <ScalarProperty Name="write_uid" ColumnName="write_uid" />
+                <ScalarProperty Name="share" ColumnName="share" />
+                <ScalarProperty Name="create_date" ColumnName="create_date" />
+                <ScalarProperty Name="partner_id" ColumnName="partner_id" />
+                <ScalarProperty Name="company_id" ColumnName="company_id" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="login" ColumnName="login" />
+                <ScalarProperty Name="active" ColumnName="active" />
+                <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

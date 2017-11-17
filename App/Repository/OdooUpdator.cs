@@ -16,6 +16,13 @@ namespace App.Repository
         POSDataContext cntxt = new POSDataContext();
 
 
+        public void Updatemaster()
+        {
+            GetStorefromODOO();
+            GetTablefromODOO();
+            GetUserfromODOO();
+        }
+
 
 
         public void uploadInvoiceMaster()
@@ -296,6 +303,42 @@ values(
 
 
 
+          public void GetCategoryfromODOO()
+        {
+
+            CategoryRepository repo = new CategoryRepository();
+            POSDataContext cntxt = new POSDataContext();
+            string connstring = String.Format("Server={0};Port={1};" +
+            "User Id={2};Password={3};Database={4};",
+            Program.MySettingViewModal.MyOoodoDetasils.Server.Trim(), Program.MySettingViewModal.MyOoodoDetasils.PortNum.ToString().Trim(), Program.MySettingViewModal.MyOoodoDetasils.UserId.ToString().Trim(),
+            Program.MySettingViewModal.MyOoodoDetasils.Password.ToString().Trim(), Program.MySettingViewModal.MyOoodoDetasils.DataBasename.ToString().Trim());
+            NpgsqlConnection conn = new NpgsqlConnection(connstring);
+            conn.Open();
+            NpgsqlCommand cmd = new NpgsqlCommand(@"select id , name from pos_category", conn);
+
+            DataTable dt = new DataTable();
+            NpgsqlDataReader rdr = cmd.ExecuteReader();
+
+            dt.Load(rdr);
+            List<Product> Products = new List<Product>();
+            foreach (DataRow row in dt.Rows)
+            {
+                int OdooCategoryId = int.Parse(row["id"].ToString());
+                if (!cntxt.Categorys.Any(f => f.OdooCategoryId == OdooCategoryId ))
+                {
+                    Category category = new Category();
+                    category.CategoryName = row["name"].ToString();
+                    category.OdooCategoryId = OdooCategoryId;
+                    category.Color = "";
+                    cntxt.Categorys.Add(category);
+                }
+
+
+            }
+
+            cntxt.SaveChanges();
+
+        }
         public void GetStorefromODOO()
         {
 
@@ -332,42 +375,6 @@ values(
             cntxt.SaveChanges();
 
         }
-        public void GetCategoryfromODOO()
-        {
-
-            CategoryRepository repo = new CategoryRepository();
-            POSDataContext cntxt = new POSDataContext();
-            string connstring = String.Format("Server={0};Port={1};" +
-            "User Id={2};Password={3};Database={4};",
-            Program.MySettingViewModal.MyOoodoDetasils.Server.Trim(), Program.MySettingViewModal.MyOoodoDetasils.PortNum.ToString().Trim(), Program.MySettingViewModal.MyOoodoDetasils.UserId.ToString().Trim(),
-            Program.MySettingViewModal.MyOoodoDetasils.Password.ToString().Trim(), Program.MySettingViewModal.MyOoodoDetasils.DataBasename.ToString().Trim());
-            NpgsqlConnection conn = new NpgsqlConnection(connstring);
-            conn.Open();
-            NpgsqlCommand cmd = new NpgsqlCommand(@"select id , name from pos_category", conn);
-
-            DataTable dt = new DataTable();
-            NpgsqlDataReader rdr = cmd.ExecuteReader();
-
-            dt.Load(rdr);
-            List<Product> Products = new List<Product>();
-            foreach (DataRow row in dt.Rows)
-            {
-                int OdooCategoryId = int.Parse(row["id"].ToString());
-                if (!cntxt.Categorys.Any(f => f.OdooCategoryId == OdooCategoryId ))
-                {
-                    Category category = new Category();
-                    category.CategoryName = row["name"].ToString();
-                    category.OdooCategoryId = OdooCategoryId;
-                    category.Color = "";
-                    cntxt.Categorys.Add(category);
-                }
-
-
-            }
-
-            cntxt.SaveChanges();
-
-        }
 
         public void GetTablefromODOO()
         {
@@ -386,7 +393,9 @@ values(
             NpgsqlDataReader rdr = cmd.ExecuteReader();
 
             dt.Load(rdr);
-            List<Product> Products = new List<Product>();
+
+
+            var storeid = cntxt.Stores.Where(u => u.OdooStoreId == 1).Select(u => u.StoreID).FirstOrDefault();
             foreach (DataRow row in dt.Rows)
             {
                 int OdooTableId = int.Parse(row["id"].ToString());
@@ -395,6 +404,7 @@ values(
                     Table table = new Table();
                     table.TableName = row["name"].ToString();
                     table.OdooTableID = OdooTableId;
+                    table.StoreID= int.Parse(storeid.ToString());
                     table.Color = "";
                     cntxt.Tables.Add(table);
                 }
@@ -419,23 +429,26 @@ values(
             Program.MySettingViewModal.MyOoodoDetasils.Password.ToString().Trim(), Program.MySettingViewModal.MyOoodoDetasils.DataBasename.ToString().Trim());
             NpgsqlConnection conn = new NpgsqlConnection(connstring);
             conn.Open();
-            NpgsqlCommand cmd = new NpgsqlCommand(@"select id , name from res_user", conn);
+            NpgsqlCommand cmd = new NpgsqlCommand(@"select id,login,company_id,pos_security_pin from res_users", conn);
 
             DataTable dt = new DataTable();
             NpgsqlDataReader rdr = cmd.ExecuteReader();
 
             dt.Load(rdr);
+            var storeid = cntxt.Stores.Where(u => u.OdooStoreId == 1).Select(u => u.StoreID).FirstOrDefault();
 
             foreach (DataRow row in dt.Rows)
             {
-                int OdooStoreId = int.Parse(row["id"].ToString());
-                if (!cntxt.Stores.Any(f => f.OdooStoreId == OdooStoreId))
+                int OdooUserID = int.Parse(row["id"].ToString());
+                if (!cntxt.Users.Any(f => f.OdooUserID == OdooUserID))
                 {
-                    Store store = new Store();
-                    store.StoreName = row["name"].ToString();
-                    store.OdooStoreId = OdooStoreId;
-
-                    cntxt.Stores.Add(store);
+                    User user = new User();
+                    user.UserName = row["login"].ToString();
+                    user.OdooUserID = OdooUserID;
+                    user.PassCode = int.Parse(row["pos_security_pin"].ToString());
+                    
+                    user.StoreID = int.Parse(storeid.ToString());
+                    cntxt.Users.Add(user);
                 }
 
 

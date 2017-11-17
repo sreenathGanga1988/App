@@ -48,5 +48,8 @@ namespace App
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<pos_order_line> pos_order_line { get; set; }
+        public virtual res_users res_users { get; set; }
+        public virtual res_users res_users1 { get; set; }
+        public virtual res_users res_users2 { get; set; }
     }
 }

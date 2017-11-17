@@ -29,5 +29,7 @@ namespace App
         public int product_id { get; set; }
     
         public virtual pos_order pos_order { get; set; }
+        public virtual res_users res_users { get; set; }
+        public virtual res_users res_users1 { get; set; }
     }
 }
