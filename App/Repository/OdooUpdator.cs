@@ -15,12 +15,16 @@ namespace App.Repository
 
         POSDataContext cntxt = new POSDataContext();
 
+      
 
         public void Updatemaster()
         {
             GetStorefromODOO();
             GetTablefromODOO();
             GetUserfromODOO();
+            GetBuzzerfromODOO();
+            GetBuzzerfromODOO();
+            
         }
 
 
@@ -458,8 +462,61 @@ values(
 
         }
 
+        public void GetBuzzerfromODOO()
+        {
+
+        
+          
+            NpgsqlCommand cmd = new NpgsqlCommand(@"Select id,name from pos_buzzer ");
+
+            DataTable dt = GetDataTable(cmd);
+            var storeid = cntxt.Stores.Where(u => u.OdooStoreId == 1).Select(u => u.StoreID).FirstOrDefault();
+
+            foreach (DataRow row in dt.Rows)
+            {
+                int OdooBuzzerID = int.Parse(row["id"].ToString());
+                if (!cntxt.Buzzers.Any(f => f.OdooBuzzerID == OdooBuzzerID))
+                {
+                    Buzzer user = new Buzzer();
+                    user.BuzzerName = row["name"].ToString();
+                    user.OdooBuzzerID = OdooBuzzerID;
+                    user.IsLocked = false;
+
+                    user.StoreID = int.Parse(storeid.ToString());
+                    cntxt.Buzzers.Add(user);
+                }
 
 
+            }
 
+            cntxt.SaveChanges();
+
+        }
+
+        public NpgsqlConnection OpenConnection()
+        {
+            string connstring = String.Format("Server={0};Port={1};" +
+                      "User Id={2};Password={3};Database={4};",
+                      Program.MySettingViewModal.MyOoodoDetasils.Server.Trim(), Program.MySettingViewModal.MyOoodoDetasils.PortNum.ToString().Trim(), Program.MySettingViewModal.MyOoodoDetasils.UserId.ToString().Trim(),
+                     Program.MySettingViewModal.MyOoodoDetasils.Password.ToString().Trim(), Program.MySettingViewModal.MyOoodoDetasils.DataBasename.ToString().Trim());
+            NpgsqlConnection conn = new NpgsqlConnection(connstring);
+
+
+            return conn
+            ;
+        }
+
+        public DataTable GetDataTable(NpgsqlCommand cmd)
+        {
+            NpgsqlConnection conn = OpenConnection();
+            conn.Open();
+            cmd.Connection = conn;
+            DataTable dt = new DataTable();
+            NpgsqlDataReader rdr = cmd.ExecuteReader();
+
+            dt.Load(rdr);
+
+            return dt;
+        }
     }
 }

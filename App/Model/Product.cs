@@ -147,7 +147,7 @@ namespace App.Model
         [Key]
         public int BuzzerID { get; set; }
 
-
+        public int OdooBuzzerID { get; set; }
         public int StoreID { get; set; }
 
         public String BuzzerName { get; set; }
@@ -181,6 +181,8 @@ namespace App.Model
         public String Color { get; set; }
         public virtual List<Invoicemaster> Invoicemasters { get; set; }
         public virtual List<KotMaster> KotMasters { get; set; }
+
+     
     }
 
 

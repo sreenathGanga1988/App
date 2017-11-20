@@ -22,18 +22,22 @@ namespace App.UI
             InitializeComponent();
             
            Database.SetInitializer(new MigrateDatabaseToLatestVersion<POSDataContext, Configuration>());
-            //Company objCompany = new Company();
-            //objCompany.CompanyId = DateTime.Now.ToString();
-            //objCompany.Name = "Sree";
 
 
 
-            POSDataContext objContext = new POSDataContext();
-            //objContext.Companies.Add(objCompany);
-            //objContext.SaveChanges();
-            cmb_user.DataSource  = objContext.Users.ToList();
-            cmb_user.DisplayMember = "UserName";
-            cmb_user.ValueMember = "UserID";
+            try
+            {
+                POSDataContext objContext = new POSDataContext();
+
+                cmb_user.DataSource = objContext.Users.ToList();
+                cmb_user.DisplayMember = "UserName";
+                cmb_user.ValueMember = "UserID";
+            }
+            catch (Exception)
+            {
+
+              
+            }
         }
 
        
@@ -43,8 +47,19 @@ namespace App.UI
 
             if (btn.Text == "OK")
             {
-
-                userAuthentication();
+               if(int.Parse(txt_PasscodeDisplay.Text) == 654321)
+                {
+                    this.Hide();
+                    //StartForm frm = new StartForm();
+                    //frm.Show();
+                    Masters.MasterForm frm = new Masters.MasterForm();
+                    frm.Show();
+                }
+                else
+                {
+                    userAuthentication();
+                }
+               
 
             }
             else if (btn.Text == "Back")

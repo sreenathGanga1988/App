@@ -132,7 +132,15 @@ namespace App.UI
 
             selectedTableID = int.Parse(invoicemaster.TableID.ToString());
             selectedTableName = invoicemaster.Table.TableName;
-            lbl_tablebill.Text = invoicemaster.Table.TableName;
+            btn_Tables.Text = selectedTableName;
+
+            selectedBuzzerID = int.Parse(invoicemaster.BuzzerID.ToString());
+            selectedBuzzerName = invoicemaster.BuzzerName;
+            Btn_buzzer.Text = selectedBuzzerName;
+
+            selectedPaymentID = int.Parse(invoicemaster.PayMentModeId.ToString());
+            selectedPaymentName = invoicemaster.PaymentMode;
+            btn_paymentMethod.Text = selectedPaymentName;
 
             foreach (InvoiceDetail invdet in invoicemaster.InvoiceDetails)
             {
@@ -223,7 +231,7 @@ namespace App.UI
                 //   temp.Location = new System.Drawing.Point((temp.Width * buttonindex), (temp.Height * colcount));//please adjust location as per your need
 
 
-                temp.Location = new System.Drawing.Point((temp.Width * buttonindex)+10, (temp.Height * colcount)+10);//please adjust location as per your need
+                temp.Location = new System.Drawing.Point((temp.Width * buttonindex)+15, (temp.Height * colcount)+10);//please adjust location as per your need
                 if (buttonindex % allowedproduct == 0 && buttonindex != 0)
                 {
                     colcount++;
@@ -251,7 +259,7 @@ namespace App.UI
 
         private void OnTableButtonClick(object sender, EventArgs e)
         {
-            lbl_tablebill.Text = ((ValueButton)sender).Text;
+            btn_tablebill.Text = ((ValueButton)sender).Text;
             selectedTableID =int.Parse ( ((ValueButton)sender)._value.ToString());
             selectedTableName= ((ValueButton)sender).Text;
 
@@ -379,7 +387,7 @@ namespace App.UI
             int buttonwidth = 0;
             int buttonindex = 0;
 
-            int allowedproduct = 3;
+            int allowedproduct = 2;
 
 
             if (Productlist != null)
@@ -888,7 +896,7 @@ namespace App.UI
             frmBuzzer.ShowDialog();
             btn.Text = frmBuzzer.SelectedBuzzername;
             if (btn.Text == "") { btn.Text = "Buzzer"; }
-            btn_Tables.Text = btn.Text;
+           selectedBuzzerName = btn.Text;
         }
         public void fillchange()
         {

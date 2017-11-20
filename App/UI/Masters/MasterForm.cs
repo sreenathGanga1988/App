@@ -47,6 +47,14 @@ namespace App.UI.Masters
         {
             OdooUpdator odooUpdator = new OdooUpdator();
             odooUpdator.Updatemaster();
+            MessageBox.Show("Updated");
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+
+            Setting.oodoSetting odoosetting = new Setting.oodoSetting(int.Parse(Program.LocationID.ToString()));
+            odoosetting.Show();
         }
     }
 }

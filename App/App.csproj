@@ -77,6 +77,9 @@
     <Reference Include="EntityFramework6.Npgsql, Version=3.1.1.0, Culture=neutral, PublicKeyToken=5d8b90d52f46fda7, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework6.Npgsql.3.1.1\lib\net45\EntityFramework6.Npgsql.dll</HintPath>
     </Reference>
+    <Reference Include="Infragistics2.Shared.v12.1, Version=12.1.20121.2135, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb" />
+    <Reference Include="Infragistics2.Win.Misc.v12.1, Version=12.1.20121.2135, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL" />
+    <Reference Include="Infragistics2.Win.v12.1, Version=12.1.20121.2135, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb" />
     <Reference Include="Npgsql, Version=3.2.5.0, Culture=neutral, PublicKeyToken=5d8b90d52f46fda7, processorArchitecture=MSIL">
       <HintPath>..\packages\Npgsql.3.2.5\lib\net451\Npgsql.dll</HintPath>
     </Reference>
@@ -326,6 +329,10 @@
     <Compile Include="Migrations\201711150919308_addeddodooupdaterids.cs" />
     <Compile Include="Migrations\201711150919308_addeddodooupdaterids.Designer.cs">
       <DependentUpon>201711150919308_addeddodooupdaterids.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201711181053399_addedbuzerodooid.cs" />
+    <Compile Include="Migrations\201711181053399_addedbuzerodooid.Designer.cs">
+      <DependentUpon>201711181053399_addedbuzerodooid.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Model1.Context.cs">
@@ -670,6 +677,9 @@
     <EmbeddedResource Include="Migrations\201711150919308_addeddodooupdaterids.resx">
       <DependentUpon>201711150919308_addeddodooupdaterids.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711181053399_addedbuzerodooid.resx">
+      <DependentUpon>201711181053399_addedbuzerodooid.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -889,6 +899,11 @@
       <DependentUpon>Model1.edmx</DependentUpon>
       <LastGenOutput>Model1.cs</LastGenOutput>
     </Content>
+    <None Include="Resources\customer.png" />
+    <None Include="Resources\note.ico" />
+    <None Include="Resources\75_512_Rca_icon.ico" />
+    <None Include="Resources\buzzer2.ico" />
+    <None Include="Resources\Icons8-Windows-8-Data-Clear-Filters.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
