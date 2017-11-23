@@ -254,7 +254,8 @@ namespace App.Model
         public Decimal Total { get; set; }
         public Boolean IsUploaded { get; set; }
         public Boolean? IsDeleted { get; set; }
-
+        public String Notes { get; set; }
+        
         public Decimal PreviousQty { get; set; }
 
         public Decimal AdjustedQty { get; set; }

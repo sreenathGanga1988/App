@@ -334,6 +334,10 @@
     <Compile Include="Migrations\201711181053399_addedbuzerodooid.Designer.cs">
       <DependentUpon>201711181053399_addedbuzerodooid.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201711221356029_addednotes.cs" />
+    <Compile Include="Migrations\201711221356029_addednotes.Designer.cs">
+      <DependentUpon>201711221356029_addednotes.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Model1.Context.cs">
       <AutoGen>True</AutoGen>
@@ -425,6 +429,12 @@
     </Compile>
     <Compile Include="UI\POS\FrmLogin.Designer.cs">
       <DependentUpon>FrmLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\POS\FrmNotes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\POS\FrmNotes.Designer.cs">
+      <DependentUpon>FrmNotes.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\POS\FrmPOS1Table.cs">
       <SubType>Form</SubType>
@@ -680,6 +690,9 @@
     <EmbeddedResource Include="Migrations\201711181053399_addedbuzerodooid.resx">
       <DependentUpon>201711181053399_addedbuzerodooid.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711221356029_addednotes.resx">
+      <DependentUpon>201711221356029_addednotes.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -712,6 +725,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\POS\FrmLogin.resx">
       <DependentUpon>FrmLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\POS\FrmNotes.resx">
+      <DependentUpon>FrmNotes.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\POS\FrmPOS1Table.resx">
       <DependentUpon>FrmPOS1Table.cs</DependentUpon>

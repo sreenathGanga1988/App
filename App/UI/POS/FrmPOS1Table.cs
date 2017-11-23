@@ -1,6 +1,7 @@
 ﻿using App.Extensions;
 using App.Model;
 using App.Repository;
+using App.UI.POS;
 using App.UI.RefundAndExpense;
 using App.ViewModal;
 using System;
@@ -152,7 +153,10 @@ namespace App.UI
                     grd_ProductDetails.Rows[index].Cells["Price"].Value = invdet.UnitPrice.ToString();
                     grd_ProductDetails.Rows[index].Cells["Qty"].Value = invdet.Qty.ToString(); ;
                     grd_ProductDetails.Rows[index].Cells["Discount"].Value = invdet.DiscountPerUOM.ToString();
+                    grd_ProductDetails.Rows[index].Cells["Notes"].Value = invdet.Notes.ToString();
 
+
+                    
                     grd_ProductDetails.Rows[index].Cells["ID"].ReadOnly = true;
                     grd_ProductDetails.Rows[index].Cells["Item"].ReadOnly = true;
                     grd_ProductDetails.Rows[index].Cells["Price"].ReadOnly = true;
@@ -301,7 +305,8 @@ namespace App.UI
                     grd_ProductDetails.Rows[index].Cells["Price"].Value = product.UnitPrice.ToString();
                     grd_ProductDetails.Rows[index].Cells["Qty"].Value = 1;
                     grd_ProductDetails.Rows[index].Cells["Discount"].Value = product.DiscountForLocation.ToString();
-
+                    grd_ProductDetails.Rows[index].Cells["Notes"].Value ="";
+                    
                     grd_ProductDetails.Rows[index].Cells["ID"].ReadOnly = true;
                     grd_ProductDetails.Rows[index].Cells["Item"].ReadOnly = true;
                     grd_ProductDetails.Rows[index].Cells["Price"].ReadOnly = true;
@@ -672,6 +677,13 @@ namespace App.UI
 
                 Pricechange();
             }
+            else if (btn.Text.Trim() == "Notes")
+            {
+
+
+
+                EnterNotes();
+            }
             else
             {
                 if (!ExceptionList.Contains(btn.Text.Trim()))
@@ -971,6 +983,29 @@ namespace App.UI
         }
 
 
+        public void EnterNotes()
+        {
+
+        
+
+          
+                foreach (DataGridViewRow r in grd_ProductDetails.SelectedRows)
+                {
+                    if (!r.IsNewRow)
+                    {
+
+                        FrmNotes input = new FrmNotes(grd_ProductDetails.Rows[r.Index].Cells["Notes"].Value.ToString());
+                        input.ShowDialog();
+                        string note = input.Selectednote;
+
+                      grd_ProductDetails.Rows[r.Index].Cells["Notes"].Value = note;
+                    }
+                }
+
+                CalculateTotal();
+            }
+
+       
 
 
 
@@ -1076,13 +1111,15 @@ namespace App.UI
                 InvoiceDetail invoicedetail = new InvoiceDetail();
                 invoicedetail.ProductId = int.Parse(row.Cells["ID"].Value.ToString());
                 invoicedetail.ProductName = row.Cells["Item"].Value.ToString().Trim();
-
+                invoicedetail.Notes = row.Cells["Notes"].Value.ToString().Trim();
                 invoicedetail.IsDeleted = false;
                 invoicedetail.UnitPrice = Decimal.Parse(row.Cells["Price"].Value.ToString());
                 invoicedetail.Qty = Decimal.Parse(row.Cells["Qty"].Value.ToString());
                 invoicedetail.DiscountPerUOM = Decimal.Parse(row.Cells["Discount"].Value.ToString());
                 invoicedetail.Total = Decimal.Parse(row.Cells["Total"].Value.ToString());
                 invoicedetail.IsUploaded = false;
+
+                
                 invoicedetail.PreviousQty = invoicedetail.Qty;
                 invoicedetail.AdjustedQty = 0;
                 if (invoiceid != 0)
