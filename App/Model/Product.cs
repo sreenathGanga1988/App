@@ -57,6 +57,7 @@ namespace App.Model
         public DateTime? EndTime { get; set; }
         public Boolean? IsClosed { get; set; }
         public int StoreID { get; set; }
+        public int OdooShiftId { get; set; }
         public String StartUserName { get; set; }
         public String CloseUserName { get; set; }
         public virtual Store Store { get; set; }
@@ -176,8 +177,14 @@ namespace App.Model
 
         public string CustomerDetails { get; set; }
 
+        public string AddedBy { get; set; }
+        public string AddedDate { get; set; }
+
+        public int OdooID { get; set; }
         public virtual Store Store { get; set; }
 
+
+        public Boolean IsDetailChanged { get; set; }
         public String Color { get; set; }
         public virtual List<Invoicemaster> Invoicemasters { get; set; }
         public virtual List<KotMaster> KotMasters { get; set; }
@@ -219,7 +226,12 @@ namespace App.Model
 
         public String PaymentMode { get; set; }
         public String BuzzerName { get; set; }
-       
+        public String ShiftName { get; set; }
+
+
+        public int? ShiftID { get; set; }
+        public virtual Shift Shift { get; set; }
+
         public virtual Buzzer Buzzer { get; set; }
         [NotMapped]
         public string StoreName { get; set; }
@@ -230,6 +242,7 @@ namespace App.Model
         [NotMapped]
         public string CustomerName { get; set; }
         public virtual List<RefundMaster> RefundMasters { get; set; }
+  
     }
 
     public class PaymentModeMaster

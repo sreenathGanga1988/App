@@ -338,6 +338,22 @@
     <Compile Include="Migrations\201711221356029_addednotes.Designer.cs">
       <DependentUpon>201711221356029_addednotes.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201711280732586_addedcolumns tosupplier.cs" />
+    <Compile Include="Migrations\201711280732586_addedcolumns tosupplier.Designer.cs">
+      <DependentUpon>201711280732586_addedcolumns tosupplier.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201711280805509_isdetailchanged added to db.cs" />
+    <Compile Include="Migrations\201711280805509_isdetailchanged added to db.Designer.cs">
+      <DependentUpon>201711280805509_isdetailchanged added to db.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201711281237556_optionalshiftid.cs" />
+    <Compile Include="Migrations\201711281237556_optionalshiftid.Designer.cs">
+      <DependentUpon>201711281237556_optionalshiftid.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201711281239156_addedOptionalShiftname.cs" />
+    <Compile Include="Migrations\201711281239156_addedOptionalShiftname.Designer.cs">
+      <DependentUpon>201711281239156_addedOptionalShiftname.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Model1.Context.cs">
       <AutoGen>True</AutoGen>
@@ -692,6 +708,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201711221356029_addednotes.resx">
       <DependentUpon>201711221356029_addednotes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711280732586_addedcolumns tosupplier.resx">
+      <DependentUpon>201711280732586_addedcolumns tosupplier.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711280805509_isdetailchanged added to db.resx">
+      <DependentUpon>201711280805509_isdetailchanged added to db.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711281237556_optionalshiftid.resx">
+      <DependentUpon>201711281237556_optionalshiftid.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711281239156_addedOptionalShiftname.resx">
+      <DependentUpon>201711281239156_addedOptionalShiftname.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">

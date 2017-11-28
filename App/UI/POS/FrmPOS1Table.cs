@@ -1067,7 +1067,8 @@ namespace App.UI
             invoicemaster.StoreName = Program.StoreName;
             invoicemaster.StoreAddress = Program.StoreAddress;
             invoicemaster.Cashier = Program.Username;
-         
+            invoicemaster.ShiftID = Program.ShiftId;
+            invoicemaster.ShiftName = Program.Shiftname;
             invoicemaster.IsUploaded = false;
 
             invoicemaster.BuzzerID = selectedBuzzerID;

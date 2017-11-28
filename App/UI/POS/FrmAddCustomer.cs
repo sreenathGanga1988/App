@@ -40,6 +40,7 @@ namespace App.UI
             {
                 var index = dgv.Rows.Add();
                 dgv.Rows[index].Cells["CustomerID"].Value = customer.CustomerID.ToString();
+                dgv.Rows[index].Cells["OdooID"].Value = customer.OdooID.ToString();
                 dgv.Rows[index].Cells["CustomerName"].Value = customer.CustomerName.ToString();
                 dgv.Rows[index].Cells["PhoneNumber"].Value = customer.PhoneNumber == null ? "" : customer.PhoneNumber.ToString(); 
               
@@ -64,10 +65,12 @@ namespace App.UI
         private void dgv_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             lbl_cutomerid.Text = dgv.Rows[e.RowIndex].Cells[0].Value.ToString();
-          
+            lbl_odooid.Text = dgv.Rows[e.RowIndex].Cells["OdooID"].Value.ToString();
             txt_name.Text = dgv.Rows[e.RowIndex].Cells["CustomerName"].Value.ToString();
             txt_mobnumber.Text = dgv.Rows[e.RowIndex].Cells["PhoneNumber"].Value.ToString();
             txt_address.Text = dgv.Rows[e.RowIndex].Cells["CustomerDetails"].Value.ToString();
+
+            
         }
 
        
@@ -81,6 +84,9 @@ namespace App.UI
                 customer.PhoneNumber = txt_mobnumber.Text.Trim();
                 customer.CustomerDetails = txt_address.Text.Trim();
                 customer.StoreID = Program.LocationID;
+                customer.AddedDate = DateTime.Now.ToString();
+                customer.AddedBy = Program.Username;
+                customer.IsDetailChanged = true;
                 CustomerRepositiry custrepo = new CustomerRepositiry();
                 custrepo.AddCustomer(customer);
                 MessageBox.Show("Customer Added");
@@ -94,7 +100,7 @@ namespace App.UI
             if (lbl_cutomerid.Text != "0")
             {
 
-                Customer CTGRY = new Customer() { CustomerName = txt_name.Text, CustomerID = int.Parse(lbl_cutomerid.Text), PhoneNumber = txt_mobnumber.Text, CustomerDetails = txt_address.Text, StoreID = Program.LocationID };
+                Customer CTGRY = new Customer() { CustomerName = txt_name.Text, CustomerID = int.Parse(lbl_cutomerid.Text), PhoneNumber = txt_mobnumber.Text, CustomerDetails = txt_address.Text, StoreID = Program.LocationID, AddedDate = DateTime.Now.ToString(), AddedBy = Program.Username, IsDetailChanged = true  };
                 CustomerRepositiry custrepo = new CustomerRepositiry();
                 custrepo.UpdateCustomer(CTGRY);
                 MessageBox.Show("Sucessfully Updated");

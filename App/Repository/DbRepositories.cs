@@ -236,8 +236,9 @@ namespace App.Repository
         }
         public void UpdateCustomer(Customer customer)
         {
-
+            
             cntxt.Entry(customer).State = EntityState.Modified;
+            
             cntxt.SaveChanges();
         }
 
@@ -340,6 +341,16 @@ namespace App.Repository
                 throw;
             }
         }
+
+
+        public void UpdateShift(Shift shift)
+        {
+
+            cntxt.Entry(shift).State = EntityState.Modified;
+
+            cntxt.SaveChanges();
+        }
+
     }
 
 

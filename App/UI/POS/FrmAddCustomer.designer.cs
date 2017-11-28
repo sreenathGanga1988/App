@@ -39,10 +39,6 @@
             this.panel4 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.dgv = new System.Windows.Forms.DataGridView();
-            this.CustomerID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CustomerName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.PhoneNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CustomerDetails = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel12 = new System.Windows.Forms.Panel();
             this.button2 = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -71,6 +67,12 @@
             this.panel7 = new System.Windows.Forms.Panel();
             this.panel14 = new System.Windows.Forms.Panel();
             this.panel71 = new System.Windows.Forms.Panel();
+            this.lbl_odooid = new System.Windows.Forms.Label();
+            this.CustomerID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.OdooID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CustomerName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PhoneNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CustomerDetails = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel6.SuspendLayout();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv)).BeginInit();
@@ -167,6 +169,7 @@
             this.dgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgv.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.CustomerID,
+            this.OdooID,
             this.CustomerName,
             this.PhoneNumber,
             this.CustomerDetails});
@@ -179,26 +182,6 @@
             this.dgv.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_CellClick);
             this.dgv.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_CellContentDoubleClick);
             this.dgv.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_CellDoubleClick_1);
-            // 
-            // CustomerID
-            // 
-            this.CustomerID.HeaderText = "CustomerID";
-            this.CustomerID.Name = "CustomerID";
-            // 
-            // CustomerName
-            // 
-            this.CustomerName.HeaderText = "CustomerName";
-            this.CustomerName.Name = "CustomerName";
-            // 
-            // PhoneNumber
-            // 
-            this.PhoneNumber.HeaderText = "PhoneNumber";
-            this.PhoneNumber.Name = "PhoneNumber";
-            // 
-            // CustomerDetails
-            // 
-            this.CustomerDetails.HeaderText = "CustomerDetails";
-            this.CustomerDetails.Name = "CustomerDetails";
             // 
             // panel12
             // 
@@ -350,6 +333,7 @@
             // panel11
             // 
             this.panel11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(53)))), ((int)(((byte)(66)))));
+            this.panel11.Controls.Add(this.lbl_odooid);
             this.panel11.Controls.Add(this.lbl_cutomerid);
             this.panel11.Controls.Add(this.label4);
             this.panel11.Controls.Add(this.txt_address);
@@ -494,6 +478,44 @@
             this.panel71.Size = new System.Drawing.Size(51, 30);
             this.panel71.TabIndex = 4;
             // 
+            // lbl_odooid
+            // 
+            this.lbl_odooid.AutoSize = true;
+            this.lbl_odooid.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_odooid.ForeColor = System.Drawing.Color.White;
+            this.lbl_odooid.Location = new System.Drawing.Point(688, 3);
+            this.lbl_odooid.Name = "lbl_odooid";
+            this.lbl_odooid.Size = new System.Drawing.Size(14, 13);
+            this.lbl_odooid.TabIndex = 14;
+            this.lbl_odooid.Text = "0";
+            this.lbl_odooid.Visible = false;
+            // 
+            // CustomerID
+            // 
+            this.CustomerID.HeaderText = "CustomerID";
+            this.CustomerID.Name = "CustomerID";
+            // 
+            // OdooID
+            // 
+            this.OdooID.HeaderText = "OdooID";
+            this.OdooID.Name = "OdooID";
+            this.OdooID.Visible = false;
+            // 
+            // CustomerName
+            // 
+            this.CustomerName.HeaderText = "CustomerName";
+            this.CustomerName.Name = "CustomerName";
+            // 
+            // PhoneNumber
+            // 
+            this.PhoneNumber.HeaderText = "PhoneNumber";
+            this.PhoneNumber.Name = "PhoneNumber";
+            // 
+            // CustomerDetails
+            // 
+            this.CustomerDetails.HeaderText = "CustomerDetails";
+            this.CustomerDetails.Name = "CustomerDetails";
+            // 
             // FrmAddCustomer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -532,10 +554,6 @@
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.DataGridView dgv;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CustomerID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CustomerName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn PhoneNumber;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CustomerDetails;
         private System.Windows.Forms.Panel panel12;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Panel panel2;
@@ -565,5 +583,11 @@
         private System.Windows.Forms.Panel panel14;
         private System.Windows.Forms.Panel panel71;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label lbl_odooid;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CustomerID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn OdooID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CustomerName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn PhoneNumber;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CustomerDetails;
     }
 }
