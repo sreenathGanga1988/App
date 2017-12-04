@@ -36,6 +36,8 @@
             this.panel35 = new System.Windows.Forms.Panel();
             this.btn_searcharea = new System.Windows.Forms.TextBox();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.btnSettings = new System.Windows.Forms.Button();
@@ -54,9 +56,8 @@
             this.ProductName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Category = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SalePrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Taxamount = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TodaySpecial = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.button3 = new System.Windows.Forms.Button();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.panel1.SuspendLayout();
             this.panel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv)).BeginInit();
@@ -99,6 +100,7 @@
             this.ProductName,
             this.Category,
             this.SalePrice,
+            this.Taxamount,
             this.TodaySpecial});
             this.dgv.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgv.Location = new System.Drawing.Point(0, 0);
@@ -170,6 +172,33 @@
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(689, 189);
             this.panel3.TabIndex = 3;
+            // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.checkBox1.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
+            this.checkBox1.Location = new System.Drawing.Point(600, 166);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(78, 17);
+            this.checkBox1.TabIndex = 15;
+            this.checkBox1.Text = "Select All";
+            this.checkBox1.UseVisualStyleBackColor = false;
+            this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
+            // 
+            // button3
+            // 
+            this.button3.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.button3.BackColor = System.Drawing.Color.White;
+            this.button3.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button3.ForeColor = System.Drawing.Color.DarkRed;
+            this.button3.Location = new System.Drawing.Point(429, 110);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(89, 76);
+            this.button3.TabIndex = 14;
+            this.button3.Text = "Update Today Special";
+            this.button3.UseVisualStyleBackColor = false;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // button2
             // 
@@ -327,39 +356,17 @@
             this.SalePrice.HeaderText = "Sale Price";
             this.SalePrice.Name = "SalePrice";
             // 
+            // Taxamount
+            // 
+            this.Taxamount.HeaderText = "Tax";
+            this.Taxamount.Name = "Taxamount";
+            // 
             // TodaySpecial
             // 
             this.TodaySpecial.HeaderText = "TodaySpecial";
             this.TodaySpecial.Name = "TodaySpecial";
             this.TodaySpecial.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.TodaySpecial.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            // 
-            // button3
-            // 
-            this.button3.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.button3.BackColor = System.Drawing.Color.White;
-            this.button3.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.ForeColor = System.Drawing.Color.DarkRed;
-            this.button3.Location = new System.Drawing.Point(429, 110);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(89, 76);
-            this.button3.TabIndex = 14;
-            this.button3.Text = "Update Today Special";
-            this.button3.UseVisualStyleBackColor = false;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
-            // 
-            // checkBox1
-            // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            this.checkBox1.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
-            this.checkBox1.Location = new System.Drawing.Point(600, 166);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(78, 17);
-            this.checkBox1.TabIndex = 15;
-            this.checkBox1.Text = "Select All";
-            this.checkBox1.UseVisualStyleBackColor = false;
-            this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
             // 
             // FrmProduct
             // 
@@ -404,13 +411,14 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.CheckBox checkBox1;
         private System.Windows.Forms.DataGridViewTextBoxColumn ID;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
         private System.Windows.Forms.DataGridViewTextBoxColumn ProductName;
         private System.Windows.Forms.DataGridViewTextBoxColumn Category;
         private System.Windows.Forms.DataGridViewTextBoxColumn SalePrice;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Taxamount;
         private System.Windows.Forms.DataGridViewCheckBoxColumn TodaySpecial;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.CheckBox checkBox1;
     }
 }

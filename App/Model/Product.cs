@@ -22,6 +22,7 @@ namespace App.Model
         public Decimal? UnitPrice { get; set; }
         public Decimal? DiscountForLocation { get; set; }
         public Decimal? MinimumSPForLocation { get; set; }
+        public Decimal? Taxamount { get; set; }
         public virtual Category Category { get; set; }
         public String Color { get; set; }
         public String Image { get; set; }
@@ -207,6 +208,8 @@ namespace App.Model
         public int TableID { get; set; }
         public int PayMentModeId { get; set; }
         public int? BuzzerID { get; set; }
+
+        public Decimal? Taxamount { get; set; }
 
         public DateTime InvoiceDate { get; set; }
         public virtual Table Table { get; set; }

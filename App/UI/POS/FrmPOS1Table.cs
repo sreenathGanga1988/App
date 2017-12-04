@@ -36,6 +36,8 @@ namespace App.UI
             LoadCategory(salesViewmodal);
             UpdateFont();
             Intializeselecteditems();
+            lbl_userid.Text = Program.Username;
+            lbl_datettime.Text = DateTime.Now.ToString();
 
             //this.TopMost = true;
            this.FormBorderStyle = FormBorderStyle.None;
@@ -109,6 +111,10 @@ namespace App.UI
         public FrmPOS1Table(Invoicemaster invoicemaster)
         {
             InitializeComponent();
+            this.FormBorderStyle = FormBorderStyle.None;
+            //this.WindowState = FormWindowState.Maximized;
+
+            this.WindowState = FormWindowState.Maximized;
             SalesViewModal salesViewmodal = new SalesViewModal();
             invoiceid = invoicemaster.InvoicemasterID;
             LoadCategory(salesViewmodal);
@@ -116,6 +122,8 @@ namespace App.UI
             lbl_invoicenum.Text = invoicemaster.InvoiceNum;
             //LoadTable(salesViewmodal);
             LoadInvoicedata(invoicemaster);
+            lbl_userid.Text = Program.Username;
+            lbl_datettime.Text = DateTime.Now.ToString();
 
         }
 
@@ -154,9 +162,9 @@ namespace App.UI
                     grd_ProductDetails.Rows[index].Cells["Qty"].Value = invdet.Qty.ToString(); ;
                     grd_ProductDetails.Rows[index].Cells["Discount"].Value = invdet.DiscountPerUOM.ToString();
                     grd_ProductDetails.Rows[index].Cells["Notes"].Value = invdet.Notes.ToString();
+                    grd_ProductDetails.Rows[index].Cells["Taxamount"].Value = invdet.Product.Taxamount.ToString();
 
 
-                    
                     grd_ProductDetails.Rows[index].Cells["ID"].ReadOnly = true;
                     grd_ProductDetails.Rows[index].Cells["Item"].ReadOnly = true;
                     grd_ProductDetails.Rows[index].Cells["Price"].ReadOnly = true;
@@ -306,7 +314,7 @@ namespace App.UI
                     grd_ProductDetails.Rows[index].Cells["Qty"].Value = 1;
                     grd_ProductDetails.Rows[index].Cells["Discount"].Value = product.DiscountForLocation.ToString();
                     grd_ProductDetails.Rows[index].Cells["Notes"].Value ="";
-                    
+                    grd_ProductDetails.Rows[index].Cells["Taxamount"].Value = product.Taxamount.ToString();
                     grd_ProductDetails.Rows[index].Cells["ID"].ReadOnly = true;
                     grd_ProductDetails.Rows[index].Cells["Item"].ReadOnly = true;
                     grd_ProductDetails.Rows[index].Cells["Price"].ReadOnly = true;
@@ -351,7 +359,7 @@ namespace App.UI
                 {
 
                     ispresent = true;
-                    row.Cells["Qty"].Value = int.Parse(row.Cells["Qty"].Value.ToString()) + 1;
+                    row.Cells["Qty"].Value = Decimal.Parse(row.Cells["Qty"].Value.ToString()) + 1;
                     //    row.Cells["Total"].Value = int.Parse(row.Cells["Qty"].Value.ToString()) * (Decimal.Parse(row.Cells["Price"].Value.ToString()) - Decimal.Parse(row.Cells["Discount"].Value.ToString()));
                 }
 
@@ -725,7 +733,7 @@ namespace App.UI
             {
                 try
                 {
-                    //Additem();
+                  
                     SearchItem();
                 }
                 catch (Exception)
@@ -924,16 +932,18 @@ namespace App.UI
         public void CalculateTotal()
         {
             Decimal TotalValue = 0;
+            Decimal TotalTax = 0;
             foreach (DataGridViewRow row in grd_ProductDetails.Rows)
             {
 
                 row.Cells["Total"].Value = decimal.Parse(row.Cells["Qty"].Value.ToString()) * (Decimal.Parse(row.Cells["Price"].Value.ToString()) - Decimal.Parse(row.Cells["Discount"].Value.ToString()));
-
+                TotalTax = TotalTax + (decimal.Parse(row.Cells["Qty"].Value.ToString()) * (Decimal.Parse(row.Cells["Taxamount"].Value.ToString()) - Decimal.Parse(row.Cells["Discount"].Value.ToString())));
                 TotalValue = TotalValue + decimal.Parse(row.Cells["Total"].Value.ToString());
                 row.Cells["Total"].ReadOnly = true;
             }
 
             txt_total.Text = TotalValue.ToString();
+            lbl_taxid.Text = TotalTax.ToString();
         }
 
 
@@ -1422,6 +1432,25 @@ namespace App.UI
             IpPrint print = new IpPrint();
             print.PrinttoIP("192.168.1.103", ".\\tmpPrint.print");
             MessageBox.Show("Sucess");
+        }
+
+        private void txt_producrtcode_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Return)
+
+            {
+                try
+                {
+                    Additem();
+                    txt_producrtcode.Text = "";
+                  
+                }
+                catch (Exception)
+                {
+
+
+                }
+            }
         }
     }
 }

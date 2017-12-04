@@ -78,7 +78,7 @@
             this.panel67 = new System.Windows.Forms.Panel();
             this.panel66 = new System.Windows.Forms.Panel();
             this.panel8 = new System.Windows.Forms.Panel();
-            this.label6 = new System.Windows.Forms.Label();
+            this.lbl_taxid = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.panel45 = new System.Windows.Forms.Panel();
             this.panel43 = new System.Windows.Forms.Panel();
@@ -122,13 +122,6 @@
             this.panel6 = new System.Windows.Forms.Panel();
             this.label5 = new System.Windows.Forms.Label();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
-            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Item = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Price = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Qty = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Discount = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Total = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Notes = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.button1 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
@@ -144,6 +137,14 @@
             this.btn_Tables = new System.Windows.Forms.Button();
             this.button37 = new System.Windows.Forms.Button();
             this.panel10 = new System.Windows.Forms.Panel();
+            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Taxamount = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Item = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Price = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Qty = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Discount = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Total = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Notes = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel7.SuspendLayout();
             this.panel1.SuspendLayout();
             this.Pnl_topLevel.SuspendLayout();
@@ -349,6 +350,7 @@
             this.txt_producrtcode.Name = "txt_producrtcode";
             this.txt_producrtcode.Size = new System.Drawing.Size(231, 45);
             this.txt_producrtcode.TabIndex = 4;
+            this.txt_producrtcode.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_producrtcode_KeyPress);
             // 
             // panel76
             // 
@@ -704,7 +706,7 @@
             // panel8
             // 
             this.panel8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(187)))), ((int)(((byte)(166)))));
-            this.panel8.Controls.Add(this.label6);
+            this.panel8.Controls.Add(this.lbl_taxid);
             this.panel8.Controls.Add(this.label7);
             this.panel8.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel8.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -713,16 +715,16 @@
             this.panel8.Size = new System.Drawing.Size(117, 48);
             this.panel8.TabIndex = 20;
             // 
-            // label6
+            // lbl_taxid
             // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.ForeColor = System.Drawing.Color.White;
-            this.label6.Location = new System.Drawing.Point(38, 22);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(43, 18);
-            this.label6.TabIndex = 5;
-            this.label6.Text = "0.00";
+            this.lbl_taxid.AutoSize = true;
+            this.lbl_taxid.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_taxid.ForeColor = System.Drawing.Color.White;
+            this.lbl_taxid.Location = new System.Drawing.Point(38, 22);
+            this.lbl_taxid.Name = "lbl_taxid";
+            this.lbl_taxid.Size = new System.Drawing.Size(43, 18);
+            this.lbl_taxid.TabIndex = 5;
+            this.lbl_taxid.Text = "0.00";
             // 
             // label7
             // 
@@ -1081,6 +1083,7 @@
             this.grd_ProductDetails.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.grd_ProductDetails.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ID,
+            this.Taxamount,
             this.Item,
             this.Price,
             this.Qty,
@@ -1244,44 +1247,6 @@
             this.imageList1.Images.SetKeyName(3, "if_equipmentrental_2318443.png");
             this.imageList1.Images.SetKeyName(4, "256-256-d13cafbf17ecd8f2065c8842a6e4e228.png");
             this.imageList1.Images.SetKeyName(5, "45200.png");
-            // 
-            // ID
-            // 
-            this.ID.HeaderText = "ID";
-            this.ID.Name = "ID";
-            this.ID.Visible = false;
-            // 
-            // Item
-            // 
-            this.Item.HeaderText = "Item";
-            this.Item.Name = "Item";
-            // 
-            // Price
-            // 
-            this.Price.HeaderText = "Price";
-            this.Price.Name = "Price";
-            // 
-            // Qty
-            // 
-            this.Qty.HeaderText = "Qty";
-            this.Qty.Name = "Qty";
-            // 
-            // Discount
-            // 
-            this.Discount.HeaderText = "Discount";
-            this.Discount.Name = "Discount";
-            this.Discount.Visible = false;
-            // 
-            // Total
-            // 
-            this.Total.HeaderText = "Total";
-            this.Total.Name = "Total";
-            // 
-            // Notes
-            // 
-            this.Notes.HeaderText = "Notes";
-            this.Notes.Name = "Notes";
-            this.Notes.Visible = false;
             // 
             // button1
             // 
@@ -1529,6 +1494,51 @@
             this.panel10.TabIndex = 2;
             this.panel10.MouseClick += new System.Windows.Forms.MouseEventHandler(this.panel10_MouseClick);
             // 
+            // ID
+            // 
+            this.ID.HeaderText = "ID";
+            this.ID.Name = "ID";
+            this.ID.Visible = false;
+            // 
+            // Taxamount
+            // 
+            this.Taxamount.DataPropertyName = "Taxamount";
+            this.Taxamount.HeaderText = "Taxamount";
+            this.Taxamount.Name = "Taxamount";
+            this.Taxamount.Visible = false;
+            // 
+            // Item
+            // 
+            this.Item.HeaderText = "Item";
+            this.Item.Name = "Item";
+            // 
+            // Price
+            // 
+            this.Price.HeaderText = "Price";
+            this.Price.Name = "Price";
+            // 
+            // Qty
+            // 
+            this.Qty.HeaderText = "Qty";
+            this.Qty.Name = "Qty";
+            // 
+            // Discount
+            // 
+            this.Discount.HeaderText = "Discount";
+            this.Discount.Name = "Discount";
+            this.Discount.Visible = false;
+            // 
+            // Total
+            // 
+            this.Total.HeaderText = "Total";
+            this.Total.Name = "Total";
+            // 
+            // Notes
+            // 
+            this.Notes.HeaderText = "Notes";
+            this.Notes.Name = "Notes";
+            this.Notes.Visible = false;
+            // 
             // FrmPOS1Table
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1649,7 +1659,7 @@
         private System.Windows.Forms.TextBox txt_cash;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Panel panel8;
-        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label lbl_taxid;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Panel pnl_button;
@@ -1704,6 +1714,7 @@
         private System.Windows.Forms.Panel panel6;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.DataGridViewTextBoxColumn ID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Taxamount;
         private System.Windows.Forms.DataGridViewTextBoxColumn Item;
         private System.Windows.Forms.DataGridViewTextBoxColumn Price;
         private System.Windows.Forms.DataGridViewTextBoxColumn Qty;

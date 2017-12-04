@@ -23,7 +23,9 @@ namespace App.Repository
             GetTablefromODOO();
             GetUserfromODOO();
             GetBuzzerfromODOO();
-            GetBuzzerfromODOO();
+            // GetBuzzerfromODOO();
+            GetCategoryfromODOO();
+            GetProductfromODOO();
             InsertCustomertoOdoofromlocal();
 
         }
@@ -62,7 +64,7 @@ namespace App.Repository
 
                 cntxt.SaveChanges();
 
-               Me
+               
             }
             catch (Exception)
             {
@@ -268,8 +270,8 @@ values(
 
             CategoryRepository repo = new CategoryRepository();
          
-            NpgsqlCommand cmd = new NpgsqlCommand(@"select a.id,b.name,b.pos_categ_id,b.list_price from product_product a, product_template b 
-            where a.product_tmpl_id=b.id");
+            NpgsqlCommand cmd = new NpgsqlCommand(@"select a.id,b.name,b.pos_categ_id,b.list_price,sum(d.amount) as tax_amount from product_product a, product_template b,product_taxes_rel c,account_tax d
+where a.product_tmpl_id=b.id and c.prod_id=b.id and d.id=c.tax_id group by a.id,b.name,b.pos_categ_id,b.list_price order by b.name");
             DataTable dt = GetDataTable(cmd);
             List<Product> Products = new List<Product>();
             foreach (DataRow row in dt.Rows)
@@ -283,7 +285,7 @@ values(
                     product.CategoryId = repo.GetOrginalCategoryID(int.Parse(row["pos_categ_id"].ToString()));
                     product.UnitPrice = decimal.Parse(row["list_price"].ToString());
                     product.OdooProductId = int.Parse(row["id"].ToString());
-
+                    product.Taxamount = int.Parse(row["tax_amount"].ToString());
                     product.DiscountForLocation = 0;
                     product.MinimumSPForLocation = product.UnitPrice;
                     product.Color = "";
@@ -517,15 +519,20 @@ values(
             NpgsqlCommand cmd = new NpgsqlCommand(@"insert into res_partner
 (name, display_name, mobile, phone, street, is_company, partner_share, customer, supplier, employee, email, comment, notify_email,
 invoice_warn, sale_warn, picking_warn, purchase_warn, type, active, company_id, create_date, create_uid, write_date, write_uid)
-values(:name,:display_name, :mobile, :phone, :street, False, True, True, False, False, 'emd@dkd.com', '00000000000000', 'always', 'no-message', 'no-message', 'no-message', 'no-message',
+values(:name,:display_name, :mobile, :phone, :street, False, True, True, False, False, 'emd@dkd.com', '00000000000000', 'always', False, False, False, False,
 'contact', True, 1, :createdDate, 1, :editdDate, 1)RETURNING id");
+
+            if (cust.PhoneNumber == null)
+            {
+                cust.PhoneNumber = "0";
+            }
             cmd.Parameters.AddWithValue("name", cust.CustomerName);
             cmd.Parameters.AddWithValue("display_name", cust.CustomerName);
             cmd.Parameters.AddWithValue("mobile", cust.PhoneNumber);
             cmd.Parameters.AddWithValue("phone", cust.PhoneNumber);
             cmd.Parameters.AddWithValue("street", cust.CustomerDetails);
-            cmd.Parameters.AddWithValue("createdDate", cust.AddedDate);
-            cmd.Parameters.AddWithValue("editdDate", cust.AddedDate);
+            cmd.Parameters.AddWithValue("createdDate",DateTime.Parse( cust.AddedDate.ToString()));
+            cmd.Parameters.AddWithValue("editdDate", DateTime.Parse(cust.AddedDate.ToString()));
 
             return InsertAndGetID(cmd);
 

@@ -227,13 +227,21 @@ namespace App.Repository
             return q;
         }
 
+        public List<Customer> GetCustomerByMobilnum(String searchtext, int? LocationID = 0)
+        {
 
+            var q = cntxt.Customers.Where(u => u.StoreID == LocationID && (u.PhoneNumber.Contains(searchtext) )).ToList();
+
+            return q;
+        }
         public void AddCustomer(Customer customer)
         {
 
             cntxt.Customers.Add(customer);
             cntxt.SaveChanges();
         }
+
+       
         public void UpdateCustomer(Customer customer)
         {
             

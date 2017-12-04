@@ -63,6 +63,7 @@ namespace App.UI.Masters
                 dgv.Rows[index].Cells["SalePrice"].Value =prdct.MinimumSPForLocation.ToString();
                 dgv.Rows[index].Cells["SalePrice"].Value = prdct.MinimumSPForLocation.ToString();
                 dgv.Rows[index].Cells["TodaySpecial"].Value = prdct.IsTodaySpecial;
+                dgv.Rows[index].Cells["Taxamount"].Value = prdct.Taxamount;
                 
 
             }

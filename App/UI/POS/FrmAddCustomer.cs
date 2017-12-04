@@ -88,10 +88,19 @@ namespace App.UI
                 customer.AddedBy = Program.Username;
                 customer.IsDetailChanged = true;
                 CustomerRepositiry custrepo = new CustomerRepositiry();
-                custrepo.AddCustomer(customer);
-                MessageBox.Show("Customer Added");
-                LoadAllcustomer();
-                clearcontrol();
+
+                if (custrepo.GetCustomerByMobilnum(customer.PhoneNumber).Count == 0)
+                {
+                    custrepo.AddCustomer(customer);
+                    MessageBox.Show("Customer Added");
+                    LoadAllcustomer();
+                    clearcontrol();
+                }
+                else
+                {
+                    MessageBox.Show("Mobile Number Already Present");
+                }
+              
             }
         }
 

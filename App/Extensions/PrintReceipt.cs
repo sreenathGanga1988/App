@@ -15,7 +15,7 @@ using App.Repository;
 
 namespace App.Extensions
 {
-  public  class PrintReceipt
+    public class PrintReceipt
     {
 
 
@@ -54,7 +54,7 @@ namespace App.Extensions
             BytesValue = PrintExtensions.AddBytes(BytesValue, "-------------------Thank you for coming------------------------\n");
             BytesValue = PrintExtensions.AddBytes(BytesValue, obj.Alignment.Left());
             BytesValue = PrintExtensions.AddBytes(BytesValue, CutPage());
-           // PrinterUtility.PrintExtensions.Print(BytesValue, POSPrintExample.Properties.Settings.Default.PrinterPath);
+            // PrinterUtility.PrintExtensions.Print(BytesValue, POSPrintExample.Properties.Settings.Default.PrinterPath);
             if (File.Exists(".\\tmpPrint.print"))
                 File.Delete(".\\tmpPrint.print");
             File.WriteAllBytes(".\\tmpPrint.print", BytesValue);
@@ -218,15 +218,15 @@ namespace App.Extensions
             BytesValue = PrintExtensions.AddBytes(BytesValue, obj.CharSize.DoubleWidth2());
             BytesValue = PrintExtensions.AddBytes(BytesValue, obj.FontSelect.FontA());
             BytesValue = PrintExtensions.AddBytes(BytesValue, obj.Alignment.Center());
-            BytesValue = PrintExtensions.AddBytes(BytesValue, Encoding.ASCII.GetBytes(invoicemaster.StoreName +"\n"));
+            BytesValue = PrintExtensions.AddBytes(BytesValue, Encoding.ASCII.GetBytes(invoicemaster.StoreName + "\n"));
             BytesValue = PrintExtensions.AddBytes(BytesValue, obj.CharSize.Nomarl());
-            BytesValue = PrintExtensions.AddBytes(BytesValue, Encoding.ASCII.GetBytes(invoicemaster.StoreAddress+"\n"));
+            BytesValue = PrintExtensions.AddBytes(BytesValue, Encoding.ASCII.GetBytes(invoicemaster.StoreAddress + "\n"));
             BytesValue = PrintExtensions.AddBytes(BytesValue, obj.CharSize.Nomarl());
             BytesValue = PrintExtensions.AddBytes(BytesValue, obj.Separator());
             BytesValue = PrintExtensions.AddBytes(BytesValue, Encoding.ASCII.GetBytes("Invoice\n"));
             BytesValue = PrintExtensions.AddBytes(BytesValue, obj.Alignment.Left());
-            BytesValue = PrintExtensions.AddBytes(BytesValue, Encoding.ASCII.GetBytes("Invoice No. :"+invoicemaster.InvoiceNum+"\n"));
-            BytesValue = PrintExtensions.AddBytes(BytesValue, Encoding.ASCII.GetBytes("Date        : "+invoicemaster.InvoiceDate.ToString("dd/MM/yy")+ "     Cashier  :"+invoicemaster.Cashier.Trim()+"\n"));
+            BytesValue = PrintExtensions.AddBytes(BytesValue, Encoding.ASCII.GetBytes("Invoice No. :" + invoicemaster.InvoiceNum + "\n"));
+            BytesValue = PrintExtensions.AddBytes(BytesValue, Encoding.ASCII.GetBytes("Date        : " + invoicemaster.InvoiceDate.ToString() + "     Cashier  :" + invoicemaster.Cashier.Trim() + "\n"));
             BytesValue = PrintExtensions.AddBytes(BytesValue, Encoding.ASCII.GetBytes("Itm                    Qty   Net   Dis  Total\n"));
             BytesValue = PrintExtensions.AddBytes(BytesValue, obj.Separator());
             foreach (InvoiceDetail invoicedet in invoicemaster.InvoiceDetails)
@@ -234,12 +234,12 @@ namespace App.Extensions
                 BytesValue = PrintExtensions.AddBytes(BytesValue, string.Format("{0,-25}{1,6}{2,8}{3,8}{4,6:N2}\n", invoicedet.ProductName, invoicedet.Qty, invoicedet.UnitPrice, invoicedet.DiscountPerUOM, invoicedet.Total));
             }
 
-           
-           
+
+
             BytesValue = PrintExtensions.AddBytes(BytesValue, obj.Alignment.Right());
             BytesValue = PrintExtensions.AddBytes(BytesValue, obj.Separator());
             BytesValue = PrintExtensions.AddBytes(BytesValue, Encoding.ASCII.GetBytes("Total\n"));
-            BytesValue = PrintExtensions.AddBytes(BytesValue, Encoding.ASCII.GetBytes( invoicemaster.TotalBill+"\n"));
+            BytesValue = PrintExtensions.AddBytes(BytesValue, Encoding.ASCII.GetBytes(invoicemaster.TotalBill + "\n"));
             BytesValue = PrintExtensions.AddBytes(BytesValue, obj.Separator());
             BytesValue = PrintExtensions.AddBytes(BytesValue, obj.Lf());
             //BytesValue = PrintExtensions.AddBytes(BytesValue, obj.Alignment.Center());
@@ -254,9 +254,9 @@ namespace App.Extensions
                 File.Delete(".\\tmpPrint.print");
             File.WriteAllBytes(".\\tmpPrint.print", BytesValue);
 
-           
+            MessageBox.Show(Program.MySettingViewModal.MyPrinterDetails.PosPrinter);
 
-            RawPrinterHelper.SendFileToPrinter(Program.MySettingViewModal.LocalPrinterSetting.DefaultPrinter, ".\\tmpPrint.print");
+            RawPrinterHelper.SendFileToPrinter(Program.MySettingViewModal.MyPrinterDetails.PosPrinter, ".\\tmpPrint.print");
             try
             {
                 File.Delete(".\\tmpPrint.print");
@@ -270,13 +270,14 @@ namespace App.Extensions
 
 
         public void printKOTreport(Invoicemaster kotMaster)
-        { InvoiceRepository invrepo = new InvoiceRepository();
+        {
+            InvoiceRepository invrepo = new InvoiceRepository();
             Invoicemaster invoicemaster = invrepo.GetInvoice(kotMaster.InvoicemasterID);
 
             var Printer = invoicemaster.InvoiceDetails.Select(m => m.Product.Category.PrinterName).Distinct();
-           
-            
-            foreach (var  printer  in Printer)
+
+
+            foreach (var printer in Printer)
             {
 
                 String PrinterIP = printer.ToString();
@@ -295,17 +296,17 @@ namespace App.Extensions
                 BytesValue = PrintExtensions.AddBytes(BytesValue, obj.Separator());
                 BytesValue = PrintExtensions.AddBytes(BytesValue, Encoding.ASCII.GetBytes("KOT\n"));
                 BytesValue = PrintExtensions.AddBytes(BytesValue, obj.Alignment.Left());
-                BytesValue = PrintExtensions.AddBytes(BytesValue, Encoding.ASCII.GetBytes("Invoice No. :" + kotMaster.KotMasterID + "\n"));
+                BytesValue = PrintExtensions.AddBytes(BytesValue, Encoding.ASCII.GetBytes("" + kotMaster.InvoiceNum + "\n"));
                 BytesValue = PrintExtensions.AddBytes(BytesValue, obj.Alignment.Left());
-                BytesValue = PrintExtensions.AddBytes(BytesValue, Encoding.ASCII.GetBytes("Customer. : " + kotMaster.CustomerName + "\n"));
+                BytesValue = PrintExtensions.AddBytes(BytesValue, Encoding.ASCII.GetBytes(" " + kotMaster.CustomerName + "\n"));
 
-                BytesValue = PrintExtensions.AddBytes(BytesValue, Encoding.ASCII.GetBytes("Date        : " + kotMaster.InvoiceDate.ToString("dd/MM/yy") + "     Cashier  :" + kotMaster.Cashier.Trim() + "\n"));
+                BytesValue = PrintExtensions.AddBytes(BytesValue, Encoding.ASCII.GetBytes("" + kotMaster.InvoiceDate+ "     Cashier  :" + kotMaster.Cashier.Trim() + "\n"));
                 BytesValue = PrintExtensions.AddBytes(BytesValue, Encoding.ASCII.GetBytes("Itm                             Qty \n"));
                 BytesValue = PrintExtensions.AddBytes(BytesValue, obj.Separator());
                 foreach (InvoiceDetail kotdetail in kotdetails)
                 {
 
-                    BytesValue = PrintExtensions.AddBytes(BytesValue, string.Format("{0,-35}{1,6}\n", kotdetail.ProductName, kotdetail.Qty));
+                    BytesValue = PrintExtensions.AddBytes(BytesValue, string.Format("{0,-35}{1,6}\n", kotdetail.Product.ProductName, kotdetail.Qty));
 
 
                 }
@@ -324,9 +325,17 @@ namespace App.Extensions
                     File.Delete(".\\tmpPrint.print");
                 File.WriteAllBytes(".\\tmpPrint.print", BytesValue);
 
-                IpPrint print = new IpPrint();
-                print.PrinttoIP(PrinterIP,".\\tmpPrint.print");
-               // RawPrinterHelper.SendFileToPrinter(Program.MySettingViewModal.MyPrinterDetails.KotPrinter, ".\\tmpPrint.print");
+                try
+                {
+                    IpPrint print = new IpPrint();
+                    print.PrinttoIP(PrinterIP, ".\\tmpPrint.print");
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("Error on KOT Printer So Printing on receipt Printer ");
+                    RawPrinterHelper.SendFileToPrinter(Program.MySettingViewModal.MyPrinterDetails.PosPrinter, ".\\tmpPrint.print");
+                }
+                // 
                 try
                 {
                     File.Delete(".\\tmpPrint.print");

@@ -354,6 +354,14 @@
     <Compile Include="Migrations\201711281239156_addedOptionalShiftname.Designer.cs">
       <DependentUpon>201711281239156_addedOptionalShiftname.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201712030917578_addetatoproduct.cs" />
+    <Compile Include="Migrations\201712030917578_addetatoproduct.Designer.cs">
+      <DependentUpon>201712030917578_addetatoproduct.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201712031105593_addetaamounttoinvoice.cs" />
+    <Compile Include="Migrations\201712031105593_addetaamounttoinvoice.Designer.cs">
+      <DependentUpon>201712031105593_addetaamounttoinvoice.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Model1.Context.cs">
       <AutoGen>True</AutoGen>
@@ -720,6 +728,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201711281239156_addedOptionalShiftname.resx">
       <DependentUpon>201711281239156_addedOptionalShiftname.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712030917578_addetatoproduct.resx">
+      <DependentUpon>201712030917578_addetatoproduct.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712031105593_addetaamounttoinvoice.resx">
+      <DependentUpon>201712031105593_addetaamounttoinvoice.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
