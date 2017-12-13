@@ -157,10 +157,12 @@ namespace App.UI
             bool isFormOpen = IsAlreadyOpen(typeof(FrmPOS1Table));
             if (isFormOpen == false)
             {
+                
                 frmpos = new FrmPOS1Table(mstr);
                 //   frmpos.MdiParent = this;
                 //  frmpos.StartPosition = FormStartPosition.CenterScreen;
                 frmpos.Show();
+                this.Close();
             }
         }
     }

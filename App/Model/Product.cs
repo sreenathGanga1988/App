@@ -176,6 +176,8 @@ namespace App.Model
 
         public string PhoneNumber { get; set; }
 
+        public Decimal PaymentDue { get; set; }
+
         public string CustomerDetails { get; set; }
 
         public string AddedBy { get; set; }

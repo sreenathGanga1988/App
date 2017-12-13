@@ -214,20 +214,29 @@ namespace App.Extensions
 
             PrinterUtility.EscPosEpsonCommands.EscPosEpson obj = new PrinterUtility.EscPosEpsonCommands.EscPosEpson();
             var BytesValue = Encoding.ASCII.GetBytes(string.Empty);
+            //Adds a Seperator
             BytesValue = PrintExtensions.AddBytes(BytesValue, obj.Separator());
+            //Increases the Width of Byte
             BytesValue = PrintExtensions.AddBytes(BytesValue, obj.CharSize.DoubleWidth2());
-            BytesValue = PrintExtensions.AddBytes(BytesValue, obj.FontSelect.FontA());
-            BytesValue = PrintExtensions.AddBytes(BytesValue, obj.Alignment.Center());
-            BytesValue = PrintExtensions.AddBytes(BytesValue, Encoding.ASCII.GetBytes(invoicemaster.StoreName + "\n"));
-            BytesValue = PrintExtensions.AddBytes(BytesValue, obj.CharSize.Nomarl());
+
+           // Select Font A
+            BytesValue = PrintExtensions.AddBytes(BytesValue, obj.FontSelect.SpecialFontA());
+
+            BytesValue = PrintExtensions.AddBytes(BytesValue, obj.Alignment.Center()); //allign Center
+            BytesValue = PrintExtensions.AddBytes(BytesValue, Encoding.ASCII.GetBytes(invoicemaster.StoreName + "\n")); //added Store name
+            BytesValue = PrintExtensions.AddBytes(BytesValue, obj.CharSize.Nomarl()); 
             BytesValue = PrintExtensions.AddBytes(BytesValue, Encoding.ASCII.GetBytes(invoicemaster.StoreAddress + "\n"));
             BytesValue = PrintExtensions.AddBytes(BytesValue, obj.CharSize.Nomarl());
             BytesValue = PrintExtensions.AddBytes(BytesValue, obj.Separator());
             BytesValue = PrintExtensions.AddBytes(BytesValue, Encoding.ASCII.GetBytes("Invoice\n"));
             BytesValue = PrintExtensions.AddBytes(BytesValue, obj.Alignment.Left());
-            BytesValue = PrintExtensions.AddBytes(BytesValue, Encoding.ASCII.GetBytes("Invoice No. :" + invoicemaster.InvoiceNum + "\n"));
-            BytesValue = PrintExtensions.AddBytes(BytesValue, Encoding.ASCII.GetBytes("Date        : " + invoicemaster.InvoiceDate.ToString() + "     Cashier  :" + invoicemaster.Cashier.Trim() + "\n"));
-            BytesValue = PrintExtensions.AddBytes(BytesValue, Encoding.ASCII.GetBytes("Itm                    Qty   Net   Dis  Total\n"));
+            
+            BytesValue = PrintExtensions.AddBytes(BytesValue, Encoding.ASCII.GetBytes(invoicemaster.InvoiceNum + "\n"));
+            BytesValue = PrintExtensions.AddBytes(BytesValue, Encoding.ASCII.GetBytes(invoicemaster.InvoiceDate.ToString()));
+            BytesValue = PrintExtensions.AddBytes(BytesValue, obj.Alignment.Right());
+            BytesValue = PrintExtensions.AddBytes(BytesValue, Encoding.ASCII.GetBytes("Cashier:" + invoicemaster.Cashier.Trim() + "\n"));
+            BytesValue = PrintExtensions.AddBytes(BytesValue, obj.Alignment.Left());
+            BytesValue = PrintExtensions.AddBytes(BytesValue, Encoding.ASCII.GetBytes("Itm                 Qty   Net   Dis  Total\n"));
             BytesValue = PrintExtensions.AddBytes(BytesValue, obj.Separator());
             foreach (InvoiceDetail invoicedet in invoicemaster.InvoiceDetails)
             {
@@ -286,7 +295,7 @@ namespace App.Extensions
                 PrinterUtility.EscPosEpsonCommands.EscPosEpson obj = new PrinterUtility.EscPosEpsonCommands.EscPosEpson();
                 var BytesValue = Encoding.ASCII.GetBytes(string.Empty);
                 BytesValue = PrintExtensions.AddBytes(BytesValue, obj.Separator());
-                BytesValue = PrintExtensions.AddBytes(BytesValue, obj.CharSize.DoubleWidth2());
+                BytesValue = PrintExtensions.AddBytes(BytesValue, obj.CharSize.DoubleHeight2());
                 BytesValue = PrintExtensions.AddBytes(BytesValue, obj.FontSelect.FontA());
                 BytesValue = PrintExtensions.AddBytes(BytesValue, obj.Alignment.Center());
                 BytesValue = PrintExtensions.AddBytes(BytesValue, Encoding.ASCII.GetBytes(kotMaster.StoreName + "\n"));

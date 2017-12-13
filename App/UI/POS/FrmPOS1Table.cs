@@ -34,26 +34,29 @@ namespace App.UI
             InitializeComponent();
             salesViewmodal = new SalesViewModal();
             LoadCategory(salesViewmodal);
-            UpdateFont();
+            IntialSetup();
             Intializeselecteditems();
-            lbl_userid.Text = Program.Username;
-            lbl_datettime.Text = DateTime.Now.ToString();
+      
+      
+        }
 
-            //this.TopMost = true;
-           this.FormBorderStyle = FormBorderStyle.None;
-            //this.WindowState = FormWindowState.Maximized;
+        public FrmPOS1Table(Invoicemaster invoicemaster)
+        {
+            InitializeComponent();
+            IntialSetup();
+            SalesViewModal salesViewmodal = new SalesViewModal();
+            invoiceid = invoicemaster.InvoicemasterID;
+            LoadCategory(salesViewmodal);
+           
+            lbl_invoicenum.Text = invoicemaster.InvoiceNum;
+            LoadInvoicedata(invoicemaster);
 
-            this.WindowState = FormWindowState.Maximized;
-            //this.Location = new Point(0, 0);
-          
-            //Screen currentScreen = Screen.FromHandle(this.Handle);
-            //this.Size = new System.Drawing.Size(currentScreen.Bounds.Width, currentScreen.Bounds.Height);
-            //this.StartPosition = FormStartPosition.CenterScreen;
+
         }
 
 
 
-      
+
 
 
         public void Intializeselecteditems()
@@ -67,13 +70,14 @@ namespace App.UI
          selectedBuzzerName = "";
          selectedTableName = "";
          selectedPaymentName = "";
-
+            invoiceid = 0;
 
             lbl_customer.Text = "New";
            btn_Tables.Text = "Tables";
            Btn_buzzer.Text = "Buzzer";
             btn_paymentMethod.Text = "Payment Method";
-
+            lbl_invoicenum.Text = "";
+            lbl_datettime.Text = DateTime.Now.ToString();
         }
 
     private void UpdateFont()
@@ -108,25 +112,17 @@ namespace App.UI
                 return myCp;
             }
         }
-        public FrmPOS1Table(Invoicemaster invoicemaster)
+      
+        public void IntialSetup()
         {
-            InitializeComponent();
             this.FormBorderStyle = FormBorderStyle.None;
-            //this.WindowState = FormWindowState.Maximized;
+            
 
             this.WindowState = FormWindowState.Maximized;
-            SalesViewModal salesViewmodal = new SalesViewModal();
-            invoiceid = invoicemaster.InvoicemasterID;
-            LoadCategory(salesViewmodal);
-            UpdateFont();
-            lbl_invoicenum.Text = invoicemaster.InvoiceNum;
-            //LoadTable(salesViewmodal);
-            LoadInvoicedata(invoicemaster);
             lbl_userid.Text = Program.Username;
             lbl_datettime.Text = DateTime.Now.ToString();
-
+            UpdateFont();
         }
-
 
         public void LoadInvoicedata(Invoicemaster invoicemaster)
         {
@@ -547,7 +543,9 @@ namespace App.UI
         public void KeyPressed(Button btn)
         {
 
-            List<string> ExceptionList = new List<string> { "Add item", "Qty", "Price", "Cash", "Customer", "Todays Specials", "Buzzer", "Tables", "Payment Method", "Reset", "Check Out", "Clear", "Order", "Hold", "Table Bill", "KOT", "Price Change" };
+            List<string> ExceptionList =
+                new List<string> { "Add item", "Qty", "Price", "Cash", "Customer", "Todays Specials", "Buzzer", "Tables",
+                    "Payment Method", "Reset", "Check Out", "Clear", "Order", "Hold", "Table Bill", "KOT", "Price Change","Reset" };
 
  
 
@@ -568,7 +566,7 @@ namespace App.UI
                     AddInvoice("kot");
 
 
-                    clearGridView();
+                  //  clearGridView();
                     
                 }
 
@@ -623,7 +621,8 @@ namespace App.UI
 
             else if (btn.Text.Trim() == "Reset")
             {
-
+                Intializeselecteditems();
+                
                 clearGridView();
 
 
@@ -1147,13 +1146,15 @@ namespace App.UI
             InvoiceRepository invrrepo = new InvoiceRepository();
 
             invoicemaster = invrrepo.InsertInvoiceLocal(invoicemaster);
-            Intializeselecteditems();
+           
             try
             {
                 PrintReceipt prnt = new PrintReceipt();
 
                 if (BillType == "kot")
                 {
+                    invoiceid = invoicemaster.InvoicemasterID;
+                    lbl_invoicenum.Text = invoicemaster.InvoiceNum;
                     prnt = new PrintReceipt();
                     prnt.printKOTreport(invoicemaster);
 
@@ -1164,12 +1165,14 @@ namespace App.UI
                    
 
                     MessageBox.Show("Hold #:" + invoicemaster.InvoiceNum);
+                    Intializeselecteditems();
                 }
                 else
                 {
                     prnt.printInvoicereport(invoicemaster);
 
                     MessageBox.Show("Bill #:" + invoicemaster.InvoiceNum);
+                    Intializeselecteditems();
                 }
 
             }
@@ -1347,8 +1350,8 @@ namespace App.UI
             txt_total.Text = "0";
             txt_cash.Text = "0";
             txt_change.Text = "0";
-            
-            invoiceid = 0;
+            lbl_invoicenum.Text = "";
+        
 
             Intializeselecteditems();
         }

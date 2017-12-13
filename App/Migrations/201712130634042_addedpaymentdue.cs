@@ -1,0 +1,18 @@
+namespace App.Migrations
+{
+    using System;
+    using System.Data.Entity.Migrations;
+    
+    public partial class addedpaymentdue : DbMigration
+    {
+        public override void Up()
+        {
+            AddColumn("dbo.Customers", "PaymentDue", c => c.Decimal(nullable: false, precision: 18, scale: 2));
+        }
+        
+        public override void Down()
+        {
+            DropColumn("dbo.Customers", "PaymentDue");
+        }
+    }
+}

@@ -362,6 +362,10 @@
     <Compile Include="Migrations\201712031105593_addetaamounttoinvoice.Designer.cs">
       <DependentUpon>201712031105593_addetaamounttoinvoice.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201712130634042_addedpaymentdue.cs" />
+    <Compile Include="Migrations\201712130634042_addedpaymentdue.Designer.cs">
+      <DependentUpon>201712130634042_addedpaymentdue.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Model1.Context.cs">
       <AutoGen>True</AutoGen>
@@ -734,6 +738,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201712031105593_addetaamounttoinvoice.resx">
       <DependentUpon>201712031105593_addetaamounttoinvoice.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712130634042_addedpaymentdue.resx">
+      <DependentUpon>201712130634042_addedpaymentdue.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">

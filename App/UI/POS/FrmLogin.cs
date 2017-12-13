@@ -47,17 +47,26 @@ namespace App.UI
 
             if (btn.Text == "OK")
             {
-               if(int.Parse(txt_PasscodeDisplay.Text) == 654321)
+                try
                 {
-                    this.Hide();
-                    //StartForm frm = new StartForm();
-                    //frm.Show();
-                    Masters.MasterForm frm = new Masters.MasterForm();
-                    frm.Show();
+
+                    if (int.Parse(txt_PasscodeDisplay.Text) == 654321)
+                    {
+                        this.Hide();
+                        //StartForm frm = new StartForm();
+                        //frm.Show();
+                        Masters.MasterForm frm = new Masters.MasterForm();
+                        frm.Show();
+                    }
+                    else
+                    {
+                        userAuthentication();
+                    }
                 }
-                else
+                catch (Exception)
                 {
-                    userAuthentication();
+
+                   
                 }
                
 
