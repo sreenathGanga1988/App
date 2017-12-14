@@ -176,7 +176,7 @@ namespace App.Model
 
         public string PhoneNumber { get; set; }
 
-        public Decimal PaymentDue { get; set; }
+        public Decimal? PaymentDue { get; set; }
 
         public string CustomerDetails { get; set; }
 
@@ -277,7 +277,7 @@ namespace App.Model
         public Decimal PreviousQty { get; set; }
 
         public Decimal AdjustedQty { get; set; }
-
+        public Decimal? Taxamount { get; set; }
         public virtual Product Product { get; set; }
         public virtual Invoicemaster Invoicemaster { get; set; }
         [NotMapped]
@@ -427,4 +427,22 @@ namespace App.Model
         public virtual User User { get; set; }
         public virtual Invoicemaster Invoicemaster { get; set; }
     }
+
+
+
+    public class CreditMaster
+    {
+        [Key]
+        public int CreditMasterID { get; set; }
+        public int CustomerID { get; set; }
+        public Decimal? PaymentDue { get; set; }
+        public int InvoicemasterID { get; set; }
+        public int StoreID { get; set; }
+        public virtual Customer Customer { get; set; }
+        public virtual Invoicemaster Invoicemaster { get; set; }
+        public virtual Store Store { get; set; }
+    }
+
+
+
 }

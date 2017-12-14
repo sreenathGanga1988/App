@@ -459,10 +459,10 @@ where a.product_tmpl_id=b.id and c.prod_id=b.id and d.id=c.tax_id group by a.id,
         {
             CustomerRepositiry custrepo = new CustomerRepositiry();
 
-            var customerlist = cntxt.Customers.Where(u=>u.IsDetailChanged==true).ToList();
+            var customerlist = custrepo.GetListofuserForUpload();
 
 
-            var newcustomerlist = customerlist.Where(u => u.OdooID == 0).ToList();
+            var newcustomerlist = customerlist.Where(u => u.OdooID == 0 && u.IsDetailChanged == true);
 
             foreach(Customer cust in newcustomerlist)
             {
@@ -518,8 +518,8 @@ where a.product_tmpl_id=b.id and c.prod_id=b.id and d.id=c.tax_id group by a.id,
         {
             NpgsqlCommand cmd = new NpgsqlCommand(@"insert into res_partner
 (name, display_name, mobile, phone, street, is_company, partner_share, customer, supplier, employee, email, comment, notify_email,
-invoice_warn, sale_warn, picking_warn, purchase_warn, type, active, company_id, create_date, create_uid, write_date, write_uid)
-values(:name,:display_name, :mobile, :phone, :street, False, True, True, False, False, 'emd@dkd.com', '00000000000000', 'always', False, False, False, False,
+invoice_warn,  picking_warn,  type, active, company_id, create_date, create_uid, write_date, write_uid)
+values(:name,:display_name, :mobile, :phone, :street, False, True, True, False, False, 'emd@dkd.com', '00000000000000', 'always', False, False, 
 'contact', True, 1, :createdDate, 1, :editdDate, 1)RETURNING id");
 
             if (cust.PhoneNumber == null)

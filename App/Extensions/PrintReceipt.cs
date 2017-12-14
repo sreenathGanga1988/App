@@ -234,9 +234,9 @@ namespace App.Extensions
             BytesValue = PrintExtensions.AddBytes(BytesValue, Encoding.ASCII.GetBytes(invoicemaster.InvoiceNum + "\n"));
             BytesValue = PrintExtensions.AddBytes(BytesValue, Encoding.ASCII.GetBytes(invoicemaster.InvoiceDate.ToString()));
             BytesValue = PrintExtensions.AddBytes(BytesValue, obj.Alignment.Right());
-            BytesValue = PrintExtensions.AddBytes(BytesValue, Encoding.ASCII.GetBytes("Cashier:" + invoicemaster.Cashier.Trim() + "\n"));
+            BytesValue = PrintExtensions.AddBytes(BytesValue, Encoding.ASCII.GetBytes("      Cashier:" + invoicemaster.Cashier.Trim() + "\n"));
             BytesValue = PrintExtensions.AddBytes(BytesValue, obj.Alignment.Left());
-            BytesValue = PrintExtensions.AddBytes(BytesValue, Encoding.ASCII.GetBytes("Itm                 Qty   Net   Dis  Total\n"));
+            BytesValue = PrintExtensions.AddBytes(BytesValue, Encoding.ASCII.GetBytes("Itm                        Qty   Net   Dis  Total\n"));
             BytesValue = PrintExtensions.AddBytes(BytesValue, obj.Separator());
             foreach (InvoiceDetail invoicedet in invoicemaster.InvoiceDetails)
             {
@@ -247,8 +247,15 @@ namespace App.Extensions
 
             BytesValue = PrintExtensions.AddBytes(BytesValue, obj.Alignment.Right());
             BytesValue = PrintExtensions.AddBytes(BytesValue, obj.Separator());
-            BytesValue = PrintExtensions.AddBytes(BytesValue, Encoding.ASCII.GetBytes("Total\n"));
-            BytesValue = PrintExtensions.AddBytes(BytesValue, Encoding.ASCII.GetBytes(invoicemaster.TotalBill + "\n"));
+            BytesValue = PrintExtensions.AddBytes(BytesValue, Encoding.ASCII.GetBytes("Sub Total:  " + invoicemaster.InvoiceDetails.Sum(u=>u.Total).ToString().Trim() + "\n"));
+
+            BytesValue = PrintExtensions.AddBytes(BytesValue, Encoding.ASCII.GetBytes("Tax:  " + invoicemaster.Taxamount.ToString().Trim() + "\n"));
+          
+            //BytesValue = PrintExtensions.AddBytes(BytesValue, obj.Separator());
+            BytesValue = PrintExtensions.AddBytes(BytesValue, Encoding.ASCII.GetBytes("Total:  " + invoicemaster.TotalBill.ToString().Trim() + "\n"));
+
+            //BytesValue = PrintExtensions.AddBytes(BytesValue, Encoding.ASCII.GetBytes("Total\n"));
+            //BytesValue = PrintExtensions.AddBytes(BytesValue, Encoding.ASCII.GetBytes(invoicemaster.TotalBill + "\n"));
             BytesValue = PrintExtensions.AddBytes(BytesValue, obj.Separator());
             BytesValue = PrintExtensions.AddBytes(BytesValue, obj.Lf());
             //BytesValue = PrintExtensions.AddBytes(BytesValue, obj.Alignment.Center());
@@ -263,7 +270,7 @@ namespace App.Extensions
                 File.Delete(".\\tmpPrint.print");
             File.WriteAllBytes(".\\tmpPrint.print", BytesValue);
 
-            MessageBox.Show(Program.MySettingViewModal.MyPrinterDetails.PosPrinter);
+           // MessageBox.Show(Program.MySettingViewModal.MyPrinterDetails.PosPrinter);
 
             RawPrinterHelper.SendFileToPrinter(Program.MySettingViewModal.MyPrinterDetails.PosPrinter, ".\\tmpPrint.print");
             try

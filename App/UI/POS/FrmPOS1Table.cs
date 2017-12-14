@@ -781,6 +781,10 @@ namespace App.UI
                 selectedCustomerID = int.Parse (cstmr.SelectedCustomerID);
                 selectedCustomerName = cstmr.SelectedCustomerName;
                 lbl_customer.Text = cstmr.SelectedCustomerName;
+                CustomerRepositiry custrepo = new CustomerRepositiry();
+                Customer cust = custrepo.GetCustomer(selectedCustomerID);
+                lbl_address.Text = cust.CustomerDetails;
+                lbl_paymentDue.Text = cust.PaymentDue.ToString();
             }
             catch (Exception)
             {
@@ -900,11 +904,19 @@ namespace App.UI
         public void selectPaymentMode( Button btn)
         {
             FrmPaymentMethods frmpymntmethode = new FrmPaymentMethods();
+            PaymentModeRepository paymentModeRepository = new PaymentModeRepository();
             frmpymntmethode.ShowDialog();
             btn.Text = frmpymntmethode.SelectedPaymentMode;
             frmpymntmethode.Dispose();
             if (btn.Text== "") { btn.Text = "Payment Method"; }
             selectedPaymentName = btn.Text;
+            if(btn.Text != "Payment Method")
+            {
+                selectedPaymentID = paymentModeRepository.GetPaymentID(selectedPaymentName);
+            }
+            
+
+            
         }
         /// <summary>
         /// select Buzzer
@@ -932,6 +944,7 @@ namespace App.UI
         {
             Decimal TotalValue = 0;
             Decimal TotalTax = 0;
+            Decimal NetTotal = 0;
             foreach (DataGridViewRow row in grd_ProductDetails.Rows)
             {
 
@@ -940,8 +953,8 @@ namespace App.UI
                 TotalValue = TotalValue + decimal.Parse(row.Cells["Total"].Value.ToString());
                 row.Cells["Total"].ReadOnly = true;
             }
-
-            txt_total.Text = TotalValue.ToString();
+            NetTotal = TotalValue + TotalTax;
+            txt_total.Text = NetTotal.ToString();
             lbl_taxid.Text = TotalTax.ToString();
         }
 
@@ -1069,10 +1082,20 @@ namespace App.UI
             invoicemaster.StoreID = Program.LocationID;
             invoicemaster.UserID = Program.UserID;
             invoicemaster.InvoiceDate = DateTime.Now;
-           
-          
-            invoicemaster.TotalPaid = Decimal.Parse(txt_total.Text);
+
+            invoicemaster.Taxamount = decimal.Parse(lbl_taxid.Text);
             invoicemaster.TotalBill = Decimal.Parse(txt_total.Text);
+            if (selectedPaymentName != "CREDIT")
+            {
+                invoicemaster.TotalPaid = Decimal.Parse(txt_total.Text);
+            }
+            else
+            {
+                invoicemaster.TotalPaid = 0;
+            }
+
+
+
             invoicemaster.StoreName = Program.StoreName;
             invoicemaster.StoreAddress = Program.StoreAddress;
             invoicemaster.Cashier = Program.Username;
@@ -1080,6 +1103,8 @@ namespace App.UI
             invoicemaster.ShiftName = Program.Shiftname;
             invoicemaster.IsUploaded = false;
 
+
+           
             invoicemaster.BuzzerID = selectedBuzzerID;
             invoicemaster.CustomerID = selectedCustomerID;
             invoicemaster.TableID = int.Parse(selectedTableID.ToString());
@@ -1092,7 +1117,7 @@ namespace App.UI
             invoicemaster.BuzzerName = selectedBuzzerName;
 
             invoicemaster = AdjustAutoSelection(invoicemaster);
-
+            
             if (BillType == "Table" || BillType=="Hold")
             {
                 invoicemaster.IstableBill = true;
@@ -1127,6 +1152,7 @@ namespace App.UI
                 invoicedetail.Qty = Decimal.Parse(row.Cells["Qty"].Value.ToString());
                 invoicedetail.DiscountPerUOM = Decimal.Parse(row.Cells["Discount"].Value.ToString());
                 invoicedetail.Total = Decimal.Parse(row.Cells["Total"].Value.ToString());
+                invoicedetail.Taxamount = Decimal.Parse(row.Cells["Taxamount"].Value.ToString());
                 invoicedetail.IsUploaded = false;
 
                 
@@ -1265,7 +1291,16 @@ namespace App.UI
             }
             else if (txt_cash.Text.Trim() == "" || txt_cash.Text == null)
             {
-                MessageBox.Show("Enter Cash");
+                if (selectedPaymentName != "CREDIT")
+                {
+                    MessageBox.Show("Enter Cash");
+                    txt_cash.Text = "0";
+                }
+                else
+                {
+                    isvalidforInvoice = true;
+                }
+               
             }
             else if (txt_total.Text.Trim() == "" || txt_total.Text == null)
             {
@@ -1281,8 +1316,15 @@ namespace App.UI
             }
             else if (Decimal.Parse(txt_total.Text.Trim()) > Decimal.Parse(txt_cash.Text.Trim()))
             {
-                MessageBox.Show("Insufficeint cash..");
-
+                
+                if (selectedPaymentName != "CREDIT")
+                {
+                    MessageBox.Show("Insufficeint cash..");
+                }
+                else
+                {
+                    isvalidforInvoice = true;
+                }
             }
             else
             {

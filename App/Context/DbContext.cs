@@ -42,7 +42,8 @@ namespace App.Context
         public DbSet<PaymentModeMaster> PaymentModeMasters { get; set; }
         public DbSet<Buzzer> Buzzers { get; set; }
         public DbSet<Shift> Shifts { get; set; }
-        
+        public DbSet<CreditMaster> CreditMasters { get; set; }
+
 
     }
 }

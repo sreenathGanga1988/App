@@ -234,6 +234,15 @@ namespace App.Repository
 
             return q;
         }
+
+
+        public List<Customer> GetListofuserForUpload()
+        {
+
+            var q = cntxt.Customers.Where(u => u.IsDetailChanged == true).ToList();
+
+            return q;
+        }
         public void AddCustomer(Customer customer)
         {
 
@@ -249,7 +258,13 @@ namespace App.Repository
             
             cntxt.SaveChanges();
         }
+        public void UpdateCustomerAtUPload(Customer customer)
+        {
 
+            cntxt.Entry(customer).State = EntityState.Modified;
+
+            cntxt.SaveChanges();
+        }
     }
 
     public class CategoryRepository
@@ -426,47 +441,25 @@ namespace App.Repository
 
             return q;
         }
-        public Boolean IsBuzzerAlloted(int buzzerid, int storeid)
+
+
+        public int GetPaymentID(String SelectelpaymentTerm)
         {
-            Boolean issucess = false;
-            var q = (from ododet in cntxt.Buzzers
-                     where ododet.StoreID == storeid && ododet.BuzzerID == buzzerid
-                     select ododet).ToList();
-            foreach (var element in q)
+            int paymentidid = 0;
+
+            try
             {
-                issucess = element.IsLocked;
+                var q = cntxt.PaymentModeMasters.Where(u => u.PaymentMode == SelectelpaymentTerm).Select(u => u.PaymentModeID).FirstOrDefault();
 
+                paymentidid = int.Parse(q.ToString());
             }
-
-
-
-
-            return issucess;
-        }
-
-
-
-        public Boolean MarkBuzzerLockedorUnlocked(int buzzerid, int storeid, Boolean status)
-        {
-            Boolean issucess = false;
-            var q = from ododet in cntxt.Buzzers
-                    where ododet.StoreID == storeid && ododet.BuzzerID == buzzerid
-                    select ododet;
-            foreach (var element in q)
+            catch (Exception)
             {
-                element.IsLocked = status;
 
+               
             }
-
-            cntxt.SaveChanges();
-            issucess = true;
-
-            return issucess;
+            return paymentidid;
         }
-
-
-
-
 
     }
 
@@ -637,6 +630,19 @@ namespace App.Repository
 
             cntxt.SaveChanges();
 
+
+
+            if (invoicemaster.PaymentMode == "CREDIT")
+            {
+                CreditRepository creditRepository = new CreditRepository();
+                creditRepository.InsertorUpdateCredit(invoicemaster);
+            }
+
+
+
+
+
+
             return invoicemaster;
 
 
@@ -649,7 +655,7 @@ namespace App.Repository
             { 
          
                 return UpdateInvoicemaster(invoicemaster);
-
+               
             }
             else
             {
@@ -657,9 +663,16 @@ namespace App.Repository
                 cntxt.SaveChanges();
                 invoicemaster.InvoiceNum = Program.MySettingViewModal.AppUserSettings.InvoicePrefix + invoicemaster.InvoicemasterID;
                 cntxt.SaveChanges();
+                if (invoicemaster.PaymentMode == "CREDIT")
+                {
+                    CreditRepository creditRepository = new CreditRepository();
+                    creditRepository.InsertorUpdateCredit(invoicemaster);
+                }
                 return invoicemaster;
             }
-           
+
+            
+
 
         }
         public List <InvoiceviewModal> GetInvoicePending(int storeid)
@@ -712,6 +725,68 @@ namespace App.Repository
         }
     }
 
+
+    public class CreditRepository
+    {
+        POSDataContext cntxt = new POSDataContext();
+        public List<CreditMaster> GetCreditList(int? LocationID = 0)
+        {
+
+            var q = cntxt.CreditMasters.Where(u => u.StoreID == LocationID).ToList();
+
+            return q;
+        }
+      
+
+
+        public void InsertorUpdateCredit(Invoicemaster invmstr)
+        {
+
+            if(!cntxt.CreditMasters.Any(o => o.InvoicemasterID == invmstr.InvoicemasterID && o.StoreID==invmstr.StoreID))
+            {
+                CreditMaster creditMaster = new CreditMaster();
+                creditMaster.InvoicemasterID = invmstr.InvoicemasterID;
+                creditMaster.CustomerID = invmstr.CustomerID;
+                creditMaster.PaymentDue = invmstr.TotalBill;
+                creditMaster.StoreID = invmstr.StoreID;
+                cntxt.CreditMasters.Add(creditMaster);
+
+                var q = from cstmr in cntxt.Customers
+                        where cstmr.CustomerID == invmstr.CustomerID
+                        select cstmr;
+                foreach (var element in q)
+                {
+                    element.PaymentDue = decimal.Parse(invmstr.TotalBill.ToString()) + decimal.Parse(element.PaymentDue.ToString());
+                }
+
+            }
+            else
+            {
+                Decimal oldinvoicevalue = 0;
+                var q = from credimstr in cntxt.CreditMasters
+                        where credimstr.InvoicemasterID == invmstr.InvoicemasterID && credimstr.StoreID == invmstr.StoreID
+                        select credimstr;
+                foreach(var element in q)
+                {
+                    oldinvoicevalue= decimal.Parse(element.PaymentDue.ToString());
+                    element.CustomerID = invmstr.CustomerID;
+                    element.PaymentDue = invmstr.TotalBill;
+                    element.PaymentDue = decimal.Parse(invmstr.TotalBill.ToString()) + decimal.Parse(element.PaymentDue.ToString())-oldinvoicevalue;
+
+                }
+            }
+
+
+
+
+            cntxt.SaveChanges();
+
+        }
+
+
+
+
+    }
 }
 namespace App.ApplicationSettingRepository
 {

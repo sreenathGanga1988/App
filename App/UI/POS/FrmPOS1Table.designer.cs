@@ -30,11 +30,11 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmPOS1Table));
-            this.label3 = new System.Windows.Forms.Label();
+            this.lbl_paymentDue = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.panel7 = new System.Windows.Forms.Panel();
             this.label8 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
+            this.lbl_address = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.Pnl_topLevel = new System.Windows.Forms.Panel();
@@ -87,9 +87,6 @@
             this.label12 = new System.Windows.Forms.Label();
             this.panel41 = new System.Windows.Forms.Panel();
             this.panel39 = new System.Windows.Forms.Panel();
-            this.panel25 = new System.Windows.Forms.Panel();
-            this.txt_total = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
             this.panle_numerickeypad = new System.Windows.Forms.Panel();
             this.btn_additem = new System.Windows.Forms.Button();
             this.button48 = new System.Windows.Forms.Button();
@@ -108,6 +105,14 @@
             this.button45 = new System.Windows.Forms.Button();
             this.panel26 = new System.Windows.Forms.Panel();
             this.grd_ProductDetails = new System.Windows.Forms.DataGridView();
+            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Taxamount = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Item = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Price = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Qty = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Discount = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Total = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Notes = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel24 = new System.Windows.Forms.Panel();
             this.pnl_left = new System.Windows.Forms.Panel();
             this.pnl_category = new System.Windows.Forms.Panel();
@@ -122,14 +127,6 @@
             this.panel6 = new System.Windows.Forms.Panel();
             this.label5 = new System.Windows.Forms.Label();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
-            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Taxamount = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Item = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Price = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Qty = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Discount = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Total = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Notes = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.button1 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.btn_reset = new System.Windows.Forms.Button();
@@ -145,6 +142,9 @@
             this.btn_Tables = new System.Windows.Forms.Button();
             this.button37 = new System.Windows.Forms.Button();
             this.panel10 = new System.Windows.Forms.Panel();
+            this.label9 = new System.Windows.Forms.Label();
+            this.txt_total = new System.Windows.Forms.Label();
+            this.panel25 = new System.Windows.Forms.Panel();
             this.panel7.SuspendLayout();
             this.panel1.SuspendLayout();
             this.Pnl_topLevel.SuspendLayout();
@@ -174,7 +174,6 @@
             this.panel43.SuspendLayout();
             this.panel40.SuspendLayout();
             this.panel39.SuspendLayout();
-            this.panel25.SuspendLayout();
             this.panle_numerickeypad.SuspendLayout();
             this.panel26.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grd_ProductDetails)).BeginInit();
@@ -184,18 +183,19 @@
             this.Paneltable.SuspendLayout();
             this.panel84.SuspendLayout();
             this.panel6.SuspendLayout();
+            this.panel25.SuspendLayout();
             this.SuspendLayout();
             // 
-            // label3
+            // lbl_paymentDue
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(138, 34);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(31, 13);
-            this.label3.TabIndex = 3;
-            this.label3.Text = "0.00";
+            this.lbl_paymentDue.AutoSize = true;
+            this.lbl_paymentDue.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_paymentDue.ForeColor = System.Drawing.Color.White;
+            this.lbl_paymentDue.Location = new System.Drawing.Point(138, 34);
+            this.lbl_paymentDue.Name = "lbl_paymentDue";
+            this.lbl_paymentDue.Size = new System.Drawing.Size(31, 13);
+            this.lbl_paymentDue.TabIndex = 3;
+            this.lbl_paymentDue.Text = "0.00";
             // 
             // label4
             // 
@@ -213,7 +213,7 @@
             this.panel7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(121)))), ((int)(((byte)(166)))));
             this.panel7.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel7.Controls.Add(this.label8);
-            this.panel7.Controls.Add(this.label1);
+            this.panel7.Controls.Add(this.lbl_address);
             this.panel7.Controls.Add(this.label2);
             this.panel7.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel7.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -233,17 +233,17 @@
             this.label8.TabIndex = 3;
             this.label8.Text = "Address  : ";
             // 
-            // label1
+            // lbl_address
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(78, 22);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(53, 13);
-            this.label1.TabIndex = 3;
-            this.label1.Text = "Address";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lbl_address.AutoSize = true;
+            this.lbl_address.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_address.ForeColor = System.Drawing.Color.White;
+            this.lbl_address.Location = new System.Drawing.Point(78, 22);
+            this.lbl_address.Name = "lbl_address";
+            this.lbl_address.Size = new System.Drawing.Size(53, 13);
+            this.lbl_address.TabIndex = 3;
+            this.lbl_address.Text = "Address";
+            this.lbl_address.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label2
             // 
@@ -406,7 +406,7 @@
             // 
             this.panel9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(121)))), ((int)(((byte)(166)))));
             this.panel9.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel9.Controls.Add(this.label3);
+            this.panel9.Controls.Add(this.lbl_paymentDue);
             this.panel9.Controls.Add(this.lbl_customer);
             this.panel9.Controls.Add(this.label21);
             this.panel9.Controls.Add(this.label4);
@@ -811,40 +811,6 @@
             this.panel39.Size = new System.Drawing.Size(117, 48);
             this.panel39.TabIndex = 12;
             // 
-            // panel25
-            // 
-            this.panel25.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(187)))), ((int)(((byte)(166)))));
-            this.panel25.Controls.Add(this.txt_total);
-            this.panel25.Controls.Add(this.label9);
-            this.panel25.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel25.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.panel25.Location = new System.Drawing.Point(0, 0);
-            this.panel25.Name = "panel25";
-            this.panel25.Size = new System.Drawing.Size(117, 48);
-            this.panel25.TabIndex = 9;
-            // 
-            // txt_total
-            // 
-            this.txt_total.AutoSize = true;
-            this.txt_total.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_total.ForeColor = System.Drawing.Color.White;
-            this.txt_total.Location = new System.Drawing.Point(36, 22);
-            this.txt_total.Name = "txt_total";
-            this.txt_total.Size = new System.Drawing.Size(35, 14);
-            this.txt_total.TabIndex = 5;
-            this.txt_total.Text = "0.00";
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.ForeColor = System.Drawing.Color.White;
-            this.label9.Location = new System.Drawing.Point(34, 3);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(36, 13);
-            this.label9.TabIndex = 1;
-            this.label9.Text = "Total";
-            // 
             // panle_numerickeypad
             // 
             this.panle_numerickeypad.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(158)))), ((int)(((byte)(167)))), ((int)(((byte)(179)))));
@@ -1099,6 +1065,51 @@
             this.grd_ProductDetails.Size = new System.Drawing.Size(351, 211);
             this.grd_ProductDetails.TabIndex = 1;
             // 
+            // ID
+            // 
+            this.ID.HeaderText = "ID";
+            this.ID.Name = "ID";
+            this.ID.Visible = false;
+            // 
+            // Taxamount
+            // 
+            this.Taxamount.DataPropertyName = "Taxamount";
+            this.Taxamount.HeaderText = "Taxamount";
+            this.Taxamount.Name = "Taxamount";
+            this.Taxamount.Visible = false;
+            // 
+            // Item
+            // 
+            this.Item.HeaderText = "Item";
+            this.Item.Name = "Item";
+            // 
+            // Price
+            // 
+            this.Price.HeaderText = "Price";
+            this.Price.Name = "Price";
+            // 
+            // Qty
+            // 
+            this.Qty.HeaderText = "Qty";
+            this.Qty.Name = "Qty";
+            // 
+            // Discount
+            // 
+            this.Discount.HeaderText = "Discount";
+            this.Discount.Name = "Discount";
+            this.Discount.Visible = false;
+            // 
+            // Total
+            // 
+            this.Total.HeaderText = "Total";
+            this.Total.Name = "Total";
+            // 
+            // Notes
+            // 
+            this.Notes.HeaderText = "Notes";
+            this.Notes.Name = "Notes";
+            this.Notes.Visible = false;
+            // 
             // panel24
             // 
             this.panel24.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(58)))), ((int)(((byte)(69)))));
@@ -1247,51 +1258,6 @@
             this.imageList1.Images.SetKeyName(3, "if_equipmentrental_2318443.png");
             this.imageList1.Images.SetKeyName(4, "256-256-d13cafbf17ecd8f2065c8842a6e4e228.png");
             this.imageList1.Images.SetKeyName(5, "45200.png");
-            // 
-            // ID
-            // 
-            this.ID.HeaderText = "ID";
-            this.ID.Name = "ID";
-            this.ID.Visible = false;
-            // 
-            // Taxamount
-            // 
-            this.Taxamount.DataPropertyName = "Taxamount";
-            this.Taxamount.HeaderText = "Taxamount";
-            this.Taxamount.Name = "Taxamount";
-            this.Taxamount.Visible = false;
-            // 
-            // Item
-            // 
-            this.Item.HeaderText = "Item";
-            this.Item.Name = "Item";
-            // 
-            // Price
-            // 
-            this.Price.HeaderText = "Price";
-            this.Price.Name = "Price";
-            // 
-            // Qty
-            // 
-            this.Qty.HeaderText = "Qty";
-            this.Qty.Name = "Qty";
-            // 
-            // Discount
-            // 
-            this.Discount.HeaderText = "Discount";
-            this.Discount.Name = "Discount";
-            this.Discount.Visible = false;
-            // 
-            // Total
-            // 
-            this.Total.HeaderText = "Total";
-            this.Total.Name = "Total";
-            // 
-            // Notes
-            // 
-            this.Notes.HeaderText = "Notes";
-            this.Notes.Name = "Notes";
-            this.Notes.Visible = false;
             // 
             // button1
             // 
@@ -1540,6 +1506,40 @@
             this.panel10.TabIndex = 2;
             this.panel10.MouseClick += new System.Windows.Forms.MouseEventHandler(this.panel10_MouseClick);
             // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.ForeColor = System.Drawing.Color.White;
+            this.label9.Location = new System.Drawing.Point(34, 3);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(36, 13);
+            this.label9.TabIndex = 1;
+            this.label9.Text = "Total";
+            // 
+            // txt_total
+            // 
+            this.txt_total.AutoSize = true;
+            this.txt_total.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txt_total.ForeColor = System.Drawing.Color.White;
+            this.txt_total.Location = new System.Drawing.Point(36, 22);
+            this.txt_total.Name = "txt_total";
+            this.txt_total.Size = new System.Drawing.Size(35, 14);
+            this.txt_total.TabIndex = 5;
+            this.txt_total.Text = "0.00";
+            // 
+            // panel25
+            // 
+            this.panel25.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(187)))), ((int)(((byte)(166)))));
+            this.panel25.Controls.Add(this.txt_total);
+            this.panel25.Controls.Add(this.label9);
+            this.panel25.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel25.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.panel25.Location = new System.Drawing.Point(0, 0);
+            this.panel25.Name = "panel25";
+            this.panel25.Size = new System.Drawing.Size(117, 48);
+            this.panel25.TabIndex = 9;
+            // 
             // FrmPOS1Table
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1588,8 +1588,6 @@
             this.panel40.ResumeLayout(false);
             this.panel40.PerformLayout();
             this.panel39.ResumeLayout(false);
-            this.panel25.ResumeLayout(false);
-            this.panel25.PerformLayout();
             this.panle_numerickeypad.ResumeLayout(false);
             this.panel26.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.grd_ProductDetails)).EndInit();
@@ -1602,12 +1600,14 @@
             this.panel84.PerformLayout();
             this.panel6.ResumeLayout(false);
             this.panel6.PerformLayout();
+            this.panel25.ResumeLayout(false);
+            this.panel25.PerformLayout();
             this.ResumeLayout(false);
 
         }
 
         #endregion
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label lbl_paymentDue;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Panel panel7;
         private System.Windows.Forms.Panel panel1;
@@ -1616,7 +1616,7 @@
         private System.Windows.Forms.Panel panel9;
         private System.Windows.Forms.Label lbl_customer;
         private System.Windows.Forms.Label label21;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lbl_address;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Panel panel23;
         private System.Windows.Forms.ImageList imageList1;
@@ -1631,9 +1631,6 @@
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Panel panel41;
         private System.Windows.Forms.Panel panel39;
-        private System.Windows.Forms.Panel panel25;
-        private System.Windows.Forms.Label txt_total;
-        private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Panel panle_numerickeypad;
         private System.Windows.Forms.Button btn_additem;
         private System.Windows.Forms.Button button48;
@@ -1722,5 +1719,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Discount;
         private System.Windows.Forms.DataGridViewTextBoxColumn Total;
         private System.Windows.Forms.DataGridViewTextBoxColumn Notes;
+        private System.Windows.Forms.Panel panel25;
+        private System.Windows.Forms.Label txt_total;
+        private System.Windows.Forms.Label label9;
     }
 }
