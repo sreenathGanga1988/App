@@ -285,7 +285,7 @@ where a.product_tmpl_id=b.id and c.prod_id=b.id and d.id=c.tax_id group by a.id,
                     product.CategoryId = repo.GetOrginalCategoryID(int.Parse(row["pos_categ_id"].ToString()));
                     product.UnitPrice = decimal.Parse(row["list_price"].ToString());
                     product.OdooProductId = int.Parse(row["id"].ToString());
-                    product.Taxamount = int.Parse(row["tax_amount"].ToString());
+                    product.Taxamount = Decimal.Parse(row["tax_amount"].ToString());
                     product.DiscountForLocation = 0;
                     product.MinimumSPForLocation = product.UnitPrice;
                     product.Color = "";
@@ -295,6 +295,32 @@ where a.product_tmpl_id=b.id and c.prod_id=b.id and d.id=c.tax_id group by a.id,
                     product.IsRateChangable = true;
                     product.IsTodaySpecial = true;
                     cntxt.Products.Add(product);
+                }
+                else
+                {
+                    var q = from product in cntxt.Products
+                            where product.OdooProductId == odooProductID
+                            select product;
+                    foreach(var element in q)
+                    {
+
+                        element.ProductName = row["name"].ToString();
+                        element.OdooCategoryId = int.Parse(row["pos_categ_id"].ToString());
+                        element.CategoryId = repo.GetOrginalCategoryID(int.Parse(row["pos_categ_id"].ToString()));
+                        element.UnitPrice = decimal.Parse(row["list_price"].ToString());
+                        element.OdooProductId = int.Parse(row["id"].ToString());
+                        element.Taxamount = Decimal.Parse(row["tax_amount"].ToString());
+                        element.DiscountForLocation = 0;
+                        element.MinimumSPForLocation = element.UnitPrice;
+                        element.Color = "";
+                        element.Image = "";
+
+                        element.IsAvailable = true;
+                        element.IsRateChangable = true;
+                        element.IsTodaySpecial = true;
+
+
+                    }
                 }
                 
 
@@ -352,6 +378,17 @@ where a.product_tmpl_id=b.id and c.prod_id=b.id and d.id=c.tax_id group by a.id,
                     store.OdooStoreId = OdooStoreId;
 
                     cntxt.Stores.Add(store);
+                }
+                else
+                {
+                    var q = from store in cntxt.Stores
+                            where store.OdooStoreId == OdooStoreId
+                            select store;
+                    foreach(var element in q)
+                    {
+                        element.StoreName = row["name"].ToString();
+                    }
+
                 }
 
 

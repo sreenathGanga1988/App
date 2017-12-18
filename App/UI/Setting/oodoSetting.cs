@@ -249,10 +249,12 @@ namespace App.UI.Setting
 
         private void button2_Click_2(object sender, EventArgs e)
         {
+            SaveLocally();
             InsertprinterDetails();
         }
 
-        private void button4_Click(object sender, EventArgs e)
+
+        public void SaveLocally()
         {
             LocalPrinter localPrinter = new LocalPrinter();
             localPrinter.DefaultPrinter = cmb_pos.Text;
@@ -264,6 +266,10 @@ namespace App.UI.Setting
             {
                 xs.Serialize(fs, localPrinter);
             }
+        }
+        private void button4_Click(object sender, EventArgs e)
+        {
+          
         }
     }
 }

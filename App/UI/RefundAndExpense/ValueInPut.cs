@@ -18,14 +18,14 @@ namespace App.UI.RefundAndExpense
            String FormActionType = "";
               String invoicenum = "";
         int Invoiceid = 0;
-
+        Decimal Creditamount=0;
         public Decimal Selectedvalue { get; set; }
         public ValueInPut()
         {
             InitializeComponent();
         }
-
-
+       
+        //Refund
         public ValueInPut(int InoiceID ,String ActionType,String frminvoicenum )
         {
             InitializeComponent();
@@ -37,8 +37,22 @@ namespace App.UI.RefundAndExpense
                 FormActionType = ActionType;
                 invoicenum = frminvoicenum;
             }
-        }
+            if (ActionType == "Settle")
+            {
+                try
+                {
+                    Invoiceid = InoiceID;
+                FormActionType = ActionType;
+                SettlementAction();
+            }
+            catch (Exception)
+            {
 
+                MessageBox.Show("Cannot found Credit Amount of Selected Customer");
+            }
+        }
+        }
+        //Purchase
         public ValueInPut(DateTime DateTime, String ActionType)
         {
             InitializeComponent();
@@ -56,7 +70,7 @@ namespace App.UI.RefundAndExpense
                 
 
                 FormActionType = ActionType;
-                btn_PosOut.Enabled = true;
+                btn_Credit.Enabled = true;
 
             }
             if (ActionType == "PriceChange")
@@ -133,6 +147,27 @@ namespace App.UI.RefundAndExpense
 
             MessageBox.Show("Refund #" + refmaster.RefundNum + "Generated Sucessfully");
 
+
+        }
+
+
+
+        public void SettlementAction()
+        {
+
+           
+                CustomerRepositiry custrepo = new CustomerRepositiry();
+                Customer cust = custrepo.GetCustomer(Invoiceid);
+                lbl_message.Text = "Credit Amount :" + cust.PaymentDue.ToString();
+                Creditamount = Decimal.Parse(cust.PaymentDue.ToString());
+                btn_Credit.Enabled = true;
+           
+        }
+
+
+
+        private void btn_PosOut_Click(object sender, EventArgs e)
+        {
 
         }
     }

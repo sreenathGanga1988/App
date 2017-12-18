@@ -32,6 +32,10 @@
             this.txt_PasscodeDisplay = new System.Windows.Forms.TextBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.btn_Credit = new System.Windows.Forms.Button();
+            this.btn_posAmount = new System.Windows.Forms.Button();
+            this.btn_purchase = new System.Windows.Forms.Button();
+            this.btn_refund = new System.Windows.Forms.Button();
             this.button7 = new System.Windows.Forms.Button();
             this.button8 = new System.Windows.Forms.Button();
             this.button9 = new System.Windows.Forms.Button();
@@ -44,10 +48,7 @@
             this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
-            this.btn_refund = new System.Windows.Forms.Button();
-            this.btn_purchase = new System.Windows.Forms.Button();
-            this.btn_posAmount = new System.Windows.Forms.Button();
-            this.btn_PosOut = new System.Windows.Forms.Button();
+            this.lbl_message = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -59,7 +60,7 @@
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupBox1.Location = new System.Drawing.Point(0, 0);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(468, 103);
+            this.groupBox1.Size = new System.Drawing.Size(468, 97);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Top";
@@ -74,11 +75,12 @@
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.lbl_message);
             this.groupBox3.Controls.Add(this.panel2);
             this.groupBox3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox3.Location = new System.Drawing.Point(0, 103);
+            this.groupBox3.Location = new System.Drawing.Point(0, 97);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(468, 329);
+            this.groupBox3.Size = new System.Drawing.Size(468, 347);
             this.groupBox3.TabIndex = 4;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "KeyPad";
@@ -86,7 +88,7 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.SystemColors.Info;
-            this.panel2.Controls.Add(this.btn_PosOut);
+            this.panel2.Controls.Add(this.btn_Credit);
             this.panel2.Controls.Add(this.btn_posAmount);
             this.panel2.Controls.Add(this.btn_purchase);
             this.panel2.Controls.Add(this.btn_refund);
@@ -106,6 +108,52 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(461, 267);
             this.panel2.TabIndex = 0;
+            // 
+            // btn_Credit
+            // 
+            this.btn_Credit.Enabled = false;
+            this.btn_Credit.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_Credit.Location = new System.Drawing.Point(278, 198);
+            this.btn_Credit.Name = "btn_Credit";
+            this.btn_Credit.Size = new System.Drawing.Size(171, 56);
+            this.btn_Credit.TabIndex = 15;
+            this.btn_Credit.Text = "Settle Credit";
+            this.btn_Credit.UseVisualStyleBackColor = true;
+            this.btn_Credit.Click += new System.EventHandler(this.btn_PosOut_Click);
+            // 
+            // btn_posAmount
+            // 
+            this.btn_posAmount.Enabled = false;
+            this.btn_posAmount.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_posAmount.Location = new System.Drawing.Point(278, 136);
+            this.btn_posAmount.Name = "btn_posAmount";
+            this.btn_posAmount.Size = new System.Drawing.Size(171, 56);
+            this.btn_posAmount.TabIndex = 14;
+            this.btn_posAmount.Text = "Pos Amount";
+            this.btn_posAmount.UseVisualStyleBackColor = true;
+            // 
+            // btn_purchase
+            // 
+            this.btn_purchase.Enabled = false;
+            this.btn_purchase.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_purchase.Location = new System.Drawing.Point(278, 74);
+            this.btn_purchase.Name = "btn_purchase";
+            this.btn_purchase.Size = new System.Drawing.Size(171, 56);
+            this.btn_purchase.TabIndex = 13;
+            this.btn_purchase.Text = "Purchase";
+            this.btn_purchase.UseVisualStyleBackColor = true;
+            // 
+            // btn_refund
+            // 
+            this.btn_refund.Enabled = false;
+            this.btn_refund.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_refund.Location = new System.Drawing.Point(278, 12);
+            this.btn_refund.Name = "btn_refund";
+            this.btn_refund.Size = new System.Drawing.Size(171, 56);
+            this.btn_refund.TabIndex = 12;
+            this.btn_refund.Text = "Refund";
+            this.btn_refund.UseVisualStyleBackColor = true;
+            this.btn_refund.Click += new System.EventHandler(this.btn_refund_Click);
             // 
             // button7
             // 
@@ -239,56 +287,22 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.buttonclicked_Click);
             // 
-            // btn_refund
+            // lbl_message
             // 
-            this.btn_refund.Enabled = false;
-            this.btn_refund.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_refund.Location = new System.Drawing.Point(278, 12);
-            this.btn_refund.Name = "btn_refund";
-            this.btn_refund.Size = new System.Drawing.Size(171, 56);
-            this.btn_refund.TabIndex = 12;
-            this.btn_refund.Text = "Refund";
-            this.btn_refund.UseVisualStyleBackColor = true;
-            this.btn_refund.Click += new System.EventHandler(this.btn_refund_Click);
-            // 
-            // btn_purchase
-            // 
-            this.btn_purchase.Enabled = false;
-            this.btn_purchase.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_purchase.Location = new System.Drawing.Point(278, 74);
-            this.btn_purchase.Name = "btn_purchase";
-            this.btn_purchase.Size = new System.Drawing.Size(171, 56);
-            this.btn_purchase.TabIndex = 13;
-            this.btn_purchase.Text = "Purchase";
-            this.btn_purchase.UseVisualStyleBackColor = true;
-            // 
-            // btn_posAmount
-            // 
-            this.btn_posAmount.Enabled = false;
-            this.btn_posAmount.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_posAmount.Location = new System.Drawing.Point(278, 136);
-            this.btn_posAmount.Name = "btn_posAmount";
-            this.btn_posAmount.Size = new System.Drawing.Size(171, 56);
-            this.btn_posAmount.TabIndex = 14;
-            this.btn_posAmount.Text = "Pos Amount";
-            this.btn_posAmount.UseVisualStyleBackColor = true;
-            // 
-            // btn_PosOut
-            // 
-            this.btn_PosOut.Enabled = false;
-            this.btn_PosOut.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_PosOut.Location = new System.Drawing.Point(278, 198);
-            this.btn_PosOut.Name = "btn_PosOut";
-            this.btn_PosOut.Size = new System.Drawing.Size(171, 56);
-            this.btn_PosOut.TabIndex = 15;
-            this.btn_PosOut.Text = "Encash";
-            this.btn_PosOut.UseVisualStyleBackColor = true;
+            this.lbl_message.AutoSize = true;
+            this.lbl_message.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold);
+            this.lbl_message.ForeColor = System.Drawing.Color.Maroon;
+            this.lbl_message.Location = new System.Drawing.Point(56, 298);
+            this.lbl_message.Name = "lbl_message";
+            this.lbl_message.Size = new System.Drawing.Size(18, 24);
+            this.lbl_message.TabIndex = 1;
+            this.lbl_message.Text = "*";
             // 
             // ValueInPut
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(468, 432);
+            this.ClientSize = new System.Drawing.Size(468, 444);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox1);
             this.Name = "ValueInPut";
@@ -296,6 +310,7 @@
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -319,9 +334,10 @@
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button btn_PosOut;
+        private System.Windows.Forms.Button btn_Credit;
         private System.Windows.Forms.Button btn_posAmount;
         private System.Windows.Forms.Button btn_purchase;
         private System.Windows.Forms.Button btn_refund;
+        private System.Windows.Forms.Label lbl_message;
     }
 }

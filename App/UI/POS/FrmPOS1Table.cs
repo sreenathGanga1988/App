@@ -72,6 +72,8 @@ namespace App.UI
          selectedPaymentName = "";
             invoiceid = 0;
 
+          
+
             lbl_customer.Text = "New";
            btn_Tables.Text = "Tables";
            Btn_buzzer.Text = "Buzzer";
@@ -91,7 +93,7 @@ namespace App.UI
             {
                 c.DefaultCellStyle.Font = new Font("Arial", 12.5F,FontStyle.Bold);
                 c.DefaultCellStyle.ForeColor = Color.Black;
-               
+                c.ReadOnly = true;
             }
             
             grd_ProductDetails.Columns["Item"].Width = 150;
@@ -947,9 +949,12 @@ namespace App.UI
             Decimal NetTotal = 0;
             foreach (DataGridViewRow row in grd_ProductDetails.Rows)
             {
-
-                row.Cells["Total"].Value = decimal.Parse(row.Cells["Qty"].Value.ToString()) * (Decimal.Parse(row.Cells["Price"].Value.ToString()) - Decimal.Parse(row.Cells["Discount"].Value.ToString()));
-                TotalTax = TotalTax + (decimal.Parse(row.Cells["Qty"].Value.ToString()) * (Decimal.Parse(row.Cells["Taxamount"].Value.ToString()) - Decimal.Parse(row.Cells["Discount"].Value.ToString())));
+                Decimal Qty = decimal.Parse(row.Cells["Qty"].Value.ToString());
+                Decimal Price = Decimal.Parse(row.Cells["Price"].Value.ToString());
+                Decimal Discount = Decimal.Parse(row.Cells["Discount"].Value.ToString());
+                Decimal Taxamount = Decimal.Parse(row.Cells["Taxamount"].Value.ToString());
+                row.Cells["Total"].Value = Qty * (Price - Discount);
+                TotalTax = TotalTax + (Qty * Taxamount* Price);
                 TotalValue = TotalValue + decimal.Parse(row.Cells["Total"].Value.ToString());
                 row.Cells["Total"].ReadOnly = true;
             }
@@ -1393,7 +1398,7 @@ namespace App.UI
             txt_cash.Text = "0";
             txt_change.Text = "0";
             lbl_invoicenum.Text = "";
-        
+            lbl_taxid.Text = "0";
 
             Intializeselecteditems();
         }
@@ -1496,6 +1501,33 @@ namespace App.UI
 
                 }
             }
+        }
+
+        private void lbl_userid_Click(object sender, EventArgs e)
+        {
+            
+
+        }
+
+        private void lbl_paymentDue_Click(object sender, EventArgs e)
+        {
+
+            try
+            {
+                ValueInPut input = new ValueInPut(selectedCustomerID, "Settle", "");
+                input.ShowDialog();
+
+                CustomerRepositiry custrepo = new CustomerRepositiry();
+                Customer cust = custrepo.GetCustomer(selectedCustomerID);
+                lbl_address.Text = cust.CustomerDetails;
+                lbl_paymentDue.Text = cust.PaymentDue.ToString();
+            }
+            catch (Exception)
+            {
+
+               
+            }
+
         }
     }
 }
