@@ -181,6 +181,8 @@ namespace App.Model
         public string CustomerDetails { get; set; }
 
         public string AddedBy { get; set; }
+
+        public String BarcodeNum { get; set; }
         public string AddedDate { get; set; }
 
         public int OdooID { get; set; }
@@ -428,7 +430,23 @@ namespace App.Model
         public virtual Invoicemaster Invoicemaster { get; set; }
     }
 
+    public class SettleMaster
+    {
+        [Key]
+        public int SettleMasterID { get; set; }       
+        public int StoreID { get; set; }
+        public int UserID { get; set; }
+        public int? ShiftID { get; set; }
+        public int CustomerID { get; set; }
 
+        public DateTime SettleDate { get; set; }
+        public Decimal TotalRefund { get; set; }
+
+        public virtual Store Store { get; set; }
+        public virtual User User { get; set; }
+        public virtual Customer Customer { get; set; }
+        public virtual Shift Shift { get; set; }
+    }
 
     public class CreditMaster
     {

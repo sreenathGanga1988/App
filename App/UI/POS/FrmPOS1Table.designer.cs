@@ -1553,6 +1553,7 @@
             this.ShowIcon = false;
             this.Text = "Point of Sale";
             this.Load += new System.EventHandler(this.FrmPOS1Table_Load);
+            this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.FrmPOS1Table_KeyPress);
             this.panel7.ResumeLayout(false);
             this.panel7.PerformLayout();
             this.panel1.ResumeLayout(false);

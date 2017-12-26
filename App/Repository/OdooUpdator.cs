@@ -104,7 +104,7 @@ table_id,
 
 payment_method,  
 pos_invoice_id, 
-state
+state,total_paid,total_discount,total_bill
 )
 values(
 :create_uid,  
@@ -121,7 +121,7 @@ values(
 
 :payment_method, 
 :pos_invoice_id, 
-:state) RETURNING id;", conn);
+:state,:total_paid,:total_discount,:total_bill) RETURNING id;", conn);
 
 
              
@@ -142,14 +142,14 @@ values(
                 cmd.Parameters.Add(new NpgsqlParameter("payment_method", invmstr.PaymentMode));
                 cmd.Parameters.Add(new NpgsqlParameter("state", "draft"));
                 cmd.Parameters.Add(new NpgsqlParameter("pos_invoice_id", invmstr.InvoicemasterID));
-                //cmd.Parameters.Add(new NpgsqlParameter("total_discount", Decimal.Parse("0")));
-                //cmd.Parameters.Add(new NpgsqlParameter("total_paid", invmstr.TotalPaid));
-                //cmd.Parameters.Add(new NpgsqlParameter("total_bill", invmstr.TotalBill));
-               
-               
+                cmd.Parameters.Add(new NpgsqlParameter("total_discount", Decimal.Parse("0")));
+                cmd.Parameters.Add(new NpgsqlParameter("total_paid", invmstr.TotalPaid));
+                cmd.Parameters.Add(new NpgsqlParameter("total_bill", invmstr.TotalBill));
+
+
                 //cmd.Parameters.Add(new NpgsqlParameter("round_off", invmstr.RoundOffAmount));
-               
-      var id=   cmd.ExecuteScalar();
+
+                var id =   cmd.ExecuteScalar();
 
                 foreach (InvoiceDetail invdet in invmstr.InvoiceDetails)
                 {
@@ -223,12 +223,12 @@ values(
 
 
 
-                    cmd1.Parameters.Add(new NpgsqlParameter("tax_amount", "0"));
+                    cmd1.Parameters.Add(new NpgsqlParameter("tax_amount", invdet.Taxamount));
                     cmd1.Parameters.Add(new NpgsqlParameter("total_paid", invdet.Total));
                     cmd1.Parameters.Add(new NpgsqlParameter("pos_invoice_line_id", invdet.InvoiceDetailID));
 
 
-                    var newid = cmd.ExecuteScalar();
+                    var newid = cmd1.ExecuteScalar();
 
                 }
 
@@ -525,7 +525,7 @@ where a.product_tmpl_id=b.id and c.prod_id=b.id and d.id=c.tax_id group by a.id,
         public void InsertShiftOdoofromlocal()
         {
             ShiftRepository shiftRepository = new ShiftRepository();
-            var Shiftlist = cntxt.Shifts.Where(u => u.IsClosed == false).ToList();
+            List<Shift> Shiftlist = shiftRepository.GetListofOpenShift();
 
 
            
@@ -578,7 +578,7 @@ values(:name,:display_name, :mobile, :phone, :street, False, True, True, False, 
         public int InsertSessionToODoo(Shift shift)
         {
             NpgsqlCommand cmd = new NpgsqlCommand(@"insert into session_master(create_uid,create_date,write_uid,write_date,name,session_from,session_to,session_date,sessionstartuser,sessionenduser,pos_session_id,state)
-values(1,:create_date,1,:write_date,:name,:session_from,:session_to,:session_date,:sessionstartuser,:sessionenduser,:pos_session_id,'draft'))RETURNING id");
+values(1,:create_date,1,:write_date,:name,:session_from,:session_to,:session_date,:sessionstartuser,:sessionenduser,:pos_session_id,'draft')RETURNING id");
             cmd.Parameters.AddWithValue("create_date", shift.StartTime);
             cmd.Parameters.AddWithValue("write_date", DateTime.Now);
             cmd.Parameters.AddWithValue("name", shift.ShiftName);

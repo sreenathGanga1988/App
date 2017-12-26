@@ -43,7 +43,7 @@ namespace App.Context
         public DbSet<Buzzer> Buzzers { get; set; }
         public DbSet<Shift> Shifts { get; set; }
         public DbSet<CreditMaster> CreditMasters { get; set; }
-
-
+        public DbSet<SettleMaster> SettleMasters { get; set; }
+        
     }
 }

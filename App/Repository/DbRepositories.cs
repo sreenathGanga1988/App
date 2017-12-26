@@ -5,6 +5,7 @@ using App.ViewModal;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Data.Entity.Core.Objects;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -83,7 +84,13 @@ namespace App.Repository
             return q;
         }
 
+        public List<ProductlistViewModal> GetProductSearchByName(String searchtext, int? LocationID = 0)
+        {
 
+            var q = cntxt.Products.Where(u => u.Id.ToString().Contains(searchtext) || u.ProductName.Contains(searchtext) || u.Category.CategoryName.Contains(searchtext)). Select(x => new ProductlistViewModal { ProductID = x.Id, ProductName = x.ProductName, Color = x.Color }).ToList();
+
+            return q;
+        }
         public void UpdateTodaySpoecial(int ID, Boolean status)
         {
             var q = from product in cntxt.Products
@@ -207,6 +214,14 @@ namespace App.Repository
 
             var q = cntxt.Customers.Where(u => u.CustomerName == CustomerName).Select(u => u.CustomerName).First();
             return q.ToString().Trim();
+
+        }
+
+        public Customer GetCustomerByBarCode(String BarCode)
+        {
+
+            var q = cntxt.Customers.Where(u => u.BarcodeNum == BarCode).First();
+            return q;
 
         }
         public int GetOrginalCategoryID(int odooCategoryID)
@@ -372,6 +387,14 @@ namespace App.Repository
             cntxt.Entry(shift).State = EntityState.Modified;
 
             cntxt.SaveChanges();
+        }
+
+        public List<Shift> GetListofOpenShift()
+        {
+
+           return  cntxt.Shifts.Where(u => u.IsClosed == false).ToList();
+
+            
         }
 
     }
@@ -675,22 +698,57 @@ namespace App.Repository
 
 
         }
+
+        
+
+             public List<InvoiceviewModal> GetInvoicePendingBetween(int storeid ,DateTime dtp_from ,DateTime dtp_to)
+        {
+            var q = (from invoicemstr in cntxt.Invoicemasters
+                     where (invoicemstr.InvoiceDate >= dtp_from && invoicemstr.InvoiceDate < dtp_to) && invoicemstr.StoreID == storeid
+                     select new InvoiceviewModal
+                     {
+                         InvoicemasterID = invoicemstr.InvoicemasterID,
+                         InvoiceDate = invoicemstr.InvoiceDate,
+                         InvoiceNum = invoicemstr.InvoiceNum,
+                         TableName = invoicemstr.Table.TableName,
+                         StoreName = invoicemstr.Store.StoreName,
+                         CustomerName = invoicemstr.Customer.CustomerName,
+                         TotalBill = invoicemstr.TotalBill,
+                         TotalPaid = invoicemstr.TotalPaid,
+                         PaymentMode = invoicemstr.PaymentMode,
+                         ShiftName = invoicemstr.ShiftName
+                     }).ToList();
+
+
+            return q;
+        }
         public List <InvoiceviewModal> GetInvoicePending(int storeid)
         {
             var q = (from invoicemstr in cntxt.Invoicemasters
                     where invoicemstr.IsUploaded == false && invoicemstr.StoreID==storeid
-                     select new InvoiceviewModal { InvoicemasterID= invoicemstr.InvoicemasterID, InvoiceDate= invoicemstr.InvoiceDate,InvoiceNum= invoicemstr.InvoiceNum, TableName= invoicemstr.Table.TableName, StoreName= invoicemstr.Store.StoreName,  CustomerName=invoicemstr.Customer.CustomerName,TotalBill= invoicemstr.TotalBill, TotalPaid=invoicemstr.TotalPaid }).ToList();
-            //foreach (var element in q)
-            //{
-
-            //    var total = (cntxt.InvoiceDetails.Where(u => u.InvoicemasterID == element.InvoicemasterID).Sum(u => u.Total));
-
-            //    element.TotalBill=cntxt.
-            //}
+                     select new InvoiceviewModal { InvoicemasterID= invoicemstr.InvoicemasterID, InvoiceDate= invoicemstr.InvoiceDate,InvoiceNum= invoicemstr.InvoiceNum,
+                         TableName = invoicemstr.Table.TableName, StoreName= invoicemstr.Store.StoreName,  CustomerName=invoicemstr.Customer.CustomerName,TotalBill= invoicemstr.TotalBill,
+                         TotalPaid =invoicemstr.TotalPaid,PaymentMode=invoicemstr.PaymentMode,ShiftName=invoicemstr.ShiftName }).ToList();
+            
 
             return q;
         }
+        public List<InvoiceviewModal> GetInvoiceofDay(int storeid)
+        {
 
+            DateTime today = DateTime.Now;
+            var q = (from invoicemstr in cntxt.Invoicemasters
+                     where EntityFunctions.TruncateTime(invoicemstr.InvoiceDate) == EntityFunctions.TruncateTime(today.Date) && invoicemstr.StoreID == storeid
+                     select new InvoiceviewModal { InvoicemasterID = invoicemstr.InvoicemasterID, InvoiceDate = invoicemstr.InvoiceDate,
+                         InvoiceNum = invoicemstr.InvoiceNum, TableName = invoicemstr.Table.TableName, StoreName = invoicemstr.Store.StoreName,
+                         CustomerName = invoicemstr.Customer.CustomerName, TotalBill = invoicemstr.TotalBill, TotalPaid = invoicemstr.TotalPaid,
+                         PaymentMode = invoicemstr.PaymentMode,
+                         ShiftName = invoicemstr.ShiftName
+                     }).ToList();
+
+
+            return q;
+        }
 
         public Invoicemaster GetInvoice(int invoicemasterid)
         {
@@ -787,6 +845,31 @@ namespace App.Repository
 
 
     }
+
+
+
+    public class SettlementRepository
+    {
+        POSDataContext cntxt = new POSDataContext();
+
+        public void AddCreditSettlement(SettleMaster settleMaster)
+        {
+            cntxt.SettleMasters.Add(settleMaster);
+
+            var q = from cust in cntxt.Customers
+                    where cust.CustomerID == settleMaster.CustomerID
+                    select cust;
+            foreach(var element in  q)
+            {
+                element.PaymentDue = element.PaymentDue - settleMaster.TotalRefund;
+            }
+
+            cntxt.SaveChanges();
+        }
+    }
+
+
+
 }
 namespace App.ApplicationSettingRepository
 {

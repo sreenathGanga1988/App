@@ -48,6 +48,9 @@ namespace App.ViewModal
         public String CustomerName { get; set; }
         public Decimal TotalBill { get; set; }
         public Decimal TotalPaid { get; set; }
+        public String PaymentMode { get; set; }
+        public String ShiftName { get; set; }
+        
 
     }
    

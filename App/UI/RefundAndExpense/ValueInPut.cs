@@ -1,4 +1,5 @@
-﻿using App.Model;
+﻿using App.Context;
+using App.Model;
 using App.Repository;
 using System;
 using System.Collections.Generic;
@@ -168,6 +169,25 @@ namespace App.UI.RefundAndExpense
 
         private void btn_PosOut_Click(object sender, EventArgs e)
         {
+            if(Creditamount>= Decimal.Parse(txt_PasscodeDisplay.Text))
+            {
+                SettleMaster settleMaster = new SettleMaster();
+                settleMaster.StoreID = Program.LocationID;
+                settleMaster.ShiftID = Program.ShiftId;
+                settleMaster.UserID = Program.UserID;
+                settleMaster.CustomerID = Invoiceid;
+                settleMaster.TotalRefund = Decimal.Parse(txt_PasscodeDisplay.Text);
+                settleMaster.SettleDate = DateTime.Now;
+                SettlementRepository settlementRepository = new SettlementRepository();
+
+                settlementRepository.AddCreditSettlement(settleMaster);
+
+                MessageBox.Show("Successfully Added");
+                this.Close();
+                
+            }
+
+            
 
         }
     }

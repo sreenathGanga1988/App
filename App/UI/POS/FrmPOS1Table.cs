@@ -578,7 +578,7 @@ namespace App.UI
                 if (ValidateforTableBill())
                 {
                     AddInvoice("Table");
-                    clearGridView();
+                  //  clearGridView();
                 }
 
             }
@@ -587,7 +587,7 @@ namespace App.UI
                 if (ValidateforTableBill())
                 {
                     AddInvoice("Hold");
-                    clearGridView();
+                   clearGridView();
                 }
 
             }
@@ -795,6 +795,30 @@ namespace App.UI
             }
 
         }
+
+        public void SelectCustomeronBarCode(String barcode)
+        {
+            try
+            {
+                CustomerRepositiry custrepo = new CustomerRepositiry();
+                Customer cust = custrepo.GetCustomerByBarCode(barcode);
+
+                selectedCustomerID = cust.CustomerID;
+                selectedCustomerName = cust.CustomerName;
+                lbl_customer.Text = cust.CustomerName;
+
+                lbl_address.Text = cust.CustomerDetails;
+                lbl_paymentDue.Text = cust.PaymentDue.ToString();
+            }
+            catch (Exception)
+            {
+
+
+            }
+
+        }
+
+
 
         /// <summary>
         /// Add the selected Item
@@ -1193,10 +1217,17 @@ namespace App.UI
                 }
                 else if (BillType == "Hold")
                 {
-                   
+
 
                     MessageBox.Show("Hold #:" + invoicemaster.InvoiceNum);
                     Intializeselecteditems();
+                }
+                else if (BillType == "Table")
+                {
+
+
+                    invoiceid = invoicemaster.InvoicemasterID;
+                    lbl_invoicenum.Text = invoicemaster.InvoiceNum;
                 }
                 else
                 {
@@ -1241,7 +1272,7 @@ namespace App.UI
             }
             if (invoicemaster.PayMentModeId == 0)
             {
-                invoicemaster.PaymentMode = "Cash";
+                invoicemaster.PaymentMode = "CASH";
                 invoicemaster.PayMentModeId = 1;
             }
 
@@ -1477,31 +1508,78 @@ namespace App.UI
             closeaction();
         }
 
-        private void button53_Click(object sender, EventArgs e)
-        {
-            IpPrint print = new IpPrint();
-            print.PrinttoIP("192.168.1.103", ".\\tmpPrint.print");
-            MessageBox.Show("Sucess");
-        }
+      
 
         private void txt_producrtcode_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == (char)Keys.Return)
 
             {
-                try
-                {
-                    Additem();
-                    txt_producrtcode.Text = "";
-                  
-                }
-                catch (Exception)
-                {
 
+                if (!IsBarcodeScanned())
+                {
+                    try
+                    {
+                        Additem();
+                       
+                        txt_producrtcode.Text = "";
+
+                    }
+                    catch (Exception)
+                    {
+
+
+                    }
+                }
+             
+
+                
+            }
+            else
+            {
+
+              //  SearchItemByName();
+            }
+
+        }
+
+        public void SearchItemByName()
+        {
+            String categoryId = txt_producrtcode.Text.Trim();
+            ProductRepositories productrep = new ProductRepositories();
+
+            List<ProductlistViewModal> Products = productrep.GetProductSearchByName(categoryId,0);
+            LoadProducts(Products);
+        }
+
+
+        public Boolean IsBarcodeScanned() {
+
+            Boolean isCustomercard = false;
+
+            try
+            {
+                string str = txt_producrtcode.Text.Substring(0, 4);
+
+                if (str == "LMSE")
+                {
+                    isCustomercard = true;
+
+                    SelectCustomeronBarCode(txt_producrtcode.Text);
+
+                    txt_producrtcode.Text = "";
 
                 }
             }
+            catch (Exception)
+            {
+
+                isCustomercard = false;
+            }
+
+            return isCustomercard;
         }
+
 
         private void lbl_userid_Click(object sender, EventArgs e)
         {
@@ -1522,12 +1600,22 @@ namespace App.UI
                 lbl_address.Text = cust.CustomerDetails;
                 lbl_paymentDue.Text = cust.PaymentDue.ToString();
             }
-            catch (Exception)
+            catch (Exception exp)
             {
 
                
             }
 
+        }
+        private string barcode = string.Empty;
+        private void FrmPOS1Table_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == '\r')
+            {
+                txt_cash.Text = barcode;
+                barcode = string.Empty;
+            }
+            barcode += e.KeyChar;
         }
     }
 }
