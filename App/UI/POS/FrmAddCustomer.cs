@@ -42,9 +42,11 @@ namespace App.UI
                 dgv.Rows[index].Cells["CustomerID"].Value = customer.CustomerID.ToString();
                 dgv.Rows[index].Cells["OdooID"].Value = customer.OdooID.ToString();
                 dgv.Rows[index].Cells["CustomerName"].Value = customer.CustomerName.ToString();
-                dgv.Rows[index].Cells["PhoneNumber"].Value = customer.PhoneNumber == null ? "" : customer.PhoneNumber.ToString(); 
-              
-                dgv.Rows[index].Cells["CustomerDetails"].Value = customer.CustomerDetails == null ? "" : customer.CustomerDetails.ToString(); 
+                dgv.Rows[index].Cells["PhoneNumber"].Value = customer.PhoneNumber == null ? "" : customer.PhoneNumber.ToString();
+                dgv.Rows[index].Cells["CustomerDetails"].Value = customer.CustomerDetails == null ? "" : customer.CustomerDetails.ToString();
+                dgv.Rows[index].Cells["PaymentDue"].Value = customer.PaymentDue == null ? "" : customer.PaymentDue.ToString();
+                dgv.Rows[index].Cells["BarcodeNum"].Value = customer.BarcodeNum == null ? "" : customer.BarcodeNum.ToString();
+                dgv.Rows[index].Cells["Discount"].Value = customer.Discount == null ? "" : customer.Discount.ToString();
             }
             
         }
@@ -85,6 +87,9 @@ namespace App.UI
                 customer.CustomerDetails = txt_address.Text.Trim();
                 customer.StoreID = Program.LocationID;
                 customer.AddedDate = DateTime.Now.ToString();
+                customer.PaymentDue = Decimal.Parse(txt_due.Text);
+                customer.Discount = Decimal.Parse(txt_discount.Text);
+                customer.BarcodeNum = txt_barcode.Text;
                 customer.AddedBy = Program.Username;
                 customer.IsDetailChanged = true;
                 CustomerRepositiry custrepo = new CustomerRepositiry();
@@ -109,7 +114,14 @@ namespace App.UI
             if (lbl_cutomerid.Text != "0")
             {
 
-                Customer CTGRY = new Customer() { CustomerName = txt_name.Text, CustomerID = int.Parse(lbl_cutomerid.Text), PhoneNumber = txt_mobnumber.Text, CustomerDetails = txt_address.Text, StoreID = Program.LocationID, AddedDate = DateTime.Now.ToString(), AddedBy = Program.Username, IsDetailChanged = true  };
+                Customer CTGRY = new Customer() { CustomerName = txt_name.Text, CustomerID = int.Parse(lbl_cutomerid.Text), PhoneNumber = txt_mobnumber.Text,
+                    CustomerDetails = txt_address.Text, StoreID = Program.LocationID, AddedDate = DateTime.Now.ToString(), AddedBy = Program.Username, IsDetailChanged = true,
+
+                     PaymentDue = Decimal.Parse(txt_due.Text),
+                Discount = Decimal.Parse(txt_discount.Text),
+                BarcodeNum = txt_barcode.Text
+
+                };
                 CustomerRepositiry custrepo = new CustomerRepositiry();
                 custrepo.UpdateCustomer(CTGRY);
                 MessageBox.Show("Sucessfully Updated");

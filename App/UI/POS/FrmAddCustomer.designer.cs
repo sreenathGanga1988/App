@@ -54,6 +54,7 @@
             this.panel21 = new System.Windows.Forms.Panel();
             this.panel13 = new System.Windows.Forms.Panel();
             this.panel11 = new System.Windows.Forms.Panel();
+            this.lbl_odooid = new System.Windows.Forms.Label();
             this.lbl_cutomerid = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.txt_address = new System.Windows.Forms.TextBox();
@@ -67,12 +68,20 @@
             this.panel7 = new System.Windows.Forms.Panel();
             this.panel14 = new System.Windows.Forms.Panel();
             this.panel71 = new System.Windows.Forms.Panel();
-            this.lbl_odooid = new System.Windows.Forms.Label();
             this.CustomerID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.OdooID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CustomerName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PhoneNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CustomerDetails = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PaymentDue = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.BarcodeNum = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Discount = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.txt_barcode = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.txt_due = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.txt_discount = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
             this.panel6.SuspendLayout();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv)).BeginInit();
@@ -95,7 +104,7 @@
             this.panel22.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel22.Location = new System.Drawing.Point(0, 0);
             this.panel22.Name = "panel22";
-            this.panel22.Size = new System.Drawing.Size(3, 553);
+            this.panel22.Size = new System.Drawing.Size(3, 591);
             this.panel22.TabIndex = 4;
             // 
             // panel10
@@ -172,7 +181,10 @@
             this.OdooID,
             this.CustomerName,
             this.PhoneNumber,
-            this.CustomerDetails});
+            this.CustomerDetails,
+            this.PaymentDue,
+            this.BarcodeNum,
+            this.Discount});
             this.dgv.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgv.GridColor = System.Drawing.Color.White;
             this.dgv.Location = new System.Drawing.Point(0, 0);
@@ -252,7 +264,7 @@
             this.panel23.Dock = System.Windows.Forms.DockStyle.Right;
             this.panel23.Location = new System.Drawing.Point(760, 0);
             this.panel23.Name = "panel23";
-            this.panel23.Size = new System.Drawing.Size(3, 553);
+            this.panel23.Size = new System.Drawing.Size(3, 591);
             this.panel23.TabIndex = 5;
             // 
             // panel20
@@ -262,7 +274,7 @@
             this.panel20.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel20.Location = new System.Drawing.Point(0, 0);
             this.panel20.Name = "panel20";
-            this.panel20.Size = new System.Drawing.Size(5, 553);
+            this.panel20.Size = new System.Drawing.Size(5, 591);
             this.panel20.TabIndex = 3;
             // 
             // imageList1
@@ -293,7 +305,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(763, 553);
+            this.panel1.Size = new System.Drawing.Size(763, 591);
             this.panel1.TabIndex = 1;
             // 
             // panel72
@@ -302,7 +314,7 @@
             this.panel72.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel72.Location = new System.Drawing.Point(5, 0);
             this.panel72.Name = "panel72";
-            this.panel72.Size = new System.Drawing.Size(755, 553);
+            this.panel72.Size = new System.Drawing.Size(755, 591);
             this.panel72.TabIndex = 6;
             // 
             // panel21
@@ -318,7 +330,7 @@
             this.panel21.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel21.Location = new System.Drawing.Point(0, 0);
             this.panel21.Name = "panel21";
-            this.panel21.Size = new System.Drawing.Size(755, 553);
+            this.panel21.Size = new System.Drawing.Size(755, 591);
             this.panel21.TabIndex = 7;
             // 
             // panel13
@@ -327,12 +339,18 @@
             this.panel13.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel13.Location = new System.Drawing.Point(0, 459);
             this.panel13.Name = "panel13";
-            this.panel13.Size = new System.Drawing.Size(755, 94);
+            this.panel13.Size = new System.Drawing.Size(755, 132);
             this.panel13.TabIndex = 29;
             // 
             // panel11
             // 
             this.panel11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(53)))), ((int)(((byte)(66)))));
+            this.panel11.Controls.Add(this.txt_discount);
+            this.panel11.Controls.Add(this.label7);
+            this.panel11.Controls.Add(this.txt_barcode);
+            this.panel11.Controls.Add(this.label5);
+            this.panel11.Controls.Add(this.txt_due);
+            this.panel11.Controls.Add(this.label6);
             this.panel11.Controls.Add(this.lbl_odooid);
             this.panel11.Controls.Add(this.lbl_cutomerid);
             this.panel11.Controls.Add(this.label4);
@@ -345,8 +363,20 @@
             this.panel11.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel11.Location = new System.Drawing.Point(0, 0);
             this.panel11.Name = "panel11";
-            this.panel11.Size = new System.Drawing.Size(755, 94);
+            this.panel11.Size = new System.Drawing.Size(755, 132);
             this.panel11.TabIndex = 6;
+            // 
+            // lbl_odooid
+            // 
+            this.lbl_odooid.AutoSize = true;
+            this.lbl_odooid.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_odooid.ForeColor = System.Drawing.Color.White;
+            this.lbl_odooid.Location = new System.Drawing.Point(688, 3);
+            this.lbl_odooid.Name = "lbl_odooid";
+            this.lbl_odooid.Size = new System.Drawing.Size(14, 13);
+            this.lbl_odooid.TabIndex = 14;
+            this.lbl_odooid.Text = "0";
+            this.lbl_odooid.Visible = false;
             // 
             // lbl_cutomerid
             // 
@@ -478,18 +508,6 @@
             this.panel71.Size = new System.Drawing.Size(51, 30);
             this.panel71.TabIndex = 4;
             // 
-            // lbl_odooid
-            // 
-            this.lbl_odooid.AutoSize = true;
-            this.lbl_odooid.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_odooid.ForeColor = System.Drawing.Color.White;
-            this.lbl_odooid.Location = new System.Drawing.Point(688, 3);
-            this.lbl_odooid.Name = "lbl_odooid";
-            this.lbl_odooid.Size = new System.Drawing.Size(14, 13);
-            this.lbl_odooid.TabIndex = 14;
-            this.lbl_odooid.Text = "0";
-            this.lbl_odooid.Visible = false;
-            // 
             // CustomerID
             // 
             this.CustomerID.HeaderText = "CustomerID";
@@ -516,11 +534,86 @@
             this.CustomerDetails.HeaderText = "CustomerDetails";
             this.CustomerDetails.Name = "CustomerDetails";
             // 
+            // PaymentDue
+            // 
+            this.PaymentDue.HeaderText = "PaymentDue";
+            this.PaymentDue.Name = "PaymentDue";
+            // 
+            // BarcodeNum
+            // 
+            this.BarcodeNum.HeaderText = "BarcodeNum";
+            this.BarcodeNum.Name = "BarcodeNum";
+            // 
+            // Discount
+            // 
+            this.Discount.HeaderText = "Discount";
+            this.Discount.Name = "Discount";
+            // 
+            // txt_barcode
+            // 
+            this.txt_barcode.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txt_barcode.Location = new System.Drawing.Point(400, 100);
+            this.txt_barcode.Name = "txt_barcode";
+            this.txt_barcode.Size = new System.Drawing.Size(112, 21);
+            this.txt_barcode.TabIndex = 18;
+            this.txt_barcode.Text = " ";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.ForeColor = System.Drawing.Color.White;
+            this.label5.Location = new System.Drawing.Point(326, 103);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(54, 13);
+            this.label5.TabIndex = 17;
+            this.label5.Text = "BarCode";
+            // 
+            // txt_due
+            // 
+            this.txt_due.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txt_due.Location = new System.Drawing.Point(88, 100);
+            this.txt_due.Name = "txt_due";
+            this.txt_due.Size = new System.Drawing.Size(211, 21);
+            this.txt_due.TabIndex = 16;
+            this.txt_due.Text = " 0";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.ForeColor = System.Drawing.Color.White;
+            this.label6.Location = new System.Drawing.Point(32, 106);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(29, 13);
+            this.label6.TabIndex = 15;
+            this.label6.Text = "Due";
+            // 
+            // txt_discount
+            // 
+            this.txt_discount.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txt_discount.Location = new System.Drawing.Point(611, 100);
+            this.txt_discount.Name = "txt_discount";
+            this.txt_discount.Size = new System.Drawing.Size(112, 21);
+            this.txt_discount.TabIndex = 20;
+            this.txt_discount.Text = "0";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.ForeColor = System.Drawing.Color.White;
+            this.label7.Location = new System.Drawing.Point(537, 103);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(56, 13);
+            this.label7.TabIndex = 19;
+            this.label7.Text = "Discount";
+            // 
             // FrmAddCustomer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(763, 553);
+            this.ClientSize = new System.Drawing.Size(763, 591);
             this.Controls.Add(this.panel1);
             this.Name = "FrmAddCustomer";
             this.ShowIcon = false;
@@ -589,5 +682,14 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn CustomerName;
         private System.Windows.Forms.DataGridViewTextBoxColumn PhoneNumber;
         private System.Windows.Forms.DataGridViewTextBoxColumn CustomerDetails;
+        private System.Windows.Forms.DataGridViewTextBoxColumn PaymentDue;
+        private System.Windows.Forms.DataGridViewTextBoxColumn BarcodeNum;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Discount;
+        private System.Windows.Forms.TextBox txt_discount;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.TextBox txt_barcode;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox txt_due;
+        private System.Windows.Forms.Label label6;
     }
 }

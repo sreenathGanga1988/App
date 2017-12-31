@@ -177,6 +177,8 @@ namespace App.Repository
         }
 
 
+       
+
     }
 
 
@@ -185,7 +187,106 @@ namespace App.Repository
         POSDataContext cntxt = new POSDataContext();
 
 
-        //public Store GetLocationDetails
+        public int GetUserByName(string name)
+        {
+            int id = 0;
+
+            try
+            {
+                var q = cntxt.Users.Where(u => u.UserName == name).Select(u => u.UserID).FirstOrDefault();
+                id = int.Parse(q.ToString());
+
+            }
+            catch (Exception)
+            {
+
+
+            }
+
+            return id;
+
+        }
+        public int GetBuzzerByName(string name)
+        {
+            int id = 0;
+
+            try
+            {
+                var q = cntxt.Buzzers.Where(u => u.BuzzerName == name).Select(u => u.BuzzerID).FirstOrDefault();
+                id = int.Parse(q.ToString());
+
+            }
+            catch (Exception)
+            {
+
+
+            }
+
+            return id;
+
+        }
+
+
+
+        public int GetCustomerByName(string name)
+        {
+            int id = 0;
+
+            try
+            {
+                var q = cntxt.Customers.Where(u => u.CustomerName == name).Select(u => u.CustomerID).FirstOrDefault();
+                id = int.Parse(q.ToString());
+
+            }
+            catch (Exception)
+            {
+
+
+            }
+
+            return id;
+
+        }
+
+        public int GetTableByName(string name)
+        {
+            int id = 0;
+
+            try
+            {
+                var q = cntxt.Tables.Where(u => u.TableName == name).Select(u => u.TableID).FirstOrDefault();
+                id = int.Parse(q.ToString());
+
+            }
+            catch (Exception)
+            {
+
+
+            }
+
+            return id;
+
+        }
+
+        public int GetCPaymentModerByName(string name)
+        {
+            int id = 0;
+
+            try
+            {
+                var q = cntxt.PaymentModeMasters.Where(u => u.PaymentMode == name).Select(u => u.PaymentModeID).FirstOrDefault();
+                id = int.Parse(q.ToString());
+
+            }
+            catch (Exception)
+            {
+
+
+            }
+
+            return id;
+
+        }
 
 
     }
@@ -395,6 +496,13 @@ namespace App.Repository
            return  cntxt.Shifts.Where(u => u.IsClosed == false).ToList();
 
             
+        }
+
+        public Shift GetShift(decimal id)
+        {
+            Shift shift = cntxt.Shifts.Find(id);
+
+            return shift;
         }
 
     }

@@ -394,18 +394,18 @@ namespace App.UI
             parent.AutoScroll = true;
         }
 
-        private void SalesForm_KeyDown(object sender, KeyEventArgs e)
-        {           
-            if (e.KeyCode == Keys.Delete)
-            {
-                foreach (DataGridViewRow r in grd_ProductDetails.SelectedRows)
-                {
-                    if (!r.IsNewRow)
-                    {
-                        grd_ProductDetails.Rows.RemoveAt(r.Index);
-                    }
-                }
-            }
+        private void SalesForm_KeyDown(object sender, KeyEventArgs e) { 
+        //{           
+        //    if (e.KeyCode == Keys.Delete)
+        //    {
+        //        foreach (DataGridViewRow r in grd_ProductDetails.SelectedRows)
+        //        {
+        //            if (!r.IsNewRow)
+        //            {
+        //                grd_ProductDetails.Rows.RemoveAt(r.Index);
+        //            }
+        //        }
+        //    }
         }
 
         private void textBox1_KeyUp(object sender, KeyEventArgs e)

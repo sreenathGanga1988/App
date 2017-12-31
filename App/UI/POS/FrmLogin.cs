@@ -5,6 +5,7 @@ using App.Repository;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Configuration;
 using System.Data;
 using System.Data.Entity;
 using System.Drawing;
@@ -21,7 +22,7 @@ namespace App.UI
         {
             InitializeComponent();
             
-           Database.SetInitializer(new MigrateDatabaseToLatestVersion<POSDataContext, Configuration>());
+           Database.SetInitializer(new MigrateDatabaseToLatestVersion<POSDataContext, Migrations.Configuration>());
 
 
 
@@ -60,6 +61,7 @@ namespace App.UI
                     }
                     else
                     {
+                       
                         userAuthentication();
                     }
                 }
@@ -90,32 +92,37 @@ namespace App.UI
         public void userAuthentication()
         { 
             
-            try
+            if (isLicensed())
             {
-                Repository.UserRepository usrrep = new Repository.UserRepository();
-
-                if (usrrep.IsuserValid(int.Parse(txt_PasscodeDisplay.Text), int.Parse(cmb_user.SelectedValue.ToString())))
+                try
                 {
-                    ShiftRepository shiftRepository = new ShiftRepository();
-                    shiftRepository.ShiftAction();
-                             
-                    this.Hide();
-                    //StartForm frm = new StartForm();
-                    //frm.Show();
-                    FrmMainForm frm = new FrmMainForm();
-                    frm.Show();
+                    Repository.UserRepository usrrep = new Repository.UserRepository();
+
+                    if (usrrep.IsuserValid(int.Parse(txt_PasscodeDisplay.Text), int.Parse(cmb_user.SelectedValue.ToString())))
+                    {
+                        ShiftRepository shiftRepository = new ShiftRepository();
+                        shiftRepository.ShiftAction();
+
+                        this.Hide();
+                        //StartForm frm = new StartForm();
+                        //frm.Show();
+                        FrmMainForm frm = new FrmMainForm();
+                        frm.Show();
+                    }
+                    else
+                    {
+
+                        MessageBox.Show("Passcode not Valid");
+                    }
                 }
-                else
+                catch (Exception)
                 {
 
-                    MessageBox.Show("Passcode not Valid");
+                    MessageBox.Show("Hi Dude You lost connection to DB");
                 }
             }
-            catch (Exception)
-            {
 
-                MessageBox.Show("Hi Dude You lost connection to DB");
-            }
+           
         }
 
 
@@ -164,10 +171,80 @@ namespace App.UI
             if (e.KeyChar == (char)Keys.Return)
 
             {
+               
                 userAuthentication();
             }
         }
 
+
+        public Boolean  isLicensed()
+        {
+            Boolean isok = false;
+
+
+            String name = ConfigurationManager.AppSettings["AppSet"];
+
+            if(name==null || name.Trim() =="")
+            {
+                MessageBox.Show("License key Not Available");
+                CreateAppkey();
+                isok = false;
+            }
+            else
+            {
+              if(AppBLL.MyIntialize.CheckKey(name))
+                {
+                    isok = true;
+                }
+                else
+                {
+
+                    CreateAppkey();
+
+                }
+               
+            }
+
+            return isok;
+        }
+
+
+        public void CreateAppkey()
+        {
+            DialogResult result = MessageBox.Show("You Dont have Valid License?", "Create new Key",
+           MessageBoxButtons.OKCancel);
+            switch (result)
+            {
+                case DialogResult.OK:
+                    {
+                        try
+                        {
+                            string key = AppBLL.MyIntialize.Createkey();
+                            //System.Configuration.Configuration config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+
+                            //config.AppSettings.Settings["AppSet"].Value = key;
+                            //config.Save(ConfigurationSaveMode.Modified);
+                           
+                            System.Configuration.Configuration config = ConfigurationManager.OpenExeConfiguration(Application.ExecutablePath);
+                            config.AppSettings.Settings.Remove("AppSet");
+                            config.AppSettings.Settings.Add("AppSet", key);
+                            config.Save(ConfigurationSaveMode.Minimal);
+                            ConfigurationManager.RefreshSection("appSettings");
+                        }
+                        catch (Exception exp)
+                        {
+
+                            MessageBox.Show("Error Creating key"+ exp);
+                        }
+                        break;
+                    }
+                case DialogResult.Cancel:
+                    {
+
+                        break;
+                    }
+            }
+        }
         private void button1_MouseClick(object sender, MouseEventArgs e)
         {
             KeyPressed((Button)sender);

@@ -139,7 +139,15 @@ namespace App.UI.RefundAndExpense
             RefundMaster refmaster = new RefundMaster();
             refmaster.InvoicemasterID = Invoiceid;
             refmaster.RefundDate = DateTime.Now;
-            refmaster.TotalRefund = Decimal.Parse(txt_PasscodeDisplay.Text);
+            try
+            {
+                refmaster.TotalRefund = Decimal.Parse(txt_PasscodeDisplay.Text);
+            }
+            catch (Exception)
+            {
+
+                refmaster.TotalRefund =0;
+            }
             refmaster.UserID = Program.UserID;
             refmaster.StoreID = Program.LocationID;
             refmaster.RefundNum = "R" + invoicenum;
@@ -176,7 +184,15 @@ namespace App.UI.RefundAndExpense
                 settleMaster.ShiftID = Program.ShiftId;
                 settleMaster.UserID = Program.UserID;
                 settleMaster.CustomerID = Invoiceid;
-                settleMaster.TotalRefund = Decimal.Parse(txt_PasscodeDisplay.Text);
+                try
+                {
+                    settleMaster.TotalRefund = Decimal.Parse(txt_PasscodeDisplay.Text);
+                }
+                catch (Exception)
+                {
+
+                    settleMaster.TotalRefund = 0;
+                }
                 settleMaster.SettleDate = DateTime.Now;
                 SettlementRepository settlementRepository = new SettlementRepository();
 

@@ -178,6 +178,8 @@ namespace App.Model
 
         public Decimal? PaymentDue { get; set; }
 
+        public Decimal? Discount { get; set; }
+
         public string CustomerDetails { get; set; }
 
         public string AddedBy { get; set; }

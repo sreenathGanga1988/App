@@ -86,6 +86,7 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Runtime.Serialization.Formatters.Soap" />
@@ -386,6 +387,10 @@
     <Compile Include="Migrations\201712260655510_addedbarcode.cs" />
     <Compile Include="Migrations\201712260655510_addedbarcode.Designer.cs">
       <DependentUpon>201712260655510_addedbarcode.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201712281137335_addeddiscount.cs" />
+    <Compile Include="Migrations\201712281137335_addeddiscount.Designer.cs">
+      <DependentUpon>201712281137335_addeddiscount.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Model\LocalModel.cs" />
@@ -757,6 +762,9 @@
     <EmbeddedResource Include="Migrations\201712260655510_addedbarcode.resx">
       <DependentUpon>201712260655510_addedbarcode.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712281137335_addeddiscount.resx">
+      <DependentUpon>201712281137335_addeddiscount.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <SubType>Designer</SubType>
@@ -966,6 +974,12 @@
     <None Include="Resources\75_512_Rca_icon.ico" />
     <None Include="Resources\buzzer2.ico" />
     <None Include="Resources\Icons8-Windows-8-Data-Clear-Filters.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\AppBLL\AppBLL.csproj">
+      <Project>{cf7d7544-003f-4cbc-a1c8-21848f208b7b}</Project>
+      <Name>AppBLL</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

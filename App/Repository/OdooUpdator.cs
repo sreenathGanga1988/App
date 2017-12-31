@@ -1,4 +1,5 @@
 ﻿using App.Context;
+using App.Extensions;
 using App.Model;
 using Npgsql;
 using System;
@@ -7,7 +8,7 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using System.Windows.Forms;
 namespace App.Repository
 {
     public  class OdooUpdator
@@ -19,14 +20,75 @@ namespace App.Repository
 
         public void Updatemaster()
         {
-            GetStorefromODOO();
-            GetTablefromODOO();
-            GetUserfromODOO();
-            GetBuzzerfromODOO();
-            // GetBuzzerfromODOO();
-            GetCategoryfromODOO();
-            GetProductfromODOO();
-            InsertCustomertoOdoofromlocal();
+            try
+            {
+                GetStorefromODOO();
+                MessageBox.Show("GetStorefromODOO Completed");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("ErrorAt" + Environment.NewLine + "GetStorefromODOO " + ex.ToString());
+            }
+            try
+            {
+                GetTablefromODOO();
+                MessageBox.Show("GetTablefromODOO Completed");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("ErrorAt" + Environment.NewLine + "GetTablefromODOO " + ex.ToString());
+            }
+            try
+            {
+                GetUserfromODOO();
+                MessageBox.Show("GetUserfromODOO Completed");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("ErrorAt" + Environment.NewLine + "GetUserfromODOO " + ex.ToString());
+            }
+            try
+            {
+                GetBuzzerfromODOO();
+                MessageBox.Show("GetBuzzerfromODOO Completed");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("ErrorAt" + Environment.NewLine + "GetBuzzerfromODOO " + ex.ToString());
+            }
+            try
+            {
+                GetCategoryfromODOO();
+                MessageBox.Show("GetCategoryfromODOO Completed");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("ErrorAt" + Environment.NewLine + "GetCategoryfromODOO " + ex.ToString());
+            }
+            try
+            {
+                GetProductfromODOO();
+                MessageBox.Show("GetProductfromODOO Completed");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("ErrorAt" + Environment.NewLine + "GetProductfromODOO " + ex.ToString());
+            }
+           try {
+                InsertCustomertoOdoofromlocal();
+                MessageBox.Show("InsertCustomertoOdoofromlocal Completed");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("ErrorAt"+Environment.NewLine+ "InsertCustomertoOdoofromlocal " + ex.ToString());
+            }
+            //();
+            //();
+            //();
+            //// GetBuzzerfromODOO();
+            //();
+            //();
+            //();
 
         }
 
@@ -35,9 +97,12 @@ namespace App.Repository
         public void uploadInvoiceMaster()
         {
 
+            
 
+            int Shiftid = Program.ShiftId;
          
                 InsertShiftOdoofromlocal();
+
 
             try
             {
@@ -47,6 +112,9 @@ namespace App.Repository
 
                 List<Invoicemaster> invoicemasters = cntxt.Invoicemasters.Where(U => U.IsUploaded == false).ToList();
 
+                var Shifids = invoicemasters.Select(u => u.ShiftID).Distinct();
+
+               
                 foreach (Invoicemaster element in invoicemasters)
                 {
 
@@ -63,8 +131,12 @@ namespace App.Repository
                 }
 
                 cntxt.SaveChanges();
+                foreach (int shifid in Shifids)
+                {
+                    LoadClosereport(shifid);
+                }
 
-               
+
             }
             catch (Exception)
             {
@@ -74,6 +146,123 @@ namespace App.Repository
         }
 
 
+
+        public void LoadClosereport( int shiftid)
+        {
+            ShiftViewModel shiftViewModel = new ShiftViewModel();
+            Shift shift= cntxt.Shifts.Where(U => U.ShiftID == shiftid).First();
+            List<Invoicemaster> invoicemasters = cntxt.Invoicemasters.Where(U => U.ShiftID == shiftid).ToList();
+            shiftViewModel.invoicemstrlist = invoicemasters;
+            shiftViewModel. StoreName = shift.Store.StoreName;
+            shiftViewModel. ShiftName =shift.ShiftName;
+            shiftViewModel. User =shift.CloseUserName;
+            shiftViewModel. Shiftfrom =shift.StartTime.ToString();
+            shiftViewModel. ShiftTo = shift.EndTime.ToString(); 
+
+
+
+
+         shiftViewModel. TotalSales =0;
+         shiftViewModel. TotalCharges =0;
+         shiftViewModel. TotalDiscount =0;
+
+         shiftViewModel. Netsales =0;
+         shiftViewModel. TotalCC =0;
+         shiftViewModel. TotalByCash =0;
+         shiftViewModel. TotalByCurrency =0;
+         shiftViewModel. TottalByCC =0;
+         shiftViewModel. TotalByCheque =0;
+         shiftViewModel. TotalByGift =0;
+         shiftViewModel. TotalByCredit =0;
+         shiftViewModel. TotalTax =0;
+         shiftViewModel. NetAmount =0;
+
+
+
+            try
+            {
+                shiftViewModel.TotalSales = cntxt.Invoicemasters.Sum(u => u.TotalBill);
+
+                shiftViewModel.Netsales = cntxt.Invoicemasters.Sum(u => u.TotalBill);
+            }
+            catch (Exception)
+            {
+
+               
+            }
+            try
+            {
+                shiftViewModel.TotalDiscount = cntxt.Invoicemasters.Sum(u => u.TotalDiscount);
+              
+            }
+            catch (Exception)
+            {
+
+
+            }
+            try
+            {
+                shiftViewModel.TotalByCash = cntxt.Invoicemasters.Where(u=>u.PaymentMode== "CASH").Sum(u => u.TotalBill);
+            }
+            catch (Exception)
+            {
+
+
+            }
+            try
+            {
+                shiftViewModel.TotalByCredit = cntxt.Invoicemasters.Where(u => u.PaymentMode == "CREDIT").Sum(u => u.TotalBill);
+            }
+            catch (Exception)
+            {
+
+
+            }
+            try
+            {
+                shiftViewModel.TotalCC = cntxt.Invoicemasters.Where(u => u.PaymentMode == "CARD").Sum(u => u.TotalBill);
+            }
+            catch (Exception)
+            {
+
+
+            }
+            try
+            {
+                shiftViewModel.TotalCC = cntxt.Invoicemasters.Where(u => u.PaymentMode == "ZOMATO").Sum(u => u.TotalBill);
+            }
+            catch (Exception)
+            {
+
+
+            }
+
+            try
+            {
+                Decimal NETAMOUNT = Decimal.Parse(shiftViewModel.Netsales.ToString()) - Decimal.Parse(shiftViewModel.Netsales.ToString()) -
+                     Decimal.Parse(shiftViewModel.Netsales.ToString()) - Decimal.Parse(shiftViewModel.Netsales.ToString());
+                 shiftViewModel.NetAmount = NETAMOUNT;
+            }
+            catch (Exception)
+            {
+
+
+            }
+
+            try
+            {
+                PrintReceipt prnt = new PrintReceipt();
+                prnt.printClosingreport(shiftViewModel);
+
+               
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show("Printer Malfunction.But Invoice Done");
+            }
+
+        }
 
         public Boolean InsertInvoicemaster(Invoicemaster invmstr)
         {
@@ -104,7 +293,7 @@ table_id,
 
 payment_method,  
 pos_invoice_id, 
-state,total_paid,total_discount,total_bill
+state,total_paid,total_discount,total_bill,total_tax
 )
 values(
 :create_uid,  
@@ -121,7 +310,7 @@ values(
 
 :payment_method, 
 :pos_invoice_id, 
-:state,:total_paid,:total_discount,:total_bill) RETURNING id;", conn);
+:state,:total_paid,:total_discount,:total_bill,:total_tax) RETURNING id;", conn);
 
 
              
@@ -142,9 +331,11 @@ values(
                 cmd.Parameters.Add(new NpgsqlParameter("payment_method", invmstr.PaymentMode));
                 cmd.Parameters.Add(new NpgsqlParameter("state", "draft"));
                 cmd.Parameters.Add(new NpgsqlParameter("pos_invoice_id", invmstr.InvoicemasterID));
-                cmd.Parameters.Add(new NpgsqlParameter("total_discount", Decimal.Parse("0")));
+                cmd.Parameters.Add(new NpgsqlParameter("total_discount", invmstr.TotalDiscount));
                 cmd.Parameters.Add(new NpgsqlParameter("total_paid", invmstr.TotalPaid));
                 cmd.Parameters.Add(new NpgsqlParameter("total_bill", invmstr.TotalBill));
+                cmd.Parameters.Add(new NpgsqlParameter("total_tax", invmstr.Taxamount));
+             
 
 
                 //cmd.Parameters.Add(new NpgsqlParameter("round_off", invmstr.RoundOffAmount));

@@ -733,7 +733,7 @@
             this.Name = "SalesForm";
             this.Text = "SalesForm";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
-            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.SalesForm_KeyDown);
+           
             this.grp_bottompanel.ResumeLayout(false);
             this.grp_bottompanel.PerformLayout();
             this.grp_Category.ResumeLayout(false);

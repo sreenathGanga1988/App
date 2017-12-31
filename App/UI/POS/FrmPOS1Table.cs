@@ -24,6 +24,8 @@ namespace App.UI
         public int selectedTableID = 0;
         public int selectedPaymentID = 0;
 
+        public Decimal selectedCustomerDiscount = 0;
+
         public String selectedCustomerName = "";
         public String selectedBuzzerName = "";
         public String selectedTableName = "";
@@ -70,11 +72,12 @@ namespace App.UI
          selectedBuzzerName = "";
          selectedTableName = "";
          selectedPaymentName = "";
+            selectedCustomerDiscount = 0;
             invoiceid = 0;
 
-          
 
-            lbl_customer.Text = "New";
+            lbl_discount.Text = "0";
+        lbl_customer.Text = "New";
            btn_Tables.Text = "Tables";
            Btn_buzzer.Text = "Buzzer";
             btn_paymentMethod.Text = "Payment Method";
@@ -133,18 +136,18 @@ namespace App.UI
 
 
 
-            selectedCustomerID = invoicemaster.CustomerID;
-            lbl_customer.Text = invoicemaster.Customer.CustomerName;
-           
+            //selectedCustomerID = invoicemaster.CustomerID;
+            //lbl_customer.Text = invoicemaster.Customer.CustomerName;
+            selectCustomerByID(invoicemaster.CustomerID);
 
-            selectedTableID = int.Parse(invoicemaster.TableID.ToString());
+             selectedTableID = int.Parse(invoicemaster.TableID.ToString());
             selectedTableName = invoicemaster.Table.TableName;
             btn_Tables.Text = selectedTableName;
 
             selectedBuzzerID = int.Parse(invoicemaster.BuzzerID.ToString());
             selectedBuzzerName = invoicemaster.BuzzerName;
             Btn_buzzer.Text = selectedBuzzerName;
-
+            txt_discount.Text = invoicemaster.TotalDiscount.ToString();
             selectedPaymentID = int.Parse(invoicemaster.PayMentModeId.ToString());
             selectedPaymentName = invoicemaster.PaymentMode;
             btn_paymentMethod.Text = selectedPaymentName;
@@ -478,16 +481,7 @@ namespace App.UI
 
         private void SalesForm_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Delete)
-            {
-                foreach (DataGridViewRow r in grd_ProductDetails.SelectedRows)
-                {
-                    if (!r.IsNewRow)
-                    {
-                        grd_ProductDetails.Rows.RemoveAt(r.Index);
-                    }
-                }
-            }
+            
         }
 
         private void textBox1_KeyUp(object sender, KeyEventArgs e)
@@ -782,11 +776,15 @@ namespace App.UI
 
                 selectedCustomerID = int.Parse (cstmr.SelectedCustomerID);
                 selectedCustomerName = cstmr.SelectedCustomerName;
+                
                 lbl_customer.Text = cstmr.SelectedCustomerName;
                 CustomerRepositiry custrepo = new CustomerRepositiry();
                 Customer cust = custrepo.GetCustomer(selectedCustomerID);
+                selectedCustomerDiscount = decimal.Parse( cust.Discount.ToString());
+                lbl_discount.Text = cust.Discount.ToString();
                 lbl_address.Text = cust.CustomerDetails;
                 lbl_paymentDue.Text = cust.PaymentDue.ToString();
+                CalculateTotal();
             }
             catch (Exception)
             {
@@ -802,13 +800,15 @@ namespace App.UI
             {
                 CustomerRepositiry custrepo = new CustomerRepositiry();
                 Customer cust = custrepo.GetCustomerByBarCode(barcode);
-
+                lbl_discount.Text = cust.Discount.ToString();
+                selectedCustomerDiscount = Decimal.Parse( cust.Discount.ToString());
                 selectedCustomerID = cust.CustomerID;
                 selectedCustomerName = cust.CustomerName;
                 lbl_customer.Text = cust.CustomerName;
-
+                lbl_discount.Text = cust.Discount.ToString();
                 lbl_address.Text = cust.CustomerDetails;
                 lbl_paymentDue.Text = cust.PaymentDue.ToString();
+                CalculateTotal();
             }
             catch (Exception)
             {
@@ -856,9 +856,16 @@ namespace App.UI
 
                 Customer cust = custrepo.GetCustomer(id);
 
-
-                lbl_customer.Text = cust.CustomerName;
+                lbl_discount.Text = cust.Discount.ToString();
+                selectedCustomerDiscount = Decimal.Parse(cust.Discount.ToString());
                 selectedCustomerID = cust.CustomerID;
+                selectedCustomerName = cust.CustomerName;
+                lbl_customer.Text = cust.CustomerName;
+                lbl_discount.Text = cust.Discount.ToString();
+                lbl_address.Text = cust.CustomerDetails;
+                lbl_paymentDue.Text = cust.PaymentDue.ToString();
+                CalculateTotal();
+
             }
             catch (Exception)
             {
@@ -971,19 +978,33 @@ namespace App.UI
             Decimal TotalValue = 0;
             Decimal TotalTax = 0;
             Decimal NetTotal = 0;
+            Decimal TotalDiscount = 0;
             foreach (DataGridViewRow row in grd_ProductDetails.Rows)
             {
                 Decimal Qty = decimal.Parse(row.Cells["Qty"].Value.ToString());
                 Decimal Price = Decimal.Parse(row.Cells["Price"].Value.ToString());
-                Decimal Discount = Decimal.Parse(row.Cells["Discount"].Value.ToString());
+
+                Decimal Discount = decimal.Parse(row.Cells["Qty"].Value.ToString()) * Decimal.Parse(row.Cells["Price"].Value.ToString()) * selectedCustomerDiscount;
+
+               
                 Decimal Taxamount = Decimal.Parse(row.Cells["Taxamount"].Value.ToString());
                 row.Cells["Total"].Value = Qty * (Price - Discount);
+                row.Cells["Discount"].Value = Discount;
                 TotalTax = TotalTax + (Qty * Taxamount* Price);
-                TotalValue = TotalValue + decimal.Parse(row.Cells["Total"].Value.ToString());
+                TotalDiscount = TotalDiscount + Discount;
+              TotalValue = TotalValue + decimal.Parse(row.Cells["Total"].Value.ToString());
                 row.Cells["Total"].ReadOnly = true;
+              
             }
             NetTotal = TotalValue + TotalTax;
+            NetTotal = Math.Round(NetTotal, 2);
             txt_total.Text = NetTotal.ToString();
+
+
+            TotalDiscount = Math.Round(TotalDiscount, 2);
+            txt_discount.Text = TotalDiscount.ToString();
+
+            TotalTax = Math.Round(TotalTax, 2);
             lbl_taxid.Text = TotalTax.ToString();
         }
 
@@ -996,6 +1017,7 @@ namespace App.UI
             Decimal Total = Decimal.Parse(txt_total.Text);
             Decimal cash = Decimal.Parse(txt_cash.Text);
             Decimal change = cash - Total;
+            change = Math.Round(change, 2);
             return change;
         }
 
@@ -1132,8 +1154,9 @@ namespace App.UI
             invoicemaster.ShiftName = Program.Shiftname;
             invoicemaster.IsUploaded = false;
 
+            invoicemaster.TotalDiscount = decimal.Parse(txt_discount.Text);
 
-           
+
             invoicemaster.BuzzerID = selectedBuzzerID;
             invoicemaster.CustomerID = selectedCustomerID;
             invoicemaster.TableID = int.Parse(selectedTableID.ToString());
@@ -1248,7 +1271,7 @@ namespace App.UI
         }
         public Invoicemaster AdjustAutoSelection(Invoicemaster invoicemaster)
         {
-           
+            LocationRepository repo = new LocationRepository();
             invoicemaster.CustomerID = selectedCustomerID;
             invoicemaster.TableID = int.Parse(selectedTableID.ToString());
             invoicemaster.PaymentMode = selectedPaymentName;
@@ -1256,24 +1279,23 @@ namespace App.UI
             {
                
                 invoicemaster.BuzzerName = "Buzzer";
-                invoicemaster.BuzzerID = 15;
-
+                invoicemaster.BuzzerID = repo.GetBuzzerByName(invoicemaster.BuzzerName);
             }
             if (invoicemaster.CustomerID ==0)
             {
                 invoicemaster.CustomerName = "New";
-                invoicemaster.CustomerID = 8;
+                invoicemaster.CustomerID =  repo.GetCustomerByName(invoicemaster.CustomerName);
             }
             if (invoicemaster.TableID == 0)
             {
                 invoicemaster.TableName = "Take Away";
-                invoicemaster.TableID = 1;
+                invoicemaster.TableID = repo.GetTableByName(invoicemaster.TableName);
 
             }
             if (invoicemaster.PayMentModeId == 0)
             {
                 invoicemaster.PaymentMode = "CASH";
-                invoicemaster.PayMentModeId = 1;
+                invoicemaster.PayMentModeId = repo.GetCPaymentModerByName(invoicemaster.PaymentMode);
             }
 
             return invoicemaster;
@@ -1599,6 +1621,10 @@ namespace App.UI
                 Customer cust = custrepo.GetCustomer(selectedCustomerID);
                 lbl_address.Text = cust.CustomerDetails;
                 lbl_paymentDue.Text = cust.PaymentDue.ToString();
+                lbl_discount.Text = cust.Discount.ToString();
+                selectedCustomerDiscount = Decimal.Parse(cust.Discount.ToString());
+
+                CalculateTotal();
             }
             catch (Exception exp)
             {
@@ -1615,7 +1641,31 @@ namespace App.UI
                 txt_cash.Text = barcode;
                 barcode = string.Empty;
             }
+
+          
             barcode += e.KeyChar;
+        }
+
+        private void FrmPOS1Table_KeyDown(object sender, KeyEventArgs e)
+        {
+               if (e.KeyCode == Keys.Delete)
+            {
+                foreach (DataGridViewRow r in grd_ProductDetails.SelectedRows)
+                {
+                    if (!r.IsNewRow)
+                    {
+                        grd_ProductDetails.Rows.RemoveAt(r.Index);
+                        CalculateTotal(); 
+                    }
+                }
+
+
+            }
+        }
+
+        private void grd_ProductDetails_RowsRemoved(object sender, DataGridViewRowsRemovedEventArgs e)
+        {
+            CalculateTotal();
         }
     }
 }
