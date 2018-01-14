@@ -96,10 +96,14 @@ namespace App.UI
 
                 if (custrepo.GetCustomerByMobilnum(customer.PhoneNumber).Count == 0)
                 {
-                    custrepo.AddCustomer(customer);
+                    customer= custrepo.AddCustomer(customer);
+                   
                     MessageBox.Show("Customer Added");
                     LoadAllcustomer();
                     clearcontrol();
+                    SelectedCustomerID =customer.CustomerID.ToString();
+                    SelectedCustomerName = customer.CustomerName.ToString();
+                    this.Close();
                 }
                 else
                 {
@@ -139,7 +143,7 @@ namespace App.UI
         {
             string texttodearch = btn_searcharea.Text.Trim();
             CustomerRepositiry custrepo = new CustomerRepositiry();
-            List<Customer> customerlist = custrepo.GetcustomerofLocationSearch(texttodearch, Program.LocationID);
+            List<Customer> customerlist = custrepo.GetcustomerofLocation(texttodearch, Program.LocationID);
             loadcustomer(customerlist);
 
         }
@@ -163,6 +167,11 @@ namespace App.UI
             txt_name.Text = dgv.Rows[e.RowIndex].Cells["CustomerName"].Value.ToString();
             txt_mobnumber.Text = dgv.Rows[e.RowIndex].Cells["PhoneNumber"].Value.ToString();
             txt_address.Text = dgv.Rows[e.RowIndex].Cells["CustomerDetails"].Value.ToString();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

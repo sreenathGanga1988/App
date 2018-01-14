@@ -28,14 +28,24 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel5 = new System.Windows.Forms.Panel();
             this.dgv = new System.Windows.Forms.DataGridView();
+            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ProductName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Category = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SalePrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Taxamount = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.IsAvailable = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.TodaySpecial = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.panel4 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel35 = new System.Windows.Forms.Panel();
             this.btn_searcharea = new System.Windows.Forms.TextBox();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.button4 = new System.Windows.Forms.Button();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
@@ -51,13 +61,7 @@
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
-            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ProductName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Category = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SalePrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Taxamount = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TodaySpecial = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.panel1.SuspendLayout();
             this.panel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv)).BeginInit();
@@ -101,6 +105,7 @@
             this.Category,
             this.SalePrice,
             this.Taxamount,
+            this.IsAvailable,
             this.TodaySpecial});
             this.dgv.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgv.Location = new System.Drawing.Point(0, 0);
@@ -108,6 +113,50 @@
             this.dgv.Size = new System.Drawing.Size(689, 318);
             this.dgv.TabIndex = 0;
             this.dgv.CurrentCellDirtyStateChanged += new System.EventHandler(this.dgv_CurrentCellDirtyStateChanged);
+            // 
+            // ID
+            // 
+            this.ID.HeaderText = "ID";
+            this.ID.Name = "ID";
+            // 
+            // Column3
+            // 
+            this.Column3.HeaderText = "Code";
+            this.Column3.Name = "Column3";
+            // 
+            // ProductName
+            // 
+            this.ProductName.HeaderText = "Product Name";
+            this.ProductName.Name = "ProductName";
+            // 
+            // Category
+            // 
+            this.Category.HeaderText = "Category";
+            this.Category.Name = "Category";
+            // 
+            // SalePrice
+            // 
+            this.SalePrice.HeaderText = "Sale Price";
+            this.SalePrice.Name = "SalePrice";
+            // 
+            // Taxamount
+            // 
+            this.Taxamount.HeaderText = "Tax";
+            this.Taxamount.Name = "Taxamount";
+            // 
+            // IsAvailable
+            // 
+            this.IsAvailable.HeaderText = "IsAvailable";
+            this.IsAvailable.Name = "IsAvailable";
+            this.IsAvailable.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.IsAvailable.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            // 
+            // TodaySpecial
+            // 
+            this.TodaySpecial.HeaderText = "TodaySpecial";
+            this.TodaySpecial.Name = "TodaySpecial";
+            this.TodaySpecial.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.TodaySpecial.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
             // panel4
             // 
@@ -146,12 +195,12 @@
             this.btn_searcharea.Name = "btn_searcharea";
             this.btn_searcharea.Size = new System.Drawing.Size(689, 24);
             this.btn_searcharea.TabIndex = 0;
-            this.btn_searcharea.Text = "Search Product";
             this.btn_searcharea.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(53)))), ((int)(((byte)(66)))));
+            this.panel3.Controls.Add(this.button4);
             this.panel3.Controls.Add(this.checkBox1);
             this.panel3.Controls.Add(this.button3);
             this.panel3.Controls.Add(this.button2);
@@ -173,16 +222,30 @@
             this.panel3.Size = new System.Drawing.Size(689, 189);
             this.panel3.TabIndex = 3;
             // 
+            // button4
+            // 
+            this.button4.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.button4.BackColor = System.Drawing.Color.White;
+            this.button4.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button4.ForeColor = System.Drawing.Color.DarkRed;
+            this.button4.Location = new System.Drawing.Point(513, 88);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(89, 52);
+            this.button4.TabIndex = 17;
+            this.button4.Text = "Update Availability";
+            this.button4.UseVisualStyleBackColor = false;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
+            // 
             // checkBox1
             // 
             this.checkBox1.AutoSize = true;
             this.checkBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.checkBox1.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
-            this.checkBox1.Location = new System.Drawing.Point(600, 166);
+            this.checkBox1.Location = new System.Drawing.Point(277, 166);
             this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(78, 17);
+            this.checkBox1.Size = new System.Drawing.Size(159, 17);
             this.checkBox1.TabIndex = 15;
-            this.checkBox1.Text = "Select All";
+            this.checkBox1.Text = "Select All Today Special";
             this.checkBox1.UseVisualStyleBackColor = false;
             this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
             // 
@@ -192,9 +255,9 @@
             this.button3.BackColor = System.Drawing.Color.White;
             this.button3.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button3.ForeColor = System.Drawing.Color.DarkRed;
-            this.button3.Location = new System.Drawing.Point(429, 110);
+            this.button3.Location = new System.Drawing.Point(442, 146);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(89, 76);
+            this.button3.Size = new System.Drawing.Size(104, 37);
             this.button3.TabIndex = 14;
             this.button3.Text = "Update Today Special";
             this.button3.UseVisualStyleBackColor = false;
@@ -206,7 +269,7 @@
             this.button2.BackColor = System.Drawing.Color.White;
             this.button2.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button2.ForeColor = System.Drawing.Color.DarkRed;
-            this.button2.Location = new System.Drawing.Point(600, 7);
+            this.button2.Location = new System.Drawing.Point(513, 6);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(89, 76);
             this.button2.TabIndex = 13;
@@ -220,7 +283,7 @@
             this.button1.BackColor = System.Drawing.Color.White;
             this.button1.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.ForeColor = System.Drawing.Color.DarkRed;
-            this.button1.Location = new System.Drawing.Point(277, 138);
+            this.button1.Location = new System.Drawing.Point(146, 138);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(89, 35);
             this.button1.TabIndex = 12;
@@ -233,7 +296,7 @@
             this.btnSettings.BackColor = System.Drawing.Color.White;
             this.btnSettings.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSettings.ForeColor = System.Drawing.Color.DarkRed;
-            this.btnSettings.Location = new System.Drawing.Point(169, 138);
+            this.btnSettings.Location = new System.Drawing.Point(38, 138);
             this.btnSettings.Name = "btnSettings";
             this.btnSettings.Size = new System.Drawing.Size(89, 35);
             this.btnSettings.TabIndex = 11;
@@ -331,42 +394,11 @@
             this.label10.TabIndex = 0;
             this.label10.Text = "ID";
             // 
-            // ID
+            // contextMenuStrip1
             // 
-            this.ID.HeaderText = "ID";
-            this.ID.Name = "ID";
-            // 
-            // Column3
-            // 
-            this.Column3.HeaderText = "Code";
-            this.Column3.Name = "Column3";
-            // 
-            // ProductName
-            // 
-            this.ProductName.HeaderText = "Product Name";
-            this.ProductName.Name = "ProductName";
-            // 
-            // Category
-            // 
-            this.Category.HeaderText = "Category";
-            this.Category.Name = "Category";
-            // 
-            // SalePrice
-            // 
-            this.SalePrice.HeaderText = "Sale Price";
-            this.SalePrice.Name = "SalePrice";
-            // 
-            // Taxamount
-            // 
-            this.Taxamount.HeaderText = "Tax";
-            this.Taxamount.Name = "Taxamount";
-            // 
-            // TodaySpecial
-            // 
-            this.TodaySpecial.HeaderText = "TodaySpecial";
-            this.TodaySpecial.Name = "TodaySpecial";
-            this.TodaySpecial.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.TodaySpecial.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
+            this.contextMenuStrip1.Opening += new System.ComponentModel.CancelEventHandler(this.contextMenuStrip1_Opening);
             // 
             // FrmProduct
             // 
@@ -419,6 +451,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Category;
         private System.Windows.Forms.DataGridViewTextBoxColumn SalePrice;
         private System.Windows.Forms.DataGridViewTextBoxColumn Taxamount;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn IsAvailable;
         private System.Windows.Forms.DataGridViewCheckBoxColumn TodaySpecial;
+        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
     }
 }

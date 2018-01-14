@@ -30,7 +30,7 @@ namespace App.Extensions
 		public static extern bool OpenPrinter(		[MarshalAs(UnmanagedType.LPStr)]
 string szPrinter, ref IntPtr hPrinter, IntPtr pd);
 
-		[DllImport("winspool.Drv", EntryPoint = "ClosePrinter", SetLastError = true, ExactSpelling = true, CallingConvention = CallingConvention.StdCall)]
+		[DllImport("winspool.Drv", EntryPoint = "ClosePrinter",  SetLastError = true, ExactSpelling = true, CallingConvention = CallingConvention.StdCall)]
 		public static extern bool ClosePrinter(IntPtr hPrinter);
 
 		[DllImport("winspool.Drv", EntryPoint = "StartDocPrinterA", SetLastError = true, CharSet = CharSet.Ansi, ExactSpelling = true, CallingConvention = CallingConvention.StdCall)]
@@ -72,11 +72,13 @@ DOCINFOA di);
 					if (StartPagePrinter(hPrinter)) {
 						// Write your bytes.
 						bSuccess = WritePrinter(hPrinter, pBytes, dwCount, ref dwWritten);
+                       
 						EndPagePrinter(hPrinter);
 					}
 					EndDocPrinter(hPrinter);
 				}
 				ClosePrinter(hPrinter);
+                
 			}
 			// If you did not succeed, GetLastError may give more information
 			// about why not.

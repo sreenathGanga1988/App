@@ -64,6 +64,7 @@ namespace App.UI.Masters
                 dgv.Rows[index].Cells["SalePrice"].Value = prdct.MinimumSPForLocation.ToString();
                 dgv.Rows[index].Cells["TodaySpecial"].Value = prdct.IsTodaySpecial;
                 dgv.Rows[index].Cells["Taxamount"].Value = prdct.Taxamount;
+                dgv.Rows[index].Cells["IsAvailable"].Value = prdct.IsAvailable;
                 
 
             }
@@ -89,9 +90,23 @@ namespace App.UI.Masters
             MessageBox.Show("Updated");
         }
 
+        public void UpdateAvailabilty()
+        {
+            ProductRepositories prodrepo = new ProductRepositories();
+
+            foreach (DataGridViewRow row in dgv.Rows)
+            {
+                int id = int.Parse(row.Cells["ID"].Value.ToString());
+
+                Boolean Status = Boolean.Parse(row.Cells["IsAvailable"].Value.ToString());
+                prodrepo.UpdateAvailailty(id, Status);
+
+            }
+            MessageBox.Show("Updated");
+        }
 
 
-       public void SelectAll(Boolean Checked)
+        public void SelectAll(Boolean Checked)
        {
             foreach (DataGridViewRow row in dgv.Rows)
             {
@@ -101,7 +116,15 @@ namespace App.UI.Masters
 
        }
 
+        public void SelectAllavailable(Boolean Checked)
+        {
+            foreach (DataGridViewRow row in dgv.Rows)
+            {
+                row.Cells["IsAvailable"].Value = Checked;
 
+            }
+
+        }
 
         public void SearchProduct()
         {
@@ -132,6 +155,23 @@ namespace App.UI.Masters
             {
                 dgv.CommitEdit(DataGridViewDataErrorContexts.Commit);
             }
+        }
+
+        private void checkBox2_CheckedChanged(object sender, EventArgs e)
+        {
+          //  SelectAllavailable(checkBox2.Checked);
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            //UpdateAvailabilty();
+            SalesForm salesForm = new SalesForm();
+            salesForm.ShowDialog();
+        }
+
+        private void contextMenuStrip1_Opening(object sender, CancelEventArgs e)
+        {
+
         }
     }
 }

@@ -34,10 +34,10 @@
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.lbl_totalPaid = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.btn_PosOut = new System.Windows.Forms.Button();
             this.btn_posAmount = new System.Windows.Forms.Button();
             this.btn_purchase = new System.Windows.Forms.Button();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -112,17 +112,6 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "TOP";
             // 
-            // groupBox3
-            // 
-            this.groupBox3.Controls.Add(this.dataGridView1);
-            this.groupBox3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox3.Location = new System.Drawing.Point(0, 0);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(985, 508);
-            this.groupBox3.TabIndex = 6;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Invoice Details";
-            // 
             // btn_PosOut
             // 
             this.btn_PosOut.Enabled = false;
@@ -157,6 +146,17 @@
             this.btn_purchase.Text = "Purchase";
             this.btn_purchase.UseVisualStyleBackColor = true;
             this.btn_purchase.Click += new System.EventHandler(this.btn_purchase_Click);
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.dataGridView1);
+            this.groupBox3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBox3.Location = new System.Drawing.Point(0, 0);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(985, 508);
+            this.groupBox3.TabIndex = 6;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Invoice Details";
             // 
             // ActionBoard
             // 

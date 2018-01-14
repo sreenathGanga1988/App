@@ -13,7 +13,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
+using App.Extensions;
 namespace App.UI
 {
     public partial class FrmLogin : Form
@@ -21,8 +21,9 @@ namespace App.UI
         public FrmLogin()
         {
             InitializeComponent();
-            
-           Database.SetInitializer(new MigrateDatabaseToLatestVersion<POSDataContext, Migrations.Configuration>());
+            string version = System.Windows.Forms.Application.ProductVersion;
+            this.Text = String.Format("LimsPOS {0}", version);
+            Database.SetInitializer(new MigrateDatabaseToLatestVersion<POSDataContext, Migrations.Configuration>());
 
 
 
@@ -34,14 +35,22 @@ namespace App.UI
                 cmb_user.DisplayMember = "UserName";
                 cmb_user.ValueMember = "UserID";
             }
-            catch (Exception)
+            catch (Exception e)
             {
 
-              
+                ErrorLogger.WriteToErrorLog("At Login Constructor", e.StackTrace, "Login Start");
             }
+
+
+            UpdateItemsWithNoIsDeleted();
         }
 
-       
+        public void UpdateItemsWithNoIsDeleted()
+        {
+
+            InvoiceRepository invoiceRepository = new InvoiceRepository();
+            invoiceRepository.UpdateDeleteStatusofinvoice();
+        }
 
         public void KeyPressed(Button btn)
         {
@@ -65,10 +74,10 @@ namespace App.UI
                         userAuthentication();
                     }
                 }
-                catch (Exception)
+                catch (Exception e)
                 {
 
-                   
+                    ErrorLogger.WriteToErrorLog("At Login OK", e.StackTrace, "Login ");
                 }
                
 
@@ -97,7 +106,7 @@ namespace App.UI
                 try
                 {
                     Repository.UserRepository usrrep = new Repository.UserRepository();
-
+                    
                     if (usrrep.IsuserValid(int.Parse(txt_PasscodeDisplay.Text), int.Parse(cmb_user.SelectedValue.ToString())))
                     {
                         ShiftRepository shiftRepository = new ShiftRepository();
@@ -113,12 +122,14 @@ namespace App.UI
                     {
 
                         MessageBox.Show("Passcode not Valid");
+                        
                     }
                 }
-                catch (Exception)
+                catch (Exception e)
                 {
 
                     MessageBox.Show("Hi Dude You lost connection to DB");
+                    ErrorLogger.WriteToErrorLog("At Login ", e.StackTrace, "Login ");
                 }
             }
 
@@ -235,6 +246,7 @@ namespace App.UI
                         {
 
                             MessageBox.Show("Error Creating key"+ exp);
+                            ErrorLogger.WriteToErrorLog("At Login CreateAppkey", exp.StackTrace, "CreateAppkey ");
                         }
                         break;
                     }

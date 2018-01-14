@@ -72,6 +72,8 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
+            this.btn_reset = new System.Windows.Forms.Button();
+            this.button5 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -368,6 +370,8 @@
             // groupBox5
             // 
             this.groupBox5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(53)))), ((int)(((byte)(66)))));
+            this.groupBox5.Controls.Add(this.button5);
+            this.groupBox5.Controls.Add(this.btn_reset);
             this.groupBox5.Controls.Add(this.txt_defaultKOTpRINTER);
             this.groupBox5.Controls.Add(this.label20);
             this.groupBox5.Controls.Add(this.button4);
@@ -565,6 +569,25 @@
             this.label10.TabIndex = 0;
             this.label10.Text = "Real time Invoice Update";
             // 
+            // btn_reset
+            // 
+            this.btn_reset.Location = new System.Drawing.Point(324, 10);
+            this.btn_reset.Name = "btn_reset";
+            this.btn_reset.Size = new System.Drawing.Size(46, 38);
+            this.btn_reset.TabIndex = 26;
+            this.btn_reset.Text = "Reset";
+            this.btn_reset.UseVisualStyleBackColor = true;
+            this.btn_reset.Click += new System.EventHandler(this.btn_reset_Click);
+            // 
+            // button5
+            // 
+            this.button5.Location = new System.Drawing.Point(355, 30);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(75, 23);
+            this.button5.TabIndex = 27;
+            this.button5.Text = "button5";
+            this.button5.UseVisualStyleBackColor = true;
+            // 
             // oodoSetting
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -632,5 +655,7 @@
         private System.Windows.Forms.TextBox txt_defaultKOTpRINTER;
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Button btn_reset;
     }
 }

@@ -32,10 +32,10 @@
             this.btn_customer = new System.Windows.Forms.Button();
             this.btn_product = new System.Windows.Forms.Button();
             this.panel25 = new System.Windows.Forms.Panel();
+            this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.btn_printer = new System.Windows.Forms.Button();
             this.btn_category = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
             this.panel25.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -87,6 +87,22 @@
             this.panel25.Size = new System.Drawing.Size(675, 427);
             this.panel25.TabIndex = 24;
             // 
+            // button2
+            // 
+            this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(121)))), ((int)(((byte)(166)))));
+            this.button2.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button2.ForeColor = System.Drawing.Color.White;
+            this.button2.Image = ((System.Drawing.Image)(resources.GetObject("button2.Image")));
+            this.button2.Location = new System.Drawing.Point(218, 21);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(198, 81);
+            this.button2.TabIndex = 26;
+            this.button2.Text = "Odoo Setting";
+            this.button2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.button2.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+            this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
             // button1
             // 
             this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(121)))), ((int)(((byte)(166)))));
@@ -135,22 +151,6 @@
             this.btn_category.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
             this.btn_category.UseVisualStyleBackColor = false;
             this.btn_category.Click += new System.EventHandler(this.btn_category_Click);
-            // 
-            // button2
-            // 
-            this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(121)))), ((int)(((byte)(166)))));
-            this.button2.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.ForeColor = System.Drawing.Color.White;
-            this.button2.Image = ((System.Drawing.Image)(resources.GetObject("button2.Image")));
-            this.button2.Location = new System.Drawing.Point(218, 21);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(198, 81);
-            this.button2.TabIndex = 26;
-            this.button2.Text = "Odoo Setting";
-            this.button2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button2.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
-            this.button2.UseVisualStyleBackColor = false;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // MasterForm
             // 

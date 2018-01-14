@@ -23,7 +23,7 @@ namespace App.UI
         public int selectedBuzzerID = 0;
         public int selectedTableID = 0;
         public int selectedPaymentID = 0;
-
+        Boolean ISPRINTREQ = true;
         public Decimal selectedCustomerDiscount = 0;
 
         public String selectedCustomerName = "";
@@ -75,14 +75,26 @@ namespace App.UI
             selectedCustomerDiscount = 0;
             invoiceid = 0;
 
-
+            ISPRINTREQ = true;
             lbl_discount.Text = "0";
+            lbl_phone.Text = "0";
+            lbl_address.Text = "0";
+           
         lbl_customer.Text = "New";
            btn_Tables.Text = "Tables";
            Btn_buzzer.Text = "Buzzer";
             btn_paymentMethod.Text = "Payment Method";
             lbl_invoicenum.Text = "";
             lbl_datettime.Text = DateTime.Now.ToString();
+            try
+            {
+                Lastbuttonclicked.BackColor = LastButtonActualControl;
+            }
+            catch (Exception)
+            {
+
+
+            }
         }
 
     private void UpdateFont()
@@ -298,6 +310,47 @@ namespace App.UI
 
 
 
+        //public void LoadSelectedProduct(int ProductID)
+        //{
+        //    ProductRepositories productrep = new ProductRepositories();
+
+
+        //    try
+        //    {
+        //        if (!IsItemAlreadyAdded(ProductID))
+        //        {
+        //            Product product = productrep.GetProduct(ProductID);
+        //            var index = grd_ProductDetails.Rows.Add();
+        //            grd_ProductDetails.Rows[index].Cells["ID"].Value = product.Id.ToString();
+        //            grd_ProductDetails.Rows[index].Cells["Item"].Value = product.ProductName.ToString();
+        //            grd_ProductDetails.Rows[index].Cells["Price"].Value = product.UnitPrice.ToString();
+        //            grd_ProductDetails.Rows[index].Cells["Qty"].Value = 1;
+        //            grd_ProductDetails.Rows[index].Cells["Discount"].Value = product.DiscountForLocation.ToString();
+        //            grd_ProductDetails.Rows[index].Cells["Notes"].Value ="";
+        //            grd_ProductDetails.Rows[index].Cells["Taxamount"].Value = product.Taxamount.ToString();
+        //            grd_ProductDetails.Rows[index].Cells["ID"].ReadOnly = true;
+        //            grd_ProductDetails.Rows[index].Cells["Item"].ReadOnly = true;
+        //            grd_ProductDetails.Rows[index].Cells["Price"].ReadOnly = true;
+        //            grd_ProductDetails.Rows[index].Cells["Discount"].ReadOnly = true;
+
+        //            //     grd_ProductDetails.Rows[index].Cells["Total"].Value = product.UnitPrice.ToString();
+        //            if (product.IsRateChangable == true)
+        //            {
+        //                grd_ProductDetails.Rows[index].Cells["Price"].ReadOnly = false;
+
+        //            }
+        //        }
+        //        CalculateTotal();
+        //    }
+        //    catch (Exception)
+        //    {
+
+        //        MessageBox.Show("Wrong ItemCode");
+        //    }
+
+
+        //}
+
         public void LoadSelectedProduct(int ProductID)
         {
             ProductRepositories productrep = new ProductRepositories();
@@ -305,8 +358,7 @@ namespace App.UI
 
             try
             {
-                if (!IsItemAlreadyAdded(ProductID))
-                {
+               
                     Product product = productrep.GetProduct(ProductID);
                     var index = grd_ProductDetails.Rows.Add();
                     grd_ProductDetails.Rows[index].Cells["ID"].Value = product.Id.ToString();
@@ -314,7 +366,7 @@ namespace App.UI
                     grd_ProductDetails.Rows[index].Cells["Price"].Value = product.UnitPrice.ToString();
                     grd_ProductDetails.Rows[index].Cells["Qty"].Value = 1;
                     grd_ProductDetails.Rows[index].Cells["Discount"].Value = product.DiscountForLocation.ToString();
-                    grd_ProductDetails.Rows[index].Cells["Notes"].Value ="";
+                    grd_ProductDetails.Rows[index].Cells["Notes"].Value = "";
                     grd_ProductDetails.Rows[index].Cells["Taxamount"].Value = product.Taxamount.ToString();
                     grd_ProductDetails.Rows[index].Cells["ID"].ReadOnly = true;
                     grd_ProductDetails.Rows[index].Cells["Item"].ReadOnly = true;
@@ -327,6 +379,14 @@ namespace App.UI
                         grd_ProductDetails.Rows[index].Cells["Price"].ReadOnly = false;
 
                     }
+                try
+                {
+                    grd_ProductDetails.Rows[index].Selected = true;
+                }
+                catch (Exception)
+                {
+
+
                 }
                 CalculateTotal();
             }
@@ -340,7 +400,6 @@ namespace App.UI
         }
 
 
-      
 
 
         /// <summary>
@@ -445,9 +504,9 @@ namespace App.UI
                 //temp.Height = 150;
                 try
                 {
-                    if (product.Color != null && product.Color.Trim() != "")
+                    if (product.IsAvailable == false)
                     {
-                        temp.BackColor = Color.FromName(product.Color);
+                        temp.BackColor = Color.Orange;
                     }
                 }
                 catch (Exception)
@@ -595,6 +654,7 @@ namespace App.UI
             else if (btn.Text.Trim() == "Clear")
             {
                 txt_producrtcode.Text = "";
+                txt_producrtcode.Focus();
 
             }
             else if (btn.Text.Trim() == "Check Out")
@@ -604,7 +664,8 @@ namespace App.UI
                     AddInvoice("");
                     clearGridView();
                 }
-
+                txt_producrtcode.Focus();
+                
 
             }
             else if (btn.Text.Trim() == ".")
@@ -620,6 +681,7 @@ namespace App.UI
                 Intializeselecteditems();
                 
                 clearGridView();
+                
 
 
             }
@@ -679,6 +741,8 @@ namespace App.UI
 
 
                 Pricechange();
+                txt_producrtcode.Text = "";
+                txt_producrtcode.Focus();
             }
             else if (btn.Text.Trim() == "Notes")
             {
@@ -730,6 +794,7 @@ namespace App.UI
                 {
                   
                     SearchItem();
+                    txt_producrtcode.Focus();
                 }
                 catch (Exception)
                 {
@@ -742,6 +807,7 @@ namespace App.UI
                 try
                 {
                     IncreaseItemQty();
+                    txt_producrtcode.Focus();
                 }
                 catch (Exception)
                 {
@@ -754,6 +820,7 @@ namespace App.UI
                     try
                     {
                         AddCash();
+                    txt_producrtcode.Focus();
                 }
                 catch (Exception)
                 {
@@ -783,6 +850,7 @@ namespace App.UI
                 selectedCustomerDiscount = decimal.Parse( cust.Discount.ToString());
                 lbl_discount.Text = cust.Discount.ToString();
                 lbl_address.Text = cust.CustomerDetails;
+                lbl_phone.Text = cust.PhoneNumber;
                 lbl_paymentDue.Text = cust.PaymentDue.ToString();
                 CalculateTotal();
             }
@@ -806,6 +874,7 @@ namespace App.UI
                 selectedCustomerName = cust.CustomerName;
                 lbl_customer.Text = cust.CustomerName;
                 lbl_discount.Text = cust.Discount.ToString();
+                lbl_phone.Text = cust.PhoneNumber;
                 lbl_address.Text = cust.CustomerDetails;
                 lbl_paymentDue.Text = cust.PaymentDue.ToString();
                 CalculateTotal();
@@ -826,6 +895,13 @@ namespace App.UI
         public void Additem()
         {
             int ProductID = int.Parse((txt_producrtcode.Text));
+            ProductRepositories repo = new ProductRepositories();
+            int prodid = repo.GetProductByCode(txt_producrtcode.Text.Trim());
+            if(prodid!=0)
+            {
+                ProductID = prodid;
+            }
+
             LoadSelectedProduct(ProductID);
         }
 
@@ -863,6 +939,7 @@ namespace App.UI
                 lbl_customer.Text = cust.CustomerName;
                 lbl_discount.Text = cust.Discount.ToString();
                 lbl_address.Text = cust.CustomerDetails;
+                lbl_phone.Text = cust.PhoneNumber;
                 lbl_paymentDue.Text = cust.PaymentDue.ToString();
                 CalculateTotal();
 
@@ -959,7 +1036,14 @@ namespace App.UI
             FrmBuzzers frmBuzzer = new FrmBuzzers();
             frmBuzzer.ShowDialog();
             btn.Text = frmBuzzer.SelectedBuzzername;
-            if (btn.Text == "") { btn.Text = "Buzzer"; }
+            if (btn.Text == "")
+            { btn.Text = "Buzzer";
+                selectedBuzzerID = 0;
+            }
+            else {
+                selectedBuzzerID = frmBuzzer.SelectedBuzzerIDID;
+
+            }
            selectedBuzzerName = btn.Text;
         }
         public void fillchange()
@@ -988,7 +1072,7 @@ namespace App.UI
 
                
                 Decimal Taxamount = Decimal.Parse(row.Cells["Taxamount"].Value.ToString());
-                row.Cells["Total"].Value = Qty * (Price - Discount);
+                row.Cells["Total"].Value = Math.Round(((Qty * Price) - Discount),2);
                 row.Cells["Discount"].Value = Discount;
                 TotalTax = TotalTax + (Qty * Taxamount* Price);
                 TotalDiscount = TotalDiscount + Discount;
@@ -997,7 +1081,8 @@ namespace App.UI
               
             }
             NetTotal = TotalValue + TotalTax;
-            NetTotal = Math.Round(NetTotal, 2);
+            NetTotal = Math.Round((Math.Round(NetTotal, 2)) * 4, MidpointRounding.ToEven) / 4;
+            //NetTotal = Math.Round(NetTotal, 2);
             txt_total.Text = NetTotal.ToString();
 
 
@@ -1006,6 +1091,11 @@ namespace App.UI
 
             TotalTax = Math.Round(TotalTax, 2);
             lbl_taxid.Text = TotalTax.ToString();
+
+            txt_cash.Text = NetTotal.ToString();
+            fillchange();
+           
+         
         }
 
 
@@ -1052,10 +1142,28 @@ namespace App.UI
 
                 CalculateTotal();
             }
-           
+            
         }
 
+        public void PricechangeValue(Decimal Newprice)
+        {
 
+            
+
+            if (Newprice != 0)
+            {
+                foreach (DataGridViewRow r in grd_ProductDetails.SelectedRows)
+                {
+                    if (!r.IsNewRow)
+                    {
+                        grd_ProductDetails.Rows[r.Index].Cells["Price"].Value = Newprice + Decimal.Parse( grd_ProductDetails.Rows[r.Index].Cells["Price"].Value.ToString());
+                    }
+                }
+
+                CalculateTotal();
+            }
+
+        }
         public void EnterNotes()
         {
 
@@ -1133,7 +1241,8 @@ namespace App.UI
             invoicemaster.StoreID = Program.LocationID;
             invoicemaster.UserID = Program.UserID;
             invoicemaster.InvoiceDate = DateTime.Now;
-
+            invoicemaster.IsDeleted = false ;
+            invoicemaster.DeletedBy = "";
             invoicemaster.Taxamount = decimal.Parse(lbl_taxid.Text);
             invoicemaster.TotalBill = Decimal.Parse(txt_total.Text);
             if (selectedPaymentName != "CREDIT")
@@ -1149,7 +1258,16 @@ namespace App.UI
 
             invoicemaster.StoreName = Program.StoreName;
             invoicemaster.StoreAddress = Program.StoreAddress;
+            invoicemaster.StoreStreet = Program.StoreStreet;
+            invoicemaster.StorePhone = Program.StrorePhone;
+
+
+           
+
             invoicemaster.Cashier = Program.Username;
+            invoicemaster.CustomerPhone = lbl_phone.Text;
+            invoicemaster.CustomerAdress = lbl_address.Text;
+            
             invoicemaster.ShiftID = Program.ShiftId;
             invoicemaster.ShiftName = Program.Shiftname;
             invoicemaster.IsUploaded = false;
@@ -1187,6 +1305,11 @@ namespace App.UI
             else
             {
                 invoicemaster.IsKOT = false;
+                if (BillType == "")
+                {
+                    invoicemaster.IstableBill = false;
+                }
+                
             }
             if (invoiceid != 0)
             {
@@ -1251,10 +1374,17 @@ namespace App.UI
 
                     invoiceid = invoicemaster.InvoicemasterID;
                     lbl_invoicenum.Text = invoicemaster.InvoiceNum;
+                    prnt.printTableInvoicereport(invoicemaster);
                 }
                 else
                 {
-                    prnt.printInvoicereport(invoicemaster);
+
+                    if (ISPRINTREQ == true)
+                    {
+                        prnt.printInvoicereport(invoicemaster);
+                    }
+                    
+                   
 
                     MessageBox.Show("Bill #:" + invoicemaster.InvoiceNum);
                     Intializeselecteditems();
@@ -1269,6 +1399,13 @@ namespace App.UI
 
 
         }
+
+
+
+
+
+
+
         public Invoicemaster AdjustAutoSelection(Invoicemaster invoicemaster)
         {
             LocationRepository repo = new LocationRepository();
@@ -1542,6 +1679,7 @@ namespace App.UI
                 {
                     try
                     {
+
                         Additem();
                        
                         txt_producrtcode.Text = "";
@@ -1557,10 +1695,70 @@ namespace App.UI
 
                 
             }
-            else
+            else if(e.KeyChar== (char)Keys.F10)
+            {
+                if (ValidateforCheckOut())
+                {
+                    AddInvoice("");
+                    clearGridView();
+                    txt_producrtcode.Text = "";
+                    txt_producrtcode.Focus();
+                   
+                }
+
+            }
+            else if (e.KeyChar == (char)Keys.Escape)
             {
 
-              //  SearchItemByName();
+                Intializeselecteditems();
+
+                clearGridView();
+                txt_producrtcode.Text = "";
+                txt_producrtcode.Focus();
+
+            }
+            else if (e.KeyChar == (char)Keys.F8)
+            {
+               
+                PrintReceipt rcpt = new PrintReceipt();
+                rcpt.OpenDrawer();
+                txt_producrtcode.Text = "";
+                txt_producrtcode.Focus();
+
+            }
+            else if (e.KeyChar == (char)Keys.F2)
+            {
+
+                PricechangeValue(Decimal.Parse("0.5"));
+
+            }
+            else if (e.KeyChar == (char)Keys.F3)
+            {
+
+                PricechangeValue(Decimal.Parse("1"));
+
+            }
+            else if (e.KeyChar == (char)Keys.F7)
+            {
+
+                ISPRINTREQ = false;
+                if (ValidateforCheckOut())
+                {
+                    AddInvoice("");
+                    clearGridView();
+                    txt_producrtcode.Text = "";
+                    txt_producrtcode.Focus();
+                    
+                }
+                ISPRINTREQ = true;
+            }
+            else
+            {
+                if (chK_SearchMode.Checked == true)
+                {
+                    SearchItemByName();
+                }
+              
             }
 
         }
@@ -1622,6 +1820,8 @@ namespace App.UI
                 lbl_address.Text = cust.CustomerDetails;
                 lbl_paymentDue.Text = cust.PaymentDue.ToString();
                 lbl_discount.Text = cust.Discount.ToString();
+                lbl_phone.Text = cust.PhoneNumber.ToString();
+                
                 selectedCustomerDiscount = Decimal.Parse(cust.Discount.ToString());
 
                 CalculateTotal();
@@ -1638,11 +1838,74 @@ namespace App.UI
         {
             if (e.KeyChar == '\r')
             {
-                txt_cash.Text = barcode;
+              //  txt_cash.Text = barcode;
                 barcode = string.Empty;
             }
+            else if (e.KeyChar == (char)Keys.F10)
+            {
+                if (ValidateforCheckOut())
+                {
+                    AddInvoice("");
+                    clearGridView();
+                    txt_producrtcode.Text = "";
+                    txt_producrtcode.Focus();
+                    try
+                    {
+                        Lastbuttonclicked.BackColor = LastButtonActualControl;
+                    }
+                    catch (Exception)
+                    {
 
-          
+
+                    }
+                }
+
+            }
+            else if (e.KeyChar == (char)Keys.Escape)
+            {
+
+                Intializeselecteditems();
+
+                clearGridView();
+                txt_producrtcode.Text = "";
+                txt_producrtcode.Focus();
+
+            }
+            else if (e.KeyChar == (char)Keys.F8)
+            {
+               
+                PrintReceipt rcpt = new PrintReceipt();
+                rcpt.OpenDrawer();
+                txt_producrtcode.Text = "";
+                txt_producrtcode.Focus();
+
+            }
+            else if (e.KeyChar == (char)Keys.F2)
+            {
+
+                PricechangeValue(Decimal.Parse("0.5"));
+
+            }
+            else if (e.KeyChar == (char)Keys.F3)
+            {
+
+                PricechangeValue(Decimal.Parse("1"));
+
+            }
+            else if (e.KeyChar == (char)Keys.F7)
+            {
+
+                ISPRINTREQ = false;
+                if (ValidateforCheckOut())
+                {
+                    AddInvoice("");
+                    clearGridView();
+                    txt_producrtcode.Text = "";
+                    txt_producrtcode.Focus();
+                   
+                }
+                ISPRINTREQ = true;
+            }
             barcode += e.KeyChar;
         }
 
@@ -1658,14 +1921,95 @@ namespace App.UI
                         CalculateTotal(); 
                     }
                 }
+                txt_producrtcode.Text = "";
+                txt_producrtcode.Focus();
+
+            }
+            else if (e.KeyCode == Keys.F10)
+            {
+                if (ValidateforCheckOut())
+                {
+                    AddInvoice("");
+                    clearGridView();
+                    txt_producrtcode.Text = "";
+                    txt_producrtcode.Focus();
+                    
+                }
 
 
+            }
+            else if (e.KeyCode == Keys.Escape)
+            {
+
+                Intializeselecteditems();
+
+                clearGridView();
+                txt_producrtcode.Text = "";
+                txt_producrtcode.Focus();
+
+            }
+            else if (e.KeyCode == Keys.F8)
+            {
+                
+                PrintReceipt rcpt = new PrintReceipt();
+                rcpt.OpenDrawer();
+                txt_producrtcode.Text = "";
+                txt_producrtcode.Focus();
+
+            }
+            else if (e.KeyCode == Keys.F2)
+            {
+
+                PricechangeValue(Decimal.Parse("0.5"));
+
+            }
+            else if (e.KeyCode == Keys.F3)
+            {
+
+                PricechangeValue(Decimal.Parse("1"));
+
+            }
+            else if (e.KeyCode == Keys.F7)
+            {
+
+                ISPRINTREQ = false;
+                if (ValidateforCheckOut())
+                {
+                    AddInvoice("");
+                    clearGridView();
+                    txt_producrtcode.Text = "";
+                    txt_producrtcode.Focus();
+                   
+                }
+                ISPRINTREQ = true;
             }
         }
 
         private void grd_ProductDetails_RowsRemoved(object sender, DataGridViewRowsRemovedEventArgs e)
         {
             CalculateTotal();
+        }
+
+        private void grd_ProductDetails_CurrentCellDirtyStateChanged(object sender, EventArgs e)
+        {
+            if (grd_ProductDetails.IsCurrentCellDirty)
+            {
+                grd_ProductDetails.CommitEdit(DataGridViewDataErrorContexts.Commit);
+            }
+        }
+
+        private void grd_ProductDetails_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            
+        }
+
+        private void grd_ProductDetails_RowStateChanged(object sender, DataGridViewRowStateChangedEventArgs e)
+        {
+            
+                txt_producrtcode.Text = "";
+            txt_producrtcode.Focus();
+
+
         }
     }
 }

@@ -37,6 +37,7 @@ namespace App.UI.RefundAndExpense
                 Invoiceid = InoiceID;
                 FormActionType = ActionType;
                 invoicenum = frminvoicenum;
+                RefundAction();
             }
             if (ActionType == "Settle")
             {
@@ -63,6 +64,7 @@ namespace App.UI.RefundAndExpense
                
                
                 FormActionType = ActionType;
+                btn_purchase.Text = ActionType;
                 btn_purchase.Enabled = true;
            
             }
@@ -136,27 +138,40 @@ namespace App.UI.RefundAndExpense
 
         private void btn_refund_Click(object sender, EventArgs e)
         {
-            RefundMaster refmaster = new RefundMaster();
-            refmaster.InvoicemasterID = Invoiceid;
-            refmaster.RefundDate = DateTime.Now;
-            try
+            if (Creditamount >= Decimal.Parse(txt_PasscodeDisplay.Text))
             {
-                refmaster.TotalRefund = Decimal.Parse(txt_PasscodeDisplay.Text);
+                RefundMaster refmaster = new RefundMaster();
+                refmaster.InvoicemasterID = Invoiceid;
+                refmaster.RefundDate = DateTime.Now;
+                try
+                {
+                    refmaster.TotalRefund = Decimal.Parse(txt_PasscodeDisplay.Text);
+                }
+                catch (Exception)
+                {
+
+                    refmaster.TotalRefund = 0;
+                }
+                refmaster.ShiftID = Program.ShiftId;
+                refmaster.UserID = Program.UserID;
+                refmaster.StoreID = Program.LocationID;
+                refmaster.RefundNum = "R" + invoicenum;
+                RefundRepository refundrepo = new RefundRepository();
+                refmaster = refundrepo.InsertRefund(refmaster);
+
+                MessageBox.Show("Refund #" + refmaster.RefundNum + "Generated Sucessfully");
+
+                this.Close();
             }
-            catch (Exception)
+            else
             {
 
-                refmaster.TotalRefund =0;
+
+                MessageBox.Show("Cannot Refund More than Invoice Value");
             }
-            refmaster.UserID = Program.UserID;
-            refmaster.StoreID = Program.LocationID;
-            refmaster.RefundNum = "R" + invoicenum;
-            RefundRepository refundrepo = new RefundRepository();
-            refmaster= refundrepo.InsertRefund(refmaster);
+              
 
-            MessageBox.Show("Refund #" + refmaster.RefundNum + "Generated Sucessfully");
-
-
+          
         }
 
 
@@ -173,7 +188,17 @@ namespace App.UI.RefundAndExpense
            
         }
 
+        public void RefundAction()
+        {
 
+
+            InvoiceRepository invrepo = new InvoiceRepository();
+            Invoicemaster invmdstr = invrepo.GetInvoice((Invoiceid));
+            lbl_message.Text = "Refundable  Amount :" + invmdstr.TotalBill.ToString();
+            Creditamount = Decimal.Parse(invmdstr.TotalBill.ToString());
+            btn_Credit.Enabled = true;
+
+        }
 
         private void btn_PosOut_Click(object sender, EventArgs e)
         {
@@ -205,6 +230,41 @@ namespace App.UI.RefundAndExpense
 
             
 
+        }
+
+        public void CashOutAction(string type)
+        {
+            CashOutMaster cashoutmaster = new CashOutMaster();
+            cashoutmaster.CashOutDate = DateTime.Now; ;
+            cashoutmaster.CashOutType = type ;
+            try
+            {
+                cashoutmaster.TotalCashOut = Decimal.Parse(txt_PasscodeDisplay.Text);
+            }
+            catch (Exception)
+            {
+                cashoutmaster.TotalCashOut = 0;
+
+            }
+
+            cashoutmaster.Approvedby = "";
+            cashoutmaster.ShiftID = Program.ShiftId;
+            cashoutmaster.UserID = Program.UserID;
+            cashoutmaster.StoreID = Program.LocationID;
+            cashoutmaster.CashOutNum = "COUT-" + invoicenum;
+            CashOutRepository refundrepo = new CashOutRepository();
+            cashoutmaster = refundrepo.InsertCashout(cashoutmaster);
+
+            MessageBox.Show("Cash Out #" + cashoutmaster.CashOutNum + "Generated Successfully");
+
+            this.Close();
+        }
+
+
+
+        private void btn_purchase_Click(object sender, EventArgs e)
+        {
+            CashOutAction(FormActionType);
         }
     }
 }

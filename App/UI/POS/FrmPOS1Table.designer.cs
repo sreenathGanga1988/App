@@ -33,6 +33,7 @@
             this.lbl_paymentDue = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.panel7 = new System.Windows.Forms.Panel();
+            this.lbl_phone = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.lbl_address = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -41,6 +42,7 @@
             this.pnl_product = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel73 = new System.Windows.Forms.Panel();
+            this.chK_SearchMode = new System.Windows.Forms.CheckBox();
             this.panel78 = new System.Windows.Forms.Panel();
             this.button52 = new System.Windows.Forms.Button();
             this.panel77 = new System.Windows.Forms.Panel();
@@ -49,6 +51,8 @@
             this.panel74 = new System.Windows.Forms.Panel();
             this.pnl_customer = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.label3 = new System.Windows.Forms.Label();
+            this.lbl_discount = new System.Windows.Forms.Label();
             this.lbl_tableID = new System.Windows.Forms.Label();
             this.panel9 = new System.Windows.Forms.Panel();
             this.lbl_customer = new System.Windows.Forms.Label();
@@ -60,10 +64,23 @@
             this.panel14 = new System.Windows.Forms.Panel();
             this.pnl_actionbtn = new System.Windows.Forms.Panel();
             this.panel12 = new System.Windows.Forms.Panel();
+            this.button1 = new System.Windows.Forms.Button();
             this.panel11 = new System.Windows.Forms.Panel();
+            this.button3 = new System.Windows.Forms.Button();
+            this.btn_reset = new System.Windows.Forms.Button();
+            this.btn_pricechange = new System.Windows.Forms.Button();
             this.pnl_Row3 = new System.Windows.Forms.Panel();
+            this.btn_order = new System.Windows.Forms.Button();
+            this.btn_tablebill = new System.Windows.Forms.Button();
+            this.btn_paymentMethod = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.btn_notes = new System.Windows.Forms.Button();
+            this.btn_hold = new System.Windows.Forms.Button();
+            this.btn_kot = new System.Windows.Forms.Button();
             this.pnl_firstButtonRow = new System.Windows.Forms.Panel();
+            this.btn_clear = new System.Windows.Forms.Button();
+            this.Btn_buzzer = new System.Windows.Forms.Button();
+            this.btn_Tables = new System.Windows.Forms.Button();
             this.panel28 = new System.Windows.Forms.Panel();
             this.panel37 = new System.Windows.Forms.Panel();
             this.pnl_DisplayButton = new System.Windows.Forms.Panel();
@@ -99,6 +116,7 @@
             this.button35 = new System.Windows.Forms.Button();
             this.button38 = new System.Windows.Forms.Button();
             this.button36 = new System.Windows.Forms.Button();
+            this.button37 = new System.Windows.Forms.Button();
             this.button39 = new System.Windows.Forms.Button();
             this.button40 = new System.Windows.Forms.Button();
             this.button41 = new System.Windows.Forms.Button();
@@ -120,6 +138,7 @@
             this.pnl_left = new System.Windows.Forms.Panel();
             this.pnl_category = new System.Windows.Forms.Panel();
             this.panel17 = new System.Windows.Forms.Panel();
+            this.panel10 = new System.Windows.Forms.Panel();
             this.panel5 = new System.Windows.Forms.Panel();
             this.lbl_datettime = new System.Windows.Forms.Label();
             this.lbl_userid = new System.Windows.Forms.Label();
@@ -130,23 +149,6 @@
             this.panel6 = new System.Windows.Forms.Panel();
             this.label5 = new System.Windows.Forms.Label();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
-            this.lbl_discount = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.btn_reset = new System.Windows.Forms.Button();
-            this.btn_pricechange = new System.Windows.Forms.Button();
-            this.btn_order = new System.Windows.Forms.Button();
-            this.btn_tablebill = new System.Windows.Forms.Button();
-            this.btn_paymentMethod = new System.Windows.Forms.Button();
-            this.btn_notes = new System.Windows.Forms.Button();
-            this.btn_hold = new System.Windows.Forms.Button();
-            this.btn_kot = new System.Windows.Forms.Button();
-            this.btn_clear = new System.Windows.Forms.Button();
-            this.Btn_buzzer = new System.Windows.Forms.Button();
-            this.btn_Tables = new System.Windows.Forms.Button();
-            this.button37 = new System.Windows.Forms.Button();
-            this.panel10 = new System.Windows.Forms.Panel();
             this.panel7.SuspendLayout();
             this.panel1.SuspendLayout();
             this.Pnl_topLevel.SuspendLayout();
@@ -215,6 +217,7 @@
             // 
             this.panel7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(121)))), ((int)(((byte)(166)))));
             this.panel7.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel7.Controls.Add(this.lbl_phone);
             this.panel7.Controls.Add(this.label8);
             this.panel7.Controls.Add(this.lbl_address);
             this.panel7.Controls.Add(this.label2);
@@ -224,6 +227,17 @@
             this.panel7.Name = "panel7";
             this.panel7.Size = new System.Drawing.Size(154, 74);
             this.panel7.TabIndex = 16;
+            // 
+            // lbl_phone
+            // 
+            this.lbl_phone.AutoSize = true;
+            this.lbl_phone.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_phone.ForeColor = System.Drawing.Color.White;
+            this.lbl_phone.Location = new System.Drawing.Point(78, 51);
+            this.lbl_phone.Name = "lbl_phone";
+            this.lbl_phone.Size = new System.Drawing.Size(14, 13);
+            this.lbl_phone.TabIndex = 4;
+            this.lbl_phone.Text = "0";
             // 
             // label8
             // 
@@ -269,7 +283,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1127, 743);
+            this.panel1.Size = new System.Drawing.Size(1127, 741);
             this.panel1.TabIndex = 1;
             // 
             // Pnl_topLevel
@@ -280,7 +294,7 @@
             this.Pnl_topLevel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Pnl_topLevel.Location = new System.Drawing.Point(250, 0);
             this.Pnl_topLevel.Name = "Pnl_topLevel";
-            this.Pnl_topLevel.Size = new System.Drawing.Size(523, 743);
+            this.Pnl_topLevel.Size = new System.Drawing.Size(523, 741);
             this.Pnl_topLevel.TabIndex = 6;
             // 
             // pnl_product
@@ -288,7 +302,7 @@
             this.pnl_product.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnl_product.Location = new System.Drawing.Point(0, 48);
             this.pnl_product.Name = "pnl_product";
-            this.pnl_product.Size = new System.Drawing.Size(523, 621);
+            this.pnl_product.Size = new System.Drawing.Size(523, 619);
             this.pnl_product.TabIndex = 14;
             // 
             // panel3
@@ -303,6 +317,7 @@
             // panel73
             // 
             this.panel73.BackColor = System.Drawing.Color.LightBlue;
+            this.panel73.Controls.Add(this.chK_SearchMode);
             this.panel73.Controls.Add(this.panel78);
             this.panel73.Controls.Add(this.panel77);
             this.panel73.Controls.Add(this.txt_producrtcode);
@@ -313,6 +328,17 @@
             this.panel73.Name = "panel73";
             this.panel73.Size = new System.Drawing.Size(523, 48);
             this.panel73.TabIndex = 8;
+            // 
+            // chK_SearchMode
+            // 
+            this.chK_SearchMode.AutoSize = true;
+            this.chK_SearchMode.Dock = System.Windows.Forms.DockStyle.Left;
+            this.chK_SearchMode.Location = new System.Drawing.Point(366, 3);
+            this.chK_SearchMode.Name = "chK_SearchMode";
+            this.chK_SearchMode.Size = new System.Drawing.Size(90, 45);
+            this.chK_SearchMode.TabIndex = 7;
+            this.chK_SearchMode.Text = "Search Mode";
+            this.chK_SearchMode.UseVisualStyleBackColor = true;
             // 
             // panel78
             // 
@@ -378,7 +404,7 @@
             this.pnl_customer.Controls.Add(this.panel7);
             this.pnl_customer.Controls.Add(this.panel9);
             this.pnl_customer.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.pnl_customer.Location = new System.Drawing.Point(0, 669);
+            this.pnl_customer.Location = new System.Drawing.Point(0, 667);
             this.pnl_customer.Name = "pnl_customer";
             this.pnl_customer.Size = new System.Drawing.Size(523, 74);
             this.pnl_customer.TabIndex = 1;
@@ -396,6 +422,28 @@
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(119, 74);
             this.panel4.TabIndex = 17;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.White;
+            this.label3.Location = new System.Drawing.Point(5, 5);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(78, 13);
+            this.label3.TabIndex = 7;
+            this.label3.Text = "Discount % :";
+            // 
+            // lbl_discount
+            // 
+            this.lbl_discount.AutoSize = true;
+            this.lbl_discount.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_discount.ForeColor = System.Drawing.Color.White;
+            this.lbl_discount.Location = new System.Drawing.Point(25, 34);
+            this.lbl_discount.Name = "lbl_discount";
+            this.lbl_discount.Size = new System.Drawing.Size(54, 13);
+            this.lbl_discount.TabIndex = 6;
+            this.lbl_discount.Text = "Mob No :";
             // 
             // lbl_tableID
             // 
@@ -450,7 +498,7 @@
             this.panel23.Dock = System.Windows.Forms.DockStyle.Right;
             this.panel23.Location = new System.Drawing.Point(773, 0);
             this.panel23.Name = "panel23";
-            this.panel23.Size = new System.Drawing.Size(3, 743);
+            this.panel23.Size = new System.Drawing.Size(3, 741);
             this.panel23.TabIndex = 5;
             // 
             // panel19
@@ -463,7 +511,7 @@
             this.panel19.Dock = System.Windows.Forms.DockStyle.Right;
             this.panel19.Location = new System.Drawing.Point(776, 0);
             this.panel19.Name = "panel19";
-            this.panel19.Size = new System.Drawing.Size(351, 743);
+            this.panel19.Size = new System.Drawing.Size(351, 741);
             this.panel19.TabIndex = 2;
             // 
             // panel48
@@ -515,6 +563,23 @@
             this.panel12.Size = new System.Drawing.Size(350, 52);
             this.panel12.TabIndex = 26;
             // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(187)))), ((int)(((byte)(166)))));
+            this.button1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.button1.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.ForeColor = System.Drawing.Color.Black;
+            this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
+            this.button1.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.button1.Location = new System.Drawing.Point(0, 0);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(350, 52);
+            this.button1.TabIndex = 22;
+            this.button1.Text = "Check Out";
+            this.button1.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.numericbuttonclicked_Click);
+            // 
             // panel11
             // 
             this.panel11.Controls.Add(this.button3);
@@ -525,6 +590,57 @@
             this.panel11.Name = "panel11";
             this.panel11.Size = new System.Drawing.Size(350, 56);
             this.panel11.TabIndex = 25;
+            // 
+            // button3
+            // 
+            this.button3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(187)))), ((int)(((byte)(166)))));
+            this.button3.Dock = System.Windows.Forms.DockStyle.Left;
+            this.button3.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button3.ForeColor = System.Drawing.Color.Black;
+            this.button3.Image = ((System.Drawing.Image)(resources.GetObject("button3.Image")));
+            this.button3.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.button3.Location = new System.Drawing.Point(232, 0);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(116, 56);
+            this.button3.TabIndex = 24;
+            this.button3.Text = "Customer";
+            this.button3.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.button3.UseVisualStyleBackColor = false;
+            this.button3.Click += new System.EventHandler(this.numericbuttonclicked_Click);
+            // 
+            // btn_reset
+            // 
+            this.btn_reset.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(187)))), ((int)(((byte)(166)))));
+            this.btn_reset.Dock = System.Windows.Forms.DockStyle.Left;
+            this.btn_reset.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_reset.ForeColor = System.Drawing.Color.Black;
+            this.btn_reset.Image = ((System.Drawing.Image)(resources.GetObject("btn_reset.Image")));
+            this.btn_reset.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btn_reset.Location = new System.Drawing.Point(116, 0);
+            this.btn_reset.Name = "btn_reset";
+            this.btn_reset.Size = new System.Drawing.Size(116, 56);
+            this.btn_reset.TabIndex = 23;
+            this.btn_reset.Text = "Reset";
+            this.btn_reset.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btn_reset.UseVisualStyleBackColor = false;
+            this.btn_reset.Click += new System.EventHandler(this.numericbuttonclicked_Click);
+            // 
+            // btn_pricechange
+            // 
+            this.btn_pricechange.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(187)))), ((int)(((byte)(166)))));
+            this.btn_pricechange.Dock = System.Windows.Forms.DockStyle.Left;
+            this.btn_pricechange.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_pricechange.ForeColor = System.Drawing.Color.Black;
+            this.btn_pricechange.Image = ((System.Drawing.Image)(resources.GetObject("btn_pricechange.Image")));
+            this.btn_pricechange.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btn_pricechange.Location = new System.Drawing.Point(0, 0);
+            this.btn_pricechange.Name = "btn_pricechange";
+            this.btn_pricechange.Size = new System.Drawing.Size(116, 56);
+            this.btn_pricechange.TabIndex = 22;
+            this.btn_pricechange.Text = "Price Change";
+            this.btn_pricechange.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btn_pricechange.UseVisualStyleBackColor = false;
+            this.btn_pricechange.Click += new System.EventHandler(this.numericbuttonclicked_Click);
             // 
             // pnl_Row3
             // 
@@ -537,6 +653,57 @@
             this.pnl_Row3.Size = new System.Drawing.Size(350, 56);
             this.pnl_Row3.TabIndex = 24;
             // 
+            // btn_order
+            // 
+            this.btn_order.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(187)))), ((int)(((byte)(166)))));
+            this.btn_order.Dock = System.Windows.Forms.DockStyle.Left;
+            this.btn_order.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_order.ForeColor = System.Drawing.Color.Black;
+            this.btn_order.Image = ((System.Drawing.Image)(resources.GetObject("btn_order.Image")));
+            this.btn_order.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btn_order.Location = new System.Drawing.Point(232, 0);
+            this.btn_order.Name = "btn_order";
+            this.btn_order.Size = new System.Drawing.Size(116, 56);
+            this.btn_order.TabIndex = 22;
+            this.btn_order.Text = "Order";
+            this.btn_order.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btn_order.UseVisualStyleBackColor = false;
+            this.btn_order.Click += new System.EventHandler(this.numericbuttonclicked_Click);
+            // 
+            // btn_tablebill
+            // 
+            this.btn_tablebill.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(187)))), ((int)(((byte)(166)))));
+            this.btn_tablebill.Dock = System.Windows.Forms.DockStyle.Left;
+            this.btn_tablebill.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_tablebill.ForeColor = System.Drawing.Color.Black;
+            this.btn_tablebill.Image = ((System.Drawing.Image)(resources.GetObject("btn_tablebill.Image")));
+            this.btn_tablebill.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btn_tablebill.Location = new System.Drawing.Point(116, 0);
+            this.btn_tablebill.Name = "btn_tablebill";
+            this.btn_tablebill.Size = new System.Drawing.Size(116, 56);
+            this.btn_tablebill.TabIndex = 3;
+            this.btn_tablebill.Text = "Table Bill";
+            this.btn_tablebill.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btn_tablebill.UseVisualStyleBackColor = false;
+            this.btn_tablebill.Click += new System.EventHandler(this.numericbuttonclicked_Click);
+            // 
+            // btn_paymentMethod
+            // 
+            this.btn_paymentMethod.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(187)))), ((int)(((byte)(166)))));
+            this.btn_paymentMethod.Dock = System.Windows.Forms.DockStyle.Left;
+            this.btn_paymentMethod.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_paymentMethod.ForeColor = System.Drawing.Color.Black;
+            this.btn_paymentMethod.Image = ((System.Drawing.Image)(resources.GetObject("btn_paymentMethod.Image")));
+            this.btn_paymentMethod.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btn_paymentMethod.Location = new System.Drawing.Point(0, 0);
+            this.btn_paymentMethod.Name = "btn_paymentMethod";
+            this.btn_paymentMethod.Size = new System.Drawing.Size(116, 56);
+            this.btn_paymentMethod.TabIndex = 21;
+            this.btn_paymentMethod.Text = "Payment Method";
+            this.btn_paymentMethod.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btn_paymentMethod.UseVisualStyleBackColor = false;
+            this.btn_paymentMethod.Click += new System.EventHandler(this.numericbuttonclicked_Click);
+            // 
             // panel2
             // 
             this.panel2.Controls.Add(this.btn_notes);
@@ -548,6 +715,57 @@
             this.panel2.Size = new System.Drawing.Size(350, 55);
             this.panel2.TabIndex = 23;
             // 
+            // btn_notes
+            // 
+            this.btn_notes.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(187)))), ((int)(((byte)(166)))));
+            this.btn_notes.Dock = System.Windows.Forms.DockStyle.Left;
+            this.btn_notes.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_notes.ForeColor = System.Drawing.Color.White;
+            this.btn_notes.Image = ((System.Drawing.Image)(resources.GetObject("btn_notes.Image")));
+            this.btn_notes.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btn_notes.Location = new System.Drawing.Point(232, 0);
+            this.btn_notes.Name = "btn_notes";
+            this.btn_notes.Size = new System.Drawing.Size(116, 55);
+            this.btn_notes.TabIndex = 20;
+            this.btn_notes.Text = "Notes";
+            this.btn_notes.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btn_notes.UseVisualStyleBackColor = false;
+            this.btn_notes.Click += new System.EventHandler(this.numericbuttonclicked_Click);
+            // 
+            // btn_hold
+            // 
+            this.btn_hold.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(187)))), ((int)(((byte)(166)))));
+            this.btn_hold.Dock = System.Windows.Forms.DockStyle.Left;
+            this.btn_hold.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_hold.ForeColor = System.Drawing.Color.Black;
+            this.btn_hold.Image = ((System.Drawing.Image)(resources.GetObject("btn_hold.Image")));
+            this.btn_hold.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btn_hold.Location = new System.Drawing.Point(116, 0);
+            this.btn_hold.Name = "btn_hold";
+            this.btn_hold.Size = new System.Drawing.Size(116, 55);
+            this.btn_hold.TabIndex = 21;
+            this.btn_hold.Text = "Hold";
+            this.btn_hold.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btn_hold.UseVisualStyleBackColor = false;
+            this.btn_hold.Click += new System.EventHandler(this.numericbuttonclicked_Click);
+            // 
+            // btn_kot
+            // 
+            this.btn_kot.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(187)))), ((int)(((byte)(166)))));
+            this.btn_kot.Dock = System.Windows.Forms.DockStyle.Left;
+            this.btn_kot.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_kot.ForeColor = System.Drawing.Color.Black;
+            this.btn_kot.Image = ((System.Drawing.Image)(resources.GetObject("btn_kot.Image")));
+            this.btn_kot.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btn_kot.Location = new System.Drawing.Point(0, 0);
+            this.btn_kot.Name = "btn_kot";
+            this.btn_kot.Size = new System.Drawing.Size(116, 55);
+            this.btn_kot.TabIndex = 21;
+            this.btn_kot.Text = "KOT";
+            this.btn_kot.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btn_kot.UseVisualStyleBackColor = false;
+            this.btn_kot.Click += new System.EventHandler(this.numericbuttonclicked_Click);
+            // 
             // pnl_firstButtonRow
             // 
             this.pnl_firstButtonRow.Controls.Add(this.btn_clear);
@@ -558,6 +776,57 @@
             this.pnl_firstButtonRow.Name = "pnl_firstButtonRow";
             this.pnl_firstButtonRow.Size = new System.Drawing.Size(350, 55);
             this.pnl_firstButtonRow.TabIndex = 22;
+            // 
+            // btn_clear
+            // 
+            this.btn_clear.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(187)))), ((int)(((byte)(166)))));
+            this.btn_clear.Dock = System.Windows.Forms.DockStyle.Left;
+            this.btn_clear.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_clear.ForeColor = System.Drawing.Color.Black;
+            this.btn_clear.Image = ((System.Drawing.Image)(resources.GetObject("btn_clear.Image")));
+            this.btn_clear.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btn_clear.Location = new System.Drawing.Point(232, 0);
+            this.btn_clear.Name = "btn_clear";
+            this.btn_clear.Size = new System.Drawing.Size(116, 55);
+            this.btn_clear.TabIndex = 20;
+            this.btn_clear.Text = "Clear";
+            this.btn_clear.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btn_clear.UseVisualStyleBackColor = false;
+            this.btn_clear.Click += new System.EventHandler(this.numericbuttonclicked_Click);
+            // 
+            // Btn_buzzer
+            // 
+            this.Btn_buzzer.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(187)))), ((int)(((byte)(166)))));
+            this.Btn_buzzer.Dock = System.Windows.Forms.DockStyle.Left;
+            this.Btn_buzzer.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Btn_buzzer.ForeColor = System.Drawing.Color.Black;
+            this.Btn_buzzer.Image = ((System.Drawing.Image)(resources.GetObject("Btn_buzzer.Image")));
+            this.Btn_buzzer.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.Btn_buzzer.Location = new System.Drawing.Point(116, 0);
+            this.Btn_buzzer.Name = "Btn_buzzer";
+            this.Btn_buzzer.Size = new System.Drawing.Size(116, 55);
+            this.Btn_buzzer.TabIndex = 21;
+            this.Btn_buzzer.Text = "Buzzer";
+            this.Btn_buzzer.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.Btn_buzzer.UseVisualStyleBackColor = false;
+            this.Btn_buzzer.Click += new System.EventHandler(this.numericbuttonclicked_Click);
+            // 
+            // btn_Tables
+            // 
+            this.btn_Tables.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(187)))), ((int)(((byte)(166)))));
+            this.btn_Tables.Dock = System.Windows.Forms.DockStyle.Left;
+            this.btn_Tables.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_Tables.ForeColor = System.Drawing.Color.Black;
+            this.btn_Tables.Image = ((System.Drawing.Image)(resources.GetObject("btn_Tables.Image")));
+            this.btn_Tables.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btn_Tables.Location = new System.Drawing.Point(0, 0);
+            this.btn_Tables.Name = "btn_Tables";
+            this.btn_Tables.Size = new System.Drawing.Size(116, 55);
+            this.btn_Tables.TabIndex = 20;
+            this.btn_Tables.Text = "Tables";
+            this.btn_Tables.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btn_Tables.UseVisualStyleBackColor = false;
+            this.btn_Tables.Click += new System.EventHandler(this.numericbuttonclicked_Click);
             // 
             // panel28
             // 
@@ -979,6 +1248,20 @@
             this.button36.UseVisualStyleBackColor = false;
             this.button36.Click += new System.EventHandler(this.numericbuttonclicked_Click);
             // 
+            // button37
+            // 
+            this.button37.BackColor = System.Drawing.Color.White;
+            this.button37.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button37.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(58)))), ((int)(((byte)(69)))));
+            this.button37.Image = ((System.Drawing.Image)(resources.GetObject("button37.Image")));
+            this.button37.Location = new System.Drawing.Point(116, 188);
+            this.button37.Name = "button37";
+            this.button37.Size = new System.Drawing.Size(58, 63);
+            this.button37.TabIndex = 20;
+            this.button37.Text = "<";
+            this.button37.UseVisualStyleBackColor = false;
+            this.button37.Click += new System.EventHandler(this.numericbuttonclicked_Click);
+            // 
             // button39
             // 
             this.button39.BackColor = System.Drawing.Color.White;
@@ -1084,6 +1367,7 @@
             // grd_ProductDetails
             // 
             this.grd_ProductDetails.AllowUserToAddRows = false;
+            this.grd_ProductDetails.AllowUserToDeleteRows = false;
             this.grd_ProductDetails.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.grd_ProductDetails.BackgroundColor = System.Drawing.Color.White;
             this.grd_ProductDetails.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -1104,7 +1388,10 @@
             this.grd_ProductDetails.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.grd_ProductDetails.Size = new System.Drawing.Size(351, 211);
             this.grd_ProductDetails.TabIndex = 1;
+            this.grd_ProductDetails.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grd_ProductDetails_CellClick);
+            this.grd_ProductDetails.CurrentCellDirtyStateChanged += new System.EventHandler(this.grd_ProductDetails_CurrentCellDirtyStateChanged);
             this.grd_ProductDetails.RowsRemoved += new System.Windows.Forms.DataGridViewRowsRemovedEventHandler(this.grd_ProductDetails_RowsRemoved);
+            this.grd_ProductDetails.RowStateChanged += new System.Windows.Forms.DataGridViewRowStateChangedEventHandler(this.grd_ProductDetails_RowStateChanged);
             // 
             // ID
             // 
@@ -1169,7 +1456,7 @@
             this.pnl_left.Dock = System.Windows.Forms.DockStyle.Left;
             this.pnl_left.Location = new System.Drawing.Point(0, 0);
             this.pnl_left.Name = "pnl_left";
-            this.pnl_left.Size = new System.Drawing.Size(250, 743);
+            this.pnl_left.Size = new System.Drawing.Size(250, 741);
             this.pnl_left.TabIndex = 0;
             // 
             // pnl_category
@@ -1177,7 +1464,7 @@
             this.pnl_category.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnl_category.Location = new System.Drawing.Point(0, 61);
             this.pnl_category.Name = "pnl_category";
-            this.pnl_category.Size = new System.Drawing.Size(250, 592);
+            this.pnl_category.Size = new System.Drawing.Size(250, 590);
             this.pnl_category.TabIndex = 3;
             // 
             // panel17
@@ -1187,10 +1474,22 @@
             this.panel17.Controls.Add(this.panel10);
             this.panel17.Controls.Add(this.panel5);
             this.panel17.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel17.Location = new System.Drawing.Point(0, 653);
+            this.panel17.Location = new System.Drawing.Point(0, 651);
             this.panel17.Name = "panel17";
             this.panel17.Size = new System.Drawing.Size(250, 90);
             this.panel17.TabIndex = 2;
+            // 
+            // panel10
+            // 
+            this.panel10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(6)))), ((int)(((byte)(34)))));
+            this.panel10.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel10.BackgroundImage")));
+            this.panel10.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.panel10.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel10.Location = new System.Drawing.Point(0, 0);
+            this.panel10.Name = "panel10";
+            this.panel10.Size = new System.Drawing.Size(250, 52);
+            this.panel10.TabIndex = 2;
+            this.panel10.MouseClick += new System.Windows.Forms.MouseEventHandler(this.panel10_MouseClick);
             // 
             // panel5
             // 
@@ -1301,281 +1600,13 @@
             this.imageList1.Images.SetKeyName(4, "256-256-d13cafbf17ecd8f2065c8842a6e4e228.png");
             this.imageList1.Images.SetKeyName(5, "45200.png");
             // 
-            // lbl_discount
-            // 
-            this.lbl_discount.AutoSize = true;
-            this.lbl_discount.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_discount.ForeColor = System.Drawing.Color.White;
-            this.lbl_discount.Location = new System.Drawing.Point(25, 34);
-            this.lbl_discount.Name = "lbl_discount";
-            this.lbl_discount.Size = new System.Drawing.Size(54, 13);
-            this.lbl_discount.TabIndex = 6;
-            this.lbl_discount.Text = "Mob No :";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(5, 5);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(78, 13);
-            this.label3.TabIndex = 7;
-            this.label3.Text = "Discount % :";
-            // 
-            // button1
-            // 
-            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(187)))), ((int)(((byte)(166)))));
-            this.button1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.button1.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.Color.Black;
-            this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
-            this.button1.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.button1.Location = new System.Drawing.Point(0, 0);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(350, 52);
-            this.button1.TabIndex = 22;
-            this.button1.Text = "Check Out";
-            this.button1.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.numericbuttonclicked_Click);
-            // 
-            // button3
-            // 
-            this.button3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(187)))), ((int)(((byte)(166)))));
-            this.button3.Dock = System.Windows.Forms.DockStyle.Left;
-            this.button3.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.ForeColor = System.Drawing.Color.Black;
-            this.button3.Image = global::App.Properties.Resources.customer1;
-            this.button3.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.button3.Location = new System.Drawing.Point(232, 0);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(116, 56);
-            this.button3.TabIndex = 24;
-            this.button3.Text = "Customer";
-            this.button3.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.button3.UseVisualStyleBackColor = false;
-            this.button3.Click += new System.EventHandler(this.numericbuttonclicked_Click);
-            // 
-            // btn_reset
-            // 
-            this.btn_reset.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(187)))), ((int)(((byte)(166)))));
-            this.btn_reset.Dock = System.Windows.Forms.DockStyle.Left;
-            this.btn_reset.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_reset.ForeColor = System.Drawing.Color.Black;
-            this.btn_reset.Image = ((System.Drawing.Image)(resources.GetObject("btn_reset.Image")));
-            this.btn_reset.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btn_reset.Location = new System.Drawing.Point(116, 0);
-            this.btn_reset.Name = "btn_reset";
-            this.btn_reset.Size = new System.Drawing.Size(116, 56);
-            this.btn_reset.TabIndex = 23;
-            this.btn_reset.Text = "Reset";
-            this.btn_reset.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btn_reset.UseVisualStyleBackColor = false;
-            this.btn_reset.Click += new System.EventHandler(this.numericbuttonclicked_Click);
-            // 
-            // btn_pricechange
-            // 
-            this.btn_pricechange.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(187)))), ((int)(((byte)(166)))));
-            this.btn_pricechange.Dock = System.Windows.Forms.DockStyle.Left;
-            this.btn_pricechange.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_pricechange.ForeColor = System.Drawing.Color.Black;
-            this.btn_pricechange.Image = ((System.Drawing.Image)(resources.GetObject("btn_pricechange.Image")));
-            this.btn_pricechange.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btn_pricechange.Location = new System.Drawing.Point(0, 0);
-            this.btn_pricechange.Name = "btn_pricechange";
-            this.btn_pricechange.Size = new System.Drawing.Size(116, 56);
-            this.btn_pricechange.TabIndex = 22;
-            this.btn_pricechange.Text = "Price Change";
-            this.btn_pricechange.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btn_pricechange.UseVisualStyleBackColor = false;
-            this.btn_pricechange.Click += new System.EventHandler(this.numericbuttonclicked_Click);
-            // 
-            // btn_order
-            // 
-            this.btn_order.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(187)))), ((int)(((byte)(166)))));
-            this.btn_order.Dock = System.Windows.Forms.DockStyle.Left;
-            this.btn_order.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_order.ForeColor = System.Drawing.Color.Black;
-            this.btn_order.Image = global::App.Properties.Resources.actions;
-            this.btn_order.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btn_order.Location = new System.Drawing.Point(232, 0);
-            this.btn_order.Name = "btn_order";
-            this.btn_order.Size = new System.Drawing.Size(116, 56);
-            this.btn_order.TabIndex = 22;
-            this.btn_order.Text = "Order";
-            this.btn_order.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btn_order.UseVisualStyleBackColor = false;
-            this.btn_order.Click += new System.EventHandler(this.numericbuttonclicked_Click);
-            // 
-            // btn_tablebill
-            // 
-            this.btn_tablebill.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(187)))), ((int)(((byte)(166)))));
-            this.btn_tablebill.Dock = System.Windows.Forms.DockStyle.Left;
-            this.btn_tablebill.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_tablebill.ForeColor = System.Drawing.Color.Black;
-            this.btn_tablebill.Image = global::App.Properties.Resources.tablebill;
-            this.btn_tablebill.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btn_tablebill.Location = new System.Drawing.Point(116, 0);
-            this.btn_tablebill.Name = "btn_tablebill";
-            this.btn_tablebill.Size = new System.Drawing.Size(116, 56);
-            this.btn_tablebill.TabIndex = 3;
-            this.btn_tablebill.Text = "Table Bill";
-            this.btn_tablebill.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btn_tablebill.UseVisualStyleBackColor = false;
-            this.btn_tablebill.Click += new System.EventHandler(this.numericbuttonclicked_Click);
-            // 
-            // btn_paymentMethod
-            // 
-            this.btn_paymentMethod.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(187)))), ((int)(((byte)(166)))));
-            this.btn_paymentMethod.Dock = System.Windows.Forms.DockStyle.Left;
-            this.btn_paymentMethod.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_paymentMethod.ForeColor = System.Drawing.Color.Black;
-            this.btn_paymentMethod.Image = global::App.Properties.Resources.paymentmethod;
-            this.btn_paymentMethod.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btn_paymentMethod.Location = new System.Drawing.Point(0, 0);
-            this.btn_paymentMethod.Name = "btn_paymentMethod";
-            this.btn_paymentMethod.Size = new System.Drawing.Size(116, 56);
-            this.btn_paymentMethod.TabIndex = 21;
-            this.btn_paymentMethod.Text = "Payment Method";
-            this.btn_paymentMethod.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btn_paymentMethod.UseVisualStyleBackColor = false;
-            this.btn_paymentMethod.Click += new System.EventHandler(this.numericbuttonclicked_Click);
-            // 
-            // btn_notes
-            // 
-            this.btn_notes.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(187)))), ((int)(((byte)(166)))));
-            this.btn_notes.Dock = System.Windows.Forms.DockStyle.Left;
-            this.btn_notes.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_notes.ForeColor = System.Drawing.Color.White;
-            this.btn_notes.Image = global::App.Properties.Resources.note;
-            this.btn_notes.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btn_notes.Location = new System.Drawing.Point(232, 0);
-            this.btn_notes.Name = "btn_notes";
-            this.btn_notes.Size = new System.Drawing.Size(116, 55);
-            this.btn_notes.TabIndex = 20;
-            this.btn_notes.Text = "Notes";
-            this.btn_notes.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btn_notes.UseVisualStyleBackColor = false;
-            this.btn_notes.Click += new System.EventHandler(this.numericbuttonclicked_Click);
-            // 
-            // btn_hold
-            // 
-            this.btn_hold.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(187)))), ((int)(((byte)(166)))));
-            this.btn_hold.Dock = System.Windows.Forms.DockStyle.Left;
-            this.btn_hold.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_hold.ForeColor = System.Drawing.Color.Black;
-            this.btn_hold.Image = global::App.Properties.Resources.Hold1;
-            this.btn_hold.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btn_hold.Location = new System.Drawing.Point(116, 0);
-            this.btn_hold.Name = "btn_hold";
-            this.btn_hold.Size = new System.Drawing.Size(116, 55);
-            this.btn_hold.TabIndex = 21;
-            this.btn_hold.Text = "Hold";
-            this.btn_hold.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btn_hold.UseVisualStyleBackColor = false;
-            this.btn_hold.Click += new System.EventHandler(this.numericbuttonclicked_Click);
-            // 
-            // btn_kot
-            // 
-            this.btn_kot.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(187)))), ((int)(((byte)(166)))));
-            this.btn_kot.Dock = System.Windows.Forms.DockStyle.Left;
-            this.btn_kot.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_kot.ForeColor = System.Drawing.Color.Black;
-            this.btn_kot.Image = global::App.Properties.Resources.KOT;
-            this.btn_kot.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btn_kot.Location = new System.Drawing.Point(0, 0);
-            this.btn_kot.Name = "btn_kot";
-            this.btn_kot.Size = new System.Drawing.Size(116, 55);
-            this.btn_kot.TabIndex = 21;
-            this.btn_kot.Text = "KOT";
-            this.btn_kot.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btn_kot.UseVisualStyleBackColor = false;
-            this.btn_kot.Click += new System.EventHandler(this.numericbuttonclicked_Click);
-            // 
-            // btn_clear
-            // 
-            this.btn_clear.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(187)))), ((int)(((byte)(166)))));
-            this.btn_clear.Dock = System.Windows.Forms.DockStyle.Left;
-            this.btn_clear.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_clear.ForeColor = System.Drawing.Color.Black;
-            this.btn_clear.Image = global::App.Properties.Resources.Icons8_Windows_8_Data_Clear_Filters;
-            this.btn_clear.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btn_clear.Location = new System.Drawing.Point(232, 0);
-            this.btn_clear.Name = "btn_clear";
-            this.btn_clear.Size = new System.Drawing.Size(116, 55);
-            this.btn_clear.TabIndex = 20;
-            this.btn_clear.Text = "Clear";
-            this.btn_clear.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btn_clear.UseVisualStyleBackColor = false;
-            this.btn_clear.Click += new System.EventHandler(this.numericbuttonclicked_Click);
-            // 
-            // Btn_buzzer
-            // 
-            this.Btn_buzzer.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(187)))), ((int)(((byte)(166)))));
-            this.Btn_buzzer.Dock = System.Windows.Forms.DockStyle.Left;
-            this.Btn_buzzer.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Btn_buzzer.ForeColor = System.Drawing.Color.Black;
-            this.Btn_buzzer.Image = global::App.Properties.Resources.buzzer2;
-            this.Btn_buzzer.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.Btn_buzzer.Location = new System.Drawing.Point(116, 0);
-            this.Btn_buzzer.Name = "Btn_buzzer";
-            this.Btn_buzzer.Size = new System.Drawing.Size(116, 55);
-            this.Btn_buzzer.TabIndex = 21;
-            this.Btn_buzzer.Text = "Buzzer";
-            this.Btn_buzzer.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.Btn_buzzer.UseVisualStyleBackColor = false;
-            this.Btn_buzzer.Click += new System.EventHandler(this.numericbuttonclicked_Click);
-            // 
-            // btn_Tables
-            // 
-            this.btn_Tables.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(187)))), ((int)(((byte)(166)))));
-            this.btn_Tables.Dock = System.Windows.Forms.DockStyle.Left;
-            this.btn_Tables.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_Tables.ForeColor = System.Drawing.Color.Black;
-            this.btn_Tables.Image = global::App.Properties.Resources.Table11;
-            this.btn_Tables.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btn_Tables.Location = new System.Drawing.Point(0, 0);
-            this.btn_Tables.Name = "btn_Tables";
-            this.btn_Tables.Size = new System.Drawing.Size(116, 55);
-            this.btn_Tables.TabIndex = 20;
-            this.btn_Tables.Text = "Tables";
-            this.btn_Tables.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btn_Tables.UseVisualStyleBackColor = false;
-            this.btn_Tables.Click += new System.EventHandler(this.numericbuttonclicked_Click);
-            // 
-            // button37
-            // 
-            this.button37.BackColor = System.Drawing.Color.White;
-            this.button37.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button37.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(58)))), ((int)(((byte)(69)))));
-            this.button37.Image = ((System.Drawing.Image)(resources.GetObject("button37.Image")));
-            this.button37.Location = new System.Drawing.Point(116, 188);
-            this.button37.Name = "button37";
-            this.button37.Size = new System.Drawing.Size(58, 63);
-            this.button37.TabIndex = 20;
-            this.button37.Text = "<";
-            this.button37.UseVisualStyleBackColor = false;
-            this.button37.Click += new System.EventHandler(this.numericbuttonclicked_Click);
-            // 
-            // panel10
-            // 
-            this.panel10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(6)))), ((int)(((byte)(34)))));
-            this.panel10.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel10.BackgroundImage")));
-            this.panel10.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.panel10.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel10.Location = new System.Drawing.Point(0, 0);
-            this.panel10.Name = "panel10";
-            this.panel10.Size = new System.Drawing.Size(250, 52);
-            this.panel10.TabIndex = 2;
-            this.panel10.MouseClick += new System.Windows.Forms.MouseEventHandler(this.panel10_MouseClick);
-            // 
             // FrmPOS1Table
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1127, 743);
+            this.ClientSize = new System.Drawing.Size(1127, 741);
             this.Controls.Add(this.panel1);
+            this.KeyPreview = true;
             this.Name = "FrmPOS1Table";
             this.ShowIcon = false;
             this.Text = "Point of Sale";
@@ -1756,5 +1787,7 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label lbl_discount;
+        private System.Windows.Forms.Label lbl_phone;
+        private System.Windows.Forms.CheckBox chK_SearchMode;
     }
 }

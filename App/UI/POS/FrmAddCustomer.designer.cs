@@ -30,15 +30,22 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmAddCustomer));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel22 = new System.Windows.Forms.Panel();
             this.panel10 = new System.Windows.Forms.Panel();
             this.btn_addCustomer = new System.Windows.Forms.Button();
             this.panel6 = new System.Windows.Forms.Panel();
-            this.button1 = new System.Windows.Forms.Button();
             this.panel4 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.dgv = new System.Windows.Forms.DataGridView();
+            this.CustomerID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.OdooID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CustomerName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PhoneNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CustomerDetails = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PaymentDue = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.BarcodeNum = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Discount = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel12 = new System.Windows.Forms.Panel();
             this.button2 = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -54,6 +61,12 @@
             this.panel21 = new System.Windows.Forms.Panel();
             this.panel13 = new System.Windows.Forms.Panel();
             this.panel11 = new System.Windows.Forms.Panel();
+            this.txt_discount = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.txt_barcode = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.txt_due = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
             this.lbl_odooid = new System.Windows.Forms.Label();
             this.lbl_cutomerid = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -68,21 +81,6 @@
             this.panel7 = new System.Windows.Forms.Panel();
             this.panel14 = new System.Windows.Forms.Panel();
             this.panel71 = new System.Windows.Forms.Panel();
-            this.CustomerID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.OdooID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CustomerName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.PhoneNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CustomerDetails = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.PaymentDue = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.BarcodeNum = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Discount = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.txt_barcode = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.txt_due = new System.Windows.Forms.TextBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.txt_discount = new System.Windows.Forms.TextBox();
-            this.label7 = new System.Windows.Forms.Label();
-            this.panel6.SuspendLayout();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv)).BeginInit();
             this.panel12.SuspendLayout();
@@ -131,21 +129,11 @@
             // 
             // panel6
             // 
-            this.panel6.Controls.Add(this.button1);
             this.panel6.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel6.Location = new System.Drawing.Point(0, 0);
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(591, 30);
             this.panel6.TabIndex = 0;
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(7, 3);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
             // 
             // panel4
             // 
@@ -166,15 +154,16 @@
             // 
             // dgv
             // 
+            this.dgv.AllowUserToAddRows = false;
             this.dgv.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgv.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgv.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgv.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.CustomerID,
@@ -194,6 +183,47 @@
             this.dgv.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_CellClick);
             this.dgv.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_CellContentDoubleClick);
             this.dgv.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_CellDoubleClick_1);
+            // 
+            // CustomerID
+            // 
+            this.CustomerID.HeaderText = "CustomerID";
+            this.CustomerID.Name = "CustomerID";
+            // 
+            // OdooID
+            // 
+            this.OdooID.HeaderText = "OdooID";
+            this.OdooID.Name = "OdooID";
+            this.OdooID.Visible = false;
+            // 
+            // CustomerName
+            // 
+            this.CustomerName.HeaderText = "CustomerName";
+            this.CustomerName.Name = "CustomerName";
+            // 
+            // PhoneNumber
+            // 
+            this.PhoneNumber.HeaderText = "PhoneNumber";
+            this.PhoneNumber.Name = "PhoneNumber";
+            // 
+            // CustomerDetails
+            // 
+            this.CustomerDetails.HeaderText = "CustomerDetails";
+            this.CustomerDetails.Name = "CustomerDetails";
+            // 
+            // PaymentDue
+            // 
+            this.PaymentDue.HeaderText = "PaymentDue";
+            this.PaymentDue.Name = "PaymentDue";
+            // 
+            // BarcodeNum
+            // 
+            this.BarcodeNum.HeaderText = "BarcodeNum";
+            this.BarcodeNum.Name = "BarcodeNum";
+            // 
+            // Discount
+            // 
+            this.Discount.HeaderText = "Discount";
+            this.Discount.Name = "Discount";
             // 
             // panel12
             // 
@@ -366,6 +396,66 @@
             this.panel11.Size = new System.Drawing.Size(755, 132);
             this.panel11.TabIndex = 6;
             // 
+            // txt_discount
+            // 
+            this.txt_discount.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txt_discount.Location = new System.Drawing.Point(611, 100);
+            this.txt_discount.Name = "txt_discount";
+            this.txt_discount.Size = new System.Drawing.Size(112, 21);
+            this.txt_discount.TabIndex = 20;
+            this.txt_discount.Text = "0";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.ForeColor = System.Drawing.Color.White;
+            this.label7.Location = new System.Drawing.Point(537, 103);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(56, 13);
+            this.label7.TabIndex = 19;
+            this.label7.Text = "Discount";
+            // 
+            // txt_barcode
+            // 
+            this.txt_barcode.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txt_barcode.Location = new System.Drawing.Point(400, 100);
+            this.txt_barcode.Name = "txt_barcode";
+            this.txt_barcode.Size = new System.Drawing.Size(112, 21);
+            this.txt_barcode.TabIndex = 18;
+            this.txt_barcode.Text = " ";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.ForeColor = System.Drawing.Color.White;
+            this.label5.Location = new System.Drawing.Point(326, 103);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(54, 13);
+            this.label5.TabIndex = 17;
+            this.label5.Text = "BarCode";
+            // 
+            // txt_due
+            // 
+            this.txt_due.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txt_due.Location = new System.Drawing.Point(88, 100);
+            this.txt_due.Name = "txt_due";
+            this.txt_due.Size = new System.Drawing.Size(211, 21);
+            this.txt_due.TabIndex = 16;
+            this.txt_due.Text = " 0";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.ForeColor = System.Drawing.Color.White;
+            this.label6.Location = new System.Drawing.Point(32, 106);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(29, 13);
+            this.label6.TabIndex = 15;
+            this.label6.Text = "Due";
+            // 
             // lbl_odooid
             // 
             this.lbl_odooid.AutoSize = true;
@@ -508,107 +598,6 @@
             this.panel71.Size = new System.Drawing.Size(51, 30);
             this.panel71.TabIndex = 4;
             // 
-            // CustomerID
-            // 
-            this.CustomerID.HeaderText = "CustomerID";
-            this.CustomerID.Name = "CustomerID";
-            // 
-            // OdooID
-            // 
-            this.OdooID.HeaderText = "OdooID";
-            this.OdooID.Name = "OdooID";
-            this.OdooID.Visible = false;
-            // 
-            // CustomerName
-            // 
-            this.CustomerName.HeaderText = "CustomerName";
-            this.CustomerName.Name = "CustomerName";
-            // 
-            // PhoneNumber
-            // 
-            this.PhoneNumber.HeaderText = "PhoneNumber";
-            this.PhoneNumber.Name = "PhoneNumber";
-            // 
-            // CustomerDetails
-            // 
-            this.CustomerDetails.HeaderText = "CustomerDetails";
-            this.CustomerDetails.Name = "CustomerDetails";
-            // 
-            // PaymentDue
-            // 
-            this.PaymentDue.HeaderText = "PaymentDue";
-            this.PaymentDue.Name = "PaymentDue";
-            // 
-            // BarcodeNum
-            // 
-            this.BarcodeNum.HeaderText = "BarcodeNum";
-            this.BarcodeNum.Name = "BarcodeNum";
-            // 
-            // Discount
-            // 
-            this.Discount.HeaderText = "Discount";
-            this.Discount.Name = "Discount";
-            // 
-            // txt_barcode
-            // 
-            this.txt_barcode.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_barcode.Location = new System.Drawing.Point(400, 100);
-            this.txt_barcode.Name = "txt_barcode";
-            this.txt_barcode.Size = new System.Drawing.Size(112, 21);
-            this.txt_barcode.TabIndex = 18;
-            this.txt_barcode.Text = " ";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.ForeColor = System.Drawing.Color.White;
-            this.label5.Location = new System.Drawing.Point(326, 103);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(54, 13);
-            this.label5.TabIndex = 17;
-            this.label5.Text = "BarCode";
-            // 
-            // txt_due
-            // 
-            this.txt_due.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_due.Location = new System.Drawing.Point(88, 100);
-            this.txt_due.Name = "txt_due";
-            this.txt_due.Size = new System.Drawing.Size(211, 21);
-            this.txt_due.TabIndex = 16;
-            this.txt_due.Text = " 0";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.ForeColor = System.Drawing.Color.White;
-            this.label6.Location = new System.Drawing.Point(32, 106);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(29, 13);
-            this.label6.TabIndex = 15;
-            this.label6.Text = "Due";
-            // 
-            // txt_discount
-            // 
-            this.txt_discount.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_discount.Location = new System.Drawing.Point(611, 100);
-            this.txt_discount.Name = "txt_discount";
-            this.txt_discount.Size = new System.Drawing.Size(112, 21);
-            this.txt_discount.TabIndex = 20;
-            this.txt_discount.Text = "0";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.ForeColor = System.Drawing.Color.White;
-            this.label7.Location = new System.Drawing.Point(537, 103);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(56, 13);
-            this.label7.TabIndex = 19;
-            this.label7.Text = "Discount";
-            // 
             // FrmAddCustomer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -618,7 +607,6 @@
             this.Name = "FrmAddCustomer";
             this.ShowIcon = false;
             this.Text = "Customer";
-            this.panel6.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgv)).EndInit();
             this.panel12.ResumeLayout(false);
@@ -675,7 +663,6 @@
         private System.Windows.Forms.Panel panel7;
         private System.Windows.Forms.Panel panel14;
         private System.Windows.Forms.Panel panel71;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label lbl_odooid;
         private System.Windows.Forms.DataGridViewTextBoxColumn CustomerID;
         private System.Windows.Forms.DataGridViewTextBoxColumn OdooID;

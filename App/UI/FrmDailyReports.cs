@@ -24,14 +24,20 @@ namespace App.UI
 
 
 
+        public void UpdateItemsWithNoIsDeleted()
+        {
+
+
+
+        }
 
 
         public List<InvoiceviewModal> CurrentShiftreport()
         {
             InvoiceRepository invrepo = new InvoiceRepository();
 
-            List<InvoiceviewModal> invemstr = invrepo.GetInvoicePending(Program.LocationID);
-
+            List<InvoiceviewModal> invemstr = invrepo.GetInvoicePendingOfShift(Program.LocationID,Program.ShiftId);
+            
             return invemstr;
         }
 
@@ -115,7 +121,7 @@ namespace App.UI
 
         private void rbt_shiftsales_CheckedChanged(object sender, EventArgs e)
         {
-            FillReport("Shift");
+            
         }
 
         private void rbt_salesbet_CheckedChanged(object sender, EventArgs e)
@@ -162,18 +168,45 @@ namespace App.UI
 
         private void rbt_todaySales_Click(object sender, EventArgs e)
         {
+            
+        }
+
+       
+
+        private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            ReprintAndRefund repref = new ReprintAndRefund(int.Parse(dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString()));
+            repref.ShowDialog();
+        }
+
+        private void rbt_todaySales_CheckedChanged_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void rbt_shiftsales_CheckedChanged_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btn_todaysale_Click(object sender, EventArgs e)
+        {
             FillReport("Today");
         }
 
-        private void rbt_shiftsales_Click(object sender, EventArgs e)
+        private void button1_Click(object sender, EventArgs e)
         {
             FillReport("Shift");
         }
 
-        private void rbt_salesbet_Click(object sender, EventArgs e)
+        private void rbt_salesbet_CheckedChanged_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
         {
             FillReport("Between");
-
         }
     }
 }

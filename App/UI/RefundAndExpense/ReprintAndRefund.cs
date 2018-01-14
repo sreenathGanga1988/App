@@ -32,6 +32,8 @@ namespace App.UI
             invmstr.StoreAddress = invmstr.Store.StoreAddress;
             invmstr.Cashier = invmstr.User.UserName;
             invmstr.CustomerName = invmstr.Customer.CustomerName;
+            invmstr.CustomerAdress = invmstr.Customer.CustomerDetails;
+            invmstr.CustomerPhone = invmstr.Customer.PhoneNumber;
             invoiceid = invoicemasterID;
             try
             {
@@ -51,7 +53,7 @@ namespace App.UI
             try
             {
                 PrintReceipt prnt = new PrintReceipt();
-                prnt.printInvoicereport(invmstr);
+                prnt.ReprintprintInvoicereport(invmstr);
             }
             catch (Exception ex)
             {
@@ -61,9 +63,53 @@ namespace App.UI
         }
 
         private void button1_Click(object sender, EventArgs e)
-        {
-            ValueInPut valinput = new ValueInPut(invoiceid,"Refund", invmstr.InvoiceNum);
+        { PassCoder passCoder = new PassCoder();
+            passCoder.ShowDialog();
+            Boolean IsAuthenticated = passCoder.IsAuthenticated;
+
+
+            if (IsAuthenticated)
+            {
+                ValueInPut valinput = new ValueInPut(invoiceid,"Refund", invmstr.InvoiceNum);
             valinput.ShowDialog();
+                this.Close();
+            }
+            else
+            {
+                MessageBox.Show("Not Authenticated");
+            }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+          if(invmstr.ShiftID == Program.ShiftId)
+            {
+
+                int invoiceid = invmstr.InvoicemasterID;
+
+                PassCoder passCoder = new PassCoder();
+                passCoder.ShowDialog();
+                Boolean IsAuthenticated = passCoder.IsAuthenticated;
+
+
+                if (IsAuthenticated)
+                {
+                    InvoiceRepository invoiceRepository = new InvoiceRepository();
+                    invoiceRepository.DeleteInvoicemaster(invoiceid);
+                    MessageBox.Show("Deleted Sucessfully");
+                }
+                else
+                {
+                    MessageBox.Show("Not Authenticated");
+                }
+
+            }
+            else
+            {
+                MessageBox.Show("Cannot Delete  Invoice of Different Shift");
+            }
+
+           
         }
     }
 }

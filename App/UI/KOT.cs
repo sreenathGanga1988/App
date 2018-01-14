@@ -15,6 +15,7 @@ namespace App.UI
 {
     public partial class KOT : Form
     {
+        List<Invoicemaster> invoicemaster = null;
         public KOT()
         {
             InitializeComponent();
@@ -29,7 +30,7 @@ namespace App.UI
         {
 
             InvoiceRepository InvoiceRepository = new InvoiceRepository();
-            List<Invoicemaster> invoicemaster = InvoiceRepository.GetInvoiPendingtoBill(Program.LocationID);
+            invoicemaster = InvoiceRepository.GetInvoiPendingtoBill(Program.LocationID).OrderByDescending(e => e.InvoicemasterID).ToList() ;
             LoadInvoicesPending(invoicemaster);
 
         }
@@ -70,7 +71,9 @@ namespace App.UI
             {
                 ValueButton temp = new ValueButton();
                 temp.Name = "button" + invmaster.InvoicemasterID.ToString();
-                temp.Text = invmaster.InvoiceNum + " / " + invmaster.Table.TableName + " / " + invmaster.InvoiceDetails.Count() + "Items";
+                temp.Text = invmaster.InvoiceNum + " / " + invmaster.Table.TableName +
+                    " / " + invmaster.InvoiceDetails.Count() + "Items" + " / Customer: " +
+                    invmaster.Customer.CustomerName + " /  Cashier :" + invmaster.User.UserName + " /  At " + invmaster.InvoiceDate.ToString();
                 temp._value = invmaster.InvoicemasterID.ToString();
                 // temp.AutoSize = true;
                 temp.Width = buttonwidth;
@@ -164,6 +167,18 @@ namespace App.UI
                 frmpos.Show();
                 this.Close();
             }
+        }
+        public void SeaarchInvoice()
+        {
+            string texttodearch = textBox1.Text.Trim();
+          
+            List<Invoicemaster> invoicemastertemp = invoicemaster.Where(u => u.InvoicemasterID.ToString().Contains(texttodearch) || u.InvoiceNum.Contains(texttodearch) || u.User.UserName.Contains(texttodearch) || u.TableName.Contains(texttodearch)).ToList();
+            LoadInvoicesPending(invoicemastertemp);
+
+        }
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+            SeaarchInvoice();
         }
     }
 }

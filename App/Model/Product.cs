@@ -59,6 +59,7 @@ namespace App.Model
         public Boolean? IsClosed { get; set; }
         public int StoreID { get; set; }
         public int OdooShiftId { get; set; }
+        public String PosName { get; set; }
         public String StartUserName { get; set; }
         public String CloseUserName { get; set; }
         public virtual Store Store { get; set; }
@@ -91,6 +92,8 @@ namespace App.Model
         public String StoreName { get; set; }
         public int? OdooStoreId { get; set; }
         public String StoreAddress { get; set; }
+        public String Street { get; set; }
+        public String Phone { get; set; }
 
         public virtual List<User> Users { get; set; }
         public virtual List<ControlDiemension> ControlDiemensions { get; set; }
@@ -159,7 +162,7 @@ namespace App.Model
         public String Color { get; set; }
 
         public Boolean IsLocked { get; set; }
-        public virtual List<Invoicemaster> Invoicemasters { get; set; }
+       
     }
 
 
@@ -232,11 +235,14 @@ namespace App.Model
         public virtual List<InvoiceDetail> InvoiceDetails { get; set; }
         public String Color { get; set; }
         public String TableName { get; set; }
-
+      
         public String PaymentMode { get; set; }
         public String BuzzerName { get; set; }
         public String ShiftName { get; set; }
 
+        public Boolean? IsDeleted { get; set; }
+        public String DeletedBy { get; set; }
+        public DateTime? DeletedDate { get; set; }
 
         public int? ShiftID { get; set; }
         public virtual Shift Shift { get; set; }
@@ -246,10 +252,22 @@ namespace App.Model
         public string StoreName { get; set; }
         [NotMapped]
         public string StoreAddress { get; set; }
+
+        [NotMapped]
+        public string StoreStreet { get; set; }
+        [NotMapped]
+        public string StorePhone { get; set; }
+
+
         [NotMapped]
         public string Cashier { get; set; }
         [NotMapped]
         public string CustomerName { get; set; }
+        [NotMapped]
+        public string CustomerAdress { get; set; }
+
+        [NotMapped]
+        public string CustomerPhone { get; set; }
         public virtual List<RefundMaster> RefundMasters { get; set; }
   
     }
@@ -424,14 +442,35 @@ namespace App.Model
         public string RefundNum { get; set; }
         public int StoreID { get; set; }
         public int UserID { get; set; }
+        public int? ShiftID { get; set; }
         public int InvoicemasterID { get; set; }
+        public Boolean IsUploaded { get; set; }
+        public String Approvedby { get; set; }
         public DateTime RefundDate { get; set; }
         public Decimal TotalRefund { get; set; }
         public virtual Store Store { get; set; }
         public virtual User User { get; set; }
         public virtual Invoicemaster Invoicemaster { get; set; }
+        public virtual Shift Shift { get; set; }
     }
 
+    public class CashOutMaster
+    {
+        [Key]
+        public int CashOutMasterID { get; set; }
+        public string CashOutNum { get; set; }
+        public int StoreID { get; set; }
+        public int UserID { get; set; }
+        public int? ShiftID { get; set; }
+        public Boolean IsUploaded { get; set; }
+        public DateTime CashOutDate { get; set; }
+        public Decimal TotalCashOut{ get; set; }
+        public String Approvedby { get; set; }
+        public String CashOutType { get; set; }
+        public virtual Store Store { get; set; }
+        public virtual User User { get; set; }       
+        public virtual Shift Shift { get; set; }
+    }
     public class SettleMaster
     {
         [Key]
@@ -440,7 +479,7 @@ namespace App.Model
         public int UserID { get; set; }
         public int? ShiftID { get; set; }
         public int CustomerID { get; set; }
-
+        public Boolean IsUploaded { get; set; }
         public DateTime SettleDate { get; set; }
         public Decimal TotalRefund { get; set; }
 
@@ -458,9 +497,11 @@ namespace App.Model
         public Decimal? PaymentDue { get; set; }
         public int InvoicemasterID { get; set; }
         public int StoreID { get; set; }
+        public int? ShiftID { get; set; }
         public virtual Customer Customer { get; set; }
         public virtual Invoicemaster Invoicemaster { get; set; }
         public virtual Store Store { get; set; }
+        public virtual Shift Shift { get; set; }
     }
 
 

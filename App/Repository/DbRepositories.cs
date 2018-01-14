@@ -21,14 +21,14 @@ namespace App.Repository
             if (categoryID != 0)
             {
                 var q = (cntxt.Products.Where(u => u.CategoryId == categoryID).
-                Select(x => new ProductlistViewModal { ProductID = x.Id, ProductName = x.ProductName, Color = x.Color })).ToList();
+                Select(x => new ProductlistViewModal { ProductID = x.Id, ProductName = x.ProductName, Color = x.Color ,IsAvailable=x.IsAvailable})).ToList();
                 return q;
 
             }
             else
             {
                 var q = (cntxt.Products.
-                Select(x => new ProductlistViewModal { ProductID = x.Id, ProductName = x.ProductName, Color = x.Color })).ToList();
+                Select(x => new ProductlistViewModal { ProductID = x.Id, ProductName = x.ProductName, Color = x.Color, IsAvailable = x.IsAvailable })).ToList();
                 return q;
             }
 
@@ -41,7 +41,7 @@ namespace App.Repository
 
 
             var q = (cntxt.Products.Where(u => u.Id.ToString().Contains(categoryID.ToString())).
-            Select(x => new ProductlistViewModal { ProductID = x.Id, ProductName = x.ProductName, Color = x.Color })).ToList();
+            Select(x => new ProductlistViewModal { ProductID = x.Id, ProductName = x.ProductName, Color = x.Color, IsAvailable = x.IsAvailable })).ToList();
             return q;
 
 
@@ -54,7 +54,7 @@ namespace App.Repository
 
 
             var q = (cntxt.Products.Where(u => u.IsTodaySpecial == true).
-            Select(x => new ProductlistViewModal { ProductID = x.Id, ProductName = x.ProductName, Color = x.Color })).ToList();
+            Select(x => new ProductlistViewModal { ProductID = x.Id, ProductName = x.ProductName, Color = x.Color, IsAvailable = x.IsAvailable })).ToList();
             return q;
 
 
@@ -79,7 +79,7 @@ namespace App.Repository
         public List<Product> GetProductSearch(String searchtext, int? LocationID = 0)
         {
 
-            var q = cntxt.Products.Where(u => u.Id.ToString().Contains(searchtext) || u.ProductName.Contains(searchtext) || u.Category.CategoryName.Contains(searchtext)).ToList();
+            var q = cntxt.Products.Where(u => u.Id.ToString().Contains(searchtext) || u.ProductName.Contains(searchtext) || u.Category.CategoryName.Contains(searchtext) || u.Color.Contains(searchtext)).ToList();
 
             return q;
         }
@@ -87,7 +87,7 @@ namespace App.Repository
         public List<ProductlistViewModal> GetProductSearchByName(String searchtext, int? LocationID = 0)
         {
 
-            var q = cntxt.Products.Where(u => u.Id.ToString().Contains(searchtext) || u.ProductName.Contains(searchtext) || u.Category.CategoryName.Contains(searchtext)). Select(x => new ProductlistViewModal { ProductID = x.Id, ProductName = x.ProductName, Color = x.Color }).ToList();
+            var q = cntxt.Products.Where(u => u.Id.ToString().Contains(searchtext) || u.ProductName.Contains(searchtext) || u.Category.CategoryName.Contains(searchtext)). Select(x => new ProductlistViewModal { ProductID = x.Id, ProductName = x.ProductName, Color = x.Color, IsAvailable = x.IsAvailable }).ToList();
 
             return q;
         }
@@ -103,6 +103,40 @@ namespace App.Repository
 
             cntxt.SaveChanges();
         }
+        public void UpdateAvailailty(int ID, Boolean status)
+        {
+            var q = from product in cntxt.Products
+                    where product.Id == ID
+                    select product;
+
+            foreach (var element in q)
+            {
+                element.IsAvailable = status;
+            }
+
+            cntxt.SaveChanges();
+        }
+
+        public int GetProductByCode(string name)
+        {
+            int id = 0;
+
+            try
+            {
+                var q = cntxt.Products.Where(u => u.Color == name).Select(u => u.Id).FirstOrDefault();
+                id = int.Parse(q.ToString());
+
+            }
+            catch (Exception)
+            {
+
+
+            }
+
+            return id;
+
+        }
+
 
     }
 
@@ -163,6 +197,18 @@ namespace App.Repository
                 Program.LocationID = usr.StoreID;
                 Program.StoreName = usr.Store.StoreName;
                 Program.StoreAddress = usr.Store.StoreAddress;
+                try
+                {
+                    Program.StoreStreet = usr.Store.Street;
+                    Program.StrorePhone = usr.Store.Phone;
+                }
+                catch (Exception)
+                {
+
+                    Program.StoreStreet = "";
+                    Program.StrorePhone = "";
+                }
+               
                 SettingRepository sysrepo = new SettingRepository();
                 AppuserSettingRepository appuserrepo = new AppuserSettingRepository();
                 // OdooDetail odoDetails = sysrepo.LoadOdooDetails(Program.LocationID);
@@ -335,7 +381,8 @@ namespace App.Repository
             return categoryid;
         }
 
-        public List<Customer> GetcustomerofLocationSearch(String searchtext, int? LocationID = 0)
+        public List<Customer> GetcustomerofLocation
+            (String searchtext, int? LocationID = 0)
         {
 
             var q = cntxt.Customers.Where(u => u.StoreID == LocationID && (u.PhoneNumber.Contains(searchtext) || u.CustomerName.Contains(searchtext))).ToList();
@@ -359,11 +406,12 @@ namespace App.Repository
 
             return q;
         }
-        public void AddCustomer(Customer customer)
+        public Customer AddCustomer(Customer customer)
         {
 
             cntxt.Customers.Add(customer);
             cntxt.SaveChanges();
+            return customer;
         }
 
        
@@ -439,14 +487,15 @@ namespace App.Repository
 
         public void ShiftAction()
         {
-            if (!cntxt.Shifts.Any(f => f.StoreID == Program.LocationID && f.IsClosed == false))
+            string PosName = System.Environment.MachineName.ToString().Trim();
+            if (!cntxt.Shifts.Any(f => f.StoreID == Program.LocationID &&f.PosName== PosName && f.IsClosed == false))
             {
-                CreateShift();
+                CreateShift(PosName);
             }
             else
             {
                 var q = from shft in cntxt.Shifts
-                        where shft.IsClosed == false && shft.StoreID == Program.LocationID
+                        where shft.IsClosed == false && shft.StoreID == Program.LocationID && shft.PosName == PosName
                         select shft;
                 foreach(var element in q)
                 {
@@ -457,7 +506,7 @@ namespace App.Repository
             }
         }
 
-        public void CreateShift()
+        public void CreateShift(String Posname)
         {
             try
             {
@@ -467,9 +516,10 @@ namespace App.Repository
                 shift.StartUserName = Program.Username;
                 shift.StoreID = Program.LocationID;
                 shift.IsClosed = false;
+                shift.PosName = System.Environment.MachineName.ToString().Trim();
                 cntxt.Shifts.Add(shift);
                 cntxt.SaveChanges();
-                shift.ShiftName = Program.StoreName + DateTime.Now.ToString("dd/MM/yyyy") + "/" + shift.ShiftID;
+                shift.ShiftName = Posname + DateTime.Now.ToString("dd/MM/yyyy") + "/" + shift.ShiftID;
                 cntxt.SaveChanges();
                 Program.ShiftId = shift.ShiftID;
                 Program.Shiftname = shift.ShiftName;
@@ -661,6 +711,7 @@ namespace App.Repository
                 element.CustomerName = invoicemaster.CustomerName;
                 element.IsUploaded = invoicemaster.IsUploaded;
                 element.IstableBill = invoicemaster.IstableBill;
+                element.IsKOT = invoicemaster.IsKOT;
                 invoicemaster.InvoiceNum = element.InvoiceNum;
             }
 
@@ -684,7 +735,8 @@ namespace App.Repository
                     invoicedetail.PreviousQty = invdet.PreviousQty;
                     invoicedetail.AdjustedQty = invdet.AdjustedQty;
                     invoicedetail.InvoicemasterID = invdet.InvoicemasterID;
-
+                    invoicedetail.Taxamount = invdet.Taxamount;
+                    invoicedetail.Notes = invdet.Notes;
                     cntxt.InvoiceDetails.Add(invoicedetail);
                 }
                 else
@@ -705,8 +757,9 @@ namespace App.Repository
                         element.DiscountPerUOM = invdet.DiscountPerUOM;
                         element.Total = invdet.Total;
                         element.IsUploaded = invdet.IsUploaded;
+                        element.Taxamount = invdet.Taxamount;
+                        element.Notes = invdet.Notes;
 
-                      
                         element.AdjustedQty = invdet.Qty - element.PreviousQty;
                    
 
@@ -833,11 +886,33 @@ namespace App.Repository
         public List <InvoiceviewModal> GetInvoicePending(int storeid)
         {
             var q = (from invoicemstr in cntxt.Invoicemasters
-                    where invoicemstr.IsUploaded == false && invoicemstr.StoreID==storeid
+                    where invoicemstr.IsUploaded == false && invoicemstr.StoreID== storeid && invoicemstr.IsDeleted == false
                      select new InvoiceviewModal { InvoicemasterID= invoicemstr.InvoicemasterID, InvoiceDate= invoicemstr.InvoiceDate,InvoiceNum= invoicemstr.InvoiceNum,
                          TableName = invoicemstr.Table.TableName, StoreName= invoicemstr.Store.StoreName,  CustomerName=invoicemstr.Customer.CustomerName,TotalBill= invoicemstr.TotalBill,
                          TotalPaid =invoicemstr.TotalPaid,PaymentMode=invoicemstr.PaymentMode,ShiftName=invoicemstr.ShiftName }).ToList();
             
+
+            return q;
+        }
+
+        public List<InvoiceviewModal> GetInvoicePendingOfShift(int storeid,int Shifitid)
+        {
+            var q = (from invoicemstr in cntxt.Invoicemasters
+                     where invoicemstr.IsUploaded == false && invoicemstr.StoreID == storeid && invoicemstr.ShiftID== Shifitid && invoicemstr.IsDeleted == false
+                     select new InvoiceviewModal
+                     {
+                         InvoicemasterID = invoicemstr.InvoicemasterID,
+                         InvoiceDate = invoicemstr.InvoiceDate,
+                         InvoiceNum = invoicemstr.InvoiceNum,
+                         TableName = invoicemstr.Table.TableName,
+                         StoreName = invoicemstr.Store.StoreName,
+                         CustomerName = invoicemstr.Customer.CustomerName,
+                         TotalBill = invoicemstr.TotalBill,
+                         TotalPaid = invoicemstr.TotalPaid,
+                         PaymentMode = invoicemstr.PaymentMode,
+                         ShiftName = invoicemstr.ShiftName
+                     }).ToList();
+
 
             return q;
         }
@@ -846,7 +921,7 @@ namespace App.Repository
 
             DateTime today = DateTime.Now;
             var q = (from invoicemstr in cntxt.Invoicemasters
-                     where EntityFunctions.TruncateTime(invoicemstr.InvoiceDate) == EntityFunctions.TruncateTime(today.Date) && invoicemstr.StoreID == storeid
+                     where EntityFunctions.TruncateTime(invoicemstr.InvoiceDate) == EntityFunctions.TruncateTime(today.Date) && invoicemstr.StoreID == storeid && invoicemstr.IsDeleted == false
                      select new InvoiceviewModal { InvoicemasterID = invoicemstr.InvoicemasterID, InvoiceDate = invoicemstr.InvoiceDate,
                          InvoiceNum = invoicemstr.InvoiceNum, TableName = invoicemstr.Table.TableName, StoreName = invoicemstr.Store.StoreName,
                          CustomerName = invoicemstr.Customer.CustomerName, TotalBill = invoicemstr.TotalBill, TotalPaid = invoicemstr.TotalPaid,
@@ -873,6 +948,53 @@ namespace App.Repository
 
             return q;
         }
+
+
+        public void DeleteInvoicemaster(int invoisemasterid)
+        {
+
+
+          Invoicemaster  mstr = cntxt.Invoicemasters.Find(invoisemasterid);
+            mstr.IsDeleted = true;
+            mstr.IstableBill = false;
+            mstr.IsKOT = false;
+            mstr.DeletedBy = Program.Username;
+            mstr.DeletedDate = DateTime.Now;
+
+            cntxt.SaveChanges();
+
+        }
+
+
+        public void UpdateDeleteStatusofinvoice()
+        {
+
+
+            var q = from invmstr in cntxt.Invoicemasters
+                    where invmstr.IsDeleted == null && invmstr.IsDeleted != true
+                    select invmstr;
+            foreach(var element in q)
+            {
+
+                element.IsDeleted = false;
+                
+
+            }
+
+
+            cntxt.SaveChangesAsync();
+
+           
+
+        }
+
+        //public List<Invoicemasters> GetInvoiceSearch(String searchtext, int? LocationID = 0)
+        //{
+
+        //    var q = cntxt.Invoicemasters.Where(u => u.InvoicemasterID.ToString().Contains(searchtext) || u.InvoiceNum.Contains(searchtext) || u.User.UserName.Contains(searchtext)).ToList();
+
+        //    return q;
+        //}
     }
 
 
@@ -890,6 +1012,24 @@ namespace App.Repository
 
         }
     }
+
+
+    public class CashOutRepository
+    {
+        POSDataContext cntxt = new POSDataContext();
+
+        public CashOutMaster InsertCashout(CashOutMaster cashoutmaster)
+        {
+
+            cntxt.CashOutMasters.Add(cashoutmaster);
+            cntxt.SaveChanges();
+            cashoutmaster.CashOutNum= "COUT-" + cashoutmaster.CashOutMasterID;
+            return cashoutmaster;
+
+        }
+    }
+
+
 
 
     public class CreditRepository

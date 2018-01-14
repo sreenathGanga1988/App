@@ -67,6 +67,9 @@
   <PropertyGroup>
     <ApplicationManifest>Properties\app.manifest</ApplicationManifest>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>App.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0-beta1\lib\net45\EntityFramework.dll</HintPath>
@@ -112,6 +115,7 @@
       <DependentUpon>DataSet1.xsd</DependentUpon>
     </Compile>
     <Compile Include="Extensions\Controls.cs" />
+    <Compile Include="Extensions\ErrorLogger.cs" />
     <Compile Include="Extensions\Extesions.cs" />
     <Compile Include="Extensions\IpPrint.cs" />
     <Compile Include="Extensions\LocalDBExtension.cs" />
@@ -392,6 +396,38 @@
     <Compile Include="Migrations\201712281137335_addeddiscount.Designer.cs">
       <DependentUpon>201712281137335_addeddiscount.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201712311702090_removedinvoicelink.cs" />
+    <Compile Include="Migrations\201712311702090_removedinvoicelink.Designer.cs">
+      <DependentUpon>201712311702090_removedinvoicelink.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201801041104092_addedponameinshift.cs" />
+    <Compile Include="Migrations\201801041104092_addedponameinshift.Designer.cs">
+      <DependentUpon>201801041104092_addedponameinshift.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201801090722548_addedisdeleted toinvoicemater.cs" />
+    <Compile Include="Migrations\201801090722548_addedisdeleted toinvoicemater.Designer.cs">
+      <DependentUpon>201801090722548_addedisdeleted toinvoicemater.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201801090747223_addeddeletedactionon invoisemaster.cs" />
+    <Compile Include="Migrations\201801090747223_addeddeletedactionon invoisemaster.Designer.cs">
+      <DependentUpon>201801090747223_addeddeletedactionon invoisemaster.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201801091816122_addedcashoutaction.cs" />
+    <Compile Include="Migrations\201801091816122_addedcashoutaction.Designer.cs">
+      <DependentUpon>201801091816122_addedcashoutaction.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201801091840540_aaddedshifttocredit.cs" />
+    <Compile Include="Migrations\201801091840540_aaddedshifttocredit.Designer.cs">
+      <DependentUpon>201801091840540_aaddedshifttocredit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201801110853125_refundandcashoutchange.cs" />
+    <Compile Include="Migrations\201801110853125_refundandcashoutchange.Designer.cs">
+      <DependentUpon>201801110853125_refundandcashoutchange.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201801130902488_updateonstore.cs" />
+    <Compile Include="Migrations\201801130902488_updateonstore.Designer.cs">
+      <DependentUpon>201801130902488_updateonstore.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Model\LocalModel.cs" />
     <Compile Include="Model\Product.cs" />
@@ -520,11 +556,11 @@
     <Compile Include="UI\RefundAndExpense\ActionBoard.Designer.cs">
       <DependentUpon>ActionBoard.cs</DependentUpon>
     </Compile>
-    <Compile Include="UI\RefundAndExpense\Form1.cs">
+    <Compile Include="UI\RefundAndExpense\PassCoder.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UI\RefundAndExpense\Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="UI\RefundAndExpense\PassCoder.Designer.cs">
+      <DependentUpon>PassCoder.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\RefundAndExpense\ReprintAndRefund.cs">
       <SubType>Form</SubType>
@@ -611,6 +647,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201708200700232_newmigation.resx">
       <DependentUpon>201708200700232_newmigation.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201708201031430_added settings.resx">
       <DependentUpon>201708201031430_added settings.cs</DependentUpon>
@@ -765,6 +802,30 @@
     <EmbeddedResource Include="Migrations\201712281137335_addeddiscount.resx">
       <DependentUpon>201712281137335_addeddiscount.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712311702090_removedinvoicelink.resx">
+      <DependentUpon>201712311702090_removedinvoicelink.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201801041104092_addedponameinshift.resx">
+      <DependentUpon>201801041104092_addedponameinshift.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201801090722548_addedisdeleted toinvoicemater.resx">
+      <DependentUpon>201801090722548_addedisdeleted toinvoicemater.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201801090747223_addeddeletedactionon invoisemaster.resx">
+      <DependentUpon>201801090747223_addeddeletedactionon invoisemaster.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201801091816122_addedcashoutaction.resx">
+      <DependentUpon>201801091816122_addedcashoutaction.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201801091840540_aaddedshifttocredit.resx">
+      <DependentUpon>201801091840540_aaddedshifttocredit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201801110853125_refundandcashoutchange.resx">
+      <DependentUpon>201801110853125_refundandcashoutchange.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201801130902488_updateonstore.resx">
+      <DependentUpon>201801130902488_updateonstore.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <SubType>Designer</SubType>
@@ -824,8 +885,8 @@
     <EmbeddedResource Include="UI\RefundAndExpense\ActionBoard.resx">
       <DependentUpon>ActionBoard.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI\RefundAndExpense\Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <EmbeddedResource Include="UI\RefundAndExpense\PassCoder.resx">
+      <DependentUpon>PassCoder.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\RefundAndExpense\ReprintAndRefund.resx">
       <DependentUpon>ReprintAndRefund.cs</DependentUpon>
@@ -980,6 +1041,9 @@
       <Project>{cf7d7544-003f-4cbc-a1c8-21848f208b7b}</Project>
       <Name>AppBLL</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

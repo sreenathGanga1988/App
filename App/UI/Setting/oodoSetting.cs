@@ -14,6 +14,7 @@ using System.Windows.Forms;
 using System.Drawing.Printing;
 using System.Xml.Serialization;
 using System.IO;
+using App.Context;
 
 namespace App.UI.Setting
 {
@@ -270,6 +271,12 @@ namespace App.UI.Setting
         private void button4_Click(object sender, EventArgs e)
         {
           
+        }
+
+        private void btn_reset_Click(object sender, EventArgs e)
+        {
+            POSDataContext cntxt = new POSDataContext();
+            cntxt.Database.ExecuteSqlCommand("TRUNCATE TABLE [TableName]");
         }
     }
 }

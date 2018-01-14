@@ -24,7 +24,7 @@ namespace App.Model
         public String User { get; set; }
         public String Shiftfrom { get; set; }
         public String ShiftTo { get; set; }
-
+        public Decimal Deletedvalue { get; set; }
         public Decimal TotalSales { get; set; }
         public Decimal TotalCharges { get; set; }
         public Decimal TotalDiscount { get; set; }
@@ -39,7 +39,13 @@ namespace App.Model
         public Decimal TotalByCredit { get; set; }
         public Decimal TotalTax { get; set; }
         public Decimal NetAmount { get; set; }
+        public Decimal SettlementAmount { get; set; }
 
+        public Decimal TableBill { get; set; }
+        public Decimal TotalCashout { get; set; }
+        public Decimal TotalCredit { get; set; }
+        public Decimal TotalRefund { get; set; }
+        public Decimal TotalSetllement { get; set; }
 
         public List<Invoicemaster> invoicemstrlist { get; set; }
     }

@@ -14,7 +14,11 @@ namespace App.Context
         public POSDataContext() : base("name = LimsDBConnectionString")
         {
           
-            Database.SetInitializer<POSDataContext>(new CreateDatabaseIfNotExists<POSDataContext>());
+            //Database.SetInitializer<POSDataContext>(new CreateDatabaseIfNotExists<POSDataContext>());
+
+            Database.SetInitializer<POSDataContext>(
+    new MigrateDatabaseToLatestVersion<POSDataContext, Migrations.Configuration>());
+            Database.Initialize(false);
 
         }
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
@@ -44,6 +48,8 @@ namespace App.Context
         public DbSet<Shift> Shifts { get; set; }
         public DbSet<CreditMaster> CreditMasters { get; set; }
         public DbSet<SettleMaster> SettleMasters { get; set; }
+        public DbSet<CashOutMaster> CashOutMasters { get; set; }
         
+
     }
 }

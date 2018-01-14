@@ -208,74 +208,111 @@ namespace App.Extensions
                 set;
             }
         }
-
-        public void printInvoicereport(Invoicemaster invoicemaster)
+        public void ReprintprintInvoicereport(Invoicemaster invoicemaster)
         {
+            string eClear = ('' + "@");
+            string eDrawer = (eClear + ('' + ("p" + ('\0' + ".}"))));
 
-            PrinterUtility.EscPosEpsonCommands.EscPosEpson obj = new PrinterUtility.EscPosEpsonCommands.EscPosEpson();
+
+            //const string format = "{0,-24}{1,6}{2,9}{3,9:N2}\n";
+            // const string format = "{0,-24}{1,-8}{2,-5},{3,4:N2}{4,4:N2}\n";
+            const string format = "{0,-24}{1,-8}{2,-5}{3,-6:N2}{4,6:N2}\n";
+            PrinterUtility.EscPosEpsonCommands.EscPosEpson obj = new PrinterUtility.EscPosEpsonCommands.EscPosEpson(54);
             var BytesValue = Encoding.ASCII.GetBytes(string.Empty);
             //Adds a Seperator
             BytesValue = PrintExtensions.AddBytes(BytesValue, obj.CharSize.Nomarl());
             //BytesValue = PrintExtensions.AddBytes(BytesValue, obj.Separator());
-            BytesValue = PrintExtensions.AddBytes(BytesValue, Encoding.ASCII.GetBytes("______________________________________________________\n"));
-            //Increases the Width of Byte
+            BytesValue = PrintExtensions.AddBytes(BytesValue, obj.Separator());   //Increases the Width of Byte
             BytesValue = PrintExtensions.AddBytes(BytesValue, obj.CharSize.DoubleWidth2());           // Select Font A
-            BytesValue = PrintExtensions.AddBytes(BytesValue, obj.FontSelect.SpecialFontA());
+            BytesValue = PrintExtensions.AddBytes(BytesValue, obj.FontSelect.FontB());
 
             BytesValue = PrintExtensions.AddBytes(BytesValue, obj.Alignment.Center()); //allign Center
             BytesValue = PrintExtensions.AddBytes(BytesValue, Encoding.ASCII.GetBytes(invoicemaster.StoreName + "\n")); //added Store name
-            BytesValue = PrintExtensions.AddBytes(BytesValue, obj.CharSize.Nomarl()); 
+            BytesValue = PrintExtensions.AddBytes(BytesValue, obj.CharSize.Nomarl());
             BytesValue = PrintExtensions.AddBytes(BytesValue, Encoding.ASCII.GetBytes(invoicemaster.StoreAddress + "\n"));
             BytesValue = PrintExtensions.AddBytes(BytesValue, obj.CharSize.Nomarl());
-
-            BytesValue = PrintExtensions.AddBytes(BytesValue, Encoding.ASCII.GetBytes("______________________________________________________\n"));
-            //BytesValue = PrintExtensions.AddBytes(BytesValue, obj.Separator());
+            BytesValue = PrintExtensions.AddBytes(BytesValue, Encoding.ASCII.GetBytes(invoicemaster.Store.Street + "\n"));
+            BytesValue = PrintExtensions.AddBytes(BytesValue, obj.CharSize.Nomarl());
+            BytesValue = PrintExtensions.AddBytes(BytesValue, Encoding.ASCII.GetBytes(invoicemaster.Store.Phone + "\n"));
+            BytesValue = PrintExtensions.AddBytes(BytesValue, obj.CharSize.Nomarl());
+            BytesValue = PrintExtensions.AddBytes(BytesValue, obj.Separator());
+            BytesValue = PrintExtensions.AddBytes(BytesValue, obj.CharSize.DoubleWidth2());
             BytesValue = PrintExtensions.AddBytes(BytesValue, Encoding.ASCII.GetBytes("Tax Invoice\n"));
             BytesValue = PrintExtensions.AddBytes(BytesValue, obj.Alignment.Left());
-            
+
             BytesValue = PrintExtensions.AddBytes(BytesValue, Encoding.ASCII.GetBytes(invoicemaster.InvoiceNum + "\n"));
-            BytesValue = PrintExtensions.AddBytes(BytesValue, Encoding.ASCII.GetBytes(invoicemaster.InvoiceDate.ToString()));
-            BytesValue = PrintExtensions.AddBytes(BytesValue, obj.Alignment.Right());
-            BytesValue = PrintExtensions.AddBytes(BytesValue, Encoding.ASCII.GetBytes("      Cashier:" + invoicemaster.Cashier.Trim() + "\n"));
+
             BytesValue = PrintExtensions.AddBytes(BytesValue, obj.Alignment.Left());
-            BytesValue = PrintExtensions.AddBytes(BytesValue, Encoding.ASCII.GetBytes("Itm                        Qty   Net   Dis  Total\n"));
-            //BytesValue = PrintExtensions.AddBytes(BytesValue, obj.Separator());
-            BytesValue = PrintExtensions.AddBytes(BytesValue, Encoding.ASCII.GetBytes("______________________________________________________\n"));
+            BytesValue = PrintExtensions.AddBytes(BytesValue, Encoding.ASCII.GetBytes(invoicemaster.InvoiceDate.ToString() + "\n"));
+            BytesValue = PrintExtensions.AddBytes(BytesValue, obj.Alignment.Left());
+            BytesValue = PrintExtensions.AddBytes(BytesValue, Encoding.ASCII.GetBytes("Cashier:" + invoicemaster.Cashier.Trim() + "\n"));
+            BytesValue = PrintExtensions.AddBytes(BytesValue, obj.Alignment.Left());
+            BytesValue = PrintExtensions.AddBytes(BytesValue, Encoding.ASCII.GetBytes("Buzzer:" + invoicemaster.BuzzerName.ToString() + "\n"));
+            BytesValue = PrintExtensions.AddBytes(BytesValue, obj.Alignment.Left());
+            BytesValue = PrintExtensions.AddBytes(BytesValue, Encoding.ASCII.GetBytes("Table : " + invoicemaster.TableName.Trim() + "\n"));
+            BytesValue = PrintExtensions.AddBytes(BytesValue, obj.CharSize.Nomarl());
+            BytesValue = PrintExtensions.AddBytes(BytesValue, obj.CharSize.DoubleHeight2());
+            string line1 = string.Format(format,
+                  "Item", "Price", "Qty", "Tax%", "Net"
+                  );
+            BytesValue = PrintExtensions.AddBytes(BytesValue, Encoding.ASCII.GetBytes(line1));
+            //BytesValue = PrintExtensions.AddBytes(BytesValue, Encoding.ASCII.GetBytes("Itm                        Qty   Net   Dis  Total\n"));
+            BytesValue = PrintExtensions.AddBytes(BytesValue, obj.Separator());
+            //   BytesValue = PrintExtensions.AddBytes(BytesValue, Encoding.ASCII.GetBytes("______________________________________________________\n"));
             foreach (InvoiceDetail invoicedet in invoicemaster.InvoiceDetails)
             {
-                BytesValue = PrintExtensions.AddBytes(BytesValue, string.Format("{0,-25}{1,6}{2,8}{3,8}{4,6:N2}\n", invoicedet.ProductName, invoicedet.Qty, invoicedet.UnitPrice, invoicedet.DiscountPerUOM, invoicedet.Total));
+                string line2 = string.Format(format,
+                    invoicedet.Product.ProductName,
+                    invoicedet.UnitPrice, invoicedet.Qty, "5", invoicedet.Total);
+                BytesValue = PrintExtensions.AddBytes(BytesValue, Encoding.ASCII.GetBytes(line2));
+                // BytesValue = PrintExtensions.AddBytes(BytesValue, string.Format("{0,-25}{1,6}{2,8}{3,8}{4,6:N2}\n", invoicedet.ProductName, invoicedet.Qty, invoicedet.UnitPrice, invoicedet.DiscountPerUOM, invoicedet.Total));
             }
 
 
 
             BytesValue = PrintExtensions.AddBytes(BytesValue, obj.Alignment.Right());
             //BytesValue = PrintExtensions.AddBytes(BytesValue, obj.Separator());
-            BytesValue = PrintExtensions.AddBytes(BytesValue, Encoding.ASCII.GetBytes("______________________________________________________\n"));
-            BytesValue = PrintExtensions.AddBytes(BytesValue, Encoding.ASCII.GetBytes("Sub Total:  " + invoicemaster.InvoiceDetails.Sum(u=>u.Total).ToString().Trim() + "\n"));
+            BytesValue = PrintExtensions.AddBytes(BytesValue, obj.Separator());
+            BytesValue = PrintExtensions.AddBytes(BytesValue, obj.CharSize.DoubleWidth2());
+
+            BytesValue = PrintExtensions.AddBytes(BytesValue, Encoding.ASCII.GetBytes("Sub Total:  " + invoicemaster.InvoiceDetails.Sum(u => u.Total).ToString().Trim() + "\n"));
 
             BytesValue = PrintExtensions.AddBytes(BytesValue, Encoding.ASCII.GetBytes("Tax:  " + invoicemaster.Taxamount.ToString().Trim() + "\n"));
-          
+            BytesValue = PrintExtensions.AddBytes(BytesValue, Encoding.ASCII.GetBytes("Discount:  " + invoicemaster.TotalDiscount.ToString().Trim() + "\n"));
+
             //BytesValue = PrintExtensions.AddBytes(BytesValue, obj.Separator());
             BytesValue = PrintExtensions.AddBytes(BytesValue, Encoding.ASCII.GetBytes("Total:  " + invoicemaster.TotalBill.ToString().Trim() + "\n"));
 
             //BytesValue = PrintExtensions.AddBytes(BytesValue, Encoding.ASCII.GetBytes("Total\n"));
             //BytesValue = PrintExtensions.AddBytes(BytesValue, Encoding.ASCII.GetBytes(invoicemaster.TotalBill + "\n"));
-            BytesValue = PrintExtensions.AddBytes(BytesValue, Encoding.ASCII.GetBytes("______________________________________________________\n"));
+            BytesValue = PrintExtensions.AddBytes(BytesValue, obj.CharSize.Nomarl());
+            BytesValue = PrintExtensions.AddBytes(BytesValue, obj.Separator());
+            BytesValue = PrintExtensions.AddBytes(BytesValue, obj.CharSize.DoubleWidth2());
+            BytesValue = PrintExtensions.AddBytes(BytesValue, obj.Alignment.Left());
+            BytesValue = PrintExtensions.AddBytes(BytesValue, Encoding.ASCII.GetBytes("Customer:  " + invoicemaster.CustomerName.Trim() + "\n"));
+            BytesValue = PrintExtensions.AddBytes(BytesValue, obj.Alignment.Left());
+            BytesValue = PrintExtensions.AddBytes(BytesValue, Encoding.ASCII.GetBytes("PH:  " + invoicemaster.CustomerPhone.ToString().Trim() + "\n"));
+            BytesValue = PrintExtensions.AddBytes(BytesValue, obj.Alignment.Left());
+            BytesValue = PrintExtensions.AddBytes(BytesValue, Encoding.ASCII.GetBytes("Address:  " + invoicemaster.CustomerAdress.ToString().Trim() + "\n"));
+
+
             //BytesValue = PrintExtensions.AddBytes(BytesValue, obj.Separator());
             BytesValue = PrintExtensions.AddBytes(BytesValue, obj.Lf());
             //BytesValue = PrintExtensions.AddBytes(BytesValue, obj.Alignment.Center());
             //BytesValue = PrintExtensions.AddBytes(BytesValue, obj.CharSize.DoubleHeight6());
             //BytesValue = PrintExtensions.AddBytes(BytesValue, obj.BarCode.Code128("12345"));
             //BytesValue = PrintExtensions.AddBytes(BytesValue, obj.QrCode.Print("12345", PrinterUtility.Enums.QrCodeSize.Grande));
-            BytesValue = PrintExtensions.AddBytes(BytesValue, "----------------Thank you for coming---------------------\n");
+            BytesValue = PrintExtensions.AddBytes(BytesValue, obj.CharSize.Nomarl());
+            BytesValue = PrintExtensions.AddBytes(BytesValue, "------------Thank you for coming----------------\n");
             BytesValue = PrintExtensions.AddBytes(BytesValue, obj.Alignment.Left());
             BytesValue = PrintExtensions.AddBytes(BytesValue, CutPage());
+            BytesValue = PrintExtensions.AddBytes(BytesValue, eDrawer);
             // PrinterUtility.PrintExtensions.Print(BytesValue, POSPrintExample.Properties.Settings.Default.PrinterPath);
             if (File.Exists(".\\tmpPrint.print"))
                 File.Delete(".\\tmpPrint.print");
             File.WriteAllBytes(".\\tmpPrint.print", BytesValue);
 
-           // MessageBox.Show(Program.MySettingViewModal.MyPrinterDetails.PosPrinter);
+            // MessageBox.Show(Program.MySettingViewModal.MyPrinterDetails.PosPrinter);
 
             RawPrinterHelper.SendFileToPrinter(Program.MySettingViewModal.MyPrinterDetails.PosPrinter, ".\\tmpPrint.print");
             try
@@ -289,6 +326,237 @@ namespace App.Extensions
 
         }
 
+        public void printInvoicereport(Invoicemaster invoicemaster)
+        {
+            string eClear = ('' + "@");
+            string eDrawer = (eClear + ('' + ("p" + ('\0' + ".}"))));
+
+
+            //const string format = "{0,-24}{1,6}{2,9}{3,9:N2}\n";
+            // const string format = "{0,-24}{1,-8}{2,-5},{3,4:N2}{4,4:N2}\n";
+            const string format = "{0,-24}{1,-8}{2,-5}{3,-6:N2}{4,6:N2}\n";
+            PrinterUtility.EscPosEpsonCommands.EscPosEpson obj = new PrinterUtility.EscPosEpsonCommands.EscPosEpson(54);
+            var BytesValue = Encoding.ASCII.GetBytes(string.Empty);
+            //Adds a Seperator
+            BytesValue = PrintExtensions.AddBytes(BytesValue, obj.CharSize.Nomarl());
+            //BytesValue = PrintExtensions.AddBytes(BytesValue, obj.Separator());
+            BytesValue = PrintExtensions.AddBytes(BytesValue, obj.Separator());   //Increases the Width of Byte
+            BytesValue = PrintExtensions.AddBytes(BytesValue, obj.CharSize.DoubleWidth2());           // Select Font A
+            BytesValue = PrintExtensions.AddBytes(BytesValue, obj.FontSelect.FontB());
+
+            BytesValue = PrintExtensions.AddBytes(BytesValue, obj.Alignment.Center()); //allign Center
+            BytesValue = PrintExtensions.AddBytes(BytesValue, Encoding.ASCII.GetBytes(invoicemaster.StoreName + "\n")); //added Store name
+            BytesValue = PrintExtensions.AddBytes(BytesValue, obj.CharSize.Nomarl());
+            BytesValue = PrintExtensions.AddBytes(BytesValue, Encoding.ASCII.GetBytes(invoicemaster.StoreAddress + "\n"));
+            BytesValue = PrintExtensions.AddBytes(BytesValue, obj.CharSize.Nomarl());
+            BytesValue = PrintExtensions.AddBytes(BytesValue, Encoding.ASCII.GetBytes(invoicemaster.StoreStreet + "\n"));
+            BytesValue = PrintExtensions.AddBytes(BytesValue, obj.CharSize.Nomarl());
+            BytesValue = PrintExtensions.AddBytes(BytesValue, Encoding.ASCII.GetBytes(invoicemaster.StorePhone + "\n"));
+            BytesValue = PrintExtensions.AddBytes(BytesValue, obj.CharSize.Nomarl());
+
+            BytesValue = PrintExtensions.AddBytes(BytesValue, obj.Separator());
+            BytesValue = PrintExtensions.AddBytes(BytesValue, obj.CharSize.DoubleWidth2());
+            BytesValue = PrintExtensions.AddBytes(BytesValue, Encoding.ASCII.GetBytes("Tax Invoice\n"));
+            BytesValue = PrintExtensions.AddBytes(BytesValue, obj.Alignment.Left());
+
+            BytesValue = PrintExtensions.AddBytes(BytesValue, Encoding.ASCII.GetBytes(invoicemaster.InvoiceNum + "\n"));
+
+            BytesValue = PrintExtensions.AddBytes(BytesValue, obj.Alignment.Left());
+            BytesValue = PrintExtensions.AddBytes(BytesValue, Encoding.ASCII.GetBytes(invoicemaster.InvoiceDate.ToString() + "\n"));
+            BytesValue = PrintExtensions.AddBytes(BytesValue, obj.Alignment.Left());
+            BytesValue = PrintExtensions.AddBytes(BytesValue, Encoding.ASCII.GetBytes("Cashier:" + invoicemaster.Cashier.Trim() + "\n"));
+            BytesValue = PrintExtensions.AddBytes(BytesValue, obj.Alignment.Left());
+            BytesValue = PrintExtensions.AddBytes(BytesValue, Encoding.ASCII.GetBytes("Buzzer:" + invoicemaster.BuzzerName.ToString() + "\n"));
+            BytesValue = PrintExtensions.AddBytes(BytesValue, obj.Alignment.Left());
+            BytesValue = PrintExtensions.AddBytes(BytesValue, Encoding.ASCII.GetBytes("Table : " + invoicemaster.TableName.Trim() + "\n"));
+            BytesValue = PrintExtensions.AddBytes(BytesValue, obj.CharSize.Nomarl());
+            BytesValue = PrintExtensions.AddBytes(BytesValue, obj.CharSize.DoubleHeight2());
+            string line1 = string.Format(format,
+                  "Item", "Price", "Qty", "Tax %", "Net"
+                  );
+            BytesValue = PrintExtensions.AddBytes(BytesValue, Encoding.ASCII.GetBytes(line1));
+            //BytesValue = PrintExtensions.AddBytes(BytesValue, Encoding.ASCII.GetBytes("Itm                        Qty   Net   Dis  Total\n"));
+            BytesValue = PrintExtensions.AddBytes(BytesValue, obj.Separator());
+            //   BytesValue = PrintExtensions.AddBytes(BytesValue, Encoding.ASCII.GetBytes("______________________________________________________\n"));
+            foreach (InvoiceDetail invoicedet in invoicemaster.InvoiceDetails)
+            {
+                string line2 = string.Format(format,
+                    invoicedet.ProductName,
+                    invoicedet.UnitPrice, invoicedet.Qty, "5", invoicedet.Total);
+                BytesValue = PrintExtensions.AddBytes(BytesValue, Encoding.ASCII.GetBytes(line2));
+                // BytesValue = PrintExtensions.AddBytes(BytesValue, string.Format("{0,-25}{1,6}{2,8}{3,8}{4,6:N2}\n", invoicedet.ProductName, invoicedet.Qty, invoicedet.UnitPrice, invoicedet.DiscountPerUOM, invoicedet.Total));
+            }
+
+
+
+            BytesValue = PrintExtensions.AddBytes(BytesValue, obj.Alignment.Right());
+            //BytesValue = PrintExtensions.AddBytes(BytesValue, obj.Separator());
+            BytesValue = PrintExtensions.AddBytes(BytesValue, obj.Separator());
+            BytesValue = PrintExtensions.AddBytes(BytesValue, obj.CharSize.DoubleWidth2());
+
+            BytesValue = PrintExtensions.AddBytes(BytesValue, Encoding.ASCII.GetBytes("Sub Total:  " + invoicemaster.InvoiceDetails.Sum(u => u.Total).ToString().Trim() + "\n"));
+
+            BytesValue = PrintExtensions.AddBytes(BytesValue, Encoding.ASCII.GetBytes("Tax:  " + invoicemaster.Taxamount.ToString().Trim() + "\n"));
+            BytesValue = PrintExtensions.AddBytes(BytesValue, Encoding.ASCII.GetBytes("Discount:  " + invoicemaster.TotalDiscount.ToString().Trim() + "\n"));
+
+            //BytesValue = PrintExtensions.AddBytes(BytesValue, obj.Separator());
+            BytesValue = PrintExtensions.AddBytes(BytesValue, Encoding.ASCII.GetBytes("Total:  " + invoicemaster.TotalBill.ToString().Trim() + "\n"));
+
+            //BytesValue = PrintExtensions.AddBytes(BytesValue, Encoding.ASCII.GetBytes("Total\n"));
+            //BytesValue = PrintExtensions.AddBytes(BytesValue, Encoding.ASCII.GetBytes(invoicemaster.TotalBill + "\n"));
+            BytesValue = PrintExtensions.AddBytes(BytesValue, obj.CharSize.Nomarl());
+            BytesValue = PrintExtensions.AddBytes(BytesValue, obj.Separator());
+            BytesValue = PrintExtensions.AddBytes(BytesValue, obj.CharSize.DoubleWidth2());
+            BytesValue = PrintExtensions.AddBytes(BytesValue, obj.Alignment.Left());
+            BytesValue = PrintExtensions.AddBytes(BytesValue, Encoding.ASCII.GetBytes("Customer:  " + invoicemaster.CustomerName.Trim() + "\n"));
+            BytesValue = PrintExtensions.AddBytes(BytesValue, obj.Alignment.Left());
+            BytesValue = PrintExtensions.AddBytes(BytesValue, Encoding.ASCII.GetBytes("PH:  " + invoicemaster.CustomerPhone.ToString().Trim() + "\n"));
+            BytesValue = PrintExtensions.AddBytes(BytesValue, obj.Alignment.Left());
+            BytesValue = PrintExtensions.AddBytes(BytesValue, Encoding.ASCII.GetBytes("Address:  " + invoicemaster.CustomerAdress.ToString().Trim() + "\n"));
+
+
+            //BytesValue = PrintExtensions.AddBytes(BytesValue, obj.Separator());
+            BytesValue = PrintExtensions.AddBytes(BytesValue, obj.Lf());
+            //BytesValue = PrintExtensions.AddBytes(BytesValue, obj.Alignment.Center());
+            //BytesValue = PrintExtensions.AddBytes(BytesValue, obj.CharSize.DoubleHeight6());
+            //BytesValue = PrintExtensions.AddBytes(BytesValue, obj.BarCode.Code128("12345"));
+            //BytesValue = PrintExtensions.AddBytes(BytesValue, obj.QrCode.Print("12345", PrinterUtility.Enums.QrCodeSize.Grande));
+            BytesValue = PrintExtensions.AddBytes(BytesValue, obj.CharSize.Nomarl());
+            BytesValue = PrintExtensions.AddBytes(BytesValue, "------------Thank you for coming----------------\n");
+            BytesValue = PrintExtensions.AddBytes(BytesValue, obj.Alignment.Left());
+            BytesValue = PrintExtensions.AddBytes(BytesValue, CutPage());
+            BytesValue = PrintExtensions.AddBytes(BytesValue, eDrawer);
+            // PrinterUtility.PrintExtensions.Print(BytesValue, POSPrintExample.Properties.Settings.Default.PrinterPath);
+            if (File.Exists(".\\tmpPrint.print"))
+                File.Delete(".\\tmpPrint.print");
+            File.WriteAllBytes(".\\tmpPrint.print", BytesValue);
+
+            // MessageBox.Show(Program.MySettingViewModal.MyPrinterDetails.PosPrinter);
+
+            RawPrinterHelper.SendFileToPrinter(Program.MySettingViewModal.MyPrinterDetails.PosPrinter, ".\\tmpPrint.print");
+            try
+            {
+                File.Delete(".\\tmpPrint.print");
+            }
+            catch
+            {
+
+            }
+
+        }
+
+        public void printTableInvoicereport(Invoicemaster invoicemaster)
+        {
+            string eClear = ('' + "@");
+            string eDrawer = (eClear + ('' + ("p" + ('\0' + ".}"))));
+            const string format = "{0,-24}{1,-8}{2,-5}{3,-6:N2}{4,6:N2}\n";
+            PrinterUtility.EscPosEpsonCommands.EscPosEpson obj = new PrinterUtility.EscPosEpsonCommands.EscPosEpson(54);
+            var BytesValue = Encoding.ASCII.GetBytes(string.Empty);
+            //Adds a Seperator
+            //BytesValue = PrintExtensions.AddBytes(BytesValue, obj.CharSize.DoubleWidth2());
+            //BytesValue = PrintExtensions.AddBytes(BytesValue, obj.Separator());
+
+            //Increases the Width of Byte
+            BytesValue = PrintExtensions.AddBytes(BytesValue, obj.CharSize.DoubleWidth2());           // Select Font A
+            BytesValue = PrintExtensions.AddBytes(BytesValue, obj.FontSelect.FontB());
+
+            BytesValue = PrintExtensions.AddBytes(BytesValue, obj.Alignment.Center()); //allign Center
+            BytesValue = PrintExtensions.AddBytes(BytesValue, Encoding.ASCII.GetBytes(invoicemaster.StoreName + "\n")); //added Store name
+            BytesValue = PrintExtensions.AddBytes(BytesValue, obj.CharSize.Nomarl());
+            BytesValue = PrintExtensions.AddBytes(BytesValue, Encoding.ASCII.GetBytes(invoicemaster.StoreAddress + "\n"));
+            BytesValue = PrintExtensions.AddBytes(BytesValue, obj.CharSize.DoubleWidth2());
+            BytesValue = PrintExtensions.AddBytes(BytesValue, obj.CharSize.Nomarl());
+            BytesValue = PrintExtensions.AddBytes(BytesValue, Encoding.ASCII.GetBytes(invoicemaster.StoreStreet + "\n"));
+            BytesValue = PrintExtensions.AddBytes(BytesValue, obj.CharSize.Nomarl());
+            BytesValue = PrintExtensions.AddBytes(BytesValue, Encoding.ASCII.GetBytes(invoicemaster.StorePhone + "\n"));
+            BytesValue = PrintExtensions.AddBytes(BytesValue, obj.CharSize.Nomarl());
+            BytesValue = PrintExtensions.AddBytes(BytesValue, obj.Separator());
+            BytesValue = PrintExtensions.AddBytes(BytesValue, obj.CharSize.DoubleWidth2());
+            BytesValue = PrintExtensions.AddBytes(BytesValue, Encoding.ASCII.GetBytes("Table Bill\n"));
+            BytesValue = PrintExtensions.AddBytes(BytesValue, obj.Alignment.Left());
+
+            BytesValue = PrintExtensions.AddBytes(BytesValue, Encoding.ASCII.GetBytes(invoicemaster.InvoiceNum + "\n"));
+            BytesValue = PrintExtensions.AddBytes(BytesValue, obj.Alignment.Left());
+            BytesValue = PrintExtensions.AddBytes(BytesValue, Encoding.ASCII.GetBytes(invoicemaster.InvoiceDate.ToString() + "\n"));
+            BytesValue = PrintExtensions.AddBytes(BytesValue, obj.Alignment.Left());
+            BytesValue = PrintExtensions.AddBytes(BytesValue, Encoding.ASCII.GetBytes("Cashier:" + invoicemaster.Cashier.Trim() + "\n"));
+            BytesValue = PrintExtensions.AddBytes(BytesValue, obj.Alignment.Left());
+            BytesValue = PrintExtensions.AddBytes(BytesValue, Encoding.ASCII.GetBytes("Buzzer:" + invoicemaster.BuzzerName.ToString() + "\n"));
+            BytesValue = PrintExtensions.AddBytes(BytesValue, obj.Alignment.Left());
+            BytesValue = PrintExtensions.AddBytes(BytesValue, Encoding.ASCII.GetBytes("Table : " + invoicemaster.TableName.Trim() + "\n"));
+
+            BytesValue = PrintExtensions.AddBytes(BytesValue, obj.Alignment.Left());
+            BytesValue = PrintExtensions.AddBytes(BytesValue, obj.CharSize.Nomarl());
+            BytesValue = PrintExtensions.AddBytes(BytesValue, obj.CharSize.DoubleHeight2());
+            string line1 = string.Format(format,
+                  "Item", "Price", "Qty", "Tax %", "Net"
+                  );
+            BytesValue = PrintExtensions.AddBytes(BytesValue, Encoding.ASCII.GetBytes(line1));
+            //BytesValue = PrintExtensions.AddBytes(BytesValue, Encoding.ASCII.GetBytes("Itm                        Qty   Net   Dis  Total\n"));
+            BytesValue = PrintExtensions.AddBytes(BytesValue, obj.Separator());
+            //   BytesValue = PrintExtensions.AddBytes(BytesValue, Encoding.ASCII.GetBytes("______________________________________________________\n"));
+            foreach (InvoiceDetail invoicedet in invoicemaster.InvoiceDetails)
+            {
+                string line2 = string.Format(format,
+                    invoicedet.ProductName,
+                    invoicedet.UnitPrice, invoicedet.Qty, "5", invoicedet.Total);
+                BytesValue = PrintExtensions.AddBytes(BytesValue, Encoding.ASCII.GetBytes(line2));
+                // BytesValue = PrintExtensions.AddBytes(BytesValue, string.Format("{0,-25}{1,6}{2,8}{3,8}{4,6:N2}\n", invoicedet.ProductName, invoicedet.Qty, invoicedet.UnitPrice, invoicedet.DiscountPerUOM, invoicedet.Total));
+            }
+
+
+            BytesValue = PrintExtensions.AddBytes(BytesValue, obj.Alignment.Right());
+            BytesValue = PrintExtensions.AddBytes(BytesValue, obj.Separator());
+            BytesValue = PrintExtensions.AddBytes(BytesValue, obj.CharSize.DoubleWidth2());
+            // BytesValue = PrintExtensions.AddBytes(BytesValue, Encoding.ASCII.GetBytes("______________________________________________________\n"));
+            BytesValue = PrintExtensions.AddBytes(BytesValue, Encoding.ASCII.GetBytes("Sub Total:  " + invoicemaster.InvoiceDetails.Sum(u => u.Total).ToString().Trim() + "\n"));
+            BytesValue = PrintExtensions.AddBytes(BytesValue, Encoding.ASCII.GetBytes("Discount:  " + invoicemaster.TotalDiscount.ToString().Trim() + "\n"));
+
+            BytesValue = PrintExtensions.AddBytes(BytesValue, Encoding.ASCII.GetBytes("Tax:  " + invoicemaster.Taxamount.ToString().Trim() + "\n"));
+
+            //BytesValue = PrintExtensions.AddBytes(BytesValue, obj.Separator());
+            BytesValue = PrintExtensions.AddBytes(BytesValue, Encoding.ASCII.GetBytes("Total:  " + invoicemaster.TotalBill.ToString().Trim() + "\n"));
+
+            //BytesValue = PrintExtensions.AddBytes(BytesValue, Encoding.ASCII.GetBytes("Total\n"));
+            //BytesValue = PrintExtensions.AddBytes(BytesValue, Encoding.ASCII.GetBytes(invoicemaster.TotalBill + "\n"));
+            BytesValue = PrintExtensions.AddBytes(BytesValue, obj.CharSize.Nomarl());
+            BytesValue = PrintExtensions.AddBytes(BytesValue, obj.Separator());
+            BytesValue = PrintExtensions.AddBytes(BytesValue, obj.CharSize.DoubleWidth2());
+            BytesValue = PrintExtensions.AddBytes(BytesValue, obj.Alignment.Left());
+            BytesValue = PrintExtensions.AddBytes(BytesValue, Encoding.ASCII.GetBytes("Customer:  " + invoicemaster.CustomerName.Trim() + "\n"));
+            BytesValue = PrintExtensions.AddBytes(BytesValue, obj.Alignment.Left());
+            BytesValue = PrintExtensions.AddBytes(BytesValue, Encoding.ASCII.GetBytes("PH:  " + invoicemaster.CustomerPhone.ToString().Trim() + "\n"));
+            BytesValue = PrintExtensions.AddBytes(BytesValue, obj.Alignment.Left());
+            BytesValue = PrintExtensions.AddBytes(BytesValue, Encoding.ASCII.GetBytes("Address:  " + invoicemaster.CustomerAdress.ToString().Trim() + "\n"));
+            //BytesValue = PrintExtensions.AddBytes(BytesValue, obj.Separator());
+            BytesValue = PrintExtensions.AddBytes(BytesValue, obj.Lf());
+            BytesValue = PrintExtensions.AddBytes(BytesValue, obj.CharSize.Nomarl());
+            //BytesValue = PrintExtensions.AddBytes(BytesValue, obj.Alignment.Center());
+            //BytesValue = PrintExtensions.AddBytes(BytesValue, obj.CharSize.DoubleHeight6());
+            //BytesValue = PrintExtensions.AddBytes(BytesValue, obj.BarCode.Code128("12345"));
+            //BytesValue = PrintExtensions.AddBytes(BytesValue, obj.QrCode.Print("12345", PrinterUtility.Enums.QrCodeSize.Grande));
+            BytesValue = PrintExtensions.AddBytes(BytesValue, "----------------Thank you for coming---------------------\n");
+            BytesValue = PrintExtensions.AddBytes(BytesValue, obj.Alignment.Left());
+            BytesValue = PrintExtensions.AddBytes(BytesValue, CutPage());
+            BytesValue = PrintExtensions.AddBytes(BytesValue, eDrawer);
+            // PrinterUtility.PrintExtensions.Print(BytesValue, POSPrintExample.Properties.Settings.Default.PrinterPath);
+            if (File.Exists(".\\tmpPrint.print"))
+                File.Delete(".\\tmpPrint.print");
+            File.WriteAllBytes(".\\tmpPrint.print", BytesValue);
+
+            // MessageBox.Show(Program.MySettingViewModal.MyPrinterDetails.PosPrinter);
+
+            RawPrinterHelper.SendFileToPrinter(Program.MySettingViewModal.MyPrinterDetails.PosPrinter, ".\\tmpPrint.print");
+            try
+            {
+                File.Delete(".\\tmpPrint.print");
+            }
+            catch
+            {
+
+            }
+
+        }
 
         public void printKOTreport(Invoicemaster kotMaster)
         {
@@ -304,52 +572,59 @@ namespace App.Extensions
                 String PrinterIP = printer.ToString();
                 List<InvoiceDetail> kotdetails = invoicemaster.InvoiceDetails.Where(m => m.Product.Category.PrinterName == PrinterIP).ToList();
 
-                PrinterUtility.EscPosEpsonCommands.EscPosEpson obj = new PrinterUtility.EscPosEpsonCommands.EscPosEpson();
+                PrinterUtility.EscPosEpsonCommands.EscPosEpson obj = new PrinterUtility.EscPosEpsonCommands.EscPosEpson(54);
                 var BytesValue = Encoding.ASCII.GetBytes(string.Empty);
                 //BytesValue = PrintExtensions.AddBytes(BytesValue, obj.Separator());
-                BytesValue = PrintExtensions.AddBytes(BytesValue, obj.CharSize.DoubleHeight2());
-                BytesValue = PrintExtensions.AddBytes(BytesValue, obj.FontSelect.SpecialFontA());
+                            BytesValue = PrintExtensions.AddBytes(BytesValue, obj.CharSize.DoubleWidth2());           // Select Font A
+            BytesValue = PrintExtensions.AddBytes(BytesValue, obj.FontSelect.FontB());
                 BytesValue = PrintExtensions.AddBytes(BytesValue, obj.Alignment.Center());
                 BytesValue = PrintExtensions.AddBytes(BytesValue, Encoding.ASCII.GetBytes(kotMaster.StoreName + "\n"));
                 BytesValue = PrintExtensions.AddBytes(BytesValue, obj.CharSize.Nomarl());
                 BytesValue = PrintExtensions.AddBytes(BytesValue, Encoding.ASCII.GetBytes(kotMaster.StoreAddress + "\n"));
+                BytesValue = PrintExtensions.AddBytes(BytesValue, obj.CharSize.DoubleWidth2());
                 BytesValue = PrintExtensions.AddBytes(BytesValue, obj.CharSize.Nomarl());
-                //BytesValue = PrintExtensions.AddBytes(BytesValue, obj.Separator());
-                //BytesValue = PrintExtensions.AddBytes(BytesValue, Encoding.ASCII.GetBytes("......................................................\n"));
-                BytesValue = PrintExtensions.AddBytes(BytesValue, Encoding.ASCII.GetBytes("______________________________________________________\n"));
-                //BytesValue = PrintExtensions.AddBytes(BytesValue, Encoding.ASCII.GetBytes("-------------------------------------------------------\n"));
+                BytesValue = PrintExtensions.AddBytes(BytesValue, obj.Separator());
+                BytesValue = PrintExtensions.AddBytes(BytesValue, obj.CharSize.DoubleWidth2());
+               
+
                 BytesValue = PrintExtensions.AddBytes(BytesValue, Encoding.ASCII.GetBytes("KOT\n"));
                 BytesValue = PrintExtensions.AddBytes(BytesValue, obj.Alignment.Left());
-                BytesValue = PrintExtensions.AddBytes(BytesValue, Encoding.ASCII.GetBytes( kotMaster.InvoiceNum + "                 "));
+                BytesValue = PrintExtensions.AddBytes(BytesValue, Encoding.ASCII.GetBytes( kotMaster.InvoiceNum + "\n"));
                 BytesValue = PrintExtensions.AddBytes(BytesValue, obj.Alignment.Right());
-                BytesValue = PrintExtensions.AddBytes(BytesValue, Encoding.ASCII.GetBytes("             " + kotMaster.CustomerName + "\n"));
+                BytesValue = PrintExtensions.AddBytes(BytesValue, Encoding.ASCII.GetBytes("Customer" + kotMaster.CustomerName + "\n"));
+                BytesValue = PrintExtensions.AddBytes(BytesValue, obj.Alignment.Left());                
+                BytesValue = PrintExtensions.AddBytes(BytesValue, Encoding.ASCII.GetBytes(kotMaster.InvoiceDate.ToString() + "\n"));
                 BytesValue = PrintExtensions.AddBytes(BytesValue, obj.Alignment.Left());
-                BytesValue = PrintExtensions.AddBytes(BytesValue, Encoding.ASCII.GetBytes(kotMaster.InvoiceDate.ToString()+"          "));
-                BytesValue = PrintExtensions.AddBytes(BytesValue, obj.Alignment.Right());
-                BytesValue = PrintExtensions.AddBytes(BytesValue, Encoding.ASCII.GetBytes("  " + kotMaster.Cashier.Trim() + "\n"));
+                BytesValue = PrintExtensions.AddBytes(BytesValue, Encoding.ASCII.GetBytes("Cashier:" + kotMaster.Cashier.Trim() + "\n"));
                 BytesValue = PrintExtensions.AddBytes(BytesValue, obj.Alignment.Left());
-                BytesValue = PrintExtensions.AddBytes(BytesValue, Encoding.ASCII.GetBytes("Itm                                   Qty\n"));
-                //BytesValue = PrintExtensions.AddBytes(BytesValue, obj.Separator());
-                BytesValue = PrintExtensions.AddBytes(BytesValue, Encoding.ASCII.GetBytes("______________________________________________________\n"));
-                //BytesValue = PrintExtensions.AddBytes(BytesValue, obj.Separator());
-
+                BytesValue = PrintExtensions.AddBytes(BytesValue, Encoding.ASCII.GetBytes("Buzzer:" + kotMaster.BuzzerName.ToString() + "\n"));
+                BytesValue = PrintExtensions.AddBytes(BytesValue, obj.Alignment.Left());
+                BytesValue = PrintExtensions.AddBytes(BytesValue, Encoding.ASCII.GetBytes("Table : " + kotMaster.TableName.Trim() + "\n"));
+                BytesValue = PrintExtensions.AddBytes(BytesValue, obj.Alignment.Left());
+                BytesValue = PrintExtensions.AddBytes(BytesValue, obj.CharSize.Nomarl());
+                //BytesValue = PrintExtensions.AddBytes(BytesValue, Encoding.ASCII.GetBytes("______________________________________________________\n"));
+                BytesValue = PrintExtensions.AddBytes(BytesValue, obj.Separator());
+                BytesValue = PrintExtensions.AddBytes(BytesValue, obj.CharSize.DoubleWidth2());
+                BytesValue = PrintExtensions.AddBytes(BytesValue, Encoding.ASCII.GetBytes("Itm                 Qty\n"));
+                BytesValue = PrintExtensions.AddBytes(BytesValue, obj.CharSize.Nomarl());
+                //BytesValue = PrintExtensions.AddBytes(BytesValue, Encoding.ASCII.GetBytes("______________________________________________________\n"));
+                BytesValue = PrintExtensions.AddBytes(BytesValue, obj.Separator());
+                BytesValue = PrintExtensions.AddBytes(BytesValue, obj.CharSize.Nomarl());
+                BytesValue = PrintExtensions.AddBytes(BytesValue, obj.CharSize.DoubleHeight2());
                 foreach (InvoiceDetail kotdetail in kotdetails)
                 {
 
-                    BytesValue = PrintExtensions.AddBytes(BytesValue, string.Format("{0,-35}{1,6}\n", kotdetail.Product.ProductName, kotdetail.Qty));
+                    BytesValue = PrintExtensions.AddBytes(BytesValue, string.Format("{0,-30}{1,6}\n", kotdetail.Product.ProductName, kotdetail.Qty));
+                    BytesValue = PrintExtensions.AddBytes(BytesValue, Encoding.ASCII.GetBytes("Note  : " + kotdetail.Notes.Trim() + "\n"));
 
 
                 }
 
-
-
                 BytesValue = PrintExtensions.AddBytes(BytesValue, obj.Alignment.Right());
-                //BytesValue = PrintExtensions.AddBytes(BytesValue, obj.Separator());
-                BytesValue = PrintExtensions.AddBytes(BytesValue, Encoding.ASCII.GetBytes("______________________________________________________\n"));
-                //BytesValue = PrintExtensions.AddBytes(BytesValue, Encoding.ASCII.GetBytes());
+                BytesValue = PrintExtensions.AddBytes(BytesValue, obj.Separator());
+                BytesValue = PrintExtensions.AddBytes(BytesValue, obj.CharSize.DoubleWidth2());
+
                 BytesValue = PrintExtensions.AddBytes(BytesValue, Encoding.ASCII.GetBytes("Total  " +kotMaster.InvoiceDetails.Count() + " Items \n"));
-                //BytesValue = PrintExtensions.AddBytes(BytesValue, Encoding.ASCII.GetBytes("______________________________________________________\n"));
-                //BytesValue = PrintExtensions.AddBytes(BytesValue, obj.Separator());
                 BytesValue = PrintExtensions.AddBytes(BytesValue, obj.Lf());
                 BytesValue = PrintExtensions.AddBytes(BytesValue, obj.Alignment.Left());
                 BytesValue = PrintExtensions.AddBytes(BytesValue, CutPage());
@@ -362,9 +637,10 @@ namespace App.Extensions
                     IpPrint print = new IpPrint();
                     print.PrinttoIP(PrinterIP, ".\\tmpPrint.print");
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
                     MessageBox.Show("Error on KOT Printer So Printing on receipt Printer ");
+                    ErrorLogger.WriteToErrorLog("Error on KOT Printer ", ex.StackTrace, ex.Message);
                     RawPrinterHelper.SendFileToPrinter(Program.MySettingViewModal.MyPrinterDetails.PosPrinter, ".\\tmpPrint.print");
                 }
                 // 
@@ -387,13 +663,13 @@ namespace App.Extensions
         public void printClosingreport(ShiftViewModel shiftViewModel)
         {
 
-            PrinterUtility.EscPosEpsonCommands.EscPosEpson obj = new PrinterUtility.EscPosEpsonCommands.EscPosEpson();
+            PrinterUtility.EscPosEpsonCommands.EscPosEpson obj = new PrinterUtility.EscPosEpsonCommands.EscPosEpson(54);
             var BytesValue = Encoding.ASCII.GetBytes(string.Empty);
             //Adds a Seperator
             BytesValue = PrintExtensions.AddBytes(BytesValue, obj.CharSize.Nomarl());
-            //BytesValue = PrintExtensions.AddBytes(BytesValue, obj.Separator());
-            BytesValue = PrintExtensions.AddBytes(BytesValue, Encoding.ASCII.GetBytes("______________________________________________________\n"));
-            //Increases the Width of Byte
+            BytesValue = PrintExtensions.AddBytes(BytesValue, obj.Separator());
+            //BytesValue = PrintExtensions.AddBytes(BytesValue, Encoding.ASCII.GetBytes("______________________________________________________\n"));
+            ////Increases the Width of Byte
             BytesValue = PrintExtensions.AddBytes(BytesValue, obj.CharSize.DoubleWidth2());           // Select Font A
             BytesValue = PrintExtensions.AddBytes(BytesValue, obj.FontSelect.SpecialFontA());
 
@@ -411,53 +687,68 @@ namespace App.Extensions
             BytesValue = PrintExtensions.AddBytes(BytesValue, Encoding.ASCII.GetBytes("Shift-From :" + shiftViewModel. Shiftfrom + "   Shift-To "+ shiftViewModel .ShiftTo+ " :\n"));
             BytesValue = PrintExtensions.AddBytes(BytesValue, obj.Alignment.Left());
 
-            BytesValue = PrintExtensions.AddBytes(BytesValue, Encoding.ASCII.GetBytes("______________________________________________________\n"));
+            BytesValue = PrintExtensions.AddBytes(BytesValue, obj.Separator());
             BytesValue = PrintExtensions.AddBytes(BytesValue, obj.Alignment.Left());
-            BytesValue = PrintExtensions.AddBytes(BytesValue, Encoding.ASCII.GetBytes("Particulators                            Amount \n"));
+            BytesValue = PrintExtensions.AddBytes(BytesValue, Encoding.ASCII.GetBytes("Particulators                           Amount \n"));
             BytesValue = PrintExtensions.AddBytes(BytesValue, obj.Alignment.Left());
-            BytesValue = PrintExtensions.AddBytes(BytesValue, Encoding.ASCII.GetBytes("Total Sales      :                    "+shiftViewModel.TotalSales+" \n"));
+            BytesValue = PrintExtensions.AddBytes(BytesValue, Encoding.ASCII.GetBytes("Total Sales         :                  "+shiftViewModel.TotalSales+" \n"));
+            //BytesValue = PrintExtensions.AddBytes(BytesValue, obj.Alignment.Left());
+            //BytesValue = PrintExtensions.AddBytes(BytesValue, Encoding.ASCII.GetBytes("Total Charges       :                  " + shiftViewModel.TotalCharges + " \n"));
             BytesValue = PrintExtensions.AddBytes(BytesValue, obj.Alignment.Left());
-            BytesValue = PrintExtensions.AddBytes(BytesValue, Encoding.ASCII.GetBytes("Total Charges    :                   " + shiftViewModel.TotalCharges + " \n"));
+            BytesValue = PrintExtensions.AddBytes(BytesValue, Encoding.ASCII.GetBytes("Total Tax           :                  " + shiftViewModel.TotalTax + " \n"));
             BytesValue = PrintExtensions.AddBytes(BytesValue, obj.Alignment.Left());
-            BytesValue = PrintExtensions.AddBytes(BytesValue, Encoding.ASCII.GetBytes("Total Discount   :                   " + shiftViewModel.TotalDiscount + " \n"));
-            BytesValue = PrintExtensions.AddBytes(BytesValue, Encoding.ASCII.GetBytes("______________________________________________________\n"));
+            BytesValue = PrintExtensions.AddBytes(BytesValue, Encoding.ASCII.GetBytes("Total Discount      :                  " + shiftViewModel.TotalDiscount + " \n"));
+            BytesValue = PrintExtensions.AddBytes(BytesValue, obj.Separator());
             BytesValue = PrintExtensions.AddBytes(BytesValue, obj.Alignment.Left());
-            BytesValue = PrintExtensions.AddBytes(BytesValue, Encoding.ASCII.GetBytes("Net Sales        :                    " + shiftViewModel.Netsales + " \n"));
-            BytesValue = PrintExtensions.AddBytes(BytesValue, Encoding.ASCII.GetBytes("______________________________________________________\n"));
+            BytesValue = PrintExtensions.AddBytes(BytesValue, Encoding.ASCII.GetBytes("Net Sales           :                  " + shiftViewModel.Netsales + " \n"));
+            BytesValue = PrintExtensions.AddBytes(BytesValue, obj.Separator());
 
             BytesValue = PrintExtensions.AddBytes(BytesValue, obj.Alignment.Left());
 
 
-            BytesValue = PrintExtensions.AddBytes(BytesValue, Encoding.ASCII.GetBytes("______________________________________________________\n"));
-            BytesValue = PrintExtensions.AddBytes(BytesValue, obj.Alignment.Left());
+         
       
-            BytesValue = PrintExtensions.AddBytes(BytesValue, Encoding.ASCII.GetBytes("Total By Cash      :                    " + shiftViewModel.TotalByCash + " \n"));
+            BytesValue = PrintExtensions.AddBytes(BytesValue, Encoding.ASCII.GetBytes("Total By Cash       :                  " + shiftViewModel.TotalByCash + " \n"));
             BytesValue = PrintExtensions.AddBytes(BytesValue, obj.Alignment.Left());
-            BytesValue = PrintExtensions.AddBytes(BytesValue, Encoding.ASCII.GetBytes("Total CC           :                   " + shiftViewModel.TotalCC + " \n"));
+            BytesValue = PrintExtensions.AddBytes(BytesValue, Encoding.ASCII.GetBytes("Total By CC         :                  " + shiftViewModel.TotalCC + " \n"));
             BytesValue = PrintExtensions.AddBytes(BytesValue, obj.Alignment.Left());
-            BytesValue = PrintExtensions.AddBytes(BytesValue, Encoding.ASCII.GetBytes("Total Cheque       :                   " + shiftViewModel.TotalByCheque + " \n"));
-            BytesValue = PrintExtensions.AddBytes(BytesValue, Encoding.ASCII.GetBytes("Total Credit       :                   " + shiftViewModel.TotalByCredit + " \n"));
-            BytesValue = PrintExtensions.AddBytes(BytesValue, Encoding.ASCII.GetBytes("Total  Gift       :                   " + shiftViewModel.TotalByGift + " \n"));
+            BytesValue = PrintExtensions.AddBytes(BytesValue, Encoding.ASCII.GetBytes("Total By Cheque     :                  " + shiftViewModel.TotalByCheque + " \n"));
+            BytesValue = PrintExtensions.AddBytes(BytesValue, Encoding.ASCII.GetBytes("Total By Credit     :                  " + shiftViewModel.TotalByCredit + " \n"));
+            BytesValue = PrintExtensions.AddBytes(BytesValue, Encoding.ASCII.GetBytes("Total BY Gift       :                  " + shiftViewModel.TotalByGift + " \n"));
 
-            BytesValue = PrintExtensions.AddBytes(BytesValue, Encoding.ASCII.GetBytes("______________________________________________________\n"));
+            BytesValue = PrintExtensions.AddBytes(BytesValue, obj.Separator());
             BytesValue = PrintExtensions.AddBytes(BytesValue, obj.Alignment.Left());
-            BytesValue = PrintExtensions.AddBytes(BytesValue, Encoding.ASCII.GetBytes("Net Amount        :                    " + shiftViewModel.NetAmount + " \n"));
-            BytesValue = PrintExtensions.AddBytes(BytesValue, Encoding.ASCII.GetBytes("______________________________________________________\n"));
-                        
+
+            BytesValue = PrintExtensions.AddBytes(BytesValue, Encoding.ASCII.GetBytes("Pending TableBill/KOT :                " + shiftViewModel.TableBill + " \n"));
+            BytesValue = PrintExtensions.AddBytes(BytesValue, obj.Separator());
+            BytesValue = PrintExtensions.AddBytes(BytesValue, obj.Alignment.Left());
+            BytesValue = PrintExtensions.AddBytes(BytesValue, Encoding.ASCII.GetBytes("Credit Settlement   :                  " + shiftViewModel.SettlementAmount + " \n"));
+           
+           BytesValue = PrintExtensions.AddBytes(BytesValue, obj.Separator());
+            BytesValue = PrintExtensions.AddBytes(BytesValue, obj.Alignment.Left());
+
+            BytesValue = PrintExtensions.AddBytes(BytesValue, Encoding.ASCII.GetBytes("Total  Refund       :                  " + shiftViewModel.TotalRefund + " \n"));
+            BytesValue = PrintExtensions.AddBytes(BytesValue, Encoding.ASCII.GetBytes("Total  TotalCashout :                  " + shiftViewModel.TotalCashout + " \n"));
+            BytesValue = PrintExtensions.AddBytes(BytesValue, Encoding.ASCII.GetBytes("Total  TotalCredit  :                  " + shiftViewModel.TotalCredit + " \n"));
+            BytesValue = PrintExtensions.AddBytes(BytesValue, obj.Separator());
+            BytesValue = PrintExtensions.AddBytes(BytesValue, obj.Alignment.Left());
+            BytesValue = PrintExtensions.AddBytes(BytesValue, Encoding.ASCII.GetBytes("Net Amount          :                  " + shiftViewModel.NetAmount + " \n"));
+            BytesValue = PrintExtensions.AddBytes(BytesValue, obj.Separator());
+
             BytesValue = PrintExtensions.AddBytes(BytesValue, obj.Alignment.Right());
             //BytesValue = PrintExtensions.AddBytes(BytesValue, obj.Separator());
-            BytesValue = PrintExtensions.AddBytes(BytesValue, Encoding.ASCII.GetBytes("______________________________________________________\n"));
-            
+
             //BytesValue = PrintExtensions.AddBytes(BytesValue, Encoding.ASCII.GetBytes("Total\n"));
             //BytesValue = PrintExtensions.AddBytes(BytesValue, Encoding.ASCII.GetBytes(invoicemaster.TotalBill + "\n"));
-            BytesValue = PrintExtensions.AddBytes(BytesValue, Encoding.ASCII.GetBytes("______________________________________________________\n"));
-            //BytesValue = PrintExtensions.AddBytes(BytesValue, obj.Separator());
+            //BytesValue = PrintExtensions.AddBytes(BytesValue, Encoding.ASCII.GetBytes("______________________________________________________\n"));
+            ////BytesValue = PrintExtensions.AddBytes(BytesValue, obj.Separator());
             BytesValue = PrintExtensions.AddBytes(BytesValue, obj.Lf());
             //BytesValue = PrintExtensions.AddBytes(BytesValue, obj.Alignment.Center());
             //BytesValue = PrintExtensions.AddBytes(BytesValue, obj.CharSize.DoubleHeight6());
             //BytesValue = PrintExtensions.AddBytes(BytesValue, obj.BarCode.Code128("12345"));
-            //BytesValue = PrintExtensions.AddBytes(BytesValue, obj.QrCode.Print("12345", PrinterUtility.Enums.QrCodeSize.Grande));
-            BytesValue = PrintExtensions.AddBytes(BytesValue, "----------------Thank you for coming---------------------\n");
+            ////BytesValue = PrintExtensions.AddBytes(BytesValue, obj.QrCode.Print("12345", PrinterUtility.Enums.QrCodeSize.Grande));
+            //BytesValue = PrintExtensions.AddBytes(BytesValue, "----------------Thank you for coming---------------------\n");
+            BytesValue = PrintExtensions.AddBytes(BytesValue, obj.Alignment.Left());
             BytesValue = PrintExtensions.AddBytes(BytesValue, obj.Alignment.Left());
             BytesValue = PrintExtensions.AddBytes(BytesValue, CutPage());
             // PrinterUtility.PrintExtensions.Print(BytesValue, POSPrintExample.Properties.Settings.Default.PrinterPath);
@@ -478,6 +769,38 @@ namespace App.Extensions
             }
 
         }
+        public void OpenDrawer( )
+        {
+            string eClear = ('' + "@");
+            string eDrawer = (eClear + ('' + ("p" + ('\0' + ".}"))));
 
+
+            //const string format = "{0,-24}{1,6}{2,9}{3,9:N2}\n";
+            // const string format = "{0,-24}{1,-8}{2,-5},{3,4:N2}{4,4:N2}\n";
+            const string format = "{0,-24}{1,-8}{2,-5},{3,-6:N2}{4,6:N2}\n";
+            PrinterUtility.EscPosEpsonCommands.EscPosEpson obj = new PrinterUtility.EscPosEpsonCommands.EscPosEpson(54);
+            var BytesValue = Encoding.ASCII.GetBytes(string.Empty);
+            //Adds a Seperator
+            
+            BytesValue = PrintExtensions.AddBytes(BytesValue, CutPage());
+            BytesValue = PrintExtensions.AddBytes(BytesValue, eDrawer);
+            // PrinterUtility.PrintExtensions.Print(BytesValue, POSPrintExample.Properties.Settings.Default.PrinterPath);
+            if (File.Exists(".\\tmpPrint.print"))
+                File.Delete(".\\tmpPrint.print");
+            File.WriteAllBytes(".\\tmpPrint.print", BytesValue);
+
+            // MessageBox.Show(Program.MySettingViewModal.MyPrinterDetails.PosPrinter);
+
+            RawPrinterHelper.SendFileToPrinter(Program.MySettingViewModal.MyPrinterDetails.PosPrinter, ".\\tmpPrint.print");
+            try
+            {
+                File.Delete(".\\tmpPrint.print");
+            }
+            catch
+            {
+
+            }
+
+        }
     }
 }

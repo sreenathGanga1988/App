@@ -1,4 +1,7 @@
-﻿using System;
+﻿using App.Repository;
+using App.UI.RefundAndExpense;
+using App.ViewModal;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,6 +15,7 @@ namespace App.UI
 {
     public partial class FrmActions : Form
     {
+
         public FrmActions()
         {
             InitializeComponent();
@@ -19,187 +23,58 @@ namespace App.UI
 
         private void FrmPOS1_Load(object sender, EventArgs e)
         {
-           
+            loadShift();
         }
 
-        private void panel27_Paint(object sender, PaintEventArgs e)
+        public void loadShift()
         {
-
+            using(App.Context.POSDataContext cntxt= new Context.POSDataContext())
+            {
+                
+                cmb_shift.ValueMember = "ShiftID";
+                cmb_shift.DisplayMember = "ShiftName";
+                cmb_shift.DataSource = cntxt.Shifts.ToList();
+            }
         }
 
-        private void panel28_Paint(object sender, PaintEventArgs e)
+        private void btn_purchase_Click(object sender, EventArgs e)
         {
-
+            ValueInPut valinput = new ValueInPut(DateTime.Now, "Purchase");
+            valinput.ShowDialog();
         }
 
-        private void button27_Click(object sender, EventArgs e)
+        private void btn_PosOut_Click(object sender, EventArgs e)
         {
-
+            ValueInPut valinput = new ValueInPut(DateTime.Now, "Encash");
+            valinput.ShowDialog();
         }
 
-        private void panel21_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void button29_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button41_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void panel32_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void button7_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button31_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void panel2_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void label6_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button15_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button5_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button8_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button40_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button49_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button37_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button38_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void panel55_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void listView1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void panel38_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void panel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void textBox2_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void panel73_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void panel21_Paint_1(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void button11_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void listView1_SelectedIndexChanged_1(object sender, EventArgs e)
-        {
-
-        }
-
-        private void panel12_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void panel13_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void button51_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void panel11_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void panel29_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void panel31_Paint(object sender, PaintEventArgs e)
+        private void btn_posAmount_Click(object sender, EventArgs e)
         {
 
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-
+            CurrentSelectedShiftreport();
         }
 
-        private void textBox2_TextChanged_1(object sender, EventArgs e)
+
+        public void CurrentSelectedShiftreport()
         {
+            InvoiceRepository invrepo = new InvoiceRepository();
+
+            List<InvoiceviewModal> invemstr = invrepo.GetInvoicePendingOfShift(Program.LocationID,int.Parse(cmb_shift.SelectedValue.ToString()));
+            dataGridView1.DataSource = invemstr;
+
+            lbl_totalPaid.Text = "Total Sales  is :" + CalculateTotal(invemstr).ToString() + "AED";
            
         }
-
-        private void button1_Click(object sender, EventArgs e)
+        public float CalculateTotal(List<InvoiceviewModal> invemstr)
         {
+            var q = invemstr.Sum(u => u.TotalPaid);
 
+            return float.Parse(q.ToString());
         }
     }
 }

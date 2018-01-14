@@ -5,10 +5,12 @@ using Npgsql;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using App.Extensions;
 namespace App.Repository
 {
     public  class OdooUpdator
@@ -27,6 +29,7 @@ namespace App.Repository
             }
             catch (Exception ex)
             {
+                ErrorLogger.WriteToErrorLog("At GetStorefromODOO", ex.StackTrace, "GetStorefromODOO ");
                 MessageBox.Show("ErrorAt" + Environment.NewLine + "GetStorefromODOO " + ex.ToString());
             }
             try
@@ -36,15 +39,18 @@ namespace App.Repository
             }
             catch (Exception ex)
             {
+                ErrorLogger.WriteToErrorLog("At GetTablefromODOO", ex.StackTrace, "GetTablefromODOO ");
                 MessageBox.Show("ErrorAt" + Environment.NewLine + "GetTablefromODOO " + ex.ToString());
             }
             try
             {
                 GetUserfromODOO();
+              
                 MessageBox.Show("GetUserfromODOO Completed");
             }
             catch (Exception ex)
             {
+                ErrorLogger.WriteToErrorLog("At GetUserfromODOO", ex.StackTrace, "GetUserfromODOO ");
                 MessageBox.Show("ErrorAt" + Environment.NewLine + "GetUserfromODOO " + ex.ToString());
             }
             try
@@ -54,6 +60,7 @@ namespace App.Repository
             }
             catch (Exception ex)
             {
+                ErrorLogger.WriteToErrorLog("At GetBuzzerfromODOO", ex.StackTrace, "GetBuzzerfromODOO ");
                 MessageBox.Show("ErrorAt" + Environment.NewLine + "GetBuzzerfromODOO " + ex.ToString());
             }
             try
@@ -63,6 +70,7 @@ namespace App.Repository
             }
             catch (Exception ex)
             {
+                ErrorLogger.WriteToErrorLog("At GetCategoryfromODOO", ex.StackTrace, "GetCategoryfromODOO ");
                 MessageBox.Show("ErrorAt" + Environment.NewLine + "GetCategoryfromODOO " + ex.ToString());
             }
             try
@@ -72,6 +80,7 @@ namespace App.Repository
             }
             catch (Exception ex)
             {
+                ErrorLogger.WriteToErrorLog("At GetProductfromODOO", ex.StackTrace, "GetProductfromODOO ");
                 MessageBox.Show("ErrorAt" + Environment.NewLine + "GetProductfromODOO " + ex.ToString());
             }
            try {
@@ -80,15 +89,11 @@ namespace App.Repository
             }
             catch (Exception ex)
             {
+                
+                    ErrorLogger.WriteToErrorLog("At GetProductfromODOO", ex.StackTrace, "GetProductfromODOO ");
                 MessageBox.Show("ErrorAt"+Environment.NewLine+ "InsertCustomertoOdoofromlocal " + ex.ToString());
             }
-            //();
-            //();
-            //();
-            //// GetBuzzerfromODOO();
-            //();
-            //();
-            //();
+            
 
         }
 
@@ -97,12 +102,12 @@ namespace App.Repository
         public void uploadInvoiceMaster()
         {
 
-            
+            int uloaded = 0;
 
             int Shiftid = Program.ShiftId;
-         
-                InsertShiftOdoofromlocal();
 
+            //  InsertShiftOdoofromlocal();
+            InsertShiftOdoofromlocal(Program.ShiftId);
 
             try
             {
@@ -110,7 +115,7 @@ namespace App.Repository
                         where invoiceMaster.IsUploaded == false
                         select invoiceMaster;
 
-                List<Invoicemaster> invoicemasters = cntxt.Invoicemasters.Where(U => U.IsUploaded == false).ToList();
+                List<Invoicemaster> invoicemasters = cntxt.Invoicemasters.Where(U => U.IsUploaded == false && U.ShiftID==Shiftid && U.IsDeleted==false).ToList();
 
                 var Shifids = invoicemasters.Select(u => u.ShiftID).Distinct();
 
@@ -123,14 +128,64 @@ namespace App.Repository
 
 
                         element.IsUploaded = true;
-
+                        uloaded++;
                     };
-
+                    cntxt.SaveChanges();
 
 
                 }
 
+
+
+
+                List<SettleMaster> settlementlist = cntxt.SettleMasters.Where(U => U.IsUploaded == false && U.ShiftID == Shiftid).ToList();
+
+                foreach (SettleMaster element in settlementlist)
+                {
+                    try
+                    {
+                        insertSettlement(element);
+                        element.IsUploaded = true;
+                    }
+                    catch (Exception exp)
+                    {
+                        ErrorLogger.WriteToErrorLog("At Login insertSettlement", exp.StackTrace, exp.Message);
+                        
+                    }
+                }
+
+                    List<RefundMaster> refundlist = cntxt.RefundMasters.Where(U => U.IsUploaded == false && U.ShiftID == Shiftid).ToList();
+                foreach (RefundMaster element in refundlist)
+                {
+                    try
+                    {
+                        insertRefund(element);
+                        element.IsUploaded = true;
+                    }
+                    catch (Exception exp)
+                    {
+                        ErrorLogger.WriteToErrorLog("At Login insertRefund", exp.StackTrace, exp.Message);
+
+                    }
+                }
+
+                List<CashOutMaster> cashouitlist = cntxt.CashOutMasters.Where(U => U.IsUploaded == false && U.ShiftID == Shiftid).ToList();
+                foreach (CashOutMaster element in cashouitlist)
+                {
+                    try
+                    {
+                        InsertCashOut(element);
+                        element.IsUploaded = true;
+                    }
+                    catch (Exception exp)
+                    {
+                        ErrorLogger.WriteToErrorLog("At Login InsertCashOut", exp.StackTrace, exp.Message);
+
+                    }
+                }
+
                 cntxt.SaveChanges();
+                MessageBox.Show(uloaded + "Out Of " + invoicemasters.Count + "Uploaded");
                 foreach (int shifid in Shifids)
                 {
                     LoadClosereport(shifid);
@@ -151,21 +206,17 @@ namespace App.Repository
         {
             ShiftViewModel shiftViewModel = new ShiftViewModel();
             Shift shift= cntxt.Shifts.Where(U => U.ShiftID == shiftid).First();
-            List<Invoicemaster> invoicemasters = cntxt.Invoicemasters.Where(U => U.ShiftID == shiftid).ToList();
+            List<Invoicemaster> invoicemasters = cntxt.Invoicemasters.Where(U => U.ShiftID == shiftid && U.IsDeleted == false).ToList();
             shiftViewModel.invoicemstrlist = invoicemasters;
             shiftViewModel. StoreName = shift.Store.StoreName;
             shiftViewModel. ShiftName =shift.ShiftName;
             shiftViewModel. User =shift.CloseUserName;
             shiftViewModel. Shiftfrom =shift.StartTime.ToString();
-            shiftViewModel. ShiftTo = shift.EndTime.ToString(); 
+            shiftViewModel. ShiftTo = shift.EndTime.ToString();
 
-
-
-
-         shiftViewModel. TotalSales =0;
+            shiftViewModel. TotalSales =0;
          shiftViewModel. TotalCharges =0;
          shiftViewModel. TotalDiscount =0;
-
          shiftViewModel. Netsales =0;
          shiftViewModel. TotalCC =0;
          shiftViewModel. TotalByCash =0;
@@ -176,14 +227,32 @@ namespace App.Repository
          shiftViewModel. TotalByCredit =0;
          shiftViewModel. TotalTax =0;
          shiftViewModel. NetAmount =0;
-
+            shiftViewModel.TotalCashout = 0;
+            shiftViewModel.TotalCredit = 0;
+            shiftViewModel.TotalRefund = 0;
+            shiftViewModel.TotalSetllement = 0;
+            shiftViewModel.TableBill = 0;
+            shiftViewModel.Deletedvalue = 0;
+            shiftViewModel.SettlementAmount = 0;
+            
 
 
             try
             {
-                shiftViewModel.TotalSales = cntxt.Invoicemasters.Sum(u => u.TotalBill);
+                shiftViewModel.TableBill = invoicemasters.Where(u=>u.IstableBill==true || u.IsKOT == true).Sum(u => u.TotalBill);
 
-                shiftViewModel.Netsales = cntxt.Invoicemasters.Sum(u => u.TotalBill);
+               
+            }
+            catch (Exception)
+            {
+
+
+            }
+            try
+            {
+                shiftViewModel.TotalSales = invoicemasters.Sum(u => u.TotalBill);
+
+                shiftViewModel.Netsales = invoicemasters.Sum(u => u.TotalBill);
             }
             catch (Exception)
             {
@@ -192,7 +261,7 @@ namespace App.Repository
             }
             try
             {
-                shiftViewModel.TotalDiscount = cntxt.Invoicemasters.Sum(u => u.TotalDiscount);
+                shiftViewModel.TotalDiscount = invoicemasters.Sum(u => u.TotalDiscount);
               
             }
             catch (Exception)
@@ -200,9 +269,11 @@ namespace App.Repository
 
 
             }
+
             try
             {
-                shiftViewModel.TotalByCash = cntxt.Invoicemasters.Where(u=>u.PaymentMode== "CASH").Sum(u => u.TotalBill);
+                shiftViewModel.TotalTax = Decimal.Parse( invoicemasters.Sum(u => u.Taxamount).ToString());
+
             }
             catch (Exception)
             {
@@ -211,7 +282,7 @@ namespace App.Repository
             }
             try
             {
-                shiftViewModel.TotalByCredit = cntxt.Invoicemasters.Where(u => u.PaymentMode == "CREDIT").Sum(u => u.TotalBill);
+                shiftViewModel.TotalByCash = invoicemasters.Where(u=>u.PaymentMode== "CASH").Sum(u => u.TotalBill);
             }
             catch (Exception)
             {
@@ -220,7 +291,7 @@ namespace App.Repository
             }
             try
             {
-                shiftViewModel.TotalCC = cntxt.Invoicemasters.Where(u => u.PaymentMode == "CARD").Sum(u => u.TotalBill);
+                shiftViewModel.TotalByCredit = invoicemasters.Where(u => u.PaymentMode == "CREDIT").Sum(u => u.TotalBill);
             }
             catch (Exception)
             {
@@ -229,19 +300,16 @@ namespace App.Repository
             }
             try
             {
-                shiftViewModel.TotalCC = cntxt.Invoicemasters.Where(u => u.PaymentMode == "ZOMATO").Sum(u => u.TotalBill);
+                shiftViewModel.TotalCC = invoicemasters.Where(u => u.PaymentMode == "CARD").Sum(u => u.TotalBill);
             }
             catch (Exception)
             {
 
 
             }
-
             try
             {
-                Decimal NETAMOUNT = Decimal.Parse(shiftViewModel.Netsales.ToString()) - Decimal.Parse(shiftViewModel.Netsales.ToString()) -
-                     Decimal.Parse(shiftViewModel.Netsales.ToString()) - Decimal.Parse(shiftViewModel.Netsales.ToString());
-                 shiftViewModel.NetAmount = NETAMOUNT;
+                shiftViewModel.TotalCC = invoicemasters.Where(u => u.PaymentMode == "ZOMATO").Sum(u => u.TotalBill);
             }
             catch (Exception)
             {
@@ -249,6 +317,56 @@ namespace App.Repository
 
             }
 
+           
+            try
+            {
+                Decimal totalcashout = Decimal.Parse(cntxt.CashOutMasters.Where(u=>u.ShiftID==Program.ShiftId).Sum(u=>u.TotalCashOut).ToString());
+                shiftViewModel.TotalCashout = totalcashout;
+            }
+            catch (Exception)
+            {
+
+
+            }
+            try
+            {
+                Decimal refundmstr = Decimal.Parse(cntxt.RefundMasters.Where(u => u.ShiftID == Program.ShiftId).Sum(u => u.TotalRefund).ToString());
+                shiftViewModel.TotalRefund = refundmstr;
+            }
+            catch (Exception)
+            {
+
+
+            }
+            try
+            {
+                Decimal crdmstr = Decimal.Parse(cntxt.CreditMasters.Where(u => u.ShiftID == Program.ShiftId).Sum(u => u.PaymentDue).ToString());
+                shiftViewModel.TotalCredit = crdmstr;
+            }
+            catch (Exception)
+            {
+
+
+            }
+            try
+            {
+                Decimal totalcashout = Decimal.Parse(cntxt.SettleMasters.Where(u => u.ShiftID == Program.ShiftId).Sum(u => u.TotalRefund).ToString());
+                shiftViewModel.SettlementAmount = totalcashout;
+            }
+            catch (Exception)
+            {
+
+
+            }
+            try
+            {
+                Decimal NETAMOUNT = (shiftViewModel.Netsales - shiftViewModel.TotalCashout - shiftViewModel.TotalRefund - shiftViewModel.TotalCredit) + shiftViewModel.SettlementAmount;
+                shiftViewModel.NetAmount = NETAMOUNT;
+            }
+            catch (Exception)
+            {
+
+            }
             try
             {
                 PrintReceipt prnt = new PrintReceipt();
@@ -277,7 +395,11 @@ namespace App.Repository
                        Program.MySettingViewModal.MyOoodoDetasils.Password.ToString().Trim(), Program.MySettingViewModal.MyOoodoDetasils.DataBasename.ToString().Trim());
                 NpgsqlConnection conn = new NpgsqlConnection(connstring);
                 conn.Open();
-               NpgsqlCommand cmd = new NpgsqlCommand(@"insert into pos_order_master
+
+
+               
+
+                    NpgsqlCommand cmd = new NpgsqlCommand(@"insert into pos_order_master
 ( 
 create_uid, 
 write_date, 
@@ -313,42 +435,44 @@ values(
 :state,:total_paid,:total_discount,:total_bill,:total_tax) RETURNING id;", conn);
 
 
-             
 
 
-                cmd.Parameters.Add(new NpgsqlParameter("create_uid", invmstr.UserID));
-                cmd.Parameters.Add(new NpgsqlParameter("write_date", DateTime.Now));
-                cmd.Parameters.Add(new NpgsqlParameter("user_id", invmstr.UserID));
-                cmd.Parameters.Add(new NpgsqlParameter("write_uid", invmstr.UserID));
-                cmd.Parameters.Add(new NpgsqlParameter("create_date", DateTime.Now));
-                cmd.Parameters.Add(new NpgsqlParameter("store_id", Program.LocationID));            
-                cmd.Parameters.Add(new NpgsqlParameter("name", invmstr.InvoiceNum));
-                cmd.Parameters.Add(new NpgsqlParameter("order_date", invmstr.InvoiceDate));
-                cmd.Parameters.Add(new NpgsqlParameter("date", invmstr.InvoiceDate.Date));
-                cmd.Parameters.Add(new NpgsqlParameter("partner_id", invmstr.CustomerID));
-                 cmd.Parameters.Add(new NpgsqlParameter("session_id", Program.ShiftId));
-                cmd.Parameters.Add(new NpgsqlParameter("table_id", invmstr.TableID));
-                cmd.Parameters.Add(new NpgsqlParameter("payment_method", invmstr.PaymentMode));
-                cmd.Parameters.Add(new NpgsqlParameter("state", "draft"));
-                cmd.Parameters.Add(new NpgsqlParameter("pos_invoice_id", invmstr.InvoicemasterID));
-                cmd.Parameters.Add(new NpgsqlParameter("total_discount", invmstr.TotalDiscount));
-                cmd.Parameters.Add(new NpgsqlParameter("total_paid", invmstr.TotalPaid));
-                cmd.Parameters.Add(new NpgsqlParameter("total_bill", invmstr.TotalBill));
-                cmd.Parameters.Add(new NpgsqlParameter("total_tax", invmstr.Taxamount));
-             
+
+                    cmd.Parameters.Add(new NpgsqlParameter("create_uid", invmstr.User.OdooUserID));
+                    cmd.Parameters.Add(new NpgsqlParameter("write_date", DateTime.Now));
+                    cmd.Parameters.Add(new NpgsqlParameter("user_id", invmstr.User.OdooUserID));
+                    cmd.Parameters.Add(new NpgsqlParameter("write_uid", invmstr.User.OdooUserID));
+                    cmd.Parameters.Add(new NpgsqlParameter("create_date", DateTime.Now));
+                    cmd.Parameters.Add(new NpgsqlParameter("store_id", Program.LocationID));
+                    cmd.Parameters.Add(new NpgsqlParameter("name", invmstr.InvoiceNum));
+                    cmd.Parameters.Add(new NpgsqlParameter("order_date", invmstr.InvoiceDate));
+                    cmd.Parameters.Add(new NpgsqlParameter("date", invmstr.InvoiceDate.Date));
+                    cmd.Parameters.Add(new NpgsqlParameter("partner_id", invmstr.CustomerID));
+                    cmd.Parameters.Add(new NpgsqlParameter("session_id", invmstr.ShiftID));
+                    cmd.Parameters.Add(new NpgsqlParameter("table_id", invmstr.TableID));
+                    cmd.Parameters.Add(new NpgsqlParameter("payment_method", invmstr.PaymentMode));
+                    cmd.Parameters.Add(new NpgsqlParameter("state", "draft"));
+                    cmd.Parameters.Add(new NpgsqlParameter("pos_invoice_id", invmstr.InvoicemasterID));
+                    cmd.Parameters.Add(new NpgsqlParameter("total_discount", invmstr.TotalDiscount));
+                    cmd.Parameters.Add(new NpgsqlParameter("total_paid", invmstr.TotalPaid));
+                    cmd.Parameters.Add(new NpgsqlParameter("total_bill", invmstr.TotalBill));
+                    cmd.Parameters.Add(new NpgsqlParameter("total_tax", invmstr.Taxamount));
 
 
-                //cmd.Parameters.Add(new NpgsqlParameter("round_off", invmstr.RoundOffAmount));
 
-                var id =   cmd.ExecuteScalar();
+                    //cmd.Parameters.Add(new NpgsqlParameter("round_off", invmstr.RoundOffAmount));
+
+                    var id = cmd.ExecuteScalar();
+              
 
                 foreach (InvoiceDetail invdet in invmstr.InvoiceDetails)
                 {
 
 
+                   
 
 
-                    NpgsqlCommand cmd1 = new NpgsqlCommand(@"insert into pos_order_master_line
+                        NpgsqlCommand cmd1 = new NpgsqlCommand(@"insert into pos_order_master_line
 (
 create_uid ,
 write_date ,
@@ -387,40 +511,28 @@ values(
 :tax_amount , 
 :total_paid ,
 :pos_invoice_line_id) RETURNING id;", conn);
-
-
-
-
-                    cmd1.Parameters.Add(new NpgsqlParameter("create_uid", invmstr.UserID));
-                    cmd1.Parameters.Add(new NpgsqlParameter("write_date", DateTime.Now));
-
-                    cmd1.Parameters.Add(new NpgsqlParameter("user_id", invmstr.UserID));
-                    cmd1.Parameters.Add(new NpgsqlParameter("write_uid", invmstr.UserID));
-                    cmd1.Parameters.Add(new NpgsqlParameter("create_date", DateTime.Now));
-                    cmd1.Parameters.Add(new NpgsqlParameter("name", invdet.Product.ProductName));
-                    cmd1.Parameters.Add(new NpgsqlParameter("line_id", int.Parse(id.ToString())));
-
-                    cmd1.Parameters.Add(new NpgsqlParameter("product_id", invdet.Product.OdooProductId));
-
-
-
-                    cmd1.Parameters.Add(new NpgsqlParameter("order_date", invmstr.InvoiceDate));
-                    cmd1.Parameters.Add(new NpgsqlParameter("date", invmstr.InvoiceDate.Date));
-                    cmd1.Parameters.Add(new NpgsqlParameter("category_id", invdet.Product.OdooCategoryId));
-
-                    cmd1.Parameters.Add(new NpgsqlParameter("quantity", invdet.Qty));
-                    cmd1.Parameters.Add(new NpgsqlParameter("unit_price", invdet.UnitPrice));
-                    cmd1.Parameters.Add(new NpgsqlParameter("discount", invdet.DiscountPerUOM));
-
-
-
-                    cmd1.Parameters.Add(new NpgsqlParameter("tax_amount", invdet.Taxamount));
-                    cmd1.Parameters.Add(new NpgsqlParameter("total_paid", invdet.Total));
-                    cmd1.Parameters.Add(new NpgsqlParameter("pos_invoice_line_id", invdet.InvoiceDetailID));
-
-
-                    var newid = cmd1.ExecuteScalar();
-
+                        cmd1.Parameters.Add(new NpgsqlParameter("create_uid", invmstr.User.OdooUserID));
+                        cmd1.Parameters.Add(new NpgsqlParameter("write_date", DateTime.Now));
+                        cmd1.Parameters.Add(new NpgsqlParameter("user_id", invmstr.User.OdooUserID));
+                        cmd1.Parameters.Add(new NpgsqlParameter("write_uid", invmstr.User.OdooUserID));
+                        cmd1.Parameters.Add(new NpgsqlParameter("create_date", DateTime.Now));
+                        cmd1.Parameters.Add(new NpgsqlParameter("name", invdet.Product.ProductName));
+                        cmd1.Parameters.Add(new NpgsqlParameter("line_id", int.Parse(id.ToString())));
+                        cmd1.Parameters.Add(new NpgsqlParameter("product_id", invdet.Product.OdooProductId));
+                        cmd1.Parameters.Add(new NpgsqlParameter("order_date", invmstr.InvoiceDate));
+                        cmd1.Parameters.Add(new NpgsqlParameter("date", invmstr.InvoiceDate.Date));
+                        cmd1.Parameters.Add(new NpgsqlParameter("category_id", invdet.Product.OdooCategoryId));
+                        cmd1.Parameters.Add(new NpgsqlParameter("quantity", invdet.Qty));
+                        cmd1.Parameters.Add(new NpgsqlParameter("unit_price", invdet.UnitPrice));
+                        cmd1.Parameters.Add(new NpgsqlParameter("discount", invdet.DiscountPerUOM));
+                        cmd1.Parameters.Add(new NpgsqlParameter("tax_amount", invdet.Taxamount));
+                        cmd1.Parameters.Add(new NpgsqlParameter("total_paid", invdet.Total));
+                        cmd1.Parameters.Add(new NpgsqlParameter("pos_invoice_line_id", invdet.InvoiceDetailID));
+                        var newid = cmd1.ExecuteScalar();
+                    
+                     
+                       
+                    
                 }
 
 
@@ -445,8 +557,8 @@ values(
             }
             catch (Exception Ex)
             {
+                ErrorLogger.WriteToErrorLog("At Up At"+ invmstr.InvoiceNum  , Ex.StackTrace, "InsertInvoicemaster ");
 
-                
                 isok = false;
               
             }
@@ -461,8 +573,8 @@ values(
 
             CategoryRepository repo = new CategoryRepository();
          
-            NpgsqlCommand cmd = new NpgsqlCommand(@"select a.id,b.name,b.pos_categ_id,b.list_price,sum(d.amount) as tax_amount from product_product a, product_template b,product_taxes_rel c,account_tax d
-where a.product_tmpl_id=b.id and c.prod_id=b.id and d.id=c.tax_id group by a.id,b.name,b.pos_categ_id,b.list_price order by b.name");
+            NpgsqlCommand cmd = new NpgsqlCommand(@"select a.id,b.name,b.pos_categ_id,b.list_price,sum(d.amount) as tax_amount,b.default_code from product_product a, product_template b,product_taxes_rel c,account_tax d
+where a.product_tmpl_id=b.id and c.prod_id=b.id and d.id=c.tax_id group by a.id,b.name,b.pos_categ_id,b.list_price ,b.default_code order by b.name");
             DataTable dt = GetDataTable(cmd);
             List<Product> Products = new List<Product>();
             foreach (DataRow row in dt.Rows)
@@ -476,10 +588,10 @@ where a.product_tmpl_id=b.id and c.prod_id=b.id and d.id=c.tax_id group by a.id,
                     product.CategoryId = repo.GetOrginalCategoryID(int.Parse(row["pos_categ_id"].ToString()));
                     product.UnitPrice = decimal.Parse(row["list_price"].ToString());
                     product.OdooProductId = int.Parse(row["id"].ToString());
-                    product.Taxamount = Decimal.Parse(row["tax_amount"].ToString());
+                    product.Taxamount = Decimal.Parse(row["tax_amount"].ToString())/100;
                     product.DiscountForLocation = 0;
                     product.MinimumSPForLocation = product.UnitPrice;
-                    product.Color = "";
+                    product.Color = row["default_code"].ToString().Trim(); 
                     product.Image = "";
 
                     product.IsAvailable = true;
@@ -500,10 +612,10 @@ where a.product_tmpl_id=b.id and c.prod_id=b.id and d.id=c.tax_id group by a.id,
                         element.CategoryId = repo.GetOrginalCategoryID(int.Parse(row["pos_categ_id"].ToString()));
                         element.UnitPrice = decimal.Parse(row["list_price"].ToString());
                         element.OdooProductId = int.Parse(row["id"].ToString());
-                        element.Taxamount = Decimal.Parse(row["tax_amount"].ToString());
+                        element.Taxamount = Decimal.Parse(row["tax_amount"].ToString()) / 100;
                         element.DiscountForLocation = 0;
                         element.MinimumSPForLocation = element.UnitPrice;
-                        element.Color = "";
+                        element.Color = row["default_code"].ToString().Trim();
                         element.Image = "";
 
                         element.IsAvailable = true;
@@ -555,7 +667,7 @@ where a.product_tmpl_id=b.id and c.prod_id=b.id and d.id=c.tax_id group by a.id,
         {
 
            
-            NpgsqlCommand cmd = new NpgsqlCommand(@"select id , name from res_company");
+            NpgsqlCommand cmd = new NpgsqlCommand(@"select a.id,a.name,a.phone,b.vat,b.street from res_company a, res_partner b where a.partner_id = b.id");
 
             DataTable dt = GetDataTable(cmd);
 
@@ -566,6 +678,8 @@ where a.product_tmpl_id=b.id and c.prod_id=b.id and d.id=c.tax_id group by a.id,
                 {
                     Store store = new Store();
                     store.StoreName = row["name"].ToString();
+                    store.Street= row["street"].ToString();
+                    store.Phone= row["phone"].ToString();
                     store.OdooStoreId = OdooStoreId;
 
                     cntxt.Stores.Add(store);
@@ -578,6 +692,8 @@ where a.product_tmpl_id=b.id and c.prod_id=b.id and d.id=c.tax_id group by a.id,
                     foreach(var element in q)
                     {
                         element.StoreName = row["name"].ToString();
+                        element.Street = row["street"].ToString();
+                        element.Phone = row["phone"].ToString();
                     }
 
                 }
@@ -740,27 +856,69 @@ where a.product_tmpl_id=b.id and c.prod_id=b.id and d.id=c.tax_id group by a.id,
 
         }
 
+        public void InsertShiftOdoofromlocal(int ID)
+        {
+            ShiftRepository shiftRepository = new ShiftRepository();
+            
+
+            Shift shft = shiftRepository.GetShift(ID);
+
+
+           
+                shft.EndTime = DateTime.Now;
+                shft.CloseUserName = Program.Username;
+                shft.IsClosed = true;
+
+                int oddodid = InsertSessionToODoo(shft);
+                shft.OdooShiftId = oddodid;
+                shiftRepository.UpdateShift(shft);
+           
+
+
+
+
+
+
+
+        }
 
 
         public int InsertCustomertoODoo( Customer cust)
         {
             NpgsqlCommand cmd = new NpgsqlCommand(@"insert into res_partner
 (name, display_name, mobile, phone, street, is_company, partner_share, customer, supplier, employee, email, comment, notify_email,
-invoice_warn,  picking_warn,  type, active, company_id, create_date, create_uid, write_date, write_uid)
+invoice_warn,  picking_warn,  type, active, company_id, create_date, create_uid, write_date, write_uid,pos_cust_id,purchase_warn,sale_warn)
 values(:name,:display_name, :mobile, :phone, :street, False, True, True, False, False, 'emd@dkd.com', '00000000000000', 'always', False, False, 
-'contact', True, 1, :createdDate, 1, :editdDate, 1)RETURNING id");
+'contact', True, 1, :createdDate, 1, :editdDate, 1,:pos_cust_id,:purchase_warn,:sale_warn)RETURNING id");
 
             if (cust.PhoneNumber == null)
             {
                 cust.PhoneNumber = "0";
             }
             cmd.Parameters.AddWithValue("name", cust.CustomerName);
+            cmd.Parameters.AddWithValue("purchase_warn", cust.CustomerName);
+            cmd.Parameters.AddWithValue("sale_warn", cust.CustomerName);
+            
+
+
             cmd.Parameters.AddWithValue("display_name", cust.CustomerName);
             cmd.Parameters.AddWithValue("mobile", cust.PhoneNumber);
             cmd.Parameters.AddWithValue("phone", cust.PhoneNumber);
             cmd.Parameters.AddWithValue("street", cust.CustomerDetails);
-            cmd.Parameters.AddWithValue("createdDate",DateTime.Parse( cust.AddedDate.ToString()));
-            cmd.Parameters.AddWithValue("editdDate", DateTime.Parse(cust.AddedDate.ToString()));
+            cmd.Parameters.AddWithValue("pos_cust_id", cust.CustomerID);
+            
+            try
+            {
+                cmd.Parameters.AddWithValue("createdDate", DateTime.Parse(cust.AddedDate.ToString()));
+                cmd.Parameters.AddWithValue("editdDate", DateTime.Parse(cust.AddedDate.ToString()));
+            }
+            catch (Exception)
+            {
+
+                cmd.Parameters.AddWithValue("createdDate", DateTime.Now);
+                cmd.Parameters.AddWithValue("editdDate", DateTime.Now);
+            }
+          
 
             return InsertAndGetID(cmd);
 
@@ -785,6 +943,84 @@ values(1,:create_date,1,:write_date,:name,:session_from,:session_to,:session_dat
             return InsertAndGetID(cmd);
 
         }
+
+
+
+
+
+        public int insertRefund(RefundMaster refundMaster)
+        {
+            NpgsqlCommand cmd = new NpgsqlCommand(@"insert into refund_master (name,pos_store_id,refund_date,total_refund,pos_user_id,pos_invoice_id,pos_refund_id,pos_shift_id,
+create_uid,create_date,write_uid,write_date)values(:name,:pos_store_id,:refund_date,:total_refund,:pos_user_id,:pos_invoice_id,:pos_refund_id,:pos_shift_id,
+:create_uid,:create_date,:write_uid,:write_date) RETURNING id");
+
+            
+            cmd.Parameters.AddWithValue("name", refundMaster.RefundNum);
+            cmd.Parameters.AddWithValue("pos_store_id", refundMaster.StoreID);
+            cmd.Parameters.AddWithValue("refund_date", refundMaster.RefundDate);
+            cmd.Parameters.AddWithValue("total_refund", refundMaster.TotalRefund);
+            cmd.Parameters.AddWithValue("pos_user_id", refundMaster.UserID);
+            cmd.Parameters.AddWithValue("pos_invoice_id", refundMaster.InvoicemasterID);
+            cmd.Parameters.AddWithValue("pos_refund_id", refundMaster.RefundMasterID);
+            cmd.Parameters.AddWithValue("pos_shift_id", refundMaster.ShiftID);
+            cmd.Parameters.AddWithValue("create_uid", 1);
+            cmd.Parameters.AddWithValue("create_date", DateTime.Now);
+            cmd.Parameters.AddWithValue("write_uid", 1);
+            cmd.Parameters.AddWithValue("write_date", DateTime.Now);
+
+            return InsertAndGetID(cmd);
+        }
+
+        public int insertSettlement(SettleMaster settleMaster)
+        {
+            NpgsqlCommand cmd = new NpgsqlCommand(@"insert into settle_master (name,pos_customer_id,pos_settle_id,pos_user_id,settle_date,total_settle,pos_store_id,pos_shift_id,
+create_uid,create_date,write_uid,write_date)values(:name,:pos_customer_id,:pos_settle_id,:pos_user_id,:settle_date,:total_settle,:pos_store_id,:pos_shift_id,
+:create_uid,:create_date,:write_uid,:write_date) RETURNING id");
+
+
+            cmd.Parameters.AddWithValue("name", settleMaster.SettleMasterID.ToString());
+            cmd.Parameters.AddWithValue("pos_customer_id", settleMaster.CustomerID);
+            cmd.Parameters.AddWithValue("pos_settle_id", settleMaster.SettleMasterID);
+            cmd.Parameters.AddWithValue("pos_user_id", settleMaster.UserID);
+            cmd.Parameters.AddWithValue("settle_date", settleMaster.SettleDate);
+            cmd.Parameters.AddWithValue("total_settle", settleMaster.TotalRefund);
+            cmd.Parameters.AddWithValue("pos_store_id", settleMaster.StoreID);
+            cmd.Parameters.AddWithValue("pos_shift_id", settleMaster.ShiftID);
+            cmd.Parameters.AddWithValue("create_uid", 1);
+            cmd.Parameters.AddWithValue("create_date", DateTime.Now);
+            cmd.Parameters.AddWithValue("write_uid", 1);
+            cmd.Parameters.AddWithValue("write_date", DateTime.Now);
+
+            return InsertAndGetID(cmd);
+        }
+        public int InsertCashOut(CashOutMaster cashOutMaster)
+        {
+            NpgsqlCommand cmd = new NpgsqlCommand(@"insert into cashout_master (name,pos_user_id,total_cashout,cashout_date,pos_store_id,pos_shift_id,pos_cashout_id,
+create_uid,create_date,write_uid,write_date)values(:name,:pos_user_id,:total_cashout,:cashout_date,:pos_store_id,:pos_shift_id,:pos_cashout_id,
+:create_uid,:create_date,:write_uid,:write_date) RETURNING id");
+
+
+            cmd.Parameters.AddWithValue("name", cashOutMaster.CashOutNum.ToString());
+            cmd.Parameters.AddWithValue("pos_user_id", cashOutMaster.UserID);
+            cmd.Parameters.AddWithValue("total_cashout", cashOutMaster.TotalCashOut);
+            cmd.Parameters.AddWithValue("cashout_date", cashOutMaster.CashOutDate);
+            cmd.Parameters.AddWithValue("pos_store_id", cashOutMaster.StoreID);
+            cmd.Parameters.AddWithValue("pos_shift_id", cashOutMaster.ShiftID);
+            cmd.Parameters.AddWithValue("pos_cashout_id", cashOutMaster.StoreID);
+           
+            cmd.Parameters.AddWithValue("create_uid", 1);
+            cmd.Parameters.AddWithValue("create_date", DateTime.Now);
+            cmd.Parameters.AddWithValue("write_uid", 1);
+            cmd.Parameters.AddWithValue("write_date", DateTime.Now);
+
+            return InsertAndGetID(cmd);
+
+        }
+
+
+
+
+
 
         public NpgsqlConnection OpenConnection()
         {

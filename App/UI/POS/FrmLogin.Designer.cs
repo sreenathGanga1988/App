@@ -72,7 +72,6 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(568, 439);
             this.panel1.TabIndex = 0;
-       
             // 
             // panel3
             // 
@@ -92,7 +91,6 @@
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(308, 328);
             this.panel4.TabIndex = 1;
- 
             // 
             // panel5
             // 
@@ -384,6 +382,7 @@
             this.BackColor = System.Drawing.Color.DarkRed;
             this.ClientSize = new System.Drawing.Size(568, 439);
             this.Controls.Add(this.panel1);
+            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "FrmLogin";

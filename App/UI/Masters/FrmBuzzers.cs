@@ -139,7 +139,7 @@ namespace App.UI
             if (buzzerrepo.IsBuzzerAlloted(int.Parse(((ValueButton)sender)._value),Program.LocationID))
             {
                 buzzerrepo.MarkBuzzerLockedorUnlocked(int.Parse(((ValueButton)sender)._value), Program.LocationID, false);
-                MessageBox.Show("Sucess  Fully DeAllocated the Buzzer");
+                MessageBox.Show("SucCess  Fully DeAllocated the Buzzer");
             }
             else
             {
