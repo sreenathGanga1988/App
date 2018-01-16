@@ -1082,7 +1082,7 @@ namespace App.UI
             }
             NetTotal = TotalValue + TotalTax;
             NetTotal = Math.Round((Math.Round(NetTotal, 2)) * 4, MidpointRounding.ToEven) / 4;
-            //NetTotal = Math.Round(NetTotal, 2);
+            NetTotal = Math.Round(NetTotal, 2);
             txt_total.Text = NetTotal.ToString();
 
 

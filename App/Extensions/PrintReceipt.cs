@@ -400,7 +400,7 @@ namespace App.Extensions
             BytesValue = PrintExtensions.AddBytes(BytesValue, Encoding.ASCII.GetBytes("Discount:  " + invoicemaster.TotalDiscount.ToString().Trim() + "\n"));
 
             //BytesValue = PrintExtensions.AddBytes(BytesValue, obj.Separator());
-            BytesValue = PrintExtensions.AddBytes(BytesValue, Encoding.ASCII.GetBytes("Total:  " + invoicemaster.TotalBill.ToString().Trim() + "\n"));
+            BytesValue = PrintExtensions.AddBytes(BytesValue, Encoding.ASCII.GetBytes("Total:  " + invoicemaster.TotalBill.ToString("0.00").Trim() + "\n"));
 
             //BytesValue = PrintExtensions.AddBytes(BytesValue, Encoding.ASCII.GetBytes("Total\n"));
             //BytesValue = PrintExtensions.AddBytes(BytesValue, Encoding.ASCII.GetBytes(invoicemaster.TotalBill + "\n"));

@@ -29,7 +29,7 @@ namespace App.Repository
             }
             catch (Exception ex)
             {
-                ErrorLogger.WriteToErrorLog("At GetStorefromODOO", ex.StackTrace, "GetStorefromODOO ");
+                ErrorLogger.WriteToErrorLog("At GetStorefromODOO", ex.StackTrace, ex.Message);
                 MessageBox.Show("ErrorAt" + Environment.NewLine + "GetStorefromODOO " + ex.ToString());
             }
             try
@@ -39,7 +39,7 @@ namespace App.Repository
             }
             catch (Exception ex)
             {
-                ErrorLogger.WriteToErrorLog("At GetTablefromODOO", ex.StackTrace, "GetTablefromODOO ");
+                ErrorLogger.WriteToErrorLog("At GetTablefromODOO", ex.StackTrace, ex.Message);
                 MessageBox.Show("ErrorAt" + Environment.NewLine + "GetTablefromODOO " + ex.ToString());
             }
             try
@@ -50,7 +50,7 @@ namespace App.Repository
             }
             catch (Exception ex)
             {
-                ErrorLogger.WriteToErrorLog("At GetUserfromODOO", ex.StackTrace, "GetUserfromODOO ");
+                ErrorLogger.WriteToErrorLog("At GetUserfromODOO", ex.StackTrace, ex.Message);
                 MessageBox.Show("ErrorAt" + Environment.NewLine + "GetUserfromODOO " + ex.ToString());
             }
             try
@@ -60,7 +60,7 @@ namespace App.Repository
             }
             catch (Exception ex)
             {
-                ErrorLogger.WriteToErrorLog("At GetBuzzerfromODOO", ex.StackTrace, "GetBuzzerfromODOO ");
+                ErrorLogger.WriteToErrorLog("At GetBuzzerfromODOO", ex.StackTrace, ex.Message);
                 MessageBox.Show("ErrorAt" + Environment.NewLine + "GetBuzzerfromODOO " + ex.ToString());
             }
             try
@@ -70,7 +70,7 @@ namespace App.Repository
             }
             catch (Exception ex)
             {
-                ErrorLogger.WriteToErrorLog("At GetCategoryfromODOO", ex.StackTrace, "GetCategoryfromODOO ");
+                ErrorLogger.WriteToErrorLog("At GetCategoryfromODOO", ex.StackTrace, ex.Message);
                 MessageBox.Show("ErrorAt" + Environment.NewLine + "GetCategoryfromODOO " + ex.ToString());
             }
             try
@@ -80,7 +80,7 @@ namespace App.Repository
             }
             catch (Exception ex)
             {
-                ErrorLogger.WriteToErrorLog("At GetProductfromODOO", ex.StackTrace, "GetProductfromODOO ");
+                ErrorLogger.WriteToErrorLog("At GetProductfromODOO", ex.StackTrace, ex.Message);
                 MessageBox.Show("ErrorAt" + Environment.NewLine + "GetProductfromODOO " + ex.ToString());
             }
            try {
@@ -90,7 +90,7 @@ namespace App.Repository
             catch (Exception ex)
             {
                 
-                    ErrorLogger.WriteToErrorLog("At GetProductfromODOO", ex.StackTrace, "GetProductfromODOO ");
+                    ErrorLogger.WriteToErrorLog("At InsertCustomertoOdoofromlocal", ex.StackTrace, ex.Message);
                 MessageBox.Show("ErrorAt"+Environment.NewLine+ "InsertCustomertoOdoofromlocal " + ex.ToString());
             }
             
