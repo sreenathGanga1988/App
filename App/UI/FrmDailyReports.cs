@@ -177,6 +177,7 @@ namespace App.UI
         {
             ReprintAndRefund repref = new ReprintAndRefund(int.Parse(dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString()));
             repref.ShowDialog();
+            FillReport("Shift");
         }
 
         private void rbt_todaySales_CheckedChanged_1(object sender, EventArgs e)
@@ -207,6 +208,14 @@ namespace App.UI
         private void button2_Click(object sender, EventArgs e)
         {
             FillReport("Between");
+        }
+
+        private void btn_updateOdoo_Click_1(object sender, EventArgs e)
+        {
+            Repository.OdooUpdator odoupd = new Repository.OdooUpdator();
+            odoupd.uploadInvoiceMaster();
+            MessageBox.Show("Updated to ODOO Sucessfully and Closing the Section.POS Will close Now");
+            Application.Exit();
         }
     }
 }

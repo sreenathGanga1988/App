@@ -70,16 +70,19 @@ namespace App.UI
             foreach (Invoicemaster invmaster in invoicemaster)
             {
                 ValueButton temp = new ValueButton();
+                String Status = invmaster.IsKOT == true ? "KOT" : invmaster.IstableBill == true ? "Hold" : "CheckOUT";
                 temp.Name = "button" + invmaster.InvoicemasterID.ToString();
                 temp.Text = invmaster.InvoiceNum + " / " + invmaster.Table.TableName +
                     " / " + invmaster.InvoiceDetails.Count() + "Items" + " / Customer: " +
-                    invmaster.Customer.CustomerName + " /  Cashier :" + invmaster.User.UserName + " /  At " + invmaster.InvoiceDate.ToString();
+                    invmaster.Customer.CustomerName + " /  Cashier :" + invmaster.User.UserName +
+                    " /  At " + invmaster.InvoiceDate.ToString() + " /  Status " + Status;
                 temp._value = invmaster.InvoicemasterID.ToString();
                 // temp.AutoSize = true;
                 temp.Width = buttonwidth;
                 temp.Height = buttonheight;
                 temp.Font = new Font(temp.Font, FontStyle.Bold);
 
+               
                 //temp.Width = 200;
                 //temp.Height = 150;
                 try
@@ -87,6 +90,15 @@ namespace App.UI
                     if (invmaster.Color != null && invmaster.Color.Trim() != "")
                     {
                         temp.BackColor = Color.FromName(invmaster.Color);
+                    }
+                    if (Status != "KOT")
+                    {
+                        temp.BackColor = Color.FromName("Green");
+                    }
+
+                    else if (Status == "KOT")
+                    {
+                        temp.BackColor = Color.FromName("Cyan");
                     }
                 }
                 catch (Exception)

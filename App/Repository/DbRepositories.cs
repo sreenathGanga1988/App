@@ -712,7 +712,10 @@ namespace App.Repository
                 element.IsUploaded = invoicemaster.IsUploaded;
                 element.IstableBill = invoicemaster.IstableBill;
                 element.IsKOT = invoicemaster.IsKOT;
+                element.PayMentModeId = invoicemaster.PayMentModeId;                element.PaymentMode = invoicemaster.PaymentMode;
+
                 invoicemaster.InvoiceNum = element.InvoiceNum;
+
             }
 
 
@@ -877,7 +880,8 @@ namespace App.Repository
                          TotalBill = invoicemstr.TotalBill,
                          TotalPaid = invoicemstr.TotalPaid,
                          PaymentMode = invoicemstr.PaymentMode,
-                         ShiftName = invoicemstr.ShiftName
+                         ShiftName = invoicemstr.ShiftName,
+                         Status = invoicemstr.IsKOT == true ? "KOT" : invoicemstr.IstableBill == true ? "Hold" : "CheckOUT"
                      }).ToList();
 
 
@@ -889,7 +893,9 @@ namespace App.Repository
                     where invoicemstr.IsUploaded == false && invoicemstr.StoreID== storeid && invoicemstr.IsDeleted == false
                      select new InvoiceviewModal { InvoicemasterID= invoicemstr.InvoicemasterID, InvoiceDate= invoicemstr.InvoiceDate,InvoiceNum= invoicemstr.InvoiceNum,
                          TableName = invoicemstr.Table.TableName, StoreName= invoicemstr.Store.StoreName,  CustomerName=invoicemstr.Customer.CustomerName,TotalBill= invoicemstr.TotalBill,
-                         TotalPaid =invoicemstr.TotalPaid,PaymentMode=invoicemstr.PaymentMode,ShiftName=invoicemstr.ShiftName }).ToList();
+                         TotalPaid =invoicemstr.TotalPaid,PaymentMode=invoicemstr.PaymentMode,ShiftName=invoicemstr.ShiftName,
+                         Status = invoicemstr.IsKOT == true ? "KOT" : invoicemstr.IstableBill == true ? "Hold" : "CheckOUT"
+                     }).ToList();
             
 
             return q;
@@ -910,7 +916,8 @@ namespace App.Repository
                          TotalBill = invoicemstr.TotalBill,
                          TotalPaid = invoicemstr.TotalPaid,
                          PaymentMode = invoicemstr.PaymentMode,
-                         ShiftName = invoicemstr.ShiftName
+                         ShiftName = invoicemstr.ShiftName,
+                        Status=invoicemstr.IsKOT==true?"KOT": invoicemstr.IstableBill == true ? "Hold" :"CheckOUT"
                      }).ToList();
 
 
@@ -926,7 +933,8 @@ namespace App.Repository
                          InvoiceNum = invoicemstr.InvoiceNum, TableName = invoicemstr.Table.TableName, StoreName = invoicemstr.Store.StoreName,
                          CustomerName = invoicemstr.Customer.CustomerName, TotalBill = invoicemstr.TotalBill, TotalPaid = invoicemstr.TotalPaid,
                          PaymentMode = invoicemstr.PaymentMode,
-                         ShiftName = invoicemstr.ShiftName
+                         ShiftName = invoicemstr.ShiftName,
+                         Status = invoicemstr.IsKOT == true ? "KOT" : invoicemstr.IstableBill == true ? "Hold" : "CheckOUT"
                      }).ToList();
 
 

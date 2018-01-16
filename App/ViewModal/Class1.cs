@@ -50,7 +50,7 @@ namespace App.ViewModal
         public Decimal TotalPaid { get; set; }
         public String PaymentMode { get; set; }
         public String ShiftName { get; set; }
-        
+        public String Status { get; set; }
 
     }
    
