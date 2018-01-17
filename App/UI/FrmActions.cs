@@ -64,7 +64,7 @@ namespace App.UI
         {
             InvoiceRepository invrepo = new InvoiceRepository();
 
-            List<InvoiceviewModal> invemstr = invrepo.GetInvoicePendingOfShift(Program.LocationID,int.Parse(cmb_shift.SelectedValue.ToString()));
+            List<InvoiceviewModal> invemstr = invrepo.GetInvoicOfShift(Program.LocationID,int.Parse(cmb_shift.SelectedValue.ToString()));
             dataGridView1.DataSource = invemstr;
 
             lbl_totalPaid.Text = "Total Sales  is :" + CalculateTotal(invemstr).ToString() + "AED";
@@ -75,6 +75,30 @@ namespace App.UI
             var q = invemstr.Sum(u => u.TotalPaid);
 
             return float.Parse(q.ToString());
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            PassCoder passCoder = new PassCoder();
+            passCoder.ShowDialog();
+            Boolean IsAuthenticated = passCoder.IsAuthenticated;
+
+
+            if (IsAuthenticated)
+            {
+                foreach (DataGridViewRow row in dataGridView1.SelectedRows)
+                {
+
+                    int id =int.Parse( row.Cells["InvoicemasterID"].Value. ToString());
+                    InvoiceRepository invoiceRepository = new InvoiceRepository();
+                    invoiceRepository.DeleteInvoicemaster(id);
+                };
+                MessageBox.Show("Deleted");
+            }
+            else
+            {
+                MessageBox.Show("Not Authenticated");
+            }
         }
     }
 }

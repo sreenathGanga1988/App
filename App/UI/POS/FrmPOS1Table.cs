@@ -864,6 +864,8 @@ namespace App.UI
 
         public void SelectCustomeronBarCode(String barcode)
         {
+          
+
             try
             {
                 CustomerRepositiry custrepo = new CustomerRepositiry();
@@ -877,12 +879,15 @@ namespace App.UI
                 lbl_phone.Text = cust.PhoneNumber;
                 lbl_address.Text = cust.CustomerDetails;
                 lbl_paymentDue.Text = cust.PaymentDue.ToString();
+                MessageBox.Show(selectedCustomerName);
                 CalculateTotal();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
+                ErrorLogger.WriteToErrorLog("Error on KOT SelectCustomeronBarCode ", ex.StackTrace, ex.Message);
 
+                MessageBox.Show(ex.ToString());
             }
 
         }
@@ -1781,7 +1786,7 @@ namespace App.UI
             {
                 string str = txt_producrtcode.Text.Substring(0, 4);
 
-                if (str == "LMSE")
+                if (str == "LIMS")
                 {
                     isCustomercard = true;
 

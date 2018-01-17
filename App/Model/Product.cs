@@ -209,7 +209,7 @@ namespace App.Model
         [Key]
         public int InvoicemasterID { get; set; }
         public string InvoiceNum { get; set; }
-
+       
         public int StoreID { get; set; }
         public int UserID { get; set; }
         public int? KotMasterID { get; set; }

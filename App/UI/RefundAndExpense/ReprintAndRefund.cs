@@ -45,8 +45,45 @@ namespace App.UI
                
             }
             lbl_invoiceId.Text = invmstr.InvoicemasterID.ToString();
+            lbl_paymentmode.Text = invmstr.PaymentMode.ToString();
             lbl_invoiceId.Visible = false;
+            paymentmodeadjust();
         }
+
+
+
+        public void paymentmodeadjust()
+        {
+            if (invmstr.PaymentMode == "CREDIT")
+            {
+                btn_card.Enabled = false;
+                btn_cash.Enabled = false;
+                btn_zomato.Enabled = false;
+               
+
+            }
+            else if (invmstr.PaymentMode == "CASH")
+            {
+                btn_card.Enabled = true;
+                btn_cash.Enabled = false;
+                btn_zomato.Enabled = false;
+            }
+            else if (invmstr.PaymentMode == "CARD")
+            {
+                btn_card.Enabled = false;
+                btn_cash.Enabled = true;
+                btn_zomato.Enabled = false;
+            }
+            else if (invmstr.PaymentMode == "zOMATO")
+            {
+                btn_card.Enabled = false;
+                btn_cash.Enabled = false;
+                btn_zomato.Enabled = false;
+            }
+
+        }
+
+
 
         private void btn_repreint_Click(object sender, EventArgs e)
         {
@@ -110,6 +147,29 @@ namespace App.UI
             }
 
            
+        }
+
+        private void btn_card_Click(object sender, EventArgs e)
+        {
+            InvoiceRepository invoiceRepository = new InvoiceRepository();
+            invoiceRepository.UpdatePaymentInvoicemaster(invoiceid,"CARD");
+            MessageBox.Show("Updated");
+            this.Close();
+
+
+        }
+
+        private void btn_cash_Click(object sender, EventArgs e)
+        {
+            InvoiceRepository invoiceRepository = new InvoiceRepository();
+            invoiceRepository.UpdatePaymentInvoicemaster(invoiceid, "CASH");
+            MessageBox.Show("Updated");
+            this.Close();
+        }
+
+        private void btn_zomato_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
