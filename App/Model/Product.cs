@@ -297,6 +297,7 @@ namespace App.Model
         public String Notes { get; set; }
         
         public Decimal PreviousQty { get; set; }
+        public int? Kotnum { get; set; }
 
         public Decimal AdjustedQty { get; set; }
         public Decimal? Taxamount { get; set; }
@@ -425,7 +426,7 @@ namespace App.Model
         public Decimal DiscountPerUOM { get; set; }
         public Decimal Total { get; set; }
         public Boolean IsUploaded { get; set; }
-
+        public Boolean IsDeleted { get; set; }
         public Boolean IsPrinted { get; set; }
         public virtual Product Product { get; set; }
         public virtual KotMaster KotMasters { get; set; }

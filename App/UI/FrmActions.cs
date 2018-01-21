@@ -94,6 +94,7 @@ namespace App.UI
                     invoiceRepository.DeleteInvoicemaster(id);
                 };
                 MessageBox.Show("Deleted");
+                CurrentSelectedShiftreport();
             }
             else
             {

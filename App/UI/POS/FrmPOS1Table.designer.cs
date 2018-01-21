@@ -126,14 +126,6 @@
             this.button45 = new System.Windows.Forms.Button();
             this.panel26 = new System.Windows.Forms.Panel();
             this.grd_ProductDetails = new System.Windows.Forms.DataGridView();
-            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Taxamount = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Item = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Price = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Qty = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Discount = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Total = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Notes = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel24 = new System.Windows.Forms.Panel();
             this.pnl_left = new System.Windows.Forms.Panel();
             this.pnl_category = new System.Windows.Forms.Panel();
@@ -149,6 +141,15 @@
             this.panel6 = new System.Windows.Forms.Panel();
             this.label5 = new System.Windows.Forms.Label();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
+            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Taxamount = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Item = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Price = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Qty = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Discount = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Total = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Notes = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Kotnum = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel7.SuspendLayout();
             this.panel1.SuspendLayout();
             this.Pnl_topLevel.SuspendLayout();
@@ -1379,7 +1380,8 @@
             this.Qty,
             this.Discount,
             this.Total,
-            this.Notes});
+            this.Notes,
+            this.Kotnum});
             this.grd_ProductDetails.Dock = System.Windows.Forms.DockStyle.Fill;
             this.grd_ProductDetails.Location = new System.Drawing.Point(0, 0);
             this.grd_ProductDetails.MultiSelect = false;
@@ -1392,51 +1394,6 @@
             this.grd_ProductDetails.CurrentCellDirtyStateChanged += new System.EventHandler(this.grd_ProductDetails_CurrentCellDirtyStateChanged);
             this.grd_ProductDetails.RowsRemoved += new System.Windows.Forms.DataGridViewRowsRemovedEventHandler(this.grd_ProductDetails_RowsRemoved);
             this.grd_ProductDetails.RowStateChanged += new System.Windows.Forms.DataGridViewRowStateChangedEventHandler(this.grd_ProductDetails_RowStateChanged);
-            // 
-            // ID
-            // 
-            this.ID.HeaderText = "ID";
-            this.ID.Name = "ID";
-            this.ID.Visible = false;
-            // 
-            // Taxamount
-            // 
-            this.Taxamount.DataPropertyName = "Taxamount";
-            this.Taxamount.HeaderText = "Taxamount";
-            this.Taxamount.Name = "Taxamount";
-            this.Taxamount.Visible = false;
-            // 
-            // Item
-            // 
-            this.Item.HeaderText = "Item";
-            this.Item.Name = "Item";
-            // 
-            // Price
-            // 
-            this.Price.HeaderText = "Price";
-            this.Price.Name = "Price";
-            // 
-            // Qty
-            // 
-            this.Qty.HeaderText = "Qty";
-            this.Qty.Name = "Qty";
-            // 
-            // Discount
-            // 
-            this.Discount.HeaderText = "Discount";
-            this.Discount.Name = "Discount";
-            this.Discount.Visible = false;
-            // 
-            // Total
-            // 
-            this.Total.HeaderText = "Total";
-            this.Total.Name = "Total";
-            // 
-            // Notes
-            // 
-            this.Notes.HeaderText = "Notes";
-            this.Notes.Name = "Notes";
-            this.Notes.Visible = false;
             // 
             // panel24
             // 
@@ -1599,6 +1556,57 @@
             this.imageList1.Images.SetKeyName(3, "if_equipmentrental_2318443.png");
             this.imageList1.Images.SetKeyName(4, "256-256-d13cafbf17ecd8f2065c8842a6e4e228.png");
             this.imageList1.Images.SetKeyName(5, "45200.png");
+            // 
+            // ID
+            // 
+            this.ID.HeaderText = "ID";
+            this.ID.Name = "ID";
+            this.ID.Visible = false;
+            // 
+            // Taxamount
+            // 
+            this.Taxamount.DataPropertyName = "Taxamount";
+            this.Taxamount.HeaderText = "Taxamount";
+            this.Taxamount.Name = "Taxamount";
+            this.Taxamount.Visible = false;
+            // 
+            // Item
+            // 
+            this.Item.HeaderText = "Item";
+            this.Item.Name = "Item";
+            // 
+            // Price
+            // 
+            this.Price.HeaderText = "Price";
+            this.Price.Name = "Price";
+            // 
+            // Qty
+            // 
+            this.Qty.HeaderText = "Qty";
+            this.Qty.Name = "Qty";
+            // 
+            // Discount
+            // 
+            this.Discount.HeaderText = "Discount";
+            this.Discount.Name = "Discount";
+            this.Discount.Visible = false;
+            // 
+            // Total
+            // 
+            this.Total.HeaderText = "Total";
+            this.Total.Name = "Total";
+            // 
+            // Notes
+            // 
+            this.Notes.HeaderText = "Notes";
+            this.Notes.Name = "Notes";
+            this.Notes.Visible = false;
+            // 
+            // Kotnum
+            // 
+            this.Kotnum.HeaderText = "Kotnum";
+            this.Kotnum.Name = "Kotnum";
+            this.Kotnum.Visible = false;
             // 
             // FrmPOS1Table
             // 
@@ -1774,6 +1782,13 @@
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Panel panel6;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Panel panel25;
+        private System.Windows.Forms.Label txt_total;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label lbl_discount;
+        private System.Windows.Forms.Label lbl_phone;
+        private System.Windows.Forms.CheckBox chK_SearchMode;
         private System.Windows.Forms.DataGridViewTextBoxColumn ID;
         private System.Windows.Forms.DataGridViewTextBoxColumn Taxamount;
         private System.Windows.Forms.DataGridViewTextBoxColumn Item;
@@ -1782,12 +1797,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Discount;
         private System.Windows.Forms.DataGridViewTextBoxColumn Total;
         private System.Windows.Forms.DataGridViewTextBoxColumn Notes;
-        private System.Windows.Forms.Panel panel25;
-        private System.Windows.Forms.Label txt_total;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label lbl_discount;
-        private System.Windows.Forms.Label lbl_phone;
-        private System.Windows.Forms.CheckBox chK_SearchMode;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Kotnum;
     }
 }

@@ -176,12 +176,23 @@ namespace App.UI
                     grd_ProductDetails.Rows[index].Cells["Discount"].Value = invdet.DiscountPerUOM.ToString();
                     grd_ProductDetails.Rows[index].Cells["Notes"].Value = invdet.Notes.ToString();
                     grd_ProductDetails.Rows[index].Cells["Taxamount"].Value = invdet.Product.Taxamount.ToString();
+                    try
+                    {
+                        grd_ProductDetails.Rows[index].Cells["Kotnum"].Value = invdet.Kotnum.ToString();
+                    }
+                    catch (Exception)
+                    {
+
+                        grd_ProductDetails.Rows[index].Cells["Kotnum"].Value = 0;
+                    }
 
 
                     grd_ProductDetails.Rows[index].Cells["ID"].ReadOnly = true;
                     grd_ProductDetails.Rows[index].Cells["Item"].ReadOnly = true;
                     grd_ProductDetails.Rows[index].Cells["Price"].ReadOnly = true;
                     grd_ProductDetails.Rows[index].Cells["Discount"].ReadOnly = true;
+
+                    
                     if (invdet.Product.IsRateChangable == true)
                     {
                         grd_ProductDetails.Rows[index].Cells["Price"].ReadOnly = false;
@@ -368,7 +379,8 @@ namespace App.UI
                     grd_ProductDetails.Rows[index].Cells["Discount"].Value = product.DiscountForLocation.ToString();
                     grd_ProductDetails.Rows[index].Cells["Notes"].Value = "";
                     grd_ProductDetails.Rows[index].Cells["Taxamount"].Value = product.Taxamount.ToString();
-                    grd_ProductDetails.Rows[index].Cells["ID"].ReadOnly = true;
+                grd_ProductDetails.Rows[index].Cells["Kotnum"].Value = 0;
+                grd_ProductDetails.Rows[index].Cells["ID"].ReadOnly = true;
                     grd_ProductDetails.Rows[index].Cells["Item"].ReadOnly = true;
                     grd_ProductDetails.Rows[index].Cells["Price"].ReadOnly = true;
                     grd_ProductDetails.Rows[index].Cells["Discount"].ReadOnly = true;
@@ -1333,9 +1345,12 @@ namespace App.UI
                 invoicedetail.DiscountPerUOM = Decimal.Parse(row.Cells["Discount"].Value.ToString());
                 invoicedetail.Total = Decimal.Parse(row.Cells["Total"].Value.ToString());
                 invoicedetail.Taxamount = Decimal.Parse(row.Cells["Taxamount"].Value.ToString());
+
+                row.Cells["Kotnum"].Value = int.Parse(row.Cells["Kotnum"].Value.ToString()) + 1;
+                invoicedetail.Kotnum = int.Parse(row.Cells["Kotnum"].Value.ToString());
                 invoicedetail.IsUploaded = false;
 
-                
+              
                 invoicedetail.PreviousQty = invoicedetail.Qty;
                 invoicedetail.AdjustedQty = 0;
                 if (invoiceid != 0)
@@ -1841,7 +1856,32 @@ namespace App.UI
         private string barcode = string.Empty;
         private void FrmPOS1Table_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (e.KeyChar == '\r')
+           
+            if (e.KeyChar == (char)Keys.Return)
+
+            {
+
+                if (!IsBarcodeScanned())
+                {
+                    try
+                    {
+
+                        Additem();
+
+                        txt_producrtcode.Text = "";
+                        txt_producrtcode.Focus();
+                    }
+                    catch (Exception)
+                    {
+
+
+                    }
+                }
+
+
+
+            }
+            else if (e.KeyChar == '\r')
             {
               //  txt_cash.Text = barcode;
                 barcode = string.Empty;

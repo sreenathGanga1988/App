@@ -740,7 +740,8 @@ namespace App.Repository
                     invoicedetail.InvoicemasterID = invdet.InvoicemasterID;
                     invoicedetail.Taxamount = invdet.Taxamount;
                     invoicedetail.Notes = invdet.Notes;
-                    cntxt.InvoiceDetails.Add(invoicedetail);
+                    invoicedetail.Kotnum = invdet.Kotnum;
+                  cntxt.InvoiceDetails.Add(invoicedetail);
                 }
                 else
                 {
@@ -762,6 +763,16 @@ namespace App.Repository
                         element.IsUploaded = invdet.IsUploaded;
                         element.Taxamount = invdet.Taxamount;
                         element.Notes = invdet.Notes;
+
+
+                        if (invdet.Qty == element.PreviousQty)
+                        {
+                            element.Kotnum = invdet.Kotnum;
+                        }
+                        else
+                        {
+                            element.Kotnum =1;
+                        }
 
                         element.AdjustedQty = invdet.Qty - element.PreviousQty;
                    
@@ -808,6 +819,7 @@ namespace App.Repository
                     element.IsDeleted = true;
                     element.PreviousQty = element.Qty;
                     element.Qty = 0;
+                    element.Kotnum = 1;
                     element.AdjustedQty = element.AdjustedQty = element.Qty - element.PreviousQty;
                 }
 

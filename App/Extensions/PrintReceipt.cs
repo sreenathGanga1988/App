@@ -570,7 +570,7 @@ namespace App.Extensions
             {
 
                 String PrinterIP = printer.ToString();
-                List<InvoiceDetail> kotdetails = invoicemaster.InvoiceDetails.Where(m => m.Product.Category.PrinterName == PrinterIP).ToList();
+                List<InvoiceDetail> kotdetails = invoicemaster.InvoiceDetails.Where(m => m.Product.Category.PrinterName == PrinterIP && m.Kotnum==1 ).ToList();
 
                 PrinterUtility.EscPosEpsonCommands.EscPosEpson obj = new PrinterUtility.EscPosEpsonCommands.EscPosEpson(54);
                 var BytesValue = Encoding.ASCII.GetBytes(string.Empty);
@@ -605,22 +605,23 @@ namespace App.Extensions
                 //BytesValue = PrintExtensions.AddBytes(BytesValue, Encoding.ASCII.GetBytes("______________________________________________________\n"));
                 BytesValue = PrintExtensions.AddBytes(BytesValue, obj.Separator());
                 BytesValue = PrintExtensions.AddBytes(BytesValue, obj.CharSize.DoubleWidth2());
-                BytesValue = PrintExtensions.AddBytes(BytesValue, Encoding.ASCII.GetBytes("Itm                 Qty\n"));
+                BytesValue = PrintExtensions.AddBytes(BytesValue, Encoding.ASCII.GetBytes("Itm                  Qty\n"));
                 BytesValue = PrintExtensions.AddBytes(BytesValue, obj.CharSize.Nomarl());
                 //BytesValue = PrintExtensions.AddBytes(BytesValue, Encoding.ASCII.GetBytes("______________________________________________________\n"));
                 BytesValue = PrintExtensions.AddBytes(BytesValue, obj.Separator());
                 BytesValue = PrintExtensions.AddBytes(BytesValue, obj.CharSize.Nomarl());
-                BytesValue = PrintExtensions.AddBytes(BytesValue, obj.CharSize.DoubleHeight2());
+                BytesValue = PrintExtensions.AddBytes(BytesValue, obj.CharSize.DoubleWidth2());
                 foreach (InvoiceDetail kotdetail in kotdetails)
                 {
 
-                    BytesValue = PrintExtensions.AddBytes(BytesValue, string.Format("{0,-30}{1,6}\n", kotdetail.Product.ProductName, kotdetail.Qty));
+                    BytesValue = PrintExtensions.AddBytes(BytesValue, string.Format("{0,-22}{1,3}\n", kotdetail.Product.ProductName, kotdetail.Qty));
                     BytesValue = PrintExtensions.AddBytes(BytesValue, Encoding.ASCII.GetBytes("Note  : " + kotdetail.Notes.Trim() + "\n"));
 
 
                 }
 
                 BytesValue = PrintExtensions.AddBytes(BytesValue, obj.Alignment.Right());
+                BytesValue = PrintExtensions.AddBytes(BytesValue, obj.CharSize.Nomarl());
                 BytesValue = PrintExtensions.AddBytes(BytesValue, obj.Separator());
                 BytesValue = PrintExtensions.AddBytes(BytesValue, obj.CharSize.DoubleWidth2());
 

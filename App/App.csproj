@@ -428,6 +428,18 @@
     <Compile Include="Migrations\201801130902488_updateonstore.Designer.cs">
       <DependentUpon>201801130902488_updateonstore.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201801190830031_addededinvoicenumber.cs" />
+    <Compile Include="Migrations\201801190830031_addededinvoicenumber.Designer.cs">
+      <DependentUpon>201801190830031_addededinvoicenumber.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201801201406156_updatetoanylatestversion.cs" />
+    <Compile Include="Migrations\201801201406156_updatetoanylatestversion.Designer.cs">
+      <DependentUpon>201801201406156_updatetoanylatestversion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201801201413419_updatekotisdelete.cs" />
+    <Compile Include="Migrations\201801201413419_updatekotisdelete.Designer.cs">
+      <DependentUpon>201801201413419_updatekotisdelete.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Model\LocalModel.cs" />
     <Compile Include="Model\Product.cs" />
@@ -825,6 +837,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201801130902488_updateonstore.resx">
       <DependentUpon>201801130902488_updateonstore.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201801190830031_addededinvoicenumber.resx">
+      <DependentUpon>201801190830031_addededinvoicenumber.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201801201406156_updatetoanylatestversion.resx">
+      <DependentUpon>201801201406156_updatetoanylatestversion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201801201413419_updatekotisdelete.resx">
+      <DependentUpon>201801201413419_updatekotisdelete.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
