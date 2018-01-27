@@ -165,6 +165,7 @@ namespace App.UI
             
             lbl_datetimenow.Text = DateTime.Now.ToString();
             lbl_dayname.Text = DateTime.Now.Date.DayOfWeek.ToString();
+            lbl_trial.Text = "Trail Version with 200 login";
         }
 
         private void txt_PasscodeDisplay_KeyPress(object sender, KeyPressEventArgs e)

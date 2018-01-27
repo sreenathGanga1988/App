@@ -53,6 +53,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.txt_PasscodeDisplay = new System.Windows.Forms.TextBox();
+            this.lbl_trial = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel4.SuspendLayout();
@@ -287,6 +288,7 @@
             this.panel2.BackColor = System.Drawing.Color.DarkRed;
             this.panel2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel2.BackgroundImage")));
             this.panel2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.panel2.Controls.Add(this.lbl_trial);
             this.panel2.Controls.Add(this.lbl_dayname);
             this.panel2.Controls.Add(this.lbl_datetimenow);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Left;
@@ -375,6 +377,16 @@
             this.txt_PasscodeDisplay.Text = " ";
             this.txt_PasscodeDisplay.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_PasscodeDisplay_KeyPress);
             // 
+            // lbl_trial
+            // 
+            this.lbl_trial.AutoSize = true;
+            this.lbl_trial.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_trial.ForeColor = System.Drawing.Color.White;
+            this.lbl_trial.Location = new System.Drawing.Point(48, 38);
+            this.lbl_trial.Name = "lbl_trial";
+            this.lbl_trial.Size = new System.Drawing.Size(0, 18);
+            this.lbl_trial.TabIndex = 9;
+            // 
             // FrmLogin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -429,5 +441,6 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label lbl_dayname;
         private System.Windows.Forms.Label lbl_datetimenow;
+        private System.Windows.Forms.Label lbl_trial;
     }
 }

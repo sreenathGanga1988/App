@@ -185,13 +185,32 @@ namespace App.Repository
             return isvalid;
         }
 
+        public void SetStoreDetail(User usr)
+        {
+           
+            int count = 0;
+            try
+            {
+                String key = usr.Store.StoreDBId.ToString();
+                string decryptkey = AppBLL.MyIntialize.Decrypt(key);
+                count=int.Parse(decryptkey);
+            }
+            catch (Exception)
+            {              
+            }
+            count = count + 1;
+            String countencry = AppBLL.MyIntialize.encrypt(count.ToString());
+            Store store = cntxt.Stores.Find(usr.StoreID);
+            store.StoreDBId = countencry;
+            cntxt.SaveChanges();
 
+        }
 
         public void SetUserDetails(User usr)
         {
             if (usr != null)
             {
-
+                SetStoreDetail(usr);
                 Program.UserID = usr.UserID;
                 Program.Username = usr.UserName;
                 Program.LocationID = usr.StoreID;
@@ -217,7 +236,7 @@ namespace App.Repository
                 myset.MyPrinterDetails = sysrepo.LoadtPrinterDetails(Program.LocationID);
                 myset.AppUserSettings = appuserrepo.LoadAppUserSetting(Program.LocationID);
                 Program.MySettingViewModal = myset;
-
+                
 
             }
         }

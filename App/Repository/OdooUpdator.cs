@@ -93,7 +93,17 @@ namespace App.Repository
                     ErrorLogger.WriteToErrorLog("At InsertCustomertoOdoofromlocal", ex.StackTrace, ex.Message);
                 MessageBox.Show("ErrorAt"+Environment.NewLine+ "InsertCustomertoOdoofromlocal " + ex.ToString());
             }
-            
+            try
+            {
+                GetCustomerfromODOO();
+                MessageBox.Show("GetCustomerfromODOO Completed");
+            }
+            catch (Exception ex)
+            {
+
+                ErrorLogger.WriteToErrorLog("At GetCustomerfromODOO", ex.StackTrace, ex.Message);
+                MessageBox.Show("ErrorAt" + Environment.NewLine + "GetCustomerfromODOO " + ex.ToString());
+            }
 
         }
 
@@ -309,7 +319,7 @@ namespace App.Repository
             }
             try
             {
-                shiftViewModel.TotalCC = invoicemasters.Where(u => u.PaymentMode == "ZOMATO").Sum(u => u.TotalBill);
+                shiftViewModel.TotalByZomato = invoicemasters.Where(u => u.PaymentMode == "ZOMATO").Sum(u => u.TotalBill);
             }
             catch (Exception)
             {
@@ -828,7 +838,59 @@ where a.product_tmpl_id=b.id and c.prod_id=b.id and d.id=c.tax_id group by a.id,
 
 
         }
+        public void GetCustomerfromODOO()
+        {
 
+
+            NpgsqlCommand cmd = new NpgsqlCommand(@"select id,name,street,mobile,discount_percentage,barcode from res_partner where Customer=True and barcode is not Null");
+
+            DataTable dt = GetDataTable(cmd);
+
+            foreach (DataRow row in dt.Rows)
+            {
+                int OdooCustId = int.Parse(row["id"].ToString());
+                if (!cntxt.Customers.Any(f => f.OdooID == OdooCustId))
+                {
+                    Customer customer = new Customer();
+                    customer.CustomerName = row["name"].ToString();
+                    customer.PhoneNumber = row["mobile"].ToString();
+
+                    customer.CustomerDetails = row["street"].ToString();
+                    customer.StoreID = Program.LocationID;
+                    customer.AddedDate = DateTime.Now.ToString();
+                    customer.PaymentDue = 0;
+                    customer.Discount = Decimal.Parse(row["discount_percentage"].ToString())/100;
+                    customer.BarcodeNum = row["barcode"].ToString().Trim();
+                    customer.AddedBy = Program.Username;
+                    customer.IsDetailChanged = true;
+                    cntxt.Customers.Add(customer);
+                }
+                else
+                {
+                    var q = from store in cntxt.Customers
+                            where store.OdooID == OdooCustId
+                            select store;
+                    foreach (var element in q)
+                    {
+                        element.CustomerName = row["name"].ToString();
+                        element.PhoneNumber = row["mobile"].ToString();
+                        element.CustomerDetails = row["street"].ToString();
+                        element.StoreID = Program.LocationID;
+                        element.AddedDate = DateTime.Now.ToString();
+                        element.Discount = Decimal.Parse(row["discount_percentage"].ToString()) / 100;
+                        element.BarcodeNum = row["barcode"].ToString().Trim();
+                        element.AddedBy = Program.Username;
+                        element.IsDetailChanged = true;
+                    }
+
+                }
+
+
+            }
+
+            cntxt.SaveChanges();
+
+        }
         public void InsertShiftOdoofromlocal()
         {
             ShiftRepository shiftRepository = new ShiftRepository();
@@ -1057,6 +1119,7 @@ create_uid,create_date,write_uid,write_date)values(:name,:pos_user_id,:total_cas
             conn.Open();
             cmd.Connection = conn;
             var newid = cmd.ExecuteScalar();
+            conn.Close();
             return int.Parse(newid.ToString());
         }
     }

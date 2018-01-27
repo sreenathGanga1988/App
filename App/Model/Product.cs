@@ -94,6 +94,7 @@ namespace App.Model
         public String StoreAddress { get; set; }
         public String Street { get; set; }
         public String Phone { get; set; }
+        public String StoreDBId { get; set; }
 
         public virtual List<User> Users { get; set; }
         public virtual List<ControlDiemension> ControlDiemensions { get; set; }

@@ -34,6 +34,7 @@ namespace App.Model
         public Decimal TotalByCash { get; set; }
         public Decimal TotalByCurrency { get; set; }
         public Decimal TottalByCC { get; set; }
+        public Decimal TotalByZomato { get; set; }
         public Decimal TotalByCheque { get; set; }
         public Decimal TotalByGift { get; set; }
         public Decimal TotalByCredit { get; set; }

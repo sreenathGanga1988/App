@@ -713,9 +713,9 @@ namespace App.Extensions
             BytesValue = PrintExtensions.AddBytes(BytesValue, obj.Alignment.Left());
             BytesValue = PrintExtensions.AddBytes(BytesValue, Encoding.ASCII.GetBytes("Total By CC         :                  " + shiftViewModel.TotalCC + " \n"));
             BytesValue = PrintExtensions.AddBytes(BytesValue, obj.Alignment.Left());
-            BytesValue = PrintExtensions.AddBytes(BytesValue, Encoding.ASCII.GetBytes("Total By Cheque     :                  " + shiftViewModel.TotalByCheque + " \n"));
+            BytesValue = PrintExtensions.AddBytes(BytesValue, Encoding.ASCII.GetBytes("Total By Zomato     :                  " + shiftViewModel.TotalByZomato + " \n"));
             BytesValue = PrintExtensions.AddBytes(BytesValue, Encoding.ASCII.GetBytes("Total By Credit     :                  " + shiftViewModel.TotalByCredit + " \n"));
-            BytesValue = PrintExtensions.AddBytes(BytesValue, Encoding.ASCII.GetBytes("Total BY Gift       :                  " + shiftViewModel.TotalByGift + " \n"));
+
 
             BytesValue = PrintExtensions.AddBytes(BytesValue, obj.Separator());
             BytesValue = PrintExtensions.AddBytes(BytesValue, obj.Alignment.Left());

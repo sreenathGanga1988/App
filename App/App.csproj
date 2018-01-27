@@ -440,6 +440,10 @@
     <Compile Include="Migrations\201801201413419_updatekotisdelete.Designer.cs">
       <DependentUpon>201801201413419_updatekotisdelete.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201801251119474_addedstoredbid.cs" />
+    <Compile Include="Migrations\201801251119474_addedstoredbid.Designer.cs">
+      <DependentUpon>201801251119474_addedstoredbid.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Model\LocalModel.cs" />
     <Compile Include="Model\Product.cs" />
@@ -846,6 +850,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201801201413419_updatekotisdelete.resx">
       <DependentUpon>201801201413419_updatekotisdelete.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201801251119474_addedstoredbid.resx">
+      <DependentUpon>201801251119474_addedstoredbid.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
