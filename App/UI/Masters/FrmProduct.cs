@@ -65,8 +65,8 @@ namespace App.UI.Masters
                 dgv.Rows[index].Cells["TodaySpecial"].Value = prdct.IsTodaySpecial;
                 dgv.Rows[index].Cells["Taxamount"].Value = prdct.Taxamount;
                 dgv.Rows[index].Cells["IsAvailable"].Value = prdct.IsAvailable;
+                dgv.Rows[index].Cells["IsActive"].Value = prdct.Isactive;
                 
-
             }
 
 
@@ -165,13 +165,19 @@ namespace App.UI.Masters
         private void button4_Click(object sender, EventArgs e)
         {
             //UpdateAvailabilty();
-            SalesForm salesForm = new SalesForm();
+            SalesForm salesForm = new SalesForm("Availablility");
             salesForm.ShowDialog();
         }
 
         private void contextMenuStrip1_Opening(object sender, CancelEventArgs e)
         {
 
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            SalesForm salesForm = new SalesForm("Active");
+            salesForm.ShowDialog();
         }
     }
 }

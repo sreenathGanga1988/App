@@ -1,4 +1,5 @@
 ﻿using App.Repository;
+using App.UI.POS;
 using App.UI.RefundAndExpense;
 using App.ViewModal;
 using System;
@@ -100,6 +101,12 @@ namespace App.UI
             {
                 MessageBox.Show("Not Authenticated");
             }
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            UpdatePendingForm u = new UpdatePendingForm();
+            u.Show();
         }
     }
 }

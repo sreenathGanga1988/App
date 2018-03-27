@@ -29,13 +29,13 @@
         private void InitializeComponent()
         {
             this.grp_table = new System.Windows.Forms.GroupBox();
+            this.btn_txt = new System.Windows.Forms.Button();
             this.pnl_left = new System.Windows.Forms.Panel();
             this.pnl_category = new System.Windows.Forms.Panel();
             this.Paneltable = new System.Windows.Forms.Panel();
             this.panel6 = new System.Windows.Forms.Panel();
             this.label5 = new System.Windows.Forms.Label();
             this.pnl_product = new System.Windows.Forms.Panel();
-            this.button4 = new System.Windows.Forms.Button();
             this.grp_table.SuspendLayout();
             this.pnl_left.SuspendLayout();
             this.Paneltable.SuspendLayout();
@@ -44,7 +44,7 @@
             // 
             // grp_table
             // 
-            this.grp_table.Controls.Add(this.button4);
+            this.grp_table.Controls.Add(this.btn_txt);
             this.grp_table.Dock = System.Windows.Forms.DockStyle.Top;
             this.grp_table.Location = new System.Drawing.Point(0, 0);
             this.grp_table.Name = "grp_table";
@@ -52,6 +52,20 @@
             this.grp_table.TabIndex = 0;
             this.grp_table.TabStop = false;
             this.grp_table.Text = "Action";
+            // 
+            // btn_txt
+            // 
+            this.btn_txt.BackColor = System.Drawing.Color.White;
+            this.btn_txt.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btn_txt.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_txt.ForeColor = System.Drawing.Color.DarkRed;
+            this.btn_txt.Location = new System.Drawing.Point(3, 16);
+            this.btn_txt.Name = "btn_txt";
+            this.btn_txt.Size = new System.Drawing.Size(803, 31);
+            this.btn_txt.TabIndex = 18;
+            this.btn_txt.Text = "Update Availability";
+            this.btn_txt.UseVisualStyleBackColor = false;
+            this.btn_txt.Click += new System.EventHandler(this.button4_Click);
             // 
             // pnl_left
             // 
@@ -110,19 +124,6 @@
             this.pnl_product.Size = new System.Drawing.Size(559, 542);
             this.pnl_product.TabIndex = 15;
             // 
-            // button4
-            // 
-            this.button4.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.button4.BackColor = System.Drawing.Color.White;
-            this.button4.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button4.ForeColor = System.Drawing.Color.DarkRed;
-            this.button4.Location = new System.Drawing.Point(12, 7);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(258, 37);
-            this.button4.TabIndex = 18;
-            this.button4.Text = "Update Availability";
-            this.button4.UseVisualStyleBackColor = false;
-            // 
             // SalesForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -153,6 +154,6 @@
         private System.Windows.Forms.Panel panel6;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Panel pnl_product;
-        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button btn_txt;
     }
 }

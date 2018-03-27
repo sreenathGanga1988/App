@@ -20,15 +20,36 @@ namespace App.Repository
 
             if (categoryID != 0)
             {
-                var q = (cntxt.Products.Where(u => u.CategoryId == categoryID).
+                var q = (cntxt.Products.Where(u => u.CategoryId == categoryID && u.Isactive == true).
                 Select(x => new ProductlistViewModal { ProductID = x.Id, ProductName = x.ProductName, Color = x.Color ,IsAvailable=x.IsAvailable})).ToList();
                 return q;
 
             }
             else
             {
+                var q = (cntxt.Products.Where (u=>u.Isactive==true)
+                .Select(x => new ProductlistViewModal { ProductID = x.Id, ProductName = x.ProductName, Color = x.Color, IsAvailable = x.IsAvailable })).ToList();
+                return q;
+            }
+
+
+        }
+
+        // Inclluding deactivated
+        public List<ProductlistViewModal> GetProductListAll(int? categoryID = 0)
+        {
+
+            if (categoryID != 0)
+            {
+                var q = (cntxt.Products.Where(u => u.CategoryId == categoryID ).
+                Select(x => new ProductlistViewModal { ProductID = x.Id, ProductName = x.ProductName, Color = x.Color, IsAvailable = x.IsAvailable, IsActive=x.Isactive })).ToList();
+                return q;
+
+            }
+            else
+            {
                 var q = (cntxt.Products.
-                Select(x => new ProductlistViewModal { ProductID = x.Id, ProductName = x.ProductName, Color = x.Color, IsAvailable = x.IsAvailable })).ToList();
+                Select(x => new ProductlistViewModal { ProductID = x.Id, ProductName = x.ProductName, Color = x.Color, IsAvailable = x.IsAvailable, IsActive = x.Isactive })).ToList();
                 return q;
             }
 
@@ -40,7 +61,7 @@ namespace App.Repository
 
 
 
-            var q = (cntxt.Products.Where(u => u.Id.ToString().Contains(categoryID.ToString())).
+            var q = (cntxt.Products.Where(u => u.Id.ToString().Contains(categoryID.ToString()) && u.Isactive == true).
             Select(x => new ProductlistViewModal { ProductID = x.Id, ProductName = x.ProductName, Color = x.Color, IsAvailable = x.IsAvailable })).ToList();
             return q;
 
@@ -53,7 +74,7 @@ namespace App.Repository
 
 
 
-            var q = (cntxt.Products.Where(u => u.IsTodaySpecial == true).
+            var q = (cntxt.Products.Where(u => u.IsTodaySpecial == true && u.Isactive == true).
             Select(x => new ProductlistViewModal { ProductID = x.Id, ProductName = x.ProductName, Color = x.Color, IsAvailable = x.IsAvailable })).ToList();
             return q;
 
@@ -136,6 +157,47 @@ namespace App.Repository
             return id;
 
         }
+
+
+
+        public void Updateproductactivestatus()
+        {
+
+
+            var q = from invmstr in cntxt.Products
+                    where invmstr.Isactive == null 
+                    select invmstr;
+            foreach (var element in q)
+            {
+
+                element.Isactive = true;
+
+
+            }
+
+
+            cntxt.SaveChangesAsync();
+
+
+
+        }
+
+
+        public void UpdateIsActive(int ID, Boolean status)
+        {
+            var q = from product in cntxt.Products
+                    where product.Id == ID
+                    select product;
+
+            foreach (var element in q)
+            {
+                element.Isactive = status;
+            }
+
+            cntxt.SaveChanges();
+        }
+
+
 
 
     }
@@ -718,7 +780,7 @@ namespace App.Repository
             foreach(var element in q)
             {
                 element.StoreID = invoicemaster.StoreID;
-                element.UserID = invoicemaster.UserID;
+                element.UserID = Program.UserID;
                 element.InvoiceDate = invoicemaster.InvoiceDate;
                 element.CustomerID = invoicemaster.CustomerID;
                 element.TableID = invoicemaster.TableID;
@@ -726,13 +788,15 @@ namespace App.Repository
                 element.TotalBill = invoicemaster.TotalBill;
                 element.StoreName = invoicemaster.StoreName;
                 element.StoreAddress = invoicemaster.StoreAddress;
-                element.Cashier = invoicemaster.Cashier;
+                element.Cashier = Program.Username;
                 element.CustomerName = invoicemaster.CustomerName;
                 element.IsUploaded = invoicemaster.IsUploaded;
                 element.IstableBill = invoicemaster.IstableBill;
                 element.IsKOT = invoicemaster.IsKOT;
-                element.PayMentModeId = invoicemaster.PayMentModeId;                element.PaymentMode = invoicemaster.PaymentMode;
-
+                element.PayMentModeId = invoicemaster.PayMentModeId;
+                element.PaymentMode = invoicemaster.PaymentMode;
+                element.ShiftID = Program.ShiftId;
+                element.ShiftName = Program.Shiftname;
                 invoicemaster.InvoiceNum = element.InvoiceNum;
 
             }
@@ -764,39 +828,105 @@ namespace App.Repository
                 }
                 else
                 {
-                    var q1 = from ivoidedetail in cntxt.InvoiceDetails
-                            where ivoidedetail.InvoicemasterID == invdet.InvoicemasterID && ivoidedetail.ProductId == invdet.ProductId
-                            select ivoidedetail;
-                    foreach (var element in q1)
+
+                    if(invdet.InvoiceDetailID!=0)
                     {
-                        element.PreviousQty = element.Qty;
 
-                        element.ProductId = invdet.ProductId;
-                        element.ProductName = invdet.ProductName;
-
-                        element.IsDeleted = invdet.IsDeleted;
-                        element.UnitPrice = invdet.UnitPrice;
-                        element.Qty = invdet.Qty;
-                        element.DiscountPerUOM = invdet.DiscountPerUOM;
-                        element.Total = invdet.Total;
-                        element.IsUploaded = invdet.IsUploaded;
-                        element.Taxamount = invdet.Taxamount;
-                        element.Notes = invdet.Notes;
-
-
-                        if (invdet.Qty == element.PreviousQty)
+                        var q1 = from ivoidedetail in cntxt.InvoiceDetails
+                                 where ivoidedetail.InvoicemasterID == invdet.InvoicemasterID && ivoidedetail.ProductId == invdet.ProductId
+                                 && ivoidedetail.InvoiceDetailID == invdet.InvoiceDetailID
+                                 select ivoidedetail;
+                        foreach (var element in q1)
                         {
-                            element.Kotnum = invdet.Kotnum;
-                        }
-                        else
-                        {
-                            element.Kotnum =1;
+                            element.PreviousQty = element.Qty;
+
+                            element.ProductId = invdet.ProductId;
+                            element.ProductName = invdet.ProductName;
+
+                            element.IsDeleted = invdet.IsDeleted;
+                            element.UnitPrice = invdet.UnitPrice;
+                            element.Qty = invdet.Qty;
+                            element.DiscountPerUOM = invdet.DiscountPerUOM;
+                            element.Total = invdet.Total;
+                            element.IsUploaded = invdet.IsUploaded;
+                            element.Taxamount = invdet.Taxamount;
+                            element.Notes = invdet.Notes;
+
+
+                            if (invdet.Qty == element.PreviousQty)
+                            {
+                                element.Kotnum = invdet.Kotnum;
+                            }
+                            else
+                            {
+                                element.Kotnum = 1;
+                            }
+
+                            element.AdjustedQty = invdet.Qty - element.PreviousQty;
+
+
                         }
 
-                        element.AdjustedQty = invdet.Qty - element.PreviousQty;
-                   
 
                     }
+                    else
+                    {
+                        InvoiceDetail invoicedetail = new InvoiceDetail();
+                        invoicedetail.ProductId = invdet.ProductId;
+                        invoicedetail.ProductName = invdet.ProductName;
+
+                        invoicedetail.IsDeleted = invdet.IsDeleted;
+                        invoicedetail.UnitPrice = invdet.UnitPrice;
+                        invoicedetail.Qty = invdet.Qty;
+                        invoicedetail.DiscountPerUOM = invdet.DiscountPerUOM;
+                        invoicedetail.Total = invdet.Total;
+                        invoicedetail.IsUploaded = invdet.IsUploaded;
+                        invoicedetail.PreviousQty = invdet.PreviousQty;
+                        invoicedetail.AdjustedQty = invdet.AdjustedQty;
+                        invoicedetail.InvoicemasterID = invdet.InvoicemasterID;
+                        invoicedetail.Taxamount = invdet.Taxamount;
+                        invoicedetail.Notes = invdet.Notes;
+                        invoicedetail.Kotnum = invdet.Kotnum;
+                        cntxt.InvoiceDetails.Add(invoicedetail);
+
+                        
+
+                    }
+
+
+                    //var q1 = from ivoidedetail in cntxt.InvoiceDetails
+                    //        where ivoidedetail.InvoicemasterID == invdet.InvoicemasterID && ivoidedetail.ProductId == invdet.ProductId
+                    //        select ivoidedetail;
+                    //foreach (var element in q1)
+                    //{
+                    //    element.PreviousQty = element.Qty;
+
+                    //    element.ProductId = invdet.ProductId;
+                    //    element.ProductName = invdet.ProductName;
+
+                    //    element.IsDeleted = invdet.IsDeleted;
+                    //    element.UnitPrice = invdet.UnitPrice;
+                    //    element.Qty = invdet.Qty;
+                    //    element.DiscountPerUOM = invdet.DiscountPerUOM;
+                    //    element.Total = invdet.Total;
+                    //    element.IsUploaded = invdet.IsUploaded;
+                    //    element.Taxamount = invdet.Taxamount;
+                    //    element.Notes = invdet.Notes;
+
+
+                    //    if (invdet.Qty == element.PreviousQty)
+                    //    {
+                    //        element.Kotnum = invdet.Kotnum;
+                    //    }
+                    //    else
+                    //    {
+                    //        element.Kotnum =1;
+                    //    }
+
+                    //    element.AdjustedQty = invdet.Qty - element.PreviousQty;
+                   
+
+                    //}
 
                 }
 
@@ -814,7 +944,7 @@ namespace App.Repository
 
 
 
-                cntxt.SaveChanges();
+                //cntxt.SaveChanges();
 
 
             }
@@ -823,7 +953,7 @@ namespace App.Repository
 
 
             var alreadyenteredinvoicelist = from ivoidedetail in cntxt.InvoiceDetails
-                                            where ivoidedetail.InvoicemasterID == invoicemaster.InvoicemasterID
+                                            where ivoidedetail.InvoicemasterID == invoicemaster.InvoicemasterID && ivoidedetail.InvoiceDetailID!=0
                                             select ivoidedetail;
 
 
@@ -831,8 +961,8 @@ namespace App.Repository
             foreach(var element in alreadyenteredinvoicelist)
             {
 
-
-                if (!invoicemaster.InvoiceDetails.Any(f => f.ProductId ==element.ProductId))
+                //if (!invoicemaster.InvoiceDetails.Any(f => f.InvoiceDetailID == element.InvoiceDetailID))
+                if (!invoicemaster.InvoiceDetails.Any(f => f.InvoiceDetailID == element.InvoiceDetailID))
                 {
 
                     element.IsDeleted = true;
@@ -918,6 +1048,39 @@ namespace App.Repository
 
             return q;
         }
+
+
+
+
+        public List<InvoiceviewModal> GetInvoicePendingBetweenNotUploaded(int storeid, DateTime dtp_from, DateTime dtp_to)
+        {
+            var q = (from invoicemstr in cntxt.Invoicemasters
+                     where (invoicemstr.InvoiceDate >= dtp_from && invoicemstr.InvoiceDate < dtp_to) && invoicemstr.StoreID == storeid && invoicemstr.IsUploaded==false
+                     select new InvoiceviewModal
+                     {
+                         InvoicemasterID = invoicemstr.InvoicemasterID,
+                         InvoiceDate = invoicemstr.InvoiceDate,
+                         InvoiceNum = invoicemstr.InvoiceNum,
+                         TableName = invoicemstr.Table.TableName,
+                         StoreName = invoicemstr.Store.StoreName,
+                         CustomerName = invoicemstr.Customer.CustomerName,
+                         TotalBill = invoicemstr.TotalBill,
+                         TotalPaid = invoicemstr.TotalPaid,
+                         PaymentMode = invoicemstr.PaymentMode,
+                         ShiftName = invoicemstr.ShiftName,
+                         Status = invoicemstr.IsKOT == true ? "KOT" : invoicemstr.IstableBill == true ? "Hold" : "CheckOUT"
+                     }).ToList();
+
+
+            return q;
+        }
+
+
+
+
+
+
+
         public List <InvoiceviewModal> GetInvoicePending(int storeid)
         {
             var q = (from invoicemstr in cntxt.Invoicemasters

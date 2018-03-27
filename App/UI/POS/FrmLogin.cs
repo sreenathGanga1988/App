@@ -14,6 +14,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using App.Extensions;
+using System.Data.Entity.Infrastructure;
+
 namespace App.UI
 {
     public partial class FrmLogin : Form
@@ -23,7 +25,7 @@ namespace App.UI
             InitializeComponent();
             string version = System.Windows.Forms.Application.ProductVersion;
             this.Text = String.Format("LimsPOS {0}", version);
-            Database.SetInitializer(new MigrateDatabaseToLatestVersion<POSDataContext, Migrations.Configuration>());
+        
 
 
 
@@ -38,7 +40,7 @@ namespace App.UI
             catch (Exception e)
             {
 
-                ErrorLogger.WriteToErrorLog("At Login Constructor", e.StackTrace, "Login Start");
+                ErrorLogger.WriteToErrorLog("At Login Constructor", e.Message, "Login Start");
             }
 
 
@@ -50,6 +52,9 @@ namespace App.UI
 
             InvoiceRepository invoiceRepository = new InvoiceRepository();
             invoiceRepository.UpdateDeleteStatusofinvoice();
+
+            ProductRepositories productRepositories = new ProductRepositories();
+            productRepositories.Updateproductactivestatus();
         }
 
         public void KeyPressed(Button btn)

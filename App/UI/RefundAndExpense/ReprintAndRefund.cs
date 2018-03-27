@@ -89,7 +89,7 @@ namespace App.UI
         {
             try
             {
-                PrintReceipt prnt = new PrintReceipt();
+                PrintReceiptnew prnt = new PrintReceiptnew();
                 prnt.ReprintprintInvoicereport(invmstr);
             }
             catch (Exception ex)

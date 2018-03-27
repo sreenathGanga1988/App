@@ -120,6 +120,7 @@
     <Compile Include="Extensions\IpPrint.cs" />
     <Compile Include="Extensions\LocalDBExtension.cs" />
     <Compile Include="Extensions\PrintReceipt.cs" />
+    <Compile Include="Extensions\PrintReceiptnew.cs" />
     <Compile Include="Extensions\RawPrinterHelper.cs" />
     <Compile Include="LimsDBDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -444,6 +445,10 @@
     <Compile Include="Migrations\201801251119474_addedstoredbid.Designer.cs">
       <DependentUpon>201801251119474_addedstoredbid.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201803131214100_addedisactive.cs" />
+    <Compile Include="Migrations\201803131214100_addedisactive.Designer.cs">
+      <DependentUpon>201803131214100_addedisactive.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Model\LocalModel.cs" />
     <Compile Include="Model\Product.cs" />
@@ -565,6 +570,12 @@
     </Compile>
     <Compile Include="UI\POS\NewPriceForm.Designer.cs">
       <DependentUpon>NewPriceForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\POS\UpdatePendingForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\POS\UpdatePendingForm.Designer.cs">
+      <DependentUpon>UpdatePendingForm.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\RefundAndExpense\ActionBoard.cs">
       <SubType>Form</SubType>
@@ -854,6 +865,9 @@
     <EmbeddedResource Include="Migrations\201801251119474_addedstoredbid.resx">
       <DependentUpon>201801251119474_addedstoredbid.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803131214100_addedisactive.resx">
+      <DependentUpon>201803131214100_addedisactive.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <SubType>Designer</SubType>
@@ -909,6 +923,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\Masters\PrinterForm.resx">
       <DependentUpon>PrinterForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\POS\UpdatePendingForm.resx">
+      <DependentUpon>UpdatePendingForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\RefundAndExpense\ActionBoard.resx">
       <DependentUpon>ActionBoard.cs</DependentUpon>

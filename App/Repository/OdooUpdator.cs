@@ -20,92 +20,7 @@ namespace App.Repository
 
       
 
-        public void Updatemaster()
-        {
-            try
-            {
-                GetStorefromODOO();
-                MessageBox.Show("GetStorefromODOO Completed");
-            }
-            catch (Exception ex)
-            {
-                ErrorLogger.WriteToErrorLog("At GetStorefromODOO", ex.StackTrace, ex.Message);
-                MessageBox.Show("ErrorAt" + Environment.NewLine + "GetStorefromODOO " + ex.ToString());
-            }
-            try
-            {
-                GetTablefromODOO();
-                MessageBox.Show("GetTablefromODOO Completed");
-            }
-            catch (Exception ex)
-            {
-                ErrorLogger.WriteToErrorLog("At GetTablefromODOO", ex.StackTrace, ex.Message);
-                MessageBox.Show("ErrorAt" + Environment.NewLine + "GetTablefromODOO " + ex.ToString());
-            }
-            try
-            {
-                GetUserfromODOO();
-              
-                MessageBox.Show("GetUserfromODOO Completed");
-            }
-            catch (Exception ex)
-            {
-                ErrorLogger.WriteToErrorLog("At GetUserfromODOO", ex.StackTrace, ex.Message);
-                MessageBox.Show("ErrorAt" + Environment.NewLine + "GetUserfromODOO " + ex.ToString());
-            }
-            try
-            {
-                GetBuzzerfromODOO();
-                MessageBox.Show("GetBuzzerfromODOO Completed");
-            }
-            catch (Exception ex)
-            {
-                ErrorLogger.WriteToErrorLog("At GetBuzzerfromODOO", ex.StackTrace, ex.Message);
-                MessageBox.Show("ErrorAt" + Environment.NewLine + "GetBuzzerfromODOO " + ex.ToString());
-            }
-            try
-            {
-                GetCategoryfromODOO();
-                MessageBox.Show("GetCategoryfromODOO Completed");
-            }
-            catch (Exception ex)
-            {
-                ErrorLogger.WriteToErrorLog("At GetCategoryfromODOO", ex.StackTrace, ex.Message);
-                MessageBox.Show("ErrorAt" + Environment.NewLine + "GetCategoryfromODOO " + ex.ToString());
-            }
-            try
-            {
-                GetProductfromODOO();
-                MessageBox.Show("GetProductfromODOO Completed");
-            }
-            catch (Exception ex)
-            {
-                ErrorLogger.WriteToErrorLog("At GetProductfromODOO", ex.StackTrace, ex.Message);
-                MessageBox.Show("ErrorAt" + Environment.NewLine + "GetProductfromODOO " + ex.ToString());
-            }
-           try {
-                InsertCustomertoOdoofromlocal();
-                MessageBox.Show("InsertCustomertoOdoofromlocal Completed");
-            }
-            catch (Exception ex)
-            {
-                
-                    ErrorLogger.WriteToErrorLog("At InsertCustomertoOdoofromlocal", ex.StackTrace, ex.Message);
-                MessageBox.Show("ErrorAt"+Environment.NewLine+ "InsertCustomertoOdoofromlocal " + ex.ToString());
-            }
-            try
-            {
-                GetCustomerfromODOO();
-                MessageBox.Show("GetCustomerfromODOO Completed");
-            }
-            catch (Exception ex)
-            {
-
-                ErrorLogger.WriteToErrorLog("At GetCustomerfromODOO", ex.StackTrace, ex.Message);
-                MessageBox.Show("ErrorAt" + Environment.NewLine + "GetCustomerfromODOO " + ex.ToString());
-            }
-
-        }
+       
 
 
 
@@ -121,9 +36,9 @@ namespace App.Repository
 
             try
             {
-                var q = from invoiceMaster in cntxt.Invoicemasters
-                        where invoiceMaster.IsUploaded == false
-                        select invoiceMaster;
+                //var q = from invoiceMaster in cntxt.Invoicemasters
+                //        where invoiceMaster.IsUploaded == false
+                //        select invoiceMaster;
 
                 List<Invoicemaster> invoicemasters = cntxt.Invoicemasters.Where(U => U.IsUploaded == false && U.ShiftID==Shiftid && U.IsDeleted==false).ToList();
 
@@ -210,6 +125,119 @@ namespace App.Repository
             }
         }
 
+
+
+        public void UploadInvoiceBetweendate(DateTime fromdate,DateTime todate)
+        {
+            int uloaded = 0;
+            try
+            {
+                //var q = from invoiceMaster in cntxt.Invoicemasters
+                //        where invoiceMaster.IsUploaded == false
+                //        select invoiceMaster;
+
+                List<Invoicemaster> pendinginvoicemasters = cntxt.Invoicemasters.Where(U => U.IsUploaded == false && U.InvoiceDate >= fromdate && U.InvoiceDate < todate && U.IsDeleted == false).ToList();
+
+                var Shifids = pendinginvoicemasters.Select(u => u.ShiftID).Distinct().ToList();
+
+
+
+
+
+                foreach ( var shifitidin in  Shifids)
+                {
+                    InsertShiftOdoofromlocal(Program.ShiftId);
+
+                    int shiftid = int.Parse(shifitidin.ToString());
+
+                    List<Invoicemaster> invoicemasters = pendinginvoicemasters.Where(u => u.ShiftID == shiftid).ToList();
+
+                    foreach (Invoicemaster element in invoicemasters)
+                    {
+
+                        if (InsertInvoicemaster(element))
+                        {
+                            element.IsUploaded = true;
+                            uloaded++;
+                        };
+                        cntxt.SaveChanges();
+
+
+                    }
+
+                    List<SettleMaster> settlementlist = cntxt.SettleMasters.Where(U => U.IsUploaded == false && U.ShiftID == shiftid).ToList();
+
+                    foreach (SettleMaster element in settlementlist)
+                    {
+                        try
+                        {
+                            insertSettlement(element);
+                            element.IsUploaded = true;
+                        }
+                        catch (Exception exp)
+                        {
+                            ErrorLogger.WriteToErrorLog("At Login insertSettlement", exp.StackTrace, exp.Message);
+
+                        }
+                    }
+
+
+                    List<RefundMaster> refundlist = cntxt.RefundMasters.Where(U => U.IsUploaded == false && U.ShiftID == shiftid).ToList();
+                    foreach (RefundMaster element in refundlist)
+                    {
+                        try
+                        {
+                            insertRefund(element);
+                            element.IsUploaded = true;
+                        }
+                        catch (Exception exp)
+                        {
+                            ErrorLogger.WriteToErrorLog("At Login insertRefund", exp.StackTrace, exp.Message);
+
+                        }
+                    }
+
+                    List<CashOutMaster> cashouitlist = cntxt.CashOutMasters.Where(U => U.IsUploaded == false && U.ShiftID == shiftid).ToList();
+                    foreach (CashOutMaster element in cashouitlist)
+                    {
+                        try
+                        {
+                            InsertCashOut(element);
+                            element.IsUploaded = true;
+                        }
+                        catch (Exception exp)
+                        {
+                            ErrorLogger.WriteToErrorLog("At Login InsertCashOut", exp.StackTrace, exp.Message);
+
+                        }
+                    }
+
+
+                }
+
+
+
+
+
+
+
+
+
+                cntxt.SaveChanges();
+                MessageBox.Show(uloaded + "Out Of " + pendinginvoicemasters.Count + "Uploaded");
+                foreach (int shifid in Shifids)
+                {
+                    LoadClosereport(shifid);
+                }
+
+
+            }
+            catch (Exception)
+            {
+                System.Windows.Forms.Application.Exit();
+
+            }
+        }
 
 
         public void LoadClosereport( int shiftid)
@@ -379,7 +407,7 @@ namespace App.Repository
             }
             try
             {
-                PrintReceipt prnt = new PrintReceipt();
+                PrintReceiptnew prnt = new PrintReceiptnew();
                 prnt.printClosingreport(shiftViewModel);
 
                
@@ -394,6 +422,11 @@ namespace App.Repository
 
         public Boolean InsertInvoicemaster(Invoicemaster invmstr)
         {
+
+            if(invmstr.InvoiceNum== "LI7736")
+            {
+                int k = 0;
+            }
             Boolean isok = false;
 
             try
@@ -567,7 +600,7 @@ values(
             }
             catch (Exception Ex)
             {
-                ErrorLogger.WriteToErrorLog("At Up At"+ invmstr.InvoiceNum  , Ex.StackTrace, "InsertInvoicemaster ");
+                ErrorLogger.WriteToErrorLog("At Up At"+ invmstr.InvoiceNum  , Ex.Message, "InsertInvoicemaster ");
 
                 isok = false;
               
@@ -577,6 +610,94 @@ values(
         }
 
 
+        #region masters
+        public void Updatemaster()
+        {
+            try
+            {
+                GetStorefromODOO();
+                MessageBox.Show("GetStorefromODOO Completed");
+            }
+            catch (Exception ex)
+            {
+                ErrorLogger.WriteToErrorLog("At GetStorefromODOO", ex.StackTrace, ex.Message);
+                MessageBox.Show("ErrorAt" + Environment.NewLine + "GetStorefromODOO " + ex.ToString());
+            }
+            try
+            {
+                GetTablefromODOO();
+                MessageBox.Show("GetTablefromODOO Completed");
+            }
+            catch (Exception ex)
+            {
+                ErrorLogger.WriteToErrorLog("At GetTablefromODOO", ex.StackTrace, ex.Message);
+                MessageBox.Show("ErrorAt" + Environment.NewLine + "GetTablefromODOO " + ex.ToString());
+            }
+            try
+            {
+                GetUserfromODOO();
+
+                MessageBox.Show("GetUserfromODOO Completed");
+            }
+            catch (Exception ex)
+            {
+                ErrorLogger.WriteToErrorLog("At GetUserfromODOO", ex.StackTrace, ex.Message);
+                MessageBox.Show("ErrorAt" + Environment.NewLine + "GetUserfromODOO " + ex.ToString());
+            }
+            try
+            {
+                GetBuzzerfromODOO();
+                MessageBox.Show("GetBuzzerfromODOO Completed");
+            }
+            catch (Exception ex)
+            {
+                ErrorLogger.WriteToErrorLog("At GetBuzzerfromODOO", ex.StackTrace, ex.Message);
+                MessageBox.Show("ErrorAt" + Environment.NewLine + "GetBuzzerfromODOO " + ex.ToString());
+            }
+            try
+            {
+                GetCategoryfromODOO();
+                MessageBox.Show("GetCategoryfromODOO Completed");
+            }
+            catch (Exception ex)
+            {
+                ErrorLogger.WriteToErrorLog("At GetCategoryfromODOO", ex.StackTrace, ex.Message);
+                MessageBox.Show("ErrorAt" + Environment.NewLine + "GetCategoryfromODOO " + ex.ToString());
+            }
+            try
+            {
+                GetProductfromODOO();
+                MessageBox.Show("GetProductfromODOO Completed");
+            }
+            catch (Exception ex)
+            {
+                ErrorLogger.WriteToErrorLog("At GetProductfromODOO", ex.StackTrace, ex.Message);
+                MessageBox.Show("ErrorAt" + Environment.NewLine + "GetProductfromODOO " + ex.ToString());
+            }
+            try
+            {
+                InsertCustomertoOdoofromlocal();
+                MessageBox.Show("InsertCustomertoOdoofromlocal Completed");
+            }
+            catch (Exception ex)
+            {
+
+                ErrorLogger.WriteToErrorLog("At InsertCustomertoOdoofromlocal", ex.StackTrace, ex.Message);
+                MessageBox.Show("ErrorAt" + Environment.NewLine + "InsertCustomertoOdoofromlocal " + ex.ToString());
+            }
+            try
+            {
+                GetCustomerfromODOO();
+                MessageBox.Show("GetCustomerfromODOO Completed");
+            }
+            catch (Exception ex)
+            {
+
+                ErrorLogger.WriteToErrorLog("At GetCustomerfromODOO", ex.StackTrace, ex.Message);
+                MessageBox.Show("ErrorAt" + Environment.NewLine + "GetCustomerfromODOO " + ex.ToString());
+            }
+
+        }
 
         public void GetProductfromODOO()
         {
@@ -644,9 +765,6 @@ where a.product_tmpl_id=b.id and c.prod_id=b.id and d.id=c.tax_id group by a.id,
             cntxt.SaveChanges();
 
         }
-
-
-
           public void GetCategoryfromODOO()
         {
 
@@ -743,9 +861,7 @@ where a.product_tmpl_id=b.id and c.prod_id=b.id and d.id=c.tax_id group by a.id,
 
             cntxt.SaveChanges();
 
-        }
-
-       
+        }      
 
         public void GetUserfromODOO()
         {
@@ -808,7 +924,6 @@ where a.product_tmpl_id=b.id and c.prod_id=b.id and d.id=c.tax_id group by a.id,
 
         }
 
-
         public void InsertCustomertoOdoofromlocal()
         {
             CustomerRepositiry custrepo = new CustomerRepositiry();
@@ -818,19 +933,19 @@ where a.product_tmpl_id=b.id and c.prod_id=b.id and d.id=c.tax_id group by a.id,
 
             var newcustomerlist = customerlist.Where(u => u.OdooID == 0 && u.IsDetailChanged == true);
 
-            foreach(Customer cust in newcustomerlist)
+            foreach (Customer cust in newcustomerlist)
             {
-             int oddodid=   InsertCustomertoODoo(cust);
+                int oddodid = InsertCustomertoODoo(cust);
                 cust.OdooID = oddodid;
                 cust.IsDetailChanged = false;
-            
+
                 custrepo.UpdateCustomer(cust);
             }
 
             var oldcustomerlist = customerlist.Where(u => u.OdooID != 0).ToList();
             foreach (Customer cust in oldcustomerlist)
             {
-               // InsertCustomertoODoo(cust);
+                // InsertCustomertoODoo(cust);
             }
 
 
@@ -859,7 +974,7 @@ where a.product_tmpl_id=b.id and c.prod_id=b.id and d.id=c.tax_id group by a.id,
                     customer.StoreID = Program.LocationID;
                     customer.AddedDate = DateTime.Now.ToString();
                     customer.PaymentDue = 0;
-                    customer.Discount = Decimal.Parse(row["discount_percentage"].ToString())/100;
+                    customer.Discount = Decimal.Parse(row["discount_percentage"].ToString()) / 100;
                     customer.BarcodeNum = row["barcode"].ToString().Trim();
                     customer.AddedBy = Program.Username;
                     customer.IsDetailChanged = true;
@@ -891,6 +1006,50 @@ where a.product_tmpl_id=b.id and c.prod_id=b.id and d.id=c.tax_id group by a.id,
             cntxt.SaveChanges();
 
         }
+
+        public int InsertCustomertoODoo(Customer cust)
+        {
+            NpgsqlCommand cmd = new NpgsqlCommand(@"insert into res_partner
+(name, display_name, mobile, phone, street, is_company, partner_share, customer, supplier, employee, email, comment, notify_email,
+invoice_warn,  picking_warn,  type, active, company_id, create_date, create_uid, write_date, write_uid,pos_cust_id,purchase_warn,sale_warn)
+values(:name,:display_name, :mobile, :phone, :street, False, True, True, False, False, 'emd@dkd.com', '00000000000000', 'always', False, False, 
+'contact', True, 1, :createdDate, 1, :editdDate, 1,:pos_cust_id,:purchase_warn,:sale_warn)RETURNING id");
+
+            if (cust.PhoneNumber == null)
+            {
+                cust.PhoneNumber = "0";
+            }
+            cmd.Parameters.AddWithValue("name", cust.CustomerName);
+            cmd.Parameters.AddWithValue("purchase_warn", cust.CustomerName);
+            cmd.Parameters.AddWithValue("sale_warn", cust.CustomerName);
+
+
+
+            cmd.Parameters.AddWithValue("display_name", cust.CustomerName);
+            cmd.Parameters.AddWithValue("mobile", cust.PhoneNumber);
+            cmd.Parameters.AddWithValue("phone", cust.PhoneNumber);
+            cmd.Parameters.AddWithValue("street", cust.CustomerDetails);
+            cmd.Parameters.AddWithValue("pos_cust_id", cust.CustomerID);
+
+            try
+            {
+                cmd.Parameters.AddWithValue("createdDate", DateTime.Parse(cust.AddedDate.ToString()));
+                cmd.Parameters.AddWithValue("editdDate", DateTime.Parse(cust.AddedDate.ToString()));
+            }
+            catch (Exception)
+            {
+
+                cmd.Parameters.AddWithValue("createdDate", DateTime.Now);
+                cmd.Parameters.AddWithValue("editdDate", DateTime.Now);
+            }
+
+
+            return InsertAndGetID(cmd);
+
+        }
+        #endregion
+
+
         public void InsertShiftOdoofromlocal()
         {
             ShiftRepository shiftRepository = new ShiftRepository();
@@ -945,46 +1104,7 @@ where a.product_tmpl_id=b.id and c.prod_id=b.id and d.id=c.tax_id group by a.id,
         }
 
 
-        public int InsertCustomertoODoo( Customer cust)
-        {
-            NpgsqlCommand cmd = new NpgsqlCommand(@"insert into res_partner
-(name, display_name, mobile, phone, street, is_company, partner_share, customer, supplier, employee, email, comment, notify_email,
-invoice_warn,  picking_warn,  type, active, company_id, create_date, create_uid, write_date, write_uid,pos_cust_id,purchase_warn,sale_warn)
-values(:name,:display_name, :mobile, :phone, :street, False, True, True, False, False, 'emd@dkd.com', '00000000000000', 'always', False, False, 
-'contact', True, 1, :createdDate, 1, :editdDate, 1,:pos_cust_id,:purchase_warn,:sale_warn)RETURNING id");
-
-            if (cust.PhoneNumber == null)
-            {
-                cust.PhoneNumber = "0";
-            }
-            cmd.Parameters.AddWithValue("name", cust.CustomerName);
-            cmd.Parameters.AddWithValue("purchase_warn", cust.CustomerName);
-            cmd.Parameters.AddWithValue("sale_warn", cust.CustomerName);
-            
-
-
-            cmd.Parameters.AddWithValue("display_name", cust.CustomerName);
-            cmd.Parameters.AddWithValue("mobile", cust.PhoneNumber);
-            cmd.Parameters.AddWithValue("phone", cust.PhoneNumber);
-            cmd.Parameters.AddWithValue("street", cust.CustomerDetails);
-            cmd.Parameters.AddWithValue("pos_cust_id", cust.CustomerID);
-            
-            try
-            {
-                cmd.Parameters.AddWithValue("createdDate", DateTime.Parse(cust.AddedDate.ToString()));
-                cmd.Parameters.AddWithValue("editdDate", DateTime.Parse(cust.AddedDate.ToString()));
-            }
-            catch (Exception)
-            {
-
-                cmd.Parameters.AddWithValue("createdDate", DateTime.Now);
-                cmd.Parameters.AddWithValue("editdDate", DateTime.Now);
-            }
-          
-
-            return InsertAndGetID(cmd);
-
-        }
+      
 
         public int InsertSessionToODoo(Shift shift)
         {

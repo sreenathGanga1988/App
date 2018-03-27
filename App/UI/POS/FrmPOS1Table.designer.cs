@@ -150,6 +150,7 @@
             this.Total = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Notes = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Kotnum = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.InvdetId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel7.SuspendLayout();
             this.panel1.SuspendLayout();
             this.Pnl_topLevel.SuspendLayout();
@@ -1381,7 +1382,8 @@
             this.Discount,
             this.Total,
             this.Notes,
-            this.Kotnum});
+            this.Kotnum,
+            this.InvdetId});
             this.grd_ProductDetails.Dock = System.Windows.Forms.DockStyle.Fill;
             this.grd_ProductDetails.Location = new System.Drawing.Point(0, 0);
             this.grd_ProductDetails.MultiSelect = false;
@@ -1608,6 +1610,12 @@
             this.Kotnum.Name = "Kotnum";
             this.Kotnum.Visible = false;
             // 
+            // InvdetId
+            // 
+            this.InvdetId.HeaderText = "InvdetId";
+            this.InvdetId.Name = "InvdetId";
+            this.InvdetId.Visible = false;
+            // 
             // FrmPOS1Table
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1798,5 +1806,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Total;
         private System.Windows.Forms.DataGridViewTextBoxColumn Notes;
         private System.Windows.Forms.DataGridViewTextBoxColumn Kotnum;
+        private System.Windows.Forms.DataGridViewTextBoxColumn InvdetId;
     }
 }

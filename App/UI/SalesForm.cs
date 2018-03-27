@@ -20,6 +20,7 @@ namespace App.UI
 
         int invoiceid = 0;
         int catid = 0;
+        String ActionType = "";
         public SalesForm()
         {
             InitializeComponent();
@@ -28,7 +29,23 @@ namespace App.UI
            
         }
 
+        public SalesForm( String Type)
+        {
+            InitializeComponent();
+            SalesViewModal salesViewmodal = new SalesViewModal();
+            LoadCategory(salesViewmodal);
+            ActionType = Type;
 
+
+            if (ActionType == "Availablility")
+            {
+                btn_txt.Text = "Update Availability";
+            }
+            else
+            {
+                btn_txt.Text = "Activate/ Deactivate";
+            }
+        }
 
 
         public void LoadCategory(SalesViewModal salesViewmodal)
@@ -129,7 +146,7 @@ namespace App.UI
            
             ProductRepositories productrep = new ProductRepositories();
 
-            List<ProductlistViewModal> Products = productrep.GetProductList(categoryId);
+            List<ProductlistViewModal> Products = productrep.GetProductListAll(categoryId);
             LoadProducts(Products);
         }
 
@@ -143,17 +160,41 @@ namespace App.UI
 
             Product product = productRepositories.GetProduct(ProductID);
 
-            if (product.IsAvailable==true)
+
+            if (ActionType == "Availablility")
             {
-                productRepositories.UpdateAvailailty(ProductID,  false);
-                MessageBox.Show(product.ProductName+  " Marker Unavailable");
+                if (product.IsAvailable == true)
+                {
+                    productRepositories.UpdateAvailailty(ProductID, false);
+                    MessageBox.Show(product.ProductName + " Marked Unavailable");
+                }
+                else
+                {
+                    productRepositories.UpdateAvailailty(ProductID, true);
+                    MessageBox.Show(product.ProductName + " Marked Available");
+
+                }
+
+
             }
             else
             {
-                productRepositories.UpdateAvailailty(ProductID, true);
-                MessageBox.Show(product.ProductName + " Marker Available");
 
+                if (product.Isactive == true)
+                {
+                    productRepositories.UpdateIsActive(ProductID, false);
+                    MessageBox.Show(product.ProductName + " Marked In Active");
+                }
+                else
+                {
+                    productRepositories.UpdateIsActive(ProductID, true);
+                    MessageBox.Show(product.ProductName + " Marked Active");
+
+                }
             }
+
+
+
             fILLpRODUCTS(catid);
         }
 
@@ -215,9 +256,19 @@ namespace App.UI
                 //temp.Height = 150;
                 try
                 {
-                    if (product.IsAvailable == false)
+                    if (ActionType == "Availablility")
                     {
-                        temp.BackColor = Color.Orange;
+                        if (product.IsAvailable == false)
+                        {
+                            temp.BackColor = Color.Orange;
+                        }
+                    }
+                    else
+                    {
+                        if (product.IsActive == false)
+                        {
+                            temp.BackColor = Color.Orange;
+                        }
                     }
                 }
                 catch (Exception)
@@ -249,8 +300,9 @@ namespace App.UI
             parent.AutoScroll = true;
         }
 
+        private void button4_Click(object sender, EventArgs e)
+        {
 
-
-
+        }
     }
 }

@@ -18,7 +18,7 @@ namespace App.ViewModal
         public String ProductName { get; set; }
         public String Color { get; set; }
         public Boolean? IsAvailable { get; set; }
-
+        public Boolean? IsActive { get; set; }
     }
     public  class SalesViewModal
     {
@@ -51,6 +51,7 @@ namespace App.ViewModal
         public String PaymentMode { get; set; }
         public String ShiftName { get; set; }
         public String Status { get; set; }
+       
 
     }
    

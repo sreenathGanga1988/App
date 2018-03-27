@@ -13,9 +13,9 @@ namespace App.Context
     {
         public POSDataContext() : base("name = LimsDBConnectionString")
         {
-          
-            //Database.SetInitializer<POSDataContext>(new CreateDatabaseIfNotExists<POSDataContext>());
 
+            //Database.SetInitializer<POSDataContext>(new CreateDatabaseIfNotExists<POSDataContext>());
+      
             Database.SetInitializer<POSDataContext>(
     new MigrateDatabaseToLatestVersion<POSDataContext, Migrations.Configuration>());
             Database.Initialize(false);

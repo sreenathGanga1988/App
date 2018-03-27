@@ -141,6 +141,17 @@ namespace App.UI
             UpdateFont();
         }
 
+
+        public void loadinvoicedataByID()
+        {
+
+            InvoiceRepository invoiceRepository = new InvoiceRepository();
+            Invoicemaster mstr = invoiceRepository.GetInvoice(invoiceid);
+            grd_ProductDetails.Rows.Clear();
+            LoadInvoicedata(mstr);
+
+        }
+
         public void LoadInvoicedata(Invoicemaster invoicemaster)
         {
 
@@ -169,6 +180,8 @@ namespace App.UI
                 if (invdet.IsDeleted == false)
                 {
                     var index = grd_ProductDetails.Rows.Add();
+                    
+                          grd_ProductDetails.Rows[index].Cells["InvdetId"].Value = invdet.InvoiceDetailID.ToString();
                     grd_ProductDetails.Rows[index].Cells["ID"].Value = invdet.ProductId.ToString();
                     grd_ProductDetails.Rows[index].Cells["Item"].Value = invdet.Product.ProductName.ToString();
                     grd_ProductDetails.Rows[index].Cells["Price"].Value = invdet.UnitPrice.ToString();
@@ -372,7 +385,8 @@ namespace App.UI
                
                     Product product = productrep.GetProduct(ProductID);
                     var index = grd_ProductDetails.Rows.Add();
-                    grd_ProductDetails.Rows[index].Cells["ID"].Value = product.Id.ToString();
+                grd_ProductDetails.Rows[index].Cells["InvdetId"].Value = 0;
+                grd_ProductDetails.Rows[index].Cells["ID"].Value = product.Id.ToString();
                     grd_ProductDetails.Rows[index].Cells["Item"].Value = product.ProductName.ToString();
                     grd_ProductDetails.Rows[index].Cells["Price"].Value = product.UnitPrice.ToString();
                     grd_ProductDetails.Rows[index].Cells["Qty"].Value = 1;
@@ -1336,6 +1350,10 @@ namespace App.UI
             foreach (DataGridViewRow row in grd_ProductDetails.Rows)
             {
                 InvoiceDetail invoicedetail = new InvoiceDetail();
+
+               
+
+                if (int.Parse(row.Cells["InvdetId"].Value.ToString())!=0) { invoicedetail.InvoiceDetailID = int.Parse(row.Cells["InvdetId"].Value.ToString()); }
                 invoicedetail.ProductId = int.Parse(row.Cells["ID"].Value.ToString());
                 invoicedetail.ProductName = row.Cells["Item"].Value.ToString().Trim();
                 invoicedetail.Notes = row.Cells["Notes"].Value.ToString().Trim();
@@ -1370,13 +1388,14 @@ namespace App.UI
            
             try
             {
-                PrintReceipt prnt = new PrintReceipt();
+                PrintReceiptnew prnt = new PrintReceiptnew();
 
                 if (BillType == "kot")
                 {
                     invoiceid = invoicemaster.InvoicemasterID;
                     lbl_invoicenum.Text = invoicemaster.InvoiceNum;
-                    prnt = new PrintReceipt();
+                    loadinvoicedataByID();
+                    prnt = new PrintReceiptnew();
                     prnt.printKOTreport(invoicemaster);
 
                     MessageBox.Show("KOT #:" + invoicemaster.InvoiceNum);
@@ -1394,6 +1413,7 @@ namespace App.UI
 
                     invoiceid = invoicemaster.InvoicemasterID;
                     lbl_invoicenum.Text = invoicemaster.InvoiceNum;
+                    loadinvoicedataByID();
                     prnt.printTableInvoicereport(invoicemaster);
                 }
                 else

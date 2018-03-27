@@ -27,6 +27,7 @@ namespace App.Model
         public String Color { get; set; }
         public String Image { get; set; }
         public Boolean? IsAvailable { get; set; }
+        public Boolean? Isactive { get; set; }
         public Boolean? IsRateChangable { get; set; }
         public int? OdooCategoryId { get; set; }
         public Boolean? IsTodaySpecial { get; set; }
