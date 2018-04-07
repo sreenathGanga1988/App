@@ -754,7 +754,7 @@ namespace App.UI
 
             }
             
-            else if (btn.Text.Trim() == "Todays Special")
+            else if (btn.Text.Trim() == "Todays Specials")
             {
 
                 SelectTodaysSpecial();
@@ -1221,50 +1221,7 @@ namespace App.UI
 
 
 
-        //public void AddKoT()
-        //{
-        //    KotMaster komstr = new KotMaster();
-        //    komstr.StoreID = Program.LocationID;
-        //    komstr.UserID = Program.UserID;
-        //    komstr.InvoiceDate = DateTime.Now;
-        //    komstr.CustomerID = int.Parse(lbl_custid.Text);
-        //    komstr.TableID = int.Parse(lbl_tableID.Text);
-        //    komstr.StoreName = Program.StoreName;
-        //    komstr.StoreAddress = Program.StoreAddress;
-        //    komstr.Cashier = Program.Username;
-        //    komstr.CustomerName = lbl_customer.Text;
-        //    List<KotDetail> KotDetails = new List<KotDetail> { };
-        //    foreach (DataGridViewRow row in grd_ProductDetails.Rows)
-        //    {
-        //        KotDetail kotdetail = new KotDetail();
-        //        kotdetail.ProductId = int.Parse( row.Cells["ID"].Value.ToString());
-        //        kotdetail.ProductName = row.Cells["Item"].Value.ToString();
-        //        kotdetail.UnitPrice = Decimal.Parse(row.Cells["Price"].Value.ToString());
-        //        kotdetail.Qty = Decimal.Parse(row.Cells["Qty"].Value.ToString());
-        //        kotdetail.DiscountPerUOM = Decimal.Parse(row.Cells["Discount"].Value.ToString());
-
-        //        KotDetails.Add(kotdetail);
-        //    }
-        //    komstr.KotDetails = KotDetails;
-        //    KotRepository kotrepo = new KotRepository();
-        //    komstr= kotrepo.InsertKOT(komstr);
-
-
-        //    try
-        //    {
-        //        PrintReceipt prnt = new PrintReceipt();
-        //        prnt.printKOTreport(komstr);
-
-        //        MessageBox.Show("KOT #:" + komstr.KotNum);
-        //    }
-        //    catch (Exception ex)
-        //    {
-
-        //        MessageBox.Show("Printer Malfunction.But Invoice Done");
-        //    }
-
-        //}
-
+    
 
         public void AddInvoice(String BillType)
         {
@@ -1380,62 +1337,68 @@ namespace App.UI
             }
             invoicemaster.InvoiceDetails = invoicedetails;
 
+            
+                InvoiceRepository invrrepo = new InvoiceRepository();
 
 
-            InvoiceRepository invrrepo = new InvoiceRepository();
 
-            invoicemaster = invrrepo.InsertInvoiceLocal(invoicemaster);
-           
-            try
-            {
-                PrintReceiptnew prnt = new PrintReceiptnew();
 
-                if (BillType == "kot")
+                invoicemaster = invrrepo.InsertInvoiceLocal(invoicemaster);
+
+                try
                 {
-                    invoiceid = invoicemaster.InvoicemasterID;
-                    lbl_invoicenum.Text = invoicemaster.InvoiceNum;
-                    loadinvoicedataByID();
-                    prnt = new PrintReceiptnew();
-                    prnt.printKOTreport(invoicemaster);
+                    PrintReceiptnew prnt = new PrintReceiptnew();
 
-                    MessageBox.Show("KOT #:" + invoicemaster.InvoiceNum);
-                }
-                else if (BillType == "Hold")
-                {
-
-
-                    MessageBox.Show("Hold #:" + invoicemaster.InvoiceNum);
-                    Intializeselecteditems();
-                }
-                else if (BillType == "Table")
-                {
-
-
-                    invoiceid = invoicemaster.InvoicemasterID;
-                    lbl_invoicenum.Text = invoicemaster.InvoiceNum;
-                    loadinvoicedataByID();
-                    prnt.printTableInvoicereport(invoicemaster);
-                }
-                else
-                {
-
-                    if (ISPRINTREQ == true)
+                    if (BillType == "kot")
                     {
-                        prnt.printInvoicereport(invoicemaster);
+                        invoiceid = invoicemaster.InvoicemasterID;
+                        lbl_invoicenum.Text = invoicemaster.InvoiceNum;
+                        loadinvoicedataByID();
+                        prnt = new PrintReceiptnew();
+                        prnt.printKOTreport(invoicemaster);
+
+                        MessageBox.Show("KOT #:" + invoicemaster.InvoiceNum);
                     }
-                    
-                   
+                    else if (BillType == "Hold")
+                    {
 
-                    MessageBox.Show("Bill #:" + invoicemaster.InvoiceNum);
-                    Intializeselecteditems();
+
+                        MessageBox.Show("Hold #:" + invoicemaster.InvoiceNum);
+                        Intializeselecteditems();
+                    }
+                    else if (BillType == "Table")
+                    {
+
+
+                        invoiceid = invoicemaster.InvoicemasterID;
+                        lbl_invoicenum.Text = invoicemaster.InvoiceNum;
+                        loadinvoicedataByID();
+                        prnt.printTableInvoicereport(invoicemaster);
+                    }
+                    else
+                    {
+
+                        if (ISPRINTREQ == true)
+                        {
+                            prnt.printInvoicereport(invoicemaster);
+                        }
+
+
+
+                        MessageBox.Show("Bill #:" + invoicemaster.InvoiceNum);
+                        Intializeselecteditems();
+                    }
+
                 }
+                catch (Exception ex)
+                {
 
-            }
-            catch (Exception ex)
-            {
+                    MessageBox.Show("Printer Malfunction.But Invoice Done");
+                }
+            
 
-                MessageBox.Show("Printer Malfunction.But Invoice Done");
-            }
+
+          
 
 
         }
@@ -1549,6 +1512,10 @@ namespace App.UI
             {
                 MessageBox.Show("Wrong total");
             }
+            else if ((selectedCustomerName == "New" && selectedPaymentName == "CREDIT") || (selectedCustomerName == "" && selectedPaymentName == "CREDIT"))
+            {
+                MessageBox.Show("Cannot Give Credit to New Customer: Register first");
+            }
             else if (Decimal.Parse(txt_total.Text.Trim()) > Decimal.Parse(txt_cash.Text.Trim()))
             {
                 
@@ -1591,7 +1558,11 @@ namespace App.UI
             {
                 MessageBox.Show("Wrong total");
             }
-
+          else if (selectedCustomerName == "New" && selectedPaymentName== "Credit")
+            {
+                MessageBox.Show("Cannot Give Credit to New Customer Register first");
+            }
+            
             else
             {
                 isvalidforInvoice = true;
@@ -1657,7 +1628,7 @@ namespace App.UI
            
 
 
-            String Headertext = "LIMSPOS    " + Program.Username + "  " + DateTime.Now.ToString("dd/MM/yyyy");
+            String Headertext = " CAFE POS    " + Program.Username + "  " + DateTime.Now.ToString("dd/MM/yyyy");
             this.Text = Headertext;
         }
         

@@ -24,7 +24,7 @@ namespace App.UI
         {
             InitializeComponent();
             string version = System.Windows.Forms.Application.ProductVersion;
-            this.Text = String.Format("LimsPOS {0}", version);
+            this.Text = String.Format("CAFE POS {0}", version);
         
 
 

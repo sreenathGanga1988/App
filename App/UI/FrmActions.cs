@@ -108,5 +108,11 @@ namespace App.UI
             UpdatePendingForm u = new UpdatePendingForm();
             u.Show();
         }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            ValueInPut valinput = new ValueInPut(DateTime.Now, "PayOut");
+            valinput.ShowDialog();
+        }
     }
 }

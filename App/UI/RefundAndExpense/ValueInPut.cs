@@ -68,6 +68,15 @@ namespace App.UI.RefundAndExpense
                 btn_purchase.Enabled = true;
            
             }
+            if (ActionType == "PayOut")
+            {
+
+
+                FormActionType = ActionType;
+                btn_purchase.Text = ActionType;
+                btn_purchase.Enabled = true;
+
+            }
             if (ActionType == "Encash")
             {
                 

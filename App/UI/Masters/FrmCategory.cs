@@ -54,7 +54,7 @@ namespace App.UI.Masters
            
             List <Category> catgr=      categoryRepository.GetCategoryList();
 
-
+            dgv.RowCount = 0;
             foreach (Category ctgry in catgr)
             {
 

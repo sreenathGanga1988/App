@@ -126,6 +126,16 @@
             this.button45 = new System.Windows.Forms.Button();
             this.panel26 = new System.Windows.Forms.Panel();
             this.grd_ProductDetails = new System.Windows.Forms.DataGridView();
+            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Taxamount = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Item = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Price = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Qty = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Discount = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Total = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Notes = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Kotnum = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.InvdetId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel24 = new System.Windows.Forms.Panel();
             this.pnl_left = new System.Windows.Forms.Panel();
             this.pnl_category = new System.Windows.Forms.Panel();
@@ -141,16 +151,6 @@
             this.panel6 = new System.Windows.Forms.Panel();
             this.label5 = new System.Windows.Forms.Label();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
-            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Taxamount = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Item = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Price = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Qty = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Discount = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Total = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Notes = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Kotnum = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.InvdetId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel7.SuspendLayout();
             this.panel1.SuspendLayout();
             this.Pnl_topLevel.SuspendLayout();
@@ -363,6 +363,7 @@
             this.button52.TabIndex = 1;
             this.button52.Text = "Todays Specials";
             this.button52.UseVisualStyleBackColor = false;
+            this.button52.Click += new System.EventHandler(this.numericbuttonclicked_Click);
             // 
             // panel77
             // 
@@ -1397,6 +1398,63 @@
             this.grd_ProductDetails.RowsRemoved += new System.Windows.Forms.DataGridViewRowsRemovedEventHandler(this.grd_ProductDetails_RowsRemoved);
             this.grd_ProductDetails.RowStateChanged += new System.Windows.Forms.DataGridViewRowStateChangedEventHandler(this.grd_ProductDetails_RowStateChanged);
             // 
+            // ID
+            // 
+            this.ID.HeaderText = "ID";
+            this.ID.Name = "ID";
+            this.ID.Visible = false;
+            // 
+            // Taxamount
+            // 
+            this.Taxamount.DataPropertyName = "Taxamount";
+            this.Taxamount.HeaderText = "Taxamount";
+            this.Taxamount.Name = "Taxamount";
+            this.Taxamount.Visible = false;
+            // 
+            // Item
+            // 
+            this.Item.HeaderText = "Item";
+            this.Item.Name = "Item";
+            // 
+            // Price
+            // 
+            this.Price.HeaderText = "Price";
+            this.Price.Name = "Price";
+            // 
+            // Qty
+            // 
+            this.Qty.HeaderText = "Qty";
+            this.Qty.Name = "Qty";
+            // 
+            // Discount
+            // 
+            this.Discount.HeaderText = "Discount";
+            this.Discount.Name = "Discount";
+            this.Discount.Visible = false;
+            // 
+            // Total
+            // 
+            this.Total.HeaderText = "Total";
+            this.Total.Name = "Total";
+            // 
+            // Notes
+            // 
+            this.Notes.HeaderText = "Notes";
+            this.Notes.Name = "Notes";
+            this.Notes.Visible = false;
+            // 
+            // Kotnum
+            // 
+            this.Kotnum.HeaderText = "Kotnum";
+            this.Kotnum.Name = "Kotnum";
+            this.Kotnum.Visible = false;
+            // 
+            // InvdetId
+            // 
+            this.InvdetId.HeaderText = "InvdetId";
+            this.InvdetId.Name = "InvdetId";
+            this.InvdetId.Visible = false;
+            // 
             // panel24
             // 
             this.panel24.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(58)))), ((int)(((byte)(69)))));
@@ -1558,63 +1616,6 @@
             this.imageList1.Images.SetKeyName(3, "if_equipmentrental_2318443.png");
             this.imageList1.Images.SetKeyName(4, "256-256-d13cafbf17ecd8f2065c8842a6e4e228.png");
             this.imageList1.Images.SetKeyName(5, "45200.png");
-            // 
-            // ID
-            // 
-            this.ID.HeaderText = "ID";
-            this.ID.Name = "ID";
-            this.ID.Visible = false;
-            // 
-            // Taxamount
-            // 
-            this.Taxamount.DataPropertyName = "Taxamount";
-            this.Taxamount.HeaderText = "Taxamount";
-            this.Taxamount.Name = "Taxamount";
-            this.Taxamount.Visible = false;
-            // 
-            // Item
-            // 
-            this.Item.HeaderText = "Item";
-            this.Item.Name = "Item";
-            // 
-            // Price
-            // 
-            this.Price.HeaderText = "Price";
-            this.Price.Name = "Price";
-            // 
-            // Qty
-            // 
-            this.Qty.HeaderText = "Qty";
-            this.Qty.Name = "Qty";
-            // 
-            // Discount
-            // 
-            this.Discount.HeaderText = "Discount";
-            this.Discount.Name = "Discount";
-            this.Discount.Visible = false;
-            // 
-            // Total
-            // 
-            this.Total.HeaderText = "Total";
-            this.Total.Name = "Total";
-            // 
-            // Notes
-            // 
-            this.Notes.HeaderText = "Notes";
-            this.Notes.Name = "Notes";
-            this.Notes.Visible = false;
-            // 
-            // Kotnum
-            // 
-            this.Kotnum.HeaderText = "Kotnum";
-            this.Kotnum.Name = "Kotnum";
-            this.Kotnum.Visible = false;
-            // 
-            // InvdetId
-            // 
-            this.InvdetId.HeaderText = "InvdetId";
-            this.InvdetId.Name = "InvdetId";
-            this.InvdetId.Visible = false;
             // 
             // FrmPOS1Table
             // 
