@@ -183,7 +183,7 @@ namespace App.UI
                 if (product.Isactive == true)
                 {
                     productRepositories.UpdateIsActive(ProductID, false);
-                    MessageBox.Show(product.ProductName + " Marked In Active");
+                    MessageBox.Show(product.ProductName + " Marked InActive");
                 }
                 else
                 {
@@ -267,7 +267,7 @@ namespace App.UI
                     {
                         if (product.IsActive == false)
                         {
-                            temp.BackColor = Color.Orange;
+                            temp.BackColor = Color.Red;
                         }
                     }
                 }
