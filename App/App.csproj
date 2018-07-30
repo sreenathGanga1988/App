@@ -7,7 +7,7 @@
     <ProjectGuid>{01F53DE8-6D11-4EF1-BD77-78A417184FFE}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <RootNamespace>App</RootNamespace>
-    <AssemblyName>App</AssemblyName>
+    <AssemblyName>CAFE POS</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -68,7 +68,7 @@
     <ApplicationManifest>Properties\app.manifest</ApplicationManifest>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>App.ico</ApplicationIcon>
+    <ApplicationIcon>logoicon.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
@@ -449,6 +449,14 @@
     <Compile Include="Migrations\201803131214100_addedisactive.Designer.cs">
       <DependentUpon>201803131214100_addedisactive.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201804081222331_addedremark.cs" />
+    <Compile Include="Migrations\201804081222331_addedremark.Designer.cs">
+      <DependentUpon>201804081222331_addedremark.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201804100730187_added inorout.cs" />
+    <Compile Include="Migrations\201804100730187_added inorout.Designer.cs">
+      <DependentUpon>201804100730187_added inorout.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Model\LocalModel.cs" />
     <Compile Include="Model\Product.cs" />
@@ -588,6 +596,12 @@
     </Compile>
     <Compile Include="UI\RefundAndExpense\PassCoder.Designer.cs">
       <DependentUpon>PassCoder.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\RefundAndExpense\Remarker.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\RefundAndExpense\Remarker.Designer.cs">
+      <DependentUpon>Remarker.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\RefundAndExpense\ReprintAndRefund.cs">
       <SubType>Form</SubType>
@@ -868,6 +882,12 @@
     <EmbeddedResource Include="Migrations\201803131214100_addedisactive.resx">
       <DependentUpon>201803131214100_addedisactive.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804081222331_addedremark.resx">
+      <DependentUpon>201804081222331_addedremark.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804100730187_added inorout.resx">
+      <DependentUpon>201804100730187_added inorout.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <SubType>Designer</SubType>
@@ -932,6 +952,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\RefundAndExpense\PassCoder.resx">
       <DependentUpon>PassCoder.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\RefundAndExpense\Remarker.resx">
+      <DependentUpon>Remarker.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\RefundAndExpense\ReprintAndRefund.resx">
       <DependentUpon>ReprintAndRefund.cs</DependentUpon>
@@ -1089,6 +1112,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="App.ico" />
+    <Content Include="logoicon.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

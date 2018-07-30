@@ -30,23 +30,24 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmDailyReports));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.button2 = new System.Windows.Forms.Button();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.radioButton1 = new System.Windows.Forms.RadioButton();
+            this.rbt_checkout = new System.Windows.Forms.RadioButton();
+            this.rbt_hold = new System.Windows.Forms.RadioButton();
+            this.rbt_KOT = new System.Windows.Forms.RadioButton();
             this.button1 = new System.Windows.Forms.Button();
             this.btn_todaysale = new System.Windows.Forms.Button();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.rbt_zomato = new System.Windows.Forms.RadioButton();
             this.rbt_all = new System.Windows.Forms.RadioButton();
             this.rbt_card = new System.Windows.Forms.RadioButton();
             this.rbt_credit = new System.Windows.Forms.RadioButton();
             this.rbt_cash = new System.Windows.Forms.RadioButton();
-            this.dtp_to = new System.Windows.Forms.DateTimePicker();
-            this.dtp_from = new System.Windows.Forms.DateTimePicker();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
@@ -73,6 +74,7 @@
             this.panel16 = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -117,14 +119,10 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.button2);
+            this.groupBox1.Controls.Add(this.groupBox3);
             this.groupBox1.Controls.Add(this.button1);
             this.groupBox1.Controls.Add(this.btn_todaysale);
-            this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.groupBox2);
-            this.groupBox1.Controls.Add(this.dtp_to);
-            this.groupBox1.Controls.Add(this.dtp_from);
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox1.ForeColor = System.Drawing.Color.White;
             this.groupBox1.Location = new System.Drawing.Point(0, 0);
@@ -134,17 +132,72 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Search Criteria";
             // 
-            // button2
+            // groupBox3
             // 
-            this.button2.BackColor = System.Drawing.Color.Peru;
-            this.button2.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold);
-            this.button2.Location = new System.Drawing.Point(554, 15);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(80, 50);
-            this.button2.TabIndex = 12;
-            this.button2.Text = "Sales Between";
-            this.button2.UseVisualStyleBackColor = false;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.groupBox3.Controls.Add(this.radioButton1);
+            this.groupBox3.Controls.Add(this.rbt_checkout);
+            this.groupBox3.Controls.Add(this.rbt_hold);
+            this.groupBox3.Controls.Add(this.rbt_KOT);
+            this.groupBox3.Dock = System.Windows.Forms.DockStyle.Right;
+            this.groupBox3.ForeColor = System.Drawing.Color.MediumTurquoise;
+            this.groupBox3.Location = new System.Drawing.Point(391, 16);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(272, 63);
+            this.groupBox3.TabIndex = 12;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Status";
+            // 
+            // radioButton1
+            // 
+            this.radioButton1.AutoSize = true;
+            this.radioButton1.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radioButton1.Location = new System.Drawing.Point(226, 21);
+            this.radioButton1.Name = "radioButton1";
+            this.radioButton1.Size = new System.Drawing.Size(39, 17);
+            this.radioButton1.TabIndex = 7;
+            this.radioButton1.TabStop = true;
+            this.radioButton1.Text = "All";
+            this.radioButton1.UseVisualStyleBackColor = true;
+            this.radioButton1.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged_1);
+            // 
+            // rbt_checkout
+            // 
+            this.rbt_checkout.AutoSize = true;
+            this.rbt_checkout.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rbt_checkout.Location = new System.Drawing.Point(141, 21);
+            this.rbt_checkout.Name = "rbt_checkout";
+            this.rbt_checkout.Size = new System.Drawing.Size(79, 17);
+            this.rbt_checkout.TabIndex = 6;
+            this.rbt_checkout.TabStop = true;
+            this.rbt_checkout.Text = "CheckOut";
+            this.rbt_checkout.UseVisualStyleBackColor = true;
+            this.rbt_checkout.CheckedChanged += new System.EventHandler(this.rbt_checkout_CheckedChanged);
+            // 
+            // rbt_hold
+            // 
+            this.rbt_hold.AutoSize = true;
+            this.rbt_hold.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rbt_hold.Location = new System.Drawing.Point(76, 21);
+            this.rbt_hold.Name = "rbt_hold";
+            this.rbt_hold.Size = new System.Drawing.Size(50, 17);
+            this.rbt_hold.TabIndex = 5;
+            this.rbt_hold.TabStop = true;
+            this.rbt_hold.Text = "Hold";
+            this.rbt_hold.UseVisualStyleBackColor = true;
+            this.rbt_hold.CheckedChanged += new System.EventHandler(this.rbt_hold_CheckedChanged);
+            // 
+            // rbt_KOT
+            // 
+            this.rbt_KOT.AutoSize = true;
+            this.rbt_KOT.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rbt_KOT.Location = new System.Drawing.Point(18, 21);
+            this.rbt_KOT.Name = "rbt_KOT";
+            this.rbt_KOT.Size = new System.Drawing.Size(47, 17);
+            this.rbt_KOT.TabIndex = 4;
+            this.rbt_KOT.TabStop = true;
+            this.rbt_KOT.Text = "KOT";
+            this.rbt_KOT.UseVisualStyleBackColor = true;
+            this.rbt_KOT.CheckedChanged += new System.EventHandler(this.rbt_KOT_CheckedChanged);
             // 
             // button1
             // 
@@ -162,7 +215,7 @@
             // 
             this.btn_todaysale.BackColor = System.Drawing.Color.Peru;
             this.btn_todaysale.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold);
-            this.btn_todaysale.Location = new System.Drawing.Point(6, 19);
+            this.btn_todaysale.Location = new System.Drawing.Point(12, 20);
             this.btn_todaysale.Name = "btn_todaysale";
             this.btn_todaysale.Size = new System.Drawing.Size(93, 50);
             this.btn_todaysale.TabIndex = 10;
@@ -170,45 +223,40 @@
             this.btn_todaysale.UseVisualStyleBackColor = false;
             this.btn_todaysale.Click += new System.EventHandler(this.btn_todaysale_Click);
             // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Tahoma", 9F);
-            this.label3.Location = new System.Drawing.Point(395, 33);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(34, 14);
-            this.label3.TabIndex = 9;
-            this.label3.Text = "To : ";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Tahoma", 9F);
-            this.label2.Location = new System.Drawing.Point(242, 33);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(46, 14);
-            this.label2.TabIndex = 8;
-            this.label2.Text = "From : ";
-            // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.rbt_zomato);
             this.groupBox2.Controls.Add(this.rbt_all);
             this.groupBox2.Controls.Add(this.rbt_card);
             this.groupBox2.Controls.Add(this.rbt_credit);
             this.groupBox2.Controls.Add(this.rbt_cash);
+            this.groupBox2.Dock = System.Windows.Forms.DockStyle.Right;
             this.groupBox2.ForeColor = System.Drawing.Color.MediumTurquoise;
-            this.groupBox2.Location = new System.Drawing.Point(666, 19);
+            this.groupBox2.Location = new System.Drawing.Point(663, 16);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(307, 50);
+            this.groupBox2.Size = new System.Drawing.Size(319, 63);
             this.groupBox2.TabIndex = 6;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Mode";
+            // 
+            // rbt_zomato
+            // 
+            this.rbt_zomato.AutoSize = true;
+            this.rbt_zomato.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rbt_zomato.Location = new System.Drawing.Point(201, 19);
+            this.rbt_zomato.Name = "rbt_zomato";
+            this.rbt_zomato.Size = new System.Drawing.Size(69, 17);
+            this.rbt_zomato.TabIndex = 8;
+            this.rbt_zomato.TabStop = true;
+            this.rbt_zomato.Text = "Zomato";
+            this.rbt_zomato.UseVisualStyleBackColor = true;
+            this.rbt_zomato.CheckedChanged += new System.EventHandler(this.rbt_zomato_CheckedChanged);
             // 
             // rbt_all
             // 
             this.rbt_all.AutoSize = true;
             this.rbt_all.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rbt_all.Location = new System.Drawing.Point(243, 19);
+            this.rbt_all.Location = new System.Drawing.Point(276, 19);
             this.rbt_all.Name = "rbt_all";
             this.rbt_all.Size = new System.Drawing.Size(39, 17);
             this.rbt_all.TabIndex = 7;
@@ -221,7 +269,7 @@
             // 
             this.rbt_card.AutoSize = true;
             this.rbt_card.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rbt_card.Location = new System.Drawing.Point(180, 19);
+            this.rbt_card.Location = new System.Drawing.Point(144, 19);
             this.rbt_card.Name = "rbt_card";
             this.rbt_card.Size = new System.Drawing.Size(51, 17);
             this.rbt_card.TabIndex = 6;
@@ -234,7 +282,7 @@
             // 
             this.rbt_credit.AutoSize = true;
             this.rbt_credit.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rbt_credit.Location = new System.Drawing.Point(108, 19);
+            this.rbt_credit.Location = new System.Drawing.Point(79, 19);
             this.rbt_credit.Name = "rbt_credit";
             this.rbt_credit.Size = new System.Drawing.Size(59, 17);
             this.rbt_credit.TabIndex = 5;
@@ -247,7 +295,7 @@
             // 
             this.rbt_cash.AutoSize = true;
             this.rbt_cash.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rbt_cash.Location = new System.Drawing.Point(39, 18);
+            this.rbt_cash.Location = new System.Drawing.Point(21, 19);
             this.rbt_cash.Name = "rbt_cash";
             this.rbt_cash.Size = new System.Drawing.Size(52, 17);
             this.rbt_cash.TabIndex = 4;
@@ -255,22 +303,6 @@
             this.rbt_cash.Text = "Cash";
             this.rbt_cash.UseVisualStyleBackColor = true;
             this.rbt_cash.CheckedChanged += new System.EventHandler(this.rbt_cash_CheckedChanged);
-            // 
-            // dtp_to
-            // 
-            this.dtp_to.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtp_to.Location = new System.Drawing.Point(435, 33);
-            this.dtp_to.Name = "dtp_to";
-            this.dtp_to.Size = new System.Drawing.Size(95, 20);
-            this.dtp_to.TabIndex = 5;
-            // 
-            // dtp_from
-            // 
-            this.dtp_from.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtp_from.Location = new System.Drawing.Point(294, 33);
-            this.dtp_from.Name = "dtp_from";
-            this.dtp_from.Size = new System.Drawing.Size(95, 20);
-            this.dtp_from.TabIndex = 4;
             // 
             // panel3
             // 
@@ -299,14 +331,14 @@
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column1});
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView1.Location = new System.Drawing.Point(0, 0);
             this.dataGridView1.Name = "dataGridView1";
@@ -545,7 +577,8 @@
             this.Load += new System.EventHandler(this.FrmDailyReports_Load);
             this.panel1.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.panel4.ResumeLayout(false);
@@ -568,18 +601,13 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button btn_todaysale;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.RadioButton rbt_all;
         private System.Windows.Forms.RadioButton rbt_card;
         private System.Windows.Forms.RadioButton rbt_credit;
         private System.Windows.Forms.RadioButton rbt_cash;
-        private System.Windows.Forms.DateTimePicker dtp_to;
-        private System.Windows.Forms.DateTimePicker dtp_from;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.DataGridView dataGridView1;
@@ -604,5 +632,11 @@
         private System.Windows.Forms.Panel panel18;
         private System.Windows.Forms.Button btn_updateOdoo;
         private System.Windows.Forms.Panel panel16;
+        private System.Windows.Forms.RadioButton rbt_zomato;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.RadioButton rbt_checkout;
+        private System.Windows.Forms.RadioButton rbt_hold;
+        private System.Windows.Forms.RadioButton rbt_KOT;
+        private System.Windows.Forms.RadioButton radioButton1;
     }
 }

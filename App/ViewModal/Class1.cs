@@ -54,5 +54,17 @@ namespace App.ViewModal
        
 
     }
-   
+   public class CashoutViewModel
+    {
+        public String CashOutNum { get; set; }
+        public String username { get; set; }
+        public DateTime CashOutDate { get; set; }
+        public  decimal TotalCashOut { get; set; }
+        public String Shift { get; set; }
+        public String CashOutType { get; set; }
+      
+        public String Remark { get; set; }
+        public String InOrOut { get; set; }
+       
+    }
 }

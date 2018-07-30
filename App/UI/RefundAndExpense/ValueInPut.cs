@@ -1,4 +1,5 @@
 ﻿using App.Context;
+using App.Extensions;
 using App.Model;
 using App.Repository;
 using System;
@@ -77,6 +78,21 @@ namespace App.UI.RefundAndExpense
                 btn_purchase.Enabled = true;
 
             }
+            
+           if (ActionType == "CashIN")
+            {
+
+
+                FormActionType = ActionType;
+                btn_posAmount.Text = ActionType;
+                btn_posAmount.Enabled = true;
+
+            }
+
+
+
+
+
             if (ActionType == "Encash")
             {
                 
@@ -165,8 +181,17 @@ namespace App.UI.RefundAndExpense
                 refmaster.UserID = Program.UserID;
                 refmaster.StoreID = Program.LocationID;
                 refmaster.RefundNum = "R" + invoicenum;
+
+                Remarker remarker = new Remarker("Remark for " + refmaster.RefundNum);
+                remarker.ShowDialog();
+                refmaster.Remark = (remarker.EnteredRemark ==null) ? "" : remarker.EnteredRemark ; 
+
+
                 RefundRepository refundrepo = new RefundRepository();
                 refmaster = refundrepo.InsertRefund(refmaster);
+
+               
+
 
                 MessageBox.Show("Refund #" + refmaster.RefundNum + "Generated Sucessfully");
 
@@ -228,6 +253,11 @@ namespace App.UI.RefundAndExpense
                     settleMaster.TotalRefund = 0;
                 }
                 settleMaster.SettleDate = DateTime.Now;
+                Remarker remarker = new Remarker("Remark for Settlement " );
+                remarker.ShowDialog();
+                settleMaster.Remark = (remarker.EnteredRemark == null) ? "" : remarker.EnteredRemark;
+
+
                 SettlementRepository settlementRepository = new SettlementRepository();
 
                 settlementRepository.AddCreditSettlement(settleMaster);
@@ -260,20 +290,65 @@ namespace App.UI.RefundAndExpense
             cashoutmaster.ShiftID = Program.ShiftId;
             cashoutmaster.UserID = Program.UserID;
             cashoutmaster.StoreID = Program.LocationID;
-            cashoutmaster.CashOutNum = "COUT-" + invoicenum;
+            cashoutmaster.CashOutNum = "COUT-";
+            cashoutmaster.InOrOut = "OUT" ;
+            
+            Remarker remarker = new Remarker("Remark for " + cashoutmaster.CashOutNum);
+            remarker.ShowDialog();
+            cashoutmaster.Remark = (remarker.EnteredRemark == null) ? "" : remarker.EnteredRemark;
+
             CashOutRepository refundrepo = new CashOutRepository();
             cashoutmaster = refundrepo.InsertCashout(cashoutmaster);
-
+            PrintReceipt prnt = new PrintReceipt();
+            prnt.printPayoutreport(cashoutmaster);
             MessageBox.Show("Cash Out #" + cashoutmaster.CashOutNum + "Generated Successfully");
 
             this.Close();
         }
 
+        public void CashINAction(string type)
+        {
+            CashOutMaster cashoutmaster = new CashOutMaster();
+            cashoutmaster.CashOutDate = DateTime.Now; ;
+            cashoutmaster.CashOutType = type;
+            try
+            {
+                cashoutmaster.TotalCashOut = Decimal.Parse(txt_PasscodeDisplay.Text);
+            }
+            catch (Exception)
+            {
+                cashoutmaster.TotalCashOut = 0;
+
+            }
+
+            cashoutmaster.Approvedby = "";
+            cashoutmaster.ShiftID = Program.ShiftId;
+            cashoutmaster.UserID = Program.UserID;
+            cashoutmaster.StoreID = Program.LocationID;
+            cashoutmaster.CashOutNum = "CIN-";
+            cashoutmaster.InOrOut = "IN";
+
+            Remarker remarker = new Remarker("Remark for " + cashoutmaster.CashOutNum);
+            remarker.ShowDialog();
+            cashoutmaster.Remark = (remarker.EnteredRemark == null) ? "" : remarker.EnteredRemark;
+
+            CashOutRepository refundrepo = new CashOutRepository();
+            cashoutmaster = refundrepo.InsertCashout(cashoutmaster);
+
+            MessageBox.Show("Cash IN #" + cashoutmaster.CashOutNum + "Generated Successfully");
+
+            this.Close();
+        }
 
 
         private void btn_purchase_Click(object sender, EventArgs e)
         {
             CashOutAction(FormActionType);
+        }
+
+        private void btn_posAmount_Click(object sender, EventArgs e)
+        {
+            CashINAction(FormActionType);
         }
     }
 }

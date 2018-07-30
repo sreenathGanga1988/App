@@ -45,8 +45,8 @@ namespace App.UI
         {
             InvoiceRepository invrepo = new InvoiceRepository();
 
-            List<InvoiceviewModal> invemstr = invrepo.GetInvoicePendingBetween(Program.LocationID,dtp_from.Value.Date,dtp_to.Value.Date);
-
+            //List<InvoiceviewModal> invemstr = invrepo.GetInvoicePendingBetween(Program.LocationID,dtp_from.Value.Date,dtp_to.Value.Date);
+            List<InvoiceviewModal> invemstr = null;
             return invemstr;
         }
 
@@ -54,8 +54,9 @@ namespace App.UI
         {
             InvoiceRepository invrepo = new InvoiceRepository();
 
-            List<InvoiceviewModal> invemstr = invrepo.GetInvoiceofDay(Program.LocationID);
-
+            //List<InvoiceviewModal> invemstr = invrepo.GetInvoiceofDay(Program.LocationID);
+            List<InvoiceviewModal> invemstr = invrepo.GetInvoiceofDayIrrespectiveofShift(Program.LocationID);
+            
             return invemstr;
         }
 
@@ -141,6 +142,20 @@ namespace App.UI
           
         }
 
+
+
+
+        public void filterDataonStatus(String Status)
+        {
+            List<InvoiceviewModal> invemstrFinaltemp = invemstrFinal.Where(u => u.Status == Status).ToList();
+
+
+            if (Status == "All") { fillInvoicedetailsDetails(invemstrFinal); }
+            else { fillInvoicedetailsDetails(invemstrFinaltemp); }
+
+        }
+
+
         private void rbt_cash_CheckedChanged(object sender, EventArgs e)
         {
             filterDataonPaymentMode("CASH");
@@ -214,8 +229,36 @@ namespace App.UI
         {
             Repository.OdooUpdator odoupd = new Repository.OdooUpdator();
             odoupd.uploadInvoiceMaster();
-            MessageBox.Show("Updated to ODOO Sucessfully and Closing the Section.POS Will close Now");
+            MessageBox.Show("Updated to ODOO Successfully and Closing the Section.POS Will close Now");
             Application.Exit();
+        }
+
+        private void rbt_zomato_CheckedChanged(object sender, EventArgs e)
+        {
+            filterDataonPaymentMode("ZOMATO");
+        }
+
+        private void rbt_KOT_CheckedChanged(object sender, EventArgs e)
+        {
+            filterDataonStatus("KOT");
+
+        }
+
+        private void rbt_hold_CheckedChanged(object sender, EventArgs e)
+        {
+            filterDataonStatus("Hold");
+            
+        }
+
+        private void rbt_checkout_CheckedChanged(object sender, EventArgs e)
+        {
+            filterDataonStatus("CheckOUT");
+           
+        }
+
+        private void radioButton1_CheckedChanged_1(object sender, EventArgs e)
+        {
+            filterDataonStatus("All");
         }
     }
 }

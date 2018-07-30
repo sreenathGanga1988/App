@@ -1623,9 +1623,9 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1127, 741);
             this.Controls.Add(this.panel1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
             this.Name = "FrmPOS1Table";
-            this.ShowIcon = false;
             this.Text = "Point of Sale";
             this.Load += new System.EventHandler(this.FrmPOS1Table_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FrmPOS1Table_KeyDown);

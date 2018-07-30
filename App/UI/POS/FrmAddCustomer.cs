@@ -14,15 +14,22 @@ namespace App.UI
 {
     public partial class FrmAddCustomer : Form
     {
+        List<Customer> customerlist = null;
+
+
         public FrmAddCustomer()
         {
             InitializeComponent();
-            LoadAllcustomer();
+            LoadAlltop10customer();
             dgv.RowTemplate.Height = 40;
+
+
         }
 
         public String SelectedCustomerName { get; set; }
         public String SelectedCustomerID { get; set; }
+
+
         public void LoadAllcustomer()
         {
             CustomerRepositiry custrepo = new CustomerRepositiry();
@@ -31,11 +38,31 @@ namespace App.UI
             loadcustomer(customerlist);
         }
 
+        public void LoadAlltop10customer()
+        {
+            if (customerlist == null)
+            {
+                if (Program.MySettingViewModal.customerlist != null)
+                {
+                    customerlist = Program.MySettingViewModal.customerlist;
+                    loadcustomer(customerlist.Take(50).ToList()); 
+                }
+            }else
+            {
+                loadcustomer(customerlist.Take(50).ToList());
+            }
+
+           ;
+
+            
+        }
+
 
         public void loadcustomer(List<Customer> customerlist)
         {
 
             dgv.Rows.Clear();
+            // dgv.DataSource = customerlist;
             foreach (Customer customer in customerlist)
             {
                 var index = dgv.Rows.Add();
@@ -48,13 +75,13 @@ namespace App.UI
                 dgv.Rows[index].Cells["BarcodeNum"].Value = customer.BarcodeNum == null ? "" : customer.BarcodeNum.ToString();
                 dgv.Rows[index].Cells["Discount"].Value = customer.Discount == null ? "" : customer.Discount.ToString();
             }
-            
+
         }
 
-     
 
-      
-        
+
+
+
         public void clearcontrol()
         {
             lbl_cutomerid.Text = "0";
@@ -62,7 +89,7 @@ namespace App.UI
             txt_mobnumber.Text = "";
             txt_address.Text = "";
         }
-       
+
 
         private void dgv_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -72,10 +99,10 @@ namespace App.UI
             txt_mobnumber.Text = dgv.Rows[e.RowIndex].Cells["PhoneNumber"].Value.ToString();
             txt_address.Text = dgv.Rows[e.RowIndex].Cells["CustomerDetails"].Value.ToString();
 
-            
+
         }
 
-       
+
 
         private void btn_addCustomer_Click_1(object sender, EventArgs e)
         {
@@ -96,12 +123,13 @@ namespace App.UI
 
                 if (custrepo.GetCustomerByMobilnum(customer.PhoneNumber).Count == 0)
                 {
-                    customer= custrepo.AddCustomer(customer);
-                   
+                    customer = custrepo.AddCustomer(customer);
+
                     MessageBox.Show("Customer Added");
-                    LoadAllcustomer();
+                    // LoadAllcustomer();
+                    LoadAlltop10customer();
                     clearcontrol();
-                    SelectedCustomerID =customer.CustomerID.ToString();
+                    SelectedCustomerID = customer.CustomerID.ToString();
                     SelectedCustomerName = customer.CustomerName.ToString();
                     this.Close();
                 }
@@ -109,7 +137,7 @@ namespace App.UI
                 {
                     MessageBox.Show("Mobile Number Already Present");
                 }
-              
+
             }
         }
 
@@ -118,19 +146,28 @@ namespace App.UI
             if (lbl_cutomerid.Text != "0")
             {
 
-                Customer CTGRY = new Customer() { CustomerName = txt_name.Text, CustomerID = int.Parse(lbl_cutomerid.Text), PhoneNumber = txt_mobnumber.Text,
-                    CustomerDetails = txt_address.Text, StoreID = Program.LocationID, AddedDate = DateTime.Now.ToString(), AddedBy = Program.Username, IsDetailChanged = true,
+                Customer CTGRY = new Customer()
+                {
+                    CustomerName = txt_name.Text,
+                    CustomerID = int.Parse(lbl_cutomerid.Text),
+                    PhoneNumber = txt_mobnumber.Text,
+                    CustomerDetails = txt_address.Text,
+                    StoreID = Program.LocationID,
+                    AddedDate = DateTime.Now.ToString(),
+                    AddedBy = Program.Username,
+                    IsDetailChanged = true,
 
-                     PaymentDue = Decimal.Parse(txt_due.Text),
-                Discount = Decimal.Parse(txt_discount.Text),
-                BarcodeNum = txt_barcode.Text
+                    PaymentDue = Decimal.Parse(txt_due.Text),
+                    Discount = Decimal.Parse(txt_discount.Text),
+                    BarcodeNum = txt_barcode.Text
 
                 };
                 CustomerRepositiry custrepo = new CustomerRepositiry();
                 custrepo.UpdateCustomer(CTGRY);
                 MessageBox.Show("Sucessfully Updated");
                 clearcontrol();
-                LoadAllcustomer();
+                //  LoadAllcustomer();
+                LoadAlltop10customer();
             }
         }
 
@@ -143,10 +180,22 @@ namespace App.UI
         {
             string texttodearch = btn_searcharea.Text.Trim();
             CustomerRepositiry custrepo = new CustomerRepositiry();
-            List<Customer> customerlist = custrepo.GetcustomerofLocation(texttodearch, Program.LocationID);
-            loadcustomer(customerlist);
+            List<Customer> customerlist =GetcustomerofLocation(texttodearch, Program.LocationID);
+          //  loadcustomer(customerlist);
+            loadcustomer(customerlist.Take(50).ToList());
 
         }
+
+
+        public List<Customer> GetcustomerofLocation
+        (String searchtext, int? LocationID = 0)
+        {
+
+            var q = customerlist.Where(u => u.StoreID == LocationID && (u.PhoneNumber.Contains(searchtext) || u.CustomerName.Contains(searchtext))).ToList();
+
+            return q;
+        }
+
 
         private void dgv_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -172,6 +221,15 @@ namespace App.UI
         private void button1_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            Program.MySettingViewModal.customerlist = new List<Customer>();
+            CustomerRepositiry custrepo = new CustomerRepositiry();
+            customerlist = custrepo.GetcustomerofLocation(Program.LocationID);
+            Program.MySettingViewModal.customerlist = customerlist;
+            LoadAlltop10customer();
         }
     }
 }

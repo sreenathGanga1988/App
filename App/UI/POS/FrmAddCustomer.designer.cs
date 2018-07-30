@@ -30,7 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmAddCustomer));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel22 = new System.Windows.Forms.Panel();
             this.panel10 = new System.Windows.Forms.Panel();
             this.btn_addCustomer = new System.Windows.Forms.Button();
@@ -81,6 +81,8 @@
             this.panel7 = new System.Windows.Forms.Panel();
             this.panel14 = new System.Windows.Forms.Panel();
             this.panel71 = new System.Windows.Forms.Panel();
+            this.button1 = new System.Windows.Forms.Button();
+            this.panel6.SuspendLayout();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv)).BeginInit();
             this.panel12.SuspendLayout();
@@ -108,7 +110,7 @@
             // panel10
             // 
             this.panel10.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel10.Location = new System.Drawing.Point(108, 0);
+            this.panel10.Location = new System.Drawing.Point(180, 0);
             this.panel10.Name = "panel10";
             this.panel10.Size = new System.Drawing.Size(3, 30);
             this.panel10.TabIndex = 11;
@@ -120,15 +122,19 @@
             this.btn_addCustomer.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_addCustomer.ForeColor = System.Drawing.Color.White;
             this.btn_addCustomer.Image = ((System.Drawing.Image)(resources.GetObject("btn_addCustomer.Image")));
+            this.btn_addCustomer.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
             this.btn_addCustomer.Location = new System.Drawing.Point(0, 0);
             this.btn_addCustomer.Name = "btn_addCustomer";
-            this.btn_addCustomer.Size = new System.Drawing.Size(51, 30);
+            this.btn_addCustomer.Size = new System.Drawing.Size(70, 30);
             this.btn_addCustomer.TabIndex = 1;
+            this.btn_addCustomer.Text = "Add";
+            this.btn_addCustomer.TextAlign = System.Drawing.ContentAlignment.BottomRight;
             this.btn_addCustomer.UseVisualStyleBackColor = false;
             this.btn_addCustomer.Click += new System.EventHandler(this.btn_addCustomer_Click_1);
             // 
             // panel6
             // 
+            this.panel6.Controls.Add(this.button1);
             this.panel6.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel6.Location = new System.Drawing.Point(0, 0);
             this.panel6.Name = "panel6";
@@ -156,14 +162,14 @@
             // 
             this.dgv.AllowUserToAddRows = false;
             this.dgv.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgv.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgv.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgv.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.CustomerID,
@@ -188,6 +194,7 @@
             // 
             this.CustomerID.HeaderText = "CustomerID";
             this.CustomerID.Name = "CustomerID";
+            this.CustomerID.Visible = false;
             // 
             // OdooID
             // 
@@ -229,9 +236,9 @@
             // 
             this.panel12.Controls.Add(this.button2);
             this.panel12.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel12.Location = new System.Drawing.Point(57, 0);
+            this.panel12.Location = new System.Drawing.Point(76, 0);
             this.panel12.Name = "panel12";
-            this.panel12.Size = new System.Drawing.Size(51, 30);
+            this.panel12.Size = new System.Drawing.Size(104, 30);
             this.panel12.TabIndex = 10;
             // 
             // button2
@@ -241,10 +248,13 @@
             this.button2.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button2.ForeColor = System.Drawing.Color.White;
             this.button2.Image = ((System.Drawing.Image)(resources.GetObject("button2.Image")));
+            this.button2.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
             this.button2.Location = new System.Drawing.Point(0, 0);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(51, 30);
+            this.button2.Size = new System.Drawing.Size(104, 30);
             this.button2.TabIndex = 1;
+            this.button2.Text = "Update";
+            this.button2.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.button2.UseVisualStyleBackColor = false;
             this.button2.Click += new System.EventHandler(this.button2_Click_1);
             // 
@@ -321,7 +331,7 @@
             // panel15
             // 
             this.panel15.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel15.Location = new System.Drawing.Point(54, 0);
+            this.panel15.Location = new System.Drawing.Point(73, 0);
             this.panel15.Name = "panel15";
             this.panel15.Size = new System.Drawing.Size(3, 30);
             this.panel15.TabIndex = 9;
@@ -586,7 +596,7 @@
             // panel14
             // 
             this.panel14.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel14.Location = new System.Drawing.Point(51, 0);
+            this.panel14.Location = new System.Drawing.Point(70, 0);
             this.panel14.Name = "panel14";
             this.panel14.Size = new System.Drawing.Size(3, 30);
             this.panel14.TabIndex = 7;
@@ -597,8 +607,24 @@
             this.panel71.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel71.Location = new System.Drawing.Point(0, 0);
             this.panel71.Name = "panel71";
-            this.panel71.Size = new System.Drawing.Size(51, 30);
+            this.panel71.Size = new System.Drawing.Size(70, 30);
             this.panel71.TabIndex = 4;
+            // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(121)))), ((int)(((byte)(166)))));
+            this.button1.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.ForeColor = System.Drawing.Color.White;
+            this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
+            this.button1.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.button1.Location = new System.Drawing.Point(3, 1);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(70, 30);
+            this.button1.TabIndex = 2;
+            this.button1.Text = "ReLoad";
+            this.button1.TextAlign = System.Drawing.ContentAlignment.BottomRight;
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click_1);
             // 
             // FrmAddCustomer
             // 
@@ -609,6 +635,7 @@
             this.Name = "FrmAddCustomer";
             this.ShowIcon = false;
             this.Text = "Customer";
+            this.panel6.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgv)).EndInit();
             this.panel12.ResumeLayout(false);
@@ -666,6 +693,12 @@
         private System.Windows.Forms.Panel panel14;
         private System.Windows.Forms.Panel panel71;
         private System.Windows.Forms.Label lbl_odooid;
+        private System.Windows.Forms.TextBox txt_discount;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.TextBox txt_barcode;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox txt_due;
+        private System.Windows.Forms.Label label6;
         private System.Windows.Forms.DataGridViewTextBoxColumn CustomerID;
         private System.Windows.Forms.DataGridViewTextBoxColumn OdooID;
         private System.Windows.Forms.DataGridViewTextBoxColumn CustomerName;
@@ -674,11 +707,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn PaymentDue;
         private System.Windows.Forms.DataGridViewTextBoxColumn BarcodeNum;
         private System.Windows.Forms.DataGridViewTextBoxColumn Discount;
-        private System.Windows.Forms.TextBox txt_discount;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox txt_barcode;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox txt_due;
-        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Button button1;
     }
 }

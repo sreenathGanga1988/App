@@ -362,7 +362,7 @@ namespace App.Repository
            
             try
             {
-                Decimal totalcashout = Decimal.Parse(cntxt.CashOutMasters.Where(u=>u.ShiftID==Program.ShiftId).Sum(u=>u.TotalCashOut).ToString());
+                Decimal totalcashout = Decimal.Parse(cntxt.CashOutMasters.Where(u=>u.ShiftID==Program.ShiftId && u.InOrOut=="OUT").Sum(u=>u.TotalCashOut).ToString());
                 shiftViewModel.TotalCashout = totalcashout;
             }
             catch (Exception)
@@ -370,6 +370,19 @@ namespace App.Repository
 
 
             }
+
+            try
+            {
+                Decimal TotalCashIn = Decimal.Parse(cntxt.CashOutMasters.Where(u => u.ShiftID == Program.ShiftId && u.InOrOut == "IN").Sum(u => u.TotalCashOut).ToString());
+                shiftViewModel.TotalCashIn = TotalCashIn;
+            }
+            catch (Exception)
+            {
+
+
+            }
+
+
             try
             {
                 Decimal refundmstr = Decimal.Parse(cntxt.RefundMasters.Where(u => u.ShiftID == Program.ShiftId).Sum(u => u.TotalRefund).ToString());
@@ -402,7 +415,7 @@ namespace App.Repository
             }
             try
             {
-                Decimal NETAMOUNT = (shiftViewModel.Netsales - shiftViewModel.TotalCashout - shiftViewModel.TotalRefund - shiftViewModel.TotalCredit) + shiftViewModel.SettlementAmount;
+                Decimal NETAMOUNT = (shiftViewModel.Netsales - shiftViewModel.TotalCashout - shiftViewModel.TotalRefund - shiftViewModel.TotalCredit) + shiftViewModel.SettlementAmount+ shiftViewModel. TotalCashIn;
                 shiftViewModel.NetAmount = NETAMOUNT;
             }
             catch (Exception)
@@ -1141,8 +1154,8 @@ values(1,:create_date,1,:write_date,:name,:session_from,:session_to,:session_dat
         public int insertRefund(RefundMaster refundMaster)
         {
             NpgsqlCommand cmd = new NpgsqlCommand(@"insert into refund_master (name,pos_store_id,refund_date,total_refund,pos_user_id,pos_invoice_id,pos_refund_id,pos_shift_id,
-create_uid,create_date,write_uid,write_date,session_id)values(:name,:pos_store_id,:refund_date,:total_refund,:pos_user_id,:pos_invoice_id,:pos_refund_id,:pos_shift_id,
-:create_uid,:create_date,:write_uid,:write_date,:session_id) RETURNING id");
+create_uid,create_date,write_uid,write_date,session_id,comment)values(:name,:pos_store_id,:refund_date,:total_refund,:pos_user_id,:pos_invoice_id,:pos_refund_id,:pos_shift_id,
+:create_uid,:create_date,:write_uid,:write_date,:session_id,:comment) RETURNING id");
 
             
             cmd.Parameters.AddWithValue("name", refundMaster.RefundNum);
@@ -1158,14 +1171,15 @@ create_uid,create_date,write_uid,write_date,session_id)values(:name,:pos_store_i
             cmd.Parameters.AddWithValue("write_uid", 1);
             cmd.Parameters.AddWithValue("write_date", DateTime.Now);
             cmd.Parameters.AddWithValue("session_id", refundMaster.Shift.OdooShiftId);
+            cmd.Parameters.AddWithValue("comment", refundMaster.Remark);
             return InsertAndGetID(cmd);
         }
 
         public int insertSettlement(SettleMaster settleMaster)
         {
             NpgsqlCommand cmd = new NpgsqlCommand(@"insert into settle_master (name,pos_customer_id,pos_settle_id,pos_user_id,settle_date,total_settle,pos_store_id,pos_shift_id,
-create_uid,create_date,write_uid,write_date,session_id)values(:name,:pos_customer_id,:pos_settle_id,:pos_user_id,:settle_date,:total_settle,:pos_store_id,:pos_shift_id,
-:create_uid,:create_date,:write_uid,:write_date,:session_id) RETURNING id");
+create_uid,create_date,write_uid,write_date,session_id,comment)values(:name,:pos_customer_id,:pos_settle_id,:pos_user_id,:settle_date,:total_settle,:pos_store_id,:pos_shift_id,
+:create_uid,:create_date,:write_uid,:write_date,:session_id,:comment) RETURNING id");
 
 
             cmd.Parameters.AddWithValue("name", settleMaster.SettleMasterID.ToString());
@@ -1181,13 +1195,17 @@ create_uid,create_date,write_uid,write_date,session_id)values(:name,:pos_custome
             cmd.Parameters.AddWithValue("write_uid", 1);
             cmd.Parameters.AddWithValue("write_date", DateTime.Now);
             cmd.Parameters.AddWithValue("session_id", settleMaster.Shift.OdooShiftId);
+            cmd.Parameters.AddWithValue("comment", settleMaster.Remark);
+            
+
+
             return InsertAndGetID(cmd);
         }
         public int InsertCashOut(CashOutMaster cashOutMaster)
         {
             NpgsqlCommand cmd = new NpgsqlCommand(@"insert into cashout_master (name,pos_user_id,total_cashout,cashout_date,pos_store_id,pos_shift_id,pos_cashout_id,
-create_uid,create_date,write_uid,write_date,session_id)values(:name,:pos_user_id,:total_cashout,:cashout_date,:pos_store_id,:pos_shift_id,:pos_cashout_id,
-:create_uid,:create_date,:write_uid,:write_date,:session_id) RETURNING id");
+create_uid,create_date,write_uid,write_date,session_id,cout_mode,comment)values(:name,:pos_user_id,:total_cashout,:cashout_date,:pos_store_id,:pos_shift_id,:pos_cashout_id,
+:create_uid,:create_date,:write_uid,:write_date,:session_id,:cout_mode,:comment) RETURNING id");
 
 
             cmd.Parameters.AddWithValue("name", cashOutMaster.CashOutNum.ToString());
@@ -1203,7 +1221,8 @@ create_uid,create_date,write_uid,write_date,session_id)values(:name,:pos_user_id
             cmd.Parameters.AddWithValue("write_uid", 1);
             cmd.Parameters.AddWithValue("write_date", DateTime.Now);
             cmd.Parameters.AddWithValue("session_id", cashOutMaster.Shift.OdooShiftId);
-            
+            cmd.Parameters.AddWithValue("cout_mode", cashOutMaster.InOrOut);
+            cmd.Parameters.AddWithValue("comment", cashOutMaster.Remark);
             return InsertAndGetID(cmd);
 
         }

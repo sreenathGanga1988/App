@@ -58,6 +58,7 @@ namespace App.UI.Masters
 
                 var index = dgv.Rows.Add();
                 dgv.Rows[index].Cells["ID"].Value = prdct.Id.ToString();
+                dgv.Rows[index].Cells["Code"].Value = prdct.Color.ToString();
                 dgv.Rows[index].Cells["ProductName"].Value = prdct.ProductName.ToString();
                 dgv.Rows[index].Cells["Category"].Value = prdct.Category.CategoryName.ToString();
                 dgv.Rows[index].Cells["SalePrice"].Value =prdct.MinimumSPForLocation.ToString();

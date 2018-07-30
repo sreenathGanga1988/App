@@ -1415,6 +1415,11 @@ namespace App.UI
             invoicemaster.CustomerID = selectedCustomerID;
             invoicemaster.TableID = int.Parse(selectedTableID.ToString());
             invoicemaster.PaymentMode = selectedPaymentName;
+
+            if(invoicemaster.PaymentMode== "Payment Method")
+            {
+                invoicemaster.PayMentModeId = 0;
+            }
             if (invoicemaster.BuzzerID == 0)
             {
                

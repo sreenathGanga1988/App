@@ -44,6 +44,7 @@ namespace App.Model
 
         public Decimal TableBill { get; set; }
         public Decimal TotalCashout { get; set; }
+        public Decimal TotalCashIn{ get; set; }
         public Decimal TotalCredit { get; set; }
         public Decimal TotalRefund { get; set; }
         public Decimal TotalSetllement { get; set; }

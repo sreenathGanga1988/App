@@ -45,21 +45,21 @@
             this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.lbl_dayname = new System.Windows.Forms.Label();
-            this.lbl_datetimenow = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.cmb_user = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.txt_PasscodeDisplay = new System.Windows.Forms.TextBox();
+            this.panel2 = new System.Windows.Forms.Panel();
             this.lbl_trial = new System.Windows.Forms.Label();
+            this.lbl_dayname = new System.Windows.Forms.Label();
+            this.lbl_datetimenow = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel4.SuspendLayout();
             this.panel5.SuspendLayout();
-            this.panel2.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -283,42 +283,6 @@
             this.button1.Click += new System.EventHandler(this.buttonclicked_Click);
             this.button1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.button1_MouseClick);
             // 
-            // panel2
-            // 
-            this.panel2.BackColor = System.Drawing.Color.DarkRed;
-            this.panel2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel2.BackgroundImage")));
-            this.panel2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.panel2.Controls.Add(this.lbl_trial);
-            this.panel2.Controls.Add(this.lbl_dayname);
-            this.panel2.Controls.Add(this.lbl_datetimenow);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel2.Location = new System.Drawing.Point(0, 0);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(260, 328);
-            this.panel2.TabIndex = 0;
-            // 
-            // lbl_dayname
-            // 
-            this.lbl_dayname.AutoSize = true;
-            this.lbl_dayname.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_dayname.ForeColor = System.Drawing.Color.White;
-            this.lbl_dayname.Location = new System.Drawing.Point(82, 286);
-            this.lbl_dayname.Name = "lbl_dayname";
-            this.lbl_dayname.Size = new System.Drawing.Size(48, 18);
-            this.lbl_dayname.TabIndex = 8;
-            this.lbl_dayname.Text = "****";
-            // 
-            // lbl_datetimenow
-            // 
-            this.lbl_datetimenow.AutoSize = true;
-            this.lbl_datetimenow.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_datetimenow.ForeColor = System.Drawing.Color.White;
-            this.lbl_datetimenow.Location = new System.Drawing.Point(18, 258);
-            this.lbl_datetimenow.Name = "lbl_datetimenow";
-            this.lbl_datetimenow.Size = new System.Drawing.Size(18, 18);
-            this.lbl_datetimenow.TabIndex = 7;
-            this.lbl_datetimenow.Text = "0";
-            // 
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.Color.DarkRed;
@@ -377,15 +341,52 @@
             this.txt_PasscodeDisplay.Text = " ";
             this.txt_PasscodeDisplay.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_PasscodeDisplay_KeyPress);
             // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.Color.DarkRed;
+            this.panel2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel2.BackgroundImage")));
+            this.panel2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.panel2.Controls.Add(this.lbl_trial);
+            this.panel2.Controls.Add(this.lbl_dayname);
+            this.panel2.Controls.Add(this.lbl_datetimenow);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panel2.Location = new System.Drawing.Point(0, 0);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(260, 328);
+            this.panel2.TabIndex = 0;
+            // 
             // lbl_trial
             // 
             this.lbl_trial.AutoSize = true;
             this.lbl_trial.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_trial.ForeColor = System.Drawing.Color.White;
-            this.lbl_trial.Location = new System.Drawing.Point(48, 38);
+            this.lbl_trial.Location = new System.Drawing.Point(12, 25);
             this.lbl_trial.Name = "lbl_trial";
-            this.lbl_trial.Size = new System.Drawing.Size(0, 18);
+            this.lbl_trial.Size = new System.Drawing.Size(78, 18);
             this.lbl_trial.TabIndex = 9;
+            this.lbl_trial.Text = "8888888";
+            // 
+            // lbl_dayname
+            // 
+            this.lbl_dayname.AutoSize = true;
+            this.lbl_dayname.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_dayname.ForeColor = System.Drawing.Color.White;
+            this.lbl_dayname.Location = new System.Drawing.Point(90, 301);
+            this.lbl_dayname.Name = "lbl_dayname";
+            this.lbl_dayname.Size = new System.Drawing.Size(48, 18);
+            this.lbl_dayname.TabIndex = 8;
+            this.lbl_dayname.Text = "****";
+            // 
+            // lbl_datetimenow
+            // 
+            this.lbl_datetimenow.AutoSize = true;
+            this.lbl_datetimenow.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_datetimenow.ForeColor = System.Drawing.Color.White;
+            this.lbl_datetimenow.Location = new System.Drawing.Point(30, 286);
+            this.lbl_datetimenow.Name = "lbl_datetimenow";
+            this.lbl_datetimenow.Size = new System.Drawing.Size(18, 18);
+            this.lbl_datetimenow.TabIndex = 7;
+            this.lbl_datetimenow.Text = "0";
             // 
             // FrmLogin
             // 
@@ -395,10 +396,10 @@
             this.ClientSize = new System.Drawing.Size(568, 439);
             this.Controls.Add(this.panel1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "FrmLogin";
-            this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Login";
             this.Load += new System.EventHandler(this.FrmLogin_Load);
@@ -407,10 +408,10 @@
             this.panel3.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
             this.panel5.ResumeLayout(false);
-            this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
             this.ResumeLayout(false);
 
         }

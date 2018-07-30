@@ -1114,7 +1114,7 @@ namespace App.Repository
                         Status=invoicemstr.IsKOT==true?"KOT": invoicemstr.IstableBill == true ? "Hold" :"CheckOUT"
                      }).ToList();
 
-
+            
             return q;
         }
 
@@ -1159,6 +1159,37 @@ namespace App.Repository
 
             return q;
         }
+
+
+        public List<InvoiceviewModal> GetInvoiceofDayIrrespectiveofShift(int storeid)
+        {
+
+            DateTime today = DateTime.Now;
+            var q = (from invoicemstr in cntxt.Invoicemasters
+                     where  invoicemstr.StoreID == storeid && invoicemstr.IsDeleted == false
+                     select new InvoiceviewModal
+                     {
+                         InvoicemasterID = invoicemstr.InvoicemasterID,
+                         InvoiceDate = invoicemstr.InvoiceDate,
+                         InvoiceNum = invoicemstr.InvoiceNum,
+                         TableName = invoicemstr.Table.TableName,
+                         StoreName = invoicemstr.Store.StoreName,
+                         CustomerName = invoicemstr.Customer.CustomerName,
+                         TotalBill = invoicemstr.TotalBill,
+                         TotalPaid = invoicemstr.TotalPaid,
+                         PaymentMode = invoicemstr.PaymentMode,
+                         ShiftName = invoicemstr.ShiftName,
+                         Status = invoicemstr.IsKOT == true ? "KOT" : invoicemstr.IstableBill == true ? "Hold" : "CheckOUT"
+                     }).ToList();
+
+
+            return q;
+        }
+
+
+
+
+
 
         public Invoicemaster GetInvoice(int invoicemasterid)
         {
@@ -1260,10 +1291,57 @@ namespace App.Repository
 
             cntxt.CashOutMasters.Add(cashoutmaster);
             cntxt.SaveChanges();
-            cashoutmaster.CashOutNum= "COUT-" + cashoutmaster.CashOutMasterID;
+            cashoutmaster.CashOutNum= cashoutmaster.CashOutNum + cashoutmaster.CashOutMasterID;
+            cntxt.SaveChanges();
             return cashoutmaster;
 
         }
+        public List<CashoutViewModel> GetCashOutofShift(int shiftid)
+        {
+
+            DateTime today = DateTime.Now;
+            var q = (from invoicemstr in cntxt.CashOutMasters
+                     where invoicemstr.ShiftID ==shiftid where invoicemstr.CashOutType=="PayOut"
+                     select new CashoutViewModel
+                     {
+                         
+    CashOutNum = invoicemstr.CashOutNum  ,
+                         username = invoicemstr.User.UserName ,
+                         CashOutDate = invoicemstr.CashOutDate,
+                         TotalCashOut = invoicemstr.TotalCashOut,
+                         Shift = invoicemstr.Shift.ShiftName,
+                         CashOutType = invoicemstr.CashOutType ,
+                         Remark = invoicemstr.Remark,
+                         InOrOut = invoicemstr.InOrOut,
+                            }).ToList();
+
+
+            return q;
+        }
+        public List<CashoutViewModel> GetCashInofShift(int shiftid)
+        {
+
+            DateTime today = DateTime.Now;
+            var q = (from invoicemstr in cntxt.CashOutMasters
+                     where invoicemstr.ShiftID == shiftid
+                     where invoicemstr.CashOutType != "PayOut"
+                     select new CashoutViewModel
+                     {
+
+                         CashOutNum = invoicemstr.CashOutNum,
+                         username = invoicemstr.User.UserName,
+                         CashOutDate = invoicemstr.CashOutDate,
+                         TotalCashOut = invoicemstr.TotalCashOut,
+                         Shift = invoicemstr.Shift.ShiftName,
+                         CashOutType = invoicemstr.CashOutType,
+                         Remark = invoicemstr.Remark,
+                         InOrOut = invoicemstr.InOrOut,
+                     }).ToList();
+
+
+            return q;
+        }
+
     }
 
 
@@ -1292,6 +1370,7 @@ namespace App.Repository
                 creditMaster.CustomerID = invmstr.CustomerID;
                 creditMaster.PaymentDue = invmstr.TotalBill;
                 creditMaster.StoreID = invmstr.StoreID;
+                creditMaster.Remark = "";
                 cntxt.CreditMasters.Add(creditMaster);
 
                 var q = from cstmr in cntxt.Customers

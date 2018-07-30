@@ -44,7 +44,7 @@ namespace App.UI
             }
 
 
-            UpdateItemsWithNoIsDeleted();
+          //  UpdateItemsWithNoIsDeleted();
         }
 
         public void UpdateItemsWithNoIsDeleted()

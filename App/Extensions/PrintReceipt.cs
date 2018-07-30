@@ -803,5 +803,107 @@ namespace App.Extensions
             }
 
         }
+
+
+
+        public void printPayoutreport(CashOutMaster cashOutMaster)
+        {
+            string eClear = ('' + "@");
+            string eDrawer = (eClear + ('' + ("p" + ('\0' + ".}"))));
+
+
+            //const string format = "{0,-24}{1,6}{2,9}{3,9:N2}\n";
+            // const string format = "{0,-24}{1,-8}{2,-5},{3,4:N2}{4,4:N2}\n";
+            const string format = "{0,-24}{1,-8}{2,-5}{3,-6:N2}{4,6:N2}\n";
+            PrinterUtility.EscPosEpsonCommands.EscPosEpson obj = new PrinterUtility.EscPosEpsonCommands.EscPosEpson(54);
+            var BytesValue = Encoding.ASCII.GetBytes(string.Empty);
+            //Adds a Seperator
+            BytesValue = PrintExtensions.AddBytes(BytesValue, obj.CharSize.Nomarl());
+            //BytesValue = PrintExtensions.AddBytes(BytesValue, obj.Separator());
+            BytesValue = PrintExtensions.AddBytes(BytesValue, obj.Separator());   //Increases the Width of Byte
+            BytesValue = PrintExtensions.AddBytes(BytesValue, obj.CharSize.DoubleWidth2());           // Select Font A
+            BytesValue = PrintExtensions.AddBytes(BytesValue, obj.FontSelect.FontB());
+
+            BytesValue = PrintExtensions.AddBytes(BytesValue, obj.Alignment.Center()); //allign Center
+            BytesValue = PrintExtensions.AddBytes(BytesValue, Encoding.ASCII.GetBytes(Program.StoreName + "\n")); //added Store name
+            BytesValue = PrintExtensions.AddBytes(BytesValue, obj.CharSize.Nomarl());
+            BytesValue = PrintExtensions.AddBytes(BytesValue, Encoding.ASCII.GetBytes(Program.StoreAddress + "\n"));
+            BytesValue = PrintExtensions.AddBytes(BytesValue, obj.CharSize.Nomarl());
+            BytesValue = PrintExtensions.AddBytes(BytesValue, Encoding.ASCII.GetBytes(Program.StoreStreet+ "\n"));
+            BytesValue = PrintExtensions.AddBytes(BytesValue, obj.CharSize.Nomarl());
+            BytesValue = PrintExtensions.AddBytes(BytesValue, Encoding.ASCII.GetBytes(Program.StrorePhone + "\n"));
+            BytesValue = PrintExtensions.AddBytes(BytesValue, obj.CharSize.Nomarl());
+
+            BytesValue = PrintExtensions.AddBytes(BytesValue, obj.Separator());
+            BytesValue = PrintExtensions.AddBytes(BytesValue, obj.CharSize.DoubleWidth2());
+            BytesValue = PrintExtensions.AddBytes(BytesValue, Encoding.ASCII.GetBytes("Cash Out\n"));
+            BytesValue = PrintExtensions.AddBytes(BytesValue, obj.Alignment.Left());
+
+            BytesValue = PrintExtensions.AddBytes(BytesValue, Encoding.ASCII.GetBytes(cashOutMaster.CashOutNum + "\n"));
+            string PosName = System.Environment.MachineName.ToString().Trim();
+            BytesValue = PrintExtensions.AddBytes(BytesValue, obj.Alignment.Left());
+            BytesValue = PrintExtensions.AddBytes(BytesValue, Encoding.ASCII.GetBytes(cashOutMaster.CashOutDate.ToString() + "\n"));
+            BytesValue = PrintExtensions.AddBytes(BytesValue, obj.Alignment.Left());
+            BytesValue = PrintExtensions.AddBytes(BytesValue, Encoding.ASCII.GetBytes("Shift:" + Program.Shiftname.Trim() + "\n"));
+            BytesValue = PrintExtensions.AddBytes(BytesValue, obj.Alignment.Left());
+            BytesValue = PrintExtensions.AddBytes(BytesValue, Encoding.ASCII.GetBytes("POS:" + PosName + "\n"));
+            BytesValue = PrintExtensions.AddBytes(BytesValue, obj.Alignment.Left());
+
+            BytesValue = PrintExtensions.AddBytes(BytesValue, Encoding.ASCII.GetBytes("Cashier:" + Program.Username + "\n"));
+            BytesValue = PrintExtensions.AddBytes(BytesValue, obj.Alignment.Left());
+            BytesValue = PrintExtensions.AddBytes(BytesValue, Encoding.ASCII.GetBytes("Approved BY : " + cashOutMaster.Approvedby.Trim() + "\n"));
+            BytesValue = PrintExtensions.AddBytes(BytesValue, obj.CharSize.Nomarl());
+
+            BytesValue = PrintExtensions.AddBytes(BytesValue, Encoding.ASCII.GetBytes("Type : " + cashOutMaster.CashOutType.Trim() + "\n"));
+            BytesValue = PrintExtensions.AddBytes(BytesValue, obj.CharSize.Nomarl());
+            BytesValue = PrintExtensions.AddBytes(BytesValue, obj.CharSize.DoubleHeight2());
+           
+
+
+            BytesValue = PrintExtensions.AddBytes(BytesValue, obj.Alignment.Right());
+            //BytesValue = PrintExtensions.AddBytes(BytesValue, obj.Separator());
+            BytesValue = PrintExtensions.AddBytes(BytesValue, obj.Separator());
+            BytesValue = PrintExtensions.AddBytes(BytesValue, obj.CharSize.DoubleWidth2());
+
+            BytesValue = PrintExtensions.AddBytes(BytesValue, Encoding.ASCII.GetBytes("Cashout Total:  " + cashOutMaster.TotalCashOut + "\n"));
+
+            BytesValue = PrintExtensions.AddBytes(BytesValue, Encoding.ASCII.GetBytes("Remark:  " + cashOutMaster.Remark.ToString().Trim() + "\n"));
+
+
+            //BytesValue = PrintExtensions.AddBytes(BytesValue, Encoding.ASCII.GetBytes("Total\n"));
+            //BytesValue = PrintExtensions.AddBytes(BytesValue, Encoding.ASCII.GetBytes(invoicemaster.TotalBill + "\n"));
+            BytesValue = PrintExtensions.AddBytes(BytesValue, obj.CharSize.Nomarl());
+            BytesValue = PrintExtensions.AddBytes(BytesValue, obj.Separator());
+            BytesValue = PrintExtensions.AddBytes(BytesValue, obj.CharSize.DoubleWidth2());
+            BytesValue = PrintExtensions.AddBytes(BytesValue, obj.Alignment.Left());
+         
+            //BytesValue = PrintExtensions.AddBytes(BytesValue, obj.Separator());
+            BytesValue = PrintExtensions.AddBytes(BytesValue, obj.Lf());
+            //BytesValue = PrintExtensions.AddBytes(BytesValue, obj.Alignment.Center());
+            //BytesValue = PrintExtensions.AddBytes(BytesValue, obj.CharSize.DoubleHeight6());
+            //BytesValue = PrintExtensions.AddBytes(BytesValue, obj.BarCode.Code128("12345"));
+            //BytesValue = PrintExtensions.AddBytes(BytesValue, obj.QrCode.Print("12345", PrinterUtility.Enums.QrCodeSize.Grande));
+            BytesValue = PrintExtensions.AddBytes(BytesValue, obj.CharSize.Nomarl());
+           BytesValue = PrintExtensions.AddBytes(BytesValue, obj.Alignment.Left());
+            BytesValue = PrintExtensions.AddBytes(BytesValue, CutPage());
+            BytesValue = PrintExtensions.AddBytes(BytesValue, eDrawer);
+            // PrinterUtility.PrintExtensions.Print(BytesValue, POSPrintExample.Properties.Settings.Default.PrinterPath);
+            if (File.Exists(".\\tmpPrint.print"))
+                File.Delete(".\\tmpPrint.print");
+            File.WriteAllBytes(".\\tmpPrint.print", BytesValue);
+
+            // MessageBox.Show(Program.MySettingViewModal.MyPrinterDetails.PosPrinter);
+
+            RawPrinterHelper.SendFileToPrinter(Program.MySettingViewModal.MyPrinterDetails.PosPrinter, ".\\tmpPrint.print");
+            try
+            {
+                File.Delete(".\\tmpPrint.print");
+            }
+            catch
+            {
+
+            }
+
+        }
     }
 }

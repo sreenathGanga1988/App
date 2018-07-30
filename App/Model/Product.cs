@@ -452,6 +452,7 @@ namespace App.Model
         public DateTime RefundDate { get; set; }
         public Decimal TotalRefund { get; set; }
         public virtual Store Store { get; set; }
+        public String Remark { get; set; }
         public virtual User User { get; set; }
         public virtual Invoicemaster Invoicemaster { get; set; }
         public virtual Shift Shift { get; set; }
@@ -469,11 +470,25 @@ namespace App.Model
         public DateTime CashOutDate { get; set; }
         public Decimal TotalCashOut{ get; set; }
         public String Approvedby { get; set; }
+        public String Remark { get; set; }
+        public String InOrOut { get; set; }
         public String CashOutType { get; set; }
         public virtual Store Store { get; set; }
         public virtual User User { get; set; }       
         public virtual Shift Shift { get; set; }
+        
     }
+
+
+  
+
+
+
+
+
+
+
+
     public class SettleMaster
     {
         [Key]
@@ -485,7 +500,7 @@ namespace App.Model
         public Boolean IsUploaded { get; set; }
         public DateTime SettleDate { get; set; }
         public Decimal TotalRefund { get; set; }
-
+        public String Remark { get; set; }
         public virtual Store Store { get; set; }
         public virtual User User { get; set; }
         public virtual Customer Customer { get; set; }
@@ -501,6 +516,8 @@ namespace App.Model
         public int InvoicemasterID { get; set; }
         public int StoreID { get; set; }
         public int? ShiftID { get; set; }
+
+        public String Remark { get; set; }
         public virtual Customer Customer { get; set; }
         public virtual Invoicemaster Invoicemaster { get; set; }
         public virtual Store Store { get; set; }

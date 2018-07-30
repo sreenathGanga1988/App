@@ -153,8 +153,9 @@
             this.btn_posAmount.Name = "btn_posAmount";
             this.btn_posAmount.Size = new System.Drawing.Size(171, 56);
             this.btn_posAmount.TabIndex = 14;
-            this.btn_posAmount.Text = "Pos Amount";
+            this.btn_posAmount.Text = "Cash In";
             this.btn_posAmount.UseVisualStyleBackColor = true;
+            this.btn_posAmount.Click += new System.EventHandler(this.btn_posAmount_Click);
             // 
             // btn_purchase
             // 

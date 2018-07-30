@@ -34,7 +34,7 @@ namespace App.UI
                 
                 cmb_shift.ValueMember = "ShiftID";
                 cmb_shift.DisplayMember = "ShiftName";
-                cmb_shift.DataSource = cntxt.Shifts.ToList();
+                cmb_shift.DataSource = cntxt.Shifts.OrderByDescending(x=>x.ShiftID ).ToList();
             }
         }
 
@@ -52,7 +52,8 @@ namespace App.UI
 
         private void btn_posAmount_Click(object sender, EventArgs e)
         {
-
+            ValueInPut valinput = new ValueInPut(DateTime.Now, "CashIN");
+            valinput.ShowDialog();
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -71,9 +72,37 @@ namespace App.UI
             lbl_totalPaid.Text = "Total Sales  is :" + CalculateTotal(invemstr).ToString() + "AED";
            
         }
+
+        public void CurrentSelectedShiftcashoutreport( string outornot)
+        {
+            CashOutRepository  invrepo = new CashOutRepository();
+            if (outornot == "in")
+            {
+                List<CashoutViewModel> invemstr = invrepo.GetCashInofShift( int.Parse(cmb_shift.SelectedValue.ToString()));
+                dataGridView1.DataSource = invemstr;
+                lbl_totalPaid.Text = "Total Sales  is :" + CalculatecashoutTotal(invemstr).ToString() + "AED";
+
+            }
+            else
+            {
+                List<CashoutViewModel> invemstr = invrepo.GetCashOutofShift( int.Parse(cmb_shift.SelectedValue.ToString()));
+                dataGridView1.DataSource = invemstr;
+                lbl_totalPaid.Text = "Total Sales  is :" + CalculatecashoutTotal(invemstr).ToString() + "AED";
+
+            }
+
+
+        }
         public float CalculateTotal(List<InvoiceviewModal> invemstr)
         {
             var q = invemstr.Sum(u => u.TotalPaid);
+
+            return float.Parse(q.ToString());
+        }
+
+        public float CalculatecashoutTotal(List<CashoutViewModel> invemstr)
+        {
+            var q = invemstr.Sum(u => u.TotalCashOut);
 
             return float.Parse(q.ToString());
         }
@@ -113,6 +142,17 @@ namespace App.UI
         {
             ValueInPut valinput = new ValueInPut(DateTime.Now, "PayOut");
             valinput.ShowDialog();
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            CurrentSelectedShiftcashoutreport("out");
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            CurrentSelectedShiftcashoutreport("in");
+
         }
     }
 }

@@ -589,6 +589,8 @@ namespace App.Extensions
             bytes = PrintExtensions.AddBytes(bytes, Encoding.ASCII.GetBytes(string.Format(bodyFormat,
                 "Total Cashout     : ", string.Format("{0:0.00}", shiftViewModel.TotalCashout))));
             bytes = PrintExtensions.AddBytes(bytes, Encoding.ASCII.GetBytes(string.Format(bodyFormat,
+                "Total CashIn    : ", string.Format("{0:0.00}", shiftViewModel.TotalCashIn))));
+            bytes = PrintExtensions.AddBytes(bytes, Encoding.ASCII.GetBytes(string.Format(bodyFormat,
                 "Total Credit      : ", string.Format("{0:0.00}", shiftViewModel.TotalCredit))));
             bytes = PrintExtensions.AddBytes(bytes, Encoding.ASCII.GetBytes("\n"));
 

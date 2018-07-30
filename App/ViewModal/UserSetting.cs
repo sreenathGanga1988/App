@@ -13,5 +13,6 @@ namespace App.ViewModal
         public  PrinterDetail MyPrinterDetails { get; set; }
         public AppUserSetting AppUserSettings { get; set; }
         public LocalPrinter LocalPrinterSetting { get; set; }
+        public List<Customer> customerlist { get; set; }
     }
 }
