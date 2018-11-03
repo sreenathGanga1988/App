@@ -615,6 +615,12 @@
     <Compile Include="UI\RefundAndExpense\ValueInPut.Designer.cs">
       <DependentUpon>ValueInPut.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\Reports\PosReports.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Reports\PosReports.Designer.cs">
+      <DependentUpon>PosReports.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\SalesForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -961,6 +967,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\RefundAndExpense\ValueInPut.resx">
       <DependentUpon>ValueInPut.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Reports\PosReports.resx">
+      <DependentUpon>PosReports.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\SalesForm.resx">
       <DependentUpon>SalesForm.cs</DependentUpon>

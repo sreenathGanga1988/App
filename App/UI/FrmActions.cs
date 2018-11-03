@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -59,6 +60,7 @@ namespace App.UI
         private void button2_Click(object sender, EventArgs e)
         {
             CurrentSelectedShiftreport();
+            pnl_filter.Visible = false;
         }
 
 
@@ -147,12 +149,84 @@ namespace App.UI
         private void button5_Click(object sender, EventArgs e)
         {
             CurrentSelectedShiftcashoutreport("out");
+            pnl_filter.Visible = false;
         }
 
         private void button6_Click(object sender, EventArgs e)
         {
             CurrentSelectedShiftcashoutreport("in");
+            pnl_filter.Visible = false;
 
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            ProductRepositories prodrepo = new ProductRepositories();
+
+            dataGridView1.DataSource = prodrepo.productConsumption(dtp_from.Value.Date, dt_to.Value.Date);
+            pnl_filter.Visible = true;
+        }
+
+        private void flowLayoutPanel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void txt_category_TextChanged(object sender, EventArgs e)             
+        {
+            Filtertext("Category", txt_category.Text);
+        }
+
+        private void txt_product_TextChanged(object sender, EventArgs e)
+        {
+
+            Filtertext("Name", txt_product.Text);
+        }
+
+
+        public void Filtertext(string Columnname, String searchtext)
+        {
+
+            CurrencyManager currencyManager1 = (CurrencyManager)BindingContext[dataGridView1.DataSource];
+            currencyManager1.SuspendBinding();
+            Debug.WriteLine(dataGridView1.Rows.Count.ToString() + "Rows");
+
+            int i = 0;
+            foreach (DataGridViewRow row in dataGridView1.Rows)
+            {
+                string tempstring = row.Cells[Columnname].Value.ToString().Trim();
+
+
+                Debug.WriteLine(  i++.ToString ()+" " +dataGridView1.Rows.Count.ToString() );
+
+                if (tempstring.ToUpper().Contains(searchtext.Trim().ToUpper())) {
+
+                    row.Visible = true;
+
+                }
+                else
+                {
+                    row.Visible = false;
+                }
+               
+            };
+
+            currencyManager1.ResumeBinding();
+
+
+
+
+        }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button10_Click(object sender, EventArgs e)
+        {
+            Reports.PosReports psreport = new Reports.PosReports("Credit",dtp_from.Value.Date, dt_to.Value.Date);
+            psreport.ShowDialog();
         }
     }
 }

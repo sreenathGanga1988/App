@@ -180,5 +180,10 @@ namespace App.UI.Masters
             SalesForm salesForm = new SalesForm("Active");
             salesForm.ShowDialog();
         }
+
+        private void btnSettings_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -67,4 +67,16 @@ namespace App.ViewModal
         public String InOrOut { get; set; }
        
     }
+    public class CreditViewModel
+    {
+           public int CreditMasterID { get; set; }
+        public String CustomerName { get; set; }
+        public DateTime InvoiceDate { get; set; }
+        public decimal? PaymentDue { get; set; }
+        public String PhoneNumber { get; set; }
+        public String InvoiceNum { get; set; }
+
+      
+
+    }
 }

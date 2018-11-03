@@ -2052,5 +2052,10 @@ namespace App.UI
 
 
         }
+
+        private void panel10_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }

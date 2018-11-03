@@ -32,6 +32,15 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel5 = new System.Windows.Forms.Panel();
             this.dgv = new System.Windows.Forms.DataGridView();
+            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Code = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ProductName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Category = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SalePrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Taxamount = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.IsAvailable = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.TodaySpecial = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.IsActive = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.panel4 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel35 = new System.Windows.Forms.Panel();
@@ -55,15 +64,6 @@
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Code = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ProductName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Category = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SalePrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Taxamount = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.IsAvailable = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.TodaySpecial = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.IsActive = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.panel1.SuspendLayout();
             this.panel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv)).BeginInit();
@@ -116,6 +116,57 @@
             this.dgv.Size = new System.Drawing.Size(689, 318);
             this.dgv.TabIndex = 0;
             this.dgv.CurrentCellDirtyStateChanged += new System.EventHandler(this.dgv_CurrentCellDirtyStateChanged);
+            // 
+            // ID
+            // 
+            this.ID.HeaderText = "ID";
+            this.ID.Name = "ID";
+            // 
+            // Code
+            // 
+            this.Code.HeaderText = "Code";
+            this.Code.Name = "Code";
+            // 
+            // ProductName
+            // 
+            this.ProductName.HeaderText = "Product Name";
+            this.ProductName.Name = "ProductName";
+            // 
+            // Category
+            // 
+            this.Category.HeaderText = "Category";
+            this.Category.Name = "Category";
+            // 
+            // SalePrice
+            // 
+            this.SalePrice.HeaderText = "Sale Price";
+            this.SalePrice.Name = "SalePrice";
+            // 
+            // Taxamount
+            // 
+            this.Taxamount.HeaderText = "Tax";
+            this.Taxamount.Name = "Taxamount";
+            // 
+            // IsAvailable
+            // 
+            this.IsAvailable.HeaderText = "IsAvailable";
+            this.IsAvailable.Name = "IsAvailable";
+            this.IsAvailable.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.IsAvailable.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            // 
+            // TodaySpecial
+            // 
+            this.TodaySpecial.HeaderText = "TodaySpecial";
+            this.TodaySpecial.Name = "TodaySpecial";
+            this.TodaySpecial.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.TodaySpecial.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            // 
+            // IsActive
+            // 
+            this.IsActive.HeaderText = "IsActive";
+            this.IsActive.Name = "IsActive";
+            this.IsActive.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.IsActive.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
             // panel4
             // 
@@ -247,7 +298,7 @@
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(89, 66);
             this.button2.TabIndex = 13;
-            this.button2.Text = "Sync With ODoo";
+            this.button2.Text = "Sync With ODOO";
             this.button2.UseVisualStyleBackColor = false;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
@@ -276,6 +327,7 @@
             this.btnSettings.TabIndex = 11;
             this.btnSettings.Text = "Save";
             this.btnSettings.UseVisualStyleBackColor = false;
+            this.btnSettings.Click += new System.EventHandler(this.btnSettings_Click);
             // 
             // comboBox2
             // 
@@ -373,57 +425,6 @@
             this.contextMenuStrip1.Name = "contextMenuStrip1";
             this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
             this.contextMenuStrip1.Opening += new System.ComponentModel.CancelEventHandler(this.contextMenuStrip1_Opening);
-            // 
-            // ID
-            // 
-            this.ID.HeaderText = "ID";
-            this.ID.Name = "ID";
-            // 
-            // Code
-            // 
-            this.Code.HeaderText = "Code";
-            this.Code.Name = "Code";
-            // 
-            // ProductName
-            // 
-            this.ProductName.HeaderText = "Product Name";
-            this.ProductName.Name = "ProductName";
-            // 
-            // Category
-            // 
-            this.Category.HeaderText = "Category";
-            this.Category.Name = "Category";
-            // 
-            // SalePrice
-            // 
-            this.SalePrice.HeaderText = "Sale Price";
-            this.SalePrice.Name = "SalePrice";
-            // 
-            // Taxamount
-            // 
-            this.Taxamount.HeaderText = "Tax";
-            this.Taxamount.Name = "Taxamount";
-            // 
-            // IsAvailable
-            // 
-            this.IsAvailable.HeaderText = "IsAvailable";
-            this.IsAvailable.Name = "IsAvailable";
-            this.IsAvailable.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.IsAvailable.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            // 
-            // TodaySpecial
-            // 
-            this.TodaySpecial.HeaderText = "TodaySpecial";
-            this.TodaySpecial.Name = "TodaySpecial";
-            this.TodaySpecial.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.TodaySpecial.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            // 
-            // IsActive
-            // 
-            this.IsActive.HeaderText = "IsActive";
-            this.IsActive.Name = "IsActive";
-            this.IsActive.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.IsActive.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
             // FrmProduct
             // 

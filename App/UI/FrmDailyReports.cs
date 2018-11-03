@@ -104,10 +104,24 @@ namespace App.UI
 
         private void btn_updateOdoo_Click(object sender, EventArgs e)
         {
-            Repository.OdooUpdator odoupd = new Repository.OdooUpdator();
-            odoupd.uploadInvoiceMaster();
-            MessageBox.Show("Updated to ODOO Sucessfully and Closing the Section.POS Will close Now");
-            Application.Exit();
+
+            DialogResult dialogResult = MessageBox.Show("Are you sure You want to Update with ODOO and close shift ,Want  to Close Shift? ", "Are You Sure", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.Yes)
+            {
+
+                Repository.OdooUpdator odoupd = new Repository.OdooUpdator();
+                odoupd.uploadInvoiceMaster();
+                MessageBox.Show("Updated to ODOO Sucessfully and Closing the Section.POS Will close Now");
+                Application.Exit();
+            }
+            else if (dialogResult == DialogResult.No)
+            {
+
+            }
+
+
+
+
         }
 
         private void radioButton1_CheckedChanged(object sender, EventArgs e)

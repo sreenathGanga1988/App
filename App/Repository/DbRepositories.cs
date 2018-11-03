@@ -199,6 +199,26 @@ namespace App.Repository
 
 
 
+        public dynamic productConsumption(DateTime fromdate,DateTime todate)
+        {
+            List<InvoiceDetail> invoicedetails = cntxt.InvoiceDetails.Where(u => u.Invoicemaster.InvoiceDate > fromdate && u.Invoicemaster.InvoiceDate <= todate && u.IsDeleted==false).ToList();
+            var q = invoicedetails.GroupBy(w => new
+            {
+                Category = w.Product.Category.CategoryName,
+                Product = w.Product.ProductName,
+
+            }).Select(s => new
+            {
+                Category = s.Key.Category,
+                Name = s.Key.Product,
+
+                Quantity = s.Sum(x => x.Qty)
+
+            }).ToList();
+
+            return q;
+        }
+
 
     }
 
@@ -1408,7 +1428,34 @@ namespace App.Repository
 
 
 
-    }
+        public List<CreditViewModel> CreditOverAPeriod(DateTime fromdate, DateTime todate)
+        {
+
+
+
+            List<CreditViewModel> q = (from creditmstr in cntxt.CreditMasters
+                    where creditmstr.Invoicemaster.InvoiceDate > fromdate && creditmstr.Invoicemaster.InvoiceDate <= todate && creditmstr.Invoicemaster.IsDeleted == false
+                    select new CreditViewModel { CreditMasterID=creditmstr.CreditMasterID,
+                        InvoiceDate = creditmstr.Invoicemaster.InvoiceDate,
+                        CustomerName=creditmstr.Invoicemaster.Customer.CustomerName,
+                        PhoneNumber = creditmstr.Invoicemaster.Customer.PhoneNumber,
+                        InvoiceNum = creditmstr.Invoicemaster.InvoiceNum,
+                        PaymentDue = creditmstr.PaymentDue  }).ToList ();
+           
+
+            return q;
+        }
+
+
+    
+
+
+
+}
+
+
+
+
 
 
 
