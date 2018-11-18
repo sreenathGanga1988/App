@@ -817,6 +817,7 @@ namespace App.Repository
                 element.PaymentMode = invoicemaster.PaymentMode;
                 element.ShiftID = Program.ShiftId;
                 element.ShiftName = Program.Shiftname;
+                element.Taxamount = invoicemaster.Taxamount;
                 invoicemaster.InvoiceNum = element.InvoiceNum;
 
             }

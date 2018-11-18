@@ -269,6 +269,15 @@ namespace App.Extensions
             {
                 case PrintOption.PrintInvoice:
                     bytes = PrintExtensions.AddBytes(bytes, Encoding.ASCII.GetBytes("Tax Invoice\n"));
+
+
+                    var encoding = Encoding.GetEncoding(936);
+                                      //  bytes = Encoding.Unicode.GetBytes("فاتورة ضريبية");
+
+                   // bytes = PrintExtensions.AddBytes(bytes, encoding.GetBytes("فاتورة ضريبية"));
+                    ////bytes = PrintExtensions.AddBytes(bytes, System.Text.Encoding.Unicode.GetBytes("فاتورة ضريبية"));
+                    ////bytes = PrintExtensions.AddBytes(bytes, System.Text.Encoding.UTF32.GetBytes("فاتورة ضريبية"));
+
                     break;
                 case PrintOption.ReprintInvoice:
                     bytes = PrintExtensions.AddBytes(bytes, Encoding.ASCII.GetBytes("Tax Invoice\n"));
