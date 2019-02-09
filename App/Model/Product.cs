@@ -45,6 +45,7 @@ namespace App.Model
         public String CategoryName { get; set; }
         public String Color { get; set; }
         public int? PrinterId { get; set; }
+        public Boolean? Isactive { get; set; }
         public virtual List<Product> Products { get; set; }
         public String PrinterName { get; set; }
         public virtual Printer Printer { get; set; }
@@ -352,6 +353,8 @@ namespace App.Model
         public Boolean AutoSizebutton { get; set; }
         public virtual Store Store { get; set; }
         public Boolean IsActive { get; set; }
+
+        public Boolean? LogoReport { get; set; }
     }
 
 

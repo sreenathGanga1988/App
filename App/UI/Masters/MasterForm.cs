@@ -23,12 +23,14 @@ namespace App.UI.Masters
         private void btn_category_Click(object sender, EventArgs e)
         {
             UI.Masters.FrmCategory frm = new Masters.FrmCategory();
+            frm.StartPosition = FormStartPosition.CenterScreen;
             frm.Show();
         }
 
         private void btn_product_Click(object sender, EventArgs e)
         {
             UI.Masters.FrmProduct frm = new Masters.FrmProduct();
+            frm.StartPosition = FormStartPosition.CenterScreen;
             frm.Show();
         }
 
@@ -40,6 +42,7 @@ namespace App.UI.Masters
         private void btn_printer_Click(object sender, EventArgs e)
         {
             UI.Masters.PrinterForm frm = new Masters.PrinterForm();
+            frm.StartPosition = FormStartPosition.CenterScreen;
             frm.Show();
         }
 
@@ -54,6 +57,7 @@ namespace App.UI.Masters
         {
 
             Setting.oodoSetting odoosetting = new Setting.oodoSetting(int.Parse(Program.LocationID.ToString()));
+            odoosetting.StartPosition = FormStartPosition.CenterScreen;
             odoosetting.Show();
         }
     }

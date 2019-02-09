@@ -30,12 +30,8 @@
         {
             this.grp_category = new System.Windows.Forms.GroupBox();
             this.dgv = new System.Windows.Forms.DataGridView();
-            this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.OdooCategoryId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CategoryName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Color = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Printer = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.txt_printername = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.txt_color = new System.Windows.Forms.TextBox();
@@ -46,7 +42,13 @@
             this.txt_cATEGORYNAME = new System.Windows.Forms.TextBox();
             this.lbl_id = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.txt_printername = new System.Windows.Forms.TextBox();
+            this.chkIsActive = new System.Windows.Forms.CheckBox();
+            this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.OdooCategoryId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CategoryName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Color = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Printer = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.IsActive = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.grp_category.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -76,13 +78,146 @@
             this.OdooCategoryId,
             this.CategoryName,
             this.Color,
-            this.Printer});
+            this.Printer,
+            this.IsActive});
             this.dgv.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgv.Location = new System.Drawing.Point(4, 16);
             this.dgv.Name = "dgv";
             this.dgv.Size = new System.Drawing.Size(525, 265);
             this.dgv.TabIndex = 0;
             this.dgv.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_CellDoubleClick);
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.BackColor = System.Drawing.Color.White;
+            this.groupBox1.Controls.Add(this.chkIsActive);
+            this.groupBox1.Controls.Add(this.txt_printername);
+            this.groupBox1.Controls.Add(this.button1);
+            this.groupBox1.Controls.Add(this.label4);
+            this.groupBox1.Controls.Add(this.txt_color);
+            this.groupBox1.Controls.Add(this.label2);
+            this.groupBox1.Controls.Add(this.TXT_OODOID);
+            this.groupBox1.Controls.Add(this.label3);
+            this.groupBox1.Controls.Add(this.btn_save);
+            this.groupBox1.Controls.Add(this.txt_cATEGORYNAME);
+            this.groupBox1.Controls.Add(this.lbl_id);
+            this.groupBox1.Controls.Add(this.label1);
+            this.groupBox1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox1.Location = new System.Drawing.Point(0, 0);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.groupBox1.Size = new System.Drawing.Size(533, 258);
+            this.groupBox1.TabIndex = 2;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Add New";
+            // 
+            // txt_printername
+            // 
+            this.txt_printername.Location = new System.Drawing.Point(144, 135);
+            this.txt_printername.Name = "txt_printername";
+            this.txt_printername.Size = new System.Drawing.Size(170, 20);
+            this.txt_printername.TabIndex = 3;
+            // 
+            // button1
+            // 
+            this.button1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.button1.Location = new System.Drawing.Point(4, 187);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(525, 34);
+            this.button1.TabIndex = 5;
+            this.button1.Text = "From Odoo";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click_1);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(12, 143);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(88, 13);
+            this.label4.TabIndex = 20;
+            this.label4.Text = "Printer Name :";
+            // 
+            // txt_color
+            // 
+            this.txt_color.Location = new System.Drawing.Point(144, 109);
+            this.txt_color.Name = "txt_color";
+            this.txt_color.Size = new System.Drawing.Size(170, 20);
+            this.txt_color.TabIndex = 2;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(12, 109);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(44, 13);
+            this.label2.TabIndex = 6;
+            this.label2.Text = "Color :";
+            // 
+            // TXT_OODOID
+            // 
+            this.TXT_OODOID.Location = new System.Drawing.Point(144, 79);
+            this.TXT_OODOID.Name = "TXT_OODOID";
+            this.TXT_OODOID.Size = new System.Drawing.Size(170, 20);
+            this.TXT_OODOID.TabIndex = 1;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(12, 79);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(62, 13);
+            this.label3.TabIndex = 4;
+            this.label3.Text = "Odoo ID :";
+            // 
+            // btn_save
+            // 
+            this.btn_save.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.btn_save.Location = new System.Drawing.Point(4, 221);
+            this.btn_save.Name = "btn_save";
+            this.btn_save.Size = new System.Drawing.Size(525, 34);
+            this.btn_save.TabIndex = 4;
+            this.btn_save.Text = "Save";
+            this.btn_save.UseVisualStyleBackColor = true;
+            this.btn_save.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // txt_cATEGORYNAME
+            // 
+            this.txt_cATEGORYNAME.Location = new System.Drawing.Point(144, 40);
+            this.txt_cATEGORYNAME.Name = "txt_cATEGORYNAME";
+            this.txt_cATEGORYNAME.Size = new System.Drawing.Size(170, 20);
+            this.txt_cATEGORYNAME.TabIndex = 0;
+            // 
+            // lbl_id
+            // 
+            this.lbl_id.AutoSize = true;
+            this.lbl_id.Location = new System.Drawing.Point(297, 13);
+            this.lbl_id.Name = "lbl_id";
+            this.lbl_id.Size = new System.Drawing.Size(14, 13);
+            this.lbl_id.TabIndex = 1;
+            this.lbl_id.Text = "0";
+            this.lbl_id.Visible = false;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(12, 40);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(101, 13);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Category Name :";
+            // 
+            // chkIsActive
+            // 
+            this.chkIsActive.AutoSize = true;
+            this.chkIsActive.Location = new System.Drawing.Point(144, 163);
+            this.chkIsActive.Name = "chkIsActive";
+            this.chkIsActive.Size = new System.Drawing.Size(76, 17);
+            this.chkIsActive.TabIndex = 24;
+            this.chkIsActive.Text = "Is Active";
+            this.chkIsActive.UseVisualStyleBackColor = true;
             // 
             // Id
             // 
@@ -109,126 +244,10 @@
             this.Printer.HeaderText = "Printer";
             this.Printer.Name = "Printer";
             // 
-            // groupBox1
+            // IsActive
             // 
-            this.groupBox1.BackColor = System.Drawing.Color.White;
-            this.groupBox1.Controls.Add(this.txt_printername);
-            this.groupBox1.Controls.Add(this.button1);
-            this.groupBox1.Controls.Add(this.label4);
-            this.groupBox1.Controls.Add(this.txt_color);
-            this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Controls.Add(this.TXT_OODOID);
-            this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Controls.Add(this.btn_save);
-            this.groupBox1.Controls.Add(this.txt_cATEGORYNAME);
-            this.groupBox1.Controls.Add(this.lbl_id);
-            this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.Location = new System.Drawing.Point(0, 0);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.groupBox1.Size = new System.Drawing.Size(533, 258);
-            this.groupBox1.TabIndex = 2;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Add New";
-            // 
-            // button1
-            // 
-            this.button1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.button1.Location = new System.Drawing.Point(4, 187);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(525, 34);
-            this.button1.TabIndex = 22;
-            this.button1.Text = "From Odoo";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click_1);
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(12, 161);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(88, 13);
-            this.label4.TabIndex = 20;
-            this.label4.Text = "Printer Name :";
-            // 
-            // txt_color
-            // 
-            this.txt_color.Location = new System.Drawing.Point(144, 127);
-            this.txt_color.Name = "txt_color";
-            this.txt_color.Size = new System.Drawing.Size(170, 20);
-            this.txt_color.TabIndex = 7;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 127);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(44, 13);
-            this.label2.TabIndex = 6;
-            this.label2.Text = "Color :";
-            // 
-            // TXT_OODOID
-            // 
-            this.TXT_OODOID.Location = new System.Drawing.Point(144, 97);
-            this.TXT_OODOID.Name = "TXT_OODOID";
-            this.TXT_OODOID.Size = new System.Drawing.Size(170, 20);
-            this.TXT_OODOID.TabIndex = 5;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(12, 97);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(62, 13);
-            this.label3.TabIndex = 4;
-            this.label3.Text = "Odoo ID :";
-            // 
-            // btn_save
-            // 
-            this.btn_save.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.btn_save.Location = new System.Drawing.Point(4, 221);
-            this.btn_save.Name = "btn_save";
-            this.btn_save.Size = new System.Drawing.Size(525, 34);
-            this.btn_save.TabIndex = 3;
-            this.btn_save.Text = "Save";
-            this.btn_save.UseVisualStyleBackColor = true;
-            this.btn_save.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // txt_cATEGORYNAME
-            // 
-            this.txt_cATEGORYNAME.Location = new System.Drawing.Point(144, 58);
-            this.txt_cATEGORYNAME.Name = "txt_cATEGORYNAME";
-            this.txt_cATEGORYNAME.Size = new System.Drawing.Size(170, 20);
-            this.txt_cATEGORYNAME.TabIndex = 2;
-            // 
-            // lbl_id
-            // 
-            this.lbl_id.AutoSize = true;
-            this.lbl_id.Location = new System.Drawing.Point(297, 21);
-            this.lbl_id.Name = "lbl_id";
-            this.lbl_id.Size = new System.Drawing.Size(14, 13);
-            this.lbl_id.TabIndex = 1;
-            this.lbl_id.Text = "0";
-            this.lbl_id.Visible = false;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 58);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(101, 13);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Category Name :";
-            // 
-            // txt_printername
-            // 
-            this.txt_printername.Location = new System.Drawing.Point(144, 153);
-            this.txt_printername.Name = "txt_printername";
-            this.txt_printername.Size = new System.Drawing.Size(170, 20);
-            this.txt_printername.TabIndex = 23;
+            this.IsActive.HeaderText = "Active";
+            this.IsActive.Name = "IsActive";
             // 
             // FrmCategory
             // 
@@ -260,13 +279,15 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txt_color;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.TextBox txt_printername;
+        private System.Windows.Forms.CheckBox chkIsActive;
         private System.Windows.Forms.DataGridViewTextBoxColumn Id;
         private System.Windows.Forms.DataGridViewTextBoxColumn OdooCategoryId;
         private System.Windows.Forms.DataGridViewTextBoxColumn CategoryName;
         private System.Windows.Forms.DataGridViewTextBoxColumn Color;
         private System.Windows.Forms.DataGridViewTextBoxColumn Printer;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.TextBox txt_printername;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn IsActive;
     }
 }

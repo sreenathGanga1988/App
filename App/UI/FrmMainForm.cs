@@ -163,24 +163,28 @@ namespace App.UI
         private void btn_masters_Click(object sender, EventArgs e)
         {
             Masters.MasterForm frm = new Masters.MasterForm();
+            frm.StartPosition = FormStartPosition.CenterScreen;
             frm.Show();
         }
 
         private void btnSettings_Click(object sender, EventArgs e)
         {
             Setting.oodoSetting odoosetting = new Setting.oodoSetting(int.Parse(Program.LocationID.ToString()));
+            odoosetting.StartPosition = FormStartPosition.CenterScreen;
             odoosetting.Show();
         }
 
         private void btn_misreport_Click(object sender, EventArgs e)
         {
             FrmDailyReports reports = new FrmDailyReports();
+            reports.StartPosition = FormStartPosition.CenterScreen;
             reports.ShowDialog();
         }
 
         private void btn_action_Click(object sender, EventArgs e)
         {
             FrmActions actions = new FrmActions();
+            actions.StartPosition = FormStartPosition.CenterScreen;
             actions.ShowDialog();
 
         }

@@ -272,9 +272,9 @@ namespace App.Extensions
 
 
                     var encoding = Encoding.GetEncoding(936);
-                                      //  bytes = Encoding.Unicode.GetBytes("فاتورة ضريبية");
+                    //  bytes = Encoding.Unicode.GetBytes("فاتورة ضريبية");
 
-                   // bytes = PrintExtensions.AddBytes(bytes, encoding.GetBytes("فاتورة ضريبية"));
+                    // bytes = PrintExtensions.AddBytes(bytes, encoding.GetBytes("فاتورة ضريبية"));
                     ////bytes = PrintExtensions.AddBytes(bytes, System.Text.Encoding.Unicode.GetBytes("فاتورة ضريبية"));
                     ////bytes = PrintExtensions.AddBytes(bytes, System.Text.Encoding.UTF32.GetBytes("فاتورة ضريبية"));
 
@@ -459,6 +459,266 @@ namespace App.Extensions
             }
         }
 
+
+
+
+
+
+
+        public void printInvoiceLogo(Invoicemaster invoicemaster, PrintOption printOption, string printerIP = "")
+        {
+            string eClear = ('' + "@");
+            string eDrawer = (eClear + ('' + ("p" + ('\0' + ".}"))));
+
+            PrinterUtility.EscPosEpsonCommands.EscPosEpson obj = new PrinterUtility.EscPosEpsonCommands.EscPosEpson(54);
+            string format = "";
+            int productLength = 0;
+            if (printOption != PrintOption.PrintKOT)
+            {
+                format = "{0,-24}{1,4}{2,7}{3,7:N2}\n";
+                productLength = 23;
+            }
+            else if (printOption == PrintOption.PrintKOT)
+            {
+                format = "{0,-30}{1,7}\n";
+                productLength = 29;
+            }
+            byte[] bytes = GetLogo("logo.bmp");
+
+            string border = "";
+            int maxCharacterInLine = 42;
+            for (int i = 0; i < maxCharacterInLine; i++)
+            {
+                border = border + "-";
+            }
+
+            bytes = PrintExtensions.AddBytes(bytes, obj.CharSize.DoubleWidth2());
+            bytes = PrintExtensions.AddBytes(bytes, obj.FontSelect.FontA());
+            bytes = PrintExtensions.AddBytes(bytes, obj.Alignment.Center());
+            //bytes = PrintExtensions.AddBytes(bytes, Encoding.ASCII.GetBytes(invoicemaster.StoreName + "\n"));
+
+            bytes = PrintExtensions.AddBytes(bytes, obj.CharSize.Nomarl());
+            //if (!string.IsNullOrEmpty(invoicemaster.StoreAddress))
+            //{
+            //    bytes = PrintExtensions.AddBytes(bytes, Encoding.ASCII.GetBytes(invoicemaster.StoreAddress + "\n"));
+            //}
+            //if (!string.IsNullOrEmpty(invoicemaster.StoreStreet))
+            //{
+            //    bytes = PrintExtensions.AddBytes(bytes, Encoding.ASCII.GetBytes(invoicemaster.StoreStreet + "\n"));
+            //}
+
+            //if (!string.IsNullOrEmpty(invoicemaster.StorePhone))
+            //{
+            //    bytes = PrintExtensions.AddBytes(bytes, Encoding.ASCII.GetBytes(invoicemaster.StorePhone + "\n"));
+            //}
+
+            bytes = PrintExtensions.AddBytes(bytes, Encoding.ASCII.GetBytes(border + "\n"));
+
+            bytes = PrintExtensions.AddBytes(bytes, obj.CharSize.DoubleWidth2());
+
+            switch (printOption)
+            {
+                case PrintOption.PrintInvoice:
+                    bytes = PrintExtensions.AddBytes(bytes, Encoding.ASCII.GetBytes("Tax Invoice\n"));
+
+
+                    var encoding = Encoding.GetEncoding(936);
+                    //  bytes = Encoding.Unicode.GetBytes("فاتورة ضريبية");
+
+                    // bytes = PrintExtensions.AddBytes(bytes, encoding.GetBytes("فاتورة ضريبية"));
+                    ////bytes = PrintExtensions.AddBytes(bytes, System.Text.Encoding.Unicode.GetBytes("فاتورة ضريبية"));
+                    ////bytes = PrintExtensions.AddBytes(bytes, System.Text.Encoding.UTF32.GetBytes("فاتورة ضريبية"));
+
+                    break;
+                case PrintOption.ReprintInvoice:
+                    bytes = PrintExtensions.AddBytes(bytes, Encoding.ASCII.GetBytes("Tax Invoice\n"));
+                    bytes = PrintExtensions.AddBytes(bytes, obj.CharSize.Nomarl());
+                    bytes = PrintExtensions.AddBytes(bytes, Encoding.ASCII.GetBytes("[Duplicate Bill]\n"));
+                    break;
+                case PrintOption.PrintTableInvoice:
+                    bytes = PrintExtensions.AddBytes(bytes, Encoding.ASCII.GetBytes("Table Bill\n"));
+                    break;
+                case PrintOption.PrintKOT:
+                    bytes = PrintExtensions.AddBytes(bytes, Encoding.ASCII.GetBytes("KOT\n"));
+                    break;
+            }
+
+            bytes = PrintExtensions.AddBytes(bytes, Encoding.ASCII.GetBytes("\n"));
+
+            bytes = PrintExtensions.AddBytes(bytes, obj.CharSize.Nomarl());
+            bytes = PrintExtensions.AddBytes(bytes, obj.Alignment.Left());
+
+            bytes = PrintExtensions.AddBytes(bytes, Encoding.ASCII.GetBytes(string.Format("Invoice # : {0}", invoicemaster.InvoiceNum) + "\n"));
+            bytes = PrintExtensions.AddBytes(bytes, Encoding.ASCII.GetBytes(string.Format("Date      : {0}", invoicemaster.InvoiceDate.ToString("dd-MMM-yyyy hh:mm tt")) + "\n"));
+            bytes = PrintExtensions.AddBytes(bytes, Encoding.ASCII.GetBytes(string.Format("Cashier   : {0}", invoicemaster.Cashier.Trim()) + "\n"));
+            if (!string.IsNullOrEmpty(invoicemaster.BuzzerName) && !string.Equals(invoicemaster.BuzzerName.ToString().ToLower(), "buzzer"))
+            {
+                bytes = PrintExtensions.AddBytes(bytes, Encoding.ASCII.GetBytes(string.Format("Buzzer    : {0}", invoicemaster.BuzzerName.ToString()) + "\n"));
+            }
+            bytes = PrintExtensions.AddBytes(bytes, Encoding.ASCII.GetBytes(string.Format("Table     : {0}", invoicemaster.TableName.Trim()) + "\n"));
+
+            bytes = PrintExtensions.AddBytes(bytes, obj.Alignment.Center());
+            bytes = PrintExtensions.AddBytes(bytes, Encoding.ASCII.GetBytes(border + "\n"));
+
+            bytes = PrintExtensions.AddBytes(bytes, obj.Alignment.Left());
+            if (printOption != PrintOption.PrintKOT)
+            {
+                bytes = PrintExtensions.AddBytes(bytes, string.Format(format, "Item", "Qty", "Rate", "Amount"));
+            }
+            else if (printOption == PrintOption.PrintKOT)
+            {
+                bytes = PrintExtensions.AddBytes(bytes, string.Format(format, "Item", "Qty"));
+            }
+
+            bytes = PrintExtensions.AddBytes(bytes, Encoding.ASCII.GetBytes(border + "\n"));
+            foreach (InvoiceDetail invoicedet in invoicemaster.InvoiceDetails)
+            {
+                List<string> orderlineWords = new List<string>();
+                if (!string.IsNullOrEmpty(invoicedet.ProductName))
+                {
+                    orderlineWords = invoicedet.ProductName.Trim().Split(new[] { ' ' }).ToList();
+                }
+                else if (invoicedet.Product != null)
+                {
+                    orderlineWords = invoicedet.Product.ProductName.Trim().Split(new[] { ' ' }).ToList();
+                }
+                string normalName = "";
+                string extraName = "";
+                foreach (string w in orderlineWords)
+                {
+                    if (normalName.Length + w.Length <= productLength)
+                    {
+                        normalName = normalName + w + " ";
+                    }
+                    else if (extraName.Length + w.Length <= productLength - 3)
+                    {
+                        extraName = extraName + w + " ";
+                    }
+                }
+
+                string orderline = "";
+                if (printOption != PrintOption.PrintKOT)
+                {
+                    orderline = string.Format(format,
+                    normalName.Trim(),
+                    invoicedet.Qty,
+                    string.Format("{0:0.00}", invoicedet.UnitPrice),
+                    string.Format("{0:0.00}", invoicedet.Qty * invoicedet.UnitPrice));
+                }
+                else if (printOption == PrintOption.PrintKOT)
+                {
+                    orderline = string.Format(format,
+                    normalName.Trim(),
+                    invoicedet.Qty);
+                }
+
+                bytes = PrintExtensions.AddBytes(bytes, Encoding.ASCII.GetBytes(orderline));
+                if (!string.IsNullOrEmpty(extraName))
+                {
+                    bytes = PrintExtensions.AddBytes(bytes, Encoding.ASCII.GetBytes(string.Format("   {0}", extraName) + "\n"));
+                }
+                if (!string.IsNullOrEmpty(invoicedet.Notes))
+                {
+                    bytes = PrintExtensions.AddBytes(bytes, Encoding.ASCII.GetBytes(string.Format("   [{0}]\n", invoicedet.Notes.Substring(0, Math.Min(30, invoicedet.Notes.Length)))));
+                }
+            }
+
+            if (printOption == PrintOption.PrintKOT)
+            {
+                bytes = PrintExtensions.AddBytes(bytes, obj.Alignment.Right());
+                bytes = PrintExtensions.AddBytes(bytes, obj.CharSize.DoubleWidth2());
+                bytes = PrintExtensions.AddBytes(bytes, Encoding.ASCII.GetBytes("\n"));
+                bytes = PrintExtensions.AddBytes(bytes, Encoding.ASCII.GetBytes(string.Format("{0,37}\n", string.Format("Total {0} Items", invoicemaster.InvoiceDetails.Count()))));
+            }
+
+            if (printOption != PrintOption.PrintKOT)
+            {
+                bytes = PrintExtensions.AddBytes(bytes, obj.CharSize.Nomarl());
+                bytes = PrintExtensions.AddBytes(bytes, Encoding.ASCII.GetBytes(border + "\n"));
+
+                bytes = PrintExtensions.AddBytes(bytes, obj.Alignment.Right());
+                bytes = PrintExtensions.AddBytes(bytes, Encoding.ASCII.GetBytes(String.Format("{0,15}{1,7}", "Gross Amount : ", string.Format("{0:0.00}", invoicemaster.InvoiceDetails.Sum(u => u.Qty * u.UnitPrice).ToString("F").Trim())) + "\n"));
+                if (invoicemaster.TotalDiscount != 0)
+                {
+                    bytes = PrintExtensions.AddBytes(bytes, Encoding.ASCII.GetBytes(String.Format("{0,15}{1,7}", "(-) Discount : ", string.Format("{0:0.00}", invoicemaster.TotalDiscount.ToString().Trim())) + "\n"));
+                }
+                bytes = PrintExtensions.AddBytes(bytes, Encoding.ASCII.GetBytes(String.Format("{0,15}{1,7}", "(+) Tax      : ", string.Format("{0:0.00}", invoicemaster.Taxamount.ToString().Trim())) + "\n"));
+
+                bytes = PrintExtensions.AddBytes(bytes, obj.CharSize.DoubleWidth2());
+                bytes = PrintExtensions.AddBytes(bytes, Encoding.ASCII.GetBytes(String.Format("Total : AED {0:0.00}", invoicemaster.TotalBill.ToString("0.00").Trim()) + "\n"));
+            }
+
+            if (!string.IsNullOrEmpty(invoicemaster.CustomerName) && !string.Equals(invoicemaster.CustomerName.Trim().ToLower(), "new"))
+            {
+                bytes = PrintExtensions.AddBytes(bytes, obj.CharSize.Nomarl());
+                bytes = PrintExtensions.AddBytes(bytes, obj.Alignment.Left());
+                bytes = PrintExtensions.AddBytes(bytes, Encoding.ASCII.GetBytes(border + "\n"));
+
+                bytes = PrintExtensions.AddBytes(bytes, Encoding.ASCII.GetBytes(string.Format("Customer : {0}", invoicemaster.CustomerName.Trim()) + "\n"));
+                if (!string.IsNullOrEmpty(invoicemaster.CustomerPhone))
+                {
+                    bytes = PrintExtensions.AddBytes(bytes, Encoding.ASCII.GetBytes(string.Format("Phone    : {0}", invoicemaster.CustomerPhone.ToString().Trim()) + "\n"));
+                }
+                if (!string.IsNullOrEmpty(invoicemaster.CustomerAdress))
+                {
+                    bytes = PrintExtensions.AddBytes(bytes, Encoding.ASCII.GetBytes(string.Format("Address  : {0}", invoicemaster.CustomerAdress.ToString().Trim()) + "\n"));
+                }
+            }
+
+            if (printOption != PrintOption.PrintKOT)
+            {
+                bytes = PrintExtensions.AddBytes(bytes, obj.CharSize.Nomarl());
+                bytes = PrintExtensions.AddBytes(bytes, obj.Alignment.Center());
+                bytes = PrintExtensions.AddBytes(bytes, Encoding.ASCII.GetBytes(border + "\n"));
+                bytes = PrintExtensions.AddBytes(bytes, "Thank you for coming\n");
+            }
+
+
+            bytes = PrintExtensions.AddBytes(bytes, CutPage());
+            bytes = PrintExtensions.AddBytes(bytes, eDrawer);
+
+
+
+            if (File.Exists(".\\tmpPrint.print"))
+                File.Delete(".\\tmpPrint.print");
+            File.WriteAllBytes(".\\tmpPrint.print", bytes);
+            if (printOption != PrintOption.PrintKOT)
+            {
+                RawPrinterHelper.SendFileToPrinter(Program.MySettingViewModal.MyPrinterDetails.PosPrinter, ".\\tmpPrint.print");
+            }
+            else if (printOption == PrintOption.PrintKOT)
+            {
+                try
+                {
+                    IpPrint print = new IpPrint();
+                    print.PrinttoIP(printerIP, ".\\tmpPrint.print");
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error on KOT Printer So Printing on receipt Printer ");
+                    ErrorLogger.WriteToErrorLog("Error on KOT Printer ", ex.StackTrace, ex.Message);
+                    RawPrinterHelper.SendFileToPrinter(Program.MySettingViewModal.MyPrinterDetails.PosPrinter, ".\\tmpPrint.print");
+                }
+            }
+            try
+            {
+                File.Delete(".\\tmpPrint.print");
+            }
+            catch
+            {
+
+            }
+        }
+
+
+
+
+
+
+
+
+
+
         public void ReprintprintInvoicereport(Invoicemaster invoicemaster)
         {
             printInvoice(invoicemaster, PrintOption.ReprintInvoice);
@@ -467,7 +727,16 @@ namespace App.Extensions
        
         public void printInvoicereport(Invoicemaster invoicemaster)
         {
-            printInvoice(invoicemaster, PrintOption.PrintInvoice);
+           
+            if (Program.MySettingViewModal.AppUserSettings.LogoReport == true)
+            {
+                printInvoiceLogo(invoicemaster, PrintOption.PrintInvoice);
+            }
+            else
+            {
+                printInvoice(invoicemaster, PrintOption.PrintInvoice);
+
+            }
         }
 
         public void printTableInvoicereport(Invoicemaster invoicemaster)
@@ -610,6 +879,8 @@ namespace App.Extensions
             if (File.Exists(".\\tmpPrint.print"))
                 File.Delete(".\\tmpPrint.print");
             File.WriteAllBytes(".\\tmpPrint.print", bytes);
+            KeepCopy(shiftViewModel.ShiftName, bytes);
+
 
             RawPrinterHelper.SendFileToPrinter(Program.MySettingViewModal.MyPrinterDetails.PosPrinter, ".\\tmpPrint.print");
             try
@@ -652,6 +923,30 @@ namespace App.Extensions
             {
 
             }
+
+        }
+
+        public void KeepCopy(string Filename, byte[] bytes)
+        {
+
+            if (!(System.IO.Directory.Exists(Application.StartupPath + "\\CloseReports\\")))
+            {
+                System.IO.Directory.CreateDirectory(Application.StartupPath + "\\CloseReports\\");
+            }
+            String newfilename = Application.StartupPath + "\\CloseReports\\" + Filename + ".print";
+            if (File.Exists(newfilename))
+                File.Delete(newfilename);
+            File.WriteAllBytes(newfilename, bytes);
+
+        }
+
+
+
+        public void PrintCopy(string Filename)
+        {
+            String newfilename = Application.StartupPath + "\\CloseReports\\" + Filename + ".print";
+
+            RawPrinterHelper.SendFileToPrinter(Program.MySettingViewModal.MyPrinterDetails.PosPrinter, newfilename);
 
         }
     }

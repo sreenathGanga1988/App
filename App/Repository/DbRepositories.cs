@@ -99,6 +99,8 @@ namespace App.Repository
 
         public List<Product> GetProductSearch(String searchtext, int? LocationID = 0)
         {
+           
+
 
             var q = cntxt.Products.Where(u => u.Id.ToString().Contains(searchtext) || u.ProductName.Contains(searchtext) || u.Category.CategoryName.Contains(searchtext) || u.Color.Contains(searchtext)).ToList();
 
@@ -107,8 +109,10 @@ namespace App.Repository
 
         public List<ProductlistViewModal> GetProductSearchByName(String searchtext, int? LocationID = 0)
         {
+            //var q = cntxt.Products.Where(u => u.Isactive == true).Where(u => u.Id.ToString().Contains(searchtext) || u.ProductName.Contains(searchtext) || u.Category.CategoryName.Contains(searchtext)).Select(x => new ProductlistViewModal { ProductID = x.Id, ProductName = x.ProductName, Color = x.Color, IsAvailable = x.IsAvailable }).ToList();
 
-            var q = cntxt.Products.Where(u => u.Id.ToString().Contains(searchtext) || u.ProductName.Contains(searchtext) || u.Category.CategoryName.Contains(searchtext)). Select(x => new ProductlistViewModal { ProductID = x.Id, ProductName = x.ProductName, Color = x.Color, IsAvailable = x.IsAvailable }).ToList();
+         //   List<Product> products = cntxt.Products.Where(u => u.Isactive == true).ToList();
+           var q = cntxt.Products.Where(u =>  u.Isactive==true &&(  u.Id.ToString().Contains(searchtext) || u.ProductName.Contains(searchtext) || u.Category.CategoryName.Contains(searchtext))). Select(x => new ProductlistViewModal { ProductID = x.Id, ProductName = x.ProductName, Color = x.Color, IsAvailable = x.IsAvailable }).ToList();
 
             return q;
         }
@@ -535,14 +539,21 @@ namespace App.Repository
     public class CategoryRepository
     {
         POSDataContext cntxt = new POSDataContext();
-        public List<Category> GetCategoryList(int? LocationID = 0)
+        public List<Category> GetCategoryListActive(int? LocationID = 0)
+        {
+
+            var q = cntxt.Categorys.Where(u=>u.Isactive==true).ToList();
+
+            return q;
+        }
+
+        public List<Category> GetCategoryListAll(int? LocationID = 0)
         {
 
             var q = cntxt.Categorys.ToList();
 
             return q;
         }
-
 
         public void Addcategory(Category ctgry) {
 

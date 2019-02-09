@@ -28,7 +28,7 @@ namespace App.ViewModal
         CustomerRepositiry custorepo = new CustomerRepositiry();
         PaymentModeRepository payrepo = new PaymentModeRepository();
 
-        public List<Category> CategoryList { get => catrepo.GetCategoryList(); set => CategoryList = value; }
+        public List<Category> CategoryList { get => catrepo.GetCategoryListActive(); set => CategoryList = value; }
         public List<Table> TableList { get => tablerepo.GetTableList(Program.LocationID); set => TableList = value; }
 
         public List<Customer> CustomerList { get => custorepo.GetcustomerofLocation(Program.LocationID); set => CustomerList = value; }

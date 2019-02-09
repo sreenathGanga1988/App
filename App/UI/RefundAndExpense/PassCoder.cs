@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Configuration;
 using System.Data;
 using System.Drawing;
 using System.Linq;
@@ -17,6 +18,7 @@ namespace App.UI.RefundAndExpense
         public PassCoder()
         {
             InitializeComponent();
+            this.StartPosition = FormStartPosition.CenterScreen;
         }
 
         private void txt_PasscodeDisplay_TextChanged(object sender, EventArgs e)
@@ -25,12 +27,13 @@ namespace App.UI.RefundAndExpense
         }
         public void KeyPressed(Button btn)
         {
+            string AppPasskey = ConfigurationManager.AppSettings["countoffiles"];
 
             if (btn.Text == "OK")
             {
                 try
                 {
-                    if (txt_PasscodeDisplay.Text == "655443")
+                    if (txt_PasscodeDisplay.Text == AppPasskey)
                 {
                     IsAuthenticated = true;
                     ApprovedCode = txt_PasscodeDisplay.Text;

@@ -52,7 +52,7 @@ namespace App.UI.Masters
         {
             CategoryRepository categoryRepository = new CategoryRepository();
            
-            List <Category> catgr=      categoryRepository.GetCategoryList();
+            List <Category> catgr=      categoryRepository.GetCategoryListAll();
 
             dgv.RowCount = 0;
             foreach (Category ctgry in catgr)
@@ -72,6 +72,15 @@ namespace App.UI.Masters
 
                    
                 }
+                try
+                {
+                    dgv.Rows[index].Cells["IsActive"].Value = ctgry.Isactive ?? false;
+                }
+                catch (Exception)
+                {
+
+
+                }
             }
 
 
@@ -86,7 +95,7 @@ namespace App.UI.Masters
             if (btn_save.Text == "Save")
             {
 
-                Category CTGRY = new Category() { CategoryName = txt_cATEGORYNAME.Text, OdooCategoryId = int.Parse(TXT_OODOID.Text),Color= txt_color.Text ,PrinterName=txt_printername.Text};
+                Category CTGRY = new Category() { CategoryName = txt_cATEGORYNAME.Text, OdooCategoryId = int.Parse(TXT_OODOID.Text),Color= txt_color.Text ,PrinterName=txt_printername.Text,Isactive=chkIsActive.Checked };
 
                 CategoryRepository categoryRepository = new CategoryRepository();
                 categoryRepository.Addcategory(CTGRY);
@@ -99,7 +108,7 @@ namespace App.UI.Masters
             {
                 if (lbl_id.Text != "0")
                 {
-                    Category CTGRY = new Category() { CategoryName = txt_cATEGORYNAME.Text, OdooCategoryId = int.Parse(TXT_OODOID.Text),Id=int.Parse (lbl_id.Text), Color = txt_color.Text ,PrinterName = txt_printername.Text };
+                    Category CTGRY = new Category() { CategoryName = txt_cATEGORYNAME.Text, OdooCategoryId = int.Parse(TXT_OODOID.Text),Id=int.Parse (lbl_id.Text), Color = txt_color.Text ,PrinterName = txt_printername.Text, Isactive = chkIsActive.Checked };
                     CategoryRepository categoryRepository = new CategoryRepository();
                     categoryRepository.UpdateCategory(CTGRY);
                     MessageBox.Show("Sucessfully Updated");
@@ -127,7 +136,18 @@ namespace App.UI.Masters
 
               
             }
+            try
+            {
+                chkIsActive.Checked = Boolean.Parse(dgv.Rows[e.RowIndex].Cells["IsActive"].Value.ToString());
+            }
+            catch (Exception)
+            {
+                chkIsActive.Checked = false;
+
+            }
             txt_cATEGORYNAME.Text= dgv.Rows[e.RowIndex].Cells["CategoryName"].Value.ToString();
+
+            
             btn_save.Text = "Update";
         }
 

@@ -1380,8 +1380,12 @@ namespace App.UI
 
                         if (ISPRINTREQ == true)
                         {
-                            prnt.printInvoicereport(invoicemaster);
-                        }
+
+                        
+
+                        prnt.printInvoicereport(invoicemaster);
+
+                           }
 
 
 
@@ -1958,8 +1962,35 @@ namespace App.UI
                 {
                     if (!r.IsNewRow)
                     {
-                        grd_ProductDetails.Rows.RemoveAt(r.Index);
-                        CalculateTotal(); 
+
+                        if (int.Parse(r.Cells["InvdetId"].Value.ToString()) != 0)
+                        {
+                            PassCoder passCoder = new PassCoder();
+                            passCoder.ShowDialog();
+                            Boolean IsAuthenticated = passCoder.IsAuthenticated;
+
+
+                            if (IsAuthenticated)
+                            {
+                                grd_ProductDetails.Rows.RemoveAt(r.Index);
+                                CalculateTotal();
+                            }
+                          
+
+                        }else
+                        {
+                            grd_ProductDetails.Rows.RemoveAt(r.Index);
+                            CalculateTotal();
+
+
+                        }
+
+
+
+
+
+
+                       
                     }
                 }
                 txt_producrtcode.Text = "";
@@ -2027,7 +2058,7 @@ namespace App.UI
         }
 
         private void grd_ProductDetails_RowsRemoved(object sender, DataGridViewRowsRemovedEventArgs e)
-        {
+        { 
             CalculateTotal();
         }
 
@@ -2057,5 +2088,22 @@ namespace App.UI
         {
 
         }
+
+        private void grd_ProductDetails_UserDeletingRow(object sender, DataGridViewRowCancelEventArgs e)
+        {
+            
+           
+        }
+
+        private void grd_ProductDetails_UserDeletedRow(object sender, DataGridViewRowEventArgs e)
+        {
+            
+        }
+
+        private void grd_ProductDetails_KeyDown(object sender, KeyEventArgs e)
+        {
+           
+       
+    }
     }
 }

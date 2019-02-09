@@ -130,8 +130,7 @@ namespace App.UI.RefundAndExpense
                         if (usrrep.IsuserValid(int.Parse(txt_PasscodeDisplay.Text), 1))
                         {
                             this.Hide();
-                            StartForm frm = new StartForm();
-                            frm.Show();
+                            
 
                         }
                         else

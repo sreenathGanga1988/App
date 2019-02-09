@@ -47,8 +47,21 @@ namespace App.UI
 
         private void btn_PosOut_Click(object sender, EventArgs e)
         {
-            ValueInPut valinput = new ValueInPut(DateTime.Now, "Encash");
-            valinput.ShowDialog();
+            PassCoder passCoder = new PassCoder();
+            passCoder.ShowDialog();
+            Boolean IsAuthenticated = passCoder.IsAuthenticated;
+
+
+            if (IsAuthenticated)
+            {
+                ValueInPut valinput = new ValueInPut(DateTime.Now, "Encash");
+                valinput.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("Not Authenticated");
+            }
+           
         }
 
         private void btn_posAmount_Click(object sender, EventArgs e)
@@ -227,6 +240,12 @@ namespace App.UI
         {
             Reports.PosReports psreport = new Reports.PosReports("Credit",dtp_from.Value.Date, dt_to.Value.Date);
             psreport.ShowDialog();
+        }
+
+        private void btnPrintCloseReport_Click(object sender, EventArgs e)
+        {
+            Extensions.PrintReceiptnew printReceiptnew = new Extensions.PrintReceiptnew();
+            printReceiptnew.PrintCopy(cmb_shift.Text);
         }
     }
 }

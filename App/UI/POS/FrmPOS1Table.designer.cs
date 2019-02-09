@@ -1397,6 +1397,9 @@
             this.grd_ProductDetails.CurrentCellDirtyStateChanged += new System.EventHandler(this.grd_ProductDetails_CurrentCellDirtyStateChanged);
             this.grd_ProductDetails.RowsRemoved += new System.Windows.Forms.DataGridViewRowsRemovedEventHandler(this.grd_ProductDetails_RowsRemoved);
             this.grd_ProductDetails.RowStateChanged += new System.Windows.Forms.DataGridViewRowStateChangedEventHandler(this.grd_ProductDetails_RowStateChanged);
+            this.grd_ProductDetails.UserDeletedRow += new System.Windows.Forms.DataGridViewRowEventHandler(this.grd_ProductDetails_UserDeletedRow);
+            this.grd_ProductDetails.UserDeletingRow += new System.Windows.Forms.DataGridViewRowCancelEventHandler(this.grd_ProductDetails_UserDeletingRow);
+            this.grd_ProductDetails.KeyDown += new System.Windows.Forms.KeyEventHandler(this.grd_ProductDetails_KeyDown);
             // 
             // ID
             // 

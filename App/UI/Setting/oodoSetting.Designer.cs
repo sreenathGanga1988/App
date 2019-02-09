@@ -56,13 +56,15 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.button5 = new System.Windows.Forms.Button();
+            this.btn_reset = new System.Windows.Forms.Button();
             this.txt_defaultKOTpRINTER = new System.Windows.Forms.TextBox();
             this.label20 = new System.Windows.Forms.Label();
             this.button4 = new System.Windows.Forms.Button();
             this.cmb_pos = new System.Windows.Forms.ComboBox();
             this.label15 = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.chkLogoReport = new System.Windows.Forms.GroupBox();
             this.label8 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.chk_fastloading = new System.Windows.Forms.CheckBox();
@@ -72,14 +74,14 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
-            this.btn_reset = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
+            this.label16 = new System.Windows.Forms.Label();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.panel1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.groupBox5.SuspendLayout();
-            this.groupBox3.SuspendLayout();
+            this.chkLogoReport.SuspendLayout();
             this.SuspendLayout();
             // 
             // txt_kotprefix
@@ -356,7 +358,7 @@
             // groupBox4
             // 
             this.groupBox4.Controls.Add(this.groupBox5);
-            this.groupBox4.Controls.Add(this.groupBox3);
+            this.groupBox4.Controls.Add(this.chkLogoReport);
             this.groupBox4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
             this.groupBox4.ForeColor = System.Drawing.Color.White;
@@ -387,6 +389,25 @@
             this.groupBox5.TabIndex = 3;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Printer Setting";
+            // 
+            // button5
+            // 
+            this.button5.Location = new System.Drawing.Point(355, 30);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(75, 23);
+            this.button5.TabIndex = 27;
+            this.button5.Text = "button5";
+            this.button5.UseVisualStyleBackColor = true;
+            // 
+            // btn_reset
+            // 
+            this.btn_reset.Location = new System.Drawing.Point(324, 10);
+            this.btn_reset.Name = "btn_reset";
+            this.btn_reset.Size = new System.Drawing.Size(46, 38);
+            this.btn_reset.TabIndex = 26;
+            this.btn_reset.Text = "Reset";
+            this.btn_reset.UseVisualStyleBackColor = true;
+            this.btn_reset.Click += new System.EventHandler(this.btn_reset_Click);
             // 
             // txt_defaultKOTpRINTER
             // 
@@ -445,38 +466,40 @@
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click_2);
             // 
-            // groupBox3
+            // chkLogoReport
             // 
-            this.groupBox3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(53)))), ((int)(((byte)(66)))));
-            this.groupBox3.Controls.Add(this.txt_kotprefix);
-            this.groupBox3.Controls.Add(this.label18);
-            this.groupBox3.Controls.Add(this.chk_autosizeproduct);
-            this.groupBox3.Controls.Add(this.label14);
-            this.groupBox3.Controls.Add(this.txt_buttonHeight);
-            this.groupBox3.Controls.Add(this.label12);
-            this.groupBox3.Controls.Add(this.txt_buttonwidth);
-            this.groupBox3.Controls.Add(this.label13);
-            this.groupBox3.Controls.Add(this.txt_padding);
-            this.groupBox3.Controls.Add(this.label9);
-            this.groupBox3.Controls.Add(this.txt_invoiceprefix);
-            this.groupBox3.Controls.Add(this.label8);
-            this.groupBox3.Controls.Add(this.label11);
-            this.groupBox3.Controls.Add(this.chk_fastloading);
-            this.groupBox3.Controls.Add(this.chk_realtime);
-            this.groupBox3.Controls.Add(this.button3);
-            this.groupBox3.Controls.Add(this.txt_noofproductonrow);
-            this.groupBox3.Controls.Add(this.label2);
-            this.groupBox3.Controls.Add(this.label3);
-            this.groupBox3.Controls.Add(this.label10);
-            this.groupBox3.Dock = System.Windows.Forms.DockStyle.Left;
-            this.groupBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox3.ForeColor = System.Drawing.Color.White;
-            this.groupBox3.Location = new System.Drawing.Point(3, 16);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(306, 342);
-            this.groupBox3.TabIndex = 2;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Application Setting";
+            this.chkLogoReport.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(53)))), ((int)(((byte)(66)))));
+            this.chkLogoReport.Controls.Add(this.checkBox1);
+            this.chkLogoReport.Controls.Add(this.label16);
+            this.chkLogoReport.Controls.Add(this.txt_kotprefix);
+            this.chkLogoReport.Controls.Add(this.label18);
+            this.chkLogoReport.Controls.Add(this.chk_autosizeproduct);
+            this.chkLogoReport.Controls.Add(this.label14);
+            this.chkLogoReport.Controls.Add(this.txt_buttonHeight);
+            this.chkLogoReport.Controls.Add(this.label12);
+            this.chkLogoReport.Controls.Add(this.txt_buttonwidth);
+            this.chkLogoReport.Controls.Add(this.label13);
+            this.chkLogoReport.Controls.Add(this.txt_padding);
+            this.chkLogoReport.Controls.Add(this.label9);
+            this.chkLogoReport.Controls.Add(this.txt_invoiceprefix);
+            this.chkLogoReport.Controls.Add(this.label8);
+            this.chkLogoReport.Controls.Add(this.label11);
+            this.chkLogoReport.Controls.Add(this.chk_fastloading);
+            this.chkLogoReport.Controls.Add(this.chk_realtime);
+            this.chkLogoReport.Controls.Add(this.button3);
+            this.chkLogoReport.Controls.Add(this.txt_noofproductonrow);
+            this.chkLogoReport.Controls.Add(this.label2);
+            this.chkLogoReport.Controls.Add(this.label3);
+            this.chkLogoReport.Controls.Add(this.label10);
+            this.chkLogoReport.Dock = System.Windows.Forms.DockStyle.Left;
+            this.chkLogoReport.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkLogoReport.ForeColor = System.Drawing.Color.White;
+            this.chkLogoReport.Location = new System.Drawing.Point(3, 16);
+            this.chkLogoReport.Name = "chkLogoReport";
+            this.chkLogoReport.Size = new System.Drawing.Size(306, 342);
+            this.chkLogoReport.TabIndex = 2;
+            this.chkLogoReport.TabStop = false;
+            this.chkLogoReport.Text = "Application Setting";
             // 
             // label8
             // 
@@ -522,7 +545,7 @@
             // 
             this.button3.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button3.ForeColor = System.Drawing.Color.Black;
-            this.button3.Location = new System.Drawing.Point(198, 291);
+            this.button3.Location = new System.Drawing.Point(208, 305);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(78, 31);
             this.button3.TabIndex = 14;
@@ -569,24 +592,25 @@
             this.label10.TabIndex = 0;
             this.label10.Text = "Real time Invoice Update";
             // 
-            // btn_reset
+            // label16
             // 
-            this.btn_reset.Location = new System.Drawing.Point(324, 10);
-            this.btn_reset.Name = "btn_reset";
-            this.btn_reset.Size = new System.Drawing.Size(46, 38);
-            this.btn_reset.TabIndex = 26;
-            this.btn_reset.Text = "Reset";
-            this.btn_reset.UseVisualStyleBackColor = true;
-            this.btn_reset.Click += new System.EventHandler(this.btn_reset_Click);
+            this.label16.AutoSize = true;
+            this.label16.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label16.Location = new System.Drawing.Point(6, 291);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(73, 13);
+            this.label16.TabIndex = 30;
+            this.label16.Text = "LogoReport";
             // 
-            // button5
+            // checkBox1
             // 
-            this.button5.Location = new System.Drawing.Point(355, 30);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(75, 23);
-            this.button5.TabIndex = 27;
-            this.button5.Text = "button5";
-            this.button5.UseVisualStyleBackColor = true;
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBox1.Location = new System.Drawing.Point(235, 289);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(15, 14);
+            this.checkBox1.TabIndex = 31;
+            this.checkBox1.UseVisualStyleBackColor = true;
             // 
             // oodoSetting
             // 
@@ -603,8 +627,8 @@
             this.groupBox4.ResumeLayout(false);
             this.groupBox5.ResumeLayout(false);
             this.groupBox5.PerformLayout();
-            this.groupBox3.ResumeLayout(false);
-            this.groupBox3.PerformLayout();
+            this.chkLogoReport.ResumeLayout(false);
+            this.chkLogoReport.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -642,7 +666,7 @@
         private System.Windows.Forms.ComboBox cmb_pos;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.GroupBox chkLogoReport;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.CheckBox chk_fastloading;
@@ -657,5 +681,7 @@
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Button btn_reset;
+        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.Label label16;
     }
 }

@@ -171,6 +171,7 @@ namespace App.UI.Setting
             appUserSetting.RealtimeInvoiceUpdate = (chk_realtime.Checked) ? true : false;
             appUserSetting.FastLoading = (chk_fastloading.Checked) ? true : false;
             appUserSetting.AutoSizebutton = (chk_autosizeproduct.Checked) ? true : false;
+            appUserSetting.LogoReport = (chk_autosizeproduct.Checked) ? true : false;
             SettingRepository sysrepo = new SettingRepository();
             sysrepo.UpdateUsersettingReopository(appUserSetting);
             MessageBox.Show("App Store settings Updated Correctly. Please Logout the App and login");
