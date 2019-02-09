@@ -990,7 +990,62 @@ namespace App.UI
 
             foreach (DataGridViewRow row in grd_ProductDetails.SelectedRows)
             {
-                row.Cells["Qty"].Value = int.Parse(txt_producrtcode.Text.ToString());
+
+                if (int.Parse(row.Cells["InvdetId"].Value.ToString()) != 0)
+                {
+
+                    if (int.Parse(row.Cells["Qty"].Value.ToString()) <= int.Parse(txt_producrtcode.Text.ToString()))
+                    {
+                        row.Cells["Qty"].Value = int.Parse(txt_producrtcode.Text.ToString());
+                    }
+                    else
+                    {
+
+                        PassCoder passCoder = new PassCoder();
+                        passCoder.ShowDialog();
+                        Boolean IsAuthenticated = passCoder.IsAuthenticated;
+
+
+                        if (IsAuthenticated)
+                        {
+                            row.Cells["Qty"].Value = int.Parse(txt_producrtcode.Text.ToString());
+                        }
+
+
+                    }
+
+
+
+
+
+                   
+
+
+                }
+                else
+                {
+                    row.Cells["Qty"].Value = int.Parse(txt_producrtcode.Text.ToString());
+
+
+                }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+               
+               
 
             }
             CalculateTotal();
