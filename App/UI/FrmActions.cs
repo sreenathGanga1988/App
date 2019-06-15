@@ -245,7 +245,7 @@ namespace App.UI
         private void btnPrintCloseReport_Click(object sender, EventArgs e)
         {
             Extensions.PrintReceiptnew printReceiptnew = new Extensions.PrintReceiptnew();
-            printReceiptnew.PrintCopy(cmb_shift.Text);
+            printReceiptnew.PrintCopy(cmb_shift.SelectedValue.ToString());
         }
     }
 }

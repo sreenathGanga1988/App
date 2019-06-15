@@ -248,7 +248,7 @@ namespace App.Repository
             List<Invoicemaster> invoicemasterstotal = cntxt.Invoicemasters.Where(U => U.ShiftID == shiftid && U.IsDeleted == false).ToList();
 
             List<Invoicemaster> invoicemasters = invoicemasterstotal.Where(U => U.IstableBill == false && U.IsKOT == false).ToList();
-
+            shiftViewModel.Shiftid = shiftid;
             shiftViewModel.invoicemstrlist = invoicemasters;
             shiftViewModel. StoreName = shift.Store.StoreName;
             shiftViewModel. ShiftName =shift.ShiftName;

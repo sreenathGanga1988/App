@@ -1234,7 +1234,7 @@ namespace App.Repository
 
         public List<Invoicemaster> GetInvoiPendingtoBill(int storeid)
         {
-            var q = (cntxt.Invoicemasters.Where(u => u.StoreID == storeid && u.IstableBill == true || u.IsKOT == true)).ToList();
+            var q = (cntxt.Invoicemasters.Where(u => u.StoreID == storeid && u.IsDeleted==false &&  (u.IstableBill == true || u.IsKOT == true))).ToList();
 
             return q;
         }

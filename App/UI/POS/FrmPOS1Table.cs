@@ -994,7 +994,7 @@ namespace App.UI
                 if (int.Parse(row.Cells["InvdetId"].Value.ToString()) != 0)
                 {
 
-                    if (int.Parse(row.Cells["Qty"].Value.ToString()) <= int.Parse(txt_producrtcode.Text.ToString()))
+                    if (Decimal.Parse(row.Cells["Qty"].Value.ToString()) <= Decimal.Parse(txt_producrtcode.Text.ToString()))
                     {
                         row.Cells["Qty"].Value = int.Parse(txt_producrtcode.Text.ToString());
                     }

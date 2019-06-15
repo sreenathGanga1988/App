@@ -18,6 +18,7 @@ namespace App.Model
 
     public class ShiftViewModel
     {
+        public int Shiftid { get; set; }
 
         public String StoreName { get; set; }
         public String ShiftName { get; set; }

@@ -216,7 +216,7 @@ namespace App.Extensions
 
         public void printInvoice(Invoicemaster invoicemaster, PrintOption printOption, string printerIP = "")
         {
-            string eClear = ('' + "@");
+           try{ string eClear = ('' + "@");
             string eDrawer = (eClear + ('' + ("p" + ('\0' + ".}"))));
 
             PrinterUtility.EscPosEpsonCommands.EscPosEpson obj = new PrinterUtility.EscPosEpsonCommands.EscPosEpson(54);
@@ -453,6 +453,11 @@ namespace App.Extensions
             {
                 File.Delete(".\\tmpPrint.print");
             }
+            catch
+            {
+
+            }
+        }
             catch
             {
 
@@ -879,10 +884,10 @@ namespace App.Extensions
             if (File.Exists(".\\tmpPrint.print"))
                 File.Delete(".\\tmpPrint.print");
             File.WriteAllBytes(".\\tmpPrint.print", bytes);
-            KeepCopy(shiftViewModel.ShiftName, bytes);
+            KeepCopy(shiftViewModel.Shiftid.ToString(), bytes);
 
 
-            RawPrinterHelper.SendFileToPrinter(Program.MySettingViewModal.MyPrinterDetails.PosPrinter, ".\\tmpPrint.print");
+           RawPrinterHelper.SendFileToPrinter(Program.MySettingViewModal.MyPrinterDetails.PosPrinter, ".\\tmpPrint.print");
             try
             {
                 File.Delete(".\\tmpPrint.print");

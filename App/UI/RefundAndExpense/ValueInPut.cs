@@ -235,36 +235,53 @@ namespace App.UI.RefundAndExpense
 
         private void btn_PosOut_Click(object sender, EventArgs e)
         {
-            if(Creditamount>= Decimal.Parse(txt_PasscodeDisplay.Text))
+            PassCoder passCoder = new PassCoder();
+            passCoder.ShowDialog();
+            Boolean IsAuthenticated = passCoder.IsAuthenticated;
+
+
+            if (IsAuthenticated)
             {
-                SettleMaster settleMaster = new SettleMaster();
-                settleMaster.StoreID = Program.LocationID;
-                settleMaster.ShiftID = Program.ShiftId;
-                settleMaster.UserID = Program.UserID;
-                settleMaster.CustomerID = Invoiceid;
-                try
+                if (Creditamount >= Decimal.Parse(txt_PasscodeDisplay.Text))
                 {
-                    settleMaster.TotalRefund = Decimal.Parse(txt_PasscodeDisplay.Text);
+                    SettleMaster settleMaster = new SettleMaster();
+                    settleMaster.StoreID = Program.LocationID;
+                    settleMaster.ShiftID = Program.ShiftId;
+                    settleMaster.UserID = Program.UserID;
+                    settleMaster.CustomerID = Invoiceid;
+                    try
+                    {
+                        settleMaster.TotalRefund = Decimal.Parse(txt_PasscodeDisplay.Text);
+                    }
+                    catch (Exception)
+                    {
+
+                        settleMaster.TotalRefund = 0;
+                    }
+                    settleMaster.SettleDate = DateTime.Now;
+                    Remarker remarker = new Remarker("Remark for Settlement ");
+                    remarker.ShowDialog();
+                    settleMaster.Remark = (remarker.EnteredRemark == null) ? "" : remarker.EnteredRemark;
+
+
+                    SettlementRepository settlementRepository = new SettlementRepository();
+
+                    settlementRepository.AddCreditSettlement(settleMaster);
+
+                    MessageBox.Show("Successfully Added");
+                    this.Close();
+
                 }
-                catch (Exception)
-                {
-
-                    settleMaster.TotalRefund = 0;
-                }
-                settleMaster.SettleDate = DateTime.Now;
-                Remarker remarker = new Remarker("Remark for Settlement " );
-                remarker.ShowDialog();
-                settleMaster.Remark = (remarker.EnteredRemark == null) ? "" : remarker.EnteredRemark;
-
-
-                SettlementRepository settlementRepository = new SettlementRepository();
-
-                settlementRepository.AddCreditSettlement(settleMaster);
-
-                MessageBox.Show("Successfully Added");
-                this.Close();
-                
             }
+            else
+            {
+                MessageBox.Show("Not Authenticated");
+            }
+
+
+
+
+          
 
             
 
